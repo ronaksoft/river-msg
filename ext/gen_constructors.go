@@ -21,6 +21,7 @@ const (
 	C_GroupsAddUser                      int64 = 394654713
 	C_AccountUpdatePhoto                 int64 = 406174115
 	C_Ack                                int64 = 447331921
+	C_SystemGetAppUpdate                 int64 = 450761036
 	C_ContactUser                        int64 = 460099170
 	C_AccountGetNotifySettings           int64 = 477008681
 	C_UpdateReadHistoryOutbox            int64 = 510866108
@@ -49,6 +50,7 @@ const (
 	C_MessagesGetDialog                  int64 = 1050840034
 	C_AccountAuthorizations              int64 = 1092320500
 	C_ClientSendMessageMedia             int64 = 1095038539
+	C_AppUpdate                          int64 = 1100207036
 	C_Dialog                             int64 = 1120787796
 	C_AuthAuthorization                  int64 = 1140037965
 	C_AuthRecall                         int64 = 1172029049
@@ -66,6 +68,7 @@ const (
 	C_MessagesGetDialogs                 int64 = 1429532372
 	C_UpdateGetState                     int64 = 1437250230
 	C_AccountUpdateUsername              int64 = 1477164344
+	C_SystemGetInfo                      int64 = 1486296237
 	C_AccountCheckUsername               int64 = 1501406413
 	C_UpdateReadHistoryInbox             int64 = 1529128378
 	C_UpdateTooLong                      int64 = 1531755547
@@ -130,6 +133,7 @@ const (
 	C_UpdateUserStatus                   int64 = 2696747995
 	C_SystemPublicKeys                   int64 = 2745130223
 	C_DHGroup                            int64 = 2751503049
+	C_SystemInfo                         int64 = 2754948760
 	C_InitDB                             int64 = 2793857427
 	C_AuthLoginByToken                   int64 = 2851553023
 	C_SystemServerTime                   int64 = 2854614486
@@ -204,6 +208,7 @@ var ConstructorNames = map[int64]string{
 	394654713:  "GroupsAddUser",
 	406174115:  "AccountUpdatePhoto",
 	447331921:  "Ack",
+	450761036:  "SystemGetAppUpdate",
 	460099170:  "ContactUser",
 	477008681:  "AccountGetNotifySettings",
 	510866108:  "UpdateReadHistoryOutbox",
@@ -232,6 +237,7 @@ var ConstructorNames = map[int64]string{
 	1050840034: "MessagesGetDialog",
 	1092320500: "AccountAuthorizations",
 	1095038539: "ClientSendMessageMedia",
+	1100207036: "AppUpdate",
 	1120787796: "Dialog",
 	1140037965: "AuthAuthorization",
 	1172029049: "AuthRecall",
@@ -249,6 +255,7 @@ var ConstructorNames = map[int64]string{
 	1429532372: "MessagesGetDialogs",
 	1437250230: "UpdateGetState",
 	1477164344: "AccountUpdateUsername",
+	1486296237: "SystemGetInfo",
 	1501406413: "AccountCheckUsername",
 	1529128378: "UpdateReadHistoryInbox",
 	1531755547: "UpdateTooLong",
@@ -313,6 +320,7 @@ var ConstructorNames = map[int64]string{
 	2696747995: "UpdateUserStatus",
 	2745130223: "SystemPublicKeys",
 	2751503049: "DHGroup",
+	2754948760: "SystemInfo",
 	2793857427: "InitDB",
 	2851553023: "AuthLoginByToken",
 	2854614486: "SystemServerTime",

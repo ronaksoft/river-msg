@@ -125,6 +125,12 @@ var (
 			return m
 		},
 	}
+	PoolSystemGetAppUpdate = sync.Pool{
+		New: func() interface{} {
+			m := new(SystemGetAppUpdate)
+			return m
+		},
+	}
 	PoolContactUser = sync.Pool{
 		New: func() interface{} {
 			m := new(ContactUser)
@@ -293,6 +299,12 @@ var (
 			return m
 		},
 	}
+	PoolAppUpdate = sync.Pool{
+		New: func() interface{} {
+			m := new(AppUpdate)
+			return m
+		},
+	}
 	PoolDialog = sync.Pool{
 		New: func() interface{} {
 			m := new(Dialog)
@@ -392,6 +404,12 @@ var (
 	PoolAccountUpdateUsername = sync.Pool{
 		New: func() interface{} {
 			m := new(AccountUpdateUsername)
+			return m
+		},
+	}
+	PoolSystemGetInfo = sync.Pool{
+		New: func() interface{} {
+			m := new(SystemGetInfo)
 			return m
 		},
 	}
@@ -776,6 +794,12 @@ var (
 	PoolDHGroup = sync.Pool{
 		New: func() interface{} {
 			m := new(DHGroup)
+			return m
+		},
+	}
+	PoolSystemInfo = sync.Pool{
+		New: func() interface{} {
+			m := new(SystemInfo)
 			return m
 		},
 	}

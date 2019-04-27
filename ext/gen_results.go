@@ -124,6 +124,12 @@ func ResultAck(out *MessageEnvelope, res *Ack) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultSystemGetAppUpdate(out *MessageEnvelope, res *SystemGetAppUpdate) {
+	out.Constructor = C_SystemGetAppUpdate
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultContactUser(out *MessageEnvelope, res *ContactUser) {
 	out.Constructor = C_ContactUser
 	pbytes.Put(out.Message)
@@ -292,6 +298,12 @@ func ResultClientSendMessageMedia(out *MessageEnvelope, res *ClientSendMessageMe
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultAppUpdate(out *MessageEnvelope, res *AppUpdate) {
+	out.Constructor = C_AppUpdate
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultDialog(out *MessageEnvelope, res *Dialog) {
 	out.Constructor = C_Dialog
 	pbytes.Put(out.Message)
@@ -390,6 +402,12 @@ func ResultUpdateGetState(out *MessageEnvelope, res *UpdateGetState) {
 }
 func ResultAccountUpdateUsername(out *MessageEnvelope, res *AccountUpdateUsername) {
 	out.Constructor = C_AccountUpdateUsername
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultSystemGetInfo(out *MessageEnvelope, res *SystemGetInfo) {
+	out.Constructor = C_SystemGetInfo
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -774,6 +792,12 @@ func ResultSystemPublicKeys(out *MessageEnvelope, res *SystemPublicKeys) {
 }
 func ResultDHGroup(out *MessageEnvelope, res *DHGroup) {
 	out.Constructor = C_DHGroup
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultSystemInfo(out *MessageEnvelope, res *SystemInfo) {
+	out.Constructor = C_SystemInfo
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

@@ -844,6 +844,12 @@ func ResultMessagesSent(out *MessageEnvelope, res *MessagesSent) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultClientSearchResult(out *MessageEnvelope, res *ClientSearchResult) {
+	out.Constructor = C_ClientSearchResult
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultGroupsGetFull(out *MessageEnvelope, res *GroupsGetFull) {
 	out.Constructor = C_GroupsGetFull
 	pbytes.Put(out.Message)

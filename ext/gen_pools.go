@@ -845,6 +845,12 @@ var (
 			return m
 		},
 	}
+	PoolClientSearchResult = sync.Pool{
+		New: func() interface{} {
+			m := new(ClientSearchResult)
+			return m
+		},
+	}
 	PoolGroupsGetFull = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupsGetFull)

@@ -141,6 +141,7 @@ const (
 	C_Group                              int64 = 2885774273
 	C_SystemDHGroups                     int64 = 2890748083
 	C_MessagesSent                       int64 = 2942502835
+	C_ClientSearchResult                 int64 = 2957647709
 	C_GroupsGetFull                      int64 = 2986704909
 	C_UpdateReadMessagesContents         int64 = 2991403048
 	C_MessagesSend                       int64 = 3000244183
@@ -328,6 +329,7 @@ var ConstructorNames = map[int64]string{
 	2885774273: "Group",
 	2890748083: "SystemDHGroups",
 	2942502835: "MessagesSent",
+	2957647709: "ClientSearchResult",
 	2986704909: "GroupsGetFull",
 	2991403048: "UpdateReadMessagesContents",
 	3000244183: "MessagesSend",

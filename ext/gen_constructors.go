@@ -37,10 +37,12 @@ const (
 	C_UpdateGroupAdmins                  int64 = 694155405
 	C_File                               int64 = 749574446
 	C_User                               int64 = 765557111
+	C_Salt                               int64 = 801722313
 	C_UsersMany                          int64 = 801733941
 	C_InputMediaUploadedPhoto            int64 = 849930963
 	C_DraftMessage                       int64 = 869564229
 	C_InputMediaUploadedDocument         int64 = 870692909
+	C_SystemSalts                        int64 = 871116906
 	C_MessagesSaveDraft                  int64 = 921840607
 	C_AccountRegisterDevice              int64 = 946059841
 	C_AuthLogout                         int64 = 992431648
@@ -80,6 +82,7 @@ const (
 	C_AccountSetPrivacy                  int64 = 1599585002
 	C_UpdateGroupParticipantAdd          int64 = 1623827837
 	C_UserMessage                        int64 = 1677556362
+	C_SystemGetSalts                     int64 = 1705203315
 	C_MessagesMany                       int64 = 1713238910
 	C_UpdateDifference                   int64 = 1742546619
 	C_ContactsDelete                     int64 = 1750426880
@@ -225,10 +228,12 @@ var ConstructorNames = map[int64]string{
 	694155405:  "UpdateGroupAdmins",
 	749574446:  "File",
 	765557111:  "User",
+	801722313:  "Salt",
 	801733941:  "UsersMany",
 	849930963:  "InputMediaUploadedPhoto",
 	869564229:  "DraftMessage",
 	870692909:  "InputMediaUploadedDocument",
+	871116906:  "SystemSalts",
 	921840607:  "MessagesSaveDraft",
 	946059841:  "AccountRegisterDevice",
 	992431648:  "AuthLogout",
@@ -268,6 +273,7 @@ var ConstructorNames = map[int64]string{
 	1599585002: "AccountSetPrivacy",
 	1623827837: "UpdateGroupParticipantAdd",
 	1677556362: "UserMessage",
+	1705203315: "SystemGetSalts",
 	1713238910: "MessagesMany",
 	1742546619: "UpdateDifference",
 	1750426880: "ContactsDelete",

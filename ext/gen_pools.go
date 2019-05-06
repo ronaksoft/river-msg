@@ -221,6 +221,12 @@ var (
 			return m
 		},
 	}
+	PoolSalt = sync.Pool{
+		New: func() interface{} {
+			m := new(Salt)
+			return m
+		},
+	}
 	PoolUsersMany = sync.Pool{
 		New: func() interface{} {
 			m := new(UsersMany)
@@ -242,6 +248,12 @@ var (
 	PoolInputMediaUploadedDocument = sync.Pool{
 		New: func() interface{} {
 			m := new(InputMediaUploadedDocument)
+			return m
+		},
+	}
+	PoolSystemSalts = sync.Pool{
+		New: func() interface{} {
+			m := new(SystemSalts)
 			return m
 		},
 	}
@@ -476,6 +488,12 @@ var (
 	PoolUserMessage = sync.Pool{
 		New: func() interface{} {
 			m := new(UserMessage)
+			return m
+		},
+	}
+	PoolSystemGetSalts = sync.Pool{
+		New: func() interface{} {
+			m := new(SystemGetSalts)
 			return m
 		},
 	}

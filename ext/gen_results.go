@@ -220,6 +220,12 @@ func ResultUser(out *MessageEnvelope, res *User) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultSalt(out *MessageEnvelope, res *Salt) {
+	out.Constructor = C_Salt
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUsersMany(out *MessageEnvelope, res *UsersMany) {
 	out.Constructor = C_UsersMany
 	pbytes.Put(out.Message)
@@ -240,6 +246,12 @@ func ResultDraftMessage(out *MessageEnvelope, res *DraftMessage) {
 }
 func ResultInputMediaUploadedDocument(out *MessageEnvelope, res *InputMediaUploadedDocument) {
 	out.Constructor = C_InputMediaUploadedDocument
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultSystemSalts(out *MessageEnvelope, res *SystemSalts) {
+	out.Constructor = C_SystemSalts
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -474,6 +486,12 @@ func ResultUpdateGroupParticipantAdd(out *MessageEnvelope, res *UpdateGroupParti
 }
 func ResultUserMessage(out *MessageEnvelope, res *UserMessage) {
 	out.Constructor = C_UserMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultSystemGetSalts(out *MessageEnvelope, res *SystemGetSalts) {
+	out.Constructor = C_SystemGetSalts
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

@@ -78,4 +78,5 @@ const (
 	ErrItemToken         = "TOKEN"
 	ErrItemMedia         = "MEDIA"
 	ErrItemPinnedDialogs = "PINNED_DIALOGS"
+	ErrItemSalt          = "SALT"
 )

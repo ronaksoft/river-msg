@@ -57,6 +57,6 @@ message PeerMediaInfo {
 
 // MediaSize
 message MediaSize {
-    required InputMediaType MediaType = 1;
+    required int32 MediaType = 1;
     required int32 TotalSize = 2;
 }

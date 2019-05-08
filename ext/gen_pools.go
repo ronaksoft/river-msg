@@ -533,6 +533,12 @@ var (
 			return m
 		},
 	}
+	PoolPeerMediaInfo = sync.Pool{
+		New: func() interface{} {
+			m := new(PeerMediaInfo)
+			return m
+		},
+	}
 	PoolUpdateMessageEdited = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateMessageEdited)
@@ -773,6 +779,12 @@ var (
 			return m
 		},
 	}
+	PoolDBMediaInfo = sync.Pool{
+		New: func() interface{} {
+			m := new(DBMediaInfo)
+			return m
+		},
+	}
 	PoolMessagesForward = sync.Pool{
 		New: func() interface{} {
 			m := new(MessagesForward)
@@ -974,6 +986,12 @@ var (
 	PoolMessagesDelete = sync.Pool{
 		New: func() interface{} {
 			m := new(MessagesDelete)
+			return m
+		},
+	}
+	PoolMediaSize = sync.Pool{
+		New: func() interface{} {
+			m := new(MediaSize)
 			return m
 		},
 	}

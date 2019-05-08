@@ -89,6 +89,7 @@ const (
 	C_MessagesReadContents               int64 = 1781251275
 	C_SystemGetDHGroups                  int64 = 1786665018
 	C_UpdateGroupParticipantAdmin        int64 = 1813022164
+	C_PeerMediaInfo                      int64 = 1816749655
 	C_UpdateMessageEdited                int64 = 1825079988
 	C_UpdateState                        int64 = 1837585836
 	C_UserPhoto                          int64 = 1881347437
@@ -129,6 +130,7 @@ const (
 	C_Error                              int64 = 2619118453
 	C_GroupsUploadPhoto                  int64 = 2624284907
 	C_MediaGeoLocation                   int64 = 2625326500
+	C_DBMediaInfo                        int64 = 2652925823
 	C_MessagesForward                    int64 = 2662884753
 	C_ProtoEncryptedPayload              int64 = 2668405547
 	C_PhoneContact                       int64 = 2672574672
@@ -163,6 +165,7 @@ const (
 	C_PeerNotifySettings                 int64 = 3475030132
 	C_MessageEntity                      int64 = 3479443932
 	C_MessagesDelete                     int64 = 3487616910
+	C_MediaSize                          int64 = 3543753456
 	C_AccountPrivacyDisallowContacts     int64 = 3629404744
 	C_AccountPrivacyDisallowAll          int64 = 3653779109
 	C_AuthDestroyKey                     int64 = 3673422656
@@ -280,6 +283,7 @@ var ConstructorNames = map[int64]string{
 	1781251275: "MessagesReadContents",
 	1786665018: "SystemGetDHGroups",
 	1813022164: "UpdateGroupParticipantAdmin",
+	1816749655: "PeerMediaInfo",
 	1825079988: "UpdateMessageEdited",
 	1837585836: "UpdateState",
 	1881347437: "UserPhoto",
@@ -320,6 +324,7 @@ var ConstructorNames = map[int64]string{
 	2619118453: "Error",
 	2624284907: "GroupsUploadPhoto",
 	2625326500: "MediaGeoLocation",
+	2652925823: "DBMediaInfo",
 	2662884753: "MessagesForward",
 	2668405547: "ProtoEncryptedPayload",
 	2672574672: "PhoneContact",
@@ -354,6 +359,7 @@ var ConstructorNames = map[int64]string{
 	3475030132: "PeerNotifySettings",
 	3479443932: "MessageEntity",
 	3487616910: "MessagesDelete",
+	3543753456: "MediaSize",
 	3629404744: "AccountPrivacyDisallowContacts",
 	3653779109: "AccountPrivacyDisallowAll",
 	3673422656: "AuthDestroyKey",

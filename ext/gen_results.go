@@ -532,6 +532,12 @@ func ResultUpdateGroupParticipantAdmin(out *MessageEnvelope, res *UpdateGroupPar
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultPeerMediaInfo(out *MessageEnvelope, res *PeerMediaInfo) {
+	out.Constructor = C_PeerMediaInfo
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateMessageEdited(out *MessageEnvelope, res *UpdateMessageEdited) {
 	out.Constructor = C_UpdateMessageEdited
 	pbytes.Put(out.Message)
@@ -772,6 +778,12 @@ func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultDBMediaInfo(out *MessageEnvelope, res *DBMediaInfo) {
+	out.Constructor = C_DBMediaInfo
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultMessagesForward(out *MessageEnvelope, res *MessagesForward) {
 	out.Constructor = C_MessagesForward
 	pbytes.Put(out.Message)
@@ -972,6 +984,12 @@ func ResultMessageEntity(out *MessageEnvelope, res *MessageEntity) {
 }
 func ResultMessagesDelete(out *MessageEnvelope, res *MessagesDelete) {
 	out.Constructor = C_MessagesDelete
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
+	out.Constructor = C_MediaSize
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

@@ -220,12 +220,6 @@ func ResultUser(out *MessageEnvelope, res *User) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultSalt(out *MessageEnvelope, res *Salt) {
-	out.Constructor = C_Salt
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
 func ResultUsersMany(out *MessageEnvelope, res *UsersMany) {
 	out.Constructor = C_UsersMany
 	pbytes.Put(out.Message)

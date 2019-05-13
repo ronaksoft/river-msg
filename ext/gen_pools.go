@@ -221,12 +221,6 @@ var (
 			return m
 		},
 	}
-	PoolSalt = sync.Pool{
-		New: func() interface{} {
-			m := new(Salt)
-			return m
-		},
-	}
 	PoolUsersMany = sync.Pool{
 		New: func() interface{} {
 			m := new(UsersMany)

@@ -37,7 +37,6 @@ const (
 	C_UpdateGroupAdmins                  int64 = 694155405
 	C_File                               int64 = 749574446
 	C_User                               int64 = 765557111
-	C_Salt                               int64 = 801722313
 	C_UsersMany                          int64 = 801733941
 	C_InputMediaUploadedPhoto            int64 = 849930963
 	C_DraftMessage                       int64 = 869564229
@@ -231,7 +230,6 @@ var ConstructorNames = map[int64]string{
 	694155405:  "UpdateGroupAdmins",
 	749574446:  "File",
 	765557111:  "User",
-	801722313:  "Salt",
 	801733941:  "UsersMany",
 	849930963:  "InputMediaUploadedPhoto",
 	869564229:  "DraftMessage",

@@ -50,13 +50,14 @@ func AES256GCMDecrypt(key, iv []byte, msg []byte) ([]byte, error) {
 func GenerateMessageKey(authKey, plain []byte, msgKey []byte) error {
 	// Message Key is: Sha512(DHKey[100:140], InternalHeader, Payload)[32:64]
 	keyBuffer := pbytes.GetLen(40 + len(plain))
-	defer pbytes.Put(keyBuffer)
 	copy(keyBuffer, authKey[100:140])
 	copy(keyBuffer[40:], plain)
 	if k, err := Sha512(keyBuffer); err != nil {
+		pbytes.Put(keyBuffer)
 		return err
 	} else {
 		copy(msgKey, k[32:64])
+		pbytes.Put(keyBuffer)
 		return nil
 	}
 }
@@ -68,12 +69,11 @@ func GenerateMessageKey(authKey, plain []byte, msgKey []byte) error {
 // 3. AES KEY: Sha512 (MessageKey, dhKey[170:210])[:32]
 func Encrypt(authKey, msgKey, plain []byte) (encrypted []byte, err error) {
 	// AES IV: Sha512 (DHKey[180:220], MessageKey)[:32]
-	// iv := make([]byte, 72)
 	iv := pbytes.GetLen(72)
-	defer pbytes.Put(iv)
 	copy(iv, authKey[180:220])
 	copy(iv[40:], msgKey)
 	aesIV, err := Sha512(iv)
+	pbytes.Put(iv)
 	if err != nil {
 		return nil, err
 	}
@@ -81,10 +81,10 @@ func Encrypt(authKey, msgKey, plain []byte) (encrypted []byte, err error) {
 	// AES KEY: Sha512 (MessageKey, DHKey[170:210])[:32]
 	// key := make([]byte, 72)
 	key := pbytes.GetLen(72)
-	defer pbytes.Put(key)
 	copy(key, msgKey)
 	copy(key[32:], authKey[170:210])
 	aesKey, err := Sha512(key)
+	pbytes.Put(key)
 	if err != nil {
 		return nil, err
 	}
@@ -103,16 +103,18 @@ func Encrypt(authKey, msgKey, plain []byte) (encrypted []byte, err error) {
 // 2. AES KEY: Sha512 (MessageKey, dhKey[170:210])[:32]
 func Decrypt(authKey, msgKey, encrypted []byte) (plain []byte, err error) {
 	// AES IV: Sha512 (DHKey[180:220], MessageKey)[:32]
-	iv := make([]byte, 40, 72)
+	iv := pbytes.Get(40, 72)
 	copy(iv, authKey[180:220])
 	iv = append(iv, msgKey...)
 	aesIV, _ := Sha512(iv)
+	pbytes.Put(iv)
 
 	// AES KEY: Sha512 (MessageKey, DHKey[170:210])[:32]
-	key := make([]byte, 32, 72)
+	key := pbytes.Get(32, 72)
 	copy(key, msgKey)
 	key = append(key, authKey[170:210]...)
 	aesKey, err := Sha512(key)
+	pbytes.Put(key)
 	if err != nil {
 		return nil, err
 	}

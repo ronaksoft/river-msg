@@ -827,9 +827,9 @@ var (
 			return m
 		},
 	}
-	PoolInitDB = sync.Pool{
+	PoolInitTestAuth = sync.Pool{
 		New: func() interface{} {
-			m := new(InitDB)
+			m := new(InitTestAuth)
 			return m
 		},
 	}
@@ -908,6 +908,12 @@ var (
 	PoolUpdateNotifySettings = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateNotifySettings)
+			return m
+		},
+	}
+	PoolInitConnectTest = sync.Pool{
+		New: func() interface{} {
+			m := new(InitConnectTest)
 			return m
 		},
 	}

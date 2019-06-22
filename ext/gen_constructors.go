@@ -138,7 +138,7 @@ const (
 	C_SystemPublicKeys                   int64 = 2745130223
 	C_DHGroup                            int64 = 2751503049
 	C_SystemInfo                         int64 = 2754948760
-	C_InitDB                             int64 = 2793857427
+	C_InitTestAuth                       int64 = 2762878006
 	C_AuthLoginByToken                   int64 = 2851553023
 	C_SystemServerTime                   int64 = 2854614486
 	C_EchoWithDelay                      int64 = 2861516000
@@ -152,6 +152,7 @@ const (
 	C_ClientUpdateMessagesDeleted        int64 = 3060926862
 	C_GroupsDeleteUser                   int64 = 3172322223
 	C_UpdateNotifySettings               int64 = 3187524885
+	C_InitConnectTest                    int64 = 3188015450
 	C_AuthRecalled                       int64 = 3249025459
 	C_MessagesDialogs                    int64 = 3252610224
 	C_UsersGetFull                       int64 = 3343342086
@@ -331,7 +332,7 @@ var ConstructorNames = map[int64]string{
 	2745130223: "SystemPublicKeys",
 	2751503049: "DHGroup",
 	2754948760: "SystemInfo",
-	2793857427: "InitDB",
+	2762878006: "InitTestAuth",
 	2851553023: "AuthLoginByToken",
 	2854614486: "SystemServerTime",
 	2861516000: "EchoWithDelay",
@@ -345,6 +346,7 @@ var ConstructorNames = map[int64]string{
 	3060926862: "ClientUpdateMessagesDeleted",
 	3172322223: "GroupsDeleteUser",
 	3187524885: "UpdateNotifySettings",
+	3188015450: "InitConnectTest",
 	3249025459: "AuthRecalled",
 	3252610224: "MessagesDialogs",
 	3343342086: "UsersGetFull",

@@ -826,8 +826,8 @@ func ResultSystemInfo(out *MessageEnvelope, res *SystemInfo) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultInitDB(out *MessageEnvelope, res *InitDB) {
-	out.Constructor = C_InitDB
+func ResultInitTestAuth(out *MessageEnvelope, res *InitTestAuth) {
+	out.Constructor = C_InitTestAuth
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -906,6 +906,12 @@ func ResultGroupsDeleteUser(out *MessageEnvelope, res *GroupsDeleteUser) {
 }
 func ResultUpdateNotifySettings(out *MessageEnvelope, res *UpdateNotifySettings) {
 	out.Constructor = C_UpdateNotifySettings
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultInitConnectTest(out *MessageEnvelope, res *InitConnectTest) {
+	out.Constructor = C_InitConnectTest
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

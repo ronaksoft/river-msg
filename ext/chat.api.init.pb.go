@@ -63,76 +63,7 @@ func (x *InitAuthCompleted_Statuses) UnmarshalJSON(data []byte) error {
 }
 
 func (InitAuthCompleted_Statuses) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{5, 0}
-}
-
-// InitDB
-type InitDB struct {
-	KeySpace string `protobuf:"bytes,1,req,name=KeySpace" json:"KeySpace"`
-	Host     string `protobuf:"bytes,2,req,name=Host" json:"Host"`
-	Username string `protobuf:"bytes,3,req,name=Username" json:"Username"`
-	Password string `protobuf:"bytes,4,req,name=Password" json:"Password"`
-}
-
-func (m *InitDB) Reset()         { *m = InitDB{} }
-func (m *InitDB) String() string { return proto.CompactTextString(m) }
-func (*InitDB) ProtoMessage()    {}
-func (*InitDB) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{0}
-}
-func (m *InitDB) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *InitDB) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_InitDB.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *InitDB) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InitDB.Merge(m, src)
-}
-func (m *InitDB) XXX_Size() int {
-	return m.Size()
-}
-func (m *InitDB) XXX_DiscardUnknown() {
-	xxx_messageInfo_InitDB.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InitDB proto.InternalMessageInfo
-
-func (m *InitDB) GetKeySpace() string {
-	if m != nil {
-		return m.KeySpace
-	}
-	return ""
-}
-
-func (m *InitDB) GetHost() string {
-	if m != nil {
-		return m.Host
-	}
-	return ""
-}
-
-func (m *InitDB) GetUsername() string {
-	if m != nil {
-		return m.Username
-	}
-	return ""
-}
-
-func (m *InitDB) GetPassword() string {
-	if m != nil {
-		return m.Password
-	}
-	return ""
+	return fileDescriptor_c1e8502c710d31a0, []int{6, 0}
 }
 
 // InitConnect
@@ -146,7 +77,7 @@ func (m *InitConnect) Reset()         { *m = InitConnect{} }
 func (m *InitConnect) String() string { return proto.CompactTextString(m) }
 func (*InitConnect) ProtoMessage()    {}
 func (*InitConnect) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{1}
+	return fileDescriptor_c1e8502c710d31a0, []int{0}
 }
 func (m *InitConnect) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -182,91 +113,6 @@ func (m *InitConnect) GetClientNonce() uint64 {
 	return 0
 }
 
-// InitResponse
-type InitResponse struct {
-	ClientNonce          uint64 `protobuf:"fixed64,1,req,name=ClientNonce" json:"ClientNonce"`
-	ServerNonce          uint64 `protobuf:"fixed64,2,req,name=ServerNonce" json:"ServerNonce"`
-	RSAPubKeyFingerPrint uint64 `protobuf:"fixed64,3,req,name=RSAPubKeyFingerPrint" json:"RSAPubKeyFingerPrint"`
-	DHGroupFingerPrint   uint64 `protobuf:"fixed64,4,req,name=DHGroupFingerPrint" json:"DHGroupFingerPrint"`
-	PQ                   uint64 `protobuf:"fixed64,5,req,name=PQ" json:"PQ"`
-	ServerTimestamp      int64  `protobuf:"varint,6,req,name=ServerTimestamp" json:"ServerTimestamp"`
-}
-
-func (m *InitResponse) Reset()         { *m = InitResponse{} }
-func (m *InitResponse) String() string { return proto.CompactTextString(m) }
-func (*InitResponse) ProtoMessage()    {}
-func (*InitResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{2}
-}
-func (m *InitResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *InitResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_InitResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *InitResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InitResponse.Merge(m, src)
-}
-func (m *InitResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *InitResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_InitResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InitResponse proto.InternalMessageInfo
-
-func (m *InitResponse) GetClientNonce() uint64 {
-	if m != nil {
-		return m.ClientNonce
-	}
-	return 0
-}
-
-func (m *InitResponse) GetServerNonce() uint64 {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return 0
-}
-
-func (m *InitResponse) GetRSAPubKeyFingerPrint() uint64 {
-	if m != nil {
-		return m.RSAPubKeyFingerPrint
-	}
-	return 0
-}
-
-func (m *InitResponse) GetDHGroupFingerPrint() uint64 {
-	if m != nil {
-		return m.DHGroupFingerPrint
-	}
-	return 0
-}
-
-func (m *InitResponse) GetPQ() uint64 {
-	if m != nil {
-		return m.PQ
-	}
-	return 0
-}
-
-func (m *InitResponse) GetServerTimestamp() int64 {
-	if m != nil {
-		return m.ServerTimestamp
-	}
-	return 0
-}
-
 // InitCompleteAuth
 // @Function
 // @Return: InitAuthCompleted
@@ -283,7 +129,7 @@ func (m *InitCompleteAuth) Reset()         { *m = InitCompleteAuth{} }
 func (m *InitCompleteAuth) String() string { return proto.CompactTextString(m) }
 func (*InitCompleteAuth) ProtoMessage()    {}
 func (*InitCompleteAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{3}
+	return fileDescriptor_c1e8502c710d31a0, []int{1}
 }
 func (m *InitCompleteAuth) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -354,6 +200,183 @@ func (m *InitCompleteAuth) GetEncryptedPayload() []byte {
 	return nil
 }
 
+// InitConnectTest
+// @Function
+// @Return: InitTestAuth
+type InitConnectTest struct {
+}
+
+func (m *InitConnectTest) Reset()         { *m = InitConnectTest{} }
+func (m *InitConnectTest) String() string { return proto.CompactTextString(m) }
+func (*InitConnectTest) ProtoMessage()    {}
+func (*InitConnectTest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c1e8502c710d31a0, []int{2}
+}
+func (m *InitConnectTest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InitConnectTest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InitConnectTest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *InitConnectTest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InitConnectTest.Merge(m, src)
+}
+func (m *InitConnectTest) XXX_Size() int {
+	return m.Size()
+}
+func (m *InitConnectTest) XXX_DiscardUnknown() {
+	xxx_messageInfo_InitConnectTest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InitConnectTest proto.InternalMessageInfo
+
+// InitTestAuth
+type InitTestAuth struct {
+	AuthID  int64  `protobuf:"varint,1,req,name=AuthID" json:"AuthID"`
+	AuthKey []byte `protobuf:"bytes,2,req,name=AuthKey" json:"AuthKey"`
+}
+
+func (m *InitTestAuth) Reset()         { *m = InitTestAuth{} }
+func (m *InitTestAuth) String() string { return proto.CompactTextString(m) }
+func (*InitTestAuth) ProtoMessage()    {}
+func (*InitTestAuth) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c1e8502c710d31a0, []int{3}
+}
+func (m *InitTestAuth) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InitTestAuth) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InitTestAuth.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *InitTestAuth) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InitTestAuth.Merge(m, src)
+}
+func (m *InitTestAuth) XXX_Size() int {
+	return m.Size()
+}
+func (m *InitTestAuth) XXX_DiscardUnknown() {
+	xxx_messageInfo_InitTestAuth.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InitTestAuth proto.InternalMessageInfo
+
+func (m *InitTestAuth) GetAuthID() int64 {
+	if m != nil {
+		return m.AuthID
+	}
+	return 0
+}
+
+func (m *InitTestAuth) GetAuthKey() []byte {
+	if m != nil {
+		return m.AuthKey
+	}
+	return nil
+}
+
+// InitResponse
+type InitResponse struct {
+	ClientNonce          uint64 `protobuf:"fixed64,1,req,name=ClientNonce" json:"ClientNonce"`
+	ServerNonce          uint64 `protobuf:"fixed64,2,req,name=ServerNonce" json:"ServerNonce"`
+	RSAPubKeyFingerPrint uint64 `protobuf:"fixed64,3,req,name=RSAPubKeyFingerPrint" json:"RSAPubKeyFingerPrint"`
+	DHGroupFingerPrint   uint64 `protobuf:"fixed64,4,req,name=DHGroupFingerPrint" json:"DHGroupFingerPrint"`
+	PQ                   uint64 `protobuf:"fixed64,5,req,name=PQ" json:"PQ"`
+	ServerTimestamp      int64  `protobuf:"varint,6,req,name=ServerTimestamp" json:"ServerTimestamp"`
+}
+
+func (m *InitResponse) Reset()         { *m = InitResponse{} }
+func (m *InitResponse) String() string { return proto.CompactTextString(m) }
+func (*InitResponse) ProtoMessage()    {}
+func (*InitResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c1e8502c710d31a0, []int{4}
+}
+func (m *InitResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InitResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InitResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *InitResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InitResponse.Merge(m, src)
+}
+func (m *InitResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *InitResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_InitResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InitResponse proto.InternalMessageInfo
+
+func (m *InitResponse) GetClientNonce() uint64 {
+	if m != nil {
+		return m.ClientNonce
+	}
+	return 0
+}
+
+func (m *InitResponse) GetServerNonce() uint64 {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return 0
+}
+
+func (m *InitResponse) GetRSAPubKeyFingerPrint() uint64 {
+	if m != nil {
+		return m.RSAPubKeyFingerPrint
+	}
+	return 0
+}
+
+func (m *InitResponse) GetDHGroupFingerPrint() uint64 {
+	if m != nil {
+		return m.DHGroupFingerPrint
+	}
+	return 0
+}
+
+func (m *InitResponse) GetPQ() uint64 {
+	if m != nil {
+		return m.PQ
+	}
+	return 0
+}
+
+func (m *InitResponse) GetServerTimestamp() int64 {
+	if m != nil {
+		return m.ServerTimestamp
+	}
+	return 0
+}
+
 // InitCompleteAuthInternal
 type InitCompleteAuthInternal struct {
 	SecretNonce []byte `protobuf:"bytes,1,req,name=SecretNonce" json:"SecretNonce"`
@@ -363,7 +386,7 @@ func (m *InitCompleteAuthInternal) Reset()         { *m = InitCompleteAuthIntern
 func (m *InitCompleteAuthInternal) String() string { return proto.CompactTextString(m) }
 func (*InitCompleteAuthInternal) ProtoMessage()    {}
 func (*InitCompleteAuthInternal) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{4}
+	return fileDescriptor_c1e8502c710d31a0, []int{5}
 }
 func (m *InitCompleteAuthInternal) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -412,7 +435,7 @@ func (m *InitAuthCompleted) Reset()         { *m = InitAuthCompleted{} }
 func (m *InitAuthCompleted) String() string { return proto.CompactTextString(m) }
 func (*InitAuthCompleted) ProtoMessage()    {}
 func (*InitAuthCompleted) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{5}
+	return fileDescriptor_c1e8502c710d31a0, []int{6}
 }
 func (m *InitAuthCompleted) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -491,7 +514,7 @@ func (m *InitBindUser) Reset()         { *m = InitBindUser{} }
 func (m *InitBindUser) String() string { return proto.CompactTextString(m) }
 func (*InitBindUser) ProtoMessage()    {}
 func (*InitBindUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{6}
+	return fileDescriptor_c1e8502c710d31a0, []int{7}
 }
 func (m *InitBindUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -564,7 +587,7 @@ func (m *InitUserBound) Reset()         { *m = InitUserBound{} }
 func (m *InitUserBound) String() string { return proto.CompactTextString(m) }
 func (*InitUserBound) ProtoMessage()    {}
 func (*InitUserBound) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c1e8502c710d31a0, []int{7}
+	return fileDescriptor_c1e8502c710d31a0, []int{8}
 }
 func (m *InitUserBound) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -602,10 +625,11 @@ func (m *InitUserBound) GetAuthID() int64 {
 
 func init() {
 	proto.RegisterEnum("msg.InitAuthCompleted_Statuses", InitAuthCompleted_Statuses_name, InitAuthCompleted_Statuses_value)
-	proto.RegisterType((*InitDB)(nil), "msg.InitDB")
 	proto.RegisterType((*InitConnect)(nil), "msg.InitConnect")
-	proto.RegisterType((*InitResponse)(nil), "msg.InitResponse")
 	proto.RegisterType((*InitCompleteAuth)(nil), "msg.InitCompleteAuth")
+	proto.RegisterType((*InitConnectTest)(nil), "msg.InitConnectTest")
+	proto.RegisterType((*InitTestAuth)(nil), "msg.InitTestAuth")
+	proto.RegisterType((*InitResponse)(nil), "msg.InitResponse")
 	proto.RegisterType((*InitCompleteAuthInternal)(nil), "msg.InitCompleteAuthInternal")
 	proto.RegisterType((*InitAuthCompleted)(nil), "msg.InitAuthCompleted")
 	proto.RegisterType((*InitBindUser)(nil), "msg.InitBindUser")
@@ -615,78 +639,43 @@ func init() {
 func init() { proto.RegisterFile("chat.api.init.proto", fileDescriptor_c1e8502c710d31a0) }
 
 var fileDescriptor_c1e8502c710d31a0 = []byte{
-	// 585 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x3d, 0x6f, 0xd3, 0x4e,
-	0x18, 0x8f, 0x9d, 0xc4, 0x4d, 0x9e, 0xe6, 0xdf, 0x7f, 0x38, 0x3a, 0x58, 0x08, 0xb9, 0x91, 0x85,
-	0xa0, 0x03, 0x58, 0x08, 0x81, 0xc4, 0xc2, 0x10, 0x37, 0x0d, 0x89, 0x52, 0x15, 0x27, 0x29, 0x03,
-	0xa3, 0x89, 0x4f, 0x89, 0xa5, 0xf8, 0xce, 0xba, 0xbb, 0x80, 0xf2, 0x0d, 0x18, 0x19, 0xd8, 0xf9,
-	0x0e, 0x7c, 0x8a, 0x8e, 0x1d, 0x99, 0x10, 0x4a, 0x36, 0x3e, 0x05, 0x3a, 0x9f, 0xdd, 0x5e, 0xd2,
-	0x0c, 0x0c, 0x5d, 0x7f, 0x2f, 0xcf, 0xf3, 0x7b, 0xee, 0xe5, 0x81, 0xfb, 0x93, 0x59, 0x28, 0xbc,
-	0x30, 0x8d, 0xbd, 0x98, 0xc4, 0xc2, 0x4b, 0x19, 0x15, 0x14, 0x95, 0x13, 0x3e, 0x75, 0xbf, 0x18,
-	0x60, 0xf5, 0x49, 0x2c, 0x3a, 0x3e, 0x6a, 0x41, 0x6d, 0x80, 0x97, 0xe3, 0x34, 0x9c, 0x60, 0xdb,
-	0x68, 0x99, 0xc7, 0x75, 0xbf, 0x72, 0xf9, 0xeb, 0xa8, 0x34, 0xba, 0x46, 0x91, 0x0d, 0x95, 0x1e,
-	0xe5, 0xc2, 0x36, 0x35, 0x36, 0x43, 0xa4, 0xf7, 0x3d, 0xc7, 0x8c, 0x84, 0x09, 0xb6, 0xcb, 0xba,
-	0xb7, 0x40, 0xa5, 0x22, 0x08, 0x39, 0xff, 0x4c, 0x59, 0x64, 0x57, 0x74, 0x45, 0x81, 0xba, 0xaf,
-	0x60, 0x5f, 0x26, 0x39, 0xa1, 0x84, 0xe0, 0x89, 0x40, 0x8f, 0x61, 0xff, 0x64, 0x1e, 0x63, 0x22,
-	0xce, 0x29, 0xc9, 0x13, 0x59, 0xb9, 0x47, 0x27, 0xdc, 0x6f, 0x26, 0x34, 0xa4, 0x6f, 0x84, 0x79,
-	0x4a, 0x09, 0xc7, 0xff, 0x6a, 0x94, 0xba, 0x31, 0x66, 0x9f, 0x30, 0x53, 0x3a, 0x53, 0xd7, 0x69,
-	0x04, 0x7a, 0x0d, 0x87, 0xa3, 0x71, 0x3b, 0x58, 0x7c, 0x1c, 0xe0, 0x65, 0x37, 0x26, 0x53, 0xcc,
-	0x02, 0x16, 0x13, 0x91, 0xcd, 0x59, 0x18, 0x76, 0x2a, 0xd0, 0x4b, 0x40, 0x9d, 0xde, 0x5b, 0x46,
-	0x17, 0xa9, 0xee, 0xab, 0x68, 0xbe, 0x1d, 0x3c, 0x3a, 0x04, 0x33, 0x18, 0xda, 0x55, 0x4d, 0x65,
-	0x06, 0x43, 0xe4, 0xc1, 0xff, 0x2a, 0xd4, 0x45, 0x9c, 0x60, 0x2e, 0xc2, 0x24, 0xb5, 0xad, 0x96,
-	0x79, 0x5c, 0xce, 0x25, 0xdb, 0xa4, 0xfb, 0xc7, 0x80, 0xa6, 0x3a, 0xce, 0x24, 0x9d, 0x63, 0x81,
-	0xdb, 0x0b, 0x31, 0xbb, 0xf3, 0xa3, 0x79, 0x0a, 0x07, 0xca, 0xd6, 0xe9, 0xa9, 0xe9, 0xb3, 0xd8,
-	0x8d, 0x5c, 0xba, 0xc5, 0x21, 0x04, 0x46, 0x90, 0x85, 0x2e, 0x6a, 0x19, 0x81, 0xc4, 0x86, 0xf6,
-	0x9e, 0x8e, 0x0d, 0xd1, 0x73, 0x68, 0x9e, 0x92, 0x09, 0x5b, 0xa6, 0x02, 0x47, 0x41, 0xb8, 0x9c,
-	0xd3, 0x30, 0xb2, 0x6b, 0x5a, 0xdd, 0x5b, 0xac, 0xeb, 0x83, 0xbd, 0x3d, 0x6b, 0x9f, 0x08, 0xf9,
-	0xf2, 0xe6, 0x6a, 0x96, 0x09, 0xc3, 0xda, 0xcc, 0x8d, 0x9b, 0x59, 0xae, 0x09, 0xf7, 0xbb, 0x09,
-	0xf7, 0x64, 0x11, 0x69, 0x2e, 0x0a, 0x45, 0x77, 0x7e, 0x62, 0x6f, 0xc0, 0x1a, 0x8b, 0x50, 0x2c,
-	0x78, 0xf6, 0x7c, 0x0e, 0x5e, 0x1c, 0x79, 0x09, 0x9f, 0x7a, 0xb7, 0xfa, 0x7a, 0x4a, 0x84, 0x79,
-	0x5e, 0x23, 0x37, 0xa1, 0x47, 0x00, 0x2a, 0x73, 0x2f, 0xe4, 0xb3, 0x8d, 0x97, 0xa4, 0xe1, 0xf2,
-	0x5a, 0x54, 0xcf, 0xdd, 0xd7, 0xb2, 0xc9, 0xb9, 0x4f, 0xa0, 0x56, 0x74, 0x43, 0x16, 0x98, 0xef,
-	0x06, 0xcd, 0x12, 0xaa, 0x41, 0xa5, 0xdb, 0xee, 0x9f, 0x35, 0x0d, 0x54, 0x87, 0xea, 0xe8, 0xf4,
-	0x62, 0xf4, 0xa1, 0x69, 0xba, 0x3f, 0x0c, 0xf5, 0xd3, 0xfc, 0x98, 0x44, 0xf2, 0x5f, 0x23, 0x07,
-	0xf6, 0x64, 0x6a, 0xd9, 0x40, 0x5f, 0x18, 0x05, 0xb8, 0xb1, 0x15, 0xcc, 0x9d, 0x5b, 0xe1, 0x01,
-	0x54, 0x83, 0x19, 0x25, 0x9b, 0x4b, 0x43, 0x41, 0xc8, 0x85, 0x7a, 0x37, 0x66, 0x5c, 0x9c, 0x4b,
-	0xbb, 0xbe, 0x32, 0x6e, 0x60, 0xd9, 0xe1, 0x2c, 0xcc, 0x25, 0x55, 0xbd, 0x43, 0x81, 0xba, 0xcf,
-	0xe0, 0x3f, 0x99, 0x59, 0x76, 0xf4, 0xe9, 0x82, 0x44, 0xe8, 0x21, 0x58, 0xd9, 0xfb, 0xe8, 0x64,
-	0x99, 0x8b, 0xff, 0x93, 0x63, 0xbe, 0x7d, 0xb9, 0x72, 0x8c, 0xab, 0x95, 0x63, 0xfc, 0x5e, 0x39,
-	0xc6, 0xd7, 0xb5, 0x53, 0xba, 0x5a, 0x3b, 0xa5, 0x9f, 0x6b, 0xa7, 0xf4, 0x37, 0x00, 0x00, 0xff,
-	0xff, 0x7a, 0xd3, 0xa1, 0x80, 0x44, 0x05, 0x00, 0x00,
-}
-
-func (m *InitDB) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *InitDB) MarshalTo(dAtA []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.KeySpace)))
-	i += copy(dAtA[i:], m.KeySpace)
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Host)))
-	i += copy(dAtA[i:], m.Host)
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Username)))
-	i += copy(dAtA[i:], m.Username)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Password)))
-	i += copy(dAtA[i:], m.Password)
-	return i, nil
+	// 563 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x53, 0x4f, 0x6f, 0x12, 0x41,
+	0x14, 0x67, 0xb7, 0x40, 0xe1, 0x15, 0x5b, 0x3a, 0xf6, 0xb0, 0x31, 0x66, 0x4b, 0x26, 0x46, 0x7b,
+	0xd0, 0x8d, 0x31, 0x9a, 0x78, 0xf1, 0x00, 0xa5, 0x08, 0x29, 0xa9, 0xcb, 0x1f, 0x0f, 0x1e, 0x47,
+	0x98, 0xc0, 0x24, 0xec, 0xec, 0x66, 0x66, 0x30, 0xe1, 0x5b, 0x78, 0xf0, 0xee, 0x77, 0xf0, 0x53,
+	0xf4, 0xd8, 0xa3, 0x27, 0x63, 0xe0, 0xe6, 0xa7, 0x30, 0xb3, 0xc3, 0xb6, 0x53, 0x4a, 0x8c, 0x87,
+	0x9e, 0x58, 0x7e, 0x7f, 0xde, 0x9b, 0xf7, 0x9b, 0x37, 0xf0, 0x70, 0x34, 0x25, 0x2a, 0x20, 0x09,
+	0x0b, 0x18, 0x67, 0x2a, 0x48, 0x44, 0xac, 0x62, 0xb4, 0x13, 0xc9, 0x09, 0x7e, 0x03, 0x7b, 0x1d,
+	0xce, 0xd4, 0x69, 0xcc, 0x39, 0x1d, 0x29, 0xf4, 0x14, 0xf6, 0x4e, 0x67, 0x8c, 0x72, 0x75, 0x11,
+	0xf3, 0x11, 0xf5, 0x9c, 0x9a, 0x7b, 0x52, 0x6c, 0xe4, 0x2f, 0x7f, 0x1d, 0xe7, 0xfa, 0x36, 0x81,
+	0xff, 0x38, 0x50, 0x35, 0xbe, 0x28, 0x99, 0x51, 0x45, 0xeb, 0x73, 0x35, 0xfd, 0x5f, 0xb3, 0xd6,
+	0x0d, 0xa8, 0xf8, 0x42, 0x85, 0xd1, 0xb9, 0xb6, 0xce, 0x22, 0xd0, 0x73, 0xd8, 0x37, 0xb6, 0x66,
+	0x3b, 0x9c, 0x7f, 0x3e, 0xa7, 0x0b, 0xaf, 0x50, 0x73, 0x4f, 0x2a, 0x6b, 0xe9, 0x06, 0x87, 0x10,
+	0x38, 0xa1, 0x57, 0xb4, 0x6a, 0x39, 0xa1, 0xc6, 0x7a, 0xde, 0xae, 0x8d, 0xf5, 0xd0, 0x4b, 0xa8,
+	0x9e, 0xf1, 0x91, 0x58, 0x24, 0x8a, 0x8e, 0x43, 0xb2, 0x98, 0xc5, 0x64, 0xec, 0x95, 0xac, 0xba,
+	0x77, 0x58, 0x7c, 0x08, 0x07, 0x56, 0x46, 0x43, 0x2a, 0x15, 0xee, 0x42, 0x45, 0x43, 0xfa, 0x3b,
+	0x1d, 0xfd, 0x31, 0x14, 0xf5, 0x6f, 0xa7, 0x99, 0x4e, 0xbd, 0xb3, 0x2e, 0xb5, 0xc6, 0x90, 0x0f,
+	0xbb, 0xfa, 0x4b, 0x4f, 0xe0, 0x5a, 0x9d, 0x32, 0x10, 0x7f, 0x73, 0x4d, 0xb9, 0x3e, 0x95, 0x49,
+	0xcc, 0x25, 0xbd, 0xf7, 0x24, 0xdf, 0xc2, 0x51, 0x7f, 0x50, 0x37, 0x41, 0xb5, 0x18, 0x9f, 0x50,
+	0x11, 0x0a, 0xc6, 0x95, 0xb7, 0x63, 0x19, 0xb6, 0x2a, 0xd0, 0x6b, 0x40, 0xcd, 0xf6, 0x7b, 0x11,
+	0xcf, 0x13, 0xdb, 0x97, 0xb7, 0x7c, 0x5b, 0x78, 0x74, 0x04, 0x6e, 0xd8, 0x4b, 0x6f, 0x2b, 0x53,
+	0xb9, 0x61, 0x0f, 0x05, 0x70, 0x60, 0x0e, 0x35, 0x64, 0x11, 0x95, 0x8a, 0x44, 0x49, 0x7a, 0x5f,
+	0x59, 0x5a, 0x9b, 0x24, 0x6e, 0x80, 0xb7, 0xb9, 0x63, 0x1d, 0xae, 0xa8, 0xe0, 0x64, 0x66, 0x26,
+	0x1f, 0x09, 0x6a, 0x25, 0x54, 0xb9, 0x99, 0xfc, 0x9a, 0xc0, 0xdf, 0x5d, 0x38, 0xd4, 0x45, 0xb4,
+	0x39, 0x2b, 0x34, 0xbe, 0xf7, 0x7c, 0xdf, 0x41, 0x71, 0xa0, 0x88, 0x9a, 0xcb, 0x34, 0xd1, 0xfd,
+	0x57, 0xc7, 0x41, 0x24, 0x27, 0xc1, 0x9d, 0xbe, 0x81, 0x11, 0x51, 0x99, 0xed, 0x87, 0xf9, 0x8f,
+	0x9e, 0x00, 0x98, 0x33, 0xb7, 0x89, 0x9c, 0xde, 0x0a, 0xd7, 0xc2, 0xf5, 0x73, 0x30, 0x3d, 0xb7,
+	0x3f, 0x87, 0xdb, 0x1c, 0x7e, 0x06, 0xa5, 0xac, 0x1b, 0x2a, 0x82, 0xfb, 0xe1, 0xbc, 0x9a, 0x43,
+	0x25, 0xc8, 0xb7, 0xea, 0x9d, 0x6e, 0xd5, 0x41, 0x65, 0x28, 0xf4, 0xcf, 0x86, 0xfd, 0x4f, 0x55,
+	0x17, 0xff, 0x70, 0xcc, 0xf2, 0x35, 0x18, 0x1f, 0x7f, 0x94, 0x54, 0xd8, 0xdb, 0xaa, 0x83, 0x29,
+	0x6f, 0x6c, 0x2b, 0xaa, 0x41, 0x49, 0xeb, 0x38, 0x89, 0x4c, 0x22, 0x99, 0xe0, 0x1a, 0x45, 0x8f,
+	0xa0, 0x10, 0x4e, 0x63, 0x4e, 0xd3, 0x34, 0x32, 0xda, 0x40, 0x08, 0x43, 0xb9, 0xc5, 0x84, 0x54,
+	0x17, 0xda, 0x9e, 0xb7, 0xf8, 0x1b, 0x58, 0x77, 0xe8, 0x92, 0xb5, 0xa4, 0x60, 0x77, 0xc8, 0x50,
+	0xfc, 0x02, 0x1e, 0xe8, 0x33, 0xeb, 0x8e, 0x8d, 0x78, 0xce, 0xc7, 0xff, 0x7e, 0x80, 0x0d, 0xef,
+	0x72, 0xe9, 0x3b, 0x57, 0x4b, 0xdf, 0xf9, 0xbd, 0xf4, 0x9d, 0xaf, 0x2b, 0x3f, 0x77, 0xb5, 0xf2,
+	0x73, 0x3f, 0x57, 0x7e, 0xee, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf4, 0x0c, 0x78, 0x7a, 0x1a,
+	0x05, 0x00, 0x00,
 }
 
 func (m *InitConnect) Marshal() (dAtA []byte, err error) {
@@ -708,47 +697,6 @@ func (m *InitConnect) MarshalTo(dAtA []byte) (int, error) {
 	i++
 	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
 	i += 8
-	return i, nil
-}
-
-func (m *InitResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *InitResponse) MarshalTo(dAtA []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	dAtA[i] = 0x9
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
-	i += 8
-	dAtA[i] = 0x11
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
-	i += 8
-	dAtA[i] = 0x19
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RSAPubKeyFingerPrint))
-	i += 8
-	dAtA[i] = 0x21
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.DHGroupFingerPrint))
-	i += 8
-	dAtA[i] = 0x29
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.PQ))
-	i += 8
-	dAtA[i] = 0x30
-	i++
-	i = encodeVarintChatApiInit(dAtA, i, uint64(m.ServerTimestamp))
 	return i, nil
 }
 
@@ -795,6 +743,92 @@ func (m *InitCompleteAuth) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.EncryptedPayload)))
 		i += copy(dAtA[i:], m.EncryptedPayload)
 	}
+	return i, nil
+}
+
+func (m *InitConnectTest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *InitConnectTest) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	return i, nil
+}
+
+func (m *InitTestAuth) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *InitTestAuth) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.AuthID))
+	if m.AuthKey != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.AuthKey)))
+		i += copy(dAtA[i:], m.AuthKey)
+	}
+	return i, nil
+}
+
+func (m *InitResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *InitResponse) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	dAtA[i] = 0x9
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
+	i += 8
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
+	i += 8
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RSAPubKeyFingerPrint))
+	i += 8
+	dAtA[i] = 0x21
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.DHGroupFingerPrint))
+	i += 8
+	dAtA[i] = 0x29
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.PQ))
+	i += 8
+	dAtA[i] = 0x30
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.ServerTimestamp))
 	return i, nil
 }
 
@@ -929,23 +963,6 @@ func encodeVarintChatApiInit(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return offset + 1
 }
-func (m *InitDB) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.KeySpace)
-	n += 1 + l + sovChatApiInit(uint64(l))
-	l = len(m.Host)
-	n += 1 + l + sovChatApiInit(uint64(l))
-	l = len(m.Username)
-	n += 1 + l + sovChatApiInit(uint64(l))
-	l = len(m.Password)
-	n += 1 + l + sovChatApiInit(uint64(l))
-	return n
-}
-
 func (m *InitConnect) Size() (n int) {
 	if m == nil {
 		return 0
@@ -953,21 +970,6 @@ func (m *InitConnect) Size() (n int) {
 	var l int
 	_ = l
 	n += 9
-	return n
-}
-
-func (m *InitResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	n += 9
-	n += 9
-	n += 9
-	n += 9
-	n += 9
-	n += 1 + sovChatApiInit(uint64(m.ServerTimestamp))
 	return n
 }
 
@@ -989,6 +991,44 @@ func (m *InitCompleteAuth) Size() (n int) {
 		l = len(m.EncryptedPayload)
 		n += 1 + l + sovChatApiInit(uint64(l))
 	}
+	return n
+}
+
+func (m *InitConnectTest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *InitTestAuth) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatApiInit(uint64(m.AuthID))
+	if m.AuthKey != nil {
+		l = len(m.AuthKey)
+		n += 1 + l + sovChatApiInit(uint64(l))
+	}
+	return n
+}
+
+func (m *InitResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 9
+	n += 9
+	n += 9
+	n += 9
+	n += 9
+	n += 1 + sovChatApiInit(uint64(m.ServerTimestamp))
 	return n
 }
 
@@ -1064,189 +1104,6 @@ func sovChatApiInit(x uint64) (n int) {
 func sozChatApiInit(x uint64) (n int) {
 	return sovChatApiInit(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *InitDB) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatApiInit
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: InitDB: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: InitDB: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field KeySpace", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatApiInit
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.KeySpace = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Host", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatApiInit
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Host = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Username", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatApiInit
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Username = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Password", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatApiInit
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Password = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000008)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatApiInit(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("KeySpace")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Host")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Username")
-	}
-	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Password")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
 func (m *InitConnect) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
@@ -1305,150 +1162,6 @@ func (m *InitConnect) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ClientNonce")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *InitResponse) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatApiInit
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: InitResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: InitResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ClientNonce", wireType)
-			}
-			m.ClientNonce = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ClientNonce = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			m.ServerNonce = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RSAPubKeyFingerPrint", wireType)
-			}
-			m.RSAPubKeyFingerPrint = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.RSAPubKeyFingerPrint = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DHGroupFingerPrint", wireType)
-			}
-			m.DHGroupFingerPrint = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.DHGroupFingerPrint = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000008)
-		case 5:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PQ", wireType)
-			}
-			m.PQ = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PQ = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000010)
-		case 6:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerTimestamp", wireType)
-			}
-			m.ServerTimestamp = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatApiInit
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.ServerTimestamp |= (int64(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000020)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatApiInit(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatApiInit
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ClientNonce")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ServerNonce")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("RSAPubKeyFingerPrint")
-	}
-	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("DHGroupFingerPrint")
-	}
-	if hasFields[0]&uint64(0x00000010) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PQ")
-	}
-	if hasFields[0]&uint64(0x00000020) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ServerTimestamp")
 	}
 
 	if iNdEx > l {
@@ -1626,6 +1339,309 @@ func (m *InitCompleteAuth) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000020) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("EncryptedPayload")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *InitConnectTest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiInit
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: InitConnectTest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: InitConnectTest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiInit(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiInit
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *InitTestAuth) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiInit
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: InitTestAuth: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: InitTestAuth: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AuthID", wireType)
+			}
+			m.AuthID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiInit
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AuthID |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AuthKey", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiInit
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiInit
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AuthKey = append(m.AuthKey[:0], dAtA[iNdEx:postIndex]...)
+			if m.AuthKey == nil {
+				m.AuthKey = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiInit(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiInit
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AuthID")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AuthKey")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *InitResponse) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiInit
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: InitResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: InitResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ClientNonce", wireType)
+			}
+			m.ClientNonce = 0
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ClientNonce = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			iNdEx += 8
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			m.ServerNonce = 0
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			iNdEx += 8
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RSAPubKeyFingerPrint", wireType)
+			}
+			m.RSAPubKeyFingerPrint = 0
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.RSAPubKeyFingerPrint = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			iNdEx += 8
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DHGroupFingerPrint", wireType)
+			}
+			m.DHGroupFingerPrint = 0
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DHGroupFingerPrint = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			iNdEx += 8
+			hasFields[0] |= uint64(0x00000008)
+		case 5:
+			if wireType != 1 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PQ", wireType)
+			}
+			m.PQ = 0
+			if (iNdEx + 8) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PQ = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+			iNdEx += 8
+			hasFields[0] |= uint64(0x00000010)
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerTimestamp", wireType)
+			}
+			m.ServerTimestamp = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiInit
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ServerTimestamp |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000020)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiInit(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiInit
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ClientNonce")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ServerNonce")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("RSAPubKeyFingerPrint")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("DHGroupFingerPrint")
+	}
+	if hasFields[0]&uint64(0x00000010) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PQ")
+	}
+	if hasFields[0]&uint64(0x00000020) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ServerTimestamp")
 	}
 
 	if iNdEx > l {

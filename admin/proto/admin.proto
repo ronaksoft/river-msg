@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package admin;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message FileLocation {
+    required int32 ClusterID = 1 [(gogoproto.jsontag) = "clusterId,omitempty", (gogoproto.moretags) = "bson:\"clusterId\""];
+    required int64 FileID = 2 [(gogoproto.jsontag) = "fileId,omitempty", (gogoproto.moretags) = "bson:\"fileId\""];
+    required fixed64 AccessHash = 3 [(gogoproto.jsontag) = "accessHash,omitempty", (gogoproto.moretags) = "bson:\"accessHash\""];
+}
+
+message User {
+    optional string ID = 1 [(gogoproto.jsontag) = "id,omitempty"];
+    required int64 UserID = 2 [(gogoproto.jsontag) = "-", (gogoproto.moretags) = "bson:\"userId\""];
+    optional string Username = 3 [(gogoproto.jsontag) = "username,omitempty", (gogoproto.moretags) = "bson:\"username\""];
+    optional string FirstName = 4 [(gogoproto.jsontag) = "firstName,omitempty", (gogoproto.moretags) = "bson:\"fname\""];
+    optional string LastName = 5 [(gogoproto.jsontag) = "lastName,omitempty", (gogoproto.moretags) = "bson:\"lname\""];
+    optional string Phone = 6 [(gogoproto.jsontag) = "phone,omitempty", (gogoproto.moretags) = "bson:\"phone\""];
+    optional int64 PhotoID = 7 [(gogoproto.jsontag) = "photoId,omitempty", (gogoproto.moretags) = "bson:\"photoId\""];
+    optional FileLocation PhotoBig = 8 [(gogoproto.jsontag) = "photoBig,omitempty", (gogoproto.moretags) = "bson:\"photoBig\""];
+    optional FileLocation PhotoSmall = 9 [(gogoproto.jsontag) = "photoSmall,omitempty", (gogoproto.moretags) = "bson:\"photoSmall\""];
+    repeated int64 AuthIDs = 10 [(gogoproto.jsontag) = "authIds,omitempty", (gogoproto.moretags) = "bson:\"AuthIds\""];
+    optional bool Deleted = 11 [(gogoproto.jsontag) = "deleted,omitempty", (gogoproto.moretags) = "bson:\"deleted\""];
+    optional string Bio = 12 [(gogoproto.jsontag) = "bio,omitempty", (gogoproto.moretags) = "bson:\"bio\""];
+    optional uint32 ContactsHash = 13 [(gogoproto.jsontag) = "contactsHash,omitempty", (gogoproto.moretags) = "bson:\"contactsHash\""];
+}

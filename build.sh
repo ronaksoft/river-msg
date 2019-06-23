@@ -3,7 +3,6 @@
 currentWorkingDir=`pwd`
 rm ./ext/*.pb.go
 
-
 # Create 'msg' package
 cd ./ext/proto/
 protoc  -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=../ ./*.proto
@@ -12,7 +11,6 @@ protoc  -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src
 cd ..
 go run ../tools/constructor-builder/main.go . msg
 go fmt
-
 
 # Create 'internalMsg' package
 cd ${currentWorkingDir}
@@ -26,6 +24,6 @@ go run ../tools/constructor-builder/main.go . internalMsg
 rm gen_results.go
 go fmt
 
-cd ${currentWorkingDir}
-
-
+# Create Notification gRPC Stubs
+cd ${currentWorkingDir}/notif/proto/
+protoc -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=plugins=grpc:../ ./*.proto

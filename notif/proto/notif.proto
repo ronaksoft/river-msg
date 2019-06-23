@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package notif;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+// Enable custom Marshal method.
+option (gogoproto.marshaler_all) = true;
+// Enable custom Unmarshal method.
+option (gogoproto.unmarshaler_all) = true;
+// Enable custom Size method (Required by Marshal and Unmarshal).
+option (gogoproto.sizer_all) = true;
+
+service NotificationService {
+    rpc Send(Notification) returns (SendResponse) {}
+    rpc Cancel(CancelRequest) returns (CancelResponse) {}
+}
+
+message Notification {
+    int32 type = 1;
+    string body = 2;
+    int64 user_id = 3 [(gogoproto.customname) = "UserID"];
+    repeated NotificationData data = 4;
+    repeated string tags = 5;
+    int64 timestamp = 6;
+}
+
+message NotificationData {
+    string key = 1;
+    string value = 2;
+}
+
+message SendResponse {
+}
+
+message CancelRequest {
+    repeated string tags = 1;
+}
+
+message CancelResponse {
+}

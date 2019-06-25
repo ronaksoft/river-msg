@@ -704,7 +704,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= uint64(b&0x7F) << shift
+			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -732,7 +732,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= int32(b&0x7F) << shift
+				m.Type |= (int32(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -751,7 +751,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -761,9 +761,6 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -783,7 +780,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UserID |= int64(b&0x7F) << shift
+				m.UserID |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -802,7 +799,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= int(b&0x7F) << shift
+				msglen |= (int(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -811,9 +808,6 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -836,7 +830,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -846,9 +840,6 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -868,7 +859,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Timestamp |= int64(b&0x7F) << shift
+				m.Timestamp |= (int64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -880,9 +871,6 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
-				return ErrInvalidLengthNotif
-			}
-			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthNotif
 			}
 			if (iNdEx + skippy) > l {
@@ -912,7 +900,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= uint64(b&0x7F) << shift
+			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -940,7 +928,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -950,9 +938,6 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -972,7 +957,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -982,9 +967,6 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -997,9 +979,6 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
-				return ErrInvalidLengthNotif
-			}
-			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthNotif
 			}
 			if (iNdEx + skippy) > l {
@@ -1029,7 +1008,7 @@ func (m *SendResponse) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= uint64(b&0x7F) << shift
+			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1050,9 +1029,6 @@ func (m *SendResponse) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
-				return ErrInvalidLengthNotif
-			}
-			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthNotif
 			}
 			if (iNdEx + skippy) > l {
@@ -1082,7 +1058,7 @@ func (m *CancelRequest) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= uint64(b&0x7F) << shift
+			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1110,7 +1086,7 @@ func (m *CancelRequest) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				stringLen |= (uint64(b) & 0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1120,9 +1096,6 @@ func (m *CancelRequest) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthNotif
 			}
 			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthNotif
-			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1135,9 +1108,6 @@ func (m *CancelRequest) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
-				return ErrInvalidLengthNotif
-			}
-			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthNotif
 			}
 			if (iNdEx + skippy) > l {
@@ -1167,7 +1137,7 @@ func (m *CancelResponse) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= uint64(b&0x7F) << shift
+			wire |= (uint64(b) & 0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1188,9 +1158,6 @@ func (m *CancelResponse) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
-				return ErrInvalidLengthNotif
-			}
-			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthNotif
 			}
 			if (iNdEx + skippy) > l {
@@ -1259,11 +1226,8 @@ func skipNotif(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			if length < 0 {
-				return 0, ErrInvalidLengthNotif
-			}
 			iNdEx += length
-			if iNdEx < 0 {
+			if length < 0 {
 				return 0, ErrInvalidLengthNotif
 			}
 			return iNdEx, nil
@@ -1294,9 +1258,6 @@ func skipNotif(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthNotif
-				}
 			}
 			return iNdEx, nil
 		case 4:

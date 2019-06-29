@@ -62,6 +62,7 @@ message Error {
 
 // Ack
 message Ack {
+    repeated uint64 MessageID = 1;
 }
 
 // Bool

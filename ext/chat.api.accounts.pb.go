@@ -2131,7 +2131,7 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2159,7 +2159,7 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2168,6 +2168,9 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2193,7 +2196,7 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2202,6 +2205,9 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2220,6 +2226,9 @@ func (m *AccountSetNotifySettings) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2256,7 +2265,7 @@ func (m *AccountGetNotifySettings) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2284,7 +2293,7 @@ func (m *AccountGetNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2293,6 +2302,9 @@ func (m *AccountGetNotifySettings) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2311,6 +2323,9 @@ func (m *AccountGetNotifySettings) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2344,7 +2359,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2372,7 +2387,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2382,6 +2397,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2402,7 +2420,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2412,6 +2430,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2432,7 +2453,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2442,6 +2463,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2462,7 +2486,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2472,6 +2496,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2492,7 +2519,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2502,6 +2529,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2522,7 +2552,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TokenType |= (PushTokenProvider(b) & 0x7F) << shift
+				m.TokenType |= PushTokenProvider(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2542,7 +2572,7 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2552,6 +2582,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2565,6 +2598,9 @@ func (m *AccountRegisterDevice) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2616,7 +2652,7 @@ func (m *AccountUnregisterDevice) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2644,7 +2680,7 @@ func (m *AccountUnregisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TokenType |= (int32(b) & 0x7F) << shift
+				m.TokenType |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2664,7 +2700,7 @@ func (m *AccountUnregisterDevice) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2674,6 +2710,9 @@ func (m *AccountUnregisterDevice) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2687,6 +2726,9 @@ func (m *AccountUnregisterDevice) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2723,7 +2765,7 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2751,7 +2793,7 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2761,6 +2803,9 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2781,7 +2826,7 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2791,6 +2836,9 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2811,7 +2859,7 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2821,6 +2869,9 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2833,6 +2884,9 @@ func (m *AccountUpdateProfile) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2869,7 +2923,7 @@ func (m *AccountCheckUsername) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2897,7 +2951,7 @@ func (m *AccountCheckUsername) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2907,6 +2961,9 @@ func (m *AccountCheckUsername) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2920,6 +2977,9 @@ func (m *AccountCheckUsername) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -2953,7 +3013,7 @@ func (m *AccountUpdateUsername) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2981,7 +3041,7 @@ func (m *AccountUpdateUsername) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2991,6 +3051,9 @@ func (m *AccountUpdateUsername) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3004,6 +3067,9 @@ func (m *AccountUpdateUsername) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3037,7 +3103,7 @@ func (m *AccountUploadPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3065,7 +3131,7 @@ func (m *AccountUploadPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3074,6 +3140,9 @@ func (m *AccountUploadPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3099,7 +3168,7 @@ func (m *AccountUploadPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3112,6 +3181,9 @@ func (m *AccountUploadPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3145,7 +3217,7 @@ func (m *AccountUpdatePhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3173,7 +3245,7 @@ func (m *AccountUpdatePhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3182,6 +3254,9 @@ func (m *AccountUpdatePhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3200,6 +3275,9 @@ func (m *AccountUpdatePhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3232,7 +3310,7 @@ func (m *AccountRemovePhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3253,6 +3331,9 @@ func (m *AccountRemovePhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3283,7 +3364,7 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3311,7 +3392,7 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3321,6 +3402,9 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3341,7 +3425,7 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3351,6 +3435,9 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3371,7 +3458,7 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3381,6 +3468,9 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3394,6 +3484,9 @@ func (m *AccountChangePhone) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3433,7 +3526,7 @@ func (m *AccountSetPrivacy) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3461,7 +3554,7 @@ func (m *AccountSetPrivacy) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Key |= (AccountPrivacyKey(b) & 0x7F) << shift
+				m.Key |= AccountPrivacyKey(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3481,7 +3574,7 @@ func (m *AccountSetPrivacy) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3490,6 +3583,9 @@ func (m *AccountSetPrivacy) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3505,6 +3601,9 @@ func (m *AccountSetPrivacy) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3538,7 +3637,7 @@ func (m *AccountGetPrivacy) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3566,7 +3665,7 @@ func (m *AccountGetPrivacy) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Key |= (AccountPrivacyKey(b) & 0x7F) << shift
+				m.Key |= AccountPrivacyKey(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3579,6 +3678,9 @@ func (m *AccountGetPrivacy) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3611,7 +3713,7 @@ func (m *AccountGetAuthorizations) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3632,6 +3734,9 @@ func (m *AccountGetAuthorizations) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3662,7 +3767,7 @@ func (m *AccountResetAuthorization) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3690,7 +3795,7 @@ func (m *AccountResetAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.AuthID |= (int64(b) & 0x7F) << shift
+				m.AuthID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3703,6 +3808,9 @@ func (m *AccountResetAuthorization) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3735,7 +3843,7 @@ func (m *AccountAuthorizations) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3763,7 +3871,7 @@ func (m *AccountAuthorizations) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3772,6 +3880,9 @@ func (m *AccountAuthorizations) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3787,6 +3898,9 @@ func (m *AccountAuthorizations) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -3817,7 +3931,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3845,7 +3959,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3855,6 +3969,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3875,7 +3992,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3885,6 +4002,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3905,7 +4025,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3915,6 +4035,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3935,7 +4058,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3945,6 +4068,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3965,7 +4091,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CreatedAt |= (int64(b) & 0x7F) << shift
+				m.CreatedAt |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3985,7 +4111,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ActiveAt |= (int64(b) & 0x7F) << shift
+				m.ActiveAt |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4005,7 +4131,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4015,6 +4141,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4035,7 +4164,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.LastAccess |= (int64(b) & 0x7F) << shift
+				m.LastAccess |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4055,7 +4184,7 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.AuthID |= (int64(b) & 0x7F) << shift
+				m.AuthID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4068,6 +4197,9 @@ func (m *AccountAuthorization) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -4124,7 +4256,7 @@ func (m *AccountPrivacyRules) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4152,7 +4284,7 @@ func (m *AccountPrivacyRules) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4161,6 +4293,9 @@ func (m *AccountPrivacyRules) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4176,6 +4311,9 @@ func (m *AccountPrivacyRules) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -4206,7 +4344,7 @@ func (m *AccountPrivacyRule) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4234,7 +4372,7 @@ func (m *AccountPrivacyRule) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PrivacyType |= (AccountPrivacyType(b) & 0x7F) << shift
+				m.PrivacyType |= AccountPrivacyType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4254,7 +4392,7 @@ func (m *AccountPrivacyRule) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4263,6 +4401,9 @@ func (m *AccountPrivacyRule) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4279,6 +4420,9 @@ func (m *AccountPrivacyRule) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiAccounts
 			}
 			if (iNdEx + skippy) > l {
@@ -4353,8 +4497,11 @@ func skipChatApiAccounts(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatApiAccounts
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatApiAccounts
 			}
 			return iNdEx, nil
@@ -4385,6 +4532,9 @@ func skipChatApiAccounts(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiAccounts
+				}
 			}
 			return iNdEx, nil
 		case 4:

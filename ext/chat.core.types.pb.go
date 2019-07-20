@@ -4747,7 +4747,7 @@ func (m *MessageEnvelope) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4775,7 +4775,7 @@ func (m *MessageEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Constructor |= (int64(b) & 0x7F) << shift
+				m.Constructor |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4806,7 +4806,7 @@ func (m *MessageEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4815,6 +4815,9 @@ func (m *MessageEnvelope) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4831,6 +4834,9 @@ func (m *MessageEnvelope) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -4870,7 +4876,7 @@ func (m *MessageContainer) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4898,7 +4904,7 @@ func (m *MessageContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Length |= (int32(b) & 0x7F) << shift
+				m.Length |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4918,7 +4924,7 @@ func (m *MessageContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4927,6 +4933,9 @@ func (m *MessageContainer) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4942,6 +4951,9 @@ func (m *MessageContainer) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -4975,7 +4987,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5003,7 +5015,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Constructor |= (int64(b) & 0x7F) << shift
+				m.Constructor |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5023,7 +5035,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5032,6 +5044,9 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5055,7 +5070,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UCount |= (int32(b) & 0x7F) << shift
+				m.UCount |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5075,7 +5090,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UpdateID |= (int64(b) & 0x7F) << shift
+				m.UpdateID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5095,7 +5110,7 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Timestamp |= (int64(b) & 0x7F) << shift
+				m.Timestamp |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5108,6 +5123,9 @@ func (m *UpdateEnvelope) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5153,7 +5171,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5181,7 +5199,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Length |= (int32(b) & 0x7F) << shift
+				m.Length |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5201,7 +5219,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5210,6 +5228,9 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5232,7 +5253,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MinUpdateID |= (int64(b) & 0x7F) << shift
+				m.MinUpdateID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5252,7 +5273,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MaxUpdateID |= (int64(b) & 0x7F) << shift
+				m.MaxUpdateID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5272,7 +5293,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5281,6 +5302,9 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5303,7 +5327,7 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5312,6 +5336,9 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5327,6 +5354,9 @@ func (m *UpdateContainer) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5366,7 +5396,7 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5394,7 +5424,7 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.AuthID |= (int64(b) & 0x7F) << shift
+				m.AuthID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5414,7 +5444,7 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5423,6 +5453,9 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5446,7 +5479,7 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5455,6 +5488,9 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5471,6 +5507,9 @@ func (m *ProtoMessage) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5510,7 +5549,7 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5538,7 +5577,7 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ServerSalt |= (int64(b) & 0x7F) << shift
+				m.ServerSalt |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5558,7 +5597,7 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MessageID |= (uint64(b) & 0x7F) << shift
+				m.MessageID |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5578,7 +5617,7 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.SessionID |= (int64(b) & 0x7F) << shift
+				m.SessionID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5598,7 +5637,7 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5607,6 +5646,9 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5625,6 +5667,9 @@ func (m *ProtoEncryptedPayload) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5667,7 +5712,7 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5695,7 +5740,7 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5705,6 +5750,9 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5725,7 +5773,7 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5735,6 +5783,9 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -5748,6 +5799,9 @@ func (m *Error) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5783,7 +5837,7 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5809,7 +5863,7 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (uint64(b) & 0x7F) << shift
+					v |= uint64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -5826,7 +5880,7 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -5835,12 +5889,15 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreTypes
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreTypes
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -5860,7 +5917,7 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (uint64(b) & 0x7F) << shift
+						v |= uint64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -5877,6 +5934,9 @@ func (m *Ack) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5907,7 +5967,7 @@ func (m *Bool) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -5935,7 +5995,7 @@ func (m *Bool) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -5949,6 +6009,9 @@ func (m *Bool) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -5982,7 +6045,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6010,7 +6073,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerID |= (int64(b) & 0x7F) << shift
+				m.PeerID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6030,7 +6093,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerType |= (int32(b) & 0x7F) << shift
+				m.PeerType |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6050,7 +6113,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TopMessageID |= (int64(b) & 0x7F) << shift
+				m.TopMessageID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6070,7 +6133,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ReadInboxMaxID |= (int64(b) & 0x7F) << shift
+				m.ReadInboxMaxID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6090,7 +6153,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ReadOutboxMaxID |= (int64(b) & 0x7F) << shift
+				m.ReadOutboxMaxID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6110,7 +6173,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UnreadCount |= (int32(b) & 0x7F) << shift
+				m.UnreadCount |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6141,7 +6204,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6150,6 +6213,9 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -6174,7 +6240,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MentionedCount |= (int32(b) & 0x7F) << shift
+				m.MentionedCount |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6193,7 +6259,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6214,7 +6280,7 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6223,6 +6289,9 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -6240,6 +6309,9 @@ func (m *Dialog) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6294,7 +6366,7 @@ func (m *Peer) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6322,7 +6394,7 @@ func (m *Peer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6342,7 +6414,7 @@ func (m *Peer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (int32(b) & 0x7F) << shift
+				m.Type |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6366,6 +6438,9 @@ func (m *Peer) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6405,7 +6480,7 @@ func (m *InputPeer) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6433,7 +6508,7 @@ func (m *InputPeer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6453,7 +6528,7 @@ func (m *InputPeer) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (PeerType(b) & 0x7F) << shift
+				m.Type |= PeerType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6477,6 +6552,9 @@ func (m *InputPeer) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6516,7 +6594,7 @@ func (m *InputUser) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6544,7 +6622,7 @@ func (m *InputUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UserID |= (int64(b) & 0x7F) << shift
+				m.UserID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6568,6 +6646,9 @@ func (m *InputUser) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6604,7 +6685,7 @@ func (m *InputFileLocation) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6632,7 +6713,7 @@ func (m *InputFileLocation) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClusterID |= (int32(b) & 0x7F) << shift
+				m.ClusterID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6652,7 +6733,7 @@ func (m *InputFileLocation) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FileID |= (int64(b) & 0x7F) << shift
+				m.FileID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6683,7 +6764,7 @@ func (m *InputFileLocation) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Version |= (int32(b) & 0x7F) << shift
+				m.Version |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6695,6 +6776,9 @@ func (m *InputFileLocation) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6734,7 +6818,7 @@ func (m *FileLocation) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6762,7 +6846,7 @@ func (m *FileLocation) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClusterID |= (int32(b) & 0x7F) << shift
+				m.ClusterID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6782,7 +6866,7 @@ func (m *FileLocation) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FileID |= (int64(b) & 0x7F) << shift
+				m.FileID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6806,6 +6890,9 @@ func (m *FileLocation) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6845,7 +6932,7 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -6873,7 +6960,7 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6882,6 +6969,9 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -6907,7 +6997,7 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6916,6 +7006,9 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -6941,7 +7034,7 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PhotoID |= (int64(b) & 0x7F) << shift
+				m.PhotoID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -6954,6 +7047,9 @@ func (m *UserPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -6993,7 +7089,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -7021,7 +7117,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7041,7 +7137,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7051,6 +7147,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7071,7 +7170,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7081,6 +7180,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7101,7 +7203,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7111,6 +7213,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7130,7 +7235,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Status |= (UserStatus(b) & 0x7F) << shift
+				m.Status |= UserStatus(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7150,7 +7255,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7182,7 +7287,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7191,6 +7296,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7215,7 +7323,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7225,6 +7333,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7237,6 +7348,9 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -7285,7 +7399,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -7313,7 +7427,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7333,7 +7447,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7343,6 +7457,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7363,7 +7480,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7373,6 +7490,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7404,7 +7524,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7414,6 +7534,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7434,7 +7557,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7444,6 +7567,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7464,7 +7590,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClientID |= (int64(b) & 0x7F) << shift
+				m.ClientID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7484,7 +7610,7 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7493,6 +7619,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7510,6 +7639,9 @@ func (m *ContactUser) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -7561,7 +7693,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -7589,7 +7721,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7609,7 +7741,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerID |= (int64(b) & 0x7F) << shift
+				m.PeerID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7629,7 +7761,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerType |= (int32(b) & 0x7F) << shift
+				m.PeerType |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7649,7 +7781,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CreatedOn |= (int64(b) & 0x7F) << shift
+				m.CreatedOn |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7669,7 +7801,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.EditedOn |= (int64(b) & 0x7F) << shift
+				m.EditedOn |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7689,7 +7821,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FwdSenderID |= (int64(b) & 0x7F) << shift
+				m.FwdSenderID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7709,7 +7841,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FwdChannelID |= (int64(b) & 0x7F) << shift
+				m.FwdChannelID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7729,7 +7861,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FwdChannelMessageID |= (int64(b) & 0x7F) << shift
+				m.FwdChannelMessageID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7749,7 +7881,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Flags |= (int32(b) & 0x7F) << shift
+				m.Flags |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7769,7 +7901,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MessageType |= (int64(b) & 0x7F) << shift
+				m.MessageType |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7789,7 +7921,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7799,6 +7931,9 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7819,7 +7954,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.SenderID |= (int64(b) & 0x7F) << shift
+				m.SenderID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7839,7 +7974,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7860,7 +7995,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7881,7 +8016,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ReplyTo |= (int64(b) & 0x7F) << shift
+				m.ReplyTo |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7901,7 +8036,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MessageAction |= (int32(b) & 0x7F) << shift
+				m.MessageAction |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7920,7 +8055,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7929,6 +8064,9 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7951,7 +8089,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -7960,6 +8098,9 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -7982,7 +8123,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MediaType |= (MediaType(b) & 0x7F) << shift
+				m.MediaType |= MediaType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8001,7 +8142,7 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8010,6 +8151,9 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8025,6 +8169,9 @@ func (m *UserMessage) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8100,7 +8247,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8128,7 +8275,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerID |= (int64(b) & 0x7F) << shift
+				m.PeerID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8148,7 +8295,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PeerType |= (int32(b) & 0x7F) << shift
+				m.PeerType |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8168,7 +8315,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Date |= (int64(b) & 0x7F) << shift
+				m.Date |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8188,7 +8335,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8198,6 +8345,9 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8218,7 +8368,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8227,6 +8377,9 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8249,7 +8402,7 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ReplyTo |= (int64(b) & 0x7F) << shift
+				m.ReplyTo |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8262,6 +8415,9 @@ func (m *DraftMessage) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8307,7 +8463,7 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8335,7 +8491,7 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (MessageEntityType(b) & 0x7F) << shift
+				m.Type |= MessageEntityType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8355,7 +8511,7 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Offset |= (int32(b) & 0x7F) << shift
+				m.Offset |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8375,7 +8531,7 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Length |= (int32(b) & 0x7F) << shift
+				m.Length |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8395,7 +8551,7 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UserID |= (int64(b) & 0x7F) << shift
+				m.UserID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8407,6 +8563,9 @@ func (m *MessageEntity) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8446,7 +8605,7 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8474,7 +8633,7 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FingerPrint |= (int64(b) & 0x7F) << shift
+				m.FingerPrint |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8494,7 +8653,7 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8504,6 +8663,9 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8524,7 +8686,7 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.E |= (uint32(b) & 0x7F) << shift
+				m.E |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8537,6 +8699,9 @@ func (m *RSAPublicKey) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8576,7 +8741,7 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8604,7 +8769,7 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FingerPrint |= (int64(b) & 0x7F) << shift
+				m.FingerPrint |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8624,7 +8789,7 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8634,6 +8799,9 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8654,7 +8822,7 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Gen |= (int32(b) & 0x7F) << shift
+				m.Gen |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8667,6 +8835,9 @@ func (m *DHGroup) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8706,7 +8877,7 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8734,7 +8905,7 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClientID |= (int64(b) & 0x7F) << shift
+				m.ClientID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8754,7 +8925,7 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8764,6 +8935,9 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8784,7 +8958,7 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8794,6 +8968,9 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8814,7 +8991,7 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8824,6 +9001,9 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8837,6 +9017,9 @@ func (m *PhoneContact) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -8879,7 +9062,7 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -8907,7 +9090,7 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Flags |= (int32(b) & 0x7F) << shift
+				m.Flags |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8927,7 +9110,7 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MuteUntil |= (int64(b) & 0x7F) << shift
+				m.MuteUntil |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8946,7 +9129,7 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -8956,6 +9139,9 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -8968,6 +9154,9 @@ func (m *PeerNotifySettings) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9001,7 +9190,7 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -9029,7 +9218,7 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FileID |= (int64(b) & 0x7F) << shift
+				m.FileID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9049,7 +9238,7 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TotalParts |= (int32(b) & 0x7F) << shift
+				m.TotalParts |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9069,7 +9258,7 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9079,6 +9268,9 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9099,7 +9291,7 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9109,6 +9301,9 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9122,6 +9317,9 @@ func (m *InputFile) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9164,7 +9362,7 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -9192,7 +9390,7 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9201,6 +9399,9 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9226,7 +9427,7 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9235,6 +9436,9 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9253,6 +9457,9 @@ func (m *GroupPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9289,7 +9496,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -9317,7 +9524,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9337,7 +9544,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9347,6 +9554,9 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9367,7 +9577,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CreatedOn |= (int64(b) & 0x7F) << shift
+				m.CreatedOn |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9387,7 +9597,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Participants |= (int32(b) & 0x7F) << shift
+				m.Participants |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9407,7 +9617,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.EditedOn |= (int64(b) & 0x7F) << shift
+				m.EditedOn |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9424,7 +9634,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (GroupFlags(b) & 0x7F) << shift
+					v |= GroupFlags(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -9441,7 +9651,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -9450,6 +9660,9 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreTypes
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreTypes
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
@@ -9468,7 +9681,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (GroupFlags(b) & 0x7F) << shift
+						v |= GroupFlags(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -9492,7 +9705,7 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9501,6 +9714,9 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9518,6 +9734,9 @@ func (m *Group) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9560,7 +9779,7 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -9588,7 +9807,7 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9597,6 +9816,9 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9622,7 +9844,7 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9631,6 +9853,9 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9653,7 +9878,7 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9662,6 +9887,9 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9684,7 +9912,7 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9693,6 +9921,9 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9711,6 +9942,9 @@ func (m *GroupFull) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9747,7 +9981,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -9775,7 +10009,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UserID |= (int64(b) & 0x7F) << shift
+				m.UserID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9795,7 +10029,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9805,6 +10039,9 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9825,7 +10062,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9835,6 +10072,9 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9855,7 +10095,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (ParticipantType(b) & 0x7F) << shift
+				m.Type |= ParticipantType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9875,7 +10115,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.AccessHash |= (uint64(b) & 0x7F) << shift
+				m.AccessHash |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9895,7 +10135,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9905,6 +10145,9 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9925,7 +10168,7 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -9934,6 +10177,9 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -9951,6 +10197,9 @@ func (m *GroupParticipant) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -9999,7 +10248,7 @@ func (m *InputDocument) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -10027,7 +10276,7 @@ func (m *InputDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -10058,7 +10307,7 @@ func (m *InputDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClusterID |= (int32(b) & 0x7F) << shift
+				m.ClusterID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -10071,6 +10320,9 @@ func (m *InputDocument) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreTypes
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreTypes
 			}
 			if (iNdEx + skippy) > l {
@@ -10148,8 +10400,11 @@ func skipChatCoreTypes(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatCoreTypes
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatCoreTypes
 			}
 			return iNdEx, nil
@@ -10180,6 +10435,9 @@ func skipChatCoreTypes(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatCoreTypes
+				}
 			}
 			return iNdEx, nil
 		case 4:

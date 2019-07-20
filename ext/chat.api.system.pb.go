@@ -1186,7 +1186,7 @@ func (m *SystemGetPublicKeys) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1207,6 +1207,9 @@ func (m *SystemGetPublicKeys) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1236,7 +1239,7 @@ func (m *SystemGetDHGroups) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1257,6 +1260,9 @@ func (m *SystemGetDHGroups) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1286,7 +1292,7 @@ func (m *SystemGetServerTime) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1307,6 +1313,9 @@ func (m *SystemGetServerTime) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1337,7 +1346,7 @@ func (m *SystemGetAppUpdate) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1365,7 +1374,7 @@ func (m *SystemGetAppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1375,6 +1384,9 @@ func (m *SystemGetAppUpdate) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1395,7 +1407,7 @@ func (m *SystemGetAppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Version |= (int32(b) & 0x7F) << shift
+				m.Version |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1408,6 +1420,9 @@ func (m *SystemGetAppUpdate) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1443,7 +1458,7 @@ func (m *SystemGetInfo) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1464,6 +1479,9 @@ func (m *SystemGetInfo) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1493,7 +1511,7 @@ func (m *SystemGetSalts) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1514,6 +1532,9 @@ func (m *SystemGetSalts) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1544,7 +1565,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1570,7 +1591,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -1587,7 +1608,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -1596,12 +1617,15 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatApiSystem
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatApiSystem
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -1621,7 +1645,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -1645,7 +1669,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.StartsFrom |= (int64(b) & 0x7F) << shift
+				m.StartsFrom |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1665,7 +1689,7 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Duration |= (int64(b) & 0x7F) << shift
+				m.Duration |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1678,6 +1702,9 @@ func (m *SystemSalts) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1714,7 +1741,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1742,7 +1769,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1763,7 +1790,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1784,7 +1811,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1794,6 +1821,9 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1814,7 +1844,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1824,6 +1854,9 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1844,7 +1877,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1854,6 +1887,9 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1874,7 +1910,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1884,6 +1920,9 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1904,7 +1943,7 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DisplayInterval |= (int32(b) & 0x7F) << shift
+				m.DisplayInterval |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1917,6 +1956,9 @@ func (m *AppUpdate) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -1968,7 +2010,7 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1996,7 +2038,7 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2006,6 +2048,9 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2026,7 +2071,7 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2036,6 +2081,9 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2056,7 +2104,7 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2066,6 +2114,9 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2086,7 +2137,7 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2096,6 +2147,9 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2108,6 +2162,9 @@ func (m *SystemInfo) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -2147,7 +2204,7 @@ func (m *SystemServerTime) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2175,7 +2232,7 @@ func (m *SystemServerTime) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Timestamp |= (int64(b) & 0x7F) << shift
+				m.Timestamp |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2188,6 +2245,9 @@ func (m *SystemServerTime) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -2220,7 +2280,7 @@ func (m *SystemPublicKeys) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2248,7 +2308,7 @@ func (m *SystemPublicKeys) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2257,6 +2317,9 @@ func (m *SystemPublicKeys) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2272,6 +2335,9 @@ func (m *SystemPublicKeys) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -2301,7 +2367,7 @@ func (m *SystemDHGroups) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2329,7 +2395,7 @@ func (m *SystemDHGroups) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2338,6 +2404,9 @@ func (m *SystemDHGroups) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiSystem
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2353,6 +2422,9 @@ func (m *SystemDHGroups) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiSystem
 			}
 			if (iNdEx + skippy) > l {
@@ -2421,8 +2493,11 @@ func skipChatApiSystem(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatApiSystem
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatApiSystem
 			}
 			return iNdEx, nil
@@ -2453,6 +2528,9 @@ func skipChatApiSystem(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiSystem
+				}
 			}
 			return iNdEx, nil
 		case 4:

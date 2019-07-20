@@ -681,7 +681,7 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -707,7 +707,7 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -724,7 +724,7 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -733,12 +733,15 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreMessageActions
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreMessageActions
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -758,7 +761,7 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -775,6 +778,9 @@ func (m *MessageActionGroupAddUser) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -804,7 +810,7 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -830,7 +836,7 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -847,7 +853,7 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -856,12 +862,15 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreMessageActions
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreMessageActions
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -881,7 +890,7 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -898,6 +907,9 @@ func (m *MessageActionGroupDeleteUser) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -928,7 +940,7 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -956,7 +968,7 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -966,6 +978,9 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -984,7 +999,7 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -1001,7 +1016,7 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -1010,12 +1025,15 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreMessageActions
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreMessageActions
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -1035,7 +1053,7 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -1052,6 +1070,9 @@ func (m *MessageActionGroupCreated) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -1085,7 +1106,7 @@ func (m *MessageActionGroupTitleChanged) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1113,7 +1134,7 @@ func (m *MessageActionGroupTitleChanged) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1123,6 +1144,9 @@ func (m *MessageActionGroupTitleChanged) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1136,6 +1160,9 @@ func (m *MessageActionGroupTitleChanged) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -1168,7 +1195,7 @@ func (m *MessageActionGroupPhotoChanged) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1196,7 +1223,7 @@ func (m *MessageActionGroupPhotoChanged) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1205,6 +1232,9 @@ func (m *MessageActionGroupPhotoChanged) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -1222,6 +1252,9 @@ func (m *MessageActionGroupPhotoChanged) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -1252,7 +1285,7 @@ func (m *MessageActionClearHistory) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1280,7 +1313,7 @@ func (m *MessageActionClearHistory) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MaxID |= (int64(b) & 0x7F) << shift
+				m.MaxID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1300,7 +1333,7 @@ func (m *MessageActionClearHistory) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1314,6 +1347,9 @@ func (m *MessageActionClearHistory) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -1349,7 +1385,7 @@ func (m *MessageActionContactRegistered) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -1370,6 +1406,9 @@ func (m *MessageActionContactRegistered) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageActions
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageActions
 			}
 			if (iNdEx + skippy) > l {
@@ -1438,8 +1477,11 @@ func skipChatCoreMessageActions(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatCoreMessageActions
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatCoreMessageActions
 			}
 			return iNdEx, nil
@@ -1470,6 +1512,9 @@ func skipChatCoreMessageActions(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatCoreMessageActions
+				}
 			}
 			return iNdEx, nil
 		case 4:

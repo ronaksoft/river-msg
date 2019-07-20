@@ -303,7 +303,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -331,7 +331,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (int32(b) & 0x7F) << shift
+				m.Type |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -351,7 +351,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -361,6 +361,9 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthInternalNotifications
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -381,7 +384,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.UserID |= (int64(b) & 0x7F) << shift
+				m.UserID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -401,7 +404,7 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -410,6 +413,9 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthInternalNotifications
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -425,6 +431,9 @@ func (m *Notification) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthInternalNotifications
 			}
 			if (iNdEx + skippy) > l {
@@ -464,7 +473,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -492,7 +501,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -502,6 +511,9 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthInternalNotifications
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -522,7 +534,7 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -532,6 +544,9 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthInternalNotifications
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -545,6 +560,9 @@ func (m *NotificationData) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthInternalNotifications
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthInternalNotifications
 			}
 			if (iNdEx + skippy) > l {
@@ -619,8 +637,11 @@ func skipInternalNotifications(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthInternalNotifications
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthInternalNotifications
 			}
 			return iNdEx, nil
@@ -651,6 +672,9 @@ func skipInternalNotifications(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthInternalNotifications
+				}
 			}
 			return iNdEx, nil
 		case 4:

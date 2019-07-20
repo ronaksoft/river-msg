@@ -355,7 +355,7 @@ func (m *UsersGet) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -383,7 +383,7 @@ func (m *UsersGet) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -392,6 +392,9 @@ func (m *UsersGet) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiUsers
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -407,6 +410,9 @@ func (m *UsersGet) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiUsers
 			}
 			if (iNdEx + skippy) > l {
@@ -436,7 +442,7 @@ func (m *UsersGetFull) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -464,7 +470,7 @@ func (m *UsersGetFull) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -473,6 +479,9 @@ func (m *UsersGetFull) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiUsers
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -488,6 +497,9 @@ func (m *UsersGetFull) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiUsers
 			}
 			if (iNdEx + skippy) > l {
@@ -517,7 +529,7 @@ func (m *UsersMany) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -545,7 +557,7 @@ func (m *UsersMany) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -554,6 +566,9 @@ func (m *UsersMany) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiUsers
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -569,6 +584,9 @@ func (m *UsersMany) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiUsers
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiUsers
 			}
 			if (iNdEx + skippy) > l {
@@ -637,8 +655,11 @@ func skipChatApiUsers(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatApiUsers
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatApiUsers
 			}
 			return iNdEx, nil
@@ -669,6 +690,9 @@ func skipChatApiUsers(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiUsers
+				}
 			}
 			return iNdEx, nil
 		case 4:

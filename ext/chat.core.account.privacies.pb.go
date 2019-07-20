@@ -503,7 +503,7 @@ func (m *AccountPrivacyAllowAll) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -524,6 +524,9 @@ func (m *AccountPrivacyAllowAll) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -553,7 +556,7 @@ func (m *AccountPrivacyAllowContacts) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -574,6 +577,9 @@ func (m *AccountPrivacyAllowContacts) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -603,7 +609,7 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -629,7 +635,7 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -646,7 +652,7 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -655,12 +661,15 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreAccountPrivacies
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreAccountPrivacies
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -680,7 +689,7 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -697,6 +706,9 @@ func (m *AccountPrivacyAllowUsers) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -726,7 +738,7 @@ func (m *AccountPrivacyDisallowAll) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -747,6 +759,9 @@ func (m *AccountPrivacyDisallowAll) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -776,7 +791,7 @@ func (m *AccountPrivacyDisallowContacts) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -797,6 +812,9 @@ func (m *AccountPrivacyDisallowContacts) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -826,7 +844,7 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -852,7 +870,7 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= (int64(b) & 0x7F) << shift
+					v |= int64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -869,7 +887,7 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					packedLen |= (int(b) & 0x7F) << shift
+					packedLen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
@@ -878,12 +896,15 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 					return ErrInvalidLengthChatCoreAccountPrivacies
 				}
 				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthChatCoreAccountPrivacies
+				}
 				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
 				var elementCount int
 				var count int
-				for _, integer := range dAtA {
+				for _, integer := range dAtA[iNdEx:postIndex] {
 					if integer < 128 {
 						count++
 					}
@@ -903,7 +924,7 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 						}
 						b := dAtA[iNdEx]
 						iNdEx++
-						v |= (int64(b) & 0x7F) << shift
+						v |= int64(b&0x7F) << shift
 						if b < 0x80 {
 							break
 						}
@@ -920,6 +941,9 @@ func (m *AccountPrivacyDisallowUsers) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			if (iNdEx + skippy) > l {
@@ -988,8 +1012,11 @@ func skipChatCoreAccountPrivacies(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatCoreAccountPrivacies
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatCoreAccountPrivacies
 			}
 			return iNdEx, nil
@@ -1020,6 +1047,9 @@ func skipChatCoreAccountPrivacies(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatCoreAccountPrivacies
+				}
 			}
 			return iNdEx, nil
 		case 4:

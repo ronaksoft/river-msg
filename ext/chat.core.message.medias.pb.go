@@ -2192,7 +2192,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2220,7 +2220,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2241,7 +2241,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Duration |= (uint32(b) & 0x7F) << shift
+				m.Duration |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2261,7 +2261,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2271,6 +2271,9 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2291,7 +2294,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2301,6 +2304,9 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2321,7 +2327,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2331,6 +2337,9 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2351,7 +2360,7 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2360,6 +2369,9 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2375,6 +2387,9 @@ func (m *DocumentAttributeAudio) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -2420,7 +2435,7 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2448,7 +2463,7 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Width |= (uint32(b) & 0x7F) << shift
+				m.Width |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2468,7 +2483,7 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Height |= (uint32(b) & 0x7F) << shift
+				m.Height |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2488,7 +2503,7 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Duration |= (uint32(b) & 0x7F) << shift
+				m.Duration |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2508,7 +2523,7 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				v |= (int(b) & 0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2522,6 +2537,9 @@ func (m *DocumentAttributeVideo) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -2564,7 +2582,7 @@ func (m *DocumentAttributePhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2592,7 +2610,7 @@ func (m *DocumentAttributePhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Width |= (uint32(b) & 0x7F) << shift
+				m.Width |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2612,7 +2630,7 @@ func (m *DocumentAttributePhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Height |= (uint32(b) & 0x7F) << shift
+				m.Height |= uint32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2625,6 +2643,9 @@ func (m *DocumentAttributePhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -2661,7 +2682,7 @@ func (m *DocumentAttributeFile) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2689,7 +2710,7 @@ func (m *DocumentAttributeFile) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2699,6 +2720,9 @@ func (m *DocumentAttributeFile) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2712,6 +2736,9 @@ func (m *DocumentAttributeFile) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -2745,7 +2772,7 @@ func (m *DocumentAttribute) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2773,7 +2800,7 @@ func (m *DocumentAttribute) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (DocumentAttributeType(b) & 0x7F) << shift
+				m.Type |= DocumentAttributeType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2793,7 +2820,7 @@ func (m *DocumentAttribute) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2802,6 +2829,9 @@ func (m *DocumentAttribute) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2817,6 +2847,9 @@ func (m *DocumentAttribute) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -2850,7 +2883,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -2878,7 +2911,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= (int64(b) & 0x7F) << shift
+				m.ID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2909,7 +2942,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Date |= (int64(b) & 0x7F) << shift
+				m.Date |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2929,7 +2962,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2939,6 +2972,9 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -2959,7 +2995,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FileSize |= (int32(b) & 0x7F) << shift
+				m.FileSize |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2979,7 +3015,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Version |= (int32(b) & 0x7F) << shift
+				m.Version |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2999,7 +3035,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ClusterID |= (int32(b) & 0x7F) << shift
+				m.ClusterID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3019,7 +3055,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3028,6 +3064,9 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3050,7 +3089,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3059,6 +3098,9 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3076,6 +3118,9 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3127,7 +3172,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3155,7 +3200,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3165,6 +3210,9 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3185,7 +3233,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3194,6 +3242,9 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3216,7 +3267,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3225,6 +3276,9 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3250,7 +3304,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3259,6 +3313,9 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3274,6 +3331,9 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3310,7 +3370,7 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3338,7 +3398,7 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3348,6 +3408,9 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3368,7 +3431,7 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3377,6 +3440,9 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3395,6 +3461,9 @@ func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3431,7 +3500,7 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3459,7 +3528,7 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3469,6 +3538,9 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3489,7 +3561,7 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3499,6 +3571,9 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3519,7 +3594,7 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3529,6 +3604,9 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3549,7 +3627,7 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3559,6 +3637,9 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3571,6 +3652,9 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3610,7 +3694,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3638,7 +3722,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3647,6 +3731,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3672,7 +3759,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3681,6 +3768,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3705,7 +3795,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3715,6 +3805,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3735,7 +3828,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3745,6 +3838,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3765,7 +3861,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3774,6 +3870,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3796,7 +3895,7 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3805,6 +3904,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3820,6 +3922,9 @@ func (m *InputMediaUploadedDocument) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3859,7 +3964,7 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -3887,7 +3992,7 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3897,6 +4002,9 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3917,7 +4025,7 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -3926,6 +4034,9 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -3944,6 +4055,9 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -3980,7 +4094,7 @@ func (m *InputMediaGeoLocation) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4027,6 +4141,9 @@ func (m *InputMediaGeoLocation) Unmarshal(dAtA []byte) error {
 			if skippy < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4060,7 +4177,7 @@ func (m *MediaPhoto) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4081,6 +4198,9 @@ func (m *MediaPhoto) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -4111,7 +4231,7 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4139,7 +4259,7 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4149,6 +4269,9 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4169,7 +4292,7 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TTLinSeconds |= (int32(b) & 0x7F) << shift
+				m.TTLinSeconds |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4189,7 +4312,7 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4198,6 +4321,9 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4216,6 +4342,9 @@ func (m *MediaDocument) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -4255,7 +4384,7 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4283,7 +4412,7 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4293,6 +4422,9 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4313,7 +4445,7 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4323,6 +4455,9 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4343,7 +4478,7 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4353,6 +4488,9 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4373,7 +4511,7 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= (uint64(b) & 0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -4383,6 +4521,9 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4395,6 +4536,9 @@ func (m *MediaContact) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -4434,7 +4578,7 @@ func (m *MediaGeoLocation) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4481,6 +4625,9 @@ func (m *MediaGeoLocation) Unmarshal(dAtA []byte) error {
 			if skippy < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
 			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -4514,7 +4661,7 @@ func (m *MediaWebPage) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -4535,6 +4682,9 @@ func (m *MediaWebPage) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if (iNdEx + skippy) > l {
@@ -4603,8 +4753,11 @@ func skipChatCoreMessageMedias(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatCoreMessageMedias
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatCoreMessageMedias
 			}
 			return iNdEx, nil
@@ -4635,6 +4788,9 @@ func skipChatCoreMessageMedias(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatCoreMessageMedias
+				}
 			}
 			return iNdEx, nil
 		case 4:

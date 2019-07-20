@@ -5,7 +5,8 @@ rm ./ext/*.pb.go
 
 # Create 'msg' package
 cd ./ext/proto/
-protoc  -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=../ ./*.proto
+protoc  -I=${currentWorkingDir}/../vendor -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=../ ./*.proto
+
 
 # Create Constructors
 cd ..
@@ -16,7 +17,8 @@ go fmt
 cd ${currentWorkingDir}
 rm ./int/*.pb.go
 cd ./int/proto/
-protoc  -I=${GOPATH}/src/git.ronaksoftware.com -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src -I=. --gogofaster_out=../ ./*.proto
+protoc  -I=${currentWorkingDir}/../vendor -I=${GOPATH}/src/git.ronaksoftware.com -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src -I=. --gogofaster_out=../ ./*
+.proto
 
 # Create Constructors
 cd ..
@@ -26,4 +28,4 @@ go fmt
 
 # Create Notification gRPC Stubs
 cd ${currentWorkingDir}/notif/proto/
-protoc -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=plugins=grpc:../ ./*.proto
+protoc -I=${currentWorkingDir}/../vendor -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=plugins=grpc:../ ./*.proto

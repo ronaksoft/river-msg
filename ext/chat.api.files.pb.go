@@ -500,7 +500,7 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -528,7 +528,7 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.FileID |= (int64(b) & 0x7F) << shift
+				m.FileID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -548,7 +548,7 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.PartID |= (int32(b) & 0x7F) << shift
+				m.PartID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -568,7 +568,7 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TotalParts |= (int32(b) & 0x7F) << shift
+				m.TotalParts |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -588,7 +588,7 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -597,6 +597,9 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiFiles
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -613,6 +616,9 @@ func (m *FileSavePart) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiFiles
 			}
 			if (iNdEx + skippy) > l {
@@ -655,7 +661,7 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -683,7 +689,7 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= (int(b) & 0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -692,6 +698,9 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiFiles
 			}
 			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -717,7 +726,7 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Offset |= (int32(b) & 0x7F) << shift
+				m.Offset |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -737,7 +746,7 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Limit |= (int32(b) & 0x7F) << shift
+				m.Limit |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -750,6 +759,9 @@ func (m *FileGet) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiFiles
 			}
 			if (iNdEx + skippy) > l {
@@ -789,7 +801,7 @@ func (m *File) Unmarshal(dAtA []byte) error {
 			}
 			b := dAtA[iNdEx]
 			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
+			wire |= uint64(b&0x7F) << shift
 			if b < 0x80 {
 				break
 			}
@@ -817,7 +829,7 @@ func (m *File) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Type |= (FileType(b) & 0x7F) << shift
+				m.Type |= FileType(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -837,7 +849,7 @@ func (m *File) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ModifiedTime |= (int64(b) & 0x7F) << shift
+				m.ModifiedTime |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -857,7 +869,7 @@ func (m *File) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= (int(b) & 0x7F) << shift
+				byteLen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -866,6 +878,9 @@ func (m *File) Unmarshal(dAtA []byte) error {
 				return ErrInvalidLengthChatApiFiles
 			}
 			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
@@ -882,6 +897,9 @@ func (m *File) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			if skippy < 0 {
+				return ErrInvalidLengthChatApiFiles
+			}
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthChatApiFiles
 			}
 			if (iNdEx + skippy) > l {
@@ -959,8 +977,11 @@ func skipChatApiFiles(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			iNdEx += length
 			if length < 0 {
+				return 0, ErrInvalidLengthChatApiFiles
+			}
+			iNdEx += length
+			if iNdEx < 0 {
 				return 0, ErrInvalidLengthChatApiFiles
 			}
 			return iNdEx, nil
@@ -991,6 +1012,9 @@ func skipChatApiFiles(dAtA []byte) (n int, err error) {
 					return 0, err
 				}
 				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiFiles
+				}
 			}
 			return iNdEx, nil
 		case 4:

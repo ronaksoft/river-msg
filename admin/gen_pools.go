@@ -11,10 +11,4 @@ var (
 			return m
 		},
 	}
-	PoolFileLocation = sync.Pool{
-		New: func() interface{} {
-			m := new(FileLocation)
-			return m
-		},
-	}
 )

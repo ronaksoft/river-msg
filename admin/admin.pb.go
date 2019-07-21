@@ -4,13 +4,13 @@
 package admin
 
 import (
-	encoding_binary "encoding/binary"
 	fmt "fmt"
 	_ "github.com/gogo/protobuf/gogoproto"
 	github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -24,87 +24,17 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
-type FileLocation struct {
-	ClusterID  int32  `protobuf:"varint,1,req,name=ClusterID,json=clusterID" json:"clusterId,omitempty" bson:"clusterId"`
-	FileID     int64  `protobuf:"varint,2,req,name=FileID,json=fileID" json:"fileId,omitempty" bson:"fileId"`
-	AccessHash uint64 `protobuf:"fixed64,3,req,name=AccessHash,json=accessHash" json:"accessHash,omitempty" bson:"accessHash"`
-}
-
-func (m *FileLocation) Reset()         { *m = FileLocation{} }
-func (m *FileLocation) String() string { return proto.CompactTextString(m) }
-func (*FileLocation) ProtoMessage()    {}
-func (*FileLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_73a7fc70dcc2027c, []int{0}
-}
-func (m *FileLocation) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *FileLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_FileLocation.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *FileLocation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FileLocation.Merge(m, src)
-}
-func (m *FileLocation) XXX_Size() int {
-	return m.Size()
-}
-func (m *FileLocation) XXX_DiscardUnknown() {
-	xxx_messageInfo_FileLocation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_FileLocation proto.InternalMessageInfo
-
-func (m *FileLocation) GetClusterID() int32 {
-	if m != nil {
-		return m.ClusterID
-	}
-	return 0
-}
-
-func (m *FileLocation) GetFileID() int64 {
-	if m != nil {
-		return m.FileID
-	}
-	return 0
-}
-
-func (m *FileLocation) GetAccessHash() uint64 {
-	if m != nil {
-		return m.AccessHash
-	}
-	return 0
-}
-
 type User struct {
-	ID           string        `protobuf:"bytes,1,opt,name=ID,json=iD" json:"id,omitempty"`
-	UserID       int64         `protobuf:"varint,2,req,name=UserID,json=userID" json:"-" bson:"userId"`
-	Username     string        `protobuf:"bytes,3,opt,name=Username,json=username" json:"username,omitempty" bson:"username"`
-	FirstName    string        `protobuf:"bytes,4,opt,name=FirstName,json=firstName" json:"firstName,omitempty" bson:"fname"`
-	LastName     string        `protobuf:"bytes,5,opt,name=LastName,json=lastName" json:"lastName,omitempty" bson:"lname"`
-	Phone        string        `protobuf:"bytes,6,opt,name=Phone,json=phone" json:"phone,omitempty" bson:"phone"`
-	PhotoID      int64         `protobuf:"varint,7,opt,name=PhotoID,json=photoID" json:"photoId,omitempty" bson:"photoId"`
-	PhotoBig     *FileLocation `protobuf:"bytes,8,opt,name=PhotoBig,json=photoBig" json:"photoBig,omitempty" bson:"photoBig"`
-	PhotoSmall   *FileLocation `protobuf:"bytes,9,opt,name=PhotoSmall,json=photoSmall" json:"photoSmall,omitempty" bson:"photoSmall"`
-	AuthIDs      []int64       `protobuf:"varint,10,rep,name=AuthIDs,json=authIDs" json:"authIds,omitempty" bson:"AuthIds"`
-	Deleted      bool          `protobuf:"varint,11,opt,name=Deleted,json=deleted" json:"deleted,omitempty" bson:"deleted"`
-	Bio          string        `protobuf:"bytes,12,opt,name=Bio,json=bio" json:"bio,omitempty" bson:"bio"`
-	ContactsHash uint32        `protobuf:"varint,13,opt,name=ContactsHash,json=contactsHash" json:"contactsHash,omitempty" bson:"contactsHash"`
+	UserID   int64  `protobuf:"varint,1,req,name=UserID" json:"UserID" bson:"userId"`
+	Username string `protobuf:"bytes,2,opt,name=Username" json:"Username" bson:"username"`
+	Phone    string `protobuf:"bytes,3,opt,name=Phone" json:"Phone" bson:"phone"`
 }
 
 func (m *User) Reset()         { *m = User{} }
 func (m *User) String() string { return proto.CompactTextString(m) }
 func (*User) ProtoMessage()    {}
 func (*User) Descriptor() ([]byte, []int) {
-	return fileDescriptor_73a7fc70dcc2027c, []int{1}
+	return fileDescriptor_73a7fc70dcc2027c, []int{0}
 }
 func (m *User) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -133,13 +63,6 @@ func (m *User) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_User proto.InternalMessageInfo
 
-func (m *User) GetID() string {
-	if m != nil {
-		return m.ID
-	}
-	return ""
-}
-
 func (m *User) GetUserID() int64 {
 	if m != nil {
 		return m.UserID
@@ -154,20 +77,6 @@ func (m *User) GetUsername() string {
 	return ""
 }
 
-func (m *User) GetFirstName() string {
-	if m != nil {
-		return m.FirstName
-	}
-	return ""
-}
-
-func (m *User) GetLastName() string {
-	if m != nil {
-		return m.LastName
-	}
-	return ""
-}
-
 func (m *User) GetPhone() string {
 	if m != nil {
 		return m.Phone
@@ -175,131 +84,85 @@ func (m *User) GetPhone() string {
 	return ""
 }
 
-func (m *User) GetPhotoID() int64 {
-	if m != nil {
-		return m.PhotoID
-	}
-	return 0
+type WelcomeMessage struct {
+	Lang     string `protobuf:"bytes,1,req,name=Lang" json:"lang" bson:"lang"`
+	Template string `protobuf:"bytes,2,req,name=Template" json:"template" bson:"template"`
 }
 
-func (m *User) GetPhotoBig() *FileLocation {
-	if m != nil {
-		return m.PhotoBig
+func (m *WelcomeMessage) Reset()         { *m = WelcomeMessage{} }
+func (m *WelcomeMessage) String() string { return proto.CompactTextString(m) }
+func (*WelcomeMessage) ProtoMessage()    {}
+func (*WelcomeMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_73a7fc70dcc2027c, []int{1}
+}
+func (m *WelcomeMessage) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *WelcomeMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_WelcomeMessage.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
 	}
-	return nil
+}
+func (m *WelcomeMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WelcomeMessage.Merge(m, src)
+}
+func (m *WelcomeMessage) XXX_Size() int {
+	return m.Size()
+}
+func (m *WelcomeMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_WelcomeMessage.DiscardUnknown(m)
 }
 
-func (m *User) GetPhotoSmall() *FileLocation {
-	if m != nil {
-		return m.PhotoSmall
-	}
-	return nil
-}
+var xxx_messageInfo_WelcomeMessage proto.InternalMessageInfo
 
-func (m *User) GetAuthIDs() []int64 {
+func (m *WelcomeMessage) GetLang() string {
 	if m != nil {
-		return m.AuthIDs
-	}
-	return nil
-}
-
-func (m *User) GetDeleted() bool {
-	if m != nil {
-		return m.Deleted
-	}
-	return false
-}
-
-func (m *User) GetBio() string {
-	if m != nil {
-		return m.Bio
+		return m.Lang
 	}
 	return ""
 }
 
-func (m *User) GetContactsHash() uint32 {
+func (m *WelcomeMessage) GetTemplate() string {
 	if m != nil {
-		return m.ContactsHash
+		return m.Template
 	}
-	return 0
+	return ""
 }
 
 func init() {
-	proto.RegisterType((*FileLocation)(nil), "admin.FileLocation")
 	proto.RegisterType((*User)(nil), "admin.User")
+	proto.RegisterType((*WelcomeMessage)(nil), "admin.WelcomeMessage")
 }
 
 func init() { proto.RegisterFile("admin.proto", fileDescriptor_73a7fc70dcc2027c) }
 
 var fileDescriptor_73a7fc70dcc2027c = []byte{
-	// 621 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x94, 0xcd, 0x6e, 0xd3, 0x40,
-	0x10, 0xc7, 0xe3, 0xb8, 0x89, 0x9d, 0x69, 0x42, 0xdb, 0x6d, 0x85, 0x56, 0x3d, 0xa4, 0xd6, 0x82,
-	0x54, 0x17, 0x48, 0x2b, 0x2a, 0xf5, 0x82, 0xc4, 0x21, 0xae, 0xa9, 0x88, 0x54, 0x50, 0x59, 0xc4,
-	0x01, 0x6e, 0xb6, 0xe3, 0x26, 0x2b, 0x39, 0xd9, 0x28, 0xde, 0x1c, 0x78, 0x0b, 0x1e, 0x81, 0xc7,
-	0xe9, 0xb1, 0x47, 0x4e, 0x15, 0x6a, 0x6f, 0x1c, 0xe1, 0x05, 0xd0, 0x7e, 0xd8, 0x89, 0xa5, 0xf4,
-	0x94, 0x99, 0xf9, 0xcf, 0xfc, 0x34, 0x33, 0x9e, 0x0d, 0x6c, 0x46, 0xc3, 0x09, 0x9b, 0x1e, 0xcf,
-	0xe6, 0x5c, 0x70, 0xd4, 0x50, 0xce, 0x7e, 0x6f, 0xc4, 0xc4, 0x78, 0x11, 0x1f, 0x27, 0x7c, 0x72,
-	0x32, 0xe2, 0x23, 0x7e, 0xa2, 0xd4, 0x78, 0x71, 0xad, 0x3c, 0xe5, 0x28, 0x4b, 0x57, 0x91, 0x7f,
-	0x16, 0xb4, 0x2f, 0x58, 0x96, 0x5e, 0xf2, 0x24, 0x12, 0x8c, 0x4f, 0xd1, 0x07, 0x68, 0x9d, 0x67,
-	0x8b, 0x5c, 0xa4, 0xf3, 0x41, 0x88, 0x2d, 0xaf, 0xee, 0x37, 0x82, 0x93, 0x9b, 0xbb, 0x83, 0xda,
-	0x9f, 0xbb, 0x83, 0xdd, 0xc4, 0x08, 0xc3, 0x57, 0x7c, 0xc2, 0x44, 0x3a, 0x99, 0x89, 0xef, 0x7f,
-	0xef, 0x0e, 0xb6, 0xe3, 0x9c, 0x4f, 0xdf, 0x90, 0x52, 0x24, 0xb4, 0x55, 0xd8, 0x21, 0xea, 0x43,
-	0x53, 0xe2, 0x07, 0x21, 0xae, 0x7b, 0x75, 0xdf, 0x0e, 0x8e, 0x0c, 0x6b, 0xfb, 0x5a, 0x46, 0xab,
-	0xa0, 0x8e, 0x06, 0x69, 0x85, 0xd0, 0xa6, 0x32, 0x42, 0xf4, 0x09, 0xa0, 0x9f, 0x24, 0x69, 0x9e,
-	0xbf, 0x8f, 0xf2, 0x31, 0xb6, 0xbd, 0xba, 0xdf, 0x0c, 0x5e, 0x1b, 0xcc, 0x5e, 0x54, 0x2a, 0x15,
-	0xd4, 0x8e, 0x46, 0x2d, 0x55, 0x42, 0x61, 0xc5, 0xf9, 0xe9, 0xc0, 0xc6, 0x97, 0x3c, 0x9d, 0xa3,
-	0xe7, 0x50, 0x57, 0x63, 0x5a, 0x7e, 0x2b, 0xd8, 0x33, 0xcc, 0x36, 0x5b, 0x69, 0x8b, 0xd6, 0x59,
-	0x88, 0x4e, 0xa1, 0x29, 0xb3, 0xcb, 0x21, 0xf6, 0x4d, 0xa6, 0xd5, 0x5b, 0x76, 0xbd, 0xc8, 0xf5,
-	0xec, 0x4d, 0x65, 0x84, 0x68, 0x00, 0xae, 0xac, 0x99, 0x46, 0x93, 0x14, 0xdb, 0x8a, 0xdf, 0x33,
-	0x55, 0x68, 0x61, 0xe2, 0x95, 0x8e, 0xb7, 0x96, 0x18, 0xa9, 0x11, 0xea, 0x16, 0x26, 0x1a, 0x40,
-	0xeb, 0x82, 0xcd, 0x73, 0xf1, 0x51, 0xb2, 0x36, 0x14, 0xeb, 0x65, 0xf1, 0x49, 0xae, 0x0b, 0xa1,
-	0x02, 0x6b, 0x9b, 0x4d, 0x6a, 0x52, 0xab, 0x4c, 0x42, 0x17, 0xe0, 0x5e, 0x46, 0x86, 0xd4, 0x50,
-	0xa4, 0x17, 0x45, 0x57, 0x59, 0xf4, 0x38, 0x28, 0x33, 0x2d, 0x15, 0x39, 0xe8, 0x2d, 0x34, 0xae,
-	0xc6, 0x7c, 0x9a, 0xe2, 0xa6, 0x82, 0x1c, 0x1a, 0xc8, 0xd6, 0x4c, 0x06, 0xd7, 0x11, 0x94, 0x40,
-	0x68, 0x43, 0xfd, 0xa2, 0x77, 0xe0, 0x5c, 0x8d, 0xb9, 0xe0, 0x83, 0x10, 0x3b, 0x9e, 0xe5, 0xdb,
-	0xe5, 0x3c, 0x3b, 0x33, 0x15, 0xae, 0xde, 0xc5, 0x93, 0x12, 0x21, 0x25, 0x42, 0x1d, 0x6d, 0x85,
-	0xe8, 0x1b, 0xb8, 0x0a, 0x13, 0xb0, 0x11, 0x76, 0x3d, 0xcb, 0xdf, 0x3c, 0xdd, 0x3d, 0xd6, 0x4f,
-	0x62, 0xf5, 0xa4, 0x83, 0x23, 0x39, 0xde, 0xcc, 0x24, 0xae, 0x5b, 0x7a, 0xa1, 0x11, 0xea, 0x16,
-	0x26, 0x8a, 0x01, 0x14, 0xfb, 0xf3, 0x24, 0xca, 0x32, 0xdc, 0x7a, 0x9c, 0xde, 0x93, 0x67, 0x38,
-	0x2b, 0x53, 0xd7, 0x9d, 0xe1, 0x52, 0x25, 0x14, 0x96, 0x0e, 0xea, 0x83, 0xd3, 0x5f, 0x88, 0xf1,
-	0x20, 0xcc, 0x31, 0x78, 0xb6, 0x6f, 0x07, 0x87, 0x72, 0x05, 0x91, 0x0c, 0x0d, 0xf3, 0x75, 0x2b,
-	0xe8, 0x6b, 0x89, 0x50, 0x27, 0xd2, 0x75, 0x72, 0x93, 0x61, 0x9a, 0xa5, 0x22, 0x1d, 0xe2, 0x4d,
-	0xcf, 0xf2, 0xdd, 0xe5, 0x26, 0x87, 0x3a, 0xbc, 0x0e, 0x63, 0x24, 0x42, 0x1d, 0x63, 0xa1, 0x33,
-	0xb0, 0x03, 0xc6, 0x71, 0x5b, 0x7d, 0xcd, 0x67, 0x06, 0xd1, 0x89, 0x19, 0xaf, 0x94, 0x83, 0x2e,
-	0x8f, 0x19, 0x27, 0xd4, 0x8e, 0x19, 0x47, 0x5f, 0xa1, 0x7d, 0xce, 0xa7, 0x22, 0x4a, 0x84, 0x7e,
-	0x9c, 0x1d, 0xcf, 0xf2, 0x3b, 0xc1, 0x99, 0xa9, 0x7f, 0x9a, 0xac, 0x68, 0x15, 0xd0, 0xae, 0xf9,
-	0xcb, 0x58, 0xd1, 0x09, 0x6d, 0xaf, 0xba, 0x01, 0xbe, 0xb9, 0xef, 0x5a, 0xb7, 0xf7, 0x5d, 0xeb,
-	0xf7, 0x7d, 0xd7, 0xfa, 0xf1, 0xd0, 0xad, 0xdd, 0x3e, 0x74, 0x6b, 0xbf, 0x1e, 0xba, 0xb5, 0xff,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0x09, 0x70, 0x3d, 0xf5, 0xf6, 0x04, 0x00, 0x00,
-}
-
-func (m *FileLocation) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *FileLocation) MarshalTo(dAtA []byte) (int, error) {
-	var i int
-	_ = i
-	var l int
-	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(m.ClusterID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(m.FileID))
-	dAtA[i] = 0x19
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i += 8
-	return i, nil
+	// 285 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4e, 0x4c, 0xc9, 0xcd,
+	0xcc, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0xa4, 0x74, 0xd3, 0x33, 0x4b,
+	0x32, 0x4a, 0x93, 0xf4, 0x92, 0xf3, 0x73, 0xf5, 0xd3, 0xf3, 0xd3, 0xf3, 0xf5, 0xc1, 0xb2, 0x49,
+	0xa5, 0x69, 0x60, 0x1e, 0x98, 0x03, 0x66, 0x41, 0x74, 0x29, 0x4d, 0x63, 0xe4, 0x62, 0x09, 0x2d,
+	0x4e, 0x2d, 0x12, 0xd2, 0xe5, 0x62, 0x03, 0xd1, 0x9e, 0x2e, 0x12, 0x8c, 0x0a, 0x4c, 0x1a, 0xcc,
+	0x4e, 0xa2, 0x27, 0xee, 0xc9, 0x33, 0x7c, 0xba, 0x27, 0xcf, 0x9b, 0x54, 0x9c, 0x9f, 0x67, 0xa5,
+	0x54, 0x0a, 0x92, 0x4b, 0x51, 0x0a, 0x82, 0x2a, 0x12, 0x32, 0xe6, 0xe2, 0x00, 0xb1, 0xf2, 0x12,
+	0x73, 0x53, 0x25, 0x98, 0x14, 0x18, 0x35, 0x38, 0x9d, 0xc4, 0xa1, 0x1a, 0xf8, 0x11, 0x1a, 0x40,
+	0xb2, 0x4a, 0x41, 0x70, 0x85, 0x42, 0x5a, 0x5c, 0xac, 0x01, 0x19, 0xf9, 0x79, 0xa9, 0x12, 0xcc,
+	0x60, 0x1d, 0x22, 0x50, 0x1d, 0x3c, 0x10, 0x1d, 0x05, 0x20, 0x29, 0xa5, 0x20, 0x88, 0x12, 0xa5,
+	0x26, 0x46, 0x2e, 0xbe, 0xf0, 0xd4, 0x9c, 0xe4, 0xfc, 0xdc, 0x54, 0xdf, 0xd4, 0xe2, 0xe2, 0xc4,
+	0xf4, 0x54, 0x21, 0x7d, 0x2e, 0x16, 0x9f, 0xc4, 0xbc, 0x74, 0xb0, 0x03, 0x39, 0x9d, 0xa4, 0x41,
+	0xba, 0x5f, 0xdd, 0x93, 0x67, 0xc9, 0x49, 0xcc, 0x4b, 0xff, 0x74, 0x4f, 0x9e, 0x1b, 0x62, 0x0a,
+	0x88, 0xa7, 0x14, 0x04, 0x56, 0x28, 0x64, 0xcf, 0xc5, 0x11, 0x92, 0x9a, 0x5b, 0x90, 0x93, 0x58,
+	0x02, 0x72, 0x24, 0x48, 0x93, 0x32, 0x54, 0x13, 0x47, 0x09, 0x54, 0x1c, 0xe1, 0x60, 0x98, 0x88,
+	0x52, 0x10, 0x5c, 0x93, 0x93, 0xc4, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78,
+	0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb, 0x31, 0x00,
+	0x02, 0x00, 0x00, 0xff, 0xff, 0xa8, 0x64, 0x62, 0x15, 0x7b, 0x01, 0x00, 0x00,
 }
 
 func (m *User) Marshal() (dAtA []byte, err error) {
@@ -317,74 +180,43 @@ func (m *User) MarshalTo(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(len(m.ID)))
-	i += copy(dAtA[i:], m.ID)
-	dAtA[i] = 0x10
+	dAtA[i] = 0x8
 	i++
 	i = encodeVarintAdmin(dAtA, i, uint64(m.UserID))
-	dAtA[i] = 0x1a
+	dAtA[i] = 0x12
 	i++
 	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Username)))
 	i += copy(dAtA[i:], m.Username)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(len(m.FirstName)))
-	i += copy(dAtA[i:], m.FirstName)
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(len(m.LastName)))
-	i += copy(dAtA[i:], m.LastName)
-	dAtA[i] = 0x32
+	dAtA[i] = 0x1a
 	i++
 	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Phone)))
 	i += copy(dAtA[i:], m.Phone)
-	dAtA[i] = 0x38
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(m.PhotoID))
-	if m.PhotoBig != nil {
-		dAtA[i] = 0x42
-		i++
-		i = encodeVarintAdmin(dAtA, i, uint64(m.PhotoBig.Size()))
-		n1, err := m.PhotoBig.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n1
+	return i, nil
+}
+
+func (m *WelcomeMessage) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
 	}
-	if m.PhotoSmall != nil {
-		dAtA[i] = 0x4a
-		i++
-		i = encodeVarintAdmin(dAtA, i, uint64(m.PhotoSmall.Size()))
-		n2, err := m.PhotoSmall.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n2
-	}
-	if len(m.AuthIDs) > 0 {
-		for _, num := range m.AuthIDs {
-			dAtA[i] = 0x50
-			i++
-			i = encodeVarintAdmin(dAtA, i, uint64(num))
-		}
-	}
-	dAtA[i] = 0x58
+	return dAtA[:n], nil
+}
+
+func (m *WelcomeMessage) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	dAtA[i] = 0xa
 	i++
-	if m.Deleted {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
+	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Lang)))
+	i += copy(dAtA[i:], m.Lang)
+	dAtA[i] = 0x12
 	i++
-	dAtA[i] = 0x62
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Bio)))
-	i += copy(dAtA[i:], m.Bio)
-	dAtA[i] = 0x68
-	i++
-	i = encodeVarintAdmin(dAtA, i, uint64(m.ContactsHash))
+	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Template)))
+	i += copy(dAtA[i:], m.Template)
 	return i, nil
 }
 
@@ -397,182 +229,38 @@ func encodeVarintAdmin(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return offset + 1
 }
-func (m *FileLocation) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	n += 1 + sovAdmin(uint64(m.ClusterID))
-	n += 1 + sovAdmin(uint64(m.FileID))
-	n += 9
-	return n
-}
-
 func (m *User) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.ID)
-	n += 1 + l + sovAdmin(uint64(l))
 	n += 1 + sovAdmin(uint64(m.UserID))
 	l = len(m.Username)
 	n += 1 + l + sovAdmin(uint64(l))
-	l = len(m.FirstName)
-	n += 1 + l + sovAdmin(uint64(l))
-	l = len(m.LastName)
-	n += 1 + l + sovAdmin(uint64(l))
 	l = len(m.Phone)
 	n += 1 + l + sovAdmin(uint64(l))
-	n += 1 + sovAdmin(uint64(m.PhotoID))
-	if m.PhotoBig != nil {
-		l = m.PhotoBig.Size()
-		n += 1 + l + sovAdmin(uint64(l))
+	return n
+}
+
+func (m *WelcomeMessage) Size() (n int) {
+	if m == nil {
+		return 0
 	}
-	if m.PhotoSmall != nil {
-		l = m.PhotoSmall.Size()
-		n += 1 + l + sovAdmin(uint64(l))
-	}
-	if len(m.AuthIDs) > 0 {
-		for _, e := range m.AuthIDs {
-			n += 1 + sovAdmin(uint64(e))
-		}
-	}
-	n += 2
-	l = len(m.Bio)
+	var l int
+	_ = l
+	l = len(m.Lang)
 	n += 1 + l + sovAdmin(uint64(l))
-	n += 1 + sovAdmin(uint64(m.ContactsHash))
+	l = len(m.Template)
+	n += 1 + l + sovAdmin(uint64(l))
 	return n
 }
 
 func sovAdmin(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozAdmin(x uint64) (n int) {
 	return sovAdmin(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *FileLocation) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowAdmin
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: FileLocation: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: FileLocation: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ClusterID", wireType)
-			}
-			m.ClusterID = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.ClusterID |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field FileID", wireType)
-			}
-			m.FileID = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.FileID |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AccessHash", wireType)
-			}
-			m.AccessHash = 0
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.AccessHash = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			hasFields[0] |= uint64(0x00000004)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipAdmin(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ClusterID")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("FileID")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AccessHash")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
 }
 func (m *User) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
@@ -605,38 +293,6 @@ func (m *User) Unmarshal(dAtA []byte) error {
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ID", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ID = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field UserID", wireType)
 			}
@@ -656,7 +312,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 			}
 			hasFields[0] |= uint64(0x00000001)
-		case 3:
+		case 2:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Username", wireType)
 			}
@@ -688,71 +344,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 			}
 			m.Username = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field FirstName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.FirstName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field LastName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.LastName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 6:
+		case 3:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Phone", wireType)
 			}
@@ -784,196 +376,66 @@ func (m *User) Unmarshal(dAtA []byte) error {
 			}
 			m.Phone = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 7:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PhotoID", wireType)
-			}
-			m.PhotoID = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.PhotoID |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 8:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PhotoBig", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthAdmin
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.PhotoBig == nil {
-				m.PhotoBig = &FileLocation{}
-			}
-			if err := m.PhotoBig.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipAdmin(dAtA[iNdEx:])
+			if err != nil {
 				return err
 			}
-			iNdEx = postIndex
-		case 9:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PhotoSmall", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
+			if skippy < 0 {
 				return ErrInvalidLengthAdmin
 			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
+			if (iNdEx + skippy) < 0 {
 				return ErrInvalidLengthAdmin
 			}
-			if postIndex > l {
+			if (iNdEx + skippy) > l {
 				return io.ErrUnexpectedEOF
 			}
-			if m.PhotoSmall == nil {
-				m.PhotoSmall = &FileLocation{}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *WelcomeMessage) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowAdmin
 			}
-			if err := m.PhotoSmall.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
 			}
-			iNdEx = postIndex
-		case 10:
-			if wireType == 0 {
-				var v int64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowAdmin
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.AuthIDs = append(m.AuthIDs, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowAdmin
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthAdmin
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthAdmin
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.AuthIDs) == 0 {
-					m.AuthIDs = make([]int64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int64
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowAdmin
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int64(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.AuthIDs = append(m.AuthIDs, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field AuthIDs", wireType)
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
 			}
-		case 11:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Deleted", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowAdmin
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Deleted = bool(v != 0)
-		case 12:
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: WelcomeMessage: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: WelcomeMessage: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Bio", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Lang", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1001,13 +463,14 @@ func (m *User) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Bio = string(dAtA[iNdEx:postIndex])
+			m.Lang = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 13:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ContactsHash", wireType)
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Template", wireType)
 			}
-			m.ContactsHash = 0
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowAdmin
@@ -1017,11 +480,25 @@ func (m *User) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ContactsHash |= uint32(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthAdmin
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthAdmin
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Template = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipAdmin(dAtA[iNdEx:])
@@ -1041,7 +518,10 @@ func (m *User) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Lang")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Template")
 	}
 
 	if iNdEx > l {

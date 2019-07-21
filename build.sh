@@ -26,6 +26,13 @@ go run ../tools/constructor-builder/main.go . internalMsg
 rm gen_results.go
 go fmt
 
+# Create 'admin' package
+cd ${currentWorkingDir}
+rm ./admin/*.pb.go
+cd ./admin/proto/
+protoc  -I=${currentWorkingDir}/../vendor -I=${GOPATH}/src/git.ronaksoftware.com -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src -I=. --gogofaster_out=../ ./*.proto
+
+
 # Create Notification gRPC Stubs
 cd ${currentWorkingDir}/notif/proto/
 protoc -I=${currentWorkingDir}/../vendor -I=. -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf -I=${GOPATH}/src --gogofaster_out=plugins=grpc:../ ./*.proto

@@ -12,9 +12,9 @@ option (gogoproto.unmarshaler_all) = true;
 option (gogoproto.sizer_all) = true;
 
 message User {
-    required int64 UserID = 1 [(gogoproto.moretags) = "bson:\"userId\""];
-    optional string Username = 2 [(gogoproto.moretags) = "bson:\"username\""];
-    optional string Phone = 3 [(gogoproto.moretags) = "bson:\"phone\""];
+    required int64 UserID = 1 [(gogoproto.jsontag) = "user_id", (gogoproto.moretags) = "bson:\"user_id\""];
+    optional string Username = 2 [(gogoproto.jsontag) = "username", (gogoproto.moretags) = "bson:\"username\""];
+    optional string Phone = 3 [(gogoproto.jsontag) = "phone", (gogoproto.moretags) = "bson:\"phone\""];
 }
 
 message WelcomeMessage {

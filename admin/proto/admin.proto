@@ -11,13 +11,42 @@ option (gogoproto.unmarshaler_all) = true;
 // Enable custom Size method (Required by Marshal and Unmarshal).
 option (gogoproto.sizer_all) = true;
 
+message FileLocation {
+    required int32 ClusterID = 1 [(gogoproto.jsontag) = "cluster_id", (gogoproto.moretags) = "bson:\"cluster_id\""];
+    required int64 FileID = 2 [(gogoproto.jsontag) = "file_id", (gogoproto.moretags) = "bson:\"file_id\""];
+    required string AccessHash = 3 [(gogoproto.jsontag) = "access_hash", (gogoproto.moretags) = "bson:\"access_hash\""];
+}
+
 message User {
-    required int64 UserID = 1 [(gogoproto.jsontag) = "user_id", (gogoproto.moretags) = "bson:\"user_id\""];
-    optional string Username = 2 [(gogoproto.jsontag) = "username", (gogoproto.moretags) = "bson:\"username\""];
-    optional string Phone = 3 [(gogoproto.jsontag) = "phone", (gogoproto.moretags) = "bson:\"phone\""];
+    required int64 ID = 1 [(gogoproto.jsontag) = "id", (gogoproto.moretags) = "bson:\"_id\""];
+    optional string Username = 2 [(gogoproto.jsontag) = "username,omitempty", (gogoproto.moretags) = "bson:\"username\""];
+    optional string FirstName = 3 [(gogoproto.jsontag) = "first_name,omitempty", (gogoproto.moretags) = "bson:\"first_name\""];
+    optional string LastName = 4 [(gogoproto.jsontag) = "last_name,omitempty", (gogoproto.moretags) = "bson:\"last_name\""];
+    optional string Phone = 5 [(gogoproto.jsontag) = "phone,omitempty", (gogoproto.moretags) = "bson:\"phone\""];
+    optional int64 PhotoID = 6 [(gogoproto.jsontag) = "photo_id,omitempty", (gogoproto.moretags) = "bson:\"photo_id\""];
+    optional FileLocation PhotoBig = 7 [(gogoproto.jsontag) = "photo_big,omitempty", (gogoproto.moretags) = "bson:\"photo_big\""];
+    optional FileLocation PhotoSmall = 8 [(gogoproto.jsontag) = "photo_small,omitempty", (gogoproto.moretags) = "bson:\"photo_small\""];
+    repeated int64 AuthIDs = 9 [(gogoproto.jsontag) = "auth_ids,omitempty", (gogoproto.moretags) = "bson:\"auth_ids\""];
 }
 
 message WelcomeMessage {
     required string Lang = 1 [(gogoproto.jsontag) = "lang", (gogoproto.moretags) = "bson:\"lang\""];
     required string Template = 2 [(gogoproto.jsontag) = "template", (gogoproto.moretags) = "bson:\"template\""];
+}
+
+message PushProvider {
+    optional string ID = 1 [(gogoproto.jsontag) = "id,omitempty", (gogoproto.moretags) = "bson:\"_id\""];
+    required PushProviderType Type = 2 [(gogoproto.jsontag) = "type,omitempty", (gogoproto.moretags) = "bson:\"type\""];
+    required string Name = 3 [(gogoproto.jsontag) = "name,omitempty", (gogoproto.moretags) = "bson:\"name\""];
+    optional bytes Credentials = 4 [(gogoproto.jsontag) = "credentials,omitempty", (gogoproto.moretags) = "bson:\"credentials\""];
+    optional string KeyID = 5 [(gogoproto.jsontag) = "key_id,omitempty", (gogoproto.moretags) = "bson:\"key_id\""];
+    optional string TeamID = 6 [(gogoproto.jsontag) = "team_id,omitempty", (gogoproto.moretags) = "bson:\"team_id\""];
+    optional string Topic = 7 [(gogoproto.jsontag) = "topic,omitempty", (gogoproto.moretags) = "bson:\"topic\""];
+    required bool TestMode = 8 [(gogoproto.jsontag) = "test_mode", (gogoproto.moretags) = "bson:\"test_mode\""];
+}
+
+enum PushProviderType {
+    Unknown = 0;
+    Firebase = 1;
+    Apple = 2;
 }

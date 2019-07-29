@@ -79,5 +79,5 @@ const (
 	ErrItemMedia         = "MEDIA"
 	ErrItemPinnedDialogs = "PINNED_DIALOGS"
 	ErrItemSalt          = "SALT"
-	ErrItemCounter		 = "COUNTER"
+	ErrItemCounter       = "COUNTER"
 )

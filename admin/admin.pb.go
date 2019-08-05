@@ -10,7 +10,6 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -536,9 +535,9 @@ func (m *User) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x3a
 		i++
 		i = encodeVarintAdmin(dAtA, i, uint64(m.PhotoBig.Size()))
-		n1, err1 := m.PhotoBig.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+		n1, err := m.PhotoBig.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n1
 	}
@@ -546,9 +545,9 @@ func (m *User) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x42
 		i++
 		i = encodeVarintAdmin(dAtA, i, uint64(m.PhotoSmall.Size()))
-		n2, err2 := m.PhotoSmall.MarshalTo(dAtA[i:])
-		if err2 != nil {
-			return 0, err2
+		n2, err := m.PhotoSmall.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n2
 	}
@@ -754,7 +753,14 @@ func (m *PushProvider) Size() (n int) {
 }
 
 func sovAdmin(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
 }
 func sozAdmin(x uint64) (n int) {
 	return sovAdmin(uint64((x << 1) ^ uint64((int64(x) >> 63))))

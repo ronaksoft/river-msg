@@ -139,19 +139,24 @@ message AccountAuthorization {
 
 // AccountPrivacyKey
 enum AccountPrivacyKey {
-    AccountPrivacyKeyNone = 0;
-    AccountPrivacyKeyChatInvite = 1;
-    AccountPrivacyKeyStatusTimestamp = 2;
-    AccountPrivacyKeyPhoneCall = 3;
+    None = 0;
+    ChatInvite = 1;
+    LastSeen = 2;
+    PhoneCall = 3;
+    ProfilePhoto = 4;
+    ForwardedMessage = 5;
+    Call = 6;
+
 }
+
 // AccountPrivacyValue
 enum AccountPrivacyType {
-    AccountPrivacyTypeAllowAll = 0;
-    AccountPrivacyTypeAllowContacts = 1;
-    AccountPrivacyTypeAllowUsers = 2;
-    AccountPrivacyTypeDisallowAll = 3;
-    AccountPrivacyTypeDisallowContacts = 4;
-    AccountPrivacyTypeDisallowUsers = 5;
+    AllowAll = 0;
+    AllowContacts = 1;
+    AllowUsers = 2;
+    DisallowAll = 3;
+    DisallowContacts = 4;
+    DisallowUsers = 5;
 }
 
 // AccountPrivacyRules

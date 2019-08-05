@@ -142,7 +142,7 @@ enum AccountPrivacyKey {
     None = 0;
     ChatInvite = 1;
     LastSeen = 2;
-    PhoneCall = 3;
+    PhoneNumber = 3;
     ProfilePhoto = 4;
     ForwardedMessage = 5;
     Call = 6;

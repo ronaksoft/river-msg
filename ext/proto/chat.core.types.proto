@@ -164,6 +164,7 @@ message User {
     required fixed64 AccessHash = 7 [jstype = JS_STRING];
     optional UserPhoto Photo = 8;
     optional string Bio = 9;
+    optional string Phone = 10;
 }
 
 // ContactUser

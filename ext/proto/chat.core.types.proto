@@ -165,6 +165,7 @@ message User {
     optional UserPhoto Photo = 8;
     optional string Bio = 9;
     optional string Phone = 10;
+    optional int64 LastSeen = 11;
 }
 
 // ContactUser

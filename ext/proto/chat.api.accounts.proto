@@ -95,8 +95,11 @@ message AccountChangePhone {
 // @Function
 // @Return: AccountPrivacyRules
 message AccountSetPrivacy {
-    required AccountPrivacyKey Key = 1;
-    repeated AccountPrivacyRule Rules = 2;
+    repeated AccountPrivacyRule ChatInvite = 1;
+    repeated AccountPrivacyRule LastSeen = 2;
+    repeated AccountPrivacyRule PhoneNumber = 3;
+    repeated AccountPrivacyRule ProfilePhoto = 4;
+    repeated AccountPrivacyRule ForwardedMessage = 5;
 }
 
 // AccountGetPrivacy
@@ -167,5 +170,5 @@ message AccountPrivacyRules {
 // AccountPrivacyRule
 message AccountPrivacyRule {
     required AccountPrivacyType PrivacyType = 1;
-    required bytes Data = 2;
+    repeated int64 UserIDs = 2;
 }

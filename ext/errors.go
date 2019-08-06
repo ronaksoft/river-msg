@@ -21,17 +21,18 @@ var (
 
 // Error Codes
 const (
-	ErrCodeInternal      = "E00"
-	ErrCodeInvalid       = "E01"
-	ErrCodeUnavailable   = "E02"
-	ErrCodeTooMany       = "E03"
-	ErrCodeTooFew        = "E04"
-	ErrCodeIncomplete    = "E05"
-	ErrCodeTimeout       = "E06"
-	ErrCodeAccess        = "E07"
-	ErrCodeAlreadyExists = "E08"
-	ErrCodeBusy          = "E09"
-	ErrCodeOutOfRange    = "E10"
+	ErrCodeInternal         = "E00"
+	ErrCodeInvalid          = "E01"
+	ErrCodeUnavailable      = "E02"
+	ErrCodeTooMany          = "E03"
+	ErrCodeTooFew           = "E04"
+	ErrCodeIncomplete       = "E05"
+	ErrCodeTimeout          = "E06"
+	ErrCodeAccess           = "E07"
+	ErrCodeAlreadyExists    = "E08"
+	ErrCodeBusy             = "E09"
+	ErrCodeOutOfRange       = "E10"
+	ErrCodePartiallyApplied = "E11"
 )
 
 // Error Items

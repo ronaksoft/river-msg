@@ -100,6 +100,7 @@ message AccountSetPrivacy {
     repeated AccountPrivacyRule PhoneNumber = 3;
     repeated AccountPrivacyRule ProfilePhoto = 4;
     repeated AccountPrivacyRule ForwardedMessage = 5;
+    repeated AccountPrivacyRule Call = 6;
 }
 
 // AccountGetPrivacy
@@ -156,10 +157,11 @@ enum AccountPrivacyKey {
 enum AccountPrivacyType {
     AllowAll = 0;
     AllowContacts = 1;
-    AllowUsers = 2;
-    DisallowAll = 3;
-    DisallowContacts = 4;
-    DisallowUsers = 5;
+    DisallowAll = 2;
+    DisallowContacts = 3;
+//    Order is very important, exceptions are started from 101
+    AllowUsers = 101;
+    DisallowUsers = 102;
 }
 
 // AccountPrivacyRules

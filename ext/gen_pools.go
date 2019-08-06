@@ -89,12 +89,6 @@ var (
 			return m
 		},
 	}
-	PoolAccountPrivacyDisallowUsers = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyDisallowUsers)
-			return m
-		},
-	}
 	PoolInputFileLocation = sync.Pool{
 		New: func() interface{} {
 			m := new(InputFileLocation)
@@ -176,12 +170,6 @@ var (
 	PoolInitAuthCompleted = sync.Pool{
 		New: func() interface{} {
 			m := new(InitAuthCompleted)
-			return m
-		},
-	}
-	PoolAccountPrivacyAllowAll = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyAllowAll)
 			return m
 		},
 	}
@@ -953,12 +941,6 @@ var (
 			return m
 		},
 	}
-	PoolAccountPrivacyAllowContacts = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyAllowContacts)
-			return m
-		},
-	}
 	PoolUpdateDraftMessage = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateDraftMessage)
@@ -992,18 +974,6 @@ var (
 	PoolMediaSize = sync.Pool{
 		New: func() interface{} {
 			m := new(MediaSize)
-			return m
-		},
-	}
-	PoolAccountPrivacyDisallowContacts = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyDisallowContacts)
-			return m
-		},
-	}
-	PoolAccountPrivacyDisallowAll = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyDisallowAll)
 			return m
 		},
 	}
@@ -1082,12 +1052,6 @@ var (
 	PoolGroupPhoto = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupPhoto)
-			return m
-		},
-	}
-	PoolAccountPrivacyAllowUsers = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyAllowUsers)
 			return m
 		},
 	}

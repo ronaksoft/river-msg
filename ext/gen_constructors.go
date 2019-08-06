@@ -15,7 +15,6 @@ const (
 	C_AccountAuthorization               int64 = 275571966
 	C_UpdateUserPhoto                    int64 = 302028082
 	C_DocumentAttributeAudio             int64 = 309707708
-	C_AccountPrivacyDisallowUsers        int64 = 352774342
 	C_InputFileLocation                  int64 = 354669666
 	C_UpdateGroupPhoto                   int64 = 367193154
 	C_GroupsAddUser                      int64 = 394654713
@@ -30,7 +29,6 @@ const (
 	C_Document                           int64 = 555739168
 	C_UpdateGetDifference                int64 = 556775761
 	C_InitAuthCompleted                  int64 = 627708982
-	C_AccountPrivacyAllowAll             int64 = 642273673
 	C_UpdateContainer                    int64 = 661712615
 	C_UpdateMessagesDeleted              int64 = 670568714
 	C_AccountPrivacyRule                 int64 = 690047132
@@ -159,15 +157,12 @@ const (
 	C_InputPeer                          int64 = 3374092470
 	C_MessagesGetHistory                 int64 = 3396939832
 	C_UpdateNewMessage                   int64 = 3426925183
-	C_AccountPrivacyAllowContacts        int64 = 3442577898
 	C_UpdateDraftMessage                 int64 = 3453026195
 	C_ContactsImport                     int64 = 3473528730
 	C_PeerNotifySettings                 int64 = 3475030132
 	C_MessageEntity                      int64 = 3479443932
 	C_MessagesDelete                     int64 = 3487616910
 	C_MediaSize                          int64 = 3543753456
-	C_AccountPrivacyDisallowContacts     int64 = 3629404744
-	C_AccountPrivacyDisallowAll          int64 = 3653779109
 	C_AuthDestroyKey                     int64 = 3673422656
 	C_AccountUpdateProfile               int64 = 3725499887
 	C_AccountRemovePhoto                 int64 = 3728692172
@@ -181,7 +176,6 @@ const (
 	C_AccountUnregisterDevice            int64 = 3981251588
 	C_AuthSendCode                       int64 = 3984043365
 	C_GroupPhoto                         int64 = 3998516135
-	C_AccountPrivacyAllowUsers           int64 = 4047110177
 	C_GroupParticipant                   int64 = 4072279665
 	C_InputDocument                      int64 = 4081048424
 	C_Bool                               int64 = 4122188204
@@ -209,7 +203,6 @@ var ConstructorNames = map[int64]string{
 	275571966:  "AccountAuthorization",
 	302028082:  "UpdateUserPhoto",
 	309707708:  "DocumentAttributeAudio",
-	352774342:  "AccountPrivacyDisallowUsers",
 	354669666:  "InputFileLocation",
 	367193154:  "UpdateGroupPhoto",
 	394654713:  "GroupsAddUser",
@@ -224,7 +217,6 @@ var ConstructorNames = map[int64]string{
 	555739168:  "Document",
 	556775761:  "UpdateGetDifference",
 	627708982:  "InitAuthCompleted",
-	642273673:  "AccountPrivacyAllowAll",
 	661712615:  "UpdateContainer",
 	670568714:  "UpdateMessagesDeleted",
 	690047132:  "AccountPrivacyRule",
@@ -353,15 +345,12 @@ var ConstructorNames = map[int64]string{
 	3374092470: "InputPeer",
 	3396939832: "MessagesGetHistory",
 	3426925183: "UpdateNewMessage",
-	3442577898: "AccountPrivacyAllowContacts",
 	3453026195: "UpdateDraftMessage",
 	3473528730: "ContactsImport",
 	3475030132: "PeerNotifySettings",
 	3479443932: "MessageEntity",
 	3487616910: "MessagesDelete",
 	3543753456: "MediaSize",
-	3629404744: "AccountPrivacyDisallowContacts",
-	3653779109: "AccountPrivacyDisallowAll",
 	3673422656: "AuthDestroyKey",
 	3725499887: "AccountUpdateProfile",
 	3728692172: "AccountRemovePhoto",
@@ -375,7 +364,6 @@ var ConstructorNames = map[int64]string{
 	3981251588: "AccountUnregisterDevice",
 	3984043365: "AuthSendCode",
 	3998516135: "GroupPhoto",
-	4047110177: "AccountPrivacyAllowUsers",
 	4072279665: "GroupParticipant",
 	4081048424: "InputDocument",
 	4122188204: "Bool",

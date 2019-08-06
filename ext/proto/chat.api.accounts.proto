@@ -158,7 +158,6 @@ enum AccountPrivacyType {
     AllowAll = 0;
     AllowContacts = 1;
     DisallowAll = 2;
-    DisallowContacts = 3;
 //    Order is very important, exceptions are started from 101
     AllowUsers = 101;
     DisallowUsers = 102;

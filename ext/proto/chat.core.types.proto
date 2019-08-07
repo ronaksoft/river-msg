@@ -344,3 +344,31 @@ enum PushTokenProvider {
     PushTokenFirebase = 0;
     PushTokenApn = 1;
 }
+
+// AccountPrivacyKey
+enum PrivacyKey {
+    None = 0;
+    ChatInvite = 1;
+    LastSeen = 2;
+    PhoneNumber = 3;
+    ProfilePhoto = 4;
+    ForwardedMessage = 5;
+    Call = 6;
+
+}
+
+// AccountPrivacyValue
+enum PrivacyType {
+    AllowAll = 0;
+    AllowContacts = 1;
+    DisallowAll = 2;
+    //    Order is very important, exceptions are started from 101
+    AllowUsers = 101;
+    DisallowUsers = 102;
+}
+
+// PrivacyRule
+message PrivacyRule {
+    required PrivacyType PrivacyType = 1;
+    repeated int64 UserIDs = 2;
+}

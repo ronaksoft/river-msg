@@ -173,6 +173,12 @@ var (
 			return m
 		},
 	}
+	PoolUpdateAccountPrivacy = sync.Pool{
+		New: func() interface{} {
+			m := new(UpdateAccountPrivacy)
+			return m
+		},
+	}
 	PoolUpdateContainer = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateContainer)
@@ -182,12 +188,6 @@ var (
 	PoolUpdateMessagesDeleted = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateMessagesDeleted)
-			return m
-		},
-	}
-	PoolAccountPrivacyRule = sync.Pool{
-		New: func() interface{} {
-			m := new(AccountPrivacyRule)
 			return m
 		},
 	}
@@ -1034,6 +1034,12 @@ var (
 	PoolContactsMany = sync.Pool{
 		New: func() interface{} {
 			m := new(ContactsMany)
+			return m
+		},
+	}
+	PoolPrivacyRule = sync.Pool{
+		New: func() interface{} {
+			m := new(PrivacyRule)
 			return m
 		},
 	}

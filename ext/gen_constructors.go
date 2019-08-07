@@ -29,9 +29,9 @@ const (
 	C_Document                           int64 = 555739168
 	C_UpdateGetDifference                int64 = 556775761
 	C_InitAuthCompleted                  int64 = 627708982
+	C_UpdateAccountPrivacy               int64 = 629173761
 	C_UpdateContainer                    int64 = 661712615
 	C_UpdateMessagesDeleted              int64 = 670568714
-	C_AccountPrivacyRule                 int64 = 690047132
 	C_UpdateGroupAdmins                  int64 = 694155405
 	C_File                               int64 = 749574446
 	C_User                               int64 = 765557111
@@ -173,6 +173,7 @@ const (
 	C_InputUser                          int64 = 3865689926
 	C_InputFile                          int64 = 3882180383
 	C_ContactsMany                       int64 = 3883395672
+	C_PrivacyRule                        int64 = 3954700912
 	C_AccountUnregisterDevice            int64 = 3981251588
 	C_AuthSendCode                       int64 = 3984043365
 	C_GroupPhoto                         int64 = 3998516135
@@ -217,9 +218,9 @@ var ConstructorNames = map[int64]string{
 	555739168:  "Document",
 	556775761:  "UpdateGetDifference",
 	627708982:  "InitAuthCompleted",
+	629173761:  "UpdateAccountPrivacy",
 	661712615:  "UpdateContainer",
 	670568714:  "UpdateMessagesDeleted",
-	690047132:  "AccountPrivacyRule",
 	694155405:  "UpdateGroupAdmins",
 	749574446:  "File",
 	765557111:  "User",
@@ -361,6 +362,7 @@ var ConstructorNames = map[int64]string{
 	3865689926: "InputUser",
 	3882180383: "InputFile",
 	3883395672: "ContactsMany",
+	3954700912: "PrivacyRule",
 	3981251588: "AccountUnregisterDevice",
 	3984043365: "AuthSendCode",
 	3998516135: "GroupPhoto",

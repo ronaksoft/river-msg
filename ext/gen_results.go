@@ -172,6 +172,12 @@ func ResultInitAuthCompleted(out *MessageEnvelope, res *InitAuthCompleted) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultUpdateAccountPrivacy(out *MessageEnvelope, res *UpdateAccountPrivacy) {
+	out.Constructor = C_UpdateAccountPrivacy
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateContainer(out *MessageEnvelope, res *UpdateContainer) {
 	out.Constructor = C_UpdateContainer
 	pbytes.Put(out.Message)
@@ -180,12 +186,6 @@ func ResultUpdateContainer(out *MessageEnvelope, res *UpdateContainer) {
 }
 func ResultUpdateMessagesDeleted(out *MessageEnvelope, res *UpdateMessagesDeleted) {
 	out.Constructor = C_UpdateMessagesDeleted
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-func ResultAccountPrivacyRule(out *MessageEnvelope, res *AccountPrivacyRule) {
-	out.Constructor = C_AccountPrivacyRule
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1032,6 +1032,12 @@ func ResultInputFile(out *MessageEnvelope, res *InputFile) {
 }
 func ResultContactsMany(out *MessageEnvelope, res *ContactsMany) {
 	out.Constructor = C_ContactsMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultPrivacyRule(out *MessageEnvelope, res *PrivacyRule) {
+	out.Constructor = C_PrivacyRule
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

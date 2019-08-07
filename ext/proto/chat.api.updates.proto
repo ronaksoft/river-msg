@@ -209,3 +209,13 @@ message UpdateDialogPinnedReorder {
     required int64 UpdateID = 101;
     repeated Peer Peer = 1;
 }
+
+// UpdateAccountPrivacy
+message UpdateAccountPrivacy {
+    repeated PrivacyRule ChatInvite = 1;
+    repeated PrivacyRule LastSeen = 2;
+    repeated PrivacyRule PhoneNumber = 3;
+    repeated PrivacyRule ProfilePhoto = 4;
+    repeated PrivacyRule ForwardedMessage = 5;
+    repeated PrivacyRule Call = 6;
+}

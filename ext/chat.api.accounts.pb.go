@@ -766,7 +766,7 @@ func (m *AccountGetPrivacy) GetKey() PrivacyKey {
 	if m != nil {
 		return m.Key
 	}
-	return None
+	return PrivacyKeyNone
 }
 
 // AccountGetAuthorizations

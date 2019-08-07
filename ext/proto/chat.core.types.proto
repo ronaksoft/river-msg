@@ -69,6 +69,7 @@ message Ack {
 message Bool {
     required bool Result = 1;
 }
+
 // TypingAction
 enum TypingAction {
     TypingActionTyping = 0;
@@ -347,24 +348,24 @@ enum PushTokenProvider {
 
 // AccountPrivacyKey
 enum PrivacyKey {
-    None = 0;
-    ChatInvite = 1;
-    LastSeen = 2;
-    PhoneNumber = 3;
-    ProfilePhoto = 4;
-    ForwardedMessage = 5;
-    Call = 6;
+    PrivacyKeyNone = 0;
+    PrivacyKeyChatInvite = 1;
+    PrivacyKeyLastSeen = 2;
+    PrivacyKeyPhoneNumber = 3;
+    PrivacyKeyProfilePhoto = 4;
+    PrivacyKeyForwardedMessage = 5;
+    PrivacyKeyCall = 6;
 
 }
 
 // AccountPrivacyValue
 enum PrivacyType {
-    AllowAll = 0;
-    AllowContacts = 1;
-    DisallowAll = 2;
+    PrivacyTypeAllowAll = 0;
+    PrivacyTypeAllowContacts = 1;
+    PrivacyTypeDisallowAll = 2;
     //    Order is very important, exceptions are started from 101
-    AllowUsers = 101;
-    DisallowUsers = 102;
+    PrivacyTypeAllowUsers = 101;
+    PrivacyTypeDisallowUsers = 102;
 }
 
 // PrivacyRule

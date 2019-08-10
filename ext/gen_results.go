@@ -1,5 +1,5 @@
-package msg
-
+package msg 
+ 
 import (
 	"github.com/gobwas/pool/pbytes"
 )
@@ -586,6 +586,12 @@ func ResultUpdateDraftMessageCleared(out *MessageEnvelope, res *UpdateDraftMessa
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultAccountSetLang(out *MessageEnvelope, res *AccountSetLang) {
+	out.Constructor = C_AccountSetLang
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAccountSetNotifySettings(out *MessageEnvelope, res *AccountSetNotifySettings) {
 	out.Constructor = C_AccountSetNotifySettings
 	pbytes.Put(out.Message)
@@ -1120,3 +1126,4 @@ func ResultUpdateUsername(out *MessageEnvelope, res *UpdateUsername) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+

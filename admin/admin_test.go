@@ -7,9 +7,9 @@ import (
 
 func TestAdmin(t *testing.T) {
 	usr := User{
-		UserID:    3435,
-		Username:  "username",
-		Phone:     "+9823232",
+		UserID:   3435,
+		Username: "username",
+		Phone:    "+9823232",
 	}
 	b, err := usr.Marshal()
 	if err != nil {

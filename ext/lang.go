@@ -4,6 +4,7 @@ const (
 	LangCodeEn = "en"
 	LangCodeFa = "fa"
 )
+
 // LangCodeStr converts lang code from proto enum
 // to its corresponding string value
 func LangCodeStr(code LangCode) string {

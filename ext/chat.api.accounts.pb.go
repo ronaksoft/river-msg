@@ -9,7 +9,6 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1254,9 +1253,9 @@ func (m *AccountSetNotifySettings) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Peer.Size()))
-		n1, err1 := m.Peer.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+		n1, err := m.Peer.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n1
 	}
@@ -1266,9 +1265,9 @@ func (m *AccountSetNotifySettings) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x12
 		i++
 		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Settings.Size()))
-		n2, err2 := m.Settings.MarshalTo(dAtA[i:])
-		if err2 != nil {
-			return 0, err2
+		n2, err := m.Settings.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n2
 	}
@@ -1296,9 +1295,9 @@ func (m *AccountGetNotifySettings) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Peer.Size()))
-		n3, err3 := m.Peer.MarshalTo(dAtA[i:])
-		if err3 != nil {
-			return 0, err3
+		n3, err := m.Peer.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n3
 	}
@@ -1470,9 +1469,9 @@ func (m *AccountUploadPhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.File.Size()))
-		n4, err4 := m.File.MarshalTo(dAtA[i:])
-		if err4 != nil {
-			return 0, err4
+		n4, err := m.File.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n4
 	}
@@ -1508,9 +1507,9 @@ func (m *AccountUpdatePhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Photo.Size()))
-		n5, err5 := m.Photo.MarshalTo(dAtA[i:])
-		if err5 != nil {
-			return 0, err5
+		n5, err := m.Photo.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n5
 	}
@@ -2147,7 +2146,14 @@ func (m *AccountSetLang) Size() (n int) {
 }
 
 func sovChatApiAccounts(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
 }
 func sozChatApiAccounts(x uint64) (n int) {
 	return sovChatApiAccounts(uint64((x << 1) ^ uint64((int64(x) >> 63))))

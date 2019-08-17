@@ -150,12 +150,5 @@ message AccountPrivacyRules {
 // @Function
 // @Returns: Bool
 message AccountSetLang {
-    required LangCode LangCode = 1;
-}
-
-// LangCode
-enum LangCode {
-    LangCodeUnknown = 0;
-    LangCodeEn = 1;
-    LangCodeFa = 2;
+    required string LangCode = 1;
 }

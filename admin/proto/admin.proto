@@ -51,3 +51,16 @@ enum PushProviderType {
     Firebase = 1;
     Apple = 2;
 }
+
+message GetNotifTemplatesRequest {
+}
+
+message GetNotifTemplatesResponse {
+    repeated NotifTemplate Templates = 1;
+}
+
+message NotifTemplate {
+    required int32 Type = 1;
+    required string Title = 2;
+    required string Body = 3;
+}

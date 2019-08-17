@@ -18,11 +18,12 @@ service NotificationService {
 
 message Notification {
     int32 type = 1;
-    string body = 2;
-    int64 user_id = 3 [(gogoproto.customname) = "UserID"];
-    repeated NotificationData data = 4;
-    repeated string tags = 5;
-    int64 timestamp = 6;
+    string title = 2;
+    string body = 3;
+    int64 user_id = 4 [(gogoproto.customname) = "UserID"];
+    repeated NotificationData data = 5;
+    repeated string tags = 6;
+    int64 timestamp = 7;
 }
 
 message NotificationData {

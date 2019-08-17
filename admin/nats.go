@@ -15,4 +15,7 @@ const (
 
 	GetWelcMessageSubj  = "get.welc.msg"
 	GetWelcMessageGroup = "get.welc.msg"
+
+	NewNotifTemplate  = "new.notif.tmpl"
+	GetNotifTemplates = "get.notif.tmpls"
 )

@@ -7,7 +7,7 @@ import (
 
 func TestAdmin(t *testing.T) {
 	usr := User{
-		UserID:   3435,
+		ID:   "3435",
 		Username: "username",
 		Phone:    "+9823232",
 	}

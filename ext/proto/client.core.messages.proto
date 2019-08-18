@@ -41,6 +41,8 @@ message ClientSearchResult {
     repeated UserMessage Messages = 1;
     repeated User Users = 2;
     repeated Group Groups = 3;
+    repeated User MatchedUsers = 4;
+    repeated Group MatchedGroups = 5;
 }
 
 // DBMediaInfo

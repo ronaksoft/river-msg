@@ -9,11 +9,8 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	io "io"
 	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -373,17 +370,6 @@ type NotificationServiceServer interface {
 	Cancel(context.Context, *CancelRequest) (*CancelResponse, error)
 }
 
-// UnimplementedNotificationServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedNotificationServiceServer struct {
-}
-
-func (*UnimplementedNotificationServiceServer) Send(ctx context.Context, req *Notification) (*SendResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
-}
-func (*UnimplementedNotificationServiceServer) Cancel(ctx context.Context, req *CancelRequest) (*CancelResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Cancel not implemented")
-}
-
 func RegisterNotificationServiceServer(s *grpc.Server, srv NotificationServiceServer) {
 	s.RegisterService(&_NotificationService_serviceDesc, srv)
 }
@@ -710,7 +696,14 @@ func (m *CancelResponse) Size() (n int) {
 }
 
 func sovNotif(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
 }
 func sozNotif(x uint64) (n int) {
 	return sovNotif(uint64((x << 1) ^ uint64((int64(x) >> 63))))

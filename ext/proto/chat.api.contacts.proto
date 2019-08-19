@@ -27,7 +27,8 @@ message ContactsDelete {
 
 // ContactsImported
 message ContactsImported {
-    repeated ContactUser Users = 1;
+    repeated ContactUser ContactUsers = 1;
+    repeated User Users = 2;
 }
 
 // ContactsMany

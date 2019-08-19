@@ -16,8 +16,11 @@ const (
 	GetWelcMessageSubj  = "get.welc.msg"
 	GetWelcMessageGroup = "get.welc.msg"
 
-	NewNotifTemplateSubj  = "new.notif.tmpl"
+	NewNotifTemplateSubj = "new.notif.tmpl"
 
-	GetNotifTemplatesSubj = "get.notif.tmpls"
+	GetNotifTemplatesSubj  = "get.notif.tmpls"
 	GetNotifTemplatesGroup = "get.notif.tmpls"
+
+	GetPushProvSubj  = "get.push.prov"
+	GetPushProvGroup = "get.push.prov"
 )

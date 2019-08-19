@@ -64,3 +64,10 @@ message NotifTemplate {
     required string Title = 2;
     required string Body = 3;
 }
+
+message RiverVersion {
+    required string Platform = 1 [(gogoproto.jsontag) = "platform"];
+    required string Vendor = 2 [(gogoproto.jsontag) = "vendor"];
+    required string MinVersion = 3 [(gogoproto.jsontag) = "min_version"];
+    required string CurrentVersion = 4 [(gogoproto.jsontag) = "current_version"];
+}

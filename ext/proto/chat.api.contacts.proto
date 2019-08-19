@@ -34,6 +34,7 @@ message ContactsImported {
 // ContactsMany
 message ContactsMany {
     repeated PhoneContact Contacts = 1;
-    repeated ContactUser Users = 2;
+    repeated ContactUser ContactUsers = 2;
     required bool Modified = 3;
+    repeated User Users = 4;
 }

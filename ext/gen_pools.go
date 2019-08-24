@@ -185,6 +185,12 @@ var (
 			return m
 		},
 	}
+	PoolAccountUpdateStatus = sync.Pool{
+		New: func() interface{} {
+			m := new(AccountUpdateStatus)
+			return m
+		},
+	}
 	PoolUpdateMessagesDeleted = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateMessagesDeleted)

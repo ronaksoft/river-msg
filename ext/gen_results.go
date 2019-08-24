@@ -184,6 +184,12 @@ func ResultUpdateContainer(out *MessageEnvelope, res *UpdateContainer) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultAccountUpdateStatus(out *MessageEnvelope, res *AccountUpdateStatus) {
+	out.Constructor = C_AccountUpdateStatus
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateMessagesDeleted(out *MessageEnvelope, res *UpdateMessagesDeleted) {
 	out.Constructor = C_UpdateMessagesDeleted
 	pbytes.Put(out.Message)

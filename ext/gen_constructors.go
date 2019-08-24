@@ -31,6 +31,7 @@ const (
 	C_InitAuthCompleted                  int64 = 627708982
 	C_UpdateAccountPrivacy               int64 = 629173761
 	C_UpdateContainer                    int64 = 661712615
+	C_AccountUpdateStatus                int64 = 666864933
 	C_UpdateMessagesDeleted              int64 = 670568714
 	C_UpdateGroupAdmins                  int64 = 694155405
 	C_File                               int64 = 749574446
@@ -221,6 +222,7 @@ var ConstructorNames = map[int64]string{
 	627708982:  "InitAuthCompleted",
 	629173761:  "UpdateAccountPrivacy",
 	661712615:  "UpdateContainer",
+	666864933:  "AccountUpdateStatus",
 	670568714:  "UpdateMessagesDeleted",
 	694155405:  "UpdateGroupAdmins",
 	749574446:  "File",

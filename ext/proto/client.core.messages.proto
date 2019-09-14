@@ -19,6 +19,8 @@ message ClientPendingMessage {
     optional InputMediaType MediaType = 11;
     optional bytes Media = 12;
     optional bool ClearDraft = 13;
+    optional string FileUploadID = 14;
+    optional string ThumbUploadID = 15;
 }
 
 // ClientSendMessageMedia

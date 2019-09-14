@@ -45,6 +45,23 @@ message ClientSearchResult {
     repeated Group MatchedGroups = 5;
 }
 
+// ClientFileType
+enum ClientFileType {
+    Unknown = 0;
+    Message = 1;
+    ProfilePhoto = 2;
+    Sticker = 3;
+}
+
+// ClientFile
+message ClientFile {
+    required int32 ClusterID = 1;
+    required int64 FileID = 2;
+    required int64 AccessHash = 3;
+    required ClientFileType Type = 4;
+    optional string MimeType = 5;
+}
+
 // DBMediaInfo
 message DBMediaInfo {
     repeated PeerMediaInfo MediaInfo = 1;

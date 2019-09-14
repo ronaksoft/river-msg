@@ -34,6 +34,12 @@ func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultClientFile(out *MessageEnvelope, res *ClientFile) {
+	out.Constructor = C_ClientFile
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultGroupsRemovePhoto(out *MessageEnvelope, res *GroupsRemovePhoto) {
 	out.Constructor = C_GroupsRemovePhoto
 	pbytes.Put(out.Message)

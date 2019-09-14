@@ -35,6 +35,12 @@ var (
 			return m
 		},
 	}
+	PoolClientFile = sync.Pool{
+		New: func() interface{} {
+			m := new(ClientFile)
+			return m
+		},
+	}
 	PoolGroupsRemovePhoto = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupsRemovePhoto)

@@ -21,6 +21,8 @@ message ClientPendingMessage {
     optional bool ClearDraft = 13;
     optional string FileUploadID = 14;
     optional string ThumbUploadID = 15;
+    optional int64 FileID = 16;
+    optional int64 ThumbID = 17;
 }
 
 // ClientSendMessageMedia

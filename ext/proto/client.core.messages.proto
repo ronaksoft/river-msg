@@ -53,9 +53,10 @@ message ClientSearchResult {
 enum ClientFileType {
     Unknown = 0;
     Message = 1;
-    ProfilePhoto = 2;
-    Sticker = 3;
-    Thumbnail = 4;
+    AccountProfilePhoto = 2;
+    GroupProfilePhoto = 3;
+    Sticker = 4;
+    Thumbnail = 5;
 }
 
 // ClientFile
@@ -65,6 +66,13 @@ message ClientFile {
     required uint64 AccessHash = 3;
     required ClientFileType Type = 4;
     optional string MimeType = 5;
+    optional int64 UserID = 6;
+    optional int64 GroupID = 7;
+    required int64 FileSize = 8;
+    optional int64 MessageID = 9;
+    optional int64 PeerID = 10;
+    optional int32 PeerType = 11;
+    optional int32 Version = 12;
 }
 
 // ClientFileStatus

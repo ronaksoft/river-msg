@@ -815,6 +815,12 @@ var (
 			return m
 		},
 	}
+	PoolClientFileStatus = sync.Pool{
+		New: func() interface{} {
+			m := new(ClientFileStatus)
+			return m
+		},
+	}
 	PoolSystemPublicKeys = sync.Pool{
 		New: func() interface{} {
 			m := new(SystemPublicKeys)

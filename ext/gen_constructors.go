@@ -136,6 +136,7 @@ const (
 	C_PhoneContact                       int64 = 2672574672
 	C_AuthResendCode                     int64 = 2682713491
 	C_UpdateUserStatus                   int64 = 2696747995
+	C_ClientFileStatus                   int64 = 2731095358
 	C_SystemPublicKeys                   int64 = 2745130223
 	C_DHGroup                            int64 = 2751503049
 	C_SystemInfo                         int64 = 2754948760
@@ -328,6 +329,7 @@ var ConstructorNames = map[int64]string{
 	2672574672: "PhoneContact",
 	2682713491: "AuthResendCode",
 	2696747995: "UpdateUserStatus",
+	2731095358: "ClientFileStatus",
 	2745130223: "SystemPublicKeys",
 	2751503049: "DHGroup",
 	2754948760: "SystemInfo",

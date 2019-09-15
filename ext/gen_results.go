@@ -814,6 +814,12 @@ func ResultUpdateUserStatus(out *MessageEnvelope, res *UpdateUserStatus) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultClientFileStatus(out *MessageEnvelope, res *ClientFileStatus) {
+	out.Constructor = C_ClientFileStatus
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultSystemPublicKeys(out *MessageEnvelope, res *SystemPublicKeys) {
 	out.Constructor = C_SystemPublicKeys
 	pbytes.Put(out.Message)

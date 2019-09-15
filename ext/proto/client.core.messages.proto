@@ -66,6 +66,13 @@ message ClientFile {
     optional string MimeType = 5;
 }
 
+// ClientFileStatus
+message ClientFileStatus {
+    required int32 Status = 1;
+    required int64 Progress = 2;
+    required string FilePath = 3;
+}
+
 // DBMediaInfo
 message DBMediaInfo {
     repeated PeerMediaInfo MediaInfo = 1;

@@ -55,6 +55,7 @@ enum ClientFileType {
     Message = 1;
     ProfilePhoto = 2;
     Sticker = 3;
+    Thumbnail = 4;
 }
 
 // ClientFile

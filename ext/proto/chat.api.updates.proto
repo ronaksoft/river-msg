@@ -193,6 +193,7 @@ message UpdateDraftMessage {
 // UpdateDraftMessageCleared
 message UpdateDraftMessageCleared {
     required int32 UCount = 100;
+    required int64 UpdateID = 101;
     required Peer Peer = 1;
 }
 

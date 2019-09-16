@@ -186,6 +186,7 @@ message UpdateAuthorizationReset {
 // UpdateDraftMessage
 message UpdateDraftMessage {
     required int32 UCount = 100;
+    required int64 UpdateID = 101;
     required DraftMessage Message = 1;
 }
 

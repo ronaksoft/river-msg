@@ -11,7 +11,6 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3320,9 +3319,9 @@ func (m *ProtoEncryptedPayload) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x22
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Envelope.Size()))
-		n1, err1 := m.Envelope.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+		n1, err := m.Envelope.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n1
 	}
@@ -3447,9 +3446,9 @@ func (m *Dialog) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x42
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.NotifySettings.Size()))
-		n2, err2 := m.NotifySettings.MarshalTo(dAtA[i:])
-		if err2 != nil {
-			return 0, err2
+		n2, err := m.NotifySettings.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n2
 	}
@@ -3468,9 +3467,9 @@ func (m *Dialog) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x5a
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Draft.Size()))
-		n3, err3 := m.Draft.MarshalTo(dAtA[i:])
-		if err3 != nil {
-			return 0, err3
+		n3, err := m.Draft.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n3
 	}
@@ -3638,9 +3637,9 @@ func (m *UserPhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoBig.Size()))
-		n4, err4 := m.PhotoBig.MarshalTo(dAtA[i:])
-		if err4 != nil {
-			return 0, err4
+		n4, err := m.PhotoBig.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n4
 	}
@@ -3650,9 +3649,9 @@ func (m *UserPhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x12
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoSmall.Size()))
-		n5, err5 := m.PhotoSmall.MarshalTo(dAtA[i:])
-		if err5 != nil {
-			return 0, err5
+		n5, err := m.PhotoSmall.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n5
 	}
@@ -3711,9 +3710,9 @@ func (m *User) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x42
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
-		n6, err6 := m.Photo.MarshalTo(dAtA[i:])
-		if err6 != nil {
-			return 0, err6
+		n6, err := m.Photo.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n6
 	}
@@ -3776,9 +3775,9 @@ func (m *ContactUser) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x42
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
-		n7, err7 := m.Photo.MarshalTo(dAtA[i:])
-		if err7 != nil {
-			return 0, err7
+		n7, err := m.Photo.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n7
 	}
@@ -4145,9 +4144,9 @@ func (m *GroupPhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoBig.Size()))
-		n8, err8 := m.PhotoBig.MarshalTo(dAtA[i:])
-		if err8 != nil {
-			return 0, err8
+		n8, err := m.PhotoBig.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n8
 	}
@@ -4157,9 +4156,9 @@ func (m *GroupPhoto) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x12
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoSmall.Size()))
-		n9, err9 := m.PhotoSmall.MarshalTo(dAtA[i:])
-		if err9 != nil {
-			return 0, err9
+		n9, err := m.PhotoSmall.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n9
 	}
@@ -4208,9 +4207,9 @@ func (m *Group) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x3a
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
-		n10, err10 := m.Photo.MarshalTo(dAtA[i:])
-		if err10 != nil {
-			return 0, err10
+		n10, err := m.Photo.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n10
 	}
@@ -4238,9 +4237,9 @@ func (m *GroupFull) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0xa
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Group.Size()))
-		n11, err11 := m.Group.MarshalTo(dAtA[i:])
-		if err11 != nil {
-			return 0, err11
+		n11, err := m.Group.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n11
 	}
@@ -4274,9 +4273,9 @@ func (m *GroupFull) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x22
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.NotifySettings.Size()))
-		n12, err12 := m.NotifySettings.MarshalTo(dAtA[i:])
-		if err12 != nil {
-			return 0, err12
+		n12, err := m.NotifySettings.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n12
 	}
@@ -4323,9 +4322,9 @@ func (m *GroupParticipant) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x42
 		i++
 		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
-		n13, err13 := m.Photo.MarshalTo(dAtA[i:])
-		if err13 != nil {
-			return 0, err13
+		n13, err := m.Photo.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n13
 	}
@@ -4967,7 +4966,14 @@ func (m *PrivacyRule) Size() (n int) {
 }
 
 func sovChatCoreTypes(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
 }
 func sozChatCoreTypes(x uint64) (n int) {
 	return sovChatCoreTypes(uint64((x << 1) ^ uint64((int64(x) >> 63))))

@@ -344,6 +344,7 @@ message InputDocument {
 enum PushTokenProvider {
     PushTokenFirebase = 0;
     PushTokenApn = 1;
+    PushTokenPushKit = 2;
 }
 
 // AccountPrivacyKey

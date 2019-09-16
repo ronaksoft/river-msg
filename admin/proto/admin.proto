@@ -50,6 +50,7 @@ enum PushProviderType {
     Unknown = 0;
     Firebase = 1;
     Apple = 2;
+    PushKit = 3;
 }
 
 message GetNotifTemplatesRequest {

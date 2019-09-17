@@ -23,4 +23,9 @@ const (
 
 	GetPushProvSubj  = "get.push.prov"
 	GetPushProvGroup = "get.push.prov"
+
+	NewRiverVersionSubj = "new.river.vers"
+
+	GetRiverVersionsSubj = "get.river.vers"
+	GetRiverVersionsGroup = "get.river.vers"
 )

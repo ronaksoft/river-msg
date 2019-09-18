@@ -10,7 +10,6 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
-	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1200,9 +1199,9 @@ func (m *AuthAuthorization) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x12
 		i++
 		i = encodeVarintChatApiAuth(dAtA, i, uint64(m.User.Size()))
-		n1, err1 := m.User.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+		n1, err := m.User.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
 		}
 		i += n1
 	}
@@ -1470,7 +1469,14 @@ func (m *AuthSentCode) Size() (n int) {
 }
 
 func sovChatApiAuth(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
+	for {
+		n++
+		x >>= 7
+		if x == 0 {
+			break
+		}
+	}
+	return n
 }
 func sozChatApiAuth(x uint64) (n int) {
 	return sovChatApiAuth(uint64((x << 1) ^ uint64((int64(x) >> 63))))

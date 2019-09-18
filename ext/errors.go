@@ -81,4 +81,5 @@ const (
 	ErrItemPinnedDialogs = "PINNED_DIALOGS"
 	ErrItemSalt          = "SALT"
 	ErrItemCounter       = "COUNTER"
+	ErrItemAppUpdate     = "APP_UPDATE"
 )

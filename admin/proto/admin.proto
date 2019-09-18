@@ -62,13 +62,25 @@ message GetNotifTemplatesResponse {
 
 message NotifTemplate {
     required int32 Type = 1;
-    required string Title = 2;
-    required string Body = 3;
+    required string Lang = 2;
+    required string Title = 3;
+    required string Body = 4;
+}
+
+message GetRiverVersionRequest {
+    required string Platform = 1;
+    required string Vendor = 2;
+    required string OSVersion = 3;
+}
+
+message GetRiverVersionResponse {
+    optional RiverVersion Version = 1;
 }
 
 message RiverVersion {
-    required string Platform = 1 [(gogoproto.jsontag) = "platform"];
-    required string Vendor = 2 [(gogoproto.jsontag) = "vendor"];
-    required string MinVersion = 3 [(gogoproto.jsontag) = "min_version"];
-    required string CurrentVersion = 4 [(gogoproto.jsontag) = "current_version"];
+    required string Platform = 1;
+    required string Vendor = 2;
+    required string OSVersion = 3;
+    required string MinVersion = 4;
+    required string CurrentVersion = 5;
 }

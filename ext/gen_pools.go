@@ -95,6 +95,12 @@ var (
 			return m
 		},
 	}
+	PoolMusicsUnFollow = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsUnFollow)
+			return m
+		},
+	}
 	PoolInputFileLocation = sync.Pool{
 		New: func() interface{} {
 			m := new(InputFileLocation)
@@ -308,6 +314,18 @@ var (
 	PoolAppUpdate = sync.Pool{
 		New: func() interface{} {
 			m := new(AppUpdate)
+			return m
+		},
+	}
+	PoolMusicsAdd = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsAdd)
+			return m
+		},
+	}
+	PoolMusicsGet = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsGet)
 			return m
 		},
 	}
@@ -1061,6 +1079,18 @@ var (
 			return m
 		},
 	}
+	PoolMusicsFollow = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsFollow)
+			return m
+		},
+	}
+	PoolMusicsRemove = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsRemove)
+			return m
+		},
+	}
 	PoolPrivacyRule = sync.Pool{
 		New: func() interface{} {
 			m := new(PrivacyRule)
@@ -1082,6 +1112,12 @@ var (
 	PoolGroupPhoto = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupPhoto)
+			return m
+		},
+	}
+	PoolMusicsSetStatus = sync.Pool{
+		New: func() interface{} {
+			m := new(MusicsSetStatus)
 			return m
 		},
 	}

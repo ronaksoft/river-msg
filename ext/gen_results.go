@@ -94,6 +94,12 @@ func ResultDocumentAttributeAudio(out *MessageEnvelope, res *DocumentAttributeAu
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMusicsUnFollow(out *MessageEnvelope, res *MusicsUnFollow) {
+	out.Constructor = C_MusicsUnFollow
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInputFileLocation(out *MessageEnvelope, res *InputFileLocation) {
 	out.Constructor = C_InputFileLocation
 	pbytes.Put(out.Message)
@@ -306,6 +312,18 @@ func ResultClientSendMessageMedia(out *MessageEnvelope, res *ClientSendMessageMe
 }
 func ResultAppUpdate(out *MessageEnvelope, res *AppUpdate) {
 	out.Constructor = C_AppUpdate
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMusicsAdd(out *MessageEnvelope, res *MusicsAdd) {
+	out.Constructor = C_MusicsAdd
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMusicsGet(out *MessageEnvelope, res *MusicsGet) {
+	out.Constructor = C_MusicsGet
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1060,6 +1078,18 @@ func ResultContactsMany(out *MessageEnvelope, res *ContactsMany) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMusicsFollow(out *MessageEnvelope, res *MusicsFollow) {
+	out.Constructor = C_MusicsFollow
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMusicsRemove(out *MessageEnvelope, res *MusicsRemove) {
+	out.Constructor = C_MusicsRemove
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultPrivacyRule(out *MessageEnvelope, res *PrivacyRule) {
 	out.Constructor = C_PrivacyRule
 	pbytes.Put(out.Message)
@@ -1080,6 +1110,12 @@ func ResultAuthSendCode(out *MessageEnvelope, res *AuthSendCode) {
 }
 func ResultGroupPhoto(out *MessageEnvelope, res *GroupPhoto) {
 	out.Constructor = C_GroupPhoto
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMusicsSetStatus(out *MessageEnvelope, res *MusicsSetStatus) {
+	out.Constructor = C_MusicsSetStatus
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

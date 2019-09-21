@@ -16,6 +16,7 @@ const (
 	C_AccountAuthorization               int64 = 275571966
 	C_UpdateUserPhoto                    int64 = 302028082
 	C_DocumentAttributeAudio             int64 = 309707708
+	C_MusicsUnFollow                     int64 = 327524575
 	C_InputFileLocation                  int64 = 354669666
 	C_UpdateGroupPhoto                   int64 = 367193154
 	C_GroupsAddUser                      int64 = 394654713
@@ -52,6 +53,8 @@ const (
 	C_AccountAuthorizations              int64 = 1092320500
 	C_ClientSendMessageMedia             int64 = 1095038539
 	C_AppUpdate                          int64 = 1100207036
+	C_MusicsAdd                          int64 = 1108415956
+	C_MusicsGet                          int64 = 1110460483
 	C_Dialog                             int64 = 1120787796
 	C_AuthAuthorization                  int64 = 1140037965
 	C_AuthRecall                         int64 = 1172029049
@@ -177,10 +180,13 @@ const (
 	C_InputUser                          int64 = 3865689926
 	C_InputFile                          int64 = 3882180383
 	C_ContactsMany                       int64 = 3883395672
+	C_MusicsFollow                       int64 = 3932949167
+	C_MusicsRemove                       int64 = 3940045807
 	C_PrivacyRule                        int64 = 3954700912
 	C_AccountUnregisterDevice            int64 = 3981251588
 	C_AuthSendCode                       int64 = 3984043365
 	C_GroupPhoto                         int64 = 3998516135
+	C_MusicsSetStatus                    int64 = 4026186002
 	C_GroupParticipant                   int64 = 4072279665
 	C_InputDocument                      int64 = 4081048424
 	C_Bool                               int64 = 4122188204
@@ -209,6 +215,7 @@ var ConstructorNames = map[int64]string{
 	275571966:  "AccountAuthorization",
 	302028082:  "UpdateUserPhoto",
 	309707708:  "DocumentAttributeAudio",
+	327524575:  "MusicsUnFollow",
 	354669666:  "InputFileLocation",
 	367193154:  "UpdateGroupPhoto",
 	394654713:  "GroupsAddUser",
@@ -245,6 +252,8 @@ var ConstructorNames = map[int64]string{
 	1092320500: "AccountAuthorizations",
 	1095038539: "ClientSendMessageMedia",
 	1100207036: "AppUpdate",
+	1108415956: "MusicsAdd",
+	1110460483: "MusicsGet",
 	1120787796: "Dialog",
 	1140037965: "AuthAuthorization",
 	1172029049: "AuthRecall",
@@ -370,10 +379,13 @@ var ConstructorNames = map[int64]string{
 	3865689926: "InputUser",
 	3882180383: "InputFile",
 	3883395672: "ContactsMany",
+	3932949167: "MusicsFollow",
+	3940045807: "MusicsRemove",
 	3954700912: "PrivacyRule",
 	3981251588: "AccountUnregisterDevice",
 	3984043365: "AuthSendCode",
 	3998516135: "GroupPhoto",
+	4026186002: "MusicsSetStatus",
 	4072279665: "GroupParticipant",
 	4081048424: "InputDocument",
 	4122188204: "Bool",

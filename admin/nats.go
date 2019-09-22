@@ -26,6 +26,6 @@ const (
 
 	NewRiverVersionSubj = "new.river.vers"
 
-	GetRiverVersionsSubj = "get.river.vers"
+	GetRiverVersionsSubj  = "get.river.vers"
 	GetRiverVersionsGroup = "get.river.vers"
 )

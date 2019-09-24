@@ -306,7 +306,6 @@ message Group {
     optional int64 EditedOn = 5;
     repeated GroupFlags Flags = 6;
     optional GroupPhoto Photo = 7;
-
 }
 
 // GroupFull
@@ -315,6 +314,7 @@ message GroupFull {
     repeated User Users = 2;
     repeated GroupParticipant Participants = 3;
     required PeerNotifySettings NotifySettings = 4;
+    repeated GroupPhoto PhotoGallery = 5;
 }
 
 // ParticipantType

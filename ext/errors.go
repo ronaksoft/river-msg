@@ -84,4 +84,5 @@ const (
 	ErrItemAppUpdate        = "APP_UPDATE"
 	ErrItemBindUser         = "BIND_USER"
 	ErrItemActiveConnection = "ACTIVE_CONN"
+	ErrItemInputFile	= "INPUT_FILE"
 )

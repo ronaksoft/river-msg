@@ -295,6 +295,7 @@ enum GroupFlags {
 message GroupPhoto {
     required FileLocation PhotoBig = 1;
     required FileLocation PhotoSmall = 2;
+    optional int64 PhotoID = 3;
 }
 
 // Group

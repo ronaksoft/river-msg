@@ -222,6 +222,7 @@ message DraftMessage {
     required string Body = 5;
     repeated MessageEntity Entities = 6;
     required int64 ReplyTo = 7;
+    optional int64 EditedID = 8;
 }
 
 // MessageEntityType

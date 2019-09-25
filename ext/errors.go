@@ -85,5 +85,5 @@ const (
 	ErrItemBindUser         = "BIND_USER"
 	ErrItemActiveConnection = "ACTIVE_CONN"
 	ErrItemInputFile        = "INPUT_FILE"
-	ErrPhotoID				= "PHOTO_ID"
+	ErrItemPhotoID          = "PHOTO_ID"
 )

@@ -73,7 +73,7 @@ message AccountUploadPhoto {
 // @Function
 // @Return: Bool
 message AccountUpdatePhoto {
-    required InputDocument Photo = 1;
+    required int64 PhotoID = 1 [jstype = JS_STRING];
 }
 
 // AccountRemotePhoto

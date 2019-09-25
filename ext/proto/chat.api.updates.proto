@@ -116,6 +116,7 @@ message UpdateUserPhoto {
     required int64 UpdateID = 101;
     required int64 UserID = 1 [jstype = JS_STRING];
     optional UserPhoto Photo = 2;
+    optional int64 PhotoID = 3 [jstype = JS_STRING];
 }
 
 // UpdateNotifySettings
@@ -168,6 +169,7 @@ message UpdateGroupPhoto {
     required int64 UpdateID = 101;
     required int64 GroupID = 1 [jstype = JS_STRING];
     optional GroupPhoto Photo = 2;
+    optional int64 PhotoID = 3 [jstype = JS_STRING];
 }
 
 // UpdateReadMessagesContents

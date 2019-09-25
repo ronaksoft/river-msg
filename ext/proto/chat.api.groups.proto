@@ -75,7 +75,9 @@ message GroupsRemovePhoto {
     optional int64 PhotoID = 2 [jstype = JS_STRING];
 }
 
-
-message GroupUpdatePhoto {
+// GroupsUpdatePhoto
+// @Function
+// @Return: Bool
+message GroupsUpdatePhoto {
     required int64 PhotoID = 1 [jstype = JS_STRING];
 }

@@ -105,7 +105,6 @@ const (
 	C_UpdateDraftMessageCleared          int64 = 2011635602
 	C_AccountSetLang                     int64 = 2015777242
 	C_AccountSetNotifySettings           int64 = 2016882075
-	C_GroupUpdatePhoto                   int64 = 2031806968
 	C_AccountGetAuthorizations           int64 = 2112646192
 	C_UpdateMessageID                    int64 = 2139063022
 	C_MessagesGet                        int64 = 2151382317
@@ -165,6 +164,7 @@ const (
 	C_InputPeer                          int64 = 3374092470
 	C_MessagesGetHistory                 int64 = 3396939832
 	C_UpdateNewMessage                   int64 = 3426925183
+	C_GroupsUpdatePhoto                  int64 = 3431184397
 	C_UpdateDraftMessage                 int64 = 3453026195
 	C_ContactsImport                     int64 = 3473528730
 	C_PeerNotifySettings                 int64 = 3475030132
@@ -305,7 +305,6 @@ var ConstructorNames = map[int64]string{
 	2011635602: "UpdateDraftMessageCleared",
 	2015777242: "AccountSetLang",
 	2016882075: "AccountSetNotifySettings",
-	2031806968: "GroupUpdatePhoto",
 	2112646192: "AccountGetAuthorizations",
 	2139063022: "UpdateMessageID",
 	2151382317: "MessagesGet",
@@ -365,6 +364,7 @@ var ConstructorNames = map[int64]string{
 	3374092470: "InputPeer",
 	3396939832: "MessagesGetHistory",
 	3426925183: "UpdateNewMessage",
+	3431184397: "GroupsUpdatePhoto",
 	3453026195: "UpdateDraftMessage",
 	3473528730: "ContactsImport",
 	3475030132: "PeerNotifySettings",

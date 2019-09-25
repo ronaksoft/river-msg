@@ -628,12 +628,6 @@ func ResultAccountSetNotifySettings(out *MessageEnvelope, res *AccountSetNotifyS
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultGroupUpdatePhoto(out *MessageEnvelope, res *GroupUpdatePhoto) {
-	out.Constructor = C_GroupUpdatePhoto
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
 func ResultAccountGetAuthorizations(out *MessageEnvelope, res *AccountGetAuthorizations) {
 	out.Constructor = C_AccountGetAuthorizations
 	pbytes.Put(out.Message)
@@ -984,6 +978,12 @@ func ResultMessagesGetHistory(out *MessageEnvelope, res *MessagesGetHistory) {
 }
 func ResultUpdateNewMessage(out *MessageEnvelope, res *UpdateNewMessage) {
 	out.Constructor = C_UpdateNewMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultGroupsUpdatePhoto(out *MessageEnvelope, res *GroupsUpdatePhoto) {
+	out.Constructor = C_GroupsUpdatePhoto
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

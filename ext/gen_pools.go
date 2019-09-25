@@ -629,6 +629,12 @@ var (
 			return m
 		},
 	}
+	PoolGroupUpdatePhoto = sync.Pool{
+		New: func() interface{} {
+			m := new(GroupUpdatePhoto)
+			return m
+		},
+	}
 	PoolAccountGetAuthorizations = sync.Pool{
 		New: func() interface{} {
 			m := new(AccountGetAuthorizations)

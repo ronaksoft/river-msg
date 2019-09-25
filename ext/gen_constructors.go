@@ -105,6 +105,7 @@ const (
 	C_UpdateDraftMessageCleared          int64 = 2011635602
 	C_AccountSetLang                     int64 = 2015777242
 	C_AccountSetNotifySettings           int64 = 2016882075
+	C_GroupUpdatePhoto                   int64 = 2031806968
 	C_AccountGetAuthorizations           int64 = 2112646192
 	C_UpdateMessageID                    int64 = 2139063022
 	C_MessagesGet                        int64 = 2151382317
@@ -304,6 +305,7 @@ var ConstructorNames = map[int64]string{
 	2011635602: "UpdateDraftMessageCleared",
 	2015777242: "AccountSetLang",
 	2016882075: "AccountSetNotifySettings",
+	2031806968: "GroupUpdatePhoto",
 	2112646192: "AccountGetAuthorizations",
 	2139063022: "UpdateMessageID",
 	2151382317: "MessagesGet",

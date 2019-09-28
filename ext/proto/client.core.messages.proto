@@ -38,6 +38,10 @@ message ClientSendMessageMedia {
     optional int64 ReplyTo = 9;
     optional bool ClearDraft = 10;
     repeated DocumentAttribute Attributes = 11;
+    optional string FileUploadID = 12;
+    optional string ThumbUploadID = 13;
+    optional int64 FileID = 14;
+    optional int64 ThumbID = 15;
 }
 
 // ClientSearchResult

@@ -52,6 +52,12 @@ func ResultUpdateUserTyping(out *MessageEnvelope, res *UpdateUserTyping) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultLabelsAddToMessage(out *MessageEnvelope, res *LabelsAddToMessage) {
+	out.Constructor = C_LabelsAddToMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInputMediaGeoLocation(out *MessageEnvelope, res *InputMediaGeoLocation) {
 	out.Constructor = C_InputMediaGeoLocation
 	pbytes.Put(out.Message)
@@ -178,6 +184,12 @@ func ResultUpdateGetDifference(out *MessageEnvelope, res *UpdateGetDifference) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultLabelsAddToDialog(out *MessageEnvelope, res *LabelsAddToDialog) {
+	out.Constructor = C_LabelsAddToDialog
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInitAuthCompleted(out *MessageEnvelope, res *InitAuthCompleted) {
 	out.Constructor = C_InitAuthCompleted
 	pbytes.Put(out.Message)
@@ -222,6 +234,12 @@ func ResultFile(out *MessageEnvelope, res *File) {
 }
 func ResultUser(out *MessageEnvelope, res *User) {
 	out.Constructor = C_User
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultUpdateLabelAdded(out *MessageEnvelope, res *UpdateLabelAdded) {
+	out.Constructor = C_UpdateLabelAdded
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -408,6 +426,12 @@ func ResultMessagesReorderPinnedDialogs(out *MessageEnvelope, res *MessagesReord
 }
 func ResultContactsGet(out *MessageEnvelope, res *ContactsGet) {
 	out.Constructor = C_ContactsGet
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultLabelsMany(out *MessageEnvelope, res *LabelsMany) {
+	out.Constructor = C_LabelsMany
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -670,6 +694,12 @@ func ResultProtoMessage(out *MessageEnvelope, res *ProtoMessage) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultLabelsSet(out *MessageEnvelope, res *LabelsSet) {
+	out.Constructor = C_LabelsSet
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInputMediaPhoto(out *MessageEnvelope, res *InputMediaPhoto) {
 	out.Constructor = C_InputMediaPhoto
 	pbytes.Put(out.Message)
@@ -708,6 +738,12 @@ func ResultInputMediaDocument(out *MessageEnvelope, res *InputMediaDocument) {
 }
 func ResultMediaDocument(out *MessageEnvelope, res *MediaDocument) {
 	out.Constructor = C_MediaDocument
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultUpdateLabelRemoved(out *MessageEnvelope, res *UpdateLabelRemoved) {
+	out.Constructor = C_UpdateLabelRemoved
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -766,6 +802,12 @@ func ResultMessagesEdit(out *MessageEnvelope, res *MessagesEdit) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultLabelsGet(out *MessageEnvelope, res *LabelsGet) {
+	out.Constructor = C_LabelsGet
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultGroupsEditTitle(out *MessageEnvelope, res *GroupsEditTitle) {
 	out.Constructor = C_GroupsEditTitle
 	pbytes.Put(out.Message)
@@ -792,6 +834,12 @@ func ResultGroupsUploadPhoto(out *MessageEnvelope, res *GroupsUploadPhoto) {
 }
 func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
 	out.Constructor = C_MediaGeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultLabelsRemoveFromDialog(out *MessageEnvelope, res *LabelsRemoveFromDialog) {
+	out.Constructor = C_LabelsRemoveFromDialog
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -976,6 +1024,12 @@ func ResultMessagesGetHistory(out *MessageEnvelope, res *MessagesGetHistory) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultLabelsDelete(out *MessageEnvelope, res *LabelsDelete) {
+	out.Constructor = C_LabelsDelete
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateNewMessage(out *MessageEnvelope, res *UpdateNewMessage) {
 	out.Constructor = C_UpdateNewMessage
 	pbytes.Put(out.Message)
@@ -1008,6 +1062,12 @@ func ResultPeerNotifySettings(out *MessageEnvelope, res *PeerNotifySettings) {
 }
 func ResultMessageEntity(out *MessageEnvelope, res *MessageEntity) {
 	out.Constructor = C_MessageEntity
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultLabel(out *MessageEnvelope, res *Label) {
+	out.Constructor = C_Label
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1164,6 +1224,12 @@ func ResultDocumentAttribute(out *MessageEnvelope, res *DocumentAttribute) {
 }
 func ResultInitConnect(out *MessageEnvelope, res *InitConnect) {
 	out.Constructor = C_InitConnect
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultLabelsRemoveFromMessage(out *MessageEnvelope, res *LabelsRemoveFromMessage) {
+	out.Constructor = C_LabelsRemoveFromMessage
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

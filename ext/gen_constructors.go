@@ -9,6 +9,7 @@ const (
 	C_ClientFile                         int64 = 155127968
 	C_GroupsRemovePhoto                  int64 = 176771682
 	C_UpdateUserTyping                   int64 = 178254060
+	C_LabelsAddToMessage                 int64 = 180144503
 	C_InputMediaGeoLocation              int64 = 185664060
 	C_MessageActionGroupPhotoChanged     int64 = 188265964
 	C_GroupFull                          int64 = 205850814
@@ -30,6 +31,7 @@ const (
 	C_MessageEnvelope                    int64 = 535232465
 	C_Document                           int64 = 555739168
 	C_UpdateGetDifference                int64 = 556775761
+	C_LabelsAddToDialog                  int64 = 572246739
 	C_InitAuthCompleted                  int64 = 627708982
 	C_UpdateAccountPrivacy               int64 = 629173761
 	C_UpdateContainer                    int64 = 661712615
@@ -38,6 +40,7 @@ const (
 	C_UpdateGroupAdmins                  int64 = 694155405
 	C_File                               int64 = 749574446
 	C_User                               int64 = 765557111
+	C_UpdateLabelAdded                   int64 = 797455885
 	C_UsersMany                          int64 = 801733941
 	C_InputMediaUploadedPhoto            int64 = 849930963
 	C_DraftMessage                       int64 = 869564229
@@ -69,6 +72,7 @@ const (
 	C_MessagesToggleDialogPin            int64 = 1352871220
 	C_MessagesReorderPinnedDialogs       int64 = 1409872986
 	C_ContactsGet                        int64 = 1412732665
+	C_LabelsMany                         int64 = 1423713603
 	C_MessagesGetDialogs                 int64 = 1429532372
 	C_UpdateGetState                     int64 = 1437250230
 	C_AccountUpdateUsername              int64 = 1477164344
@@ -112,6 +116,7 @@ const (
 	C_MessagesClearDraft                 int64 = 2164204563
 	C_ClientPendingMessage               int64 = 2164891929
 	C_ProtoMessage                       int64 = 2179260159
+	C_LabelsSet                          int64 = 2192484525
 	C_InputMediaPhoto                    int64 = 2201579839
 	C_DocumentAttributeFile              int64 = 2227452062
 	C_AuthRegister                       int64 = 2228369460
@@ -119,6 +124,7 @@ const (
 	C_MessageActionGroupCreated          int64 = 2241024808
 	C_InputMediaDocument                 int64 = 2258657627
 	C_MediaDocument                      int64 = 2281620705
+	C_UpdateLabelRemoved                 int64 = 2315078909
 	C_UpdateAuthorizationReset           int64 = 2359297647
 	C_InitCompleteAuthInternal           int64 = 2360982492
 	C_UpdateEnvelope                     int64 = 2373884514
@@ -128,11 +134,13 @@ const (
 	C_FileLocation                       int64 = 2432133155
 	C_UpdateGroupParticipantDeleted      int64 = 2489941844
 	C_MessagesEdit                       int64 = 2492658432
+	C_LabelsGet                          int64 = 2575409921
 	C_GroupsEditTitle                    int64 = 2582813461
 	C_AuthLogin                          int64 = 2587620888
 	C_Error                              int64 = 2619118453
 	C_GroupsUploadPhoto                  int64 = 2624284907
 	C_MediaGeoLocation                   int64 = 2625326500
+	C_LabelsRemoveFromDialog             int64 = 2632121923
 	C_DBMediaInfo                        int64 = 2652925823
 	C_MessagesForward                    int64 = 2662884753
 	C_ProtoEncryptedPayload              int64 = 2668405547
@@ -163,12 +171,14 @@ const (
 	C_UsersGetFull                       int64 = 3343342086
 	C_InputPeer                          int64 = 3374092470
 	C_MessagesGetHistory                 int64 = 3396939832
+	C_LabelsDelete                       int64 = 3401105936
 	C_UpdateNewMessage                   int64 = 3426925183
 	C_GroupsUpdatePhoto                  int64 = 3431184397
 	C_UpdateDraftMessage                 int64 = 3453026195
 	C_ContactsImport                     int64 = 3473528730
 	C_PeerNotifySettings                 int64 = 3475030132
 	C_MessageEntity                      int64 = 3479443932
+	C_Label                              int64 = 3479601132
 	C_MessagesDelete                     int64 = 3487616910
 	C_MediaSize                          int64 = 3543753456
 	C_AuthDestroyKey                     int64 = 3673422656
@@ -195,6 +205,7 @@ const (
 	C_AuthCheckPhone                     int64 = 4134648516
 	C_DocumentAttribute                  int64 = 4146719643
 	C_InitConnect                        int64 = 4150793517
+	C_LabelsRemoveFromMessage            int64 = 4195197703
 	C_FileGet                            int64 = 4282510672
 	C_AccountChangePhone                 int64 = 4285969474
 	C_UpdateUsername                     int64 = 4290110589
@@ -209,6 +220,7 @@ var ConstructorNames = map[int64]string{
 	155127968:  "ClientFile",
 	176771682:  "GroupsRemovePhoto",
 	178254060:  "UpdateUserTyping",
+	180144503:  "LabelsAddToMessage",
 	185664060:  "InputMediaGeoLocation",
 	188265964:  "MessageActionGroupPhotoChanged",
 	205850814:  "GroupFull",
@@ -230,6 +242,7 @@ var ConstructorNames = map[int64]string{
 	535232465:  "MessageEnvelope",
 	555739168:  "Document",
 	556775761:  "UpdateGetDifference",
+	572246739:  "LabelsAddToDialog",
 	627708982:  "InitAuthCompleted",
 	629173761:  "UpdateAccountPrivacy",
 	661712615:  "UpdateContainer",
@@ -238,6 +251,7 @@ var ConstructorNames = map[int64]string{
 	694155405:  "UpdateGroupAdmins",
 	749574446:  "File",
 	765557111:  "User",
+	797455885:  "UpdateLabelAdded",
 	801733941:  "UsersMany",
 	849930963:  "InputMediaUploadedPhoto",
 	869564229:  "DraftMessage",
@@ -269,6 +283,7 @@ var ConstructorNames = map[int64]string{
 	1352871220: "MessagesToggleDialogPin",
 	1409872986: "MessagesReorderPinnedDialogs",
 	1412732665: "ContactsGet",
+	1423713603: "LabelsMany",
 	1429532372: "MessagesGetDialogs",
 	1437250230: "UpdateGetState",
 	1477164344: "AccountUpdateUsername",
@@ -312,6 +327,7 @@ var ConstructorNames = map[int64]string{
 	2164204563: "MessagesClearDraft",
 	2164891929: "ClientPendingMessage",
 	2179260159: "ProtoMessage",
+	2192484525: "LabelsSet",
 	2201579839: "InputMediaPhoto",
 	2227452062: "DocumentAttributeFile",
 	2228369460: "AuthRegister",
@@ -319,6 +335,7 @@ var ConstructorNames = map[int64]string{
 	2241024808: "MessageActionGroupCreated",
 	2258657627: "InputMediaDocument",
 	2281620705: "MediaDocument",
+	2315078909: "UpdateLabelRemoved",
 	2359297647: "UpdateAuthorizationReset",
 	2360982492: "InitCompleteAuthInternal",
 	2373884514: "UpdateEnvelope",
@@ -328,11 +345,13 @@ var ConstructorNames = map[int64]string{
 	2432133155: "FileLocation",
 	2489941844: "UpdateGroupParticipantDeleted",
 	2492658432: "MessagesEdit",
+	2575409921: "LabelsGet",
 	2582813461: "GroupsEditTitle",
 	2587620888: "AuthLogin",
 	2619118453: "Error",
 	2624284907: "GroupsUploadPhoto",
 	2625326500: "MediaGeoLocation",
+	2632121923: "LabelsRemoveFromDialog",
 	2652925823: "DBMediaInfo",
 	2662884753: "MessagesForward",
 	2668405547: "ProtoEncryptedPayload",
@@ -363,12 +382,14 @@ var ConstructorNames = map[int64]string{
 	3343342086: "UsersGetFull",
 	3374092470: "InputPeer",
 	3396939832: "MessagesGetHistory",
+	3401105936: "LabelsDelete",
 	3426925183: "UpdateNewMessage",
 	3431184397: "GroupsUpdatePhoto",
 	3453026195: "UpdateDraftMessage",
 	3473528730: "ContactsImport",
 	3475030132: "PeerNotifySettings",
 	3479443932: "MessageEntity",
+	3479601132: "Label",
 	3487616910: "MessagesDelete",
 	3543753456: "MediaSize",
 	3673422656: "AuthDestroyKey",
@@ -395,6 +416,7 @@ var ConstructorNames = map[int64]string{
 	4134648516: "AuthCheckPhone",
 	4146719643: "DocumentAttribute",
 	4150793517: "InitConnect",
+	4195197703: "LabelsRemoveFromMessage",
 	4282510672: "FileGet",
 	4285969474: "AccountChangePhone",
 	4290110589: "UpdateUsername",

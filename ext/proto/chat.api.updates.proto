@@ -226,3 +226,23 @@ message UpdateAccountPrivacy {
     repeated PrivacyRule ForwardedMessage = 5;
     repeated PrivacyRule Call = 6;
 }
+
+// UpdateLabelAdded
+message UpdateLabelAdded {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int32 PeerType = 1;
+    required int64 PeerID = 2;
+    repeated int64 MessageIDs = 3;
+    repeated int32 LabelIDs = 4;
+}
+
+// UpdateLabelRemoved
+message UpdateLabelRemoved {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int32 PeerType = 1;
+    required int64 PeerID = 2;
+    repeated int64 MessageIDs = 3;
+    repeated int32 LabelIDs = 4;
+}

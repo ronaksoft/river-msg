@@ -53,6 +53,12 @@ var (
 			return m
 		},
 	}
+	PoolLabelsAddToMessage = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsAddToMessage)
+			return m
+		},
+	}
 	PoolInputMediaGeoLocation = sync.Pool{
 		New: func() interface{} {
 			m := new(InputMediaGeoLocation)
@@ -179,6 +185,12 @@ var (
 			return m
 		},
 	}
+	PoolLabelsAddToDialog = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsAddToDialog)
+			return m
+		},
+	}
 	PoolInitAuthCompleted = sync.Pool{
 		New: func() interface{} {
 			m := new(InitAuthCompleted)
@@ -224,6 +236,12 @@ var (
 	PoolUser = sync.Pool{
 		New: func() interface{} {
 			m := new(User)
+			return m
+		},
+	}
+	PoolUpdateLabelAdded = sync.Pool{
+		New: func() interface{} {
+			m := new(UpdateLabelAdded)
 			return m
 		},
 	}
@@ -410,6 +428,12 @@ var (
 	PoolContactsGet = sync.Pool{
 		New: func() interface{} {
 			m := new(ContactsGet)
+			return m
+		},
+	}
+	PoolLabelsMany = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsMany)
 			return m
 		},
 	}
@@ -671,6 +695,12 @@ var (
 			return m
 		},
 	}
+	PoolLabelsSet = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsSet)
+			return m
+		},
+	}
 	PoolInputMediaPhoto = sync.Pool{
 		New: func() interface{} {
 			m := new(InputMediaPhoto)
@@ -710,6 +740,12 @@ var (
 	PoolMediaDocument = sync.Pool{
 		New: func() interface{} {
 			m := new(MediaDocument)
+			return m
+		},
+	}
+	PoolUpdateLabelRemoved = sync.Pool{
+		New: func() interface{} {
+			m := new(UpdateLabelRemoved)
 			return m
 		},
 	}
@@ -767,6 +803,12 @@ var (
 			return m
 		},
 	}
+	PoolLabelsGet = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsGet)
+			return m
+		},
+	}
 	PoolGroupsEditTitle = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupsEditTitle)
@@ -794,6 +836,12 @@ var (
 	PoolMediaGeoLocation = sync.Pool{
 		New: func() interface{} {
 			m := new(MediaGeoLocation)
+			return m
+		},
+	}
+	PoolLabelsRemoveFromDialog = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsRemoveFromDialog)
 			return m
 		},
 	}
@@ -977,6 +1025,12 @@ var (
 			return m
 		},
 	}
+	PoolLabelsDelete = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsDelete)
+			return m
+		},
+	}
 	PoolUpdateNewMessage = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateNewMessage)
@@ -1010,6 +1064,12 @@ var (
 	PoolMessageEntity = sync.Pool{
 		New: func() interface{} {
 			m := new(MessageEntity)
+			return m
+		},
+	}
+	PoolLabel = sync.Pool{
+		New: func() interface{} {
+			m := new(Label)
 			return m
 		},
 	}
@@ -1166,6 +1226,12 @@ var (
 	PoolInitConnect = sync.Pool{
 		New: func() interface{} {
 			m := new(InitConnect)
+			return m
+		},
+	}
+	PoolLabelsRemoveFromMessage = sync.Pool{
+		New: func() interface{} {
+			m := new(LabelsRemoveFromMessage)
 			return m
 		},
 	}

@@ -42,6 +42,7 @@ message ClientSendMessageMedia {
     optional string ThumbUploadID = 13;
     optional int64 FileID = 14;
     optional int64 ThumbID = 15;
+    optional int32 FileTotalParts = 16;
 }
 
 // ClientSearchResult

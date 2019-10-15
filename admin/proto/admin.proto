@@ -28,6 +28,7 @@ message User {
     optional FileLocation PhotoSmall = 8 [(gogoproto.jsontag) = "photo_small,omitempty", (gogoproto.moretags) = "bson:\"photo_small\""];
     repeated string AuthIDs = 9 [(gogoproto.jsontag) = "auth_ids,omitempty", (gogoproto.moretags) = "bson:\"auth_ids\""];
     optional string CreatedOn = 10 [(gogoproto.jsontag) = "created_on,omitempty", (gogoproto.moretags) = "bson:\"created_on\""];
+    optional bool Disabled = 11 [(gogoproto.jsontag) = "disabled,omitempty", (gogoproto.moretags) = "bson:\"disabled\""];
 }
 
 message WelcomeMessage {

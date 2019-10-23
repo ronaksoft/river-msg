@@ -168,6 +168,7 @@ message User {
     optional string Phone = 10;
     optional int64 LastSeen = 11;
     repeated UserPhoto PhotoGallery = 12;
+    optional bool IsBot = 13;
 }
 
 // ContactUser

@@ -213,6 +213,7 @@ message UserMessage {
     repeated MessageEntity Entities = 18;
     optional MediaType MediaType = 19;
     optional bytes Media = 20;
+
 }
 
 // DraftMessage
@@ -234,6 +235,14 @@ enum MessageEntityType {
     MessageEntityTypeUrl = 3;
     MessageEntityTypeEmail = 4;
     MessageEntityTypeHashtag = 5;
+    MessageEntityTypeReserved1 = 6;
+    MessageEntityTypeReserved2 = 7;
+    MessageEntityTypeReserved3 = 8;
+    MessageEntityTypeReserved4 = 9;
+    MessageEntityTypeReserved5 = 10;
+    MessageEntityTypeReserved6 = 11;
+    MessageEntityTypeReserved7 = 12;
+    MessageEntityTypeReserved8 = 13;
 }
 
 // MessageEntity
@@ -359,7 +368,12 @@ enum PrivacyKey {
     PrivacyKeyProfilePhoto = 4;
     PrivacyKeyForwardedMessage = 5;
     PrivacyKeyCall = 6;
-
+    PrivacyKeyReserved1 = 7;
+    PrivacyKeyReserved2 = 8;
+    PrivacyKeyReserved3 = 9;
+    PrivacyKeyReserved4 = 10;
+    PrivacyKeyReserved5 = 11;
+    PrivacyKeyReserved6 = 12;
 }
 
 // AccountPrivacyValue

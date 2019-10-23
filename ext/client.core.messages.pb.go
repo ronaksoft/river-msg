@@ -10,6 +10,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -21,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // ClientFileType
 type ClientFileType int32
@@ -111,7 +112,7 @@ func (m *ClientPendingMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_ClientPendingMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -283,7 +284,7 @@ func (m *ClientSendMessageMedia) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return xxx_messageInfo_ClientSendMessageMedia.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -437,7 +438,7 @@ func (m *ClientSearchResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_ClientSearchResult.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -521,7 +522,7 @@ func (m *ClientFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_ClientFile.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -645,7 +646,7 @@ func (m *ClientFileStatus) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_ClientFileStatus.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -704,7 +705,7 @@ func (m *DBMediaInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_DBMediaInfo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -750,7 +751,7 @@ func (m *PeerMediaInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_PeerMediaInfo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -803,7 +804,7 @@ func (m *MediaSize) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_MediaSize.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -922,7 +923,7 @@ var fileDescriptor_7f24b167aa6ec46f = []byte{
 func (m *ClientPendingMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -930,93 +931,104 @@ func (m *ClientPendingMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientPendingMessage) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientPendingMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.RequestID))
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x29
-	i++
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i += 8
-	dAtA[i] = 0x30
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.CreatedOn))
-	dAtA[i] = 0x38
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x42
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Body)))
-	i += copy(dAtA[i:], m.Body)
-	dAtA[i] = 0x48
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.SenderID))
-	if len(m.Entities) > 0 {
-		for _, msg := range m.Entities {
-			dAtA[i] = 0x52
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	dAtA[i] = 0x58
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
-	if m.Media != nil {
-		dAtA[i] = 0x62
-		i++
-		i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Media)))
-		i += copy(dAtA[i:], m.Media)
-	}
-	dAtA[i] = 0x68
-	i++
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ThumbID))
+	i--
+	dAtA[i] = 0x1
+	i--
+	dAtA[i] = 0x88
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
+	i--
+	dAtA[i] = 0x1
+	i--
+	dAtA[i] = 0x80
+	i -= len(m.ThumbUploadID)
+	copy(dAtA[i:], m.ThumbUploadID)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbUploadID)))
+	i--
+	dAtA[i] = 0x7a
+	i -= len(m.FileUploadID)
+	copy(dAtA[i:], m.FileUploadID)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileUploadID)))
+	i--
+	dAtA[i] = 0x72
+	i--
 	if m.ClearDraft {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	dAtA[i] = 0x72
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileUploadID)))
-	i += copy(dAtA[i:], m.FileUploadID)
-	dAtA[i] = 0x7a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbUploadID)))
-	i += copy(dAtA[i:], m.ThumbUploadID)
-	dAtA[i] = 0x80
-	i++
-	dAtA[i] = 0x1
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
-	dAtA[i] = 0x88
-	i++
-	dAtA[i] = 0x1
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ThumbID))
-	return i, nil
+	i--
+	dAtA[i] = 0x68
+	if m.Media != nil {
+		i -= len(m.Media)
+		copy(dAtA[i:], m.Media)
+		i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Media)))
+		i--
+		dAtA[i] = 0x62
+	}
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
+	i--
+	dAtA[i] = 0x58
+	if len(m.Entities) > 0 {
+		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x52
+		}
+	}
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.SenderID))
+	i--
+	dAtA[i] = 0x48
+	i -= len(m.Body)
+	copy(dAtA[i:], m.Body)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Body)))
+	i--
+	dAtA[i] = 0x42
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x38
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.CreatedOn))
+	i--
+	dAtA[i] = 0x30
+	i -= 8
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i--
+	dAtA[i] = 0x29
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.RequestID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *ClientSendMessageMedia) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1024,98 +1036,115 @@ func (m *ClientSendMessageMedia) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientSendMessageMedia) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientSendMessageMedia) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Peer.Size()))
-		n1, err := m.Peer.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileTotalParts))
+	i--
+	dAtA[i] = 0x1
+	i--
+	dAtA[i] = 0x80
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ThumbID))
+	i--
+	dAtA[i] = 0x78
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
+	i--
+	dAtA[i] = 0x70
+	i -= len(m.ThumbUploadID)
+	copy(dAtA[i:], m.ThumbUploadID)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbUploadID)))
+	i--
+	dAtA[i] = 0x6a
+	i -= len(m.FileUploadID)
+	copy(dAtA[i:], m.FileUploadID)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileUploadID)))
+	i--
+	dAtA[i] = 0x62
+	if len(m.Attributes) > 0 {
+		for iNdEx := len(m.Attributes) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Attributes[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x5a
 		}
-		i += n1
 	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Caption)))
-	i += copy(dAtA[i:], m.Caption)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileName)))
-	i += copy(dAtA[i:], m.FileName)
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FilePath)))
-	i += copy(dAtA[i:], m.FilePath)
-	dAtA[i] = 0x32
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbFilePath)))
-	i += copy(dAtA[i:], m.ThumbFilePath)
-	dAtA[i] = 0x3a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileMIME)))
-	i += copy(dAtA[i:], m.FileMIME)
-	dAtA[i] = 0x42
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbMIME)))
-	i += copy(dAtA[i:], m.ThumbMIME)
-	dAtA[i] = 0x48
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x50
-	i++
+	i--
 	if m.ClearDraft {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	if len(m.Attributes) > 0 {
-		for _, msg := range m.Attributes {
-			dAtA[i] = 0x5a
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
+	i--
+	dAtA[i] = 0x50
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x48
+	i -= len(m.ThumbMIME)
+	copy(dAtA[i:], m.ThumbMIME)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbMIME)))
+	i--
+	dAtA[i] = 0x42
+	i -= len(m.FileMIME)
+	copy(dAtA[i:], m.FileMIME)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileMIME)))
+	i--
+	dAtA[i] = 0x3a
+	i -= len(m.ThumbFilePath)
+	copy(dAtA[i:], m.ThumbFilePath)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbFilePath)))
+	i--
+	dAtA[i] = 0x32
+	i -= len(m.FilePath)
+	copy(dAtA[i:], m.FilePath)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FilePath)))
+	i--
+	dAtA[i] = 0x2a
+	i -= len(m.FileName)
+	copy(dAtA[i:], m.FileName)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileName)))
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.Caption)
+	copy(dAtA[i:], m.Caption)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.Caption)))
+	i--
+	dAtA[i] = 0x1a
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
+	i--
+	dAtA[i] = 0x10
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
-			i += n
+			i -= size
+			i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
 		}
+		i--
+		dAtA[i] = 0xa
 	}
-	dAtA[i] = 0x62
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FileUploadID)))
-	i += copy(dAtA[i:], m.FileUploadID)
-	dAtA[i] = 0x6a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.ThumbUploadID)))
-	i += copy(dAtA[i:], m.ThumbUploadID)
-	dAtA[i] = 0x70
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
-	dAtA[i] = 0x78
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ThumbID))
-	dAtA[i] = 0x80
-	i++
-	dAtA[i] = 0x1
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileTotalParts))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *ClientSearchResult) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1123,77 +1152,92 @@ func (m *ClientSearchResult) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientSearchResult) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientSearchResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Messages) > 0 {
-		for _, msg := range m.Messages {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.MatchedGroups) > 0 {
+		for iNdEx := len(m.MatchedGroups) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.MatchedGroups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
 			}
-			i += n
-		}
-	}
-	if len(m.Users) > 0 {
-		for _, msg := range m.Users {
-			dAtA[i] = 0x12
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	if len(m.Groups) > 0 {
-		for _, msg := range m.Groups {
-			dAtA[i] = 0x1a
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
+			i--
+			dAtA[i] = 0x2a
 		}
 	}
 	if len(m.MatchedUsers) > 0 {
-		for _, msg := range m.MatchedUsers {
+		for iNdEx := len(m.MatchedUsers) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.MatchedUsers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
+			}
+			i--
 			dAtA[i] = 0x22
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
 		}
 	}
-	if len(m.MatchedGroups) > 0 {
-		for _, msg := range m.MatchedGroups {
-			dAtA[i] = 0x2a
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.Groups) > 0 {
+		for iNdEx := len(m.Groups) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Groups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0x1a
 		}
 	}
-	return i, nil
+	if len(m.Users) > 0 {
+		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	if len(m.Messages) > 0 {
+		for iNdEx := len(m.Messages) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Messages[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *ClientFile) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1201,54 +1245,60 @@ func (m *ClientFile) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientFile) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientFile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ClusterID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.AccessHash))
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Type))
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.MimeType)))
-	i += copy(dAtA[i:], m.MimeType)
-	dAtA[i] = 0x30
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.UserID))
-	dAtA[i] = 0x38
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.GroupID))
-	dAtA[i] = 0x40
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileSize))
-	dAtA[i] = 0x48
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MessageID))
-	dAtA[i] = 0x50
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
-	dAtA[i] = 0x58
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x60
-	i++
 	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Version))
-	return i, nil
+	i--
+	dAtA[i] = 0x60
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x58
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x50
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MessageID))
+	i--
+	dAtA[i] = 0x48
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileSize))
+	i--
+	dAtA[i] = 0x40
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.GroupID))
+	i--
+	dAtA[i] = 0x38
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.UserID))
+	i--
+	dAtA[i] = 0x30
+	i -= len(m.MimeType)
+	copy(dAtA[i:], m.MimeType)
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.MimeType)))
+	i--
+	dAtA[i] = 0x2a
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Type))
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.AccessHash))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.FileID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.ClusterID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *ClientFileStatus) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1256,27 +1306,33 @@ func (m *ClientFileStatus) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientFileStatus) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientFileStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Status))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Progress))
-	dAtA[i] = 0x1a
-	i++
+	i -= len(m.FilePath)
+	copy(dAtA[i:], m.FilePath)
 	i = encodeVarintClientCoreMessages(dAtA, i, uint64(len(m.FilePath)))
-	i += copy(dAtA[i:], m.FilePath)
-	return i, nil
+	i--
+	dAtA[i] = 0x1a
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Progress))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.Status))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *DBMediaInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1284,29 +1340,36 @@ func (m *DBMediaInfo) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *DBMediaInfo) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DBMediaInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.MediaInfo) > 0 {
-		for _, msg := range m.MediaInfo {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.MediaInfo) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.MediaInfo[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *PeerMediaInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1314,32 +1377,39 @@ func (m *PeerMediaInfo) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *PeerMediaInfo) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PeerMediaInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
 	if len(m.Media) > 0 {
-		for _, msg := range m.Media {
-			dAtA[i] = 0x12
-			i++
-			i = encodeVarintClientCoreMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.Media) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Media[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintClientCoreMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0x12
 		}
 	}
-	return i, nil
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MediaSize) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1347,27 +1417,34 @@ func (m *MediaSize) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MediaSize) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaSize) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
-	dAtA[i] = 0x10
-	i++
 	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.TotalSize))
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintClientCoreMessages(dAtA, i, uint64(m.MediaType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintClientCoreMessages(dAtA []byte, offset int, v uint64) int {
+	offset -= sovClientCoreMessages(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *ClientPendingMessage) Size() (n int) {
 	if m == nil {
@@ -1564,14 +1641,7 @@ func (m *MediaSize) Size() (n int) {
 }
 
 func sovClientCoreMessages(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozClientCoreMessages(x uint64) (n int) {
 	return sovClientCoreMessages(uint64((x << 1) ^ uint64((int64(x) >> 63))))

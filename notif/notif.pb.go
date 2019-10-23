@@ -9,8 +9,11 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type Notification struct {
 	Type      int32               `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
@@ -48,7 +51,7 @@ func (m *Notification) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_Notification.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -135,7 +138,7 @@ func (m *NotificationData) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_NotificationData.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -185,7 +188,7 @@ func (m *SendResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_SendResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -222,7 +225,7 @@ func (m *CancelRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_CancelRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -265,7 +268,7 @@ func (m *CancelResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_CancelResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -370,6 +373,17 @@ type NotificationServiceServer interface {
 	Cancel(context.Context, *CancelRequest) (*CancelResponse, error)
 }
 
+// UnimplementedNotificationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedNotificationServiceServer struct {
+}
+
+func (*UnimplementedNotificationServiceServer) Send(ctx context.Context, req *Notification) (*SendResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
+}
+func (*UnimplementedNotificationServiceServer) Cancel(ctx context.Context, req *CancelRequest) (*CancelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Cancel not implemented")
+}
+
 func RegisterNotificationServiceServer(s *grpc.Server, srv NotificationServiceServer) {
 	s.RegisterService(&_NotificationService_serviceDesc, srv)
 }
@@ -430,7 +444,7 @@ var _NotificationService_serviceDesc = grpc.ServiceDesc{
 func (m *Notification) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -438,71 +452,74 @@ func (m *Notification) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Notification) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *Notification) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Type != 0 {
-		dAtA[i] = 0x8
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(m.Type))
-	}
-	if len(m.Title) > 0 {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(len(m.Title)))
-		i += copy(dAtA[i:], m.Title)
-	}
-	if len(m.Body) > 0 {
-		dAtA[i] = 0x1a
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(len(m.Body)))
-		i += copy(dAtA[i:], m.Body)
-	}
-	if m.UserID != 0 {
-		dAtA[i] = 0x20
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(m.UserID))
-	}
-	if len(m.Data) > 0 {
-		for _, msg := range m.Data {
-			dAtA[i] = 0x2a
-			i++
-			i = encodeVarintNotif(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
+	if m.Timestamp != 0 {
+		i = encodeVarintNotif(dAtA, i, uint64(m.Timestamp))
+		i--
+		dAtA[i] = 0x38
 	}
 	if len(m.Tags) > 0 {
-		for _, s := range m.Tags {
+		for iNdEx := len(m.Tags) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.Tags[iNdEx])
+			copy(dAtA[i:], m.Tags[iNdEx])
+			i = encodeVarintNotif(dAtA, i, uint64(len(m.Tags[iNdEx])))
+			i--
 			dAtA[i] = 0x32
-			i++
-			l = len(s)
-			for l >= 1<<7 {
-				dAtA[i] = uint8(uint64(l)&0x7f | 0x80)
-				l >>= 7
-				i++
-			}
-			dAtA[i] = uint8(l)
-			i++
-			i += copy(dAtA[i:], s)
 		}
 	}
-	if m.Timestamp != 0 {
-		dAtA[i] = 0x38
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(m.Timestamp))
+	if len(m.Data) > 0 {
+		for iNdEx := len(m.Data) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Data[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintNotif(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x2a
+		}
 	}
-	return i, nil
+	if m.UserID != 0 {
+		i = encodeVarintNotif(dAtA, i, uint64(m.UserID))
+		i--
+		dAtA[i] = 0x20
+	}
+	if len(m.Body) > 0 {
+		i -= len(m.Body)
+		copy(dAtA[i:], m.Body)
+		i = encodeVarintNotif(dAtA, i, uint64(len(m.Body)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Title) > 0 {
+		i -= len(m.Title)
+		copy(dAtA[i:], m.Title)
+		i = encodeVarintNotif(dAtA, i, uint64(len(m.Title)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Type != 0 {
+		i = encodeVarintNotif(dAtA, i, uint64(m.Type))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *NotificationData) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -510,29 +527,36 @@ func (m *NotificationData) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *NotificationData) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *NotificationData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Key) > 0 {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintNotif(dAtA, i, uint64(len(m.Key)))
-		i += copy(dAtA[i:], m.Key)
-	}
 	if len(m.Value) > 0 {
-		dAtA[i] = 0x12
-		i++
+		i -= len(m.Value)
+		copy(dAtA[i:], m.Value)
 		i = encodeVarintNotif(dAtA, i, uint64(len(m.Value)))
-		i += copy(dAtA[i:], m.Value)
+		i--
+		dAtA[i] = 0x12
 	}
-	return i, nil
+	if len(m.Key) > 0 {
+		i -= len(m.Key)
+		copy(dAtA[i:], m.Key)
+		i = encodeVarintNotif(dAtA, i, uint64(len(m.Key)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *SendResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -540,17 +564,22 @@ func (m *SendResponse) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SendResponse) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SendResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *CancelRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -558,32 +587,31 @@ func (m *CancelRequest) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *CancelRequest) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *CancelRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.Tags) > 0 {
-		for _, s := range m.Tags {
+		for iNdEx := len(m.Tags) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.Tags[iNdEx])
+			copy(dAtA[i:], m.Tags[iNdEx])
+			i = encodeVarintNotif(dAtA, i, uint64(len(m.Tags[iNdEx])))
+			i--
 			dAtA[i] = 0xa
-			i++
-			l = len(s)
-			for l >= 1<<7 {
-				dAtA[i] = uint8(uint64(l)&0x7f | 0x80)
-				l >>= 7
-				i++
-			}
-			dAtA[i] = uint8(l)
-			i++
-			i += copy(dAtA[i:], s)
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *CancelResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -591,21 +619,28 @@ func (m *CancelResponse) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *CancelResponse) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *CancelResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintNotif(dAtA []byte, offset int, v uint64) int {
+	offset -= sovNotif(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *Notification) Size() (n int) {
 	if m == nil {
@@ -696,14 +731,7 @@ func (m *CancelResponse) Size() (n int) {
 }
 
 func sovNotif(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozNotif(x uint64) (n int) {
 	return sovNotif(uint64((x << 1) ^ uint64((int64(x) >> 63))))

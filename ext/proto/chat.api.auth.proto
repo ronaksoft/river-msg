@@ -13,6 +13,14 @@ message AuthRegister {
     required string PhoneCodeHash = 5;
 }
 
+// AuthRegisterBot
+// @Function
+// @Return: AuthAuthorizationBot
+message AuthRegisterBot {
+    required string Name = 1;
+    required string Username = 2;
+}
+
 // AuthLogin
 // @Function
 // @Return: AuthAuthorization
@@ -93,6 +101,13 @@ message AuthRecalled {
 message AuthAuthorization {
     required fixed64 Expired = 1;
     required User User = 2;
+}
+
+// AuthAuthorizationBot
+message AuthAuthorizationBot {
+    required int64 AuthID = 1;
+    required bytes AuthKey = 2;
+    required Bot Bot = 3;  
 }
 
 // AuthCheckedPhone

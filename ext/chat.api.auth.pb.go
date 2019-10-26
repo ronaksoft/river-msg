@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // AuthRegister
 // @Function
@@ -49,7 +49,7 @@ func (m *AuthRegister) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_AuthRegister.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -103,6 +103,61 @@ func (m *AuthRegister) GetPhoneCodeHash() string {
 	return ""
 }
 
+// AuthRegisterBot
+// @Function
+// @Return: AuthAuthorizationBot
+type AuthRegisterBot struct {
+	Name     string `protobuf:"bytes,1,req,name=Name" json:"Name"`
+	Username string `protobuf:"bytes,2,req,name=Username" json:"Username"`
+}
+
+func (m *AuthRegisterBot) Reset()         { *m = AuthRegisterBot{} }
+func (m *AuthRegisterBot) String() string { return proto.CompactTextString(m) }
+func (*AuthRegisterBot) ProtoMessage()    {}
+func (*AuthRegisterBot) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{1}
+}
+func (m *AuthRegisterBot) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthRegisterBot) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthRegisterBot.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthRegisterBot) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthRegisterBot.Merge(m, src)
+}
+func (m *AuthRegisterBot) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthRegisterBot) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthRegisterBot.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthRegisterBot proto.InternalMessageInfo
+
+func (m *AuthRegisterBot) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AuthRegisterBot) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
 // AuthLogin
 // @Function
 // @Return: AuthAuthorization
@@ -116,7 +171,7 @@ func (m *AuthLogin) Reset()         { *m = AuthLogin{} }
 func (m *AuthLogin) String() string { return proto.CompactTextString(m) }
 func (*AuthLogin) ProtoMessage()    {}
 func (*AuthLogin) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{1}
+	return fileDescriptor_3b771a58039c158f, []int{2}
 }
 func (m *AuthLogin) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -126,7 +181,7 @@ func (m *AuthLogin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_AuthLogin.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -177,7 +232,7 @@ func (m *AuthLogout) Reset()         { *m = AuthLogout{} }
 func (m *AuthLogout) String() string { return proto.CompactTextString(m) }
 func (*AuthLogout) ProtoMessage()    {}
 func (*AuthLogout) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{2}
+	return fileDescriptor_3b771a58039c158f, []int{3}
 }
 func (m *AuthLogout) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -187,7 +242,7 @@ func (m *AuthLogout) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_AuthLogout.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -225,7 +280,7 @@ func (m *AuthLoginByToken) Reset()         { *m = AuthLoginByToken{} }
 func (m *AuthLoginByToken) String() string { return proto.CompactTextString(m) }
 func (*AuthLoginByToken) ProtoMessage()    {}
 func (*AuthLoginByToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{3}
+	return fileDescriptor_3b771a58039c158f, []int{4}
 }
 func (m *AuthLoginByToken) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -235,7 +290,7 @@ func (m *AuthLoginByToken) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_AuthLoginByToken.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -279,7 +334,7 @@ func (m *AuthCheckPhone) Reset()         { *m = AuthCheckPhone{} }
 func (m *AuthCheckPhone) String() string { return proto.CompactTextString(m) }
 func (*AuthCheckPhone) ProtoMessage()    {}
 func (*AuthCheckPhone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{4}
+	return fileDescriptor_3b771a58039c158f, []int{5}
 }
 func (m *AuthCheckPhone) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -289,7 +344,7 @@ func (m *AuthCheckPhone) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_AuthCheckPhone.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -327,7 +382,7 @@ func (m *AuthSendCode) Reset()         { *m = AuthSendCode{} }
 func (m *AuthSendCode) String() string { return proto.CompactTextString(m) }
 func (*AuthSendCode) ProtoMessage()    {}
 func (*AuthSendCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{5}
+	return fileDescriptor_3b771a58039c158f, []int{6}
 }
 func (m *AuthSendCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -337,7 +392,7 @@ func (m *AuthSendCode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_AuthSendCode.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -383,7 +438,7 @@ func (m *AuthResendCode) Reset()         { *m = AuthResendCode{} }
 func (m *AuthResendCode) String() string { return proto.CompactTextString(m) }
 func (*AuthResendCode) ProtoMessage()    {}
 func (*AuthResendCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{6}
+	return fileDescriptor_3b771a58039c158f, []int{7}
 }
 func (m *AuthResendCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -393,7 +448,7 @@ func (m *AuthResendCode) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_AuthResendCode.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -449,7 +504,7 @@ func (m *AuthRecall) Reset()         { *m = AuthRecall{} }
 func (m *AuthRecall) String() string { return proto.CompactTextString(m) }
 func (*AuthRecall) ProtoMessage()    {}
 func (*AuthRecall) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{7}
+	return fileDescriptor_3b771a58039c158f, []int{8}
 }
 func (m *AuthRecall) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -459,7 +514,7 @@ func (m *AuthRecall) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_AuthRecall.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -530,7 +585,7 @@ func (m *AuthDestroyKey) Reset()         { *m = AuthDestroyKey{} }
 func (m *AuthDestroyKey) String() string { return proto.CompactTextString(m) }
 func (*AuthDestroyKey) ProtoMessage()    {}
 func (*AuthDestroyKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{8}
+	return fileDescriptor_3b771a58039c158f, []int{9}
 }
 func (m *AuthDestroyKey) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -540,7 +595,7 @@ func (m *AuthDestroyKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_AuthDestroyKey.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -573,7 +628,7 @@ func (m *AuthRecalled) Reset()         { *m = AuthRecalled{} }
 func (m *AuthRecalled) String() string { return proto.CompactTextString(m) }
 func (*AuthRecalled) ProtoMessage()    {}
 func (*AuthRecalled) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{9}
+	return fileDescriptor_3b771a58039c158f, []int{10}
 }
 func (m *AuthRecalled) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -583,7 +638,7 @@ func (m *AuthRecalled) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_AuthRecalled.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -654,7 +709,7 @@ func (m *AuthAuthorization) Reset()         { *m = AuthAuthorization{} }
 func (m *AuthAuthorization) String() string { return proto.CompactTextString(m) }
 func (*AuthAuthorization) ProtoMessage()    {}
 func (*AuthAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{10}
+	return fileDescriptor_3b771a58039c158f, []int{11}
 }
 func (m *AuthAuthorization) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -664,7 +719,7 @@ func (m *AuthAuthorization) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_AuthAuthorization.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -697,6 +752,67 @@ func (m *AuthAuthorization) GetUser() *User {
 	return nil
 }
 
+// AuthAuthorizationBot
+type AuthAuthorizationBot struct {
+	AuthID  int64  `protobuf:"varint,1,req,name=AuthID" json:"AuthID"`
+	AuthKey []byte `protobuf:"bytes,2,req,name=AuthKey" json:"AuthKey"`
+	Bot     *Bot   `protobuf:"bytes,3,req,name=Bot" json:"Bot,omitempty"`
+}
+
+func (m *AuthAuthorizationBot) Reset()         { *m = AuthAuthorizationBot{} }
+func (m *AuthAuthorizationBot) String() string { return proto.CompactTextString(m) }
+func (*AuthAuthorizationBot) ProtoMessage()    {}
+func (*AuthAuthorizationBot) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{12}
+}
+func (m *AuthAuthorizationBot) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthAuthorizationBot) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthAuthorizationBot.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthAuthorizationBot) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthAuthorizationBot.Merge(m, src)
+}
+func (m *AuthAuthorizationBot) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthAuthorizationBot) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthAuthorizationBot.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthAuthorizationBot proto.InternalMessageInfo
+
+func (m *AuthAuthorizationBot) GetAuthID() int64 {
+	if m != nil {
+		return m.AuthID
+	}
+	return 0
+}
+
+func (m *AuthAuthorizationBot) GetAuthKey() []byte {
+	if m != nil {
+		return m.AuthKey
+	}
+	return nil
+}
+
+func (m *AuthAuthorizationBot) GetBot() *Bot {
+	if m != nil {
+		return m.Bot
+	}
+	return nil
+}
+
 // AuthCheckedPhone
 type AuthCheckedPhone struct {
 	Invited    bool `protobuf:"varint,1,req,name=Invited" json:"Invited"`
@@ -707,7 +823,7 @@ func (m *AuthCheckedPhone) Reset()         { *m = AuthCheckedPhone{} }
 func (m *AuthCheckedPhone) String() string { return proto.CompactTextString(m) }
 func (*AuthCheckedPhone) ProtoMessage()    {}
 func (*AuthCheckedPhone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{11}
+	return fileDescriptor_3b771a58039c158f, []int{13}
 }
 func (m *AuthCheckedPhone) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -717,7 +833,7 @@ func (m *AuthCheckedPhone) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_AuthCheckedPhone.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -761,7 +877,7 @@ func (m *AuthSentCode) Reset()         { *m = AuthSentCode{} }
 func (m *AuthSentCode) String() string { return proto.CompactTextString(m) }
 func (*AuthSentCode) ProtoMessage()    {}
 func (*AuthSentCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{12}
+	return fileDescriptor_3b771a58039c158f, []int{14}
 }
 func (m *AuthSentCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -771,7 +887,7 @@ func (m *AuthSentCode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_AuthSentCode.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -813,6 +929,7 @@ func (m *AuthSentCode) GetSendToPhone() bool {
 
 func init() {
 	proto.RegisterType((*AuthRegister)(nil), "msg.AuthRegister")
+	proto.RegisterType((*AuthRegisterBot)(nil), "msg.AuthRegisterBot")
 	proto.RegisterType((*AuthLogin)(nil), "msg.AuthLogin")
 	proto.RegisterType((*AuthLogout)(nil), "msg.AuthLogout")
 	proto.RegisterType((*AuthLoginByToken)(nil), "msg.AuthLoginByToken")
@@ -823,6 +940,7 @@ func init() {
 	proto.RegisterType((*AuthDestroyKey)(nil), "msg.AuthDestroyKey")
 	proto.RegisterType((*AuthRecalled)(nil), "msg.AuthRecalled")
 	proto.RegisterType((*AuthAuthorization)(nil), "msg.AuthAuthorization")
+	proto.RegisterType((*AuthAuthorizationBot)(nil), "msg.AuthAuthorizationBot")
 	proto.RegisterType((*AuthCheckedPhone)(nil), "msg.AuthCheckedPhone")
 	proto.RegisterType((*AuthSentCode)(nil), "msg.AuthSentCode")
 }
@@ -830,53 +948,57 @@ func init() {
 func init() { proto.RegisterFile("chat.api.auth.proto", fileDescriptor_3b771a58039c158f) }
 
 var fileDescriptor_3b771a58039c158f = []byte{
-	// 627 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xdd, 0x6a, 0x13, 0x41,
-	0x14, 0xc7, 0xb3, 0xd9, 0x34, 0x4d, 0x4e, 0x6d, 0xa9, 0x2b, 0xc2, 0x52, 0xea, 0x1a, 0x06, 0x91,
-	0x52, 0x4a, 0x28, 0xbe, 0x41, 0x3e, 0x2c, 0x46, 0x8b, 0x96, 0xed, 0x07, 0xde, 0x8e, 0xd9, 0x63,
-	0xb2, 0x34, 0xbb, 0xb3, 0xcc, 0x4e, 0x6a, 0xe3, 0x85, 0xcf, 0xe0, 0x23, 0x79, 0xd9, 0xcb, 0x5e,
-	0x8a, 0x17, 0x22, 0x2d, 0xf8, 0x1c, 0x32, 0xb3, 0x3b, 0xd3, 0x89, 0xd6, 0x50, 0xc1, 0x8b, 0x40,
-	0xe6, 0x77, 0x0e, 0xff, 0x73, 0xfe, 0x67, 0xe6, 0x2c, 0x3c, 0x18, 0x8e, 0xa9, 0x68, 0xd3, 0x2c,
-	0x6e, 0xd3, 0xa9, 0x18, 0xb7, 0x33, 0xce, 0x04, 0xf3, 0xdc, 0x24, 0x1f, 0x6d, 0x3c, 0x54, 0x91,
-	0x21, 0xe3, 0xd8, 0x16, 0xb3, 0x0c, 0xf3, 0x22, 0x46, 0xbe, 0x38, 0x70, 0xaf, 0x33, 0x15, 0xe3,
-	0x10, 0x47, 0x71, 0x2e, 0x90, 0x7b, 0x1b, 0xb0, 0x74, 0x30, 0x66, 0x29, 0xfa, 0x4e, 0xab, 0xba,
-	0xd5, 0xec, 0xd6, 0x2e, 0xbe, 0x3f, 0xae, 0x84, 0x05, 0xf2, 0x08, 0x34, 0xf7, 0x62, 0x9e, 0x8b,
-	0xd7, 0x34, 0x41, 0xbf, 0x6a, 0xc5, 0x6f, 0xb0, 0xd7, 0x82, 0xc6, 0x3e, 0x2d, 0x53, 0x5c, 0x2b,
-	0xc5, 0x50, 0xa9, 0xa2, 0xe4, 0x7a, 0x2c, 0x42, 0xbf, 0x66, 0xab, 0x18, 0xec, 0x6d, 0xc3, 0xaa,
-	0x39, 0xbc, 0xa0, 0xf9, 0xd8, 0x5f, 0xb2, 0xf2, 0xe6, 0x43, 0xe4, 0x03, 0x34, 0xa5, 0x83, 0x7d,
-	0x36, 0x8a, 0xd3, 0x85, 0xed, 0xff, 0x21, 0x5a, 0xfd, 0xab, 0xe8, 0x7c, 0x93, 0xee, 0xad, 0x4d,
-	0x92, 0x6d, 0x80, 0xb2, 0x30, 0x9b, 0x0a, 0x6f, 0x13, 0x96, 0xe5, 0x69, 0xd0, 0xcf, 0x7d, 0xa7,
-	0xe5, 0x6e, 0xb9, 0xdd, 0xea, 0xae, 0x13, 0x6a, 0x44, 0x0e, 0x60, 0xdd, 0x34, 0xd9, 0x9d, 0x1d,
-	0xb1, 0x53, 0x54, 0xbd, 0xaa, 0x3f, 0xf3, 0xbd, 0x16, 0xb1, 0x16, 0x34, 0x0e, 0x38, 0x3b, 0x8b,
-	0x23, 0xe4, 0x73, 0x6d, 0x1a, 0x4a, 0x76, 0x60, 0x4d, 0x2a, 0xf6, 0xc6, 0x38, 0x3c, 0x2d, 0xfc,
-	0x2d, 0xf0, 0x4e, 0x5e, 0x16, 0xd7, 0x7c, 0x88, 0x69, 0xa4, 0x06, 0xbc, 0x68, 0x4e, 0x01, 0x2c,
-	0x77, 0xb2, 0xac, 0x9c, 0x90, 0x63, 0xa2, 0x1a, 0x92, 0xf3, 0xa2, 0x72, 0x88, 0xf9, 0x5d, 0xd4,
-	0xfe, 0x65, 0xea, 0x56, 0x65, 0xf7, 0xb6, 0xca, 0xdf, 0x9c, 0x62, 0xe4, 0x21, 0x0e, 0xe9, 0x64,
-	0xe2, 0x11, 0x68, 0xf4, 0x26, 0x31, 0xa6, 0x62, 0xd0, 0x57, 0x95, 0xdd, 0x6e, 0x5d, 0xe6, 0xef,
-	0x3a, 0xa1, 0xe1, 0x52, 0xf2, 0x04, 0x79, 0x1e, 0xb3, 0x54, 0x99, 0x59, 0xd5, 0x92, 0x25, 0xf4,
-	0x9e, 0x00, 0x74, 0xb2, 0x4c, 0xa7, 0xd8, 0x55, 0x2d, 0xae, 0xae, 0x63, 0x42, 0xc5, 0x7b, 0xc6,
-	0x13, 0xbf, 0x66, 0xe5, 0x18, 0xea, 0x6d, 0x42, 0xfd, 0x04, 0xd3, 0x88, 0x71, 0x7f, 0xc9, 0x8a,
-	0x97, 0x4c, 0x3e, 0xa7, 0x37, 0x87, 0xba, 0x48, 0xdd, 0x4a, 0xb8, 0xc1, 0x64, 0xbd, 0x18, 0x6b,
-	0x1f, 0x73, 0xc1, 0xd9, 0xec, 0x15, 0xce, 0xc8, 0x4f, 0xb3, 0x9c, 0xd2, 0x2e, 0x46, 0x77, 0x32,
-	0x4c, 0xa0, 0x79, 0x14, 0x27, 0x98, 0x0b, 0x9a, 0x64, 0x6a, 0xd6, 0xae, 0x2e, 0x65, 0xb0, 0xb4,
-	0x73, 0x9c, 0x45, 0x54, 0xe0, 0xa0, 0xaf, 0x2c, 0xeb, 0x14, 0x43, 0xa5, 0x4a, 0xe7, 0x8c, 0xc6,
-	0x13, 0xfa, 0x6e, 0x82, 0xca, 0x71, 0x43, 0xab, 0x18, 0x2c, 0x6f, 0x7d, 0x8f, 0xf1, 0x21, 0x2a,
-	0xc7, 0x3a, 0x5e, 0x20, 0x6f, 0x07, 0xd6, 0x7a, 0x53, 0xce, 0x31, 0x15, 0xb7, 0xb9, 0xfe, 0x2d,
-	0x46, 0x42, 0xb8, 0x2f, 0x7d, 0xca, 0x1f, 0xe3, 0xf1, 0x47, 0x2a, 0xe4, 0xcc, 0x03, 0x58, 0x7e,
-	0x7e, 0x9e, 0xc5, 0x1c, 0x23, 0xe5, 0xb5, 0xae, 0x6f, 0xae, 0x84, 0xde, 0x23, 0xa8, 0x1d, 0xe7,
-	0xe5, 0x7a, 0xac, 0x3c, 0x6b, 0xb6, 0x93, 0x7c, 0xd4, 0x96, 0x20, 0x54, 0x98, 0xbc, 0x2d, 0x36,
-	0x4e, 0xed, 0x07, 0x46, 0xe6, 0x65, 0x0f, 0xd2, 0xb3, 0x58, 0x94, 0x92, 0xba, 0x67, 0x0d, 0xe5,
-	0x63, 0xd0, 0x1f, 0x42, 0x8c, 0x94, 0xb0, 0x4e, 0xb1, 0x38, 0xf9, 0x64, 0x76, 0x49, 0xfc, 0xd7,
-	0xd7, 0xff, 0x14, 0x56, 0xe4, 0x7e, 0x1e, 0xb1, 0x42, 0xcd, 0xb5, 0xa6, 0x6a, 0x07, 0xba, 0xfe,
-	0xc5, 0x55, 0xe0, 0x5c, 0x5e, 0x05, 0xce, 0x8f, 0xab, 0xc0, 0xf9, 0x7c, 0x1d, 0x54, 0x2e, 0xaf,
-	0x83, 0xca, 0xd7, 0xeb, 0xa0, 0xf2, 0x2b, 0x00, 0x00, 0xff, 0xff, 0x41, 0x24, 0x7f, 0x1f, 0xff,
-	0x05, 0x00, 0x00,
+	// 703 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xcf, 0x6e, 0xd3, 0x4e,
+	0x10, 0xc7, 0xe3, 0x38, 0x4d, 0x93, 0xe9, 0x9f, 0x5f, 0x7f, 0x06, 0x24, 0xab, 0x2a, 0x26, 0x5a,
+	0x21, 0x54, 0x55, 0x55, 0x54, 0xf5, 0x0d, 0xe2, 0x84, 0x8a, 0xd0, 0x02, 0x95, 0x5b, 0x2a, 0xae,
+	0x26, 0x1e, 0x62, 0xab, 0x89, 0xd7, 0x5a, 0x6f, 0x4a, 0xc3, 0x81, 0x67, 0xe0, 0x91, 0x38, 0xf6,
+	0xd8, 0x23, 0xe2, 0x80, 0x50, 0x2b, 0xf1, 0x1c, 0x68, 0xd7, 0xde, 0xed, 0xa6, 0x2d, 0x55, 0x91,
+	0x38, 0x44, 0x8a, 0x3f, 0x33, 0xfa, 0xce, 0x7c, 0x67, 0x77, 0x16, 0x1e, 0x0c, 0xe2, 0x90, 0xb7,
+	0xc3, 0x2c, 0x69, 0x87, 0x13, 0x1e, 0xb7, 0x33, 0x46, 0x39, 0x75, 0xec, 0x71, 0x3e, 0x5c, 0x7d,
+	0x24, 0x23, 0x03, 0xca, 0xb0, 0xcd, 0xa7, 0x19, 0xe6, 0x45, 0x8c, 0x7c, 0xb5, 0x60, 0xb1, 0x33,
+	0xe1, 0x71, 0x80, 0xc3, 0x24, 0xe7, 0xc8, 0x9c, 0x55, 0x98, 0xdb, 0x8f, 0x69, 0x8a, 0xae, 0xd5,
+	0xaa, 0xae, 0x37, 0xfd, 0xda, 0xd9, 0x8f, 0x27, 0x95, 0xa0, 0x40, 0x0e, 0x81, 0xe6, 0x4e, 0xc2,
+	0x72, 0xfe, 0x3a, 0x1c, 0xa3, 0x5b, 0x35, 0xe2, 0x57, 0xd8, 0x69, 0x41, 0x63, 0x2f, 0x2c, 0x53,
+	0x6c, 0x23, 0x45, 0x53, 0xa1, 0x22, 0xe5, 0xba, 0x34, 0x42, 0xb7, 0x66, 0xaa, 0x68, 0xec, 0x6c,
+	0xc0, 0x92, 0xfe, 0x78, 0x11, 0xe6, 0xb1, 0x3b, 0x67, 0xe4, 0xcd, 0x86, 0xc8, 0x2b, 0xf8, 0xcf,
+	0x74, 0xe0, 0x53, 0xee, 0xb8, 0x50, 0x93, 0x0d, 0x98, 0x1e, 0x6a, 0xaa, 0xbd, 0xb7, 0x39, 0xb2,
+	0xf4, 0xba, 0x03, 0x4d, 0xc9, 0x47, 0x68, 0x0a, 0xb9, 0x3d, 0x3a, 0x4c, 0xd2, 0x3b, 0xa7, 0x71,
+	0xa3, 0xc7, 0xea, 0x1f, 0x7b, 0x9c, 0xf5, 0x6c, 0xdf, 0xea, 0x99, 0x6c, 0x00, 0x94, 0x85, 0xe9,
+	0x84, 0x3b, 0x6b, 0x30, 0x2f, 0xbe, 0xfa, 0xbd, 0xdc, 0xb5, 0x5a, 0xf6, 0xba, 0xed, 0x57, 0xb7,
+	0xac, 0x40, 0x21, 0xb2, 0x0f, 0x2b, 0xba, 0x49, 0x7f, 0x7a, 0x48, 0x8f, 0x51, 0xf6, 0x2a, 0xff,
+	0xcc, 0xf6, 0x5a, 0xc4, 0x5a, 0xd0, 0xd8, 0x67, 0xf4, 0x24, 0x89, 0x90, 0xcd, 0xda, 0x56, 0x94,
+	0x6c, 0xc2, 0xb2, 0x50, 0xec, 0xc6, 0x38, 0x38, 0x2e, 0xfc, 0xdd, 0xe1, 0x9d, 0xbc, 0x2c, 0x6e,
+	0xcd, 0x01, 0xa6, 0x91, 0x3c, 0xaf, 0xbb, 0xe6, 0xe4, 0xc1, 0x7c, 0x27, 0xcb, 0xca, 0x09, 0x59,
+	0x3a, 0xaa, 0x20, 0x39, 0x2d, 0x2a, 0x07, 0x98, 0xdf, 0x47, 0xed, 0x6f, 0xa6, 0x6e, 0x54, 0xb6,
+	0x6f, 0xab, 0xfc, 0xdd, 0x2a, 0x46, 0x1e, 0xe0, 0x20, 0x1c, 0x8d, 0x1c, 0x02, 0x8d, 0xee, 0x28,
+	0xc1, 0x94, 0xf7, 0x7b, 0xb2, 0xb2, 0xed, 0xd7, 0x45, 0xfe, 0x96, 0x15, 0x68, 0x2e, 0x24, 0x8f,
+	0x90, 0xe5, 0x09, 0x4d, 0xa5, 0x99, 0x25, 0x25, 0x59, 0x42, 0xe7, 0x29, 0x40, 0x27, 0xcb, 0x54,
+	0x8a, 0x59, 0xd5, 0xe0, 0xf2, 0x38, 0x46, 0x21, 0xff, 0x40, 0xd9, 0xd8, 0xad, 0x19, 0x39, 0x9a,
+	0x3a, 0x6b, 0x50, 0x3f, 0xc2, 0x34, 0xa2, 0xcc, 0x9d, 0x33, 0xe2, 0x25, 0x13, 0xd7, 0xe9, 0xcd,
+	0x81, 0x2a, 0x52, 0x37, 0x12, 0xae, 0x30, 0x59, 0x29, 0xc6, 0xda, 0xc3, 0x9c, 0x33, 0x3a, 0xdd,
+	0xc5, 0x29, 0xf9, 0xa5, 0x77, 0x5d, 0xd8, 0xc5, 0xe8, 0x5e, 0x86, 0x09, 0x34, 0x0f, 0x93, 0x31,
+	0xe6, 0x3c, 0x1c, 0x67, 0x72, 0xd6, 0xb6, 0x2a, 0xa5, 0xb1, 0x5c, 0xaa, 0x2c, 0x0a, 0x39, 0xf6,
+	0x7b, 0xd2, 0xb2, 0xad, 0x97, 0xaa, 0xa4, 0x42, 0xa5, 0x73, 0x12, 0x26, 0xa3, 0xf0, 0xfd, 0x08,
+	0xa5, 0xe3, 0x86, 0x52, 0xd1, 0x58, 0x9c, 0xfa, 0x0e, 0x65, 0x03, 0x94, 0x8e, 0x55, 0xbc, 0x40,
+	0xce, 0x26, 0x2c, 0x77, 0x27, 0x8c, 0x61, 0xca, 0x6f, 0x73, 0x7d, 0x2d, 0x46, 0x02, 0xf8, 0x5f,
+	0xf8, 0x14, 0x3f, 0xca, 0x92, 0x4f, 0x21, 0x17, 0x33, 0xf7, 0x60, 0xfe, 0xf9, 0x69, 0x96, 0x30,
+	0x8c, 0xa4, 0xd7, 0xba, 0x3a, 0xb9, 0x12, 0x3a, 0x8f, 0xa1, 0x26, 0xde, 0x00, 0xe9, 0x71, 0x61,
+	0xbb, 0xd9, 0x1e, 0xe7, 0xc3, 0xb6, 0x00, 0x81, 0xc4, 0x24, 0x83, 0x87, 0x37, 0x34, 0xc5, 0x53,
+	0xb3, 0x06, 0xf5, 0x62, 0x29, 0xcb, 0x09, 0x96, 0x07, 0x55, 0x30, 0x79, 0x03, 0x27, 0x3c, 0xde,
+	0xc5, 0xa9, 0xd4, 0x5d, 0xd4, 0x37, 0xb0, 0x80, 0xce, 0x2a, 0xd8, 0x3e, 0xe5, 0xf2, 0x45, 0x58,
+	0xd8, 0x6e, 0xc8, 0x9a, 0x3e, 0xe5, 0x81, 0x80, 0xe4, 0x5d, 0xb1, 0xe3, 0x72, 0x23, 0x31, 0xd2,
+	0xbb, 0xd4, 0x4f, 0x4f, 0x12, 0x5e, 0x9a, 0x50, 0x53, 0x52, 0x50, 0x5c, 0x3f, 0xf5, 0x0e, 0x62,
+	0x24, 0x4b, 0xaa, 0x14, 0x83, 0x93, 0xcf, 0x7a, 0x7b, 0xf9, 0x3f, 0xdd, 0xb7, 0x67, 0xb0, 0x20,
+	0x5e, 0x84, 0x43, 0x5a, 0xa8, 0xd9, 0xc6, 0x39, 0x9a, 0x01, 0xdf, 0x3d, 0xbb, 0xf0, 0xac, 0xf3,
+	0x0b, 0xcf, 0xfa, 0x79, 0xe1, 0x59, 0x5f, 0x2e, 0xbd, 0xca, 0xf9, 0xa5, 0x57, 0xf9, 0x76, 0xe9,
+	0x55, 0x7e, 0x07, 0x00, 0x00, 0xff, 0xff, 0xb1, 0x7b, 0x7d, 0x15, 0xc0, 0x06, 0x00, 0x00,
 }
 
 func (m *AuthRegister) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -884,47 +1006,63 @@ func (m *AuthRegister) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthRegister) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthRegister) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.PhoneCodeHash)
-	copy(dAtA[i:], m.PhoneCodeHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
-	i--
-	dAtA[i] = 0x2a
-	i -= len(m.PhoneCode)
-	copy(dAtA[i:], m.PhoneCode)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCode)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCode)))
+	i += copy(dAtA[i:], m.PhoneCode)
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
+	i += copy(dAtA[i:], m.PhoneCodeHash)
+	return i, nil
+}
+
+func (m *AuthRegisterBot) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthRegisterBot) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	dAtA[i] = 0xa
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Name)))
+	i += copy(dAtA[i:], m.Name)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	return i, nil
 }
 
 func (m *AuthLogin) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -932,37 +1070,29 @@ func (m *AuthLogin) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthLogin) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthLogin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.PhoneCode)
-	copy(dAtA[i:], m.PhoneCode)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCode)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.PhoneCodeHash)
-	copy(dAtA[i:], m.PhoneCodeHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
+	i += copy(dAtA[i:], m.PhoneCodeHash)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCode)))
+	i += copy(dAtA[i:], m.PhoneCode)
+	return i, nil
 }
 
 func (m *AuthLogout) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -970,29 +1100,24 @@ func (m *AuthLogout) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthLogout) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthLogout) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.AuthIDs) > 0 {
-		for iNdEx := len(m.AuthIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatApiAuth(dAtA, i, uint64(m.AuthIDs[iNdEx]))
-			i--
+		for _, num := range m.AuthIDs {
 			dAtA[i] = 0x8
+			i++
+			i = encodeVarintChatApiAuth(dAtA, i, uint64(num))
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *AuthLoginByToken) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1000,32 +1125,25 @@ func (m *AuthLoginByToken) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthLoginByToken) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthLoginByToken) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Provider)
-	copy(dAtA[i:], m.Provider)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Provider)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Token)
-	copy(dAtA[i:], m.Token)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Token)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Token)))
+	i += copy(dAtA[i:], m.Token)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Provider)))
+	i += copy(dAtA[i:], m.Provider)
+	return i, nil
 }
 
 func (m *AuthCheckPhone) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1033,27 +1151,21 @@ func (m *AuthCheckPhone) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthCheckPhone) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthCheckPhone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	return i, nil
 }
 
 func (m *AuthSendCode) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1061,32 +1173,25 @@ func (m *AuthSendCode) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthSendCode) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthSendCode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.AppHash)
-	copy(dAtA[i:], m.AppHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppHash)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppHash)))
+	i += copy(dAtA[i:], m.AppHash)
+	return i, nil
 }
 
 func (m *AuthResendCode) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1094,37 +1199,29 @@ func (m *AuthResendCode) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthResendCode) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthResendCode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.AppHash)
-	copy(dAtA[i:], m.AppHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppHash)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.PhoneCodeHash)
-	copy(dAtA[i:], m.PhoneCodeHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
+	i += copy(dAtA[i:], m.PhoneCodeHash)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppHash)))
+	i += copy(dAtA[i:], m.AppHash)
+	return i, nil
 }
 
 func (m *AuthRecall) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1132,48 +1229,39 @@ func (m *AuthRecall) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthRecall) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthRecall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.OSVersion)
-	copy(dAtA[i:], m.OSVersion)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.OSVersion)))
-	i--
-	dAtA[i] = 0x32
-	i -= len(m.Vendor)
-	copy(dAtA[i:], m.Vendor)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Vendor)))
-	i--
-	dAtA[i] = 0x2a
-	i -= len(m.Platform)
-	copy(dAtA[i:], m.Platform)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Platform)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.AppVersion)
-	copy(dAtA[i:], m.AppVersion)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppVersion)))
-	i--
-	dAtA[i] = 0x1a
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.Version))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.ClientID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.ClientID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.Version))
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AppVersion)))
+	i += copy(dAtA[i:], m.AppVersion)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Platform)))
+	i += copy(dAtA[i:], m.Platform)
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Vendor)))
+	i += copy(dAtA[i:], m.Vendor)
+	dAtA[i] = 0x32
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.OSVersion)))
+	i += copy(dAtA[i:], m.OSVersion)
+	return i, nil
 }
 
 func (m *AuthDestroyKey) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1181,22 +1269,17 @@ func (m *AuthDestroyKey) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthDestroyKey) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthDestroyKey) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *AuthRecalled) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1204,52 +1287,46 @@ func (m *AuthRecalled) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthRecalled) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthRecalled) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.CurrentVersion)
-	copy(dAtA[i:], m.CurrentVersion)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.CurrentVersion)))
-	i--
-	dAtA[i] = 0x32
-	i--
-	if m.Force {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x28
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.ClientID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.Timestamp))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.UpdateID))
+	dAtA[i] = 0x20
+	i++
 	if m.Available {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.UpdateID))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.Timestamp))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.ClientID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x28
+	i++
+	if m.Force {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	dAtA[i] = 0x32
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.CurrentVersion)))
+	i += copy(dAtA[i:], m.CurrentVersion)
+	return i, nil
 }
 
 func (m *AuthAuthorization) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1257,40 +1334,72 @@ func (m *AuthAuthorization) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthAuthorization) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthAuthorization) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x9
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Expired))
+	i += 8
 	if m.User == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
 	} else {
-		{
-			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiAuth(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiAuth(dAtA, i, uint64(m.User.Size()))
+		n1, err1 := m.User.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
 	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Expired))
-	i--
-	dAtA[i] = 0x9
-	return len(dAtA) - i, nil
+	return i, nil
+}
+
+func (m *AuthAuthorizationBot) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthAuthorizationBot) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(m.AuthID))
+	if m.AuthKey != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.AuthKey)))
+		i += copy(dAtA[i:], m.AuthKey)
+	}
+	if m.Bot == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Bot")
+	} else {
+		dAtA[i] = 0x1a
+		i++
+		i = encodeVarintChatApiAuth(dAtA, i, uint64(m.Bot.Size()))
+		n2, err2 := m.Bot.MarshalTo(dAtA[i:])
+		if err2 != nil {
+			return 0, err2
+		}
+		i += n2
+	}
+	return i, nil
 }
 
 func (m *AuthCheckedPhone) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1298,38 +1407,33 @@ func (m *AuthCheckedPhone) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthCheckedPhone) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthCheckedPhone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
-	if m.Registered {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x10
-	i--
+	dAtA[i] = 0x8
+	i++
 	if m.Invited {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x10
+	i++
+	if m.Registered {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	return i, nil
 }
 
 func (m *AuthSentCode) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1337,46 +1441,37 @@ func (m *AuthSentCode) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AuthSentCode) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *AuthSentCode) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0xa
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
+	i += copy(dAtA[i:], m.PhoneCodeHash)
+	dAtA[i] = 0x18
+	i++
 	if m.SendToPhone {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x18
-	i -= len(m.PhoneCodeHash)
-	copy(dAtA[i:], m.PhoneCodeHash)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.PhoneCodeHash)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func encodeVarintChatApiAuth(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiAuth(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *AuthRegister) Size() (n int) {
 	if m == nil {
@@ -1393,6 +1488,19 @@ func (m *AuthRegister) Size() (n int) {
 	l = len(m.PhoneCode)
 	n += 1 + l + sovChatApiAuth(uint64(l))
 	l = len(m.PhoneCodeHash)
+	n += 1 + l + sovChatApiAuth(uint64(l))
+	return n
+}
+
+func (m *AuthRegisterBot) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Name)
+	n += 1 + l + sovChatApiAuth(uint64(l))
+	l = len(m.Username)
 	n += 1 + l + sovChatApiAuth(uint64(l))
 	return n
 }
@@ -1531,6 +1639,24 @@ func (m *AuthAuthorization) Size() (n int) {
 	n += 9
 	if m.User != nil {
 		l = m.User.Size()
+		n += 1 + l + sovChatApiAuth(uint64(l))
+	}
+	return n
+}
+
+func (m *AuthAuthorizationBot) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatApiAuth(uint64(m.AuthID))
+	if m.AuthKey != nil {
+		l = len(m.AuthKey)
+		n += 1 + l + sovChatApiAuth(uint64(l))
+	}
+	if m.Bot != nil {
+		l = m.Bot.Size()
 		n += 1 + l + sovChatApiAuth(uint64(l))
 	}
 	return n
@@ -1794,6 +1920,132 @@ func (m *AuthRegister) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000010) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhoneCodeHash")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthRegisterBot) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthRegisterBot: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthRegisterBot: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Username", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Username = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Username")
 	}
 
 	if iNdEx > l {
@@ -3157,6 +3409,161 @@ func (m *AuthAuthorization) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthAuthorizationBot) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthAuthorizationBot: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthAuthorizationBot: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AuthID", wireType)
+			}
+			m.AuthID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.AuthID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AuthKey", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AuthKey = append(m.AuthKey[:0], dAtA[iNdEx:postIndex]...)
+			if m.AuthKey == nil {
+				m.AuthKey = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Bot", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Bot == nil {
+				m.Bot = &Bot{}
+			}
+			if err := m.Bot.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000004)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AuthID")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AuthKey")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Bot")
 	}
 
 	if iNdEx > l {

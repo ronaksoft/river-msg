@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 type ReplyKeyboardForceReply struct {
 	SingleUse bool `protobuf:"varint,1,opt,name=SingleUse" json:"SingleUse"`
@@ -43,7 +43,7 @@ func (m *ReplyKeyboardForceReply) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return xxx_messageInfo_ReplyKeyboardForceReply.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -97,7 +97,7 @@ func (m *ReplyKeyboardMarkup) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_ReplyKeyboardMarkup.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -161,7 +161,7 @@ func (m *ReplyInlineMarkup) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_ReplyInlineMarkup.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -198,7 +198,7 @@ func (m *KeyboardButtonRow) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_KeyboardButtonRow.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -243,7 +243,7 @@ func (m *KeyboardButtonEnvelope) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return xxx_messageInfo_KeyboardButtonEnvelope.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -294,7 +294,7 @@ func (m *Button) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Button.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -339,7 +339,7 @@ func (m *ButtonUrl) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_ButtonUrl.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -391,7 +391,7 @@ func (m *ButtonCallback) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_ButtonCallback.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -442,7 +442,7 @@ func (m *ButtonRequestPhone) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_ButtonRequestPhone.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -486,7 +486,7 @@ func (m *ButtonRequestGeoLocation) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_ButtonRequestGeoLocation.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -532,7 +532,7 @@ func (m *ButtonSwitchInline) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_ButtonSwitchInline.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -590,7 +590,7 @@ func (m *ButtonBuy) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_ButtonBuy.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -637,7 +637,7 @@ func (m *ButtonUrlAuth) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_ButtonUrlAuth.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -706,7 +706,7 @@ func (m *InputButtonUrlAuth) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_InputButtonUrlAuth.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -823,7 +823,7 @@ var fileDescriptor_1a11544e064fbd89 = []byte{
 func (m *ReplyKeyboardForceReply) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -831,38 +831,33 @@ func (m *ReplyKeyboardForceReply) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ReplyKeyboardForceReply) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ReplyKeyboardForceReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
-	if m.Selective {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x10
-	i--
+	dAtA[i] = 0x8
+	i++
 	if m.SingleUse {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x10
+	i++
+	if m.Selective {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	return i, nil
 }
 
 func (m *ReplyKeyboardMarkup) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -870,60 +865,53 @@ func (m *ReplyKeyboardMarkup) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ReplyKeyboardMarkup) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ReplyKeyboardMarkup) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.Rows) > 0 {
-		for iNdEx := len(m.Rows) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Rows[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x22
-		}
-	}
-	i--
-	if m.Resize {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x18
-	i--
-	if m.Selective {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x10
-	i--
+	dAtA[i] = 0x8
+	i++
 	if m.SingleUse {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x10
+	i++
+	if m.Selective {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	dAtA[i] = 0x18
+	i++
+	if m.Resize {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	if len(m.Rows) > 0 {
+		for _, msg := range m.Rows {
+			dAtA[i] = 0x22
+			i++
+			i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
 }
 
 func (m *ReplyInlineMarkup) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -931,22 +919,17 @@ func (m *ReplyInlineMarkup) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ReplyInlineMarkup) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ReplyInlineMarkup) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *KeyboardButtonRow) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -954,36 +937,29 @@ func (m *KeyboardButtonRow) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *KeyboardButtonRow) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *KeyboardButtonRow) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.Buttons) > 0 {
-		for iNdEx := len(m.Buttons) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Buttons[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.Buttons {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *KeyboardButtonEnvelope) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -991,32 +967,26 @@ func (m *KeyboardButtonEnvelope) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *KeyboardButtonEnvelope) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *KeyboardButtonEnvelope) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Data != nil {
-		i -= len(m.Data)
-		copy(dAtA[i:], m.Data)
-		i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Data)))
-		i--
-		dAtA[i] = 0x12
-	}
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(m.Constructor))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(m.Constructor))
+	if m.Data != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Data)))
+		i += copy(dAtA[i:], m.Data)
+	}
+	return i, nil
 }
 
 func (m *Button) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1024,27 +994,21 @@ func (m *Button) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Button) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Button) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	return i, nil
 }
 
 func (m *ButtonUrl) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1052,32 +1016,25 @@ func (m *ButtonUrl) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonUrl) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonUrl) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Url)
-	copy(dAtA[i:], m.Url)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
+	i += copy(dAtA[i:], m.Url)
+	return i, nil
 }
 
 func (m *ButtonCallback) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1085,34 +1042,27 @@ func (m *ButtonCallback) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonCallback) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonCallback) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Data != nil {
-		i -= len(m.Data)
-		copy(dAtA[i:], m.Data)
-		i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Data)))
-		i--
-		dAtA[i] = 0x12
-	}
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	if m.Data != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Data)))
+		i += copy(dAtA[i:], m.Data)
+	}
+	return i, nil
 }
 
 func (m *ButtonRequestPhone) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1120,27 +1070,21 @@ func (m *ButtonRequestPhone) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonRequestPhone) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonRequestPhone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	return i, nil
 }
 
 func (m *ButtonRequestGeoLocation) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1148,27 +1092,21 @@ func (m *ButtonRequestGeoLocation) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonRequestGeoLocation) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonRequestGeoLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	return i, nil
 }
 
 func (m *ButtonSwitchInline) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1176,40 +1114,33 @@ func (m *ButtonSwitchInline) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonSwitchInline) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonSwitchInline) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0xa
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Query)))
+	i += copy(dAtA[i:], m.Query)
+	dAtA[i] = 0x18
+	i++
 	if m.SamePeer {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x18
-	i -= len(m.Query)
-	copy(dAtA[i:], m.Query)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Query)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *ButtonBuy) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1217,27 +1148,21 @@ func (m *ButtonBuy) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonBuy) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonBuy) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	return i, nil
 }
 
 func (m *ButtonUrlAuth) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1245,40 +1170,32 @@ func (m *ButtonUrlAuth) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ButtonUrlAuth) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ButtonUrlAuth) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(m.ButtonID))
-	i--
-	dAtA[i] = 0x20
-	i -= len(m.Url)
-	copy(dAtA[i:], m.Url)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FwdText)
-	copy(dAtA[i:], m.FwdText)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.FwdText)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.FwdText)))
+	i += copy(dAtA[i:], m.FwdText)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
+	i += copy(dAtA[i:], m.Url)
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(m.ButtonID))
+	return i, nil
 }
 
 func (m *InputButtonUrlAuth) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1286,65 +1203,53 @@ func (m *InputButtonUrlAuth) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputButtonUrlAuth) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputButtonUrlAuth) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Bot == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Bot")
-	} else {
-		{
-			size, err := m.Bot.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x2a
-	}
-	i--
+	dAtA[i] = 0xa
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
+	i += copy(dAtA[i:], m.Text)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.FwdText)))
+	i += copy(dAtA[i:], m.FwdText)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
+	i += copy(dAtA[i:], m.Url)
+	dAtA[i] = 0x20
+	i++
 	if m.RequestWriteAccess {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x20
-	i -= len(m.Url)
-	copy(dAtA[i:], m.Url)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Url)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FwdText)
-	copy(dAtA[i:], m.FwdText)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.FwdText)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Text)
-	copy(dAtA[i:], m.Text)
-	i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(len(m.Text)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	if m.Bot == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Bot")
+	} else {
+		dAtA[i] = 0x2a
+		i++
+		i = encodeVarintChatCoreMessageMarkups(dAtA, i, uint64(m.Bot.Size()))
+		n1, err1 := m.Bot.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
+	}
+	return i, nil
 }
 
 func encodeVarintChatCoreMessageMarkups(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatCoreMessageMarkups(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *ReplyKeyboardForceReply) Size() (n int) {
 	if m == nil {

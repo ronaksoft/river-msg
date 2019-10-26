@@ -51,6 +51,7 @@ const (
 	C_SystemSalts                        int64 = 871116906
 	C_MessagesSaveDraft                  int64 = 921840607
 	C_AccountRegisterDevice              int64 = 946059841
+	C_Bot                                int64 = 961692401
 	C_AuthLogout                         int64 = 992431648
 	C_Button                             int64 = 1034594571
 	C_UsersGet                           int64 = 1039301579
@@ -87,6 +88,7 @@ const (
 	C_InputMediaContact                  int64 = 1534117184
 	C_MessagesSetTyping                  int64 = 1540214486
 	C_UpdateDialogPinnedReorder          int64 = 1567423539
+	C_AuthBotRegister                    int64 = 1579606687
 	C_GroupsToggleAdmins                 int64 = 1581076909
 	C_InitCompleteAuth                   int64 = 1583178320
 	C_AccountSetPrivacy                  int64 = 1599585002
@@ -180,6 +182,7 @@ const (
 	C_ReplyKeyboardMarkup                int64 = 3207405102
 	C_AuthRecalled                       int64 = 3249025459
 	C_MessagesDialogs                    int64 = 3252610224
+	C_AuthBotAuthorization               int64 = 3304560814
 	C_UsersGetFull                       int64 = 3343342086
 	C_InputPeer                          int64 = 3374092470
 	C_MessagesGetHistory                 int64 = 3396939832
@@ -276,6 +279,7 @@ var ConstructorNames = map[int64]string{
 	871116906:  "SystemSalts",
 	921840607:  "MessagesSaveDraft",
 	946059841:  "AccountRegisterDevice",
+	961692401:  "Bot",
 	992431648:  "AuthLogout",
 	1034594571: "Button",
 	1039301579: "UsersGet",
@@ -312,6 +316,7 @@ var ConstructorNames = map[int64]string{
 	1534117184: "InputMediaContact",
 	1540214486: "MessagesSetTyping",
 	1567423539: "UpdateDialogPinnedReorder",
+	1579606687: "AuthBotRegister",
 	1581076909: "GroupsToggleAdmins",
 	1583178320: "InitCompleteAuth",
 	1599585002: "AccountSetPrivacy",
@@ -405,6 +410,7 @@ var ConstructorNames = map[int64]string{
 	3207405102: "ReplyKeyboardMarkup",
 	3249025459: "AuthRecalled",
 	3252610224: "MessagesDialogs",
+	3304560814: "AuthBotAuthorization",
 	3343342086: "UsersGetFull",
 	3374092470: "InputPeer",
 	3396939832: "MessagesGetHistory",

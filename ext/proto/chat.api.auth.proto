@@ -13,10 +13,10 @@ message AuthRegister {
     required string PhoneCodeHash = 5;
 }
 
-// AuthRegisterBot
+// AuthBotRegister
 // @Function
-// @Return: AuthAuthorizationBot
-message AuthRegisterBot {
+// @Return: AuthBotAuthorization
+message AuthBotRegister {
     required string Name = 1;
     required string Username = 2;
 }
@@ -103,8 +103,8 @@ message AuthAuthorization {
     required User User = 2;
 }
 
-// AuthAuthorizationBot
-message AuthAuthorizationBot {
+// AuthBotAuthorization
+message AuthBotAuthorization {
     required int64 AuthID = 1;
     required bytes AuthKey = 2;
     required Bot Bot = 3;  

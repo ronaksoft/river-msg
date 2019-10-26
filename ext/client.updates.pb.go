@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // ClientPendingMessageDelivery
 type ClientUpdatePendingMessageDelivery struct {
@@ -44,7 +44,7 @@ func (m *ClientUpdatePendingMessageDelivery) XXX_Marshal(b []byte, deterministic
 		return xxx_messageInfo_ClientUpdatePendingMessageDelivery.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -105,7 +105,7 @@ func (m *ClientUpdateMessagesDeleted) XXX_Marshal(b []byte, deterministic bool) 
 		return xxx_messageInfo_ClientUpdateMessagesDeleted.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -177,7 +177,7 @@ var fileDescriptor_d74d661f89ff53cb = []byte{
 func (m *ClientUpdatePendingMessageDelivery) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -185,58 +185,49 @@ func (m *ClientUpdatePendingMessageDelivery) Marshal() (dAtA []byte, err error) 
 }
 
 func (m *ClientUpdatePendingMessageDelivery) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ClientUpdatePendingMessageDelivery) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	if m.Messages == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Messages")
+	} else {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintClientUpdates(dAtA, i, uint64(m.Messages.Size()))
+		n1, err1 := m.Messages.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
+	}
+	if m.PendingMessage == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PendingMessage")
+	} else {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintClientUpdates(dAtA, i, uint64(m.PendingMessage.Size()))
+		n2, err2 := m.PendingMessage.MarshalTo(dAtA[i:])
+		if err2 != nil {
+			return 0, err2
+		}
+		i += n2
+	}
+	dAtA[i] = 0x18
+	i++
 	if m.Success {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x18
-	if m.PendingMessage == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PendingMessage")
-	} else {
-		{
-			size, err := m.PendingMessage.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintClientUpdates(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.Messages == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Messages")
-	} else {
-		{
-			size, err := m.Messages.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintClientUpdates(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *ClientUpdateMessagesDeleted) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -244,41 +235,34 @@ func (m *ClientUpdateMessagesDeleted) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientUpdateMessagesDeleted) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ClientUpdateMessagesDeleted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerType))
 	if len(m.MessageIDs) > 0 {
-		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintClientUpdates(dAtA, i, uint64(m.MessageIDs[iNdEx]))
-			i--
+		for _, num := range m.MessageIDs {
 			dAtA[i] = 0x18
+			i++
+			i = encodeVarintClientUpdates(dAtA, i, uint64(num))
 		}
 	}
-	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerType))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintClientUpdates(dAtA []byte, offset int, v uint64) int {
-	offset -= sovClientUpdates(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *ClientUpdatePendingMessageDelivery) Size() (n int) {
 	if m == nil {

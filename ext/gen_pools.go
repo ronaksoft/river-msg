@@ -305,6 +305,12 @@ var (
 			return m
 		},
 	}
+	PoolBot = sync.Pool{
+		New: func() interface{} {
+			m := new(Bot)
+			return m
+		},
+	}
 	PoolAuthLogout = sync.Pool{
 		New: func() interface{} {
 			m := new(AuthLogout)
@@ -518,6 +524,12 @@ var (
 	PoolUpdateDialogPinnedReorder = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateDialogPinnedReorder)
+			return m
+		},
+	}
+	PoolAuthBotRegister = sync.Pool{
+		New: func() interface{} {
+			m := new(AuthBotRegister)
 			return m
 		},
 	}
@@ -1076,6 +1088,12 @@ var (
 	PoolMessagesDialogs = sync.Pool{
 		New: func() interface{} {
 			m := new(MessagesDialogs)
+			return m
+		},
+	}
+	PoolAuthBotAuthorization = sync.Pool{
+		New: func() interface{} {
+			m := new(AuthBotAuthorization)
 			return m
 		},
 	}

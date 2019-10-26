@@ -304,6 +304,12 @@ func ResultAccountRegisterDevice(out *MessageEnvelope, res *AccountRegisterDevic
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultBot(out *MessageEnvelope, res *Bot) {
+	out.Constructor = C_Bot
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAuthLogout(out *MessageEnvelope, res *AuthLogout) {
 	out.Constructor = C_AuthLogout
 	pbytes.Put(out.Message)
@@ -516,6 +522,12 @@ func ResultMessagesSetTyping(out *MessageEnvelope, res *MessagesSetTyping) {
 }
 func ResultUpdateDialogPinnedReorder(out *MessageEnvelope, res *UpdateDialogPinnedReorder) {
 	out.Constructor = C_UpdateDialogPinnedReorder
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultAuthBotRegister(out *MessageEnvelope, res *AuthBotRegister) {
+	out.Constructor = C_AuthBotRegister
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1074,6 +1086,12 @@ func ResultAuthRecalled(out *MessageEnvelope, res *AuthRecalled) {
 }
 func ResultMessagesDialogs(out *MessageEnvelope, res *MessagesDialogs) {
 	out.Constructor = C_MessagesDialogs
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultAuthBotAuthorization(out *MessageEnvelope, res *AuthBotAuthorization) {
+	out.Constructor = C_AuthBotAuthorization
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

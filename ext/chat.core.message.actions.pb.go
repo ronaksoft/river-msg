@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // MessageActionGroupAddUser
 type MessageActionGroupAddUser struct {
@@ -42,7 +42,7 @@ func (m *MessageActionGroupAddUser) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionGroupAddUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -87,7 +87,7 @@ func (m *MessageActionGroupDeleteUser) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_MessageActionGroupDeleteUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -133,7 +133,7 @@ func (m *MessageActionGroupCreated) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionGroupCreated.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -185,7 +185,7 @@ func (m *MessageActionGroupTitleChanged) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionGroupTitleChanged.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -229,7 +229,7 @@ func (m *MessageActionGroupPhotoChanged) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionGroupPhotoChanged.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -275,7 +275,7 @@ func (m *MessageActionClearHistory) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionClearHistory.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -326,7 +326,7 @@ func (m *MessageActionContactRegistered) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionContactRegistered.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -384,7 +384,7 @@ var fileDescriptor_e134edebab6f8250 = []byte{
 func (m *MessageActionGroupAddUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -392,29 +392,24 @@ func (m *MessageActionGroupAddUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupAddUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionGroupAddUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.UserIDs) > 0 {
-		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
-			i--
+		for _, num := range m.UserIDs {
 			dAtA[i] = 0x8
+			i++
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *MessageActionGroupDeleteUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -422,29 +417,24 @@ func (m *MessageActionGroupDeleteUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupDeleteUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionGroupDeleteUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.UserIDs) > 0 {
-		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
-			i--
+		for _, num := range m.UserIDs {
 			dAtA[i] = 0x8
+			i++
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *MessageActionGroupCreated) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -452,34 +442,28 @@ func (m *MessageActionGroupCreated) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupCreated) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionGroupCreated) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0xa
+	i++
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
+	i += copy(dAtA[i:], m.GroupTitle)
 	if len(m.UserIDs) > 0 {
-		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
-			i--
+		for _, num := range m.UserIDs {
 			dAtA[i] = 0x10
+			i++
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	i -= len(m.GroupTitle)
-	copy(dAtA[i:], m.GroupTitle)
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *MessageActionGroupTitleChanged) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -487,27 +471,21 @@ func (m *MessageActionGroupTitleChanged) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupTitleChanged) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionGroupTitleChanged) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.GroupTitle)
-	copy(dAtA[i:], m.GroupTitle)
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
+	i += copy(dAtA[i:], m.GroupTitle)
+	return i, nil
 }
 
 func (m *MessageActionGroupPhotoChanged) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -515,34 +493,27 @@ func (m *MessageActionGroupPhotoChanged) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupPhotoChanged) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionGroupPhotoChanged) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Photo != nil {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.Photo.Size()))
+		n1, err1 := m.Photo.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *MessageActionClearHistory) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -550,33 +521,28 @@ func (m *MessageActionClearHistory) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionClearHistory) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionClearHistory) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
+	dAtA[i] = 0x10
+	i++
 	if m.Delete {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *MessageActionContactRegistered) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -584,28 +550,21 @@ func (m *MessageActionContactRegistered) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionContactRegistered) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionContactRegistered) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintChatCoreMessageActions(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatCoreMessageActions(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *MessageActionGroupAddUser) Size() (n int) {
 	if m == nil {

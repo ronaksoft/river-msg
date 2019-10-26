@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // FileType
 type FileType int32
@@ -109,7 +109,7 @@ func (m *FileSavePart) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_FileSavePart.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -179,7 +179,7 @@ func (m *FileGet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_FileGet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -241,7 +241,7 @@ func (m *File) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_File.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -330,7 +330,7 @@ var fileDescriptor_05ced85bdf32a77a = []byte{
 func (m *FileSavePart) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -338,38 +338,32 @@ func (m *FileSavePart) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *FileSavePart) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *FileSavePart) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Bytes != nil {
-		i -= len(m.Bytes)
-		copy(dAtA[i:], m.Bytes)
-		i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.Bytes)))
-		i--
-		dAtA[i] = 0x22
-	}
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.TotalParts))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.PartID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.FileID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.FileID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.PartID))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.TotalParts))
+	if m.Bytes != nil {
+		dAtA[i] = 0x22
+		i++
+		i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.Bytes)))
+		i += copy(dAtA[i:], m.Bytes)
+	}
+	return i, nil
 }
 
 func (m *FileGet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -377,42 +371,35 @@ func (m *FileGet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *FileGet) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *FileGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Limit))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Offset))
-	i--
-	dAtA[i] = 0x10
 	if m.Location == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Location")
 	} else {
-		{
-			size, err := m.Location.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiFiles(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Location.Size()))
+		n1, err1 := m.Location.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
 	}
-	return len(dAtA) - i, nil
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Offset))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Limit))
+	return i, nil
 }
 
 func (m *File) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -420,46 +407,37 @@ func (m *File) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *File) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *File) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.MD5Hash)
-	copy(dAtA[i:], m.MD5Hash)
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.MD5Hash)))
-	i--
-	dAtA[i] = 0x2a
-	if m.Bytes != nil {
-		i -= len(m.Bytes)
-		copy(dAtA[i:], m.Bytes)
-		i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.Bytes)))
-		i--
-		dAtA[i] = 0x22
-	}
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.ModifiedTime))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Type))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.Type))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(m.ModifiedTime))
+	if m.Bytes != nil {
+		dAtA[i] = 0x22
+		i++
+		i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.Bytes)))
+		i += copy(dAtA[i:], m.Bytes)
+	}
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatApiFiles(dAtA, i, uint64(len(m.MD5Hash)))
+	i += copy(dAtA[i:], m.MD5Hash)
+	return i, nil
 }
 
 func encodeVarintChatApiFiles(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiFiles(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *FileSavePart) Size() (n int) {
 	if m == nil {

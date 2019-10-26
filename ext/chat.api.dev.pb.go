@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // EchoWithDelay
 type EchoWithDelay struct {
@@ -42,7 +42,7 @@ func (m *EchoWithDelay) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_EchoWithDelay.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -89,7 +89,7 @@ var fileDescriptor_d549237421a44291 = []byte{
 func (m *EchoWithDelay) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -97,31 +97,24 @@ func (m *EchoWithDelay) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *EchoWithDelay) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *EchoWithDelay) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiDev(dAtA, i, uint64(m.DelayInSeconds))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiDev(dAtA, i, uint64(m.DelayInSeconds))
+	return i, nil
 }
 
 func encodeVarintChatApiDev(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiDev(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *EchoWithDelay) Size() (n int) {
 	if m == nil {

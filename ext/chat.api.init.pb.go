@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 type InitAuthCompleted_Statuses int32
 
@@ -88,7 +88,7 @@ func (m *InitConnect) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_InitConnect.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -140,7 +140,7 @@ func (m *InitCompleteAuth) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_InitCompleteAuth.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -221,7 +221,7 @@ func (m *InitConnectTest) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_InitConnectTest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -260,7 +260,7 @@ func (m *InitTestAuth) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_InitTestAuth.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -317,7 +317,7 @@ func (m *InitResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_InitResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -397,7 +397,7 @@ func (m *InitCompleteAuthInternal) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_InitCompleteAuthInternal.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -446,7 +446,7 @@ func (m *InitAuthCompleted) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_InitAuthCompleted.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -525,7 +525,7 @@ func (m *InitBindUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_InitBindUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -598,7 +598,7 @@ func (m *InitUserBound) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_InitUserBound.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -682,7 +682,7 @@ var fileDescriptor_c1e8502c710d31a0 = []byte{
 func (m *InitConnect) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -690,26 +690,21 @@ func (m *InitConnect) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitConnect) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitConnect) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
-	i--
 	dAtA[i] = 0x9
-	return len(dAtA) - i, nil
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
+	i += 8
+	return i, nil
 }
 
 func (m *InitCompleteAuth) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -717,52 +712,45 @@ func (m *InitCompleteAuth) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitCompleteAuth) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitCompleteAuth) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.EncryptedPayload != nil {
-		i -= len(m.EncryptedPayload)
-		copy(dAtA[i:], m.EncryptedPayload)
-		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.EncryptedPayload)))
-		i--
-		dAtA[i] = 0x42
-	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Q))
-	i--
-	dAtA[i] = 0x39
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.P))
-	i--
-	dAtA[i] = 0x31
-	if m.ClientDHPubKey != nil {
-		i -= len(m.ClientDHPubKey)
-		copy(dAtA[i:], m.ClientDHPubKey)
-		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.ClientDHPubKey)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
-	i--
-	dAtA[i] = 0x11
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
-	i--
 	dAtA[i] = 0x9
-	return len(dAtA) - i, nil
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
+	i += 8
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
+	i += 8
+	if m.ClientDHPubKey != nil {
+		dAtA[i] = 0x2a
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.ClientDHPubKey)))
+		i += copy(dAtA[i:], m.ClientDHPubKey)
+	}
+	dAtA[i] = 0x31
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.P))
+	i += 8
+	dAtA[i] = 0x39
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Q))
+	i += 8
+	if m.EncryptedPayload != nil {
+		dAtA[i] = 0x42
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.EncryptedPayload)))
+		i += copy(dAtA[i:], m.EncryptedPayload)
+	}
+	return i, nil
 }
 
 func (m *InitConnectTest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -770,22 +758,17 @@ func (m *InitConnectTest) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitConnectTest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitConnectTest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *InitTestAuth) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -793,32 +776,26 @@ func (m *InitTestAuth) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitTestAuth) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitTestAuth) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.AuthKey != nil {
-		i -= len(m.AuthKey)
-		copy(dAtA[i:], m.AuthKey)
-		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.AuthKey)))
-		i--
-		dAtA[i] = 0x12
-	}
-	i = encodeVarintChatApiInit(dAtA, i, uint64(m.AuthID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.AuthID))
+	if m.AuthKey != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.AuthKey)))
+		i += copy(dAtA[i:], m.AuthKey)
+	}
+	return i, nil
 }
 
 func (m *InitResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -826,45 +803,40 @@ func (m *InitResponse) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiInit(dAtA, i, uint64(m.ServerTimestamp))
-	i--
-	dAtA[i] = 0x30
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.PQ))
-	i--
-	dAtA[i] = 0x29
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.DHGroupFingerPrint))
-	i--
-	dAtA[i] = 0x21
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RSAPubKeyFingerPrint))
-	i--
-	dAtA[i] = 0x19
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
-	i--
-	dAtA[i] = 0x11
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
-	i--
 	dAtA[i] = 0x9
-	return len(dAtA) - i, nil
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
+	i += 8
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
+	i += 8
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RSAPubKeyFingerPrint))
+	i += 8
+	dAtA[i] = 0x21
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.DHGroupFingerPrint))
+	i += 8
+	dAtA[i] = 0x29
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.PQ))
+	i += 8
+	dAtA[i] = 0x30
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.ServerTimestamp))
+	return i, nil
 }
 
 func (m *InitCompleteAuthInternal) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -872,29 +844,23 @@ func (m *InitCompleteAuthInternal) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitCompleteAuthInternal) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitCompleteAuthInternal) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.SecretNonce != nil {
-		i -= len(m.SecretNonce)
-		copy(dAtA[i:], m.SecretNonce)
-		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.SecretNonce)))
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.SecretNonce)))
+		i += copy(dAtA[i:], m.SecretNonce)
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *InitAuthCompleted) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -902,44 +868,38 @@ func (m *InitAuthCompleted) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitAuthCompleted) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitAuthCompleted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.ServerDHPubKey != nil {
-		i -= len(m.ServerDHPubKey)
-		copy(dAtA[i:], m.ServerDHPubKey)
-		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.ServerDHPubKey)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.SecretHash))
-	i--
-	dAtA[i] = 0x21
-	i = encodeVarintChatApiInit(dAtA, i, uint64(m.Status))
-	i--
-	dAtA[i] = 0x18
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
-	i--
-	dAtA[i] = 0x11
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
-	i--
 	dAtA[i] = 0x9
-	return len(dAtA) - i, nil
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ClientNonce))
+	i += 8
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.ServerNonce))
+	i += 8
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.Status))
+	dAtA[i] = 0x21
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.SecretHash))
+	i += 8
+	if m.ServerDHPubKey != nil {
+		dAtA[i] = 0x2a
+		i++
+		i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.ServerDHPubKey)))
+		i += copy(dAtA[i:], m.ServerDHPubKey)
+	}
+	return i, nil
 }
 
 func (m *InitBindUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -947,47 +907,37 @@ func (m *InitBindUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitBindUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitBindUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x2a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Username)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.AuthKey)
-	copy(dAtA[i:], m.AuthKey)
-	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.AuthKey)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.AuthKey)))
+	i += copy(dAtA[i:], m.AuthKey)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	return i, nil
 }
 
 func (m *InitUserBound) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -995,31 +945,24 @@ func (m *InitUserBound) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InitUserBound) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InitUserBound) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiInit(dAtA, i, uint64(m.AuthID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiInit(dAtA, i, uint64(m.AuthID))
+	return i, nil
 }
 
 func encodeVarintChatApiInit(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiInit(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *InitConnect) Size() (n int) {
 	if m == nil {

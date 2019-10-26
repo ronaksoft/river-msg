@@ -9,6 +9,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -20,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // MusicGet
 // @Function
@@ -48,7 +49,7 @@ func (m *MusicsGet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_MusicsGet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -133,7 +134,7 @@ func (m *MusicsAdd) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_MusicsAdd.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -200,7 +201,7 @@ func (m *MusicsRemove) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MusicsRemove.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -239,7 +240,7 @@ func (m *MusicsSetStatus) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_MusicsSetStatus.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -278,7 +279,7 @@ func (m *MusicsFollow) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MusicsFollow.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -317,7 +318,7 @@ func (m *MusicsUnFollow) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_MusicsUnFollow.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -377,7 +378,7 @@ var fileDescriptor_bc11e2d6eb76e854 = []byte{
 func (m *MusicsGet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -385,57 +386,69 @@ func (m *MusicsGet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsGet) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.PlaylistID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Index))
-	if m.File != nil {
-		dAtA[i] = 0x1a
-		i++
-		i = encodeVarintChatApiMusic(dAtA, i, uint64(m.File.Size()))
-		n1, err := m.File.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+	i -= len(m.MD5Checksum)
+	copy(dAtA[i:], m.MD5Checksum)
+	i = encodeVarintChatApiMusic(dAtA, i, uint64(len(m.MD5Checksum)))
+	i--
+	dAtA[i] = 0x52
+	if m.Thumbnail != nil {
+		{
+			size, err := m.Thumbnail.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMusic(dAtA, i, uint64(size))
 		}
-		i += n1
+		i--
+		dAtA[i] = 0x4a
 	}
 	if m.Attribute != nil {
+		{
+			size, err := m.Attribute.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMusic(dAtA, i, uint64(size))
+		}
+		i--
 		dAtA[i] = 0x22
-		i++
-		i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Attribute.Size()))
-		n2, err := m.Attribute.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n2
 	}
-	if m.Thumbnail != nil {
-		dAtA[i] = 0x4a
-		i++
-		i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Thumbnail.Size()))
-		n3, err := m.Thumbnail.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+	if m.File != nil {
+		{
+			size, err := m.File.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMusic(dAtA, i, uint64(size))
 		}
-		i += n3
+		i--
+		dAtA[i] = 0x1a
 	}
-	dAtA[i] = 0x52
-	i++
-	i = encodeVarintChatApiMusic(dAtA, i, uint64(len(m.MD5Checksum)))
-	i += copy(dAtA[i:], m.MD5Checksum)
-	return i, nil
+	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Index))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.PlaylistID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MusicsAdd) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -443,45 +456,54 @@ func (m *MusicsAdd) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsAdd) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsAdd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.PlaylistID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Index))
+	if m.Thumbnail != nil {
+		{
+			size, err := m.Thumbnail.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMusic(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x22
+	}
 	if m.File == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
 	} else {
+		{
+			size, err := m.File.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMusic(dAtA, i, uint64(size))
+		}
+		i--
 		dAtA[i] = 0x1a
-		i++
-		i = encodeVarintChatApiMusic(dAtA, i, uint64(m.File.Size()))
-		n4, err := m.File.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n4
 	}
-	if m.Thumbnail != nil {
-		dAtA[i] = 0x22
-		i++
-		i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Thumbnail.Size()))
-		n5, err := m.Thumbnail.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n5
-	}
-	return i, nil
+	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.Index))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiMusic(dAtA, i, uint64(m.PlaylistID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MusicsRemove) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -489,17 +511,22 @@ func (m *MusicsRemove) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsRemove) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsRemove) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MusicsSetStatus) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -507,17 +534,22 @@ func (m *MusicsSetStatus) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsSetStatus) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsSetStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MusicsFollow) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -525,17 +557,22 @@ func (m *MusicsFollow) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsFollow) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsFollow) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MusicsUnFollow) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -543,21 +580,28 @@ func (m *MusicsUnFollow) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MusicsUnFollow) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MusicsUnFollow) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatApiMusic(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatApiMusic(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *MusicsGet) Size() (n int) {
 	if m == nil {
@@ -640,14 +684,7 @@ func (m *MusicsUnFollow) Size() (n int) {
 }
 
 func sovChatApiMusic(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozChatApiMusic(x uint64) (n int) {
 	return sovChatApiMusic(uint64((x << 1) ^ uint64((int64(x) >> 63))))

@@ -27,6 +27,7 @@ const (
 	C_Ack                                int64 = 447331921
 	C_SystemGetAppUpdate                 int64 = 450761036
 	C_ContactUser                        int64 = 460099170
+	C_TestRequest                        int64 = 475847033
 	C_AccountGetNotifySettings           int64 = 477008681
 	C_UpdateReadHistoryOutbox            int64 = 510866108
 	C_DocumentAttributePhoto             int64 = 515862833
@@ -110,6 +111,7 @@ const (
 	C_MessageContainer                   int64 = 1972016308
 	C_MessagesClearHistory               int64 = 1981246180
 	C_DocumentAttributeVideo             int64 = 1993289477
+	C_TestResponse                       int64 = 1999996896
 	C_UpdateDraftMessageCleared          int64 = 2011635602
 	C_AccountSetLang                     int64 = 2015777242
 	C_AccountSetNotifySettings           int64 = 2016882075
@@ -252,6 +254,7 @@ var ConstructorNames = map[int64]string{
 	447331921:  "Ack",
 	450761036:  "SystemGetAppUpdate",
 	460099170:  "ContactUser",
+	475847033:  "TestRequest",
 	477008681:  "AccountGetNotifySettings",
 	510866108:  "UpdateReadHistoryOutbox",
 	515862833:  "DocumentAttributePhoto",
@@ -335,6 +338,7 @@ var ConstructorNames = map[int64]string{
 	1972016308: "MessageContainer",
 	1981246180: "MessagesClearHistory",
 	1993289477: "DocumentAttributeVideo",
+	1999996896: "TestResponse",
 	2011635602: "UpdateDraftMessageCleared",
 	2015777242: "AccountSetLang",
 	2016882075: "AccountSetNotifySettings",

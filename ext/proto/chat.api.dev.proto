@@ -4,8 +4,18 @@ package msg;
 //option (gogoproto.unmarshaler_all) = true;
 //option (gogoproto.sizer_all) = true;
 
-
 // EchoWithDelay
 message EchoWithDelay {
-    required int32  DelayInSeconds = 1 ;
+    required int32 DelayInSeconds = 1;
+}
+
+
+message TestRequest {
+    required bytes Payload = 1;
+    required bytes Hash = 2;
+}
+
+message TestResponse {
+    required int32 Length = 1;
+    required bytes Hash = 2;
 }

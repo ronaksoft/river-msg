@@ -160,6 +160,12 @@ func ResultContactUser(out *MessageEnvelope, res *ContactUser) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultTestRequest(out *MessageEnvelope, res *TestRequest) {
+	out.Constructor = C_TestRequest
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAccountGetNotifySettings(out *MessageEnvelope, res *AccountGetNotifySettings) {
 	out.Constructor = C_AccountGetNotifySettings
 	pbytes.Put(out.Message)
@@ -654,6 +660,12 @@ func ResultMessagesClearHistory(out *MessageEnvelope, res *MessagesClearHistory)
 }
 func ResultDocumentAttributeVideo(out *MessageEnvelope, res *DocumentAttributeVideo) {
 	out.Constructor = C_DocumentAttributeVideo
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultTestResponse(out *MessageEnvelope, res *TestResponse) {
+	out.Constructor = C_TestResponse
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

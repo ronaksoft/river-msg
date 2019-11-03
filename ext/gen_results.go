@@ -82,6 +82,12 @@ func ResultUpdateDialogPinned(out *MessageEnvelope, res *UpdateDialogPinned) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultReplyKeyboardForceReply(out *MessageEnvelope, res *ReplyKeyboardForceReply) {
+	out.Constructor = C_ReplyKeyboardForceReply
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAccountAuthorization(out *MessageEnvelope, res *AccountAuthorization) {
 	out.Constructor = C_AccountAuthorization
 	pbytes.Put(out.Message)
@@ -96,6 +102,12 @@ func ResultUpdateUserPhoto(out *MessageEnvelope, res *UpdateUserPhoto) {
 }
 func ResultDocumentAttributeAudio(out *MessageEnvelope, res *DocumentAttributeAudio) {
 	out.Constructor = C_DocumentAttributeAudio
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultButtonRequestGeoLocation(out *MessageEnvelope, res *ButtonRequestGeoLocation) {
+	out.Constructor = C_ButtonRequestGeoLocation
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -144,6 +156,12 @@ func ResultSystemGetAppUpdate(out *MessageEnvelope, res *SystemGetAppUpdate) {
 }
 func ResultContactUser(out *MessageEnvelope, res *ContactUser) {
 	out.Constructor = C_ContactUser
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultTestRequest(out *MessageEnvelope, res *TestRequest) {
+	out.Constructor = C_TestRequest
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -198,6 +216,12 @@ func ResultInitAuthCompleted(out *MessageEnvelope, res *InitAuthCompleted) {
 }
 func ResultUpdateAccountPrivacy(out *MessageEnvelope, res *UpdateAccountPrivacy) {
 	out.Constructor = C_UpdateAccountPrivacy
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultButtonRequestPhone(out *MessageEnvelope, res *ButtonRequestPhone) {
+	out.Constructor = C_ButtonRequestPhone
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -288,6 +312,12 @@ func ResultAccountRegisterDevice(out *MessageEnvelope, res *AccountRegisterDevic
 }
 func ResultAuthLogout(out *MessageEnvelope, res *AuthLogout) {
 	out.Constructor = C_AuthLogout
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultButton(out *MessageEnvelope, res *Button) {
+	out.Constructor = C_Button
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -634,6 +664,12 @@ func ResultDocumentAttributeVideo(out *MessageEnvelope, res *DocumentAttributeVi
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultTestResponse(out *MessageEnvelope, res *TestResponse) {
+	out.Constructor = C_TestResponse
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateDraftMessageCleared(out *MessageEnvelope, res *UpdateDraftMessageCleared) {
 	out.Constructor = C_UpdateDraftMessageCleared
 	pbytes.Put(out.Message)
@@ -706,6 +742,12 @@ func ResultInputMediaPhoto(out *MessageEnvelope, res *InputMediaPhoto) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultKeyboardButtonRow(out *MessageEnvelope, res *KeyboardButtonRow) {
+	out.Constructor = C_KeyboardButtonRow
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultDocumentAttributeFile(out *MessageEnvelope, res *DocumentAttributeFile) {
 	out.Constructor = C_DocumentAttributeFile
 	pbytes.Put(out.Message)
@@ -742,8 +784,26 @@ func ResultMediaDocument(out *MessageEnvelope, res *MediaDocument) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultButtonUrl(out *MessageEnvelope, res *ButtonUrl) {
+	out.Constructor = C_ButtonUrl
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateLabelRemoved(out *MessageEnvelope, res *UpdateLabelRemoved) {
 	out.Constructor = C_UpdateLabelRemoved
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultInputButtonUrlAuth(out *MessageEnvelope, res *InputButtonUrlAuth) {
+	out.Constructor = C_InputButtonUrlAuth
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultButtonUrlAuth(out *MessageEnvelope, res *ButtonUrlAuth) {
+	out.Constructor = C_ButtonUrlAuth
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -786,6 +846,12 @@ func ResultMessageActionGroupTitleChanged(out *MessageEnvelope, res *MessageActi
 }
 func ResultFileLocation(out *MessageEnvelope, res *FileLocation) {
 	out.Constructor = C_FileLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultReplyInlineMarkup(out *MessageEnvelope, res *ReplyInlineMarkup) {
+	out.Constructor = C_ReplyInlineMarkup
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -840,6 +906,12 @@ func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
 }
 func ResultLabelsRemoveFromDialog(out *MessageEnvelope, res *LabelsRemoveFromDialog) {
 	out.Constructor = C_LabelsRemoveFromDialog
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultKeyboardButtonEnvelope(out *MessageEnvelope, res *KeyboardButtonEnvelope) {
+	out.Constructor = C_KeyboardButtonEnvelope
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -964,6 +1036,12 @@ func ResultUpdateReadMessagesContents(out *MessageEnvelope, res *UpdateReadMessa
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultButtonBuy(out *MessageEnvelope, res *ButtonBuy) {
+	out.Constructor = C_ButtonBuy
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultMessagesSend(out *MessageEnvelope, res *MessagesSend) {
 	out.Constructor = C_MessagesSend
 	pbytes.Put(out.Message)
@@ -990,6 +1068,12 @@ func ResultUpdateNotifySettings(out *MessageEnvelope, res *UpdateNotifySettings)
 }
 func ResultInitConnectTest(out *MessageEnvelope, res *InitConnectTest) {
 	out.Constructor = C_InitConnectTest
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultReplyKeyboardMarkup(out *MessageEnvelope, res *ReplyKeyboardMarkup) {
+	out.Constructor = C_ReplyKeyboardMarkup
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1126,6 +1210,12 @@ func ResultClientUpdatePendingMessageDelivery(out *MessageEnvelope, res *ClientU
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultButtonSwitchInline(out *MessageEnvelope, res *ButtonSwitchInline) {
+	out.Constructor = C_ButtonSwitchInline
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInputUser(out *MessageEnvelope, res *InputUser) {
 	out.Constructor = C_InputUser
 	pbytes.Put(out.Message)
@@ -1176,6 +1266,12 @@ func ResultAuthSendCode(out *MessageEnvelope, res *AuthSendCode) {
 }
 func ResultGroupPhoto(out *MessageEnvelope, res *GroupPhoto) {
 	out.Constructor = C_GroupPhoto
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultButtonCallback(out *MessageEnvelope, res *ButtonCallback) {
+	out.Constructor = C_ButtonCallback
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

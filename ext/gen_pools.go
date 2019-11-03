@@ -83,6 +83,12 @@ var (
 			return m
 		},
 	}
+	PoolReplyKeyboardForceReply = sync.Pool{
+		New: func() interface{} {
+			m := new(ReplyKeyboardForceReply)
+			return m
+		},
+	}
 	PoolAccountAuthorization = sync.Pool{
 		New: func() interface{} {
 			m := new(AccountAuthorization)
@@ -98,6 +104,12 @@ var (
 	PoolDocumentAttributeAudio = sync.Pool{
 		New: func() interface{} {
 			m := new(DocumentAttributeAudio)
+			return m
+		},
+	}
+	PoolButtonRequestGeoLocation = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonRequestGeoLocation)
 			return m
 		},
 	}
@@ -146,6 +158,12 @@ var (
 	PoolContactUser = sync.Pool{
 		New: func() interface{} {
 			m := new(ContactUser)
+			return m
+		},
+	}
+	PoolTestRequest = sync.Pool{
+		New: func() interface{} {
+			m := new(TestRequest)
 			return m
 		},
 	}
@@ -200,6 +218,12 @@ var (
 	PoolUpdateAccountPrivacy = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateAccountPrivacy)
+			return m
+		},
+	}
+	PoolButtonRequestPhone = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonRequestPhone)
 			return m
 		},
 	}
@@ -290,6 +314,12 @@ var (
 	PoolAuthLogout = sync.Pool{
 		New: func() interface{} {
 			m := new(AuthLogout)
+			return m
+		},
+	}
+	PoolButton = sync.Pool{
+		New: func() interface{} {
+			m := new(Button)
 			return m
 		},
 	}
@@ -635,6 +665,12 @@ var (
 			return m
 		},
 	}
+	PoolTestResponse = sync.Pool{
+		New: func() interface{} {
+			m := new(TestResponse)
+			return m
+		},
+	}
 	PoolUpdateDraftMessageCleared = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateDraftMessageCleared)
@@ -707,6 +743,12 @@ var (
 			return m
 		},
 	}
+	PoolKeyboardButtonRow = sync.Pool{
+		New: func() interface{} {
+			m := new(KeyboardButtonRow)
+			return m
+		},
+	}
 	PoolDocumentAttributeFile = sync.Pool{
 		New: func() interface{} {
 			m := new(DocumentAttributeFile)
@@ -743,9 +785,27 @@ var (
 			return m
 		},
 	}
+	PoolButtonUrl = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonUrl)
+			return m
+		},
+	}
 	PoolUpdateLabelRemoved = sync.Pool{
 		New: func() interface{} {
 			m := new(UpdateLabelRemoved)
+			return m
+		},
+	}
+	PoolInputButtonUrlAuth = sync.Pool{
+		New: func() interface{} {
+			m := new(InputButtonUrlAuth)
+			return m
+		},
+	}
+	PoolButtonUrlAuth = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonUrlAuth)
 			return m
 		},
 	}
@@ -788,6 +848,12 @@ var (
 	PoolFileLocation = sync.Pool{
 		New: func() interface{} {
 			m := new(FileLocation)
+			return m
+		},
+	}
+	PoolReplyInlineMarkup = sync.Pool{
+		New: func() interface{} {
+			m := new(ReplyInlineMarkup)
 			return m
 		},
 	}
@@ -842,6 +908,12 @@ var (
 	PoolLabelsRemoveFromDialog = sync.Pool{
 		New: func() interface{} {
 			m := new(LabelsRemoveFromDialog)
+			return m
+		},
+	}
+	PoolKeyboardButtonEnvelope = sync.Pool{
+		New: func() interface{} {
+			m := new(KeyboardButtonEnvelope)
 			return m
 		},
 	}
@@ -965,6 +1037,12 @@ var (
 			return m
 		},
 	}
+	PoolButtonBuy = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonBuy)
+			return m
+		},
+	}
 	PoolMessagesSend = sync.Pool{
 		New: func() interface{} {
 			m := new(MessagesSend)
@@ -992,6 +1070,12 @@ var (
 	PoolInitConnectTest = sync.Pool{
 		New: func() interface{} {
 			m := new(InitConnectTest)
+			return m
+		},
+	}
+	PoolReplyKeyboardMarkup = sync.Pool{
+		New: func() interface{} {
+			m := new(ReplyKeyboardMarkup)
 			return m
 		},
 	}
@@ -1127,6 +1211,12 @@ var (
 			return m
 		},
 	}
+	PoolButtonSwitchInline = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonSwitchInline)
+			return m
+		},
+	}
 	PoolInputUser = sync.Pool{
 		New: func() interface{} {
 			m := new(InputUser)
@@ -1178,6 +1268,12 @@ var (
 	PoolGroupPhoto = sync.Pool{
 		New: func() interface{} {
 			m := new(GroupPhoto)
+			return m
+		},
+	}
+	PoolButtonCallback = sync.Pool{
+		New: func() interface{} {
+			m := new(ButtonCallback)
 			return m
 		},
 	}

@@ -9,6 +9,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -20,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // ClientPendingMessageDelivery
 type ClientUpdatePendingMessageDelivery struct {
@@ -43,7 +44,7 @@ func (m *ClientUpdatePendingMessageDelivery) XXX_Marshal(b []byte, deterministic
 		return xxx_messageInfo_ClientUpdatePendingMessageDelivery.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -104,7 +105,7 @@ func (m *ClientUpdateMessagesDeleted) XXX_Marshal(b []byte, deterministic bool) 
 		return xxx_messageInfo_ClientUpdateMessagesDeleted.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -144,39 +145,95 @@ func (m *ClientUpdateMessagesDeleted) GetMessageIDs() []int64 {
 	return nil
 }
 
+// ClientUpdateDialogsSynced
+type ClientUpdateSynced struct {
+	Dialogs  bool `protobuf:"varint,1,req,name=Dialogs" json:"Dialogs"`
+	Contacts bool `protobuf:"varint,2,req,name=Contacts" json:"Contacts"`
+}
+
+func (m *ClientUpdateSynced) Reset()         { *m = ClientUpdateSynced{} }
+func (m *ClientUpdateSynced) String() string { return proto.CompactTextString(m) }
+func (*ClientUpdateSynced) ProtoMessage()    {}
+func (*ClientUpdateSynced) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d74d661f89ff53cb, []int{2}
+}
+func (m *ClientUpdateSynced) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ClientUpdateSynced) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ClientUpdateSynced.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ClientUpdateSynced) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClientUpdateSynced.Merge(m, src)
+}
+func (m *ClientUpdateSynced) XXX_Size() int {
+	return m.Size()
+}
+func (m *ClientUpdateSynced) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClientUpdateSynced.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClientUpdateSynced proto.InternalMessageInfo
+
+func (m *ClientUpdateSynced) GetDialogs() bool {
+	if m != nil {
+		return m.Dialogs
+	}
+	return false
+}
+
+func (m *ClientUpdateSynced) GetContacts() bool {
+	if m != nil {
+		return m.Contacts
+	}
+	return false
+}
+
 func init() {
 	proto.RegisterType((*ClientUpdatePendingMessageDelivery)(nil), "msg.ClientUpdatePendingMessageDelivery")
 	proto.RegisterType((*ClientUpdateMessagesDeleted)(nil), "msg.ClientUpdateMessagesDeleted")
+	proto.RegisterType((*ClientUpdateSynced)(nil), "msg.ClientUpdateSynced")
 }
 
 func init() { proto.RegisterFile("client.updates.proto", fileDescriptor_d74d661f89ff53cb) }
 
 var fileDescriptor_d74d661f89ff53cb = []byte{
-	// 278 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x8e, 0xcd, 0x4a, 0xc3, 0x40,
-	0x14, 0x85, 0xf3, 0xe3, 0x4f, 0xb8, 0x82, 0xc8, 0xa0, 0x10, 0xa3, 0x8c, 0x21, 0xab, 0x2c, 0x64,
-	0x16, 0xbe, 0x81, 0x35, 0x9b, 0x2e, 0x84, 0x12, 0xed, 0x03, 0x84, 0xe4, 0x12, 0x03, 0xf9, 0x63,
-	0x66, 0x2a, 0x64, 0xe1, 0x3b, 0xf8, 0x32, 0xbe, 0x43, 0x97, 0x5d, 0xba, 0x12, 0x49, 0x5e, 0x44,
-	0x3a, 0x99, 0x94, 0xd6, 0xdd, 0xe5, 0x7c, 0xe7, 0x9c, 0x7b, 0xe0, 0x32, 0x2d, 0x0b, 0xac, 0x25,
-	0x5b, 0xb5, 0x59, 0x22, 0x51, 0xb0, 0x96, 0x37, 0xb2, 0x21, 0x76, 0x25, 0x72, 0xef, 0x2a, 0x7d,
-	0x4b, 0x24, 0x4b, 0x1b, 0x8e, 0x4c, 0x76, 0xed, 0xc4, 0x3c, 0x4f, 0x27, 0x14, 0xa8, 0x50, 0x88,
-	0x24, 0x9f, 0x58, 0xf0, 0x65, 0x42, 0xf0, 0xa4, 0xf0, 0x52, 0xf5, 0x2d, 0xb0, 0xce, 0x8a, 0x3a,
-	0x7f, 0x1e, 0x5d, 0x11, 0x96, 0xc5, 0x3b, 0xf2, 0x8e, 0xdc, 0x83, 0xa3, 0x25, 0xe1, 0x9a, 0xbe,
-	0x15, 0x9e, 0x3d, 0x5c, 0xb0, 0x4a, 0xe4, 0x6c, 0x29, 0x90, 0x6b, 0x10, 0xef, 0x1c, 0xe4, 0x11,
-	0xce, 0x0f, 0x7b, 0x5c, 0x4b, 0x65, 0xae, 0x55, 0x66, 0x7c, 0x77, 0x68, 0x88, 0xff, 0x05, 0x08,
-	0x85, 0xd3, 0x97, 0x55, 0x9a, 0xa2, 0x10, 0xae, 0xed, 0x5b, 0xa1, 0x33, 0x3b, 0x5a, 0xff, 0xdc,
-	0x19, 0xf1, 0x24, 0x06, 0x1f, 0x70, 0xb3, 0x3f, 0x7b, 0x7a, 0x1d, 0x61, 0x89, 0x12, 0x33, 0x72,
-	0x0b, 0x27, 0x0b, 0x44, 0x3e, 0x8f, 0xd4, 0x5a, 0x5b, 0xa7, 0xb5, 0x46, 0x7c, 0x70, 0xb6, 0xd7,
-	0x6b, 0xd7, 0x8e, 0xcb, 0x8e, 0x35, 0xdf, 0xa9, 0x84, 0x02, 0xe8, 0xca, 0x79, 0xb4, 0x5d, 0x60,
-	0x87, 0x76, 0xbc, 0xa7, 0xcc, 0xdc, 0x75, 0x4f, 0xcd, 0x4d, 0x4f, 0xcd, 0xdf, 0x9e, 0x9a, 0x9f,
-	0x03, 0x35, 0x36, 0x03, 0x35, 0xbe, 0x07, 0x6a, 0xfc, 0x05, 0x00, 0x00, 0xff, 0xff, 0x74, 0x48,
-	0x23, 0x2b, 0x9f, 0x01, 0x00, 0x00,
+	// 313 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x90, 0xbd, 0x4a, 0xf4, 0x40,
+	0x18, 0x85, 0xf3, 0xf3, 0x7d, 0x1a, 0x46, 0x10, 0x19, 0x14, 0x62, 0x94, 0x31, 0xa4, 0x4a, 0x21,
+	0x53, 0x78, 0x07, 0xee, 0xa6, 0xd9, 0x42, 0x58, 0xb2, 0xae, 0x7d, 0x98, 0xbc, 0xc4, 0x40, 0xfe,
+	0xc8, 0xcc, 0x0a, 0x29, 0xbc, 0x07, 0x6f, 0xc6, 0x7b, 0xd8, 0x72, 0x4b, 0x2b, 0x91, 0xe4, 0x46,
+	0x24, 0x93, 0x49, 0xc8, 0xda, 0x0d, 0xcf, 0x39, 0xe7, 0x3d, 0x87, 0x41, 0x97, 0x2c, 0x4b, 0xa1,
+	0x10, 0x74, 0x57, 0xc5, 0x91, 0x00, 0x4e, 0xab, 0xba, 0x14, 0x25, 0x36, 0x73, 0x9e, 0x38, 0x57,
+	0xec, 0x35, 0x12, 0x94, 0x95, 0x35, 0x50, 0xd1, 0x54, 0xa3, 0xe6, 0x38, 0x2a, 0x21, 0x85, 0x1c,
+	0x38, 0x8f, 0x92, 0x51, 0xf3, 0x3e, 0x75, 0xe4, 0x2d, 0xa5, 0xbc, 0x95, 0xf7, 0xd6, 0x50, 0xc4,
+	0x69, 0x91, 0x3c, 0x0d, 0xae, 0x00, 0xb2, 0xf4, 0x0d, 0xea, 0x06, 0xdf, 0x23, 0x4b, 0x21, 0x6e,
+	0xeb, 0xae, 0xe1, 0x9f, 0x3d, 0x5c, 0xd0, 0x9c, 0x27, 0x74, 0xcb, 0xa1, 0x56, 0x42, 0x38, 0x39,
+	0xf0, 0x23, 0x3a, 0x3f, 0xbe, 0x63, 0x1b, 0x32, 0x73, 0x2d, 0x33, 0x43, 0xdd, 0xb1, 0x21, 0xfc,
+	0x13, 0xc0, 0x04, 0x9d, 0x6e, 0x76, 0x8c, 0x01, 0xe7, 0xb6, 0xe9, 0x1a, 0xbe, 0xb5, 0xf8, 0xb7,
+	0xff, 0xbe, 0xd3, 0xc2, 0x11, 0x7a, 0xef, 0xe8, 0x66, 0x3e, 0x7b, 0xac, 0x0e, 0x20, 0x03, 0x01,
+	0x31, 0xbe, 0x45, 0x27, 0x6b, 0x80, 0x7a, 0x15, 0xc8, 0xb5, 0xa6, 0x4a, 0x2b, 0x86, 0x5d, 0x64,
+	0xf5, 0xaf, 0xe7, 0xa6, 0x1a, 0x96, 0xfd, 0x57, 0xfa, 0x44, 0x31, 0x41, 0x48, 0x9d, 0x5c, 0x05,
+	0xfd, 0x02, 0xd3, 0x37, 0xc3, 0x19, 0xf1, 0x5e, 0x10, 0x9e, 0xd7, 0x6f, 0x9a, 0x82, 0x41, 0xdc,
+	0x8f, 0x0e, 0xd2, 0x28, 0x2b, 0x93, 0xe1, 0x93, 0xa6, 0xd1, 0x0a, 0xf6, 0xbd, 0xcb, 0xb2, 0x10,
+	0x11, 0x13, 0x5c, 0xf6, 0x8e, 0x86, 0x89, 0x2e, 0xec, 0x7d, 0x4b, 0xf4, 0x43, 0x4b, 0xf4, 0x9f,
+	0x96, 0xe8, 0x1f, 0x1d, 0xd1, 0x0e, 0x1d, 0xd1, 0xbe, 0x3a, 0xa2, 0xfd, 0x06, 0x00, 0x00, 0xff,
+	0xff, 0x8d, 0xd9, 0xd5, 0x6a, 0xf7, 0x01, 0x00, 0x00,
 }
 
 func (m *ClientUpdatePendingMessageDelivery) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -184,49 +241,58 @@ func (m *ClientUpdatePendingMessageDelivery) Marshal() (dAtA []byte, err error) 
 }
 
 func (m *ClientUpdatePendingMessageDelivery) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientUpdatePendingMessageDelivery) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Messages == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Messages")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintClientUpdates(dAtA, i, uint64(m.Messages.Size()))
-		n1, err := m.Messages.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n1
-	}
-	if m.PendingMessage == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PendingMessage")
-	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintClientUpdates(dAtA, i, uint64(m.PendingMessage.Size()))
-		n2, err := m.PendingMessage.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n2
-	}
-	dAtA[i] = 0x18
-	i++
+	i--
 	if m.Success {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x18
+	if m.PendingMessage == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PendingMessage")
+	} else {
+		{
+			size, err := m.PendingMessage.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintClientUpdates(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Messages == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Messages")
+	} else {
+		{
+			size, err := m.Messages.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintClientUpdates(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *ClientUpdateMessagesDeleted) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -234,34 +300,80 @@ func (m *ClientUpdateMessagesDeleted) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientUpdateMessagesDeleted) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientUpdateMessagesDeleted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerType))
 	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintClientUpdates(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x18
-			i++
-			i = encodeVarintClientUpdates(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintClientUpdates(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *ClientUpdateSynced) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ClientUpdateSynced) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ClientUpdateSynced) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i--
+	if m.Contacts {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x10
+	i--
+	if m.Dialogs {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintClientUpdates(dAtA []byte, offset int, v uint64) int {
+	offset -= sovClientUpdates(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *ClientUpdatePendingMessageDelivery) Size() (n int) {
 	if m == nil {
@@ -297,15 +409,19 @@ func (m *ClientUpdateMessagesDeleted) Size() (n int) {
 	return n
 }
 
-func sovClientUpdates(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
+func (m *ClientUpdateSynced) Size() (n int) {
+	if m == nil {
+		return 0
 	}
+	var l int
+	_ = l
+	n += 2
+	n += 2
 	return n
+}
+
+func sovClientUpdates(x uint64) (n int) {
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozClientUpdates(x uint64) (n int) {
 	return sovClientUpdates(uint64((x << 1) ^ uint64((int64(x) >> 63))))
@@ -637,6 +753,108 @@ func (m *ClientUpdateMessagesDeleted) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PeerType")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ClientUpdateSynced) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowClientUpdates
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ClientUpdateSynced: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ClientUpdateSynced: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Dialogs", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowClientUpdates
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Dialogs = bool(v != 0)
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Contacts", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowClientUpdates
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Contacts = bool(v != 0)
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipClientUpdates(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthClientUpdates
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthClientUpdates
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Dialogs")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Contacts")
 	}
 
 	if iNdEx > l {

@@ -1234,6 +1234,12 @@ func ResultLabelsRemoveFromMessage(out *MessageEnvelope, res *LabelsRemoveFromMe
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultClientUpdateSynced(out *MessageEnvelope, res *ClientUpdateSynced) {
+	out.Constructor = C_ClientUpdateSynced
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultFileGet(out *MessageEnvelope, res *FileGet) {
 	out.Constructor = C_FileGet
 	pbytes.Put(out.Message)

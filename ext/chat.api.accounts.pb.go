@@ -9,6 +9,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -20,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // AccountSetNotifySettings
 // @Function
@@ -44,7 +45,7 @@ func (m *AccountSetNotifySettings) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_AccountSetNotifySettings.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -98,7 +99,7 @@ func (m *AccountGetNotifySettings) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_AccountGetNotifySettings.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -151,7 +152,7 @@ func (m *AccountRegisterDevice) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return xxx_messageInfo_AccountRegisterDevice.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -241,7 +242,7 @@ func (m *AccountUnregisterDevice) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return xxx_messageInfo_AccountUnregisterDevice.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -297,7 +298,7 @@ func (m *AccountUpdateProfile) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_AccountUpdateProfile.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -358,7 +359,7 @@ func (m *AccountCheckUsername) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_AccountCheckUsername.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -405,7 +406,7 @@ func (m *AccountUpdateUsername) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return xxx_messageInfo_AccountUpdateUsername.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -453,7 +454,7 @@ func (m *AccountUploadPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_AccountUploadPhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -507,7 +508,7 @@ func (m *AccountUpdatePhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_AccountUpdatePhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -554,7 +555,7 @@ func (m *AccountRemovePhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_AccountRemovePhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -603,7 +604,7 @@ func (m *AccountChangePhone) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_AccountChangePhone.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -669,7 +670,7 @@ func (m *AccountSetPrivacy) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_AccountSetPrivacy.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -751,7 +752,7 @@ func (m *AccountGetPrivacy) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_AccountGetPrivacy.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -797,7 +798,7 @@ func (m *AccountGetAuthorizations) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_AccountGetAuthorizations.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -837,7 +838,7 @@ func (m *AccountResetAuthorization) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_AccountResetAuthorization.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -884,7 +885,7 @@ func (m *AccountUpdateStatus) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_AccountUpdateStatus.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -929,7 +930,7 @@ func (m *AccountAuthorizations) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return xxx_messageInfo_AccountAuthorizations.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -982,7 +983,7 @@ func (m *AccountAuthorization) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_AccountAuthorization.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1083,7 +1084,7 @@ func (m *AccountPrivacyRules) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_AccountPrivacyRules.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1130,7 +1131,7 @@ func (m *AccountSetLang) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_AccountSetLang.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1245,7 +1246,7 @@ var fileDescriptor_36a0c5dd1cea0696 = []byte{
 func (m *AccountSetNotifySettings) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1253,41 +1254,50 @@ func (m *AccountSetNotifySettings) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountSetNotifySettings) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountSetNotifySettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Peer.Size()))
-		n1, err := m.Peer.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n1
-	}
 	if m.Settings == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Settings")
 	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Settings.Size()))
-		n2, err := m.Settings.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+		{
+			size, err := m.Settings.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 		}
-		i += n2
+		i--
+		dAtA[i] = 0x12
 	}
-	return i, nil
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountGetNotifySettings) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1295,29 +1305,36 @@ func (m *AccountGetNotifySettings) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountGetNotifySettings) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountGetNotifySettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Peer.Size()))
-		n3, err := m.Peer.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 		}
-		i += n3
+		i--
+		dAtA[i] = 0xa
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountRegisterDevice) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1325,44 +1342,55 @@ func (m *AccountRegisterDevice) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountRegisterDevice) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountRegisterDevice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Token)))
-	i += copy(dAtA[i:], m.Token)
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.DeviceModel)))
-	i += copy(dAtA[i:], m.DeviceModel)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.SystemVersion)))
-	i += copy(dAtA[i:], m.SystemVersion)
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.AppVersion)))
-	i += copy(dAtA[i:], m.AppVersion)
-	dAtA[i] = 0x32
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LangCode)))
-	i += copy(dAtA[i:], m.LangCode)
-	dAtA[i] = 0x38
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.TokenType))
-	dAtA[i] = 0x42
-	i++
+	i -= len(m.ClientID)
+	copy(dAtA[i:], m.ClientID)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.ClientID)))
-	i += copy(dAtA[i:], m.ClientID)
-	return i, nil
+	i--
+	dAtA[i] = 0x42
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.TokenType))
+	i--
+	dAtA[i] = 0x38
+	i -= len(m.LangCode)
+	copy(dAtA[i:], m.LangCode)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LangCode)))
+	i--
+	dAtA[i] = 0x32
+	i -= len(m.AppVersion)
+	copy(dAtA[i:], m.AppVersion)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.AppVersion)))
+	i--
+	dAtA[i] = 0x2a
+	i -= len(m.SystemVersion)
+	copy(dAtA[i:], m.SystemVersion)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.SystemVersion)))
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.DeviceModel)
+	copy(dAtA[i:], m.DeviceModel)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.DeviceModel)))
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.Token)
+	copy(dAtA[i:], m.Token)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Token)))
+	i--
+	dAtA[i] = 0x12
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUnregisterDevice) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1370,24 +1398,30 @@ func (m *AccountUnregisterDevice) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUnregisterDevice) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUnregisterDevice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.TokenType))
-	dAtA[i] = 0x12
-	i++
+	i -= len(m.Token)
+	copy(dAtA[i:], m.Token)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Token)))
-	i += copy(dAtA[i:], m.Token)
-	return i, nil
+	i--
+	dAtA[i] = 0x12
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.TokenType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUpdateProfile) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1395,29 +1429,37 @@ func (m *AccountUpdateProfile) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUpdateProfile) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUpdateProfile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.FirstName)))
-	i += copy(dAtA[i:], m.FirstName)
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LastName)))
-	i += copy(dAtA[i:], m.LastName)
-	dAtA[i] = 0x1a
-	i++
+	i -= len(m.Bio)
+	copy(dAtA[i:], m.Bio)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Bio)))
-	i += copy(dAtA[i:], m.Bio)
-	return i, nil
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.LastName)
+	copy(dAtA[i:], m.LastName)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LastName)))
+	i--
+	dAtA[i] = 0x12
+	i -= len(m.FirstName)
+	copy(dAtA[i:], m.FirstName)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.FirstName)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountCheckUsername) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1425,21 +1467,27 @@ func (m *AccountCheckUsername) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountCheckUsername) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountCheckUsername) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
+	i -= len(m.Username)
+	copy(dAtA[i:], m.Username)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Username)))
-	i += copy(dAtA[i:], m.Username)
-	return i, nil
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUpdateUsername) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1447,21 +1495,27 @@ func (m *AccountUpdateUsername) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUpdateUsername) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUpdateUsername) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
+	i -= len(m.Username)
+	copy(dAtA[i:], m.Username)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Username)))
-	i += copy(dAtA[i:], m.Username)
-	return i, nil
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUploadPhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1469,37 +1523,44 @@ func (m *AccountUploadPhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUploadPhoto) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUploadPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.File == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.File.Size()))
-		n4, err := m.File.MarshalTo(dAtA[i:])
-		if err != nil {
-			return 0, err
-		}
-		i += n4
-	}
-	dAtA[i] = 0x10
-	i++
+	i--
 	if m.ReturnObject {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	if m.File == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
+	} else {
+		{
+			size, err := m.File.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUpdatePhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1507,20 +1568,25 @@ func (m *AccountUpdatePhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUpdatePhoto) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUpdatePhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.PhotoID))
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountRemovePhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1528,20 +1594,25 @@ func (m *AccountRemovePhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountRemovePhoto) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountRemovePhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.PhotoID))
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountChangePhone) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1549,29 +1620,37 @@ func (m *AccountChangePhone) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountChangePhone) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountChangePhone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Phone)))
-	i += copy(dAtA[i:], m.Phone)
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.PhoneCodeHash)))
-	i += copy(dAtA[i:], m.PhoneCodeHash)
-	dAtA[i] = 0x1a
-	i++
+	i -= len(m.PhoneCode)
+	copy(dAtA[i:], m.PhoneCode)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.PhoneCode)))
-	i += copy(dAtA[i:], m.PhoneCode)
-	return i, nil
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.PhoneCodeHash)
+	copy(dAtA[i:], m.PhoneCodeHash)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.PhoneCodeHash)))
+	i--
+	dAtA[i] = 0x12
+	i -= len(m.Phone)
+	copy(dAtA[i:], m.Phone)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Phone)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountSetPrivacy) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1579,89 +1658,106 @@ func (m *AccountSetPrivacy) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountSetPrivacy) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountSetPrivacy) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.ChatInvite) > 0 {
-		for _, msg := range m.ChatInvite {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.Call) > 0 {
+		for iNdEx := len(m.Call) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Call[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 			}
-			i += n
-		}
-	}
-	if len(m.LastSeen) > 0 {
-		for _, msg := range m.LastSeen {
-			dAtA[i] = 0x12
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	if len(m.PhoneNumber) > 0 {
-		for _, msg := range m.PhoneNumber {
-			dAtA[i] = 0x1a
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	if len(m.ProfilePhoto) > 0 {
-		for _, msg := range m.ProfilePhoto {
-			dAtA[i] = 0x22
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
+			i--
+			dAtA[i] = 0x32
 		}
 	}
 	if len(m.ForwardedMessage) > 0 {
-		for _, msg := range m.ForwardedMessage {
+		for iNdEx := len(m.ForwardedMessage) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ForwardedMessage[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+			}
+			i--
 			dAtA[i] = 0x2a
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
 		}
 	}
-	if len(m.Call) > 0 {
-		for _, msg := range m.Call {
-			dAtA[i] = 0x32
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.ProfilePhoto) > 0 {
+		for iNdEx := len(m.ProfilePhoto) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ProfilePhoto[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0x22
 		}
 	}
-	return i, nil
+	if len(m.PhoneNumber) > 0 {
+		for iNdEx := len(m.PhoneNumber) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.PhoneNumber[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
+		}
+	}
+	if len(m.LastSeen) > 0 {
+		for iNdEx := len(m.LastSeen) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.LastSeen[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	if len(m.ChatInvite) > 0 {
+		for iNdEx := len(m.ChatInvite) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.ChatInvite[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountGetPrivacy) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1669,20 +1765,25 @@ func (m *AccountGetPrivacy) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountGetPrivacy) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountGetPrivacy) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Key))
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountGetAuthorizations) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1690,17 +1791,22 @@ func (m *AccountGetAuthorizations) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountGetAuthorizations) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountGetAuthorizations) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountResetAuthorization) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1708,20 +1814,25 @@ func (m *AccountResetAuthorization) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountResetAuthorization) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountResetAuthorization) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.AuthID))
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountUpdateStatus) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1729,25 +1840,30 @@ func (m *AccountUpdateStatus) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountUpdateStatus) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUpdateStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
+	i--
 	if m.Online {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountAuthorizations) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1755,29 +1871,36 @@ func (m *AccountAuthorizations) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountAuthorizations) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountAuthorizations) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.Authorizations) > 0 {
-		for _, msg := range m.Authorizations {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.Authorizations) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Authorizations[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountAuthorization) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1785,51 +1908,61 @@ func (m *AccountAuthorization) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountAuthorization) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountAuthorization) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Model)))
-	i += copy(dAtA[i:], m.Model)
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.AppVersion)))
-	i += copy(dAtA[i:], m.AppVersion)
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.SystemVersion)))
-	i += copy(dAtA[i:], m.SystemVersion)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LangCode)))
-	i += copy(dAtA[i:], m.LangCode)
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.CreatedAt))
-	dAtA[i] = 0x30
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.ActiveAt))
-	dAtA[i] = 0x3a
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.ClientIP)))
-	i += copy(dAtA[i:], m.ClientIP)
-	dAtA[i] = 0x40
-	i++
-	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.LastAccess))
-	dAtA[i] = 0xa0
-	i++
-	dAtA[i] = 0x6
-	i++
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.AuthID))
-	return i, nil
+	i--
+	dAtA[i] = 0x6
+	i--
+	dAtA[i] = 0xa0
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.LastAccess))
+	i--
+	dAtA[i] = 0x40
+	i -= len(m.ClientIP)
+	copy(dAtA[i:], m.ClientIP)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.ClientIP)))
+	i--
+	dAtA[i] = 0x3a
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.ActiveAt))
+	i--
+	dAtA[i] = 0x30
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.CreatedAt))
+	i--
+	dAtA[i] = 0x28
+	i -= len(m.LangCode)
+	copy(dAtA[i:], m.LangCode)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LangCode)))
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.SystemVersion)
+	copy(dAtA[i:], m.SystemVersion)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.SystemVersion)))
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.AppVersion)
+	copy(dAtA[i:], m.AppVersion)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.AppVersion)))
+	i--
+	dAtA[i] = 0x12
+	i -= len(m.Model)
+	copy(dAtA[i:], m.Model)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Model)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountPrivacyRules) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1837,29 +1970,36 @@ func (m *AccountPrivacyRules) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountPrivacyRules) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountPrivacyRules) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.Rules) > 0 {
-		for _, msg := range m.Rules {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiAccounts(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.Rules) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Rules[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiAccounts(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *AccountSetLang) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1867,25 +2007,33 @@ func (m *AccountSetLang) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AccountSetLang) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountSetLang) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
+	i -= len(m.LangCode)
+	copy(dAtA[i:], m.LangCode)
 	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.LangCode)))
-	i += copy(dAtA[i:], m.LangCode)
-	return i, nil
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatApiAccounts(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatApiAccounts(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *AccountSetNotifySettings) Size() (n int) {
 	if m == nil {
@@ -2186,14 +2334,7 @@ func (m *AccountSetLang) Size() (n int) {
 }
 
 func sovChatApiAccounts(x uint64) (n int) {
-	for {
-		n++
-		x >>= 7
-		if x == 0 {
-			break
-		}
-	}
-	return n
+	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozChatApiAccounts(x uint64) (n int) {
 	return sovChatApiAccounts(uint64((x << 1) ^ uint64((int64(x) >> 63))))

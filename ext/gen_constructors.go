@@ -206,6 +206,7 @@ const (
 	C_DocumentAttribute                  int64 = 4146719643
 	C_InitConnect                        int64 = 4150793517
 	C_LabelsRemoveFromMessage            int64 = 4195197703
+	C_ClientUpdateSynced                 int64 = 4244270269
 	C_FileGet                            int64 = 4282510672
 	C_AccountChangePhone                 int64 = 4285969474
 	C_UpdateUsername                     int64 = 4290110589
@@ -417,6 +418,7 @@ var ConstructorNames = map[int64]string{
 	4146719643: "DocumentAttribute",
 	4150793517: "InitConnect",
 	4195197703: "LabelsRemoveFromMessage",
+	4244270269: "ClientUpdateSynced",
 	4282510672: "FileGet",
 	4285969474: "AccountChangePhone",
 	4290110589: "UpdateUsername",

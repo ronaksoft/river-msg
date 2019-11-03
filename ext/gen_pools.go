@@ -1235,6 +1235,12 @@ var (
 			return m
 		},
 	}
+	PoolClientUpdateSynced = sync.Pool{
+		New: func() interface{} {
+			m := new(ClientUpdateSynced)
+			return m
+		},
+	}
 	PoolFileGet = sync.Pool{
 		New: func() interface{} {
 			m := new(FileGet)

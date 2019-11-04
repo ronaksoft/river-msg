@@ -16,3 +16,9 @@ message ClientUpdateMessagesDeleted {
     required int32 PeerType = 2;
     repeated int64 MessageIDs = 3;
 }
+
+// ClientUpdateDialogsSynced
+message ClientUpdateSynced {
+    required bool Dialogs = 1;
+    required bool Contacts = 2;
+}

@@ -161,6 +161,12 @@ var (
 			return m
 		},
 	}
+	PoolTestRequest = sync.Pool{
+		New: func() interface{} {
+			m := new(TestRequest)
+			return m
+		},
+	}
 	PoolAccountGetNotifySettings = sync.Pool{
 		New: func() interface{} {
 			m := new(AccountGetNotifySettings)
@@ -668,6 +674,12 @@ var (
 	PoolDocumentAttributeVideo = sync.Pool{
 		New: func() interface{} {
 			m := new(DocumentAttributeVideo)
+			return m
+		},
+	}
+	PoolTestResponse = sync.Pool{
+		New: func() interface{} {
+			m := new(TestResponse)
 			return m
 		},
 	}
@@ -1334,6 +1346,12 @@ var (
 	PoolLabelsRemoveFromMessage = sync.Pool{
 		New: func() interface{} {
 			m := new(LabelsRemoveFromMessage)
+			return m
+		},
+	}
+	PoolClientUpdateSynced = sync.Pool{
+		New: func() interface{} {
+			m := new(ClientUpdateSynced)
 			return m
 		},
 	}

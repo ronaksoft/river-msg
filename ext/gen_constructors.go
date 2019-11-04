@@ -27,6 +27,7 @@ const (
 	C_Ack                                int64 = 447331921
 	C_SystemGetAppUpdate                 int64 = 450761036
 	C_ContactUser                        int64 = 460099170
+	C_TestRequest                        int64 = 475847033
 	C_AccountGetNotifySettings           int64 = 477008681
 	C_UpdateReadHistoryOutbox            int64 = 510866108
 	C_DocumentAttributePhoto             int64 = 515862833
@@ -112,6 +113,7 @@ const (
 	C_MessageContainer                   int64 = 1972016308
 	C_MessagesClearHistory               int64 = 1981246180
 	C_DocumentAttributeVideo             int64 = 1993289477
+	C_TestResponse                       int64 = 1999996896
 	C_UpdateDraftMessageCleared          int64 = 2011635602
 	C_AccountSetLang                     int64 = 2015777242
 	C_AccountSetNotifySettings           int64 = 2016882075
@@ -223,6 +225,7 @@ const (
 	C_DocumentAttribute                  int64 = 4146719643
 	C_InitConnect                        int64 = 4150793517
 	C_LabelsRemoveFromMessage            int64 = 4195197703
+	C_ClientUpdateSynced                 int64 = 4244270269
 	C_FileGet                            int64 = 4282510672
 	C_AccountChangePhone                 int64 = 4285969474
 	C_UpdateUsername                     int64 = 4290110589
@@ -255,6 +258,7 @@ var ConstructorNames = map[int64]string{
 	447331921:  "Ack",
 	450761036:  "SystemGetAppUpdate",
 	460099170:  "ContactUser",
+	475847033:  "TestRequest",
 	477008681:  "AccountGetNotifySettings",
 	510866108:  "UpdateReadHistoryOutbox",
 	515862833:  "DocumentAttributePhoto",
@@ -340,6 +344,7 @@ var ConstructorNames = map[int64]string{
 	1972016308: "MessageContainer",
 	1981246180: "MessagesClearHistory",
 	1993289477: "DocumentAttributeVideo",
+	1999996896: "TestResponse",
 	2011635602: "UpdateDraftMessageCleared",
 	2015777242: "AccountSetLang",
 	2016882075: "AccountSetNotifySettings",
@@ -451,6 +456,7 @@ var ConstructorNames = map[int64]string{
 	4146719643: "DocumentAttribute",
 	4150793517: "InitConnect",
 	4195197703: "LabelsRemoveFromMessage",
+	4244270269: "ClientUpdateSynced",
 	4282510672: "FileGet",
 	4285969474: "AccountChangePhone",
 	4290110589: "UpdateUsername",

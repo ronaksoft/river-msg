@@ -68,22 +68,133 @@ func (m *EchoWithDelay) GetDelayInSeconds() int32 {
 	return 0
 }
 
+type TestRequest struct {
+	Payload []byte `protobuf:"bytes,1,req,name=Payload" json:"Payload"`
+	Hash    []byte `protobuf:"bytes,2,req,name=Hash" json:"Hash"`
+}
+
+func (m *TestRequest) Reset()         { *m = TestRequest{} }
+func (m *TestRequest) String() string { return proto.CompactTextString(m) }
+func (*TestRequest) ProtoMessage()    {}
+func (*TestRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d549237421a44291, []int{1}
+}
+func (m *TestRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TestRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TestRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TestRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestRequest.Merge(m, src)
+}
+func (m *TestRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *TestRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_TestRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TestRequest proto.InternalMessageInfo
+
+func (m *TestRequest) GetPayload() []byte {
+	if m != nil {
+		return m.Payload
+	}
+	return nil
+}
+
+func (m *TestRequest) GetHash() []byte {
+	if m != nil {
+		return m.Hash
+	}
+	return nil
+}
+
+type TestResponse struct {
+	Length int32  `protobuf:"varint,1,req,name=Length" json:"Length"`
+	Hash   []byte `protobuf:"bytes,2,req,name=Hash" json:"Hash"`
+}
+
+func (m *TestResponse) Reset()         { *m = TestResponse{} }
+func (m *TestResponse) String() string { return proto.CompactTextString(m) }
+func (*TestResponse) ProtoMessage()    {}
+func (*TestResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d549237421a44291, []int{2}
+}
+func (m *TestResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TestResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TestResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TestResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestResponse.Merge(m, src)
+}
+func (m *TestResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *TestResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_TestResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TestResponse proto.InternalMessageInfo
+
+func (m *TestResponse) GetLength() int32 {
+	if m != nil {
+		return m.Length
+	}
+	return 0
+}
+
+func (m *TestResponse) GetHash() []byte {
+	if m != nil {
+		return m.Hash
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*EchoWithDelay)(nil), "msg.EchoWithDelay")
+	proto.RegisterType((*TestRequest)(nil), "msg.TestRequest")
+	proto.RegisterType((*TestResponse)(nil), "msg.TestResponse")
 }
 
 func init() { proto.RegisterFile("chat.api.dev.proto", fileDescriptor_d549237421a44291) }
 
 var fileDescriptor_d549237421a44291 = []byte{
-	// 124 bytes of a gzipped FileDescriptorProto
+	// 199 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4a, 0xce, 0x48, 0x2c,
 	0xd1, 0x4b, 0x2c, 0xc8, 0xd4, 0x4b, 0x49, 0x2d, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62,
 	0xce, 0x2d, 0x4e, 0x57, 0xb2, 0xe5, 0xe2, 0x75, 0x4d, 0xce, 0xc8, 0x0f, 0xcf, 0x2c, 0xc9, 0x70,
 	0x49, 0xcd, 0x49, 0xac, 0x14, 0xd2, 0xe1, 0xe2, 0x03, 0x33, 0x3c, 0xf3, 0x82, 0x53, 0x93, 0xf3,
 	0xf3, 0x52, 0x8a, 0x25, 0x18, 0x15, 0x98, 0x34, 0x58, 0x9d, 0x58, 0x4e, 0xdc, 0x93, 0x67, 0x08,
-	0x42, 0x93, 0x73, 0x92, 0x38, 0xf1, 0x48, 0x8e, 0xf1, 0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4,
-	0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8, 0xf0, 0x58, 0x8e, 0xe1, 0xc6, 0x63, 0x39, 0x06, 0x40, 0x00,
-	0x00, 0x00, 0xff, 0xff, 0xe6, 0x83, 0x90, 0xd2, 0x72, 0x00, 0x00, 0x00,
+	0x42, 0x93, 0x53, 0x72, 0xe7, 0xe2, 0x0e, 0x49, 0x2d, 0x2e, 0x09, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d,
+	0x2e, 0x11, 0x92, 0xe3, 0x62, 0x0f, 0x48, 0xac, 0xcc, 0xc9, 0x4f, 0x4c, 0x01, 0xeb, 0xe2, 0x81,
+	0xea, 0x82, 0x09, 0x0a, 0x49, 0x70, 0xb1, 0x78, 0x24, 0x16, 0x67, 0x48, 0x30, 0x21, 0x49, 0x82,
+	0x45, 0x94, 0xdc, 0xb8, 0x78, 0x20, 0x06, 0x15, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x0a, 0xc9, 0x70,
+	0xb1, 0xf9, 0xa4, 0xe6, 0xa5, 0x97, 0x64, 0xa0, 0x58, 0x0f, 0x15, 0xc3, 0x6d, 0x8e, 0x93, 0xc4,
+	0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c,
+	0xc3, 0x85, 0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb, 0x31, 0x00, 0x02, 0x00, 0x00, 0xff, 0xff, 0x3b,
+	0x9b, 0xaf, 0xe6, 0x03, 0x01, 0x00, 0x00,
 }
 
 func (m *EchoWithDelay) Marshal() (dAtA []byte, err error) {
@@ -107,6 +218,76 @@ func (m *EchoWithDelay) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+func (m *TestRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TestRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TestRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Hash != nil {
+		i -= len(m.Hash)
+		copy(dAtA[i:], m.Hash)
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Payload != nil {
+		i -= len(m.Payload)
+		copy(dAtA[i:], m.Payload)
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Payload)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TestResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TestResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TestResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Hash != nil {
+		i -= len(m.Hash)
+		copy(dAtA[i:], m.Hash)
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	i = encodeVarintChatApiDev(dAtA, i, uint64(m.Length))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintChatApiDev(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
@@ -123,6 +304,37 @@ func (m *EchoWithDelay) Size() (n int) {
 	var l int
 	_ = l
 	n += 1 + sovChatApiDev(uint64(m.DelayInSeconds))
+	return n
+}
+
+func (m *TestRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Payload != nil {
+		l = len(m.Payload)
+		n += 1 + l + sovChatApiDev(uint64(l))
+	}
+	if m.Hash != nil {
+		l = len(m.Hash)
+		n += 1 + l + sovChatApiDev(uint64(l))
+	}
+	return n
+}
+
+func (m *TestResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatApiDev(uint64(m.Length))
+	if m.Hash != nil {
+		l = len(m.Hash)
+		n += 1 + l + sovChatApiDev(uint64(l))
+	}
 	return n
 }
 
@@ -209,9 +421,255 @@ func (m *EchoWithDelay) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+func (m *TestRequest) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiDev
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TestRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TestRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Payload", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiDev
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Payload = append(m.Payload[:0], dAtA[iNdEx:postIndex]...)
+			if m.Payload == nil {
+				m.Payload = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Hash", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiDev
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Hash = append(m.Hash[:0], dAtA[iNdEx:postIndex]...)
+			if m.Hash == nil {
+				m.Hash = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiDev(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Payload")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Hash")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TestResponse) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiDev
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TestResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TestResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Length", wireType)
+			}
+			m.Length = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiDev
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Length |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Hash", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiDev
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Hash = append(m.Hash[:0], dAtA[iNdEx:postIndex]...)
+			if m.Hash == nil {
+				m.Hash = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiDev(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiDev
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Length")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Hash")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func skipChatApiDev(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -243,10 +701,8 @@ func skipChatApiDev(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -267,55 +723,30 @@ func skipChatApiDev(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiDev
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthChatApiDev
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowChatApiDev
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipChatApiDev(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthChatApiDev
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupChatApiDev
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthChatApiDev
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthChatApiDev = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiDev   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthChatApiDev        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiDev          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupChatApiDev = fmt.Errorf("proto: unexpected end of group")
 )

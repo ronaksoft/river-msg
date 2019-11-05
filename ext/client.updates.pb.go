@@ -165,7 +165,7 @@ func (m *ClientUpdateSynced) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_ClientUpdateSynced.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -314,7 +314,7 @@ func (m *ClientUpdateMessagesDeleted) MarshalTo(dAtA []byte) (int, error) {
 func (m *ClientUpdateSynced) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -322,32 +322,27 @@ func (m *ClientUpdateSynced) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ClientUpdateSynced) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ClientUpdateSynced) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
-	if m.Contacts {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x10
-	i--
+	dAtA[i] = 0x8
+	i++
 	if m.Dialogs {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x10
+	i++
+	if m.Contacts {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	return i, nil
 }
 
 func encodeVarintClientUpdates(dAtA []byte, offset int, v uint64) int {
@@ -849,7 +844,6 @@ func (m *ClientUpdateSynced) Unmarshal(dAtA []byte) error {
 func skipClientUpdates(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
-	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -881,8 +875,10 @@ func skipClientUpdates(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
+			return iNdEx, nil
 		case 1:
 			iNdEx += 8
+			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -903,30 +899,55 @@ func skipClientUpdates(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthClientUpdates
 			}
 			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupClientUpdates
+			if iNdEx < 0 {
+				return 0, ErrInvalidLengthClientUpdates
 			}
-			depth--
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowClientUpdates
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipClientUpdates(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthClientUpdates
+				}
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
 		case 5:
 			iNdEx += 4
+			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthClientUpdates
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
 	}
-	return 0, io.ErrUnexpectedEOF
+	panic("unreachable")
 }
 
 var (
-	ErrInvalidLengthClientUpdates        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowClientUpdates          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupClientUpdates = fmt.Errorf("proto: unexpected end of group")
+	ErrInvalidLengthClientUpdates = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowClientUpdates   = fmt.Errorf("proto: integer overflow")
 )

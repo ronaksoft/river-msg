@@ -86,5 +86,6 @@ const (
 	ErrItemActiveConnection = "ACTIVE_CONN"
 	ErrItemInputFile        = "INPUT_FILE"
 	ErrItemPhotoID          = "PHOTO_ID"
-	ErrItemBot
+	ErrItemBot              = "BOT"
+	ErrItemPhoto            = "PHOTO"
 )

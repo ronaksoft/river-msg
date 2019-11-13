@@ -17,3 +17,9 @@ service BotProxy {
     rpc ServeBotRequest (stream MessageEnvelope) returns (stream MessageEnvelope) {}
 }
 
+message StartBot {
+    required InputPeer Bot = 1;
+    required int64 RandomID = 2;
+    required string StartParam = 3;
+}
+

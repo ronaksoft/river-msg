@@ -1,5 +1,5 @@
-package msg
-
+package msg 
+ 
 import (
 	"github.com/gobwas/pool/pbytes"
 )
@@ -1102,6 +1102,12 @@ func ResultMessagesDialogs(out *MessageEnvelope, res *MessagesDialogs) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultStartBot(out *MessageEnvelope, res *StartBot) {
+	out.Constructor = C_StartBot
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAuthBotAuthorization(out *MessageEnvelope, res *AuthBotAuthorization) {
 	out.Constructor = C_AuthBotAuthorization
 	pbytes.Put(out.Message)
@@ -1372,3 +1378,4 @@ func ResultUpdateUsername(out *MessageEnvelope, res *UpdateUsername) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+

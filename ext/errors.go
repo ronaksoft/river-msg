@@ -87,4 +87,5 @@ const (
 	ErrItemInputFile        = "INPUT_FILE"
 	ErrItemPhotoID          = "PHOTO_ID"
 	ErrItemPhoto            = "PHOTO"
+	ErrItemMember           = "MEMBER"
 )

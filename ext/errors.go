@@ -88,4 +88,5 @@ const (
 	ErrItemPhotoID          = "PHOTO_ID"
 	ErrItemPhoto            = "PHOTO"
 	ErrItemMember           = "MEMBER"
+	ErrItemFeature			= "FEATURE"
 )

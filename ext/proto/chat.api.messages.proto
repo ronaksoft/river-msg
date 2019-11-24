@@ -16,6 +16,11 @@ message MessagesSend {
     repeated MessageEntity Entities = 8;
 }
 
+message MessagesSendServiceMessage {
+    required InputPeer Peer = 1;
+    required string Body = 2;
+}
+
 enum InputMediaType {
     InputMediaTypeEmpty = 0;
     InputMediaTypeUploadedPhoto = 1;

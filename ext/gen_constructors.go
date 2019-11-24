@@ -35,6 +35,7 @@ const (
     C_Document int64 = 555739168
     C_UpdateGetDifference int64 = 556775761
     C_LabelsAddToDialog int64 = 572246739
+    C_MessagesSendServiceMessage int64 = 588018786
     C_InitAuthCompleted int64 = 627708982
     C_UpdateAccountPrivacy int64 = 629173761
     C_ButtonRequestPhone int64 = 630958494
@@ -267,6 +268,7 @@ var ConstructorNames = map[int64]string{
     555739168: "Document",
     556775761: "UpdateGetDifference",
     572246739: "LabelsAddToDialog",
+    588018786: "MessagesSendServiceMessage",
     627708982: "InitAuthCompleted",
     629173761: "UpdateAccountPrivacy",
     630958494: "ButtonRequestPhone",

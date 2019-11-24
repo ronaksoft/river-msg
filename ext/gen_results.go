@@ -208,6 +208,12 @@ func ResultLabelsAddToDialog(out *MessageEnvelope, res *LabelsAddToDialog) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessagesSendServiceMessage(out *MessageEnvelope, res *MessagesSendServiceMessage) {
+	out.Constructor = C_MessagesSendServiceMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInitAuthCompleted(out *MessageEnvelope, res *InitAuthCompleted) {
 	out.Constructor = C_InitAuthCompleted
 	pbytes.Put(out.Message)

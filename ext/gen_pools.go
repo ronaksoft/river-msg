@@ -209,6 +209,12 @@ PoolLabelsAddToDialog = sync.Pool{
             return m
         },
     }
+PoolMessagesSendServiceMessage = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesSendServiceMessage)
+            return m
+        },
+    }
 PoolInitAuthCompleted = sync.Pool{
         New: func() interface{} {
             m := new(InitAuthCompleted)

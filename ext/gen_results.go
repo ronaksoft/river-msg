@@ -910,6 +910,12 @@ func ResultLabelsRemoveFromDialog(out *MessageEnvelope, res *LabelsRemoveFromDia
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessageActionScreenShotTaken(out *MessageEnvelope, res *MessageActionScreenShotTaken) {
+	out.Constructor = C_MessageActionScreenShotTaken
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultKeyboardButtonEnvelope(out *MessageEnvelope, res *KeyboardButtonEnvelope) {
 	out.Constructor = C_KeyboardButtonEnvelope
 	pbytes.Put(out.Message)
@@ -1170,6 +1176,12 @@ func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
 }
 func ResultAuthDestroyKey(out *MessageEnvelope, res *AuthDestroyKey) {
 	out.Constructor = C_AuthDestroyKey
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMessagesSendScreenShotNotification(out *MessageEnvelope, res *MessagesSendScreenShotNotification) {
+	out.Constructor = C_MessagesSendScreenShotNotification
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

@@ -911,6 +911,12 @@ var (
 			return m
 		},
 	}
+	PoolMessageActionScreenShotTaken = sync.Pool{
+		New: func() interface{} {
+			m := new(MessageActionScreenShotTaken)
+			return m
+		},
+	}
 	PoolKeyboardButtonEnvelope = sync.Pool{
 		New: func() interface{} {
 			m := new(KeyboardButtonEnvelope)
@@ -1172,6 +1178,12 @@ var (
 	PoolAuthDestroyKey = sync.Pool{
 		New: func() interface{} {
 			m := new(AuthDestroyKey)
+			return m
+		},
+	}
+	PoolMessagesSendScreenShotNotification = sync.Pool{
+		New: func() interface{} {
+			m := new(MessagesSendScreenShotNotification)
 			return m
 		},
 	}

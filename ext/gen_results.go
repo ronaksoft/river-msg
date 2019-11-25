@@ -28,6 +28,12 @@ func ResultInitUserBound(out *MessageEnvelope, res *InitUserBound) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessagesBroadcast(out *MessageEnvelope, res *MessagesBroadcast) {
+	out.Constructor = C_MessagesBroadcast
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
 	out.Constructor = C_MediaWebPage
 	pbytes.Put(out.Message)
@@ -208,12 +214,6 @@ func ResultLabelsAddToDialog(out *MessageEnvelope, res *LabelsAddToDialog) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultMessagesSendServiceMessage(out *MessageEnvelope, res *MessagesSendServiceMessage) {
-	out.Constructor = C_MessagesSendServiceMessage
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
 func ResultInitAuthCompleted(out *MessageEnvelope, res *InitAuthCompleted) {
 	out.Constructor = C_InitAuthCompleted
 	pbytes.Put(out.Message)
@@ -264,6 +264,12 @@ func ResultFile(out *MessageEnvelope, res *File) {
 }
 func ResultUser(out *MessageEnvelope, res *User) {
 	out.Constructor = C_User
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMessagesBroadcastProgress(out *MessageEnvelope, res *MessagesBroadcastProgress) {
+	out.Constructor = C_MessagesBroadcastProgress
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

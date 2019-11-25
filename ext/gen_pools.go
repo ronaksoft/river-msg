@@ -29,6 +29,12 @@ PoolInitUserBound = sync.Pool{
             return m
         },
     }
+PoolMessagesBroadcast = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesBroadcast)
+            return m
+        },
+    }
 PoolMediaWebPage = sync.Pool{
         New: func() interface{} {
             m := new(MediaWebPage)
@@ -209,12 +215,6 @@ PoolLabelsAddToDialog = sync.Pool{
             return m
         },
     }
-PoolMessagesSendServiceMessage = sync.Pool{
-        New: func() interface{} {
-            m := new(MessagesSendServiceMessage)
-            return m
-        },
-    }
 PoolInitAuthCompleted = sync.Pool{
         New: func() interface{} {
             m := new(InitAuthCompleted)
@@ -266,6 +266,12 @@ PoolFile = sync.Pool{
 PoolUser = sync.Pool{
         New: func() interface{} {
             m := new(User)
+            return m
+        },
+    }
+PoolMessagesBroadcastProgress = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesBroadcastProgress)
             return m
         },
     }

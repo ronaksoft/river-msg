@@ -16,9 +16,12 @@ message MessagesSend {
     repeated MessageEntity Entities = 8;
 }
 
-message MessagesSendServiceMessage {
-    required InputPeer Peer = 1;
-    required string Body = 2;
+message MessagesBroadcast {
+    required string Body = 1;
+}
+
+message MessagesBroadcastProgress {
+    required float Percentage = 1;
 }
 
 enum InputMediaType {

@@ -5,6 +5,7 @@ const (
     C_Peer int64 = 47470215
     C_MediaPhoto int64 = 71894788
     C_InitUserBound int64 = 128391141
+    C_MessagesBroadcast int64 = 142289348
     C_MediaWebPage int64 = 148034084
     C_ClientFile int64 = 155127968
     C_GroupsRemovePhoto int64 = 176771682
@@ -35,7 +36,6 @@ const (
     C_Document int64 = 555739168
     C_UpdateGetDifference int64 = 556775761
     C_LabelsAddToDialog int64 = 572246739
-    C_MessagesSendServiceMessage int64 = 588018786
     C_InitAuthCompleted int64 = 627708982
     C_UpdateAccountPrivacy int64 = 629173761
     C_ButtonRequestPhone int64 = 630958494
@@ -45,6 +45,7 @@ const (
     C_UpdateGroupAdmins int64 = 694155405
     C_File int64 = 749574446
     C_User int64 = 765557111
+    C_MessagesBroadcastProgress int64 = 774574929
     C_UpdateLabelAdded int64 = 797455885
     C_UsersMany int64 = 801733941
     C_InputMediaUploadedPhoto int64 = 849930963
@@ -238,6 +239,7 @@ var ConstructorNames = map[int64]string{
     47470215: "Peer",
     71894788: "MediaPhoto",
     128391141: "InitUserBound",
+    142289348: "MessagesBroadcast",
     148034084: "MediaWebPage",
     155127968: "ClientFile",
     176771682: "GroupsRemovePhoto",
@@ -268,7 +270,6 @@ var ConstructorNames = map[int64]string{
     555739168: "Document",
     556775761: "UpdateGetDifference",
     572246739: "LabelsAddToDialog",
-    588018786: "MessagesSendServiceMessage",
     627708982: "InitAuthCompleted",
     629173761: "UpdateAccountPrivacy",
     630958494: "ButtonRequestPhone",
@@ -278,6 +279,7 @@ var ConstructorNames = map[int64]string{
     694155405: "UpdateGroupAdmins",
     749574446: "File",
     765557111: "User",
+    774574929: "MessagesBroadcastProgress",
     797455885: "UpdateLabelAdded",
     801733941: "UsersMany",
     849930963: "InputMediaUploadedPhoto",

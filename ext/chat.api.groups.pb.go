@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // GroupsCreate
 // @Function
@@ -45,7 +45,7 @@ func (m *GroupsCreate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_GroupsCreate.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -101,7 +101,7 @@ func (m *GroupsAddUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_GroupsAddUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -163,7 +163,7 @@ func (m *GroupsEditTitle) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_GroupsEditTitle.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -218,7 +218,7 @@ func (m *GroupsDeleteUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_GroupsDeleteUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -272,7 +272,7 @@ func (m *GroupsGetFull) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_GroupsGetFull.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -320,7 +320,7 @@ func (m *GroupsToggleAdmins) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_GroupsToggleAdmins.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -376,7 +376,7 @@ func (m *GroupsUpdateAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_GroupsUpdateAdmin.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -438,7 +438,7 @@ func (m *GroupsUploadPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_GroupsUploadPhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -493,7 +493,7 @@ func (m *GroupsRemovePhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_GroupsRemovePhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -548,7 +548,7 @@ func (m *GroupsUpdatePhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_GroupsUpdatePhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -629,7 +629,7 @@ var fileDescriptor_7f4179ca006402c4 = []byte{
 func (m *GroupsCreate) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -637,41 +637,33 @@ func (m *GroupsCreate) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsCreate) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsCreate) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Title)
-	copy(dAtA[i:], m.Title)
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(len(m.Title)))
-	i--
-	dAtA[i] = 0x12
 	if len(m.Users) > 0 {
-		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiGroups(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.Users {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiGroups(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(len(m.Title)))
+	i += copy(dAtA[i:], m.Title)
+	return i, nil
 }
 
 func (m *GroupsAddUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -679,42 +671,35 @@ func (m *GroupsAddUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsAddUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsAddUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.ForwardLimit))
-	i--
-	dAtA[i] = 0x18
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
 	if m.User == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
 	} else {
-		{
-			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiGroups(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiGroups(dAtA, i, uint64(m.User.Size()))
+		n1, err1 := m.User.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
 	}
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.ForwardLimit))
+	return i, nil
 }
 
 func (m *GroupsEditTitle) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -722,30 +707,24 @@ func (m *GroupsEditTitle) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsEditTitle) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsEditTitle) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Title)
-	copy(dAtA[i:], m.Title)
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(len(m.Title)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(len(m.Title)))
+	i += copy(dAtA[i:], m.Title)
+	return i, nil
 }
 
 func (m *GroupsDeleteUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -753,39 +732,32 @@ func (m *GroupsDeleteUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsDeleteUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsDeleteUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
 	if m.User == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
 	} else {
-		{
-			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiGroups(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiGroups(dAtA, i, uint64(m.User.Size()))
+		n2, err2 := m.User.MarshalTo(dAtA[i:])
+		if err2 != nil {
+			return 0, err2
+		}
+		i += n2
 	}
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *GroupsGetFull) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -793,25 +765,20 @@ func (m *GroupsGetFull) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsGetFull) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsGetFull) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	return i, nil
 }
 
 func (m *GroupsToggleAdmins) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -819,33 +786,28 @@ func (m *GroupsToggleAdmins) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsToggleAdmins) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsToggleAdmins) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	dAtA[i] = 0x10
+	i++
 	if m.AdminEnabled {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *GroupsUpdateAdmin) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -853,47 +815,40 @@ func (m *GroupsUpdateAdmin) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsUpdateAdmin) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsUpdateAdmin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	if m.User == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	} else {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiGroups(dAtA, i, uint64(m.User.Size()))
+		n3, err3 := m.User.MarshalTo(dAtA[i:])
+		if err3 != nil {
+			return 0, err3
+		}
+		i += n3
+	}
+	dAtA[i] = 0x18
+	i++
 	if m.Admin {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x18
-	if m.User == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
-	} else {
-		{
-			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiGroups(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *GroupsUploadPhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -901,39 +856,32 @@ func (m *GroupsUploadPhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsUploadPhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsUploadPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
 	if m.File == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
 	} else {
-		{
-			size, err := m.File.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatApiGroups(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiGroups(dAtA, i, uint64(m.File.Size()))
+		n4, err4 := m.File.MarshalTo(dAtA[i:])
+		if err4 != nil {
+			return 0, err4
+		}
+		i += n4
 	}
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *GroupsRemovePhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -941,28 +889,23 @@ func (m *GroupsRemovePhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsRemovePhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsRemovePhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.PhotoID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.PhotoID))
+	return i, nil
 }
 
 func (m *GroupsUpdatePhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -970,34 +913,27 @@ func (m *GroupsUpdatePhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupsUpdatePhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupsUpdatePhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.PhotoID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.PhotoID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatApiGroups(dAtA, i, uint64(m.GroupID))
+	return i, nil
 }
 
 func encodeVarintChatApiGroups(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiGroups(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *GroupsCreate) Size() (n int) {
 	if m == nil {
@@ -2264,7 +2200,6 @@ func (m *GroupsUpdatePhoto) Unmarshal(dAtA []byte) error {
 func skipChatApiGroups(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
-	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -2296,8 +2231,10 @@ func skipChatApiGroups(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
+			return iNdEx, nil
 		case 1:
 			iNdEx += 8
+			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -2318,30 +2255,55 @@ func skipChatApiGroups(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiGroups
 			}
 			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupChatApiGroups
+			if iNdEx < 0 {
+				return 0, ErrInvalidLengthChatApiGroups
 			}
-			depth--
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowChatApiGroups
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipChatApiGroups(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiGroups
+				}
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
 		case 5:
 			iNdEx += 4
+			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthChatApiGroups
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
 	}
-	return 0, io.ErrUnexpectedEOF
+	panic("unreachable")
 }
 
 var (
-	ErrInvalidLengthChatApiGroups        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiGroups          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupChatApiGroups = fmt.Errorf("proto: unexpected end of group")
+	ErrInvalidLengthChatApiGroups = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiGroups   = fmt.Errorf("proto: integer overflow")
 )

@@ -5,6 +5,7 @@ const (
     C_Peer int64 = 47470215
     C_MediaPhoto int64 = 71894788
     C_InitUserBound int64 = 128391141
+    C_MessagesBroadcast int64 = 142289348
     C_MediaWebPage int64 = 148034084
     C_ClientFile int64 = 155127968
     C_GroupsRemovePhoto int64 = 176771682
@@ -44,6 +45,7 @@ const (
     C_UpdateGroupAdmins int64 = 694155405
     C_File int64 = 749574446
     C_User int64 = 765557111
+    C_MessagesBroadcastProgress int64 = 774574929
     C_UpdateLabelAdded int64 = 797455885
     C_UsersMany int64 = 801733941
     C_InputMediaUploadedPhoto int64 = 849930963
@@ -52,6 +54,7 @@ const (
     C_SystemSalts int64 = 871116906
     C_MessagesSaveDraft int64 = 921840607
     C_AccountRegisterDevice int64 = 946059841
+    C_Bot int64 = 961692401
     C_AuthLogout int64 = 992431648
     C_Button int64 = 1034594571
     C_UsersGet int64 = 1039301579
@@ -68,6 +71,7 @@ const (
     C_AuthRecall int64 = 1172029049
     C_SystemGetPublicKeys int64 = 1191522796
     C_MessageActionGroupDeleteUser int64 = 1213452128
+    C_FileMany int64 = 1222018159
     C_AccountUploadPhoto int64 = 1222469957
     C_MessageActionClearHistory int64 = 1270465696
     C_GroupsCreate int64 = 1271969037
@@ -88,6 +92,7 @@ const (
     C_InputMediaContact int64 = 1534117184
     C_MessagesSetTyping int64 = 1540214486
     C_UpdateDialogPinnedReorder int64 = 1567423539
+    C_AuthBotRegister int64 = 1579606687
     C_GroupsToggleAdmins int64 = 1581076909
     C_InitCompleteAuth int64 = 1583178320
     C_AccountSetPrivacy int64 = 1599585002
@@ -184,8 +189,9 @@ const (
     C_ReplyKeyboardMarkup int64 = 3207405102
     C_AuthRecalled int64 = 3249025459
     C_MessagesDialogs int64 = 3252610224
+    C_StartBot int64 = 3294108684
+    C_AuthBotAuthorization int64 = 3304560814
     C_UsersGetFull int64 = 3343342086
-    C_FileMany int64 = 3364941172
     C_InputPeer int64 = 3374092470
     C_MessagesGetHistory int64 = 3396939832
     C_LabelsDelete int64 = 3401105936
@@ -237,6 +243,7 @@ var ConstructorNames = map[int64]string{
     47470215: "Peer",
     71894788: "MediaPhoto",
     128391141: "InitUserBound",
+    142289348: "MessagesBroadcast",
     148034084: "MediaWebPage",
     155127968: "ClientFile",
     176771682: "GroupsRemovePhoto",
@@ -276,6 +283,7 @@ var ConstructorNames = map[int64]string{
     694155405: "UpdateGroupAdmins",
     749574446: "File",
     765557111: "User",
+    774574929: "MessagesBroadcastProgress",
     797455885: "UpdateLabelAdded",
     801733941: "UsersMany",
     849930963: "InputMediaUploadedPhoto",
@@ -284,6 +292,7 @@ var ConstructorNames = map[int64]string{
     871116906: "SystemSalts",
     921840607: "MessagesSaveDraft",
     946059841: "AccountRegisterDevice",
+    961692401: "Bot",
     992431648: "AuthLogout",
     1034594571: "Button",
     1039301579: "UsersGet",
@@ -300,6 +309,7 @@ var ConstructorNames = map[int64]string{
     1172029049: "AuthRecall",
     1191522796: "SystemGetPublicKeys",
     1213452128: "MessageActionGroupDeleteUser",
+    1222018159: "FileMany",
     1222469957: "AccountUploadPhoto",
     1270465696: "MessageActionClearHistory",
     1271969037: "GroupsCreate",
@@ -320,6 +330,7 @@ var ConstructorNames = map[int64]string{
     1534117184: "InputMediaContact",
     1540214486: "MessagesSetTyping",
     1567423539: "UpdateDialogPinnedReorder",
+    1579606687: "AuthBotRegister",
     1581076909: "GroupsToggleAdmins",
     1583178320: "InitCompleteAuth",
     1599585002: "AccountSetPrivacy",
@@ -416,8 +427,9 @@ var ConstructorNames = map[int64]string{
     3207405102: "ReplyKeyboardMarkup",
     3249025459: "AuthRecalled",
     3252610224: "MessagesDialogs",
+    3294108684: "StartBot",
+    3304560814: "AuthBotAuthorization",
     3343342086: "UsersGetFull",
-    3364941172: "FileMany{",
     3374092470: "InputPeer",
     3396939832: "MessagesGetHistory",
     3401105936: "LabelsDelete",

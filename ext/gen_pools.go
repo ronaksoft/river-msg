@@ -29,6 +29,12 @@ PoolInitUserBound = sync.Pool{
             return m
         },
     }
+PoolMessagesBroadcast = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesBroadcast)
+            return m
+        },
+    }
 PoolMediaWebPage = sync.Pool{
         New: func() interface{} {
             m := new(MediaWebPage)
@@ -263,6 +269,12 @@ PoolUser = sync.Pool{
             return m
         },
     }
+PoolMessagesBroadcastProgress = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesBroadcastProgress)
+            return m
+        },
+    }
 PoolUpdateLabelAdded = sync.Pool{
         New: func() interface{} {
             m := new(UpdateLabelAdded)
@@ -308,6 +320,12 @@ PoolMessagesSaveDraft = sync.Pool{
 PoolAccountRegisterDevice = sync.Pool{
         New: func() interface{} {
             m := new(AccountRegisterDevice)
+            return m
+        },
+    }
+PoolBot = sync.Pool{
+        New: func() interface{} {
+            m := new(Bot)
             return m
         },
     }
@@ -404,6 +422,12 @@ PoolSystemGetPublicKeys = sync.Pool{
 PoolMessageActionGroupDeleteUser = sync.Pool{
         New: func() interface{} {
             m := new(MessageActionGroupDeleteUser)
+            return m
+        },
+    }
+PoolFileMany = sync.Pool{
+        New: func() interface{} {
+            m := new(FileMany)
             return m
         },
     }
@@ -524,6 +548,12 @@ PoolMessagesSetTyping = sync.Pool{
 PoolUpdateDialogPinnedReorder = sync.Pool{
         New: func() interface{} {
             m := new(UpdateDialogPinnedReorder)
+            return m
+        },
+    }
+PoolAuthBotRegister = sync.Pool{
+        New: func() interface{} {
+            m := new(AuthBotRegister)
             return m
         },
     }
@@ -1103,15 +1133,21 @@ PoolMessagesDialogs = sync.Pool{
             return m
         },
     }
-PoolUsersGetFull = sync.Pool{
+PoolStartBot = sync.Pool{
         New: func() interface{} {
-            m := new(UsersGetFull)
+            m := new(StartBot)
             return m
         },
     }
-PoolFileMany{ = sync.Pool{
+PoolAuthBotAuthorization = sync.Pool{
         New: func() interface{} {
-            m := new(FileMany{)
+            m := new(AuthBotAuthorization)
+            return m
+        },
+    }
+PoolUsersGetFull = sync.Pool{
+        New: func() interface{} {
+            m := new(UsersGetFull)
             return m
         },
     }

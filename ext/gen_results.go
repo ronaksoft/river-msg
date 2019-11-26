@@ -28,6 +28,12 @@ func ResultInitUserBound(out *MessageEnvelope, res *InitUserBound) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessagesBroadcast(out *MessageEnvelope, res *MessagesBroadcast) {
+	out.Constructor = C_MessagesBroadcast
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
 	out.Constructor = C_MediaWebPage
 	pbytes.Put(out.Message)
@@ -262,6 +268,12 @@ func ResultUser(out *MessageEnvelope, res *User) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessagesBroadcastProgress(out *MessageEnvelope, res *MessagesBroadcastProgress) {
+	out.Constructor = C_MessagesBroadcastProgress
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultUpdateLabelAdded(out *MessageEnvelope, res *UpdateLabelAdded) {
 	out.Constructor = C_UpdateLabelAdded
 	pbytes.Put(out.Message)
@@ -306,6 +318,12 @@ func ResultMessagesSaveDraft(out *MessageEnvelope, res *MessagesSaveDraft) {
 }
 func ResultAccountRegisterDevice(out *MessageEnvelope, res *AccountRegisterDevice) {
 	out.Constructor = C_AccountRegisterDevice
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultBot(out *MessageEnvelope, res *Bot) {
+	out.Constructor = C_Bot
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -402,6 +420,12 @@ func ResultSystemGetPublicKeys(out *MessageEnvelope, res *SystemGetPublicKeys) {
 }
 func ResultMessageActionGroupDeleteUser(out *MessageEnvelope, res *MessageActionGroupDeleteUser) {
 	out.Constructor = C_MessageActionGroupDeleteUser
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultFileMany(out *MessageEnvelope, res *FileMany) {
+	out.Constructor = C_FileMany
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -522,6 +546,12 @@ func ResultMessagesSetTyping(out *MessageEnvelope, res *MessagesSetTyping) {
 }
 func ResultUpdateDialogPinnedReorder(out *MessageEnvelope, res *UpdateDialogPinnedReorder) {
 	out.Constructor = C_UpdateDialogPinnedReorder
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultAuthBotRegister(out *MessageEnvelope, res *AuthBotRegister) {
+	out.Constructor = C_AuthBotRegister
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1102,14 +1132,20 @@ func ResultMessagesDialogs(out *MessageEnvelope, res *MessagesDialogs) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultUsersGetFull(out *MessageEnvelope, res *UsersGetFull) {
-	out.Constructor = C_UsersGetFull
+func ResultStartBot(out *MessageEnvelope, res *StartBot) {
+	out.Constructor = C_StartBot
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-func ResultFileMany(out *MessageEnvelope, res *FileMany) {
-	out.Constructor = C_FileMany
+func ResultAuthBotAuthorization(out *MessageEnvelope, res *AuthBotAuthorization) {
+	out.Constructor = C_AuthBotAuthorization
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultUsersGetFull(out *MessageEnvelope, res *UsersGetFull) {
+	out.Constructor = C_UsersGetFull
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

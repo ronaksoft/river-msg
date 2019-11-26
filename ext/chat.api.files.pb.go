@@ -238,7 +238,7 @@ func (m *FileGetMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_FileGetMany.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -351,7 +351,7 @@ func (m *FileMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_FileMany.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -493,7 +493,7 @@ func (m *FileGet) MarshalTo(dAtA []byte) (int, error) {
 func (m *FileGetMany) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -501,30 +501,23 @@ func (m *FileGetMany) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *FileGetMany) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *FileGetMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.FileGetMany) > 0 {
-		for iNdEx := len(m.FileGetMany) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.FileGetMany[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiFiles(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.FileGetMany {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiFiles(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *File) Marshal() (dAtA []byte, err error) {
@@ -564,7 +557,7 @@ func (m *File) MarshalTo(dAtA []byte) (int, error) {
 func (m *FileMany) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -572,30 +565,23 @@ func (m *FileMany) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *FileMany) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *FileMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.FileMany) > 0 {
-		for iNdEx := len(m.FileMany) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.FileMany[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiFiles(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.FileMany {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiFiles(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintChatApiFiles(dAtA []byte, offset int, v uint64) int {

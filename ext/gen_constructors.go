@@ -71,6 +71,7 @@ const (
     C_AuthRecall int64 = 1172029049
     C_SystemGetPublicKeys int64 = 1191522796
     C_MessageActionGroupDeleteUser int64 = 1213452128
+    C_FileMany int64 = 1222018159
     C_AccountUploadPhoto int64 = 1222469957
     C_MessageActionClearHistory int64 = 1270465696
     C_GroupsCreate int64 = 1271969037
@@ -191,7 +192,6 @@ const (
     C_StartBot int64 = 3294108684
     C_AuthBotAuthorization int64 = 3304560814
     C_UsersGetFull int64 = 3343342086
-    C_FileMany{ int64 = 3364941172
     C_InputPeer int64 = 3374092470
     C_MessagesGetHistory int64 = 3396939832
     C_LabelsDelete int64 = 3401105936
@@ -309,6 +309,7 @@ var ConstructorNames = map[int64]string{
     1172029049: "AuthRecall",
     1191522796: "SystemGetPublicKeys",
     1213452128: "MessageActionGroupDeleteUser",
+    1222018159: "FileMany",
     1222469957: "AccountUploadPhoto",
     1270465696: "MessageActionClearHistory",
     1271969037: "GroupsCreate",
@@ -429,7 +430,6 @@ var ConstructorNames = map[int64]string{
     3294108684: "StartBot",
     3304560814: "AuthBotAuthorization",
     3343342086: "UsersGetFull",
-    3364941172: "FileMany{",
     3374092470: "InputPeer",
     3396939832: "MessagesGetHistory",
     3401105936: "LabelsDelete",

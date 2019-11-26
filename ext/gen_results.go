@@ -424,6 +424,12 @@ func ResultMessageActionGroupDeleteUser(out *MessageEnvelope, res *MessageAction
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultFileMany(out *MessageEnvelope, res *FileMany) {
+	out.Constructor = C_FileMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAccountUploadPhoto(out *MessageEnvelope, res *AccountUploadPhoto) {
 	out.Constructor = C_AccountUploadPhoto
 	pbytes.Put(out.Message)
@@ -1140,12 +1146,6 @@ func ResultAuthBotAuthorization(out *MessageEnvelope, res *AuthBotAuthorization)
 }
 func ResultUsersGetFull(out *MessageEnvelope, res *UsersGetFull) {
 	out.Constructor = C_UsersGetFull
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-func ResultFileMany{(out *MessageEnvelope, res *FileMany{) {
-	out.Constructor = C_FileMany{
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

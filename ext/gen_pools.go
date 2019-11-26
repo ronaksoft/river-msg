@@ -425,6 +425,12 @@ PoolMessageActionGroupDeleteUser = sync.Pool{
             return m
         },
     }
+PoolFileMany = sync.Pool{
+        New: func() interface{} {
+            m := new(FileMany)
+            return m
+        },
+    }
 PoolAccountUploadPhoto = sync.Pool{
         New: func() interface{} {
             m := new(AccountUploadPhoto)
@@ -1142,12 +1148,6 @@ PoolAuthBotAuthorization = sync.Pool{
 PoolUsersGetFull = sync.Pool{
         New: func() interface{} {
             m := new(UsersGetFull)
-            return m
-        },
-    }
-PoolFileMany{ = sync.Pool{
-        New: func() interface{} {
-            m := new(FileMany{)
             return m
         },
     }

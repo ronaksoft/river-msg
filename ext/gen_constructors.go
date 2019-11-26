@@ -119,6 +119,7 @@ const (
     C_UpdateDraftMessageCleared int64 = 2011635602
     C_AccountSetLang int64 = 2015777242
     C_AccountSetNotifySettings int64 = 2016882075
+    C_FileGetMany int64 = 2111810754
     C_AccountGetAuthorizations int64 = 2112646192
     C_UpdateMessageID int64 = 2139063022
     C_MessagesGet int64 = 2151382317
@@ -156,6 +157,7 @@ const (
     C_GroupsUploadPhoto int64 = 2624284907
     C_MediaGeoLocation int64 = 2625326500
     C_LabelsRemoveFromDialog int64 = 2632121923
+    C_MessageActionScreenShotTaken int64 = 2637201461
     C_KeyboardButtonEnvelope int64 = 2639543624
     C_DBMediaInfo int64 = 2652925823
     C_MessagesForward int64 = 2662884753
@@ -189,6 +191,7 @@ const (
     C_StartBot int64 = 3294108684
     C_AuthBotAuthorization int64 = 3304560814
     C_UsersGetFull int64 = 3343342086
+    C_FileMany{ int64 = 3364941172
     C_InputPeer int64 = 3374092470
     C_MessagesGetHistory int64 = 3396939832
     C_LabelsDelete int64 = 3401105936
@@ -202,6 +205,7 @@ const (
     C_MessagesDelete int64 = 3487616910
     C_MediaSize int64 = 3543753456
     C_AuthDestroyKey int64 = 3673422656
+    C_MessagesSendScreenShotNotification int64 = 3682116055
     C_AccountUpdateProfile int64 = 3725499887
     C_AccountRemovePhoto int64 = 3728692172
     C_MediaContact int64 = 3735320833
@@ -353,6 +357,7 @@ var ConstructorNames = map[int64]string{
     2011635602: "UpdateDraftMessageCleared",
     2015777242: "AccountSetLang",
     2016882075: "AccountSetNotifySettings",
+    2111810754: "FileGetMany",
     2112646192: "AccountGetAuthorizations",
     2139063022: "UpdateMessageID",
     2151382317: "MessagesGet",
@@ -390,6 +395,7 @@ var ConstructorNames = map[int64]string{
     2624284907: "GroupsUploadPhoto",
     2625326500: "MediaGeoLocation",
     2632121923: "LabelsRemoveFromDialog",
+    2637201461: "MessageActionScreenShotTaken",
     2639543624: "KeyboardButtonEnvelope",
     2652925823: "DBMediaInfo",
     2662884753: "MessagesForward",
@@ -423,6 +429,7 @@ var ConstructorNames = map[int64]string{
     3294108684: "StartBot",
     3304560814: "AuthBotAuthorization",
     3343342086: "UsersGetFull",
+    3364941172: "FileMany{",
     3374092470: "InputPeer",
     3396939832: "MessagesGetHistory",
     3401105936: "LabelsDelete",
@@ -436,6 +443,7 @@ var ConstructorNames = map[int64]string{
     3487616910: "MessagesDelete",
     3543753456: "MediaSize",
     3673422656: "AuthDestroyKey",
+    3682116055: "MessagesSendScreenShotNotification",
     3725499887: "AccountUpdateProfile",
     3728692172: "AccountRemovePhoto",
     3735320833: "MediaContact",

@@ -713,6 +713,12 @@ PoolAccountSetNotifySettings = sync.Pool{
             return m
         },
     }
+PoolFileGetMany = sync.Pool{
+        New: func() interface{} {
+            m := new(FileGetMany)
+            return m
+        },
+    }
 PoolAccountGetAuthorizations = sync.Pool{
         New: func() interface{} {
             m := new(AccountGetAuthorizations)
@@ -935,6 +941,12 @@ PoolLabelsRemoveFromDialog = sync.Pool{
             return m
         },
     }
+PoolMessageActionScreenShotTaken = sync.Pool{
+        New: func() interface{} {
+            m := new(MessageActionScreenShotTaken)
+            return m
+        },
+    }
 PoolKeyboardButtonEnvelope = sync.Pool{
         New: func() interface{} {
             m := new(KeyboardButtonEnvelope)
@@ -1133,6 +1145,12 @@ PoolUsersGetFull = sync.Pool{
             return m
         },
     }
+PoolFileMany{ = sync.Pool{
+        New: func() interface{} {
+            m := new(FileMany{)
+            return m
+        },
+    }
 PoolInputPeer = sync.Pool{
         New: func() interface{} {
             m := new(InputPeer)
@@ -1208,6 +1226,12 @@ PoolMediaSize = sync.Pool{
 PoolAuthDestroyKey = sync.Pool{
         New: func() interface{} {
             m := new(AuthDestroyKey)
+            return m
+        },
+    }
+PoolMessagesSendScreenShotNotification = sync.Pool{
+        New: func() interface{} {
+            m := new(MessagesSendScreenShotNotification)
             return m
         },
     }

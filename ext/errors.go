@@ -89,4 +89,5 @@ const (
 	ErrItemBot              = "BOT"
 	ErrItemPhoto            = "PHOTO"
 	ErrItemMember           = "MEMBER"
+	ErrItemFeature          = "FEATURE"
 )

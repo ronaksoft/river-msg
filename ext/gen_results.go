@@ -712,6 +712,12 @@ func ResultAccountSetNotifySettings(out *MessageEnvelope, res *AccountSetNotifyS
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultFileGetMany(out *MessageEnvelope, res *FileGetMany) {
+	out.Constructor = C_FileGetMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultAccountGetAuthorizations(out *MessageEnvelope, res *AccountGetAuthorizations) {
 	out.Constructor = C_AccountGetAuthorizations
 	pbytes.Put(out.Message)
@@ -934,6 +940,12 @@ func ResultLabelsRemoveFromDialog(out *MessageEnvelope, res *LabelsRemoveFromDia
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultMessageActionScreenShotTaken(out *MessageEnvelope, res *MessageActionScreenShotTaken) {
+	out.Constructor = C_MessageActionScreenShotTaken
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultKeyboardButtonEnvelope(out *MessageEnvelope, res *KeyboardButtonEnvelope) {
 	out.Constructor = C_KeyboardButtonEnvelope
 	pbytes.Put(out.Message)
@@ -1132,6 +1144,12 @@ func ResultUsersGetFull(out *MessageEnvelope, res *UsersGetFull) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+func ResultFileMany{(out *MessageEnvelope, res *FileMany{) {
+	out.Constructor = C_FileMany{
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
 func ResultInputPeer(out *MessageEnvelope, res *InputPeer) {
 	out.Constructor = C_InputPeer
 	pbytes.Put(out.Message)
@@ -1206,6 +1224,12 @@ func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
 }
 func ResultAuthDestroyKey(out *MessageEnvelope, res *AuthDestroyKey) {
 	out.Constructor = C_AuthDestroyKey
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+func ResultMessagesSendScreenShotNotification(out *MessageEnvelope, res *MessagesSendScreenShotNotification) {
+	out.Constructor = C_MessagesSendScreenShotNotification
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)

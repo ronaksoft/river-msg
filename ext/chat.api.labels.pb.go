@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // LabelsSet
 // @Function
@@ -45,7 +45,7 @@ func (m *LabelsSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_LabelsSet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -99,7 +99,7 @@ func (m *LabelsDelete) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_LabelsDelete.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +145,7 @@ func (m *LabelsGet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_LabelsGet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -187,7 +187,7 @@ func (m *LabelsAddToDialog) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_LabelsAddToDialog.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -250,7 +250,7 @@ func (m *LabelsRemoveFromDialog) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return xxx_messageInfo_LabelsRemoveFromDialog.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -314,7 +314,7 @@ func (m *LabelsAddToMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_LabelsAddToMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -385,7 +385,7 @@ func (m *LabelsRemoveFromMessage) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return xxx_messageInfo_LabelsRemoveFromMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -452,7 +452,7 @@ func (m *Label) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Label.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -504,7 +504,7 @@ func (m *LabelsMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_LabelsMany.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -572,7 +572,7 @@ var fileDescriptor_19cf62577bbff668 = []byte{
 func (m *LabelsSet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -580,24 +580,30 @@ func (m *LabelsSet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsSet) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsSet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelID))
-	dAtA[i] = 0x12
-	i++
+	i -= len(m.Name)
+	copy(dAtA[i:], m.Name)
 	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Name)))
-	i += copy(dAtA[i:], m.Name)
-	return i, nil
+	i--
+	dAtA[i] = 0x12
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsDelete) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -605,24 +611,29 @@ func (m *LabelsDelete) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsDelete) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsDelete) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.LabelIDs) > 0 {
-		for _, num := range m.LabelIDs {
+		for iNdEx := len(m.LabelIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x8
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsGet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -630,17 +641,22 @@ func (m *LabelsGet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsGet) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsAddToDialog) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -648,30 +664,35 @@ func (m *LabelsAddToDialog) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsAddToDialog) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsAddToDialog) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
 	if len(m.LabelIDs) > 0 {
-		for _, num := range m.LabelIDs {
+		for iNdEx := len(m.LabelIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x18
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsRemoveFromDialog) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -679,30 +700,35 @@ func (m *LabelsRemoveFromDialog) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsRemoveFromDialog) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsRemoveFromDialog) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
 	if len(m.LabelIDs) > 0 {
-		for _, num := range m.LabelIDs {
+		for iNdEx := len(m.LabelIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x18
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsAddToMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -710,37 +736,42 @@ func (m *LabelsAddToMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsAddToMessage) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsAddToMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
-	if len(m.LabelIDs) > 0 {
-		for _, num := range m.LabelIDs {
-			dAtA[i] = 0x18
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
-		}
-	}
 	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x20
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	if len(m.LabelIDs) > 0 {
+		for iNdEx := len(m.LabelIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x18
+		}
+	}
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsRemoveFromMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -748,37 +779,42 @@ func (m *LabelsRemoveFromMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsRemoveFromMessage) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsRemoveFromMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
-	if len(m.LabelIDs) > 0 {
-		for _, num := range m.LabelIDs {
-			dAtA[i] = 0x18
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
-		}
-	}
 	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x20
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	if len(m.LabelIDs) > 0 {
+		for iNdEx := len(m.LabelIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x18
+		}
+	}
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.PeerType))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *Label) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -786,24 +822,30 @@ func (m *Label) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Label) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *Label) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.ID))
-	dAtA[i] = 0x12
-	i++
+	i -= len(m.Name)
+	copy(dAtA[i:], m.Name)
 	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Name)))
-	i += copy(dAtA[i:], m.Name)
-	return i, nil
+	i--
+	dAtA[i] = 0x12
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.ID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *LabelsMany) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -811,33 +853,42 @@ func (m *LabelsMany) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *LabelsMany) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.Labels) > 0 {
-		for _, msg := range m.Labels {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiLabels(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.Labels) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Labels[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiLabels(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatApiLabels(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatApiLabels(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *LabelsSet) Size() (n int) {
 	if m == nil {
@@ -2335,6 +2386,7 @@ func (m *LabelsMany) Unmarshal(dAtA []byte) error {
 func skipChatApiLabels(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -2366,10 +2418,8 @@ func skipChatApiLabels(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -2390,55 +2440,30 @@ func skipChatApiLabels(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiLabels
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthChatApiLabels
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowChatApiLabels
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipChatApiLabels(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthChatApiLabels
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupChatApiLabels
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthChatApiLabels
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthChatApiLabels = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiLabels   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthChatApiLabels        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiLabels          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupChatApiLabels = fmt.Errorf("proto: unexpected end of group")
 )

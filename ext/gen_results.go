@@ -1,5 +1,5 @@
-package msg 
- 
+package msg
+
 import (
 	"github.com/gobwas/pool/pbytes"
 )
@@ -1414,4 +1414,3 @@ func ResultUpdateUsername(out *MessageEnvelope, res *UpdateUsername) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
-

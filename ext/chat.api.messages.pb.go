@@ -23,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type InputMediaType int32
 
@@ -121,7 +121,7 @@ func (m *MessagesSend) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MessagesSend.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -200,7 +200,7 @@ func (m *MessagesBroadcast) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_MessagesBroadcast.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -244,7 +244,7 @@ func (m *MessagesBroadcastProgress) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessagesBroadcastProgress.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -296,7 +296,7 @@ func (m *MessagesSendMedia) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_MessagesSendMedia.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -382,7 +382,7 @@ func (m *MessagesEdit) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MessagesEdit.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -458,7 +458,7 @@ func (m *MessagesReadHistory) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_MessagesReadHistory.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -513,7 +513,7 @@ func (m *MessagesGet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_MessagesGet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -570,7 +570,7 @@ func (m *MessagesGetHistory) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_MessagesGetHistory.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -640,7 +640,7 @@ func (m *MessagesGetDialogs) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_MessagesGetDialogs.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -700,7 +700,7 @@ func (m *MessagesGetPinnedDialogs) XXX_Marshal(b []byte, deterministic bool) ([]
 		return xxx_messageInfo_MessagesGetPinnedDialogs.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -740,7 +740,7 @@ func (m *MessagesGetDialog) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_MessagesGetDialog.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -788,7 +788,7 @@ func (m *MessagesSetTyping) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_MessagesSetTyping.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -844,7 +844,7 @@ func (m *MessagesClearHistory) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_MessagesClearHistory.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -907,7 +907,7 @@ func (m *MessagesDelete) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_MessagesDelete.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -972,7 +972,7 @@ func (m *MessagesForward) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_MessagesForward.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1048,7 +1048,7 @@ func (m *MessagesReadContents) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return xxx_messageInfo_MessagesReadContents.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1106,7 +1106,7 @@ func (m *MessagesSaveDraft) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_MessagesSaveDraft.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1181,7 +1181,7 @@ func (m *MessagesClearDraft) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_MessagesClearDraft.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1229,7 +1229,7 @@ func (m *MessagesToggleDialogPin) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return xxx_messageInfo_MessagesToggleDialogPin.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1283,7 +1283,7 @@ func (m *MessagesReorderPinnedDialogs) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_MessagesReorderPinnedDialogs.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1334,7 +1334,7 @@ func (m *MessagesSendScreenShotNotification) XXX_Marshal(b []byte, deterministic
 		return xxx_messageInfo_MessagesSendScreenShotNotification.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1412,7 +1412,7 @@ func (m *MessagesDialogs) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_MessagesDialogs.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1494,7 +1494,7 @@ func (m *MessagesSent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MessagesSent.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1556,7 +1556,7 @@ func (m *MessagesMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MessagesMany.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1713,7 +1713,7 @@ var fileDescriptor_882b8fe0c4a29154 = []byte{
 func (m *MessagesSend) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1721,59 +1721,69 @@ func (m *MessagesSend) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesSend) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSend) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n1, err1 := m.Peer.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+	if len(m.Entities) > 0 {
+		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x42
 		}
-		i += n1
 	}
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
-	i += copy(dAtA[i:], m.Body)
-	dAtA[i] = 0x30
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x38
-	i++
+	i--
 	if m.ClearDraft {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	if len(m.Entities) > 0 {
-		for _, msg := range m.Entities {
-			dAtA[i] = 0x42
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
+	i--
+	dAtA[i] = 0x38
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x30
+	i -= len(m.Body)
+	copy(dAtA[i:], m.Body)
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
+	i--
+	dAtA[i] = 0x2a
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
-			i += n
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
+		i--
+		dAtA[i] = 0x12
 	}
-	return i, nil
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesBroadcast) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1781,21 +1791,27 @@ func (m *MessagesBroadcast) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesBroadcast) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesBroadcast) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
+	i -= len(m.Body)
+	copy(dAtA[i:], m.Body)
 	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
-	i += copy(dAtA[i:], m.Body)
-	return i, nil
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesBroadcastProgress) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1803,21 +1819,26 @@ func (m *MessagesBroadcastProgress) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesBroadcastProgress) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesBroadcastProgress) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xd
-	i++
+	i -= 4
 	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Percentage))))
-	i += 4
-	return i, nil
+	i--
+	dAtA[i] = 0xd
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesSendMedia) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1825,52 +1846,60 @@ func (m *MessagesSendMedia) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesSendMedia) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSendMedia) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n2, err2 := m.Peer.MarshalTo(dAtA[i:])
-		if err2 != nil {
-			return 0, err2
-		}
-		i += n2
-	}
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MediaType))
-	if m.MediaData != nil {
-		dAtA[i] = 0x22
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.MediaData)))
-		i += copy(dAtA[i:], m.MediaData)
-	}
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x30
-	i++
+	i--
 	if m.ClearDraft {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x30
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x28
+	if m.MediaData != nil {
+		i -= len(m.MediaData)
+		copy(dAtA[i:], m.MediaData)
+		i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.MediaData)))
+		i--
+		dAtA[i] = 0x22
+	}
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MediaType))
+	i--
+	dAtA[i] = 0x18
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesEdit) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1878,51 +1907,61 @@ func (m *MessagesEdit) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesEdit) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesEdit) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	if len(m.Entities) > 0 {
+		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x2a
+		}
+	}
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageID))
+	i--
+	dAtA[i] = 0x20
+	i -= len(m.Body)
+	copy(dAtA[i:], m.Body)
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
+	i--
+	dAtA[i] = 0x1a
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n3, err3 := m.Peer.MarshalTo(dAtA[i:])
-		if err3 != nil {
-			return 0, err3
-		}
-		i += n3
-	}
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
-	i += copy(dAtA[i:], m.Body)
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageID))
-	if len(m.Entities) > 0 {
-		for _, msg := range m.Entities {
-			dAtA[i] = 0x2a
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
-			i += n
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
+		i--
+		dAtA[i] = 0x12
 	}
-	return i, nil
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesReadHistory) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1930,32 +1969,39 @@ func (m *MessagesReadHistory) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesReadHistory) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesReadHistory) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x18
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n4, err4 := m.Peer.MarshalTo(dAtA[i:])
-		if err4 != nil {
-			return 0, err4
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n4
+		i--
+		dAtA[i] = 0x12
 	}
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesGet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -1963,36 +2009,43 @@ func (m *MessagesGet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesGet) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.MessagesIDs) > 0 {
+		for iNdEx := len(m.MessagesIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessagesIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x10
+		}
+	}
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
 		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n5, err5 := m.Peer.MarshalTo(dAtA[i:])
-		if err5 != nil {
-			return 0, err5
-		}
-		i += n5
 	}
-	if len(m.MessagesIDs) > 0 {
-		for _, num := range m.MessagesIDs {
-			dAtA[i] = 0x10
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(num))
-		}
-	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesGetHistory) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2000,38 +2053,45 @@ func (m *MessagesGetHistory) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesGetHistory) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesGetHistory) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MinID))
+	i--
+	dAtA[i] = 0x28
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Limit))
+	i--
+	dAtA[i] = 0x18
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n6, err6 := m.Peer.MarshalTo(dAtA[i:])
-		if err6 != nil {
-			return 0, err6
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n6
+		i--
+		dAtA[i] = 0x12
 	}
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Limit))
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MinID))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesGetDialogs) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2039,31 +2099,36 @@ func (m *MessagesGetDialogs) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesGetDialogs) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesGetDialogs) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Limit))
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Offset))
-	dAtA[i] = 0x20
-	i++
+	i--
 	if m.ExcludePinned {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Offset))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Limit))
+	i--
+	dAtA[i] = 0x10
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesGetPinnedDialogs) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2071,17 +2136,22 @@ func (m *MessagesGetPinnedDialogs) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesGetPinnedDialogs) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesGetPinnedDialogs) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesGetDialog) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2089,29 +2159,36 @@ func (m *MessagesGetDialog) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesGetDialog) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesGetDialog) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n7, err7 := m.Peer.MarshalTo(dAtA[i:])
-		if err7 != nil {
-			return 0, err7
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n7
+		i--
+		dAtA[i] = 0xa
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesSetTyping) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2119,32 +2196,39 @@ func (m *MessagesSetTyping) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesSetTyping) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSetTyping) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Action))
+	i--
+	dAtA[i] = 0x10
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n8, err8 := m.Peer.MarshalTo(dAtA[i:])
-		if err8 != nil {
-			return 0, err8
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n8
+		i--
+		dAtA[i] = 0xa
 	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Action))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesClearHistory) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2152,40 +2236,47 @@ func (m *MessagesClearHistory) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesClearHistory) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesClearHistory) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n9, err9 := m.Peer.MarshalTo(dAtA[i:])
-		if err9 != nil {
-			return 0, err9
-		}
-		i += n9
-	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
-	dAtA[i] = 0x18
-	i++
+	i--
 	if m.Delete {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x10
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesDelete) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2193,44 +2284,51 @@ func (m *MessagesDelete) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesDelete) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesDelete) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n10, err10 := m.Peer.MarshalTo(dAtA[i:])
-		if err10 != nil {
-			return 0, err10
-		}
-		i += n10
-	}
-	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
-			dAtA[i] = 0x10
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(num))
-		}
-	}
-	dAtA[i] = 0x18
-	i++
+	i--
 	if m.Revoke {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x18
+	if len(m.MessageIDs) > 0 {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x10
+		}
+	}
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesForward) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2238,59 +2336,68 @@ func (m *MessagesForward) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesForward) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesForward) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.FromPeer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("FromPeer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.FromPeer.Size()))
-		n11, err11 := m.FromPeer.MarshalTo(dAtA[i:])
-		if err11 != nil {
-			return 0, err11
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x28
+	if len(m.MessageIDs) > 0 {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x20
 		}
-		i += n11
 	}
-	if m.ToPeer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("ToPeer")
-	} else {
-		dAtA[i] = 0x12
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ToPeer.Size()))
-		n12, err12 := m.ToPeer.MarshalTo(dAtA[i:])
-		if err12 != nil {
-			return 0, err12
-		}
-		i += n12
-	}
-	dAtA[i] = 0x18
-	i++
+	i--
 	if m.Silence {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
-			dAtA[i] = 0x20
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(num))
+	i--
+	dAtA[i] = 0x18
+	if m.ToPeer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("ToPeer")
+	} else {
+		{
+			size, err := m.ToPeer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
+		i--
+		dAtA[i] = 0x12
 	}
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
-	return i, nil
+	if m.FromPeer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("FromPeer")
+	} else {
+		{
+			size, err := m.FromPeer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesReadContents) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2298,36 +2405,43 @@ func (m *MessagesReadContents) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesReadContents) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesReadContents) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.MessageIDs) > 0 {
+		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageIDs[iNdEx]))
+			i--
+			dAtA[i] = 0x10
+		}
+	}
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
 		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n13, err13 := m.Peer.MarshalTo(dAtA[i:])
-		if err13 != nil {
-			return 0, err13
-		}
-		i += n13
 	}
-	if len(m.MessageIDs) > 0 {
-		for _, num := range m.MessageIDs {
-			dAtA[i] = 0x10
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(num))
-		}
-	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesSaveDraft) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2335,51 +2449,61 @@ func (m *MessagesSaveDraft) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesSaveDraft) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSaveDraft) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.EditedID))
+	i--
+	dAtA[i] = 0x28
+	if len(m.Entities) > 0 {
+		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	i -= len(m.Body)
+	copy(dAtA[i:], m.Body)
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
+	i--
+	dAtA[i] = 0x1a
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x10
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n14, err14 := m.Peer.MarshalTo(dAtA[i:])
-		if err14 != nil {
-			return 0, err14
-		}
-		i += n14
-	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(len(m.Body)))
-	i += copy(dAtA[i:], m.Body)
-	if len(m.Entities) > 0 {
-		for _, msg := range m.Entities {
-			dAtA[i] = 0x22
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
-			i += n
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
+		i--
+		dAtA[i] = 0xa
 	}
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.EditedID))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesClearDraft) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2387,29 +2511,36 @@ func (m *MessagesClearDraft) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesClearDraft) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesClearDraft) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n15, err15 := m.Peer.MarshalTo(dAtA[i:])
-		if err15 != nil {
-			return 0, err15
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n15
+		i--
+		dAtA[i] = 0xa
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesToggleDialogPin) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2417,37 +2548,44 @@ func (m *MessagesToggleDialogPin) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesToggleDialogPin) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesToggleDialogPin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Peer == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
-	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n16, err16 := m.Peer.MarshalTo(dAtA[i:])
-		if err16 != nil {
-			return 0, err16
-		}
-		i += n16
-	}
-	dAtA[i] = 0x10
-	i++
+	i--
 	if m.Pin {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	if m.Peer == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	} else {
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesReorderPinnedDialogs) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2455,29 +2593,36 @@ func (m *MessagesReorderPinnedDialogs) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesReorderPinnedDialogs) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesReorderPinnedDialogs) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.Peers) > 0 {
-		for _, msg := range m.Peers {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.Peers) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Peers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesSendScreenShotNotification) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2485,41 +2630,48 @@ func (m *MessagesSendScreenShotNotification) Marshal() (dAtA []byte, err error) 
 }
 
 func (m *MessagesSendScreenShotNotification) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSendScreenShotNotification) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x28
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MinID))
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x10
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Peer.Size()))
-		n17, err17 := m.Peer.MarshalTo(dAtA[i:])
-		if err17 != nil {
-			return 0, err17
+		{
+			size, err := m.Peer.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 		}
-		i += n17
+		i--
+		dAtA[i] = 0xa
 	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.ReplyTo))
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MinID))
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MaxID))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesDialogs) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2527,71 +2679,84 @@ func (m *MessagesDialogs) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesDialogs) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesDialogs) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Dialogs) > 0 {
-		for _, msg := range m.Dialogs {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.Groups) > 0 {
+		for iNdEx := len(m.Groups) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Groups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0x32
+		}
+	}
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.UpdateID))
+	i--
+	dAtA[i] = 0x28
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Count))
+	i--
+	dAtA[i] = 0x20
+	if len(m.Messages) > 0 {
+		for iNdEx := len(m.Messages) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Messages[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
 		}
 	}
 	if len(m.Users) > 0 {
-		for _, msg := range m.Users {
+		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
 			dAtA[i] = 0x12
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
 		}
 	}
-	if len(m.Messages) > 0 {
-		for _, msg := range m.Messages {
-			dAtA[i] = 0x1a
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+	if len(m.Dialogs) > 0 {
+		for iNdEx := len(m.Dialogs) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Dialogs[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	dAtA[i] = 0x20
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.Count))
-	dAtA[i] = 0x28
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.UpdateID))
-	if len(m.Groups) > 0 {
-		for _, msg := range m.Groups {
-			dAtA[i] = 0x32
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesSent) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2599,26 +2764,31 @@ func (m *MessagesSent) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesSent) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesSent) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageID))
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
-	dAtA[i] = 0x18
-	i++
 	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.CreatedOn))
-	return i, nil
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.RandomID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiMessages(dAtA, i, uint64(m.MessageID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MessagesMany) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -2626,65 +2796,78 @@ func (m *MessagesMany) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessagesMany) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessagesMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Messages) > 0 {
-		for _, msg := range m.Messages {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	if len(m.Users) > 0 {
-		for _, msg := range m.Users {
-			dAtA[i] = 0x12
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	if len(m.Groups) > 0 {
-		for _, msg := range m.Groups {
-			dAtA[i] = 0x1a
-			i++
-			i = encodeVarintChatApiMessages(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
-			}
-			i += n
-		}
-	}
-	dAtA[i] = 0x20
-	i++
+	i--
 	if m.Continuous {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x20
+	if len(m.Groups) > 0 {
+		for iNdEx := len(m.Groups) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Groups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
+		}
+	}
+	if len(m.Users) > 0 {
+		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	if len(m.Messages) > 0 {
+		for iNdEx := len(m.Messages) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Messages[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiMessages(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatApiMessages(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatApiMessages(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *MessagesSend) Size() (n int) {
 	if m == nil {
@@ -6734,6 +6917,7 @@ func (m *MessagesMany) Unmarshal(dAtA []byte) error {
 func skipChatApiMessages(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -6765,10 +6949,8 @@ func skipChatApiMessages(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -6789,55 +6971,30 @@ func skipChatApiMessages(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiMessages
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthChatApiMessages
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowChatApiMessages
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipChatApiMessages(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthChatApiMessages
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupChatApiMessages
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthChatApiMessages
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthChatApiMessages = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiMessages   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthChatApiMessages        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiMessages          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupChatApiMessages = fmt.Errorf("proto: unexpected end of group")
 )

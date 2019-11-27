@@ -61,13 +61,3 @@ message LabelsRemoveFromMessage {
     repeated int64 MessageIDs = 4;
 }
 
-// Label
-message Label {
-    required int32 ID = 1;
-    required string Name = 2;
-}
-
-// LabelsMany
-message LabelsMany {
-    repeated Label Labels = 1;
-}

@@ -7,6 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -14,14 +15,16 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-type poolMessage1 = struct {
+const C_Message1 int64 = 3131464828
+
+type poolMessage1 struct {
 	pool sync.Pool
 }
 
 func (p poolMessage1) Get() *Message1 {
 	x, ok := p.pool.Get().(*Message1)
 	if !ok {
-		return &Message1
+		return &Message1{}
 	}
 	return x
 }
@@ -30,7 +33,7 @@ func (p poolMessage1) Put(x *Message1) {
 	p.pool.Put(x)
 }
 
-var PoolMessage1 = pooMessage1{}
+var PoolMessage1 = poolMessage1{}
 
 func ResultMessage1(out *MessageEnvelope, res *Message1) {
 	out.Constructor = C_Message1
@@ -39,14 +42,16 @@ func ResultMessage1(out *MessageEnvelope, res *Message1) {
 	res.MarshalTo(out.Message)
 }
 
-type poolMessage2 = struct {
+const C_Message2 int64 = 598674886
+
+type poolMessage2 struct {
 	pool sync.Pool
 }
 
 func (p poolMessage2) Get() *Message2 {
 	x, ok := p.pool.Get().(*Message2)
 	if !ok {
-		return &Message2
+		return &Message2{}
 	}
 	x.Param1 = 0
 	return x
@@ -56,11 +61,16 @@ func (p poolMessage2) Put(x *Message2) {
 	p.pool.Put(x)
 }
 
-var PoolMessage2 = pooMessage2{}
+var PoolMessage2 = poolMessage2{}
 
 func ResultMessage2(out *MessageEnvelope, res *Message2) {
 	out.Constructor = C_Message2
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
+}
+
+func init() {
+	ConstructorNames[3131464828] = "Message1"
+	ConstructorNames[598674886] = "Message2"
 }

@@ -5,9 +5,11 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,7 +141,7 @@ func (p poolProtoMessage) Get() *ProtoMessage {
 		return &ProtoMessage{}
 	}
 	x.AuthID = 0
-	x.MessageKey = 0
+	x.MessageKey = nil
 	return x
 }
 
@@ -276,9 +278,9 @@ func (p poolDialog) Get() *Dialog {
 	if !ok {
 		return &Dialog{}
 	}
-	x.NotifySettings = 0
+	x.NotifySettings = nil
 	x.MentionedCount = 0
-	x.Draft = 0
+	x.Draft = nil
 	return x
 }
 
@@ -469,10 +471,10 @@ func (p poolUser) Get() *User {
 	if !ok {
 		return &User{}
 	}
-	x.Username = 0
-	x.Photo = 0
-	x.Bio = 0
-	x.Phone = 0
+	x.Username = ""
+	x.Photo = nil
+	x.Bio = ""
+	x.Phone = ""
 	x.LastSeen = 0
 	x.PhotoGallery = x.PhotoGallery[:0]
 	x.IsBot = false
@@ -530,7 +532,7 @@ func (p poolContactUser) Get() *ContactUser {
 	if !ok {
 		return &ContactUser{}
 	}
-	x.Photo = 0
+	x.Photo = nil
 	return x
 }
 
@@ -559,12 +561,12 @@ func (p poolUserMessage) Get() *UserMessage {
 		return &UserMessage{}
 	}
 	x.MessageAction = 0
-	x.MessageActionData = 0
+	x.MessageActionData = nil
 	x.Entities = x.Entities[:0]
 	x.MediaType = 0
-	x.Media = 0
+	x.Media = nil
 	x.ReplyMarkup = 0
-	x.ReplyMarkupData = 0
+	x.ReplyMarkupData = nil
 	return x
 }
 
@@ -731,7 +733,7 @@ func (p poolPeerNotifySettings) Get() *PeerNotifySettings {
 		return &PeerNotifySettings{}
 	}
 	x.MuteUntil = 0
-	x.Sound = 0
+	x.Sound = ""
 	return x
 }
 
@@ -816,7 +818,7 @@ func (p poolGroup) Get() *Group {
 	}
 	x.EditedOn = 0
 	x.Flags = x.Flags[:0]
-	x.Photo = 0
+	x.Photo = nil
 	return x
 }
 
@@ -874,7 +876,7 @@ func (p poolGroupParticipant) Get() *GroupParticipant {
 	if !ok {
 		return &GroupParticipant{}
 	}
-	x.Photo = 0
+	x.Photo = nil
 	return x
 }
 

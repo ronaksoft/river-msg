@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -136,7 +138,7 @@ func (p poolMessageActionGroupPhotoChanged) Get() *MessageActionGroupPhotoChange
 	if !ok {
 		return &MessageActionGroupPhotoChanged{}
 	}
-	x.Photo = 0
+	x.Photo = nil
 	return x
 }
 

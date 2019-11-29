@@ -5,9 +5,11 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,7 +143,7 @@ func (p poolKeyboardButtonEnvelope) Get() *KeyboardButtonEnvelope {
 	if !ok {
 		return &KeyboardButtonEnvelope{}
 	}
-	x.Data = 0
+	x.Data = nil
 	return x
 }
 
@@ -223,7 +225,7 @@ func (p poolButtonCallback) Get() *ButtonCallback {
 	if !ok {
 		return &ButtonCallback{}
 	}
-	x.Data = 0
+	x.Data = nil
 	return x
 }
 
@@ -360,7 +362,7 @@ func (p poolButtonUrlAuth) Get() *ButtonUrlAuth {
 	if !ok {
 		return &ButtonUrlAuth{}
 	}
-	x.FwdText = 0
+	x.FwdText = ""
 	return x
 }
 
@@ -388,7 +390,7 @@ func (p poolInputButtonUrlAuth) Get() *InputButtonUrlAuth {
 	if !ok {
 		return &InputButtonUrlAuth{}
 	}
-	x.FwdText = 0
+	x.FwdText = ""
 	x.RequestWriteAccess = false
 	return x
 }

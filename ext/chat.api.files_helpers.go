@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -107,7 +109,7 @@ func (p poolFile) Get() *File {
 	if !ok {
 		return &File{}
 	}
-	x.MD5Hash = 0
+	x.MD5Hash = ""
 	return x
 }
 

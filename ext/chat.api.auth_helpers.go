@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -25,7 +27,7 @@ func (p poolAuthRegister) Get() *AuthRegister {
 	if !ok {
 		return &AuthRegister{}
 	}
-	x.LangCode = 0
+	x.LangCode = ""
 	return x
 }
 
@@ -189,7 +191,7 @@ func (p poolAuthSendCode) Get() *AuthSendCode {
 	if !ok {
 		return &AuthSendCode{}
 	}
-	x.AppHash = 0
+	x.AppHash = ""
 	return x
 }
 
@@ -217,7 +219,7 @@ func (p poolAuthResendCode) Get() *AuthResendCode {
 	if !ok {
 		return &AuthResendCode{}
 	}
-	x.AppHash = 0
+	x.AppHash = ""
 	return x
 }
 
@@ -246,10 +248,10 @@ func (p poolAuthRecall) Get() *AuthRecall {
 		return &AuthRecall{}
 	}
 	x.Version = 0
-	x.AppVersion = 0
-	x.Platform = 0
-	x.Vendor = 0
-	x.OSVersion = 0
+	x.AppVersion = ""
+	x.Platform = ""
+	x.Vendor = ""
+	x.OSVersion = ""
 	return x
 }
 
@@ -307,7 +309,7 @@ func (p poolAuthRecalled) Get() *AuthRecalled {
 	x.UpdateID = 0
 	x.Available = false
 	x.Force = false
-	x.CurrentVersion = 0
+	x.CurrentVersion = ""
 	return x
 }
 

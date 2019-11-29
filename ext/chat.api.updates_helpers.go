@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -247,7 +249,7 @@ func (p poolUpdateMessagesDeleted) Get() *UpdateMessagesDeleted {
 		return &UpdateMessagesDeleted{}
 	}
 	x.MessageIDs = x.MessageIDs[:0]
-	x.Peer = 0
+	x.Peer = nil
 	return x
 }
 
@@ -410,7 +412,7 @@ func (p poolUpdateUserPhoto) Get() *UpdateUserPhoto {
 	if !ok {
 		return &UpdateUserPhoto{}
 	}
-	x.Photo = 0
+	x.Photo = nil
 	x.PhotoID = 0
 	return x
 }
@@ -574,7 +576,7 @@ func (p poolUpdateGroupPhoto) Get() *UpdateGroupPhoto {
 	if !ok {
 		return &UpdateGroupPhoto{}
 	}
-	x.Photo = 0
+	x.Photo = nil
 	x.PhotoID = 0
 	return x
 }

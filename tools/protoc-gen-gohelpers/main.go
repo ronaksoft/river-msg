@@ -16,7 +16,5 @@ func main() {
 	resp := command.GeneratePlugin(req, &GenPools{}, "_helpers.go")
 	command.Write(resp)
 
-
 	return
 }
-

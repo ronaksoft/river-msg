@@ -4,7 +4,7 @@ currentWorkingDir=$(pwd)
 rm ./ext/*.pb.go
 
 # Create 'msg' package
-cd ./ext/proto/
+cd ./ext/proto/ || exit
 protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto
 protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gohelpers_out=../ ./*.proto
 cd ..

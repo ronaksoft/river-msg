@@ -5,9 +5,11 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -26,7 +28,7 @@ func (p poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
 	if !ok {
 		return &DocumentAttributeAudio{}
 	}
-	x.Waveform = 0
+	x.Waveform = nil
 	return x
 }
 
@@ -135,7 +137,7 @@ func (p poolDocumentAttribute) Get() *DocumentAttribute {
 	if !ok {
 		return &DocumentAttribute{}
 	}
-	x.Data = 0
+	x.Data = nil
 	return x
 }
 
@@ -164,8 +166,8 @@ func (p poolDocument) Get() *Document {
 		return &Document{}
 	}
 	x.Attributes = x.Attributes[:0]
-	x.Thumbnail = 0
-	x.MD5Checksum = 0
+	x.Thumbnail = nil
+	x.MD5Checksum = ""
 	return x
 }
 
@@ -249,7 +251,7 @@ func (p poolInputMediaContact) Get() *InputMediaContact {
 	if !ok {
 		return &InputMediaContact{}
 	}
-	x.VCard = 0
+	x.VCard = ""
 	return x
 }
 
@@ -277,7 +279,7 @@ func (p poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
 	if !ok {
 		return &InputMediaUploadedDocument{}
 	}
-	x.Thumbnail = 0
+	x.Thumbnail = nil
 	x.Stickers = x.Stickers[:0]
 	x.Attributes = x.Attributes[:0]
 	return x
@@ -415,7 +417,7 @@ func (p poolMediaContact) Get() *MediaContact {
 	if !ok {
 		return &MediaContact{}
 	}
-	x.VCard = 0
+	x.VCard = ""
 	return x
 }
 

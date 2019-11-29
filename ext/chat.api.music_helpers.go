@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -27,10 +29,10 @@ func (p poolMusicsGet) Get() *MusicsGet {
 	}
 	x.PlaylistID = 0
 	x.Index = 0
-	x.File = 0
-	x.Attribute = 0
-	x.Thumbnail = 0
-	x.MD5Checksum = 0
+	x.File = nil
+	x.Attribute = nil
+	x.Thumbnail = nil
+	x.MD5Checksum = ""
 	return x
 }
 
@@ -60,7 +62,7 @@ func (p poolMusicsAdd) Get() *MusicsAdd {
 	}
 	x.PlaylistID = 0
 	x.Index = 0
-	x.Thumbnail = 0
+	x.Thumbnail = nil
 	return x
 }
 

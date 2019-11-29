@@ -1,2 +1,2 @@
 
-protoc  -I=./testdata  --gopool_out=./testdata ./testdata/*.proto
+protoc  -I=./testdata  --gohelpers_out=./testdata ./testdata/*.proto

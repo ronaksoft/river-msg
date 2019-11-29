@@ -35,6 +35,8 @@ func (g *GenPools) Init(gen *generator.Generator) {
 }
 
 func (g *GenPools) Generate(file *generator.FileDescriptor) {
+	g.g.AddImport("sync")
+	g.g.AddImport("github.com/gobwas/pool/pbytes")
 	initFunc := strings.Builder{}
 	initFunc.WriteString("func init() {\n")
 	for _, mt := range file.MessageType {
@@ -43,34 +45,34 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		initFunc.WriteString(fmt.Sprintf("ConstructorNames[%d] = \"%s\"\n", constructor, *mt.Name))
 		g.g.P(fmt.Sprintf("type pool%s struct{", *mt.Name))
 		g.g.In()
-			g.g.P("pool sync.Pool")
+		g.g.P("pool sync.Pool")
 		g.g.Out()
 		g.g.P("}")
 		g.g.P(fmt.Sprintf("func (p pool%s) Get() *%s {", *mt.Name, *mt.Name))
 		g.g.In()
-			g.g.P(fmt.Sprintf("x, ok := p.pool.Get().(*%s)", *mt.Name))
-			g.g.P("if !ok {")
-				g.g.In()
-				g.g.P(fmt.Sprintf("return &%s{}", *mt.Name))
-				g.g.Out()
-			g.g.P("}")
+		g.g.P(fmt.Sprintf("x, ok := p.pool.Get().(*%s)", *mt.Name))
+		g.g.P("if !ok {")
+		g.g.In()
+		g.g.P(fmt.Sprintf("return &%s{}", *mt.Name))
+		g.g.Out()
+		g.g.P("}")
 
-			for _, ft := range mt.Field {
-				if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
-					g.g.P(fmt.Sprintf("x.%s = %s", *ft.Name, zeroValue(ft.Type)))
-				}
-				if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED {
-					g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
-				}
+		for _, ft := range mt.Field {
+			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
+				g.g.P(fmt.Sprintf("x.%s = %s", *ft.Name, zeroValue(ft.Type)))
 			}
-			g.g.P("return x")
+			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED {
+				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
+			}
+		}
+		g.g.P("return x")
 		g.g.Out()
 		g.g.P("}")
 		g.g.P("", "")
 
 		g.g.P(fmt.Sprintf("func (p pool%s) Put(x *%s) {", *mt.Name, *mt.Name))
 		g.g.In()
-			g.g.P("p.pool.Put(x)")
+		g.g.P("p.pool.Put(x)")
 		g.g.Out()
 		g.g.P("}")
 		g.g.P("")
@@ -78,10 +80,10 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		g.g.P("")
 		g.g.P(fmt.Sprintf("func Result%s(out *MessageEnvelope, res *%s) {", *mt.Name, *mt.Name))
 		g.g.In()
-			g.g.P(fmt.Sprintf("out.Constructor = C_%s", *mt.Name))
-			g.g.P("pbytes.Put(out.Message)")
-			g.g.P("out.Message = pbytes.GetLen(res.Size())")
-			g.g.P("res.MarshalTo(out.Message)")
+		g.g.P(fmt.Sprintf("out.Constructor = C_%s", *mt.Name))
+		g.g.P("pbytes.Put(out.Message)")
+		g.g.P("out.Message = pbytes.GetLen(res.Size())")
+		g.g.P("res.MarshalTo(out.Message)")
 		g.g.Out()
 		g.g.P("}")
 	}
@@ -95,6 +97,12 @@ func zeroValue(t *descriptor.FieldDescriptorProto_Type) string {
 	switch *t {
 	case descriptor.FieldDescriptorProto_TYPE_BOOL:
 		return "false"
+	case descriptor.FieldDescriptorProto_TYPE_STRING:
+		return "\"\""
+	case descriptor.FieldDescriptorProto_TYPE_MESSAGE:
+		return "nil"
+	case descriptor.FieldDescriptorProto_TYPE_BYTES:
+		return "nil"
 	default:
 		return "0"
 	}
@@ -102,4 +110,6 @@ func zeroValue(t *descriptor.FieldDescriptorProto_Type) string {
 
 func (g *GenPools) GenerateImports(file *generator.FileDescriptor) {
 
+	g.g.AddImport("sync")
+	g.g.AddImport("git.ronaksoftware.com/river")
 }

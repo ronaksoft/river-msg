@@ -5,8 +5,10 @@ package msg
 
 import (
 	fmt "fmt"
+	pbytes "github.com/gobwas/pool/pbytes"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
+	sync "sync"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -27,10 +29,10 @@ func (p poolClientPendingMessage) Get() *ClientPendingMessage {
 	}
 	x.Entities = x.Entities[:0]
 	x.MediaType = 0
-	x.Media = 0
+	x.Media = nil
 	x.ClearDraft = false
-	x.FileUploadID = 0
-	x.ThumbUploadID = 0
+	x.FileUploadID = ""
+	x.ThumbUploadID = ""
 	x.FileID = 0
 	x.ThumbID = 0
 	return x
@@ -60,17 +62,17 @@ func (p poolClientSendMessageMedia) Get() *ClientSendMessageMedia {
 	if !ok {
 		return &ClientSendMessageMedia{}
 	}
-	x.Caption = 0
-	x.FileName = 0
-	x.FilePath = 0
-	x.ThumbFilePath = 0
-	x.FileMIME = 0
-	x.ThumbMIME = 0
+	x.Caption = ""
+	x.FileName = ""
+	x.FilePath = ""
+	x.ThumbFilePath = ""
+	x.FileMIME = ""
+	x.ThumbMIME = ""
 	x.ReplyTo = 0
 	x.ClearDraft = false
 	x.Attributes = x.Attributes[:0]
-	x.FileUploadID = 0
-	x.ThumbUploadID = 0
+	x.FileUploadID = ""
+	x.ThumbUploadID = ""
 	x.FileID = 0
 	x.ThumbID = 0
 	x.FileTotalParts = 0
@@ -133,7 +135,7 @@ func (p poolClientFile) Get() *ClientFile {
 	if !ok {
 		return &ClientFile{}
 	}
-	x.MimeType = 0
+	x.MimeType = ""
 	x.UserID = 0
 	x.GroupID = 0
 	x.MessageID = 0

@@ -22,7 +22,7 @@ type poolContactsImport struct {
 	pool sync.Pool
 }
 
-func (p poolContactsImport) Get() *ContactsImport {
+func (p *poolContactsImport) Get() *ContactsImport {
 	x, ok := p.pool.Get().(*ContactsImport)
 	if !ok {
 		return &ContactsImport{}
@@ -31,7 +31,7 @@ func (p poolContactsImport) Get() *ContactsImport {
 	return x
 }
 
-func (p poolContactsImport) Put(x *ContactsImport) {
+func (p *poolContactsImport) Put(x *ContactsImport) {
 	p.pool.Put(x)
 }
 
@@ -50,7 +50,7 @@ type poolContactsGet struct {
 	pool sync.Pool
 }
 
-func (p poolContactsGet) Get() *ContactsGet {
+func (p *poolContactsGet) Get() *ContactsGet {
 	x, ok := p.pool.Get().(*ContactsGet)
 	if !ok {
 		return &ContactsGet{}
@@ -58,7 +58,7 @@ func (p poolContactsGet) Get() *ContactsGet {
 	return x
 }
 
-func (p poolContactsGet) Put(x *ContactsGet) {
+func (p *poolContactsGet) Put(x *ContactsGet) {
 	p.pool.Put(x)
 }
 
@@ -77,7 +77,7 @@ type poolContactsDelete struct {
 	pool sync.Pool
 }
 
-func (p poolContactsDelete) Get() *ContactsDelete {
+func (p *poolContactsDelete) Get() *ContactsDelete {
 	x, ok := p.pool.Get().(*ContactsDelete)
 	if !ok {
 		return &ContactsDelete{}
@@ -86,7 +86,7 @@ func (p poolContactsDelete) Get() *ContactsDelete {
 	return x
 }
 
-func (p poolContactsDelete) Put(x *ContactsDelete) {
+func (p *poolContactsDelete) Put(x *ContactsDelete) {
 	p.pool.Put(x)
 }
 
@@ -105,7 +105,7 @@ type poolContactsImported struct {
 	pool sync.Pool
 }
 
-func (p poolContactsImported) Get() *ContactsImported {
+func (p *poolContactsImported) Get() *ContactsImported {
 	x, ok := p.pool.Get().(*ContactsImported)
 	if !ok {
 		return &ContactsImported{}
@@ -115,7 +115,7 @@ func (p poolContactsImported) Get() *ContactsImported {
 	return x
 }
 
-func (p poolContactsImported) Put(x *ContactsImported) {
+func (p *poolContactsImported) Put(x *ContactsImported) {
 	p.pool.Put(x)
 }
 
@@ -134,7 +134,7 @@ type poolContactsMany struct {
 	pool sync.Pool
 }
 
-func (p poolContactsMany) Get() *ContactsMany {
+func (p *poolContactsMany) Get() *ContactsMany {
 	x, ok := p.pool.Get().(*ContactsMany)
 	if !ok {
 		return &ContactsMany{}
@@ -145,7 +145,7 @@ func (p poolContactsMany) Get() *ContactsMany {
 	return x
 }
 
-func (p poolContactsMany) Put(x *ContactsMany) {
+func (p *poolContactsMany) Put(x *ContactsMany) {
 	p.pool.Put(x)
 }
 

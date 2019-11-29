@@ -23,7 +23,7 @@ type poolStartBot struct {
 	pool sync.Pool
 }
 
-func (p poolStartBot) Get() *StartBot {
+func (p *poolStartBot) Get() *StartBot {
 	x, ok := p.pool.Get().(*StartBot)
 	if !ok {
 		return &StartBot{}
@@ -31,7 +31,7 @@ func (p poolStartBot) Get() *StartBot {
 	return x
 }
 
-func (p poolStartBot) Put(x *StartBot) {
+func (p *poolStartBot) Put(x *StartBot) {
 	p.pool.Put(x)
 }
 

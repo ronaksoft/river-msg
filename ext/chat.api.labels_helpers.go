@@ -22,7 +22,7 @@ type poolLabelsSet struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsSet) Get() *LabelsSet {
+func (p *poolLabelsSet) Get() *LabelsSet {
 	x, ok := p.pool.Get().(*LabelsSet)
 	if !ok {
 		return &LabelsSet{}
@@ -30,7 +30,7 @@ func (p poolLabelsSet) Get() *LabelsSet {
 	return x
 }
 
-func (p poolLabelsSet) Put(x *LabelsSet) {
+func (p *poolLabelsSet) Put(x *LabelsSet) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolLabelsDelete struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsDelete) Get() *LabelsDelete {
+func (p *poolLabelsDelete) Get() *LabelsDelete {
 	x, ok := p.pool.Get().(*LabelsDelete)
 	if !ok {
 		return &LabelsDelete{}
@@ -58,7 +58,7 @@ func (p poolLabelsDelete) Get() *LabelsDelete {
 	return x
 }
 
-func (p poolLabelsDelete) Put(x *LabelsDelete) {
+func (p *poolLabelsDelete) Put(x *LabelsDelete) {
 	p.pool.Put(x)
 }
 
@@ -77,7 +77,7 @@ type poolLabelsGet struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsGet) Get() *LabelsGet {
+func (p *poolLabelsGet) Get() *LabelsGet {
 	x, ok := p.pool.Get().(*LabelsGet)
 	if !ok {
 		return &LabelsGet{}
@@ -85,7 +85,7 @@ func (p poolLabelsGet) Get() *LabelsGet {
 	return x
 }
 
-func (p poolLabelsGet) Put(x *LabelsGet) {
+func (p *poolLabelsGet) Put(x *LabelsGet) {
 	p.pool.Put(x)
 }
 
@@ -104,7 +104,7 @@ type poolLabelsAddToDialog struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsAddToDialog) Get() *LabelsAddToDialog {
+func (p *poolLabelsAddToDialog) Get() *LabelsAddToDialog {
 	x, ok := p.pool.Get().(*LabelsAddToDialog)
 	if !ok {
 		return &LabelsAddToDialog{}
@@ -113,7 +113,7 @@ func (p poolLabelsAddToDialog) Get() *LabelsAddToDialog {
 	return x
 }
 
-func (p poolLabelsAddToDialog) Put(x *LabelsAddToDialog) {
+func (p *poolLabelsAddToDialog) Put(x *LabelsAddToDialog) {
 	p.pool.Put(x)
 }
 
@@ -132,7 +132,7 @@ type poolLabelsRemoveFromDialog struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsRemoveFromDialog) Get() *LabelsRemoveFromDialog {
+func (p *poolLabelsRemoveFromDialog) Get() *LabelsRemoveFromDialog {
 	x, ok := p.pool.Get().(*LabelsRemoveFromDialog)
 	if !ok {
 		return &LabelsRemoveFromDialog{}
@@ -141,7 +141,7 @@ func (p poolLabelsRemoveFromDialog) Get() *LabelsRemoveFromDialog {
 	return x
 }
 
-func (p poolLabelsRemoveFromDialog) Put(x *LabelsRemoveFromDialog) {
+func (p *poolLabelsRemoveFromDialog) Put(x *LabelsRemoveFromDialog) {
 	p.pool.Put(x)
 }
 
@@ -160,7 +160,7 @@ type poolLabelsAddToMessage struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsAddToMessage) Get() *LabelsAddToMessage {
+func (p *poolLabelsAddToMessage) Get() *LabelsAddToMessage {
 	x, ok := p.pool.Get().(*LabelsAddToMessage)
 	if !ok {
 		return &LabelsAddToMessage{}
@@ -170,7 +170,7 @@ func (p poolLabelsAddToMessage) Get() *LabelsAddToMessage {
 	return x
 }
 
-func (p poolLabelsAddToMessage) Put(x *LabelsAddToMessage) {
+func (p *poolLabelsAddToMessage) Put(x *LabelsAddToMessage) {
 	p.pool.Put(x)
 }
 
@@ -189,7 +189,7 @@ type poolLabelsRemoveFromMessage struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsRemoveFromMessage) Get() *LabelsRemoveFromMessage {
+func (p *poolLabelsRemoveFromMessage) Get() *LabelsRemoveFromMessage {
 	x, ok := p.pool.Get().(*LabelsRemoveFromMessage)
 	if !ok {
 		return &LabelsRemoveFromMessage{}
@@ -199,7 +199,7 @@ func (p poolLabelsRemoveFromMessage) Get() *LabelsRemoveFromMessage {
 	return x
 }
 
-func (p poolLabelsRemoveFromMessage) Put(x *LabelsRemoveFromMessage) {
+func (p *poolLabelsRemoveFromMessage) Put(x *LabelsRemoveFromMessage) {
 	p.pool.Put(x)
 }
 
@@ -218,7 +218,7 @@ type poolLabel struct {
 	pool sync.Pool
 }
 
-func (p poolLabel) Get() *Label {
+func (p *poolLabel) Get() *Label {
 	x, ok := p.pool.Get().(*Label)
 	if !ok {
 		return &Label{}
@@ -226,7 +226,7 @@ func (p poolLabel) Get() *Label {
 	return x
 }
 
-func (p poolLabel) Put(x *Label) {
+func (p *poolLabel) Put(x *Label) {
 	p.pool.Put(x)
 }
 
@@ -245,7 +245,7 @@ type poolLabelsMany struct {
 	pool sync.Pool
 }
 
-func (p poolLabelsMany) Get() *LabelsMany {
+func (p *poolLabelsMany) Get() *LabelsMany {
 	x, ok := p.pool.Get().(*LabelsMany)
 	if !ok {
 		return &LabelsMany{}
@@ -254,7 +254,7 @@ func (p poolLabelsMany) Get() *LabelsMany {
 	return x
 }
 
-func (p poolLabelsMany) Put(x *LabelsMany) {
+func (p *poolLabelsMany) Put(x *LabelsMany) {
 	p.pool.Put(x)
 }
 

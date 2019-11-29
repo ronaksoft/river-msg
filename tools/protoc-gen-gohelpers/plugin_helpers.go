@@ -48,7 +48,7 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		g.g.P("pool sync.Pool")
 		g.g.Out()
 		g.g.P("}")
-		g.g.P(fmt.Sprintf("func (p pool%s) Get() *%s {", *mt.Name, *mt.Name))
+		g.g.P(fmt.Sprintf("func (p *pool%s) Get() *%s {", *mt.Name, *mt.Name))
 		g.g.In()
 		g.g.P(fmt.Sprintf("x, ok := p.pool.Get().(*%s)", *mt.Name))
 		g.g.P("if !ok {")
@@ -70,7 +70,7 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		g.g.P("}")
 		g.g.P("", "")
 
-		g.g.P(fmt.Sprintf("func (p pool%s) Put(x *%s) {", *mt.Name, *mt.Name))
+		g.g.P(fmt.Sprintf("func (p *pool%s) Put(x *%s) {", *mt.Name, *mt.Name))
 		g.g.In()
 		g.g.P("p.pool.Put(x)")
 		g.g.Out()

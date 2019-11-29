@@ -23,7 +23,7 @@ type poolMessageEnvelope struct {
 	pool sync.Pool
 }
 
-func (p poolMessageEnvelope) Get() *MessageEnvelope {
+func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 	x, ok := p.pool.Get().(*MessageEnvelope)
 	if !ok {
 		return &MessageEnvelope{}
@@ -31,7 +31,7 @@ func (p poolMessageEnvelope) Get() *MessageEnvelope {
 	return x
 }
 
-func (p poolMessageEnvelope) Put(x *MessageEnvelope) {
+func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
 	p.pool.Put(x)
 }
 
@@ -50,7 +50,7 @@ type poolMessageContainer struct {
 	pool sync.Pool
 }
 
-func (p poolMessageContainer) Get() *MessageContainer {
+func (p *poolMessageContainer) Get() *MessageContainer {
 	x, ok := p.pool.Get().(*MessageContainer)
 	if !ok {
 		return &MessageContainer{}
@@ -59,7 +59,7 @@ func (p poolMessageContainer) Get() *MessageContainer {
 	return x
 }
 
-func (p poolMessageContainer) Put(x *MessageContainer) {
+func (p *poolMessageContainer) Put(x *MessageContainer) {
 	p.pool.Put(x)
 }
 
@@ -78,7 +78,7 @@ type poolUpdateEnvelope struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateEnvelope) Get() *UpdateEnvelope {
+func (p *poolUpdateEnvelope) Get() *UpdateEnvelope {
 	x, ok := p.pool.Get().(*UpdateEnvelope)
 	if !ok {
 		return &UpdateEnvelope{}
@@ -86,7 +86,7 @@ func (p poolUpdateEnvelope) Get() *UpdateEnvelope {
 	return x
 }
 
-func (p poolUpdateEnvelope) Put(x *UpdateEnvelope) {
+func (p *poolUpdateEnvelope) Put(x *UpdateEnvelope) {
 	p.pool.Put(x)
 }
 
@@ -105,7 +105,7 @@ type poolUpdateContainer struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateContainer) Get() *UpdateContainer {
+func (p *poolUpdateContainer) Get() *UpdateContainer {
 	x, ok := p.pool.Get().(*UpdateContainer)
 	if !ok {
 		return &UpdateContainer{}
@@ -116,7 +116,7 @@ func (p poolUpdateContainer) Get() *UpdateContainer {
 	return x
 }
 
-func (p poolUpdateContainer) Put(x *UpdateContainer) {
+func (p *poolUpdateContainer) Put(x *UpdateContainer) {
 	p.pool.Put(x)
 }
 
@@ -135,7 +135,7 @@ type poolProtoMessage struct {
 	pool sync.Pool
 }
 
-func (p poolProtoMessage) Get() *ProtoMessage {
+func (p *poolProtoMessage) Get() *ProtoMessage {
 	x, ok := p.pool.Get().(*ProtoMessage)
 	if !ok {
 		return &ProtoMessage{}
@@ -145,7 +145,7 @@ func (p poolProtoMessage) Get() *ProtoMessage {
 	return x
 }
 
-func (p poolProtoMessage) Put(x *ProtoMessage) {
+func (p *poolProtoMessage) Put(x *ProtoMessage) {
 	p.pool.Put(x)
 }
 
@@ -164,7 +164,7 @@ type poolProtoEncryptedPayload struct {
 	pool sync.Pool
 }
 
-func (p poolProtoEncryptedPayload) Get() *ProtoEncryptedPayload {
+func (p *poolProtoEncryptedPayload) Get() *ProtoEncryptedPayload {
 	x, ok := p.pool.Get().(*ProtoEncryptedPayload)
 	if !ok {
 		return &ProtoEncryptedPayload{}
@@ -172,7 +172,7 @@ func (p poolProtoEncryptedPayload) Get() *ProtoEncryptedPayload {
 	return x
 }
 
-func (p poolProtoEncryptedPayload) Put(x *ProtoEncryptedPayload) {
+func (p *poolProtoEncryptedPayload) Put(x *ProtoEncryptedPayload) {
 	p.pool.Put(x)
 }
 
@@ -191,7 +191,7 @@ type poolError struct {
 	pool sync.Pool
 }
 
-func (p poolError) Get() *Error {
+func (p *poolError) Get() *Error {
 	x, ok := p.pool.Get().(*Error)
 	if !ok {
 		return &Error{}
@@ -199,7 +199,7 @@ func (p poolError) Get() *Error {
 	return x
 }
 
-func (p poolError) Put(x *Error) {
+func (p *poolError) Put(x *Error) {
 	p.pool.Put(x)
 }
 
@@ -218,7 +218,7 @@ type poolAck struct {
 	pool sync.Pool
 }
 
-func (p poolAck) Get() *Ack {
+func (p *poolAck) Get() *Ack {
 	x, ok := p.pool.Get().(*Ack)
 	if !ok {
 		return &Ack{}
@@ -227,7 +227,7 @@ func (p poolAck) Get() *Ack {
 	return x
 }
 
-func (p poolAck) Put(x *Ack) {
+func (p *poolAck) Put(x *Ack) {
 	p.pool.Put(x)
 }
 
@@ -246,7 +246,7 @@ type poolBool struct {
 	pool sync.Pool
 }
 
-func (p poolBool) Get() *Bool {
+func (p *poolBool) Get() *Bool {
 	x, ok := p.pool.Get().(*Bool)
 	if !ok {
 		return &Bool{}
@@ -254,7 +254,7 @@ func (p poolBool) Get() *Bool {
 	return x
 }
 
-func (p poolBool) Put(x *Bool) {
+func (p *poolBool) Put(x *Bool) {
 	p.pool.Put(x)
 }
 
@@ -273,7 +273,7 @@ type poolDialog struct {
 	pool sync.Pool
 }
 
-func (p poolDialog) Get() *Dialog {
+func (p *poolDialog) Get() *Dialog {
 	x, ok := p.pool.Get().(*Dialog)
 	if !ok {
 		return &Dialog{}
@@ -284,7 +284,7 @@ func (p poolDialog) Get() *Dialog {
 	return x
 }
 
-func (p poolDialog) Put(x *Dialog) {
+func (p *poolDialog) Put(x *Dialog) {
 	p.pool.Put(x)
 }
 
@@ -303,7 +303,7 @@ type poolPeer struct {
 	pool sync.Pool
 }
 
-func (p poolPeer) Get() *Peer {
+func (p *poolPeer) Get() *Peer {
 	x, ok := p.pool.Get().(*Peer)
 	if !ok {
 		return &Peer{}
@@ -311,7 +311,7 @@ func (p poolPeer) Get() *Peer {
 	return x
 }
 
-func (p poolPeer) Put(x *Peer) {
+func (p *poolPeer) Put(x *Peer) {
 	p.pool.Put(x)
 }
 
@@ -330,7 +330,7 @@ type poolInputPeer struct {
 	pool sync.Pool
 }
 
-func (p poolInputPeer) Get() *InputPeer {
+func (p *poolInputPeer) Get() *InputPeer {
 	x, ok := p.pool.Get().(*InputPeer)
 	if !ok {
 		return &InputPeer{}
@@ -338,7 +338,7 @@ func (p poolInputPeer) Get() *InputPeer {
 	return x
 }
 
-func (p poolInputPeer) Put(x *InputPeer) {
+func (p *poolInputPeer) Put(x *InputPeer) {
 	p.pool.Put(x)
 }
 
@@ -357,7 +357,7 @@ type poolInputUser struct {
 	pool sync.Pool
 }
 
-func (p poolInputUser) Get() *InputUser {
+func (p *poolInputUser) Get() *InputUser {
 	x, ok := p.pool.Get().(*InputUser)
 	if !ok {
 		return &InputUser{}
@@ -365,7 +365,7 @@ func (p poolInputUser) Get() *InputUser {
 	return x
 }
 
-func (p poolInputUser) Put(x *InputUser) {
+func (p *poolInputUser) Put(x *InputUser) {
 	p.pool.Put(x)
 }
 
@@ -384,7 +384,7 @@ type poolInputFileLocation struct {
 	pool sync.Pool
 }
 
-func (p poolInputFileLocation) Get() *InputFileLocation {
+func (p *poolInputFileLocation) Get() *InputFileLocation {
 	x, ok := p.pool.Get().(*InputFileLocation)
 	if !ok {
 		return &InputFileLocation{}
@@ -393,7 +393,7 @@ func (p poolInputFileLocation) Get() *InputFileLocation {
 	return x
 }
 
-func (p poolInputFileLocation) Put(x *InputFileLocation) {
+func (p *poolInputFileLocation) Put(x *InputFileLocation) {
 	p.pool.Put(x)
 }
 
@@ -412,7 +412,7 @@ type poolFileLocation struct {
 	pool sync.Pool
 }
 
-func (p poolFileLocation) Get() *FileLocation {
+func (p *poolFileLocation) Get() *FileLocation {
 	x, ok := p.pool.Get().(*FileLocation)
 	if !ok {
 		return &FileLocation{}
@@ -420,7 +420,7 @@ func (p poolFileLocation) Get() *FileLocation {
 	return x
 }
 
-func (p poolFileLocation) Put(x *FileLocation) {
+func (p *poolFileLocation) Put(x *FileLocation) {
 	p.pool.Put(x)
 }
 
@@ -439,7 +439,7 @@ type poolUserPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolUserPhoto) Get() *UserPhoto {
+func (p *poolUserPhoto) Get() *UserPhoto {
 	x, ok := p.pool.Get().(*UserPhoto)
 	if !ok {
 		return &UserPhoto{}
@@ -447,7 +447,7 @@ func (p poolUserPhoto) Get() *UserPhoto {
 	return x
 }
 
-func (p poolUserPhoto) Put(x *UserPhoto) {
+func (p *poolUserPhoto) Put(x *UserPhoto) {
 	p.pool.Put(x)
 }
 
@@ -466,7 +466,7 @@ type poolUser struct {
 	pool sync.Pool
 }
 
-func (p poolUser) Get() *User {
+func (p *poolUser) Get() *User {
 	x, ok := p.pool.Get().(*User)
 	if !ok {
 		return &User{}
@@ -481,7 +481,7 @@ func (p poolUser) Get() *User {
 	return x
 }
 
-func (p poolUser) Put(x *User) {
+func (p *poolUser) Put(x *User) {
 	p.pool.Put(x)
 }
 
@@ -500,7 +500,7 @@ type poolBot struct {
 	pool sync.Pool
 }
 
-func (p poolBot) Get() *Bot {
+func (p *poolBot) Get() *Bot {
 	x, ok := p.pool.Get().(*Bot)
 	if !ok {
 		return &Bot{}
@@ -508,7 +508,7 @@ func (p poolBot) Get() *Bot {
 	return x
 }
 
-func (p poolBot) Put(x *Bot) {
+func (p *poolBot) Put(x *Bot) {
 	p.pool.Put(x)
 }
 
@@ -527,7 +527,7 @@ type poolContactUser struct {
 	pool sync.Pool
 }
 
-func (p poolContactUser) Get() *ContactUser {
+func (p *poolContactUser) Get() *ContactUser {
 	x, ok := p.pool.Get().(*ContactUser)
 	if !ok {
 		return &ContactUser{}
@@ -536,7 +536,7 @@ func (p poolContactUser) Get() *ContactUser {
 	return x
 }
 
-func (p poolContactUser) Put(x *ContactUser) {
+func (p *poolContactUser) Put(x *ContactUser) {
 	p.pool.Put(x)
 }
 
@@ -555,7 +555,7 @@ type poolUserMessage struct {
 	pool sync.Pool
 }
 
-func (p poolUserMessage) Get() *UserMessage {
+func (p *poolUserMessage) Get() *UserMessage {
 	x, ok := p.pool.Get().(*UserMessage)
 	if !ok {
 		return &UserMessage{}
@@ -570,7 +570,7 @@ func (p poolUserMessage) Get() *UserMessage {
 	return x
 }
 
-func (p poolUserMessage) Put(x *UserMessage) {
+func (p *poolUserMessage) Put(x *UserMessage) {
 	p.pool.Put(x)
 }
 
@@ -589,7 +589,7 @@ type poolDraftMessage struct {
 	pool sync.Pool
 }
 
-func (p poolDraftMessage) Get() *DraftMessage {
+func (p *poolDraftMessage) Get() *DraftMessage {
 	x, ok := p.pool.Get().(*DraftMessage)
 	if !ok {
 		return &DraftMessage{}
@@ -599,7 +599,7 @@ func (p poolDraftMessage) Get() *DraftMessage {
 	return x
 }
 
-func (p poolDraftMessage) Put(x *DraftMessage) {
+func (p *poolDraftMessage) Put(x *DraftMessage) {
 	p.pool.Put(x)
 }
 
@@ -618,7 +618,7 @@ type poolMessageEntity struct {
 	pool sync.Pool
 }
 
-func (p poolMessageEntity) Get() *MessageEntity {
+func (p *poolMessageEntity) Get() *MessageEntity {
 	x, ok := p.pool.Get().(*MessageEntity)
 	if !ok {
 		return &MessageEntity{}
@@ -627,7 +627,7 @@ func (p poolMessageEntity) Get() *MessageEntity {
 	return x
 }
 
-func (p poolMessageEntity) Put(x *MessageEntity) {
+func (p *poolMessageEntity) Put(x *MessageEntity) {
 	p.pool.Put(x)
 }
 
@@ -646,7 +646,7 @@ type poolRSAPublicKey struct {
 	pool sync.Pool
 }
 
-func (p poolRSAPublicKey) Get() *RSAPublicKey {
+func (p *poolRSAPublicKey) Get() *RSAPublicKey {
 	x, ok := p.pool.Get().(*RSAPublicKey)
 	if !ok {
 		return &RSAPublicKey{}
@@ -654,7 +654,7 @@ func (p poolRSAPublicKey) Get() *RSAPublicKey {
 	return x
 }
 
-func (p poolRSAPublicKey) Put(x *RSAPublicKey) {
+func (p *poolRSAPublicKey) Put(x *RSAPublicKey) {
 	p.pool.Put(x)
 }
 
@@ -673,7 +673,7 @@ type poolDHGroup struct {
 	pool sync.Pool
 }
 
-func (p poolDHGroup) Get() *DHGroup {
+func (p *poolDHGroup) Get() *DHGroup {
 	x, ok := p.pool.Get().(*DHGroup)
 	if !ok {
 		return &DHGroup{}
@@ -681,7 +681,7 @@ func (p poolDHGroup) Get() *DHGroup {
 	return x
 }
 
-func (p poolDHGroup) Put(x *DHGroup) {
+func (p *poolDHGroup) Put(x *DHGroup) {
 	p.pool.Put(x)
 }
 
@@ -700,7 +700,7 @@ type poolPhoneContact struct {
 	pool sync.Pool
 }
 
-func (p poolPhoneContact) Get() *PhoneContact {
+func (p *poolPhoneContact) Get() *PhoneContact {
 	x, ok := p.pool.Get().(*PhoneContact)
 	if !ok {
 		return &PhoneContact{}
@@ -708,7 +708,7 @@ func (p poolPhoneContact) Get() *PhoneContact {
 	return x
 }
 
-func (p poolPhoneContact) Put(x *PhoneContact) {
+func (p *poolPhoneContact) Put(x *PhoneContact) {
 	p.pool.Put(x)
 }
 
@@ -727,7 +727,7 @@ type poolPeerNotifySettings struct {
 	pool sync.Pool
 }
 
-func (p poolPeerNotifySettings) Get() *PeerNotifySettings {
+func (p *poolPeerNotifySettings) Get() *PeerNotifySettings {
 	x, ok := p.pool.Get().(*PeerNotifySettings)
 	if !ok {
 		return &PeerNotifySettings{}
@@ -737,7 +737,7 @@ func (p poolPeerNotifySettings) Get() *PeerNotifySettings {
 	return x
 }
 
-func (p poolPeerNotifySettings) Put(x *PeerNotifySettings) {
+func (p *poolPeerNotifySettings) Put(x *PeerNotifySettings) {
 	p.pool.Put(x)
 }
 
@@ -756,7 +756,7 @@ type poolInputFile struct {
 	pool sync.Pool
 }
 
-func (p poolInputFile) Get() *InputFile {
+func (p *poolInputFile) Get() *InputFile {
 	x, ok := p.pool.Get().(*InputFile)
 	if !ok {
 		return &InputFile{}
@@ -764,7 +764,7 @@ func (p poolInputFile) Get() *InputFile {
 	return x
 }
 
-func (p poolInputFile) Put(x *InputFile) {
+func (p *poolInputFile) Put(x *InputFile) {
 	p.pool.Put(x)
 }
 
@@ -783,7 +783,7 @@ type poolGroupPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolGroupPhoto) Get() *GroupPhoto {
+func (p *poolGroupPhoto) Get() *GroupPhoto {
 	x, ok := p.pool.Get().(*GroupPhoto)
 	if !ok {
 		return &GroupPhoto{}
@@ -792,7 +792,7 @@ func (p poolGroupPhoto) Get() *GroupPhoto {
 	return x
 }
 
-func (p poolGroupPhoto) Put(x *GroupPhoto) {
+func (p *poolGroupPhoto) Put(x *GroupPhoto) {
 	p.pool.Put(x)
 }
 
@@ -811,7 +811,7 @@ type poolGroup struct {
 	pool sync.Pool
 }
 
-func (p poolGroup) Get() *Group {
+func (p *poolGroup) Get() *Group {
 	x, ok := p.pool.Get().(*Group)
 	if !ok {
 		return &Group{}
@@ -822,7 +822,7 @@ func (p poolGroup) Get() *Group {
 	return x
 }
 
-func (p poolGroup) Put(x *Group) {
+func (p *poolGroup) Put(x *Group) {
 	p.pool.Put(x)
 }
 
@@ -841,7 +841,7 @@ type poolGroupFull struct {
 	pool sync.Pool
 }
 
-func (p poolGroupFull) Get() *GroupFull {
+func (p *poolGroupFull) Get() *GroupFull {
 	x, ok := p.pool.Get().(*GroupFull)
 	if !ok {
 		return &GroupFull{}
@@ -852,7 +852,7 @@ func (p poolGroupFull) Get() *GroupFull {
 	return x
 }
 
-func (p poolGroupFull) Put(x *GroupFull) {
+func (p *poolGroupFull) Put(x *GroupFull) {
 	p.pool.Put(x)
 }
 
@@ -871,7 +871,7 @@ type poolGroupParticipant struct {
 	pool sync.Pool
 }
 
-func (p poolGroupParticipant) Get() *GroupParticipant {
+func (p *poolGroupParticipant) Get() *GroupParticipant {
 	x, ok := p.pool.Get().(*GroupParticipant)
 	if !ok {
 		return &GroupParticipant{}
@@ -880,7 +880,7 @@ func (p poolGroupParticipant) Get() *GroupParticipant {
 	return x
 }
 
-func (p poolGroupParticipant) Put(x *GroupParticipant) {
+func (p *poolGroupParticipant) Put(x *GroupParticipant) {
 	p.pool.Put(x)
 }
 
@@ -899,7 +899,7 @@ type poolInputDocument struct {
 	pool sync.Pool
 }
 
-func (p poolInputDocument) Get() *InputDocument {
+func (p *poolInputDocument) Get() *InputDocument {
 	x, ok := p.pool.Get().(*InputDocument)
 	if !ok {
 		return &InputDocument{}
@@ -907,7 +907,7 @@ func (p poolInputDocument) Get() *InputDocument {
 	return x
 }
 
-func (p poolInputDocument) Put(x *InputDocument) {
+func (p *poolInputDocument) Put(x *InputDocument) {
 	p.pool.Put(x)
 }
 
@@ -926,7 +926,7 @@ type poolPrivacyRule struct {
 	pool sync.Pool
 }
 
-func (p poolPrivacyRule) Get() *PrivacyRule {
+func (p *poolPrivacyRule) Get() *PrivacyRule {
 	x, ok := p.pool.Get().(*PrivacyRule)
 	if !ok {
 		return &PrivacyRule{}
@@ -935,7 +935,7 @@ func (p poolPrivacyRule) Get() *PrivacyRule {
 	return x
 }
 
-func (p poolPrivacyRule) Put(x *PrivacyRule) {
+func (p *poolPrivacyRule) Put(x *PrivacyRule) {
 	p.pool.Put(x)
 }
 

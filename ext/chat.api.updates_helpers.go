@@ -22,7 +22,7 @@ type poolUpdateGetState struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGetState) Get() *UpdateGetState {
+func (p *poolUpdateGetState) Get() *UpdateGetState {
 	x, ok := p.pool.Get().(*UpdateGetState)
 	if !ok {
 		return &UpdateGetState{}
@@ -30,7 +30,7 @@ func (p poolUpdateGetState) Get() *UpdateGetState {
 	return x
 }
 
-func (p poolUpdateGetState) Put(x *UpdateGetState) {
+func (p *poolUpdateGetState) Put(x *UpdateGetState) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolUpdateGetDifference struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGetDifference) Get() *UpdateGetDifference {
+func (p *poolUpdateGetDifference) Get() *UpdateGetDifference {
 	x, ok := p.pool.Get().(*UpdateGetDifference)
 	if !ok {
 		return &UpdateGetDifference{}
@@ -57,7 +57,7 @@ func (p poolUpdateGetDifference) Get() *UpdateGetDifference {
 	return x
 }
 
-func (p poolUpdateGetDifference) Put(x *UpdateGetDifference) {
+func (p *poolUpdateGetDifference) Put(x *UpdateGetDifference) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolUpdateDifference struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateDifference) Get() *UpdateDifference {
+func (p *poolUpdateDifference) Get() *UpdateDifference {
 	x, ok := p.pool.Get().(*UpdateDifference)
 	if !ok {
 		return &UpdateDifference{}
@@ -88,7 +88,7 @@ func (p poolUpdateDifference) Get() *UpdateDifference {
 	return x
 }
 
-func (p poolUpdateDifference) Put(x *UpdateDifference) {
+func (p *poolUpdateDifference) Put(x *UpdateDifference) {
 	p.pool.Put(x)
 }
 
@@ -107,7 +107,7 @@ type poolUpdateTooLong struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateTooLong) Get() *UpdateTooLong {
+func (p *poolUpdateTooLong) Get() *UpdateTooLong {
 	x, ok := p.pool.Get().(*UpdateTooLong)
 	if !ok {
 		return &UpdateTooLong{}
@@ -115,7 +115,7 @@ func (p poolUpdateTooLong) Get() *UpdateTooLong {
 	return x
 }
 
-func (p poolUpdateTooLong) Put(x *UpdateTooLong) {
+func (p *poolUpdateTooLong) Put(x *UpdateTooLong) {
 	p.pool.Put(x)
 }
 
@@ -134,7 +134,7 @@ type poolUpdateState struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateState) Get() *UpdateState {
+func (p *poolUpdateState) Get() *UpdateState {
 	x, ok := p.pool.Get().(*UpdateState)
 	if !ok {
 		return &UpdateState{}
@@ -142,7 +142,7 @@ func (p poolUpdateState) Get() *UpdateState {
 	return x
 }
 
-func (p poolUpdateState) Put(x *UpdateState) {
+func (p *poolUpdateState) Put(x *UpdateState) {
 	p.pool.Put(x)
 }
 
@@ -161,7 +161,7 @@ type poolUpdateMessageID struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateMessageID) Get() *UpdateMessageID {
+func (p *poolUpdateMessageID) Get() *UpdateMessageID {
 	x, ok := p.pool.Get().(*UpdateMessageID)
 	if !ok {
 		return &UpdateMessageID{}
@@ -169,7 +169,7 @@ func (p poolUpdateMessageID) Get() *UpdateMessageID {
 	return x
 }
 
-func (p poolUpdateMessageID) Put(x *UpdateMessageID) {
+func (p *poolUpdateMessageID) Put(x *UpdateMessageID) {
 	p.pool.Put(x)
 }
 
@@ -188,7 +188,7 @@ type poolUpdateNewMessage struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateNewMessage) Get() *UpdateNewMessage {
+func (p *poolUpdateNewMessage) Get() *UpdateNewMessage {
 	x, ok := p.pool.Get().(*UpdateNewMessage)
 	if !ok {
 		return &UpdateNewMessage{}
@@ -197,7 +197,7 @@ func (p poolUpdateNewMessage) Get() *UpdateNewMessage {
 	return x
 }
 
-func (p poolUpdateNewMessage) Put(x *UpdateNewMessage) {
+func (p *poolUpdateNewMessage) Put(x *UpdateNewMessage) {
 	p.pool.Put(x)
 }
 
@@ -216,7 +216,7 @@ type poolUpdateMessageEdited struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateMessageEdited) Get() *UpdateMessageEdited {
+func (p *poolUpdateMessageEdited) Get() *UpdateMessageEdited {
 	x, ok := p.pool.Get().(*UpdateMessageEdited)
 	if !ok {
 		return &UpdateMessageEdited{}
@@ -224,7 +224,7 @@ func (p poolUpdateMessageEdited) Get() *UpdateMessageEdited {
 	return x
 }
 
-func (p poolUpdateMessageEdited) Put(x *UpdateMessageEdited) {
+func (p *poolUpdateMessageEdited) Put(x *UpdateMessageEdited) {
 	p.pool.Put(x)
 }
 
@@ -243,7 +243,7 @@ type poolUpdateMessagesDeleted struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateMessagesDeleted) Get() *UpdateMessagesDeleted {
+func (p *poolUpdateMessagesDeleted) Get() *UpdateMessagesDeleted {
 	x, ok := p.pool.Get().(*UpdateMessagesDeleted)
 	if !ok {
 		return &UpdateMessagesDeleted{}
@@ -253,7 +253,7 @@ func (p poolUpdateMessagesDeleted) Get() *UpdateMessagesDeleted {
 	return x
 }
 
-func (p poolUpdateMessagesDeleted) Put(x *UpdateMessagesDeleted) {
+func (p *poolUpdateMessagesDeleted) Put(x *UpdateMessagesDeleted) {
 	p.pool.Put(x)
 }
 
@@ -272,7 +272,7 @@ type poolUpdateReadHistoryInbox struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateReadHistoryInbox) Get() *UpdateReadHistoryInbox {
+func (p *poolUpdateReadHistoryInbox) Get() *UpdateReadHistoryInbox {
 	x, ok := p.pool.Get().(*UpdateReadHistoryInbox)
 	if !ok {
 		return &UpdateReadHistoryInbox{}
@@ -280,7 +280,7 @@ func (p poolUpdateReadHistoryInbox) Get() *UpdateReadHistoryInbox {
 	return x
 }
 
-func (p poolUpdateReadHistoryInbox) Put(x *UpdateReadHistoryInbox) {
+func (p *poolUpdateReadHistoryInbox) Put(x *UpdateReadHistoryInbox) {
 	p.pool.Put(x)
 }
 
@@ -299,7 +299,7 @@ type poolUpdateReadHistoryOutbox struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateReadHistoryOutbox) Get() *UpdateReadHistoryOutbox {
+func (p *poolUpdateReadHistoryOutbox) Get() *UpdateReadHistoryOutbox {
 	x, ok := p.pool.Get().(*UpdateReadHistoryOutbox)
 	if !ok {
 		return &UpdateReadHistoryOutbox{}
@@ -307,7 +307,7 @@ func (p poolUpdateReadHistoryOutbox) Get() *UpdateReadHistoryOutbox {
 	return x
 }
 
-func (p poolUpdateReadHistoryOutbox) Put(x *UpdateReadHistoryOutbox) {
+func (p *poolUpdateReadHistoryOutbox) Put(x *UpdateReadHistoryOutbox) {
 	p.pool.Put(x)
 }
 
@@ -326,7 +326,7 @@ type poolUpdateUserTyping struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateUserTyping) Get() *UpdateUserTyping {
+func (p *poolUpdateUserTyping) Get() *UpdateUserTyping {
 	x, ok := p.pool.Get().(*UpdateUserTyping)
 	if !ok {
 		return &UpdateUserTyping{}
@@ -334,7 +334,7 @@ func (p poolUpdateUserTyping) Get() *UpdateUserTyping {
 	return x
 }
 
-func (p poolUpdateUserTyping) Put(x *UpdateUserTyping) {
+func (p *poolUpdateUserTyping) Put(x *UpdateUserTyping) {
 	p.pool.Put(x)
 }
 
@@ -353,7 +353,7 @@ type poolUpdateUserStatus struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateUserStatus) Get() *UpdateUserStatus {
+func (p *poolUpdateUserStatus) Get() *UpdateUserStatus {
 	x, ok := p.pool.Get().(*UpdateUserStatus)
 	if !ok {
 		return &UpdateUserStatus{}
@@ -361,7 +361,7 @@ func (p poolUpdateUserStatus) Get() *UpdateUserStatus {
 	return x
 }
 
-func (p poolUpdateUserStatus) Put(x *UpdateUserStatus) {
+func (p *poolUpdateUserStatus) Put(x *UpdateUserStatus) {
 	p.pool.Put(x)
 }
 
@@ -380,7 +380,7 @@ type poolUpdateUsername struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateUsername) Get() *UpdateUsername {
+func (p *poolUpdateUsername) Get() *UpdateUsername {
 	x, ok := p.pool.Get().(*UpdateUsername)
 	if !ok {
 		return &UpdateUsername{}
@@ -388,7 +388,7 @@ func (p poolUpdateUsername) Get() *UpdateUsername {
 	return x
 }
 
-func (p poolUpdateUsername) Put(x *UpdateUsername) {
+func (p *poolUpdateUsername) Put(x *UpdateUsername) {
 	p.pool.Put(x)
 }
 
@@ -407,7 +407,7 @@ type poolUpdateUserPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateUserPhoto) Get() *UpdateUserPhoto {
+func (p *poolUpdateUserPhoto) Get() *UpdateUserPhoto {
 	x, ok := p.pool.Get().(*UpdateUserPhoto)
 	if !ok {
 		return &UpdateUserPhoto{}
@@ -417,7 +417,7 @@ func (p poolUpdateUserPhoto) Get() *UpdateUserPhoto {
 	return x
 }
 
-func (p poolUpdateUserPhoto) Put(x *UpdateUserPhoto) {
+func (p *poolUpdateUserPhoto) Put(x *UpdateUserPhoto) {
 	p.pool.Put(x)
 }
 
@@ -436,7 +436,7 @@ type poolUpdateNotifySettings struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateNotifySettings) Get() *UpdateNotifySettings {
+func (p *poolUpdateNotifySettings) Get() *UpdateNotifySettings {
 	x, ok := p.pool.Get().(*UpdateNotifySettings)
 	if !ok {
 		return &UpdateNotifySettings{}
@@ -444,7 +444,7 @@ func (p poolUpdateNotifySettings) Get() *UpdateNotifySettings {
 	return x
 }
 
-func (p poolUpdateNotifySettings) Put(x *UpdateNotifySettings) {
+func (p *poolUpdateNotifySettings) Put(x *UpdateNotifySettings) {
 	p.pool.Put(x)
 }
 
@@ -463,7 +463,7 @@ type poolUpdateGroupParticipantAdd struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGroupParticipantAdd) Get() *UpdateGroupParticipantAdd {
+func (p *poolUpdateGroupParticipantAdd) Get() *UpdateGroupParticipantAdd {
 	x, ok := p.pool.Get().(*UpdateGroupParticipantAdd)
 	if !ok {
 		return &UpdateGroupParticipantAdd{}
@@ -471,7 +471,7 @@ func (p poolUpdateGroupParticipantAdd) Get() *UpdateGroupParticipantAdd {
 	return x
 }
 
-func (p poolUpdateGroupParticipantAdd) Put(x *UpdateGroupParticipantAdd) {
+func (p *poolUpdateGroupParticipantAdd) Put(x *UpdateGroupParticipantAdd) {
 	p.pool.Put(x)
 }
 
@@ -490,7 +490,7 @@ type poolUpdateGroupParticipantDeleted struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGroupParticipantDeleted) Get() *UpdateGroupParticipantDeleted {
+func (p *poolUpdateGroupParticipantDeleted) Get() *UpdateGroupParticipantDeleted {
 	x, ok := p.pool.Get().(*UpdateGroupParticipantDeleted)
 	if !ok {
 		return &UpdateGroupParticipantDeleted{}
@@ -498,7 +498,7 @@ func (p poolUpdateGroupParticipantDeleted) Get() *UpdateGroupParticipantDeleted 
 	return x
 }
 
-func (p poolUpdateGroupParticipantDeleted) Put(x *UpdateGroupParticipantDeleted) {
+func (p *poolUpdateGroupParticipantDeleted) Put(x *UpdateGroupParticipantDeleted) {
 	p.pool.Put(x)
 }
 
@@ -517,7 +517,7 @@ type poolUpdateGroupParticipantAdmin struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGroupParticipantAdmin) Get() *UpdateGroupParticipantAdmin {
+func (p *poolUpdateGroupParticipantAdmin) Get() *UpdateGroupParticipantAdmin {
 	x, ok := p.pool.Get().(*UpdateGroupParticipantAdmin)
 	if !ok {
 		return &UpdateGroupParticipantAdmin{}
@@ -525,7 +525,7 @@ func (p poolUpdateGroupParticipantAdmin) Get() *UpdateGroupParticipantAdmin {
 	return x
 }
 
-func (p poolUpdateGroupParticipantAdmin) Put(x *UpdateGroupParticipantAdmin) {
+func (p *poolUpdateGroupParticipantAdmin) Put(x *UpdateGroupParticipantAdmin) {
 	p.pool.Put(x)
 }
 
@@ -544,7 +544,7 @@ type poolUpdateGroupAdmins struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGroupAdmins) Get() *UpdateGroupAdmins {
+func (p *poolUpdateGroupAdmins) Get() *UpdateGroupAdmins {
 	x, ok := p.pool.Get().(*UpdateGroupAdmins)
 	if !ok {
 		return &UpdateGroupAdmins{}
@@ -552,7 +552,7 @@ func (p poolUpdateGroupAdmins) Get() *UpdateGroupAdmins {
 	return x
 }
 
-func (p poolUpdateGroupAdmins) Put(x *UpdateGroupAdmins) {
+func (p *poolUpdateGroupAdmins) Put(x *UpdateGroupAdmins) {
 	p.pool.Put(x)
 }
 
@@ -571,7 +571,7 @@ type poolUpdateGroupPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateGroupPhoto) Get() *UpdateGroupPhoto {
+func (p *poolUpdateGroupPhoto) Get() *UpdateGroupPhoto {
 	x, ok := p.pool.Get().(*UpdateGroupPhoto)
 	if !ok {
 		return &UpdateGroupPhoto{}
@@ -581,7 +581,7 @@ func (p poolUpdateGroupPhoto) Get() *UpdateGroupPhoto {
 	return x
 }
 
-func (p poolUpdateGroupPhoto) Put(x *UpdateGroupPhoto) {
+func (p *poolUpdateGroupPhoto) Put(x *UpdateGroupPhoto) {
 	p.pool.Put(x)
 }
 
@@ -600,7 +600,7 @@ type poolUpdateReadMessagesContents struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateReadMessagesContents) Get() *UpdateReadMessagesContents {
+func (p *poolUpdateReadMessagesContents) Get() *UpdateReadMessagesContents {
 	x, ok := p.pool.Get().(*UpdateReadMessagesContents)
 	if !ok {
 		return &UpdateReadMessagesContents{}
@@ -609,7 +609,7 @@ func (p poolUpdateReadMessagesContents) Get() *UpdateReadMessagesContents {
 	return x
 }
 
-func (p poolUpdateReadMessagesContents) Put(x *UpdateReadMessagesContents) {
+func (p *poolUpdateReadMessagesContents) Put(x *UpdateReadMessagesContents) {
 	p.pool.Put(x)
 }
 
@@ -628,7 +628,7 @@ type poolUpdateAuthorizationReset struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateAuthorizationReset) Get() *UpdateAuthorizationReset {
+func (p *poolUpdateAuthorizationReset) Get() *UpdateAuthorizationReset {
 	x, ok := p.pool.Get().(*UpdateAuthorizationReset)
 	if !ok {
 		return &UpdateAuthorizationReset{}
@@ -636,7 +636,7 @@ func (p poolUpdateAuthorizationReset) Get() *UpdateAuthorizationReset {
 	return x
 }
 
-func (p poolUpdateAuthorizationReset) Put(x *UpdateAuthorizationReset) {
+func (p *poolUpdateAuthorizationReset) Put(x *UpdateAuthorizationReset) {
 	p.pool.Put(x)
 }
 
@@ -655,7 +655,7 @@ type poolUpdateDraftMessage struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateDraftMessage) Get() *UpdateDraftMessage {
+func (p *poolUpdateDraftMessage) Get() *UpdateDraftMessage {
 	x, ok := p.pool.Get().(*UpdateDraftMessage)
 	if !ok {
 		return &UpdateDraftMessage{}
@@ -664,7 +664,7 @@ func (p poolUpdateDraftMessage) Get() *UpdateDraftMessage {
 	return x
 }
 
-func (p poolUpdateDraftMessage) Put(x *UpdateDraftMessage) {
+func (p *poolUpdateDraftMessage) Put(x *UpdateDraftMessage) {
 	p.pool.Put(x)
 }
 
@@ -683,7 +683,7 @@ type poolUpdateDraftMessageCleared struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateDraftMessageCleared) Get() *UpdateDraftMessageCleared {
+func (p *poolUpdateDraftMessageCleared) Get() *UpdateDraftMessageCleared {
 	x, ok := p.pool.Get().(*UpdateDraftMessageCleared)
 	if !ok {
 		return &UpdateDraftMessageCleared{}
@@ -692,7 +692,7 @@ func (p poolUpdateDraftMessageCleared) Get() *UpdateDraftMessageCleared {
 	return x
 }
 
-func (p poolUpdateDraftMessageCleared) Put(x *UpdateDraftMessageCleared) {
+func (p *poolUpdateDraftMessageCleared) Put(x *UpdateDraftMessageCleared) {
 	p.pool.Put(x)
 }
 
@@ -711,7 +711,7 @@ type poolUpdateDialogPinned struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateDialogPinned) Get() *UpdateDialogPinned {
+func (p *poolUpdateDialogPinned) Get() *UpdateDialogPinned {
 	x, ok := p.pool.Get().(*UpdateDialogPinned)
 	if !ok {
 		return &UpdateDialogPinned{}
@@ -719,7 +719,7 @@ func (p poolUpdateDialogPinned) Get() *UpdateDialogPinned {
 	return x
 }
 
-func (p poolUpdateDialogPinned) Put(x *UpdateDialogPinned) {
+func (p *poolUpdateDialogPinned) Put(x *UpdateDialogPinned) {
 	p.pool.Put(x)
 }
 
@@ -738,7 +738,7 @@ type poolUpdateDialogPinnedReorder struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateDialogPinnedReorder) Get() *UpdateDialogPinnedReorder {
+func (p *poolUpdateDialogPinnedReorder) Get() *UpdateDialogPinnedReorder {
 	x, ok := p.pool.Get().(*UpdateDialogPinnedReorder)
 	if !ok {
 		return &UpdateDialogPinnedReorder{}
@@ -747,7 +747,7 @@ func (p poolUpdateDialogPinnedReorder) Get() *UpdateDialogPinnedReorder {
 	return x
 }
 
-func (p poolUpdateDialogPinnedReorder) Put(x *UpdateDialogPinnedReorder) {
+func (p *poolUpdateDialogPinnedReorder) Put(x *UpdateDialogPinnedReorder) {
 	p.pool.Put(x)
 }
 
@@ -766,7 +766,7 @@ type poolUpdateAccountPrivacy struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateAccountPrivacy) Get() *UpdateAccountPrivacy {
+func (p *poolUpdateAccountPrivacy) Get() *UpdateAccountPrivacy {
 	x, ok := p.pool.Get().(*UpdateAccountPrivacy)
 	if !ok {
 		return &UpdateAccountPrivacy{}
@@ -780,7 +780,7 @@ func (p poolUpdateAccountPrivacy) Get() *UpdateAccountPrivacy {
 	return x
 }
 
-func (p poolUpdateAccountPrivacy) Put(x *UpdateAccountPrivacy) {
+func (p *poolUpdateAccountPrivacy) Put(x *UpdateAccountPrivacy) {
 	p.pool.Put(x)
 }
 
@@ -799,7 +799,7 @@ type poolUpdateLabelAdded struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateLabelAdded) Get() *UpdateLabelAdded {
+func (p *poolUpdateLabelAdded) Get() *UpdateLabelAdded {
 	x, ok := p.pool.Get().(*UpdateLabelAdded)
 	if !ok {
 		return &UpdateLabelAdded{}
@@ -809,7 +809,7 @@ func (p poolUpdateLabelAdded) Get() *UpdateLabelAdded {
 	return x
 }
 
-func (p poolUpdateLabelAdded) Put(x *UpdateLabelAdded) {
+func (p *poolUpdateLabelAdded) Put(x *UpdateLabelAdded) {
 	p.pool.Put(x)
 }
 
@@ -828,7 +828,7 @@ type poolUpdateLabelRemoved struct {
 	pool sync.Pool
 }
 
-func (p poolUpdateLabelRemoved) Get() *UpdateLabelRemoved {
+func (p *poolUpdateLabelRemoved) Get() *UpdateLabelRemoved {
 	x, ok := p.pool.Get().(*UpdateLabelRemoved)
 	if !ok {
 		return &UpdateLabelRemoved{}
@@ -838,7 +838,7 @@ func (p poolUpdateLabelRemoved) Get() *UpdateLabelRemoved {
 	return x
 }
 
-func (p poolUpdateLabelRemoved) Put(x *UpdateLabelRemoved) {
+func (p *poolUpdateLabelRemoved) Put(x *UpdateLabelRemoved) {
 	p.pool.Put(x)
 }
 

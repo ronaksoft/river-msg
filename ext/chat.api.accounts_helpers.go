@@ -22,7 +22,7 @@ type poolAccountSetNotifySettings struct {
 	pool sync.Pool
 }
 
-func (p poolAccountSetNotifySettings) Get() *AccountSetNotifySettings {
+func (p *poolAccountSetNotifySettings) Get() *AccountSetNotifySettings {
 	x, ok := p.pool.Get().(*AccountSetNotifySettings)
 	if !ok {
 		return &AccountSetNotifySettings{}
@@ -30,7 +30,7 @@ func (p poolAccountSetNotifySettings) Get() *AccountSetNotifySettings {
 	return x
 }
 
-func (p poolAccountSetNotifySettings) Put(x *AccountSetNotifySettings) {
+func (p *poolAccountSetNotifySettings) Put(x *AccountSetNotifySettings) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolAccountGetNotifySettings struct {
 	pool sync.Pool
 }
 
-func (p poolAccountGetNotifySettings) Get() *AccountGetNotifySettings {
+func (p *poolAccountGetNotifySettings) Get() *AccountGetNotifySettings {
 	x, ok := p.pool.Get().(*AccountGetNotifySettings)
 	if !ok {
 		return &AccountGetNotifySettings{}
@@ -57,7 +57,7 @@ func (p poolAccountGetNotifySettings) Get() *AccountGetNotifySettings {
 	return x
 }
 
-func (p poolAccountGetNotifySettings) Put(x *AccountGetNotifySettings) {
+func (p *poolAccountGetNotifySettings) Put(x *AccountGetNotifySettings) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolAccountRegisterDevice struct {
 	pool sync.Pool
 }
 
-func (p poolAccountRegisterDevice) Get() *AccountRegisterDevice {
+func (p *poolAccountRegisterDevice) Get() *AccountRegisterDevice {
 	x, ok := p.pool.Get().(*AccountRegisterDevice)
 	if !ok {
 		return &AccountRegisterDevice{}
@@ -84,7 +84,7 @@ func (p poolAccountRegisterDevice) Get() *AccountRegisterDevice {
 	return x
 }
 
-func (p poolAccountRegisterDevice) Put(x *AccountRegisterDevice) {
+func (p *poolAccountRegisterDevice) Put(x *AccountRegisterDevice) {
 	p.pool.Put(x)
 }
 
@@ -103,7 +103,7 @@ type poolAccountUnregisterDevice struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUnregisterDevice) Get() *AccountUnregisterDevice {
+func (p *poolAccountUnregisterDevice) Get() *AccountUnregisterDevice {
 	x, ok := p.pool.Get().(*AccountUnregisterDevice)
 	if !ok {
 		return &AccountUnregisterDevice{}
@@ -111,7 +111,7 @@ func (p poolAccountUnregisterDevice) Get() *AccountUnregisterDevice {
 	return x
 }
 
-func (p poolAccountUnregisterDevice) Put(x *AccountUnregisterDevice) {
+func (p *poolAccountUnregisterDevice) Put(x *AccountUnregisterDevice) {
 	p.pool.Put(x)
 }
 
@@ -130,7 +130,7 @@ type poolAccountUpdateProfile struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUpdateProfile) Get() *AccountUpdateProfile {
+func (p *poolAccountUpdateProfile) Get() *AccountUpdateProfile {
 	x, ok := p.pool.Get().(*AccountUpdateProfile)
 	if !ok {
 		return &AccountUpdateProfile{}
@@ -139,7 +139,7 @@ func (p poolAccountUpdateProfile) Get() *AccountUpdateProfile {
 	return x
 }
 
-func (p poolAccountUpdateProfile) Put(x *AccountUpdateProfile) {
+func (p *poolAccountUpdateProfile) Put(x *AccountUpdateProfile) {
 	p.pool.Put(x)
 }
 
@@ -158,7 +158,7 @@ type poolAccountCheckUsername struct {
 	pool sync.Pool
 }
 
-func (p poolAccountCheckUsername) Get() *AccountCheckUsername {
+func (p *poolAccountCheckUsername) Get() *AccountCheckUsername {
 	x, ok := p.pool.Get().(*AccountCheckUsername)
 	if !ok {
 		return &AccountCheckUsername{}
@@ -166,7 +166,7 @@ func (p poolAccountCheckUsername) Get() *AccountCheckUsername {
 	return x
 }
 
-func (p poolAccountCheckUsername) Put(x *AccountCheckUsername) {
+func (p *poolAccountCheckUsername) Put(x *AccountCheckUsername) {
 	p.pool.Put(x)
 }
 
@@ -185,7 +185,7 @@ type poolAccountUpdateUsername struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUpdateUsername) Get() *AccountUpdateUsername {
+func (p *poolAccountUpdateUsername) Get() *AccountUpdateUsername {
 	x, ok := p.pool.Get().(*AccountUpdateUsername)
 	if !ok {
 		return &AccountUpdateUsername{}
@@ -193,7 +193,7 @@ func (p poolAccountUpdateUsername) Get() *AccountUpdateUsername {
 	return x
 }
 
-func (p poolAccountUpdateUsername) Put(x *AccountUpdateUsername) {
+func (p *poolAccountUpdateUsername) Put(x *AccountUpdateUsername) {
 	p.pool.Put(x)
 }
 
@@ -212,7 +212,7 @@ type poolAccountUploadPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUploadPhoto) Get() *AccountUploadPhoto {
+func (p *poolAccountUploadPhoto) Get() *AccountUploadPhoto {
 	x, ok := p.pool.Get().(*AccountUploadPhoto)
 	if !ok {
 		return &AccountUploadPhoto{}
@@ -221,7 +221,7 @@ func (p poolAccountUploadPhoto) Get() *AccountUploadPhoto {
 	return x
 }
 
-func (p poolAccountUploadPhoto) Put(x *AccountUploadPhoto) {
+func (p *poolAccountUploadPhoto) Put(x *AccountUploadPhoto) {
 	p.pool.Put(x)
 }
 
@@ -240,7 +240,7 @@ type poolAccountUpdatePhoto struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUpdatePhoto) Get() *AccountUpdatePhoto {
+func (p *poolAccountUpdatePhoto) Get() *AccountUpdatePhoto {
 	x, ok := p.pool.Get().(*AccountUpdatePhoto)
 	if !ok {
 		return &AccountUpdatePhoto{}
@@ -248,7 +248,7 @@ func (p poolAccountUpdatePhoto) Get() *AccountUpdatePhoto {
 	return x
 }
 
-func (p poolAccountUpdatePhoto) Put(x *AccountUpdatePhoto) {
+func (p *poolAccountUpdatePhoto) Put(x *AccountUpdatePhoto) {
 	p.pool.Put(x)
 }
 
@@ -267,7 +267,7 @@ type poolAccountRemovePhoto struct {
 	pool sync.Pool
 }
 
-func (p poolAccountRemovePhoto) Get() *AccountRemovePhoto {
+func (p *poolAccountRemovePhoto) Get() *AccountRemovePhoto {
 	x, ok := p.pool.Get().(*AccountRemovePhoto)
 	if !ok {
 		return &AccountRemovePhoto{}
@@ -276,7 +276,7 @@ func (p poolAccountRemovePhoto) Get() *AccountRemovePhoto {
 	return x
 }
 
-func (p poolAccountRemovePhoto) Put(x *AccountRemovePhoto) {
+func (p *poolAccountRemovePhoto) Put(x *AccountRemovePhoto) {
 	p.pool.Put(x)
 }
 
@@ -295,7 +295,7 @@ type poolAccountChangePhone struct {
 	pool sync.Pool
 }
 
-func (p poolAccountChangePhone) Get() *AccountChangePhone {
+func (p *poolAccountChangePhone) Get() *AccountChangePhone {
 	x, ok := p.pool.Get().(*AccountChangePhone)
 	if !ok {
 		return &AccountChangePhone{}
@@ -303,7 +303,7 @@ func (p poolAccountChangePhone) Get() *AccountChangePhone {
 	return x
 }
 
-func (p poolAccountChangePhone) Put(x *AccountChangePhone) {
+func (p *poolAccountChangePhone) Put(x *AccountChangePhone) {
 	p.pool.Put(x)
 }
 
@@ -322,7 +322,7 @@ type poolAccountSetPrivacy struct {
 	pool sync.Pool
 }
 
-func (p poolAccountSetPrivacy) Get() *AccountSetPrivacy {
+func (p *poolAccountSetPrivacy) Get() *AccountSetPrivacy {
 	x, ok := p.pool.Get().(*AccountSetPrivacy)
 	if !ok {
 		return &AccountSetPrivacy{}
@@ -336,7 +336,7 @@ func (p poolAccountSetPrivacy) Get() *AccountSetPrivacy {
 	return x
 }
 
-func (p poolAccountSetPrivacy) Put(x *AccountSetPrivacy) {
+func (p *poolAccountSetPrivacy) Put(x *AccountSetPrivacy) {
 	p.pool.Put(x)
 }
 
@@ -355,7 +355,7 @@ type poolAccountGetPrivacy struct {
 	pool sync.Pool
 }
 
-func (p poolAccountGetPrivacy) Get() *AccountGetPrivacy {
+func (p *poolAccountGetPrivacy) Get() *AccountGetPrivacy {
 	x, ok := p.pool.Get().(*AccountGetPrivacy)
 	if !ok {
 		return &AccountGetPrivacy{}
@@ -363,7 +363,7 @@ func (p poolAccountGetPrivacy) Get() *AccountGetPrivacy {
 	return x
 }
 
-func (p poolAccountGetPrivacy) Put(x *AccountGetPrivacy) {
+func (p *poolAccountGetPrivacy) Put(x *AccountGetPrivacy) {
 	p.pool.Put(x)
 }
 
@@ -382,7 +382,7 @@ type poolAccountGetAuthorizations struct {
 	pool sync.Pool
 }
 
-func (p poolAccountGetAuthorizations) Get() *AccountGetAuthorizations {
+func (p *poolAccountGetAuthorizations) Get() *AccountGetAuthorizations {
 	x, ok := p.pool.Get().(*AccountGetAuthorizations)
 	if !ok {
 		return &AccountGetAuthorizations{}
@@ -390,7 +390,7 @@ func (p poolAccountGetAuthorizations) Get() *AccountGetAuthorizations {
 	return x
 }
 
-func (p poolAccountGetAuthorizations) Put(x *AccountGetAuthorizations) {
+func (p *poolAccountGetAuthorizations) Put(x *AccountGetAuthorizations) {
 	p.pool.Put(x)
 }
 
@@ -409,7 +409,7 @@ type poolAccountResetAuthorization struct {
 	pool sync.Pool
 }
 
-func (p poolAccountResetAuthorization) Get() *AccountResetAuthorization {
+func (p *poolAccountResetAuthorization) Get() *AccountResetAuthorization {
 	x, ok := p.pool.Get().(*AccountResetAuthorization)
 	if !ok {
 		return &AccountResetAuthorization{}
@@ -417,7 +417,7 @@ func (p poolAccountResetAuthorization) Get() *AccountResetAuthorization {
 	return x
 }
 
-func (p poolAccountResetAuthorization) Put(x *AccountResetAuthorization) {
+func (p *poolAccountResetAuthorization) Put(x *AccountResetAuthorization) {
 	p.pool.Put(x)
 }
 
@@ -436,7 +436,7 @@ type poolAccountUpdateStatus struct {
 	pool sync.Pool
 }
 
-func (p poolAccountUpdateStatus) Get() *AccountUpdateStatus {
+func (p *poolAccountUpdateStatus) Get() *AccountUpdateStatus {
 	x, ok := p.pool.Get().(*AccountUpdateStatus)
 	if !ok {
 		return &AccountUpdateStatus{}
@@ -444,7 +444,7 @@ func (p poolAccountUpdateStatus) Get() *AccountUpdateStatus {
 	return x
 }
 
-func (p poolAccountUpdateStatus) Put(x *AccountUpdateStatus) {
+func (p *poolAccountUpdateStatus) Put(x *AccountUpdateStatus) {
 	p.pool.Put(x)
 }
 
@@ -463,7 +463,7 @@ type poolAccountAuthorizations struct {
 	pool sync.Pool
 }
 
-func (p poolAccountAuthorizations) Get() *AccountAuthorizations {
+func (p *poolAccountAuthorizations) Get() *AccountAuthorizations {
 	x, ok := p.pool.Get().(*AccountAuthorizations)
 	if !ok {
 		return &AccountAuthorizations{}
@@ -472,7 +472,7 @@ func (p poolAccountAuthorizations) Get() *AccountAuthorizations {
 	return x
 }
 
-func (p poolAccountAuthorizations) Put(x *AccountAuthorizations) {
+func (p *poolAccountAuthorizations) Put(x *AccountAuthorizations) {
 	p.pool.Put(x)
 }
 
@@ -491,7 +491,7 @@ type poolAccountAuthorization struct {
 	pool sync.Pool
 }
 
-func (p poolAccountAuthorization) Get() *AccountAuthorization {
+func (p *poolAccountAuthorization) Get() *AccountAuthorization {
 	x, ok := p.pool.Get().(*AccountAuthorization)
 	if !ok {
 		return &AccountAuthorization{}
@@ -499,7 +499,7 @@ func (p poolAccountAuthorization) Get() *AccountAuthorization {
 	return x
 }
 
-func (p poolAccountAuthorization) Put(x *AccountAuthorization) {
+func (p *poolAccountAuthorization) Put(x *AccountAuthorization) {
 	p.pool.Put(x)
 }
 
@@ -518,7 +518,7 @@ type poolAccountPrivacyRules struct {
 	pool sync.Pool
 }
 
-func (p poolAccountPrivacyRules) Get() *AccountPrivacyRules {
+func (p *poolAccountPrivacyRules) Get() *AccountPrivacyRules {
 	x, ok := p.pool.Get().(*AccountPrivacyRules)
 	if !ok {
 		return &AccountPrivacyRules{}
@@ -527,7 +527,7 @@ func (p poolAccountPrivacyRules) Get() *AccountPrivacyRules {
 	return x
 }
 
-func (p poolAccountPrivacyRules) Put(x *AccountPrivacyRules) {
+func (p *poolAccountPrivacyRules) Put(x *AccountPrivacyRules) {
 	p.pool.Put(x)
 }
 
@@ -546,7 +546,7 @@ type poolAccountSetLang struct {
 	pool sync.Pool
 }
 
-func (p poolAccountSetLang) Get() *AccountSetLang {
+func (p *poolAccountSetLang) Get() *AccountSetLang {
 	x, ok := p.pool.Get().(*AccountSetLang)
 	if !ok {
 		return &AccountSetLang{}
@@ -554,7 +554,7 @@ func (p poolAccountSetLang) Get() *AccountSetLang {
 	return x
 }
 
-func (p poolAccountSetLang) Put(x *AccountSetLang) {
+func (p *poolAccountSetLang) Put(x *AccountSetLang) {
 	p.pool.Put(x)
 }
 

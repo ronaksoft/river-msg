@@ -23,7 +23,7 @@ type poolMessagesSend struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSend) Get() *MessagesSend {
+func (p *poolMessagesSend) Get() *MessagesSend {
 	x, ok := p.pool.Get().(*MessagesSend)
 	if !ok {
 		return &MessagesSend{}
@@ -34,7 +34,7 @@ func (p poolMessagesSend) Get() *MessagesSend {
 	return x
 }
 
-func (p poolMessagesSend) Put(x *MessagesSend) {
+func (p *poolMessagesSend) Put(x *MessagesSend) {
 	p.pool.Put(x)
 }
 
@@ -53,7 +53,7 @@ type poolMessagesBroadcast struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesBroadcast) Get() *MessagesBroadcast {
+func (p *poolMessagesBroadcast) Get() *MessagesBroadcast {
 	x, ok := p.pool.Get().(*MessagesBroadcast)
 	if !ok {
 		return &MessagesBroadcast{}
@@ -61,7 +61,7 @@ func (p poolMessagesBroadcast) Get() *MessagesBroadcast {
 	return x
 }
 
-func (p poolMessagesBroadcast) Put(x *MessagesBroadcast) {
+func (p *poolMessagesBroadcast) Put(x *MessagesBroadcast) {
 	p.pool.Put(x)
 }
 
@@ -80,7 +80,7 @@ type poolMessagesBroadcastProgress struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesBroadcastProgress) Get() *MessagesBroadcastProgress {
+func (p *poolMessagesBroadcastProgress) Get() *MessagesBroadcastProgress {
 	x, ok := p.pool.Get().(*MessagesBroadcastProgress)
 	if !ok {
 		return &MessagesBroadcastProgress{}
@@ -88,7 +88,7 @@ func (p poolMessagesBroadcastProgress) Get() *MessagesBroadcastProgress {
 	return x
 }
 
-func (p poolMessagesBroadcastProgress) Put(x *MessagesBroadcastProgress) {
+func (p *poolMessagesBroadcastProgress) Put(x *MessagesBroadcastProgress) {
 	p.pool.Put(x)
 }
 
@@ -107,7 +107,7 @@ type poolMessagesSendMedia struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSendMedia) Get() *MessagesSendMedia {
+func (p *poolMessagesSendMedia) Get() *MessagesSendMedia {
 	x, ok := p.pool.Get().(*MessagesSendMedia)
 	if !ok {
 		return &MessagesSendMedia{}
@@ -117,7 +117,7 @@ func (p poolMessagesSendMedia) Get() *MessagesSendMedia {
 	return x
 }
 
-func (p poolMessagesSendMedia) Put(x *MessagesSendMedia) {
+func (p *poolMessagesSendMedia) Put(x *MessagesSendMedia) {
 	p.pool.Put(x)
 }
 
@@ -136,7 +136,7 @@ type poolMessagesEdit struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesEdit) Get() *MessagesEdit {
+func (p *poolMessagesEdit) Get() *MessagesEdit {
 	x, ok := p.pool.Get().(*MessagesEdit)
 	if !ok {
 		return &MessagesEdit{}
@@ -145,7 +145,7 @@ func (p poolMessagesEdit) Get() *MessagesEdit {
 	return x
 }
 
-func (p poolMessagesEdit) Put(x *MessagesEdit) {
+func (p *poolMessagesEdit) Put(x *MessagesEdit) {
 	p.pool.Put(x)
 }
 
@@ -164,7 +164,7 @@ type poolMessagesReadHistory struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesReadHistory) Get() *MessagesReadHistory {
+func (p *poolMessagesReadHistory) Get() *MessagesReadHistory {
 	x, ok := p.pool.Get().(*MessagesReadHistory)
 	if !ok {
 		return &MessagesReadHistory{}
@@ -172,7 +172,7 @@ func (p poolMessagesReadHistory) Get() *MessagesReadHistory {
 	return x
 }
 
-func (p poolMessagesReadHistory) Put(x *MessagesReadHistory) {
+func (p *poolMessagesReadHistory) Put(x *MessagesReadHistory) {
 	p.pool.Put(x)
 }
 
@@ -191,7 +191,7 @@ type poolMessagesGet struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesGet) Get() *MessagesGet {
+func (p *poolMessagesGet) Get() *MessagesGet {
 	x, ok := p.pool.Get().(*MessagesGet)
 	if !ok {
 		return &MessagesGet{}
@@ -200,7 +200,7 @@ func (p poolMessagesGet) Get() *MessagesGet {
 	return x
 }
 
-func (p poolMessagesGet) Put(x *MessagesGet) {
+func (p *poolMessagesGet) Put(x *MessagesGet) {
 	p.pool.Put(x)
 }
 
@@ -219,7 +219,7 @@ type poolMessagesGetHistory struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesGetHistory) Get() *MessagesGetHistory {
+func (p *poolMessagesGetHistory) Get() *MessagesGetHistory {
 	x, ok := p.pool.Get().(*MessagesGetHistory)
 	if !ok {
 		return &MessagesGetHistory{}
@@ -227,7 +227,7 @@ func (p poolMessagesGetHistory) Get() *MessagesGetHistory {
 	return x
 }
 
-func (p poolMessagesGetHistory) Put(x *MessagesGetHistory) {
+func (p *poolMessagesGetHistory) Put(x *MessagesGetHistory) {
 	p.pool.Put(x)
 }
 
@@ -246,7 +246,7 @@ type poolMessagesGetDialogs struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesGetDialogs) Get() *MessagesGetDialogs {
+func (p *poolMessagesGetDialogs) Get() *MessagesGetDialogs {
 	x, ok := p.pool.Get().(*MessagesGetDialogs)
 	if !ok {
 		return &MessagesGetDialogs{}
@@ -255,7 +255,7 @@ func (p poolMessagesGetDialogs) Get() *MessagesGetDialogs {
 	return x
 }
 
-func (p poolMessagesGetDialogs) Put(x *MessagesGetDialogs) {
+func (p *poolMessagesGetDialogs) Put(x *MessagesGetDialogs) {
 	p.pool.Put(x)
 }
 
@@ -274,7 +274,7 @@ type poolMessagesGetPinnedDialogs struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesGetPinnedDialogs) Get() *MessagesGetPinnedDialogs {
+func (p *poolMessagesGetPinnedDialogs) Get() *MessagesGetPinnedDialogs {
 	x, ok := p.pool.Get().(*MessagesGetPinnedDialogs)
 	if !ok {
 		return &MessagesGetPinnedDialogs{}
@@ -282,7 +282,7 @@ func (p poolMessagesGetPinnedDialogs) Get() *MessagesGetPinnedDialogs {
 	return x
 }
 
-func (p poolMessagesGetPinnedDialogs) Put(x *MessagesGetPinnedDialogs) {
+func (p *poolMessagesGetPinnedDialogs) Put(x *MessagesGetPinnedDialogs) {
 	p.pool.Put(x)
 }
 
@@ -301,7 +301,7 @@ type poolMessagesGetDialog struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesGetDialog) Get() *MessagesGetDialog {
+func (p *poolMessagesGetDialog) Get() *MessagesGetDialog {
 	x, ok := p.pool.Get().(*MessagesGetDialog)
 	if !ok {
 		return &MessagesGetDialog{}
@@ -309,7 +309,7 @@ func (p poolMessagesGetDialog) Get() *MessagesGetDialog {
 	return x
 }
 
-func (p poolMessagesGetDialog) Put(x *MessagesGetDialog) {
+func (p *poolMessagesGetDialog) Put(x *MessagesGetDialog) {
 	p.pool.Put(x)
 }
 
@@ -328,7 +328,7 @@ type poolMessagesSetTyping struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSetTyping) Get() *MessagesSetTyping {
+func (p *poolMessagesSetTyping) Get() *MessagesSetTyping {
 	x, ok := p.pool.Get().(*MessagesSetTyping)
 	if !ok {
 		return &MessagesSetTyping{}
@@ -336,7 +336,7 @@ func (p poolMessagesSetTyping) Get() *MessagesSetTyping {
 	return x
 }
 
-func (p poolMessagesSetTyping) Put(x *MessagesSetTyping) {
+func (p *poolMessagesSetTyping) Put(x *MessagesSetTyping) {
 	p.pool.Put(x)
 }
 
@@ -355,7 +355,7 @@ type poolMessagesClearHistory struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesClearHistory) Get() *MessagesClearHistory {
+func (p *poolMessagesClearHistory) Get() *MessagesClearHistory {
 	x, ok := p.pool.Get().(*MessagesClearHistory)
 	if !ok {
 		return &MessagesClearHistory{}
@@ -363,7 +363,7 @@ func (p poolMessagesClearHistory) Get() *MessagesClearHistory {
 	return x
 }
 
-func (p poolMessagesClearHistory) Put(x *MessagesClearHistory) {
+func (p *poolMessagesClearHistory) Put(x *MessagesClearHistory) {
 	p.pool.Put(x)
 }
 
@@ -382,7 +382,7 @@ type poolMessagesDelete struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesDelete) Get() *MessagesDelete {
+func (p *poolMessagesDelete) Get() *MessagesDelete {
 	x, ok := p.pool.Get().(*MessagesDelete)
 	if !ok {
 		return &MessagesDelete{}
@@ -391,7 +391,7 @@ func (p poolMessagesDelete) Get() *MessagesDelete {
 	return x
 }
 
-func (p poolMessagesDelete) Put(x *MessagesDelete) {
+func (p *poolMessagesDelete) Put(x *MessagesDelete) {
 	p.pool.Put(x)
 }
 
@@ -410,7 +410,7 @@ type poolMessagesForward struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesForward) Get() *MessagesForward {
+func (p *poolMessagesForward) Get() *MessagesForward {
 	x, ok := p.pool.Get().(*MessagesForward)
 	if !ok {
 		return &MessagesForward{}
@@ -419,7 +419,7 @@ func (p poolMessagesForward) Get() *MessagesForward {
 	return x
 }
 
-func (p poolMessagesForward) Put(x *MessagesForward) {
+func (p *poolMessagesForward) Put(x *MessagesForward) {
 	p.pool.Put(x)
 }
 
@@ -438,7 +438,7 @@ type poolMessagesReadContents struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesReadContents) Get() *MessagesReadContents {
+func (p *poolMessagesReadContents) Get() *MessagesReadContents {
 	x, ok := p.pool.Get().(*MessagesReadContents)
 	if !ok {
 		return &MessagesReadContents{}
@@ -447,7 +447,7 @@ func (p poolMessagesReadContents) Get() *MessagesReadContents {
 	return x
 }
 
-func (p poolMessagesReadContents) Put(x *MessagesReadContents) {
+func (p *poolMessagesReadContents) Put(x *MessagesReadContents) {
 	p.pool.Put(x)
 }
 
@@ -466,7 +466,7 @@ type poolMessagesSaveDraft struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSaveDraft) Get() *MessagesSaveDraft {
+func (p *poolMessagesSaveDraft) Get() *MessagesSaveDraft {
 	x, ok := p.pool.Get().(*MessagesSaveDraft)
 	if !ok {
 		return &MessagesSaveDraft{}
@@ -476,7 +476,7 @@ func (p poolMessagesSaveDraft) Get() *MessagesSaveDraft {
 	return x
 }
 
-func (p poolMessagesSaveDraft) Put(x *MessagesSaveDraft) {
+func (p *poolMessagesSaveDraft) Put(x *MessagesSaveDraft) {
 	p.pool.Put(x)
 }
 
@@ -495,7 +495,7 @@ type poolMessagesClearDraft struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesClearDraft) Get() *MessagesClearDraft {
+func (p *poolMessagesClearDraft) Get() *MessagesClearDraft {
 	x, ok := p.pool.Get().(*MessagesClearDraft)
 	if !ok {
 		return &MessagesClearDraft{}
@@ -503,7 +503,7 @@ func (p poolMessagesClearDraft) Get() *MessagesClearDraft {
 	return x
 }
 
-func (p poolMessagesClearDraft) Put(x *MessagesClearDraft) {
+func (p *poolMessagesClearDraft) Put(x *MessagesClearDraft) {
 	p.pool.Put(x)
 }
 
@@ -522,7 +522,7 @@ type poolMessagesToggleDialogPin struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesToggleDialogPin) Get() *MessagesToggleDialogPin {
+func (p *poolMessagesToggleDialogPin) Get() *MessagesToggleDialogPin {
 	x, ok := p.pool.Get().(*MessagesToggleDialogPin)
 	if !ok {
 		return &MessagesToggleDialogPin{}
@@ -530,7 +530,7 @@ func (p poolMessagesToggleDialogPin) Get() *MessagesToggleDialogPin {
 	return x
 }
 
-func (p poolMessagesToggleDialogPin) Put(x *MessagesToggleDialogPin) {
+func (p *poolMessagesToggleDialogPin) Put(x *MessagesToggleDialogPin) {
 	p.pool.Put(x)
 }
 
@@ -549,7 +549,7 @@ type poolMessagesReorderPinnedDialogs struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesReorderPinnedDialogs) Get() *MessagesReorderPinnedDialogs {
+func (p *poolMessagesReorderPinnedDialogs) Get() *MessagesReorderPinnedDialogs {
 	x, ok := p.pool.Get().(*MessagesReorderPinnedDialogs)
 	if !ok {
 		return &MessagesReorderPinnedDialogs{}
@@ -558,7 +558,7 @@ func (p poolMessagesReorderPinnedDialogs) Get() *MessagesReorderPinnedDialogs {
 	return x
 }
 
-func (p poolMessagesReorderPinnedDialogs) Put(x *MessagesReorderPinnedDialogs) {
+func (p *poolMessagesReorderPinnedDialogs) Put(x *MessagesReorderPinnedDialogs) {
 	p.pool.Put(x)
 }
 
@@ -577,7 +577,7 @@ type poolMessagesSendScreenShotNotification struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSendScreenShotNotification) Get() *MessagesSendScreenShotNotification {
+func (p *poolMessagesSendScreenShotNotification) Get() *MessagesSendScreenShotNotification {
 	x, ok := p.pool.Get().(*MessagesSendScreenShotNotification)
 	if !ok {
 		return &MessagesSendScreenShotNotification{}
@@ -588,7 +588,7 @@ func (p poolMessagesSendScreenShotNotification) Get() *MessagesSendScreenShotNot
 	return x
 }
 
-func (p poolMessagesSendScreenShotNotification) Put(x *MessagesSendScreenShotNotification) {
+func (p *poolMessagesSendScreenShotNotification) Put(x *MessagesSendScreenShotNotification) {
 	p.pool.Put(x)
 }
 
@@ -607,7 +607,7 @@ type poolMessagesDialogs struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesDialogs) Get() *MessagesDialogs {
+func (p *poolMessagesDialogs) Get() *MessagesDialogs {
 	x, ok := p.pool.Get().(*MessagesDialogs)
 	if !ok {
 		return &MessagesDialogs{}
@@ -619,7 +619,7 @@ func (p poolMessagesDialogs) Get() *MessagesDialogs {
 	return x
 }
 
-func (p poolMessagesDialogs) Put(x *MessagesDialogs) {
+func (p *poolMessagesDialogs) Put(x *MessagesDialogs) {
 	p.pool.Put(x)
 }
 
@@ -638,7 +638,7 @@ type poolMessagesSent struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesSent) Get() *MessagesSent {
+func (p *poolMessagesSent) Get() *MessagesSent {
 	x, ok := p.pool.Get().(*MessagesSent)
 	if !ok {
 		return &MessagesSent{}
@@ -646,7 +646,7 @@ func (p poolMessagesSent) Get() *MessagesSent {
 	return x
 }
 
-func (p poolMessagesSent) Put(x *MessagesSent) {
+func (p *poolMessagesSent) Put(x *MessagesSent) {
 	p.pool.Put(x)
 }
 
@@ -665,7 +665,7 @@ type poolMessagesMany struct {
 	pool sync.Pool
 }
 
-func (p poolMessagesMany) Get() *MessagesMany {
+func (p *poolMessagesMany) Get() *MessagesMany {
 	x, ok := p.pool.Get().(*MessagesMany)
 	if !ok {
 		return &MessagesMany{}
@@ -677,7 +677,7 @@ func (p poolMessagesMany) Get() *MessagesMany {
 	return x
 }
 
-func (p poolMessagesMany) Put(x *MessagesMany) {
+func (p *poolMessagesMany) Put(x *MessagesMany) {
 	p.pool.Put(x)
 }
 

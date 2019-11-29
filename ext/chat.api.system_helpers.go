@@ -22,7 +22,7 @@ type poolSystemGetPublicKeys struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetPublicKeys) Get() *SystemGetPublicKeys {
+func (p *poolSystemGetPublicKeys) Get() *SystemGetPublicKeys {
 	x, ok := p.pool.Get().(*SystemGetPublicKeys)
 	if !ok {
 		return &SystemGetPublicKeys{}
@@ -30,7 +30,7 @@ func (p poolSystemGetPublicKeys) Get() *SystemGetPublicKeys {
 	return x
 }
 
-func (p poolSystemGetPublicKeys) Put(x *SystemGetPublicKeys) {
+func (p *poolSystemGetPublicKeys) Put(x *SystemGetPublicKeys) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolSystemGetDHGroups struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetDHGroups) Get() *SystemGetDHGroups {
+func (p *poolSystemGetDHGroups) Get() *SystemGetDHGroups {
 	x, ok := p.pool.Get().(*SystemGetDHGroups)
 	if !ok {
 		return &SystemGetDHGroups{}
@@ -57,7 +57,7 @@ func (p poolSystemGetDHGroups) Get() *SystemGetDHGroups {
 	return x
 }
 
-func (p poolSystemGetDHGroups) Put(x *SystemGetDHGroups) {
+func (p *poolSystemGetDHGroups) Put(x *SystemGetDHGroups) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolSystemGetServerTime struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetServerTime) Get() *SystemGetServerTime {
+func (p *poolSystemGetServerTime) Get() *SystemGetServerTime {
 	x, ok := p.pool.Get().(*SystemGetServerTime)
 	if !ok {
 		return &SystemGetServerTime{}
@@ -84,7 +84,7 @@ func (p poolSystemGetServerTime) Get() *SystemGetServerTime {
 	return x
 }
 
-func (p poolSystemGetServerTime) Put(x *SystemGetServerTime) {
+func (p *poolSystemGetServerTime) Put(x *SystemGetServerTime) {
 	p.pool.Put(x)
 }
 
@@ -103,7 +103,7 @@ type poolSystemGetAppUpdate struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetAppUpdate) Get() *SystemGetAppUpdate {
+func (p *poolSystemGetAppUpdate) Get() *SystemGetAppUpdate {
 	x, ok := p.pool.Get().(*SystemGetAppUpdate)
 	if !ok {
 		return &SystemGetAppUpdate{}
@@ -111,7 +111,7 @@ func (p poolSystemGetAppUpdate) Get() *SystemGetAppUpdate {
 	return x
 }
 
-func (p poolSystemGetAppUpdate) Put(x *SystemGetAppUpdate) {
+func (p *poolSystemGetAppUpdate) Put(x *SystemGetAppUpdate) {
 	p.pool.Put(x)
 }
 
@@ -130,7 +130,7 @@ type poolSystemGetInfo struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetInfo) Get() *SystemGetInfo {
+func (p *poolSystemGetInfo) Get() *SystemGetInfo {
 	x, ok := p.pool.Get().(*SystemGetInfo)
 	if !ok {
 		return &SystemGetInfo{}
@@ -138,7 +138,7 @@ func (p poolSystemGetInfo) Get() *SystemGetInfo {
 	return x
 }
 
-func (p poolSystemGetInfo) Put(x *SystemGetInfo) {
+func (p *poolSystemGetInfo) Put(x *SystemGetInfo) {
 	p.pool.Put(x)
 }
 
@@ -157,7 +157,7 @@ type poolSystemGetSalts struct {
 	pool sync.Pool
 }
 
-func (p poolSystemGetSalts) Get() *SystemGetSalts {
+func (p *poolSystemGetSalts) Get() *SystemGetSalts {
 	x, ok := p.pool.Get().(*SystemGetSalts)
 	if !ok {
 		return &SystemGetSalts{}
@@ -165,7 +165,7 @@ func (p poolSystemGetSalts) Get() *SystemGetSalts {
 	return x
 }
 
-func (p poolSystemGetSalts) Put(x *SystemGetSalts) {
+func (p *poolSystemGetSalts) Put(x *SystemGetSalts) {
 	p.pool.Put(x)
 }
 
@@ -184,7 +184,7 @@ type poolSystemSalts struct {
 	pool sync.Pool
 }
 
-func (p poolSystemSalts) Get() *SystemSalts {
+func (p *poolSystemSalts) Get() *SystemSalts {
 	x, ok := p.pool.Get().(*SystemSalts)
 	if !ok {
 		return &SystemSalts{}
@@ -193,7 +193,7 @@ func (p poolSystemSalts) Get() *SystemSalts {
 	return x
 }
 
-func (p poolSystemSalts) Put(x *SystemSalts) {
+func (p *poolSystemSalts) Put(x *SystemSalts) {
 	p.pool.Put(x)
 }
 
@@ -212,7 +212,7 @@ type poolAppUpdate struct {
 	pool sync.Pool
 }
 
-func (p poolAppUpdate) Get() *AppUpdate {
+func (p *poolAppUpdate) Get() *AppUpdate {
 	x, ok := p.pool.Get().(*AppUpdate)
 	if !ok {
 		return &AppUpdate{}
@@ -220,7 +220,7 @@ func (p poolAppUpdate) Get() *AppUpdate {
 	return x
 }
 
-func (p poolAppUpdate) Put(x *AppUpdate) {
+func (p *poolAppUpdate) Put(x *AppUpdate) {
 	p.pool.Put(x)
 }
 
@@ -239,7 +239,7 @@ type poolSystemInfo struct {
 	pool sync.Pool
 }
 
-func (p poolSystemInfo) Get() *SystemInfo {
+func (p *poolSystemInfo) Get() *SystemInfo {
 	x, ok := p.pool.Get().(*SystemInfo)
 	if !ok {
 		return &SystemInfo{}
@@ -248,7 +248,7 @@ func (p poolSystemInfo) Get() *SystemInfo {
 	return x
 }
 
-func (p poolSystemInfo) Put(x *SystemInfo) {
+func (p *poolSystemInfo) Put(x *SystemInfo) {
 	p.pool.Put(x)
 }
 
@@ -267,7 +267,7 @@ type poolSystemServerTime struct {
 	pool sync.Pool
 }
 
-func (p poolSystemServerTime) Get() *SystemServerTime {
+func (p *poolSystemServerTime) Get() *SystemServerTime {
 	x, ok := p.pool.Get().(*SystemServerTime)
 	if !ok {
 		return &SystemServerTime{}
@@ -275,7 +275,7 @@ func (p poolSystemServerTime) Get() *SystemServerTime {
 	return x
 }
 
-func (p poolSystemServerTime) Put(x *SystemServerTime) {
+func (p *poolSystemServerTime) Put(x *SystemServerTime) {
 	p.pool.Put(x)
 }
 
@@ -294,7 +294,7 @@ type poolSystemPublicKeys struct {
 	pool sync.Pool
 }
 
-func (p poolSystemPublicKeys) Get() *SystemPublicKeys {
+func (p *poolSystemPublicKeys) Get() *SystemPublicKeys {
 	x, ok := p.pool.Get().(*SystemPublicKeys)
 	if !ok {
 		return &SystemPublicKeys{}
@@ -303,7 +303,7 @@ func (p poolSystemPublicKeys) Get() *SystemPublicKeys {
 	return x
 }
 
-func (p poolSystemPublicKeys) Put(x *SystemPublicKeys) {
+func (p *poolSystemPublicKeys) Put(x *SystemPublicKeys) {
 	p.pool.Put(x)
 }
 
@@ -322,7 +322,7 @@ type poolSystemDHGroups struct {
 	pool sync.Pool
 }
 
-func (p poolSystemDHGroups) Get() *SystemDHGroups {
+func (p *poolSystemDHGroups) Get() *SystemDHGroups {
 	x, ok := p.pool.Get().(*SystemDHGroups)
 	if !ok {
 		return &SystemDHGroups{}
@@ -331,7 +331,7 @@ func (p poolSystemDHGroups) Get() *SystemDHGroups {
 	return x
 }
 
-func (p poolSystemDHGroups) Put(x *SystemDHGroups) {
+func (p *poolSystemDHGroups) Put(x *SystemDHGroups) {
 	p.pool.Put(x)
 }
 

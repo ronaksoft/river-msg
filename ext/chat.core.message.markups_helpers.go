@@ -23,7 +23,7 @@ type poolReplyKeyboardForceReply struct {
 	pool sync.Pool
 }
 
-func (p poolReplyKeyboardForceReply) Get() *ReplyKeyboardForceReply {
+func (p *poolReplyKeyboardForceReply) Get() *ReplyKeyboardForceReply {
 	x, ok := p.pool.Get().(*ReplyKeyboardForceReply)
 	if !ok {
 		return &ReplyKeyboardForceReply{}
@@ -33,7 +33,7 @@ func (p poolReplyKeyboardForceReply) Get() *ReplyKeyboardForceReply {
 	return x
 }
 
-func (p poolReplyKeyboardForceReply) Put(x *ReplyKeyboardForceReply) {
+func (p *poolReplyKeyboardForceReply) Put(x *ReplyKeyboardForceReply) {
 	p.pool.Put(x)
 }
 
@@ -52,7 +52,7 @@ type poolReplyKeyboardMarkup struct {
 	pool sync.Pool
 }
 
-func (p poolReplyKeyboardMarkup) Get() *ReplyKeyboardMarkup {
+func (p *poolReplyKeyboardMarkup) Get() *ReplyKeyboardMarkup {
 	x, ok := p.pool.Get().(*ReplyKeyboardMarkup)
 	if !ok {
 		return &ReplyKeyboardMarkup{}
@@ -64,7 +64,7 @@ func (p poolReplyKeyboardMarkup) Get() *ReplyKeyboardMarkup {
 	return x
 }
 
-func (p poolReplyKeyboardMarkup) Put(x *ReplyKeyboardMarkup) {
+func (p *poolReplyKeyboardMarkup) Put(x *ReplyKeyboardMarkup) {
 	p.pool.Put(x)
 }
 
@@ -83,7 +83,7 @@ type poolReplyInlineMarkup struct {
 	pool sync.Pool
 }
 
-func (p poolReplyInlineMarkup) Get() *ReplyInlineMarkup {
+func (p *poolReplyInlineMarkup) Get() *ReplyInlineMarkup {
 	x, ok := p.pool.Get().(*ReplyInlineMarkup)
 	if !ok {
 		return &ReplyInlineMarkup{}
@@ -91,7 +91,7 @@ func (p poolReplyInlineMarkup) Get() *ReplyInlineMarkup {
 	return x
 }
 
-func (p poolReplyInlineMarkup) Put(x *ReplyInlineMarkup) {
+func (p *poolReplyInlineMarkup) Put(x *ReplyInlineMarkup) {
 	p.pool.Put(x)
 }
 
@@ -110,7 +110,7 @@ type poolKeyboardButtonRow struct {
 	pool sync.Pool
 }
 
-func (p poolKeyboardButtonRow) Get() *KeyboardButtonRow {
+func (p *poolKeyboardButtonRow) Get() *KeyboardButtonRow {
 	x, ok := p.pool.Get().(*KeyboardButtonRow)
 	if !ok {
 		return &KeyboardButtonRow{}
@@ -119,7 +119,7 @@ func (p poolKeyboardButtonRow) Get() *KeyboardButtonRow {
 	return x
 }
 
-func (p poolKeyboardButtonRow) Put(x *KeyboardButtonRow) {
+func (p *poolKeyboardButtonRow) Put(x *KeyboardButtonRow) {
 	p.pool.Put(x)
 }
 
@@ -138,7 +138,7 @@ type poolKeyboardButtonEnvelope struct {
 	pool sync.Pool
 }
 
-func (p poolKeyboardButtonEnvelope) Get() *KeyboardButtonEnvelope {
+func (p *poolKeyboardButtonEnvelope) Get() *KeyboardButtonEnvelope {
 	x, ok := p.pool.Get().(*KeyboardButtonEnvelope)
 	if !ok {
 		return &KeyboardButtonEnvelope{}
@@ -147,7 +147,7 @@ func (p poolKeyboardButtonEnvelope) Get() *KeyboardButtonEnvelope {
 	return x
 }
 
-func (p poolKeyboardButtonEnvelope) Put(x *KeyboardButtonEnvelope) {
+func (p *poolKeyboardButtonEnvelope) Put(x *KeyboardButtonEnvelope) {
 	p.pool.Put(x)
 }
 
@@ -166,7 +166,7 @@ type poolButton struct {
 	pool sync.Pool
 }
 
-func (p poolButton) Get() *Button {
+func (p *poolButton) Get() *Button {
 	x, ok := p.pool.Get().(*Button)
 	if !ok {
 		return &Button{}
@@ -174,7 +174,7 @@ func (p poolButton) Get() *Button {
 	return x
 }
 
-func (p poolButton) Put(x *Button) {
+func (p *poolButton) Put(x *Button) {
 	p.pool.Put(x)
 }
 
@@ -193,7 +193,7 @@ type poolButtonUrl struct {
 	pool sync.Pool
 }
 
-func (p poolButtonUrl) Get() *ButtonUrl {
+func (p *poolButtonUrl) Get() *ButtonUrl {
 	x, ok := p.pool.Get().(*ButtonUrl)
 	if !ok {
 		return &ButtonUrl{}
@@ -201,7 +201,7 @@ func (p poolButtonUrl) Get() *ButtonUrl {
 	return x
 }
 
-func (p poolButtonUrl) Put(x *ButtonUrl) {
+func (p *poolButtonUrl) Put(x *ButtonUrl) {
 	p.pool.Put(x)
 }
 
@@ -220,7 +220,7 @@ type poolButtonCallback struct {
 	pool sync.Pool
 }
 
-func (p poolButtonCallback) Get() *ButtonCallback {
+func (p *poolButtonCallback) Get() *ButtonCallback {
 	x, ok := p.pool.Get().(*ButtonCallback)
 	if !ok {
 		return &ButtonCallback{}
@@ -229,7 +229,7 @@ func (p poolButtonCallback) Get() *ButtonCallback {
 	return x
 }
 
-func (p poolButtonCallback) Put(x *ButtonCallback) {
+func (p *poolButtonCallback) Put(x *ButtonCallback) {
 	p.pool.Put(x)
 }
 
@@ -248,7 +248,7 @@ type poolButtonRequestPhone struct {
 	pool sync.Pool
 }
 
-func (p poolButtonRequestPhone) Get() *ButtonRequestPhone {
+func (p *poolButtonRequestPhone) Get() *ButtonRequestPhone {
 	x, ok := p.pool.Get().(*ButtonRequestPhone)
 	if !ok {
 		return &ButtonRequestPhone{}
@@ -256,7 +256,7 @@ func (p poolButtonRequestPhone) Get() *ButtonRequestPhone {
 	return x
 }
 
-func (p poolButtonRequestPhone) Put(x *ButtonRequestPhone) {
+func (p *poolButtonRequestPhone) Put(x *ButtonRequestPhone) {
 	p.pool.Put(x)
 }
 
@@ -275,7 +275,7 @@ type poolButtonRequestGeoLocation struct {
 	pool sync.Pool
 }
 
-func (p poolButtonRequestGeoLocation) Get() *ButtonRequestGeoLocation {
+func (p *poolButtonRequestGeoLocation) Get() *ButtonRequestGeoLocation {
 	x, ok := p.pool.Get().(*ButtonRequestGeoLocation)
 	if !ok {
 		return &ButtonRequestGeoLocation{}
@@ -283,7 +283,7 @@ func (p poolButtonRequestGeoLocation) Get() *ButtonRequestGeoLocation {
 	return x
 }
 
-func (p poolButtonRequestGeoLocation) Put(x *ButtonRequestGeoLocation) {
+func (p *poolButtonRequestGeoLocation) Put(x *ButtonRequestGeoLocation) {
 	p.pool.Put(x)
 }
 
@@ -302,7 +302,7 @@ type poolButtonSwitchInline struct {
 	pool sync.Pool
 }
 
-func (p poolButtonSwitchInline) Get() *ButtonSwitchInline {
+func (p *poolButtonSwitchInline) Get() *ButtonSwitchInline {
 	x, ok := p.pool.Get().(*ButtonSwitchInline)
 	if !ok {
 		return &ButtonSwitchInline{}
@@ -311,7 +311,7 @@ func (p poolButtonSwitchInline) Get() *ButtonSwitchInline {
 	return x
 }
 
-func (p poolButtonSwitchInline) Put(x *ButtonSwitchInline) {
+func (p *poolButtonSwitchInline) Put(x *ButtonSwitchInline) {
 	p.pool.Put(x)
 }
 
@@ -330,7 +330,7 @@ type poolButtonBuy struct {
 	pool sync.Pool
 }
 
-func (p poolButtonBuy) Get() *ButtonBuy {
+func (p *poolButtonBuy) Get() *ButtonBuy {
 	x, ok := p.pool.Get().(*ButtonBuy)
 	if !ok {
 		return &ButtonBuy{}
@@ -338,7 +338,7 @@ func (p poolButtonBuy) Get() *ButtonBuy {
 	return x
 }
 
-func (p poolButtonBuy) Put(x *ButtonBuy) {
+func (p *poolButtonBuy) Put(x *ButtonBuy) {
 	p.pool.Put(x)
 }
 
@@ -357,7 +357,7 @@ type poolButtonUrlAuth struct {
 	pool sync.Pool
 }
 
-func (p poolButtonUrlAuth) Get() *ButtonUrlAuth {
+func (p *poolButtonUrlAuth) Get() *ButtonUrlAuth {
 	x, ok := p.pool.Get().(*ButtonUrlAuth)
 	if !ok {
 		return &ButtonUrlAuth{}
@@ -366,7 +366,7 @@ func (p poolButtonUrlAuth) Get() *ButtonUrlAuth {
 	return x
 }
 
-func (p poolButtonUrlAuth) Put(x *ButtonUrlAuth) {
+func (p *poolButtonUrlAuth) Put(x *ButtonUrlAuth) {
 	p.pool.Put(x)
 }
 
@@ -385,7 +385,7 @@ type poolInputButtonUrlAuth struct {
 	pool sync.Pool
 }
 
-func (p poolInputButtonUrlAuth) Get() *InputButtonUrlAuth {
+func (p *poolInputButtonUrlAuth) Get() *InputButtonUrlAuth {
 	x, ok := p.pool.Get().(*InputButtonUrlAuth)
 	if !ok {
 		return &InputButtonUrlAuth{}
@@ -395,7 +395,7 @@ func (p poolInputButtonUrlAuth) Get() *InputButtonUrlAuth {
 	return x
 }
 
-func (p poolInputButtonUrlAuth) Put(x *InputButtonUrlAuth) {
+func (p *poolInputButtonUrlAuth) Put(x *InputButtonUrlAuth) {
 	p.pool.Put(x)
 }
 

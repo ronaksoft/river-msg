@@ -22,7 +22,7 @@ type poolClientUpdatePendingMessageDelivery struct {
 	pool sync.Pool
 }
 
-func (p poolClientUpdatePendingMessageDelivery) Get() *ClientUpdatePendingMessageDelivery {
+func (p *poolClientUpdatePendingMessageDelivery) Get() *ClientUpdatePendingMessageDelivery {
 	x, ok := p.pool.Get().(*ClientUpdatePendingMessageDelivery)
 	if !ok {
 		return &ClientUpdatePendingMessageDelivery{}
@@ -30,7 +30,7 @@ func (p poolClientUpdatePendingMessageDelivery) Get() *ClientUpdatePendingMessag
 	return x
 }
 
-func (p poolClientUpdatePendingMessageDelivery) Put(x *ClientUpdatePendingMessageDelivery) {
+func (p *poolClientUpdatePendingMessageDelivery) Put(x *ClientUpdatePendingMessageDelivery) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolClientUpdateMessagesDeleted struct {
 	pool sync.Pool
 }
 
-func (p poolClientUpdateMessagesDeleted) Get() *ClientUpdateMessagesDeleted {
+func (p *poolClientUpdateMessagesDeleted) Get() *ClientUpdateMessagesDeleted {
 	x, ok := p.pool.Get().(*ClientUpdateMessagesDeleted)
 	if !ok {
 		return &ClientUpdateMessagesDeleted{}
@@ -58,7 +58,7 @@ func (p poolClientUpdateMessagesDeleted) Get() *ClientUpdateMessagesDeleted {
 	return x
 }
 
-func (p poolClientUpdateMessagesDeleted) Put(x *ClientUpdateMessagesDeleted) {
+func (p *poolClientUpdateMessagesDeleted) Put(x *ClientUpdateMessagesDeleted) {
 	p.pool.Put(x)
 }
 
@@ -77,7 +77,7 @@ type poolClientUpdateSynced struct {
 	pool sync.Pool
 }
 
-func (p poolClientUpdateSynced) Get() *ClientUpdateSynced {
+func (p *poolClientUpdateSynced) Get() *ClientUpdateSynced {
 	x, ok := p.pool.Get().(*ClientUpdateSynced)
 	if !ok {
 		return &ClientUpdateSynced{}
@@ -85,7 +85,7 @@ func (p poolClientUpdateSynced) Get() *ClientUpdateSynced {
 	return x
 }
 
-func (p poolClientUpdateSynced) Put(x *ClientUpdateSynced) {
+func (p *poolClientUpdateSynced) Put(x *ClientUpdateSynced) {
 	p.pool.Put(x)
 }
 

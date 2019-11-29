@@ -22,7 +22,7 @@ type poolClientPendingMessage struct {
 	pool sync.Pool
 }
 
-func (p poolClientPendingMessage) Get() *ClientPendingMessage {
+func (p *poolClientPendingMessage) Get() *ClientPendingMessage {
 	x, ok := p.pool.Get().(*ClientPendingMessage)
 	if !ok {
 		return &ClientPendingMessage{}
@@ -38,7 +38,7 @@ func (p poolClientPendingMessage) Get() *ClientPendingMessage {
 	return x
 }
 
-func (p poolClientPendingMessage) Put(x *ClientPendingMessage) {
+func (p *poolClientPendingMessage) Put(x *ClientPendingMessage) {
 	p.pool.Put(x)
 }
 
@@ -57,7 +57,7 @@ type poolClientSendMessageMedia struct {
 	pool sync.Pool
 }
 
-func (p poolClientSendMessageMedia) Get() *ClientSendMessageMedia {
+func (p *poolClientSendMessageMedia) Get() *ClientSendMessageMedia {
 	x, ok := p.pool.Get().(*ClientSendMessageMedia)
 	if !ok {
 		return &ClientSendMessageMedia{}
@@ -79,7 +79,7 @@ func (p poolClientSendMessageMedia) Get() *ClientSendMessageMedia {
 	return x
 }
 
-func (p poolClientSendMessageMedia) Put(x *ClientSendMessageMedia) {
+func (p *poolClientSendMessageMedia) Put(x *ClientSendMessageMedia) {
 	p.pool.Put(x)
 }
 
@@ -98,7 +98,7 @@ type poolClientSearchResult struct {
 	pool sync.Pool
 }
 
-func (p poolClientSearchResult) Get() *ClientSearchResult {
+func (p *poolClientSearchResult) Get() *ClientSearchResult {
 	x, ok := p.pool.Get().(*ClientSearchResult)
 	if !ok {
 		return &ClientSearchResult{}
@@ -111,7 +111,7 @@ func (p poolClientSearchResult) Get() *ClientSearchResult {
 	return x
 }
 
-func (p poolClientSearchResult) Put(x *ClientSearchResult) {
+func (p *poolClientSearchResult) Put(x *ClientSearchResult) {
 	p.pool.Put(x)
 }
 
@@ -130,7 +130,7 @@ type poolClientFile struct {
 	pool sync.Pool
 }
 
-func (p poolClientFile) Get() *ClientFile {
+func (p *poolClientFile) Get() *ClientFile {
 	x, ok := p.pool.Get().(*ClientFile)
 	if !ok {
 		return &ClientFile{}
@@ -145,7 +145,7 @@ func (p poolClientFile) Get() *ClientFile {
 	return x
 }
 
-func (p poolClientFile) Put(x *ClientFile) {
+func (p *poolClientFile) Put(x *ClientFile) {
 	p.pool.Put(x)
 }
 
@@ -164,7 +164,7 @@ type poolClientFileStatus struct {
 	pool sync.Pool
 }
 
-func (p poolClientFileStatus) Get() *ClientFileStatus {
+func (p *poolClientFileStatus) Get() *ClientFileStatus {
 	x, ok := p.pool.Get().(*ClientFileStatus)
 	if !ok {
 		return &ClientFileStatus{}
@@ -172,7 +172,7 @@ func (p poolClientFileStatus) Get() *ClientFileStatus {
 	return x
 }
 
-func (p poolClientFileStatus) Put(x *ClientFileStatus) {
+func (p *poolClientFileStatus) Put(x *ClientFileStatus) {
 	p.pool.Put(x)
 }
 
@@ -191,7 +191,7 @@ type poolDBMediaInfo struct {
 	pool sync.Pool
 }
 
-func (p poolDBMediaInfo) Get() *DBMediaInfo {
+func (p *poolDBMediaInfo) Get() *DBMediaInfo {
 	x, ok := p.pool.Get().(*DBMediaInfo)
 	if !ok {
 		return &DBMediaInfo{}
@@ -200,7 +200,7 @@ func (p poolDBMediaInfo) Get() *DBMediaInfo {
 	return x
 }
 
-func (p poolDBMediaInfo) Put(x *DBMediaInfo) {
+func (p *poolDBMediaInfo) Put(x *DBMediaInfo) {
 	p.pool.Put(x)
 }
 
@@ -219,7 +219,7 @@ type poolPeerMediaInfo struct {
 	pool sync.Pool
 }
 
-func (p poolPeerMediaInfo) Get() *PeerMediaInfo {
+func (p *poolPeerMediaInfo) Get() *PeerMediaInfo {
 	x, ok := p.pool.Get().(*PeerMediaInfo)
 	if !ok {
 		return &PeerMediaInfo{}
@@ -228,7 +228,7 @@ func (p poolPeerMediaInfo) Get() *PeerMediaInfo {
 	return x
 }
 
-func (p poolPeerMediaInfo) Put(x *PeerMediaInfo) {
+func (p *poolPeerMediaInfo) Put(x *PeerMediaInfo) {
 	p.pool.Put(x)
 }
 
@@ -247,7 +247,7 @@ type poolMediaSize struct {
 	pool sync.Pool
 }
 
-func (p poolMediaSize) Get() *MediaSize {
+func (p *poolMediaSize) Get() *MediaSize {
 	x, ok := p.pool.Get().(*MediaSize)
 	if !ok {
 		return &MediaSize{}
@@ -255,7 +255,7 @@ func (p poolMediaSize) Get() *MediaSize {
 	return x
 }
 
-func (p poolMediaSize) Put(x *MediaSize) {
+func (p *poolMediaSize) Put(x *MediaSize) {
 	p.pool.Put(x)
 }
 

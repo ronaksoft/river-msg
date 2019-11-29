@@ -22,7 +22,7 @@ type poolMusicsGet struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsGet) Get() *MusicsGet {
+func (p *poolMusicsGet) Get() *MusicsGet {
 	x, ok := p.pool.Get().(*MusicsGet)
 	if !ok {
 		return &MusicsGet{}
@@ -36,7 +36,7 @@ func (p poolMusicsGet) Get() *MusicsGet {
 	return x
 }
 
-func (p poolMusicsGet) Put(x *MusicsGet) {
+func (p *poolMusicsGet) Put(x *MusicsGet) {
 	p.pool.Put(x)
 }
 
@@ -55,7 +55,7 @@ type poolMusicsAdd struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsAdd) Get() *MusicsAdd {
+func (p *poolMusicsAdd) Get() *MusicsAdd {
 	x, ok := p.pool.Get().(*MusicsAdd)
 	if !ok {
 		return &MusicsAdd{}
@@ -66,7 +66,7 @@ func (p poolMusicsAdd) Get() *MusicsAdd {
 	return x
 }
 
-func (p poolMusicsAdd) Put(x *MusicsAdd) {
+func (p *poolMusicsAdd) Put(x *MusicsAdd) {
 	p.pool.Put(x)
 }
 
@@ -85,7 +85,7 @@ type poolMusicsRemove struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsRemove) Get() *MusicsRemove {
+func (p *poolMusicsRemove) Get() *MusicsRemove {
 	x, ok := p.pool.Get().(*MusicsRemove)
 	if !ok {
 		return &MusicsRemove{}
@@ -93,7 +93,7 @@ func (p poolMusicsRemove) Get() *MusicsRemove {
 	return x
 }
 
-func (p poolMusicsRemove) Put(x *MusicsRemove) {
+func (p *poolMusicsRemove) Put(x *MusicsRemove) {
 	p.pool.Put(x)
 }
 
@@ -112,7 +112,7 @@ type poolMusicsSetStatus struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsSetStatus) Get() *MusicsSetStatus {
+func (p *poolMusicsSetStatus) Get() *MusicsSetStatus {
 	x, ok := p.pool.Get().(*MusicsSetStatus)
 	if !ok {
 		return &MusicsSetStatus{}
@@ -120,7 +120,7 @@ func (p poolMusicsSetStatus) Get() *MusicsSetStatus {
 	return x
 }
 
-func (p poolMusicsSetStatus) Put(x *MusicsSetStatus) {
+func (p *poolMusicsSetStatus) Put(x *MusicsSetStatus) {
 	p.pool.Put(x)
 }
 
@@ -139,7 +139,7 @@ type poolMusicsFollow struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsFollow) Get() *MusicsFollow {
+func (p *poolMusicsFollow) Get() *MusicsFollow {
 	x, ok := p.pool.Get().(*MusicsFollow)
 	if !ok {
 		return &MusicsFollow{}
@@ -147,7 +147,7 @@ func (p poolMusicsFollow) Get() *MusicsFollow {
 	return x
 }
 
-func (p poolMusicsFollow) Put(x *MusicsFollow) {
+func (p *poolMusicsFollow) Put(x *MusicsFollow) {
 	p.pool.Put(x)
 }
 
@@ -166,7 +166,7 @@ type poolMusicsUnFollow struct {
 	pool sync.Pool
 }
 
-func (p poolMusicsUnFollow) Get() *MusicsUnFollow {
+func (p *poolMusicsUnFollow) Get() *MusicsUnFollow {
 	x, ok := p.pool.Get().(*MusicsUnFollow)
 	if !ok {
 		return &MusicsUnFollow{}
@@ -174,7 +174,7 @@ func (p poolMusicsUnFollow) Get() *MusicsUnFollow {
 	return x
 }
 
-func (p poolMusicsUnFollow) Put(x *MusicsUnFollow) {
+func (p *poolMusicsUnFollow) Put(x *MusicsUnFollow) {
 	p.pool.Put(x)
 }
 

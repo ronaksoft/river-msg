@@ -22,7 +22,7 @@ type poolUsersGet struct {
 	pool sync.Pool
 }
 
-func (p poolUsersGet) Get() *UsersGet {
+func (p *poolUsersGet) Get() *UsersGet {
 	x, ok := p.pool.Get().(*UsersGet)
 	if !ok {
 		return &UsersGet{}
@@ -31,7 +31,7 @@ func (p poolUsersGet) Get() *UsersGet {
 	return x
 }
 
-func (p poolUsersGet) Put(x *UsersGet) {
+func (p *poolUsersGet) Put(x *UsersGet) {
 	p.pool.Put(x)
 }
 
@@ -50,7 +50,7 @@ type poolUsersGetFull struct {
 	pool sync.Pool
 }
 
-func (p poolUsersGetFull) Get() *UsersGetFull {
+func (p *poolUsersGetFull) Get() *UsersGetFull {
 	x, ok := p.pool.Get().(*UsersGetFull)
 	if !ok {
 		return &UsersGetFull{}
@@ -59,7 +59,7 @@ func (p poolUsersGetFull) Get() *UsersGetFull {
 	return x
 }
 
-func (p poolUsersGetFull) Put(x *UsersGetFull) {
+func (p *poolUsersGetFull) Put(x *UsersGetFull) {
 	p.pool.Put(x)
 }
 
@@ -78,7 +78,7 @@ type poolUsersMany struct {
 	pool sync.Pool
 }
 
-func (p poolUsersMany) Get() *UsersMany {
+func (p *poolUsersMany) Get() *UsersMany {
 	x, ok := p.pool.Get().(*UsersMany)
 	if !ok {
 		return &UsersMany{}
@@ -87,7 +87,7 @@ func (p poolUsersMany) Get() *UsersMany {
 	return x
 }
 
-func (p poolUsersMany) Put(x *UsersMany) {
+func (p *poolUsersMany) Put(x *UsersMany) {
 	p.pool.Put(x)
 }
 

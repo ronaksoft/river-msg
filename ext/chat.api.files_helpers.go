@@ -22,7 +22,7 @@ type poolFileSavePart struct {
 	pool sync.Pool
 }
 
-func (p poolFileSavePart) Get() *FileSavePart {
+func (p *poolFileSavePart) Get() *FileSavePart {
 	x, ok := p.pool.Get().(*FileSavePart)
 	if !ok {
 		return &FileSavePart{}
@@ -30,7 +30,7 @@ func (p poolFileSavePart) Get() *FileSavePart {
 	return x
 }
 
-func (p poolFileSavePart) Put(x *FileSavePart) {
+func (p *poolFileSavePart) Put(x *FileSavePart) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolFileGet struct {
 	pool sync.Pool
 }
 
-func (p poolFileGet) Get() *FileGet {
+func (p *poolFileGet) Get() *FileGet {
 	x, ok := p.pool.Get().(*FileGet)
 	if !ok {
 		return &FileGet{}
@@ -57,7 +57,7 @@ func (p poolFileGet) Get() *FileGet {
 	return x
 }
 
-func (p poolFileGet) Put(x *FileGet) {
+func (p *poolFileGet) Put(x *FileGet) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolFileGetMany struct {
 	pool sync.Pool
 }
 
-func (p poolFileGetMany) Get() *FileGetMany {
+func (p *poolFileGetMany) Get() *FileGetMany {
 	x, ok := p.pool.Get().(*FileGetMany)
 	if !ok {
 		return &FileGetMany{}
@@ -85,7 +85,7 @@ func (p poolFileGetMany) Get() *FileGetMany {
 	return x
 }
 
-func (p poolFileGetMany) Put(x *FileGetMany) {
+func (p *poolFileGetMany) Put(x *FileGetMany) {
 	p.pool.Put(x)
 }
 
@@ -104,7 +104,7 @@ type poolFile struct {
 	pool sync.Pool
 }
 
-func (p poolFile) Get() *File {
+func (p *poolFile) Get() *File {
 	x, ok := p.pool.Get().(*File)
 	if !ok {
 		return &File{}
@@ -113,7 +113,7 @@ func (p poolFile) Get() *File {
 	return x
 }
 
-func (p poolFile) Put(x *File) {
+func (p *poolFile) Put(x *File) {
 	p.pool.Put(x)
 }
 
@@ -132,7 +132,7 @@ type poolFileMany struct {
 	pool sync.Pool
 }
 
-func (p poolFileMany) Get() *FileMany {
+func (p *poolFileMany) Get() *FileMany {
 	x, ok := p.pool.Get().(*FileMany)
 	if !ok {
 		return &FileMany{}
@@ -141,7 +141,7 @@ func (p poolFileMany) Get() *FileMany {
 	return x
 }
 
-func (p poolFileMany) Put(x *FileMany) {
+func (p *poolFileMany) Put(x *FileMany) {
 	p.pool.Put(x)
 }
 

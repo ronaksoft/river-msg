@@ -22,7 +22,7 @@ type poolInitConnect struct {
 	pool sync.Pool
 }
 
-func (p poolInitConnect) Get() *InitConnect {
+func (p *poolInitConnect) Get() *InitConnect {
 	x, ok := p.pool.Get().(*InitConnect)
 	if !ok {
 		return &InitConnect{}
@@ -30,7 +30,7 @@ func (p poolInitConnect) Get() *InitConnect {
 	return x
 }
 
-func (p poolInitConnect) Put(x *InitConnect) {
+func (p *poolInitConnect) Put(x *InitConnect) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolInitCompleteAuth struct {
 	pool sync.Pool
 }
 
-func (p poolInitCompleteAuth) Get() *InitCompleteAuth {
+func (p *poolInitCompleteAuth) Get() *InitCompleteAuth {
 	x, ok := p.pool.Get().(*InitCompleteAuth)
 	if !ok {
 		return &InitCompleteAuth{}
@@ -57,7 +57,7 @@ func (p poolInitCompleteAuth) Get() *InitCompleteAuth {
 	return x
 }
 
-func (p poolInitCompleteAuth) Put(x *InitCompleteAuth) {
+func (p *poolInitCompleteAuth) Put(x *InitCompleteAuth) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolInitConnectTest struct {
 	pool sync.Pool
 }
 
-func (p poolInitConnectTest) Get() *InitConnectTest {
+func (p *poolInitConnectTest) Get() *InitConnectTest {
 	x, ok := p.pool.Get().(*InitConnectTest)
 	if !ok {
 		return &InitConnectTest{}
@@ -84,7 +84,7 @@ func (p poolInitConnectTest) Get() *InitConnectTest {
 	return x
 }
 
-func (p poolInitConnectTest) Put(x *InitConnectTest) {
+func (p *poolInitConnectTest) Put(x *InitConnectTest) {
 	p.pool.Put(x)
 }
 
@@ -103,7 +103,7 @@ type poolInitTestAuth struct {
 	pool sync.Pool
 }
 
-func (p poolInitTestAuth) Get() *InitTestAuth {
+func (p *poolInitTestAuth) Get() *InitTestAuth {
 	x, ok := p.pool.Get().(*InitTestAuth)
 	if !ok {
 		return &InitTestAuth{}
@@ -111,7 +111,7 @@ func (p poolInitTestAuth) Get() *InitTestAuth {
 	return x
 }
 
-func (p poolInitTestAuth) Put(x *InitTestAuth) {
+func (p *poolInitTestAuth) Put(x *InitTestAuth) {
 	p.pool.Put(x)
 }
 
@@ -130,7 +130,7 @@ type poolInitResponse struct {
 	pool sync.Pool
 }
 
-func (p poolInitResponse) Get() *InitResponse {
+func (p *poolInitResponse) Get() *InitResponse {
 	x, ok := p.pool.Get().(*InitResponse)
 	if !ok {
 		return &InitResponse{}
@@ -138,7 +138,7 @@ func (p poolInitResponse) Get() *InitResponse {
 	return x
 }
 
-func (p poolInitResponse) Put(x *InitResponse) {
+func (p *poolInitResponse) Put(x *InitResponse) {
 	p.pool.Put(x)
 }
 
@@ -157,7 +157,7 @@ type poolInitCompleteAuthInternal struct {
 	pool sync.Pool
 }
 
-func (p poolInitCompleteAuthInternal) Get() *InitCompleteAuthInternal {
+func (p *poolInitCompleteAuthInternal) Get() *InitCompleteAuthInternal {
 	x, ok := p.pool.Get().(*InitCompleteAuthInternal)
 	if !ok {
 		return &InitCompleteAuthInternal{}
@@ -165,7 +165,7 @@ func (p poolInitCompleteAuthInternal) Get() *InitCompleteAuthInternal {
 	return x
 }
 
-func (p poolInitCompleteAuthInternal) Put(x *InitCompleteAuthInternal) {
+func (p *poolInitCompleteAuthInternal) Put(x *InitCompleteAuthInternal) {
 	p.pool.Put(x)
 }
 
@@ -184,7 +184,7 @@ type poolInitAuthCompleted struct {
 	pool sync.Pool
 }
 
-func (p poolInitAuthCompleted) Get() *InitAuthCompleted {
+func (p *poolInitAuthCompleted) Get() *InitAuthCompleted {
 	x, ok := p.pool.Get().(*InitAuthCompleted)
 	if !ok {
 		return &InitAuthCompleted{}
@@ -192,7 +192,7 @@ func (p poolInitAuthCompleted) Get() *InitAuthCompleted {
 	return x
 }
 
-func (p poolInitAuthCompleted) Put(x *InitAuthCompleted) {
+func (p *poolInitAuthCompleted) Put(x *InitAuthCompleted) {
 	p.pool.Put(x)
 }
 
@@ -211,7 +211,7 @@ type poolInitBindUser struct {
 	pool sync.Pool
 }
 
-func (p poolInitBindUser) Get() *InitBindUser {
+func (p *poolInitBindUser) Get() *InitBindUser {
 	x, ok := p.pool.Get().(*InitBindUser)
 	if !ok {
 		return &InitBindUser{}
@@ -219,7 +219,7 @@ func (p poolInitBindUser) Get() *InitBindUser {
 	return x
 }
 
-func (p poolInitBindUser) Put(x *InitBindUser) {
+func (p *poolInitBindUser) Put(x *InitBindUser) {
 	p.pool.Put(x)
 }
 
@@ -238,7 +238,7 @@ type poolInitUserBound struct {
 	pool sync.Pool
 }
 
-func (p poolInitUserBound) Get() *InitUserBound {
+func (p *poolInitUserBound) Get() *InitUserBound {
 	x, ok := p.pool.Get().(*InitUserBound)
 	if !ok {
 		return &InitUserBound{}
@@ -246,7 +246,7 @@ func (p poolInitUserBound) Get() *InitUserBound {
 	return x
 }
 
-func (p poolInitUserBound) Put(x *InitUserBound) {
+func (p *poolInitUserBound) Put(x *InitUserBound) {
 	p.pool.Put(x)
 }
 

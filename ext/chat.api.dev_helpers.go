@@ -22,7 +22,7 @@ type poolEchoWithDelay struct {
 	pool sync.Pool
 }
 
-func (p poolEchoWithDelay) Get() *EchoWithDelay {
+func (p *poolEchoWithDelay) Get() *EchoWithDelay {
 	x, ok := p.pool.Get().(*EchoWithDelay)
 	if !ok {
 		return &EchoWithDelay{}
@@ -30,7 +30,7 @@ func (p poolEchoWithDelay) Get() *EchoWithDelay {
 	return x
 }
 
-func (p poolEchoWithDelay) Put(x *EchoWithDelay) {
+func (p *poolEchoWithDelay) Put(x *EchoWithDelay) {
 	p.pool.Put(x)
 }
 
@@ -49,7 +49,7 @@ type poolTestRequest struct {
 	pool sync.Pool
 }
 
-func (p poolTestRequest) Get() *TestRequest {
+func (p *poolTestRequest) Get() *TestRequest {
 	x, ok := p.pool.Get().(*TestRequest)
 	if !ok {
 		return &TestRequest{}
@@ -57,7 +57,7 @@ func (p poolTestRequest) Get() *TestRequest {
 	return x
 }
 
-func (p poolTestRequest) Put(x *TestRequest) {
+func (p *poolTestRequest) Put(x *TestRequest) {
 	p.pool.Put(x)
 }
 
@@ -76,7 +76,7 @@ type poolTestResponse struct {
 	pool sync.Pool
 }
 
-func (p poolTestResponse) Get() *TestResponse {
+func (p *poolTestResponse) Get() *TestResponse {
 	x, ok := p.pool.Get().(*TestResponse)
 	if !ok {
 		return &TestResponse{}
@@ -84,7 +84,7 @@ func (p poolTestResponse) Get() *TestResponse {
 	return x
 }
 
-func (p poolTestResponse) Put(x *TestResponse) {
+func (p *poolTestResponse) Put(x *TestResponse) {
 	p.pool.Put(x)
 }
 

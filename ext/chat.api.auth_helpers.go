@@ -22,7 +22,7 @@ type poolAuthRegister struct {
 	pool sync.Pool
 }
 
-func (p poolAuthRegister) Get() *AuthRegister {
+func (p *poolAuthRegister) Get() *AuthRegister {
 	x, ok := p.pool.Get().(*AuthRegister)
 	if !ok {
 		return &AuthRegister{}
@@ -31,7 +31,7 @@ func (p poolAuthRegister) Get() *AuthRegister {
 	return x
 }
 
-func (p poolAuthRegister) Put(x *AuthRegister) {
+func (p *poolAuthRegister) Put(x *AuthRegister) {
 	p.pool.Put(x)
 }
 
@@ -50,7 +50,7 @@ type poolAuthBotRegister struct {
 	pool sync.Pool
 }
 
-func (p poolAuthBotRegister) Get() *AuthBotRegister {
+func (p *poolAuthBotRegister) Get() *AuthBotRegister {
 	x, ok := p.pool.Get().(*AuthBotRegister)
 	if !ok {
 		return &AuthBotRegister{}
@@ -58,7 +58,7 @@ func (p poolAuthBotRegister) Get() *AuthBotRegister {
 	return x
 }
 
-func (p poolAuthBotRegister) Put(x *AuthBotRegister) {
+func (p *poolAuthBotRegister) Put(x *AuthBotRegister) {
 	p.pool.Put(x)
 }
 
@@ -77,7 +77,7 @@ type poolAuthLogin struct {
 	pool sync.Pool
 }
 
-func (p poolAuthLogin) Get() *AuthLogin {
+func (p *poolAuthLogin) Get() *AuthLogin {
 	x, ok := p.pool.Get().(*AuthLogin)
 	if !ok {
 		return &AuthLogin{}
@@ -85,7 +85,7 @@ func (p poolAuthLogin) Get() *AuthLogin {
 	return x
 }
 
-func (p poolAuthLogin) Put(x *AuthLogin) {
+func (p *poolAuthLogin) Put(x *AuthLogin) {
 	p.pool.Put(x)
 }
 
@@ -104,7 +104,7 @@ type poolAuthLogout struct {
 	pool sync.Pool
 }
 
-func (p poolAuthLogout) Get() *AuthLogout {
+func (p *poolAuthLogout) Get() *AuthLogout {
 	x, ok := p.pool.Get().(*AuthLogout)
 	if !ok {
 		return &AuthLogout{}
@@ -113,7 +113,7 @@ func (p poolAuthLogout) Get() *AuthLogout {
 	return x
 }
 
-func (p poolAuthLogout) Put(x *AuthLogout) {
+func (p *poolAuthLogout) Put(x *AuthLogout) {
 	p.pool.Put(x)
 }
 
@@ -132,7 +132,7 @@ type poolAuthLoginByToken struct {
 	pool sync.Pool
 }
 
-func (p poolAuthLoginByToken) Get() *AuthLoginByToken {
+func (p *poolAuthLoginByToken) Get() *AuthLoginByToken {
 	x, ok := p.pool.Get().(*AuthLoginByToken)
 	if !ok {
 		return &AuthLoginByToken{}
@@ -140,7 +140,7 @@ func (p poolAuthLoginByToken) Get() *AuthLoginByToken {
 	return x
 }
 
-func (p poolAuthLoginByToken) Put(x *AuthLoginByToken) {
+func (p *poolAuthLoginByToken) Put(x *AuthLoginByToken) {
 	p.pool.Put(x)
 }
 
@@ -159,7 +159,7 @@ type poolAuthCheckPhone struct {
 	pool sync.Pool
 }
 
-func (p poolAuthCheckPhone) Get() *AuthCheckPhone {
+func (p *poolAuthCheckPhone) Get() *AuthCheckPhone {
 	x, ok := p.pool.Get().(*AuthCheckPhone)
 	if !ok {
 		return &AuthCheckPhone{}
@@ -167,7 +167,7 @@ func (p poolAuthCheckPhone) Get() *AuthCheckPhone {
 	return x
 }
 
-func (p poolAuthCheckPhone) Put(x *AuthCheckPhone) {
+func (p *poolAuthCheckPhone) Put(x *AuthCheckPhone) {
 	p.pool.Put(x)
 }
 
@@ -186,7 +186,7 @@ type poolAuthSendCode struct {
 	pool sync.Pool
 }
 
-func (p poolAuthSendCode) Get() *AuthSendCode {
+func (p *poolAuthSendCode) Get() *AuthSendCode {
 	x, ok := p.pool.Get().(*AuthSendCode)
 	if !ok {
 		return &AuthSendCode{}
@@ -195,7 +195,7 @@ func (p poolAuthSendCode) Get() *AuthSendCode {
 	return x
 }
 
-func (p poolAuthSendCode) Put(x *AuthSendCode) {
+func (p *poolAuthSendCode) Put(x *AuthSendCode) {
 	p.pool.Put(x)
 }
 
@@ -214,7 +214,7 @@ type poolAuthResendCode struct {
 	pool sync.Pool
 }
 
-func (p poolAuthResendCode) Get() *AuthResendCode {
+func (p *poolAuthResendCode) Get() *AuthResendCode {
 	x, ok := p.pool.Get().(*AuthResendCode)
 	if !ok {
 		return &AuthResendCode{}
@@ -223,7 +223,7 @@ func (p poolAuthResendCode) Get() *AuthResendCode {
 	return x
 }
 
-func (p poolAuthResendCode) Put(x *AuthResendCode) {
+func (p *poolAuthResendCode) Put(x *AuthResendCode) {
 	p.pool.Put(x)
 }
 
@@ -242,7 +242,7 @@ type poolAuthRecall struct {
 	pool sync.Pool
 }
 
-func (p poolAuthRecall) Get() *AuthRecall {
+func (p *poolAuthRecall) Get() *AuthRecall {
 	x, ok := p.pool.Get().(*AuthRecall)
 	if !ok {
 		return &AuthRecall{}
@@ -255,7 +255,7 @@ func (p poolAuthRecall) Get() *AuthRecall {
 	return x
 }
 
-func (p poolAuthRecall) Put(x *AuthRecall) {
+func (p *poolAuthRecall) Put(x *AuthRecall) {
 	p.pool.Put(x)
 }
 
@@ -274,7 +274,7 @@ type poolAuthDestroyKey struct {
 	pool sync.Pool
 }
 
-func (p poolAuthDestroyKey) Get() *AuthDestroyKey {
+func (p *poolAuthDestroyKey) Get() *AuthDestroyKey {
 	x, ok := p.pool.Get().(*AuthDestroyKey)
 	if !ok {
 		return &AuthDestroyKey{}
@@ -282,7 +282,7 @@ func (p poolAuthDestroyKey) Get() *AuthDestroyKey {
 	return x
 }
 
-func (p poolAuthDestroyKey) Put(x *AuthDestroyKey) {
+func (p *poolAuthDestroyKey) Put(x *AuthDestroyKey) {
 	p.pool.Put(x)
 }
 
@@ -301,7 +301,7 @@ type poolAuthRecalled struct {
 	pool sync.Pool
 }
 
-func (p poolAuthRecalled) Get() *AuthRecalled {
+func (p *poolAuthRecalled) Get() *AuthRecalled {
 	x, ok := p.pool.Get().(*AuthRecalled)
 	if !ok {
 		return &AuthRecalled{}
@@ -313,7 +313,7 @@ func (p poolAuthRecalled) Get() *AuthRecalled {
 	return x
 }
 
-func (p poolAuthRecalled) Put(x *AuthRecalled) {
+func (p *poolAuthRecalled) Put(x *AuthRecalled) {
 	p.pool.Put(x)
 }
 
@@ -332,7 +332,7 @@ type poolAuthAuthorization struct {
 	pool sync.Pool
 }
 
-func (p poolAuthAuthorization) Get() *AuthAuthorization {
+func (p *poolAuthAuthorization) Get() *AuthAuthorization {
 	x, ok := p.pool.Get().(*AuthAuthorization)
 	if !ok {
 		return &AuthAuthorization{}
@@ -340,7 +340,7 @@ func (p poolAuthAuthorization) Get() *AuthAuthorization {
 	return x
 }
 
-func (p poolAuthAuthorization) Put(x *AuthAuthorization) {
+func (p *poolAuthAuthorization) Put(x *AuthAuthorization) {
 	p.pool.Put(x)
 }
 
@@ -359,7 +359,7 @@ type poolAuthBotAuthorization struct {
 	pool sync.Pool
 }
 
-func (p poolAuthBotAuthorization) Get() *AuthBotAuthorization {
+func (p *poolAuthBotAuthorization) Get() *AuthBotAuthorization {
 	x, ok := p.pool.Get().(*AuthBotAuthorization)
 	if !ok {
 		return &AuthBotAuthorization{}
@@ -367,7 +367,7 @@ func (p poolAuthBotAuthorization) Get() *AuthBotAuthorization {
 	return x
 }
 
-func (p poolAuthBotAuthorization) Put(x *AuthBotAuthorization) {
+func (p *poolAuthBotAuthorization) Put(x *AuthBotAuthorization) {
 	p.pool.Put(x)
 }
 
@@ -386,7 +386,7 @@ type poolAuthCheckedPhone struct {
 	pool sync.Pool
 }
 
-func (p poolAuthCheckedPhone) Get() *AuthCheckedPhone {
+func (p *poolAuthCheckedPhone) Get() *AuthCheckedPhone {
 	x, ok := p.pool.Get().(*AuthCheckedPhone)
 	if !ok {
 		return &AuthCheckedPhone{}
@@ -394,7 +394,7 @@ func (p poolAuthCheckedPhone) Get() *AuthCheckedPhone {
 	return x
 }
 
-func (p poolAuthCheckedPhone) Put(x *AuthCheckedPhone) {
+func (p *poolAuthCheckedPhone) Put(x *AuthCheckedPhone) {
 	p.pool.Put(x)
 }
 
@@ -413,7 +413,7 @@ type poolAuthSentCode struct {
 	pool sync.Pool
 }
 
-func (p poolAuthSentCode) Get() *AuthSentCode {
+func (p *poolAuthSentCode) Get() *AuthSentCode {
 	x, ok := p.pool.Get().(*AuthSentCode)
 	if !ok {
 		return &AuthSentCode{}
@@ -422,7 +422,7 @@ func (p poolAuthSentCode) Get() *AuthSentCode {
 	return x
 }
 
-func (p poolAuthSentCode) Put(x *AuthSentCode) {
+func (p *poolAuthSentCode) Put(x *AuthSentCode) {
 	p.pool.Put(x)
 }
 

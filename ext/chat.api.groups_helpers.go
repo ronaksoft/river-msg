@@ -22,7 +22,7 @@ type poolGroupsCreate struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsCreate) Get() *GroupsCreate {
+func (p *poolGroupsCreate) Get() *GroupsCreate {
 	x, ok := p.pool.Get().(*GroupsCreate)
 	if !ok {
 		return &GroupsCreate{}
@@ -31,7 +31,7 @@ func (p poolGroupsCreate) Get() *GroupsCreate {
 	return x
 }
 
-func (p poolGroupsCreate) Put(x *GroupsCreate) {
+func (p *poolGroupsCreate) Put(x *GroupsCreate) {
 	p.pool.Put(x)
 }
 
@@ -50,7 +50,7 @@ type poolGroupsAddUser struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsAddUser) Get() *GroupsAddUser {
+func (p *poolGroupsAddUser) Get() *GroupsAddUser {
 	x, ok := p.pool.Get().(*GroupsAddUser)
 	if !ok {
 		return &GroupsAddUser{}
@@ -58,7 +58,7 @@ func (p poolGroupsAddUser) Get() *GroupsAddUser {
 	return x
 }
 
-func (p poolGroupsAddUser) Put(x *GroupsAddUser) {
+func (p *poolGroupsAddUser) Put(x *GroupsAddUser) {
 	p.pool.Put(x)
 }
 
@@ -77,7 +77,7 @@ type poolGroupsEditTitle struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsEditTitle) Get() *GroupsEditTitle {
+func (p *poolGroupsEditTitle) Get() *GroupsEditTitle {
 	x, ok := p.pool.Get().(*GroupsEditTitle)
 	if !ok {
 		return &GroupsEditTitle{}
@@ -85,7 +85,7 @@ func (p poolGroupsEditTitle) Get() *GroupsEditTitle {
 	return x
 }
 
-func (p poolGroupsEditTitle) Put(x *GroupsEditTitle) {
+func (p *poolGroupsEditTitle) Put(x *GroupsEditTitle) {
 	p.pool.Put(x)
 }
 
@@ -104,7 +104,7 @@ type poolGroupsDeleteUser struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsDeleteUser) Get() *GroupsDeleteUser {
+func (p *poolGroupsDeleteUser) Get() *GroupsDeleteUser {
 	x, ok := p.pool.Get().(*GroupsDeleteUser)
 	if !ok {
 		return &GroupsDeleteUser{}
@@ -112,7 +112,7 @@ func (p poolGroupsDeleteUser) Get() *GroupsDeleteUser {
 	return x
 }
 
-func (p poolGroupsDeleteUser) Put(x *GroupsDeleteUser) {
+func (p *poolGroupsDeleteUser) Put(x *GroupsDeleteUser) {
 	p.pool.Put(x)
 }
 
@@ -131,7 +131,7 @@ type poolGroupsGetFull struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsGetFull) Get() *GroupsGetFull {
+func (p *poolGroupsGetFull) Get() *GroupsGetFull {
 	x, ok := p.pool.Get().(*GroupsGetFull)
 	if !ok {
 		return &GroupsGetFull{}
@@ -139,7 +139,7 @@ func (p poolGroupsGetFull) Get() *GroupsGetFull {
 	return x
 }
 
-func (p poolGroupsGetFull) Put(x *GroupsGetFull) {
+func (p *poolGroupsGetFull) Put(x *GroupsGetFull) {
 	p.pool.Put(x)
 }
 
@@ -158,7 +158,7 @@ type poolGroupsToggleAdmins struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsToggleAdmins) Get() *GroupsToggleAdmins {
+func (p *poolGroupsToggleAdmins) Get() *GroupsToggleAdmins {
 	x, ok := p.pool.Get().(*GroupsToggleAdmins)
 	if !ok {
 		return &GroupsToggleAdmins{}
@@ -166,7 +166,7 @@ func (p poolGroupsToggleAdmins) Get() *GroupsToggleAdmins {
 	return x
 }
 
-func (p poolGroupsToggleAdmins) Put(x *GroupsToggleAdmins) {
+func (p *poolGroupsToggleAdmins) Put(x *GroupsToggleAdmins) {
 	p.pool.Put(x)
 }
 
@@ -185,7 +185,7 @@ type poolGroupsUpdateAdmin struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsUpdateAdmin) Get() *GroupsUpdateAdmin {
+func (p *poolGroupsUpdateAdmin) Get() *GroupsUpdateAdmin {
 	x, ok := p.pool.Get().(*GroupsUpdateAdmin)
 	if !ok {
 		return &GroupsUpdateAdmin{}
@@ -193,7 +193,7 @@ func (p poolGroupsUpdateAdmin) Get() *GroupsUpdateAdmin {
 	return x
 }
 
-func (p poolGroupsUpdateAdmin) Put(x *GroupsUpdateAdmin) {
+func (p *poolGroupsUpdateAdmin) Put(x *GroupsUpdateAdmin) {
 	p.pool.Put(x)
 }
 
@@ -212,7 +212,7 @@ type poolGroupsUploadPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsUploadPhoto) Get() *GroupsUploadPhoto {
+func (p *poolGroupsUploadPhoto) Get() *GroupsUploadPhoto {
 	x, ok := p.pool.Get().(*GroupsUploadPhoto)
 	if !ok {
 		return &GroupsUploadPhoto{}
@@ -220,7 +220,7 @@ func (p poolGroupsUploadPhoto) Get() *GroupsUploadPhoto {
 	return x
 }
 
-func (p poolGroupsUploadPhoto) Put(x *GroupsUploadPhoto) {
+func (p *poolGroupsUploadPhoto) Put(x *GroupsUploadPhoto) {
 	p.pool.Put(x)
 }
 
@@ -239,7 +239,7 @@ type poolGroupsRemovePhoto struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsRemovePhoto) Get() *GroupsRemovePhoto {
+func (p *poolGroupsRemovePhoto) Get() *GroupsRemovePhoto {
 	x, ok := p.pool.Get().(*GroupsRemovePhoto)
 	if !ok {
 		return &GroupsRemovePhoto{}
@@ -248,7 +248,7 @@ func (p poolGroupsRemovePhoto) Get() *GroupsRemovePhoto {
 	return x
 }
 
-func (p poolGroupsRemovePhoto) Put(x *GroupsRemovePhoto) {
+func (p *poolGroupsRemovePhoto) Put(x *GroupsRemovePhoto) {
 	p.pool.Put(x)
 }
 
@@ -267,7 +267,7 @@ type poolGroupsUpdatePhoto struct {
 	pool sync.Pool
 }
 
-func (p poolGroupsUpdatePhoto) Get() *GroupsUpdatePhoto {
+func (p *poolGroupsUpdatePhoto) Get() *GroupsUpdatePhoto {
 	x, ok := p.pool.Get().(*GroupsUpdatePhoto)
 	if !ok {
 		return &GroupsUpdatePhoto{}
@@ -275,7 +275,7 @@ func (p poolGroupsUpdatePhoto) Get() *GroupsUpdatePhoto {
 	return x
 }
 
-func (p poolGroupsUpdatePhoto) Put(x *GroupsUpdatePhoto) {
+func (p *poolGroupsUpdatePhoto) Put(x *GroupsUpdatePhoto) {
 	p.pool.Put(x)
 }
 

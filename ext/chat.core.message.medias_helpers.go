@@ -23,7 +23,7 @@ type poolDocumentAttributeAudio struct {
 	pool sync.Pool
 }
 
-func (p poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
+func (p *poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
 	x, ok := p.pool.Get().(*DocumentAttributeAudio)
 	if !ok {
 		return &DocumentAttributeAudio{}
@@ -32,7 +32,7 @@ func (p poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
 	return x
 }
 
-func (p poolDocumentAttributeAudio) Put(x *DocumentAttributeAudio) {
+func (p *poolDocumentAttributeAudio) Put(x *DocumentAttributeAudio) {
 	p.pool.Put(x)
 }
 
@@ -51,7 +51,7 @@ type poolDocumentAttributeVideo struct {
 	pool sync.Pool
 }
 
-func (p poolDocumentAttributeVideo) Get() *DocumentAttributeVideo {
+func (p *poolDocumentAttributeVideo) Get() *DocumentAttributeVideo {
 	x, ok := p.pool.Get().(*DocumentAttributeVideo)
 	if !ok {
 		return &DocumentAttributeVideo{}
@@ -59,7 +59,7 @@ func (p poolDocumentAttributeVideo) Get() *DocumentAttributeVideo {
 	return x
 }
 
-func (p poolDocumentAttributeVideo) Put(x *DocumentAttributeVideo) {
+func (p *poolDocumentAttributeVideo) Put(x *DocumentAttributeVideo) {
 	p.pool.Put(x)
 }
 
@@ -78,7 +78,7 @@ type poolDocumentAttributePhoto struct {
 	pool sync.Pool
 }
 
-func (p poolDocumentAttributePhoto) Get() *DocumentAttributePhoto {
+func (p *poolDocumentAttributePhoto) Get() *DocumentAttributePhoto {
 	x, ok := p.pool.Get().(*DocumentAttributePhoto)
 	if !ok {
 		return &DocumentAttributePhoto{}
@@ -86,7 +86,7 @@ func (p poolDocumentAttributePhoto) Get() *DocumentAttributePhoto {
 	return x
 }
 
-func (p poolDocumentAttributePhoto) Put(x *DocumentAttributePhoto) {
+func (p *poolDocumentAttributePhoto) Put(x *DocumentAttributePhoto) {
 	p.pool.Put(x)
 }
 
@@ -105,7 +105,7 @@ type poolDocumentAttributeFile struct {
 	pool sync.Pool
 }
 
-func (p poolDocumentAttributeFile) Get() *DocumentAttributeFile {
+func (p *poolDocumentAttributeFile) Get() *DocumentAttributeFile {
 	x, ok := p.pool.Get().(*DocumentAttributeFile)
 	if !ok {
 		return &DocumentAttributeFile{}
@@ -113,7 +113,7 @@ func (p poolDocumentAttributeFile) Get() *DocumentAttributeFile {
 	return x
 }
 
-func (p poolDocumentAttributeFile) Put(x *DocumentAttributeFile) {
+func (p *poolDocumentAttributeFile) Put(x *DocumentAttributeFile) {
 	p.pool.Put(x)
 }
 
@@ -132,7 +132,7 @@ type poolDocumentAttribute struct {
 	pool sync.Pool
 }
 
-func (p poolDocumentAttribute) Get() *DocumentAttribute {
+func (p *poolDocumentAttribute) Get() *DocumentAttribute {
 	x, ok := p.pool.Get().(*DocumentAttribute)
 	if !ok {
 		return &DocumentAttribute{}
@@ -141,7 +141,7 @@ func (p poolDocumentAttribute) Get() *DocumentAttribute {
 	return x
 }
 
-func (p poolDocumentAttribute) Put(x *DocumentAttribute) {
+func (p *poolDocumentAttribute) Put(x *DocumentAttribute) {
 	p.pool.Put(x)
 }
 
@@ -160,7 +160,7 @@ type poolDocument struct {
 	pool sync.Pool
 }
 
-func (p poolDocument) Get() *Document {
+func (p *poolDocument) Get() *Document {
 	x, ok := p.pool.Get().(*Document)
 	if !ok {
 		return &Document{}
@@ -171,7 +171,7 @@ func (p poolDocument) Get() *Document {
 	return x
 }
 
-func (p poolDocument) Put(x *Document) {
+func (p *poolDocument) Put(x *Document) {
 	p.pool.Put(x)
 }
 
@@ -190,7 +190,7 @@ type poolInputMediaUploadedPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaUploadedPhoto) Get() *InputMediaUploadedPhoto {
+func (p *poolInputMediaUploadedPhoto) Get() *InputMediaUploadedPhoto {
 	x, ok := p.pool.Get().(*InputMediaUploadedPhoto)
 	if !ok {
 		return &InputMediaUploadedPhoto{}
@@ -200,7 +200,7 @@ func (p poolInputMediaUploadedPhoto) Get() *InputMediaUploadedPhoto {
 	return x
 }
 
-func (p poolInputMediaUploadedPhoto) Put(x *InputMediaUploadedPhoto) {
+func (p *poolInputMediaUploadedPhoto) Put(x *InputMediaUploadedPhoto) {
 	p.pool.Put(x)
 }
 
@@ -219,7 +219,7 @@ type poolInputMediaPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaPhoto) Get() *InputMediaPhoto {
+func (p *poolInputMediaPhoto) Get() *InputMediaPhoto {
 	x, ok := p.pool.Get().(*InputMediaPhoto)
 	if !ok {
 		return &InputMediaPhoto{}
@@ -227,7 +227,7 @@ func (p poolInputMediaPhoto) Get() *InputMediaPhoto {
 	return x
 }
 
-func (p poolInputMediaPhoto) Put(x *InputMediaPhoto) {
+func (p *poolInputMediaPhoto) Put(x *InputMediaPhoto) {
 	p.pool.Put(x)
 }
 
@@ -246,7 +246,7 @@ type poolInputMediaContact struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaContact) Get() *InputMediaContact {
+func (p *poolInputMediaContact) Get() *InputMediaContact {
 	x, ok := p.pool.Get().(*InputMediaContact)
 	if !ok {
 		return &InputMediaContact{}
@@ -255,7 +255,7 @@ func (p poolInputMediaContact) Get() *InputMediaContact {
 	return x
 }
 
-func (p poolInputMediaContact) Put(x *InputMediaContact) {
+func (p *poolInputMediaContact) Put(x *InputMediaContact) {
 	p.pool.Put(x)
 }
 
@@ -274,7 +274,7 @@ type poolInputMediaUploadedDocument struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
+func (p *poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
 	x, ok := p.pool.Get().(*InputMediaUploadedDocument)
 	if !ok {
 		return &InputMediaUploadedDocument{}
@@ -285,7 +285,7 @@ func (p poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
 	return x
 }
 
-func (p poolInputMediaUploadedDocument) Put(x *InputMediaUploadedDocument) {
+func (p *poolInputMediaUploadedDocument) Put(x *InputMediaUploadedDocument) {
 	p.pool.Put(x)
 }
 
@@ -304,7 +304,7 @@ type poolInputMediaDocument struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaDocument) Get() *InputMediaDocument {
+func (p *poolInputMediaDocument) Get() *InputMediaDocument {
 	x, ok := p.pool.Get().(*InputMediaDocument)
 	if !ok {
 		return &InputMediaDocument{}
@@ -312,7 +312,7 @@ func (p poolInputMediaDocument) Get() *InputMediaDocument {
 	return x
 }
 
-func (p poolInputMediaDocument) Put(x *InputMediaDocument) {
+func (p *poolInputMediaDocument) Put(x *InputMediaDocument) {
 	p.pool.Put(x)
 }
 
@@ -331,7 +331,7 @@ type poolInputMediaGeoLocation struct {
 	pool sync.Pool
 }
 
-func (p poolInputMediaGeoLocation) Get() *InputMediaGeoLocation {
+func (p *poolInputMediaGeoLocation) Get() *InputMediaGeoLocation {
 	x, ok := p.pool.Get().(*InputMediaGeoLocation)
 	if !ok {
 		return &InputMediaGeoLocation{}
@@ -339,7 +339,7 @@ func (p poolInputMediaGeoLocation) Get() *InputMediaGeoLocation {
 	return x
 }
 
-func (p poolInputMediaGeoLocation) Put(x *InputMediaGeoLocation) {
+func (p *poolInputMediaGeoLocation) Put(x *InputMediaGeoLocation) {
 	p.pool.Put(x)
 }
 
@@ -358,7 +358,7 @@ type poolMediaPhoto struct {
 	pool sync.Pool
 }
 
-func (p poolMediaPhoto) Get() *MediaPhoto {
+func (p *poolMediaPhoto) Get() *MediaPhoto {
 	x, ok := p.pool.Get().(*MediaPhoto)
 	if !ok {
 		return &MediaPhoto{}
@@ -366,7 +366,7 @@ func (p poolMediaPhoto) Get() *MediaPhoto {
 	return x
 }
 
-func (p poolMediaPhoto) Put(x *MediaPhoto) {
+func (p *poolMediaPhoto) Put(x *MediaPhoto) {
 	p.pool.Put(x)
 }
 
@@ -385,7 +385,7 @@ type poolMediaDocument struct {
 	pool sync.Pool
 }
 
-func (p poolMediaDocument) Get() *MediaDocument {
+func (p *poolMediaDocument) Get() *MediaDocument {
 	x, ok := p.pool.Get().(*MediaDocument)
 	if !ok {
 		return &MediaDocument{}
@@ -393,7 +393,7 @@ func (p poolMediaDocument) Get() *MediaDocument {
 	return x
 }
 
-func (p poolMediaDocument) Put(x *MediaDocument) {
+func (p *poolMediaDocument) Put(x *MediaDocument) {
 	p.pool.Put(x)
 }
 
@@ -412,7 +412,7 @@ type poolMediaContact struct {
 	pool sync.Pool
 }
 
-func (p poolMediaContact) Get() *MediaContact {
+func (p *poolMediaContact) Get() *MediaContact {
 	x, ok := p.pool.Get().(*MediaContact)
 	if !ok {
 		return &MediaContact{}
@@ -421,7 +421,7 @@ func (p poolMediaContact) Get() *MediaContact {
 	return x
 }
 
-func (p poolMediaContact) Put(x *MediaContact) {
+func (p *poolMediaContact) Put(x *MediaContact) {
 	p.pool.Put(x)
 }
 
@@ -440,7 +440,7 @@ type poolMediaGeoLocation struct {
 	pool sync.Pool
 }
 
-func (p poolMediaGeoLocation) Get() *MediaGeoLocation {
+func (p *poolMediaGeoLocation) Get() *MediaGeoLocation {
 	x, ok := p.pool.Get().(*MediaGeoLocation)
 	if !ok {
 		return &MediaGeoLocation{}
@@ -448,7 +448,7 @@ func (p poolMediaGeoLocation) Get() *MediaGeoLocation {
 	return x
 }
 
-func (p poolMediaGeoLocation) Put(x *MediaGeoLocation) {
+func (p *poolMediaGeoLocation) Put(x *MediaGeoLocation) {
 	p.pool.Put(x)
 }
 
@@ -467,7 +467,7 @@ type poolMediaWebPage struct {
 	pool sync.Pool
 }
 
-func (p poolMediaWebPage) Get() *MediaWebPage {
+func (p *poolMediaWebPage) Get() *MediaWebPage {
 	x, ok := p.pool.Get().(*MediaWebPage)
 	if !ok {
 		return &MediaWebPage{}
@@ -475,7 +475,7 @@ func (p poolMediaWebPage) Get() *MediaWebPage {
 	return x
 }
 
-func (p poolMediaWebPage) Put(x *MediaWebPage) {
+func (p *poolMediaWebPage) Put(x *MediaWebPage) {
 	p.pool.Put(x)
 }
 

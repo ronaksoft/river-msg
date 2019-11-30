@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // SystemGetPublicKeys
 // @Function
@@ -43,7 +43,7 @@ func (m *SystemGetPublicKeys) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_SystemGetPublicKeys.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -82,7 +82,7 @@ func (m *SystemGetDHGroups) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_SystemGetDHGroups.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -121,7 +121,7 @@ func (m *SystemGetServerTime) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return xxx_messageInfo_SystemGetServerTime.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -162,7 +162,7 @@ func (m *SystemGetAppUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_SystemGetAppUpdate.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -215,7 +215,7 @@ func (m *SystemGetInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_SystemGetInfo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -254,7 +254,7 @@ func (m *SystemGetSalts) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_SystemGetSalts.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -294,7 +294,7 @@ func (m *SystemSalts) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_SystemSalts.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -359,7 +359,7 @@ func (m *AppUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_AppUpdate.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -449,7 +449,7 @@ func (m *SystemInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_SystemInfo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -515,7 +515,7 @@ func (m *SystemServerTime) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_SystemServerTime.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -560,7 +560,7 @@ func (m *SystemPublicKeys) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_SystemPublicKeys.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -605,7 +605,7 @@ func (m *SystemDHGroups) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_SystemDHGroups.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -689,7 +689,7 @@ var fileDescriptor_c566bdbff65da108 = []byte{
 func (m *SystemGetPublicKeys) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -697,17 +697,22 @@ func (m *SystemGetPublicKeys) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetPublicKeys) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetPublicKeys) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemGetDHGroups) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -715,17 +720,22 @@ func (m *SystemGetDHGroups) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetDHGroups) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetDHGroups) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemGetServerTime) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -733,17 +743,22 @@ func (m *SystemGetServerTime) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetServerTime) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetServerTime) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemGetAppUpdate) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -751,24 +766,30 @@ func (m *SystemGetAppUpdate) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetAppUpdate) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetAppUpdate) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.ClientType)))
-	i += copy(dAtA[i:], m.ClientType)
-	dAtA[i] = 0x10
-	i++
 	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Version))
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	i -= len(m.ClientType)
+	copy(dAtA[i:], m.ClientType)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.ClientType)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemGetInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -776,17 +797,22 @@ func (m *SystemGetInfo) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetInfo) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemGetSalts) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -794,17 +820,22 @@ func (m *SystemGetSalts) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemGetSalts) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetSalts) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemSalts) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -812,30 +843,35 @@ func (m *SystemSalts) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemSalts) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemSalts) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Duration))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.StartsFrom))
+	i--
+	dAtA[i] = 0x10
 	if len(m.Salts) > 0 {
-		for _, num := range m.Salts {
+		for iNdEx := len(m.Salts) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Salts[iNdEx]))
+			i--
 			dAtA[i] = 0x8
-			i++
-			i = encodeVarintChatApiSystem(dAtA, i, uint64(num))
 		}
 	}
-	dAtA[i] = 0x10
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.StartsFrom))
-	dAtA[i] = 0x18
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Duration))
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *AppUpdate) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -843,52 +879,61 @@ func (m *AppUpdate) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *AppUpdate) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AppUpdate) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	if m.Available {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i++
-	dAtA[i] = 0x10
-	i++
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.DisplayInterval))
+	i--
+	dAtA[i] = 0x38
+	i -= len(m.Description)
+	copy(dAtA[i:], m.Description)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.Description)))
+	i--
+	dAtA[i] = 0x32
+	i -= len(m.DownloadUrl)
+	copy(dAtA[i:], m.DownloadUrl)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.DownloadUrl)))
+	i--
+	dAtA[i] = 0x2a
+	i -= len(m.VersionName)
+	copy(dAtA[i:], m.VersionName)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.VersionName)))
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.Identifier)
+	copy(dAtA[i:], m.Identifier)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.Identifier)))
+	i--
+	dAtA[i] = 0x1a
+	i--
 	if m.Mandatory {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.Identifier)))
-	i += copy(dAtA[i:], m.Identifier)
-	dAtA[i] = 0x22
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.VersionName)))
-	i += copy(dAtA[i:], m.VersionName)
-	dAtA[i] = 0x2a
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.DownloadUrl)))
-	i += copy(dAtA[i:], m.DownloadUrl)
-	dAtA[i] = 0x32
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.Description)))
-	i += copy(dAtA[i:], m.Description)
-	dAtA[i] = 0x38
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.DisplayInterval))
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	i--
+	if m.Available {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -896,33 +941,42 @@ func (m *SystemInfo) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemInfo) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.WorkGroupName)))
-	i += copy(dAtA[i:], m.WorkGroupName)
-	dAtA[i] = 0x12
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.BigPhotoUrl)))
-	i += copy(dAtA[i:], m.BigPhotoUrl)
-	dAtA[i] = 0x1a
-	i++
-	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.SmallPhotoUrl)))
-	i += copy(dAtA[i:], m.SmallPhotoUrl)
-	dAtA[i] = 0x22
-	i++
+	i -= len(m.StorageUrl)
+	copy(dAtA[i:], m.StorageUrl)
 	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.StorageUrl)))
-	i += copy(dAtA[i:], m.StorageUrl)
-	return i, nil
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.SmallPhotoUrl)
+	copy(dAtA[i:], m.SmallPhotoUrl)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.SmallPhotoUrl)))
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.BigPhotoUrl)
+	copy(dAtA[i:], m.BigPhotoUrl)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.BigPhotoUrl)))
+	i--
+	dAtA[i] = 0x12
+	i -= len(m.WorkGroupName)
+	copy(dAtA[i:], m.WorkGroupName)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.WorkGroupName)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemServerTime) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -930,20 +984,25 @@ func (m *SystemServerTime) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemServerTime) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemServerTime) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
 	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Timestamp))
-	return i, nil
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemPublicKeys) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -951,29 +1010,36 @@ func (m *SystemPublicKeys) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemPublicKeys) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemPublicKeys) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.RSAPublicKeys) > 0 {
-		for _, msg := range m.RSAPublicKeys {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiSystem(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.RSAPublicKeys) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.RSAPublicKeys[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiSystem(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *SystemDHGroups) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -981,33 +1047,42 @@ func (m *SystemDHGroups) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *SystemDHGroups) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemDHGroups) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.DHGroups) > 0 {
-		for _, msg := range m.DHGroups {
-			dAtA[i] = 0xa
-			i++
-			i = encodeVarintChatApiSystem(dAtA, i, uint64(msg.Size()))
-			n, err := msg.MarshalTo(dAtA[i:])
-			if err != nil {
-				return 0, err
+		for iNdEx := len(m.DHGroups) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.DHGroups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiSystem(dAtA, i, uint64(size))
 			}
-			i += n
+			i--
+			dAtA[i] = 0xa
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatApiSystem(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatApiSystem(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *SystemGetPublicKeys) Size() (n int) {
 	if m == nil {
@@ -2436,6 +2511,7 @@ func (m *SystemDHGroups) Unmarshal(dAtA []byte) error {
 func skipChatApiSystem(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -2467,10 +2543,8 @@ func skipChatApiSystem(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -2491,55 +2565,30 @@ func skipChatApiSystem(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiSystem
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthChatApiSystem
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowChatApiSystem
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipChatApiSystem(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthChatApiSystem
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupChatApiSystem
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthChatApiSystem
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthChatApiSystem = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiSystem   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthChatApiSystem        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiSystem          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupChatApiSystem = fmt.Errorf("proto: unexpected end of group")
 )

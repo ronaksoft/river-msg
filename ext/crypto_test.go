@@ -2,7 +2,7 @@ package msg
 
 import (
 	"crypto/rand"
-	"git.ronaksoftware.com/ronak/toolbox"
+	"git.ronaksoftware.com/river/pkg/tools"
 	"testing"
 )
 
@@ -28,7 +28,7 @@ func BenchmarkGenerateMessageKey(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		var msgKey []byte
 		for pb.Next() {
-			GenerateMessageKey(authKeys[ronak.RandomInt(total)], plain, msgKey)
+			_ = GenerateMessageKey(authKeys[tools.RandomInt(total)], plain, msgKey)
 		}
 	})
 

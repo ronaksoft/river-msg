@@ -46,6 +46,9 @@ message PushProvider {
     optional string Topic = 7 [(gogoproto.jsontag) = "topic,omitempty", (gogoproto.moretags) = "bson:\"topic\""];
     required bool TestMode = 8 [(gogoproto.jsontag) = "test_mode", (gogoproto.moretags) = "bson:\"test_mode\""];
 }
+message ReserveUsername {
+    required string Username = 1 [(gogoproto.jsontag) = "username", (gogoproto.moretags) = "bson:\"username\""];
+}
 
 enum PushProviderType {
     Unknown = 0;

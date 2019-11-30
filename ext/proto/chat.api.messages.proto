@@ -18,10 +18,7 @@ message MessagesSend {
 
 message MessagesBroadcast {
     required string Body = 1;
-}
-
-message MessagesBroadcastProgress {
-    required float Percentage = 1;
+    repeated int64 ReceiverIDs = 2;
 }
 
 enum InputMediaType {

@@ -1,5 +1,5 @@
-package msg
-
+package msg 
+ 
 import (
 	"github.com/gobwas/pool/pbytes"
 )
@@ -264,12 +264,6 @@ func ResultFile(out *MessageEnvelope, res *File) {
 }
 func ResultUser(out *MessageEnvelope, res *User) {
 	out.Constructor = C_User
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-func ResultMessagesBroadcastProgress(out *MessageEnvelope, res *MessagesBroadcastProgress) {
-	out.Constructor = C_MessagesBroadcastProgress
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1414,3 +1408,4 @@ func ResultUpdateUsername(out *MessageEnvelope, res *UpdateUsername) {
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
+

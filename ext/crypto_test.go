@@ -2,8 +2,12 @@ package msg
 
 import (
 	"crypto/rand"
+	"git.ronaksoftware.com/river/pkg/db/scylla"
+	"git.ronaksoftware.com/river/pkg/metrics"
 	"git.ronaksoftware.com/river/pkg/tools"
+	ronak "git.ronaksoftware.com/ronak/toolbox"
 	"testing"
+	"time"
 )
 
 /*
@@ -50,6 +54,78 @@ func BenchmarkEncrypt(b *testing.B) {
 		for pb.Next() {
 			_ = GenerateMessageKey(authKeys[0], plain, msgKey)
 			_, _ = Encrypt(authKeys[0], msgKey, plain)
+		}
+	})
+}
+
+func BenchmarkPool(b *testing.B) {
+	metrics.Run("Test", "01", 2374)
+	dbConf := scylla.DefaultConfig
+	dbConf.Host = "localhost"
+	dbConf.Keyspace = "river"
+	scylla.Init(dbConf)
+
+	bs := map[string]func(*testing.B){
+		"1.Bytes":  benchBytes,
+		"2.String": benchString,
+	}
+	for n, t := range bs {
+		b.Run(n, t)
+	}
+}
+func benchBytes(b *testing.B) {
+	x := TestRequest{
+		Payload: tools.StrToByte(ronak.RandomID(1024)),
+		Hash:    tools.StrToByte(ronak.RandomID(100)),
+	}
+	xb, _ := x.Marshal()
+
+	b.ReportAllocs()
+	b.SetParallelism(10)
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			y:= PoolTestRequest.Get()
+			err := y.Unmarshal(xb)
+			if err != nil {
+				b.Fatal(err)
+			}
+			q := scylla.UsersUpdatesInsert.GetQuery()
+			// CnUserID, CnUpdateID, CnConstructor, CnObject, CnCreatedOn
+			q.Bind(tools.RandomInt64(0), tools.RandomInt64(0), 0, y.Payload, time.Now().Unix())
+			err = q.Exec()
+			if err != nil {
+				b.Fatal(err)
+			}
+			scylla.UsersUpdatesInsert.Put(q)
+			PoolTestRequest.Put(y)
+		}
+	})
+}
+func benchString(b *testing.B) {
+	x := TestRequestWithString{
+		Payload: ronak.RandomID(1024),
+		Hash:    ronak.RandomID(100),
+	}
+	xb, _ := x.Marshal()
+
+	b.ReportAllocs()
+	b.SetParallelism(10)
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			y := PoolTestRequestWithString.Get()
+			err := y.Unmarshal(xb)
+			if err != nil {
+				b.Fatal(err)
+			}
+			q := scylla.UsersUpdatesInsert.GetQuery()
+			// CnUserID, CnUpdateID, CnConstructor, CnObject, CnCreatedOn
+			q.Bind(tools.RandomInt64(0), tools.RandomInt64(0), 0, y.Payload, time.Now().Unix())
+			err = scylla.Exec(q)
+			if err != nil {
+				b.Fatal(err)
+			}
+			scylla.UsersUpdatesInsert.Put(q)
+			PoolTestRequestWithString.Put(y)
 		}
 	})
 }

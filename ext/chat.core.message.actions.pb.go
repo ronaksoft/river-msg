@@ -365,7 +365,7 @@ func (m *MessageActionScreenShotTaken) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_MessageActionScreenShotTaken.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -616,7 +616,7 @@ func (m *MessageActionContactRegistered) MarshalTo(dAtA []byte) (int, error) {
 func (m *MessageActionScreenShotTaken) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -624,22 +624,17 @@ func (m *MessageActionScreenShotTaken) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionScreenShotTaken) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageActionScreenShotTaken) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MinID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MinID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
+	return i, nil
 }
 
 func encodeVarintChatCoreMessageActions(dAtA []byte, offset int, v uint64) int {

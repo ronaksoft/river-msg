@@ -8,9 +8,10 @@ package msg
    Auditor: Ehsan N. Moosa
    Copyright Ronak Software Group 2018
 */
+var ConstructorNames = make(map[int64]string)
 
 func ErrorMessage(out *MessageEnvelope, errCode, errItem string) {
-	errMessage := PoolError.Get().(*Error)
+	errMessage := PoolError.Get()
 	defer PoolError.Put(errMessage)
 	errMessage.Code = errCode
 	errMessage.Items = errItem

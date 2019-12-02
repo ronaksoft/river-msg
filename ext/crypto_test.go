@@ -84,7 +84,7 @@ func benchBytes(b *testing.B) {
 	b.SetParallelism(10)
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			y:= PoolTestRequest.Get()
+			y := PoolTestRequest.Get()
 			err := y.Unmarshal(xb)
 			if err != nil {
 				b.Fatal(err)

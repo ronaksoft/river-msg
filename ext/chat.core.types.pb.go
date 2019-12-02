@@ -23,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // TypingAction
 type TypingAction int32
@@ -590,7 +590,7 @@ func (m *MessageEnvelope) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_MessageEnvelope.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -651,7 +651,7 @@ func (m *MessageContainer) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_MessageContainer.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -707,7 +707,7 @@ func (m *UpdateEnvelope) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_UpdateEnvelope.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -786,7 +786,7 @@ func (m *UpdateContainer) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_UpdateContainer.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -869,7 +869,7 @@ func (m *ProtoMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_ProtoMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -931,7 +931,7 @@ func (m *ProtoEncryptedPayload) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return xxx_messageInfo_ProtoEncryptedPayload.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -998,7 +998,7 @@ func (m *Error) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Error.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1050,7 +1050,7 @@ func (m *Ack) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Ack.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1095,7 +1095,7 @@ func (m *Bool) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Bool.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1150,7 +1150,7 @@ func (m *Dialog) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Dialog.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1267,7 +1267,7 @@ func (m *Peer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Peer.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1328,7 +1328,7 @@ func (m *InputPeer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_InputPeer.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1388,7 +1388,7 @@ func (m *InputUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_InputUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1443,7 +1443,7 @@ func (m *InputFileLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return xxx_messageInfo_InputFileLocation.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1511,7 +1511,7 @@ func (m *FileLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_FileLocation.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1572,7 +1572,7 @@ func (m *UserPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_UserPhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1643,7 +1643,7 @@ func (m *User) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_User.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1773,7 +1773,7 @@ func (m *Bot) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Bot.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1839,7 +1839,7 @@ func (m *ContactUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_ContactUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1954,7 +1954,7 @@ func (m *UserMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_UserMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2152,7 +2152,7 @@ func (m *DraftMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_DraftMessage.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2242,7 +2242,7 @@ func (m *MessageEntity) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_MessageEntity.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2310,7 +2310,7 @@ func (m *RSAPublicKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_RSAPublicKey.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2371,7 +2371,7 @@ func (m *DHGroup) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_DHGroup.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2433,7 +2433,7 @@ func (m *PhoneContact) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_PhoneContact.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2501,7 +2501,7 @@ func (m *PeerNotifySettings) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return xxx_messageInfo_PeerNotifySettings.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2563,7 +2563,7 @@ func (m *InputFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_InputFile.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2631,7 +2631,7 @@ func (m *GroupPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_GroupPhoto.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2696,7 +2696,7 @@ func (m *Group) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Group.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2787,7 +2787,7 @@ func (m *GroupFull) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_GroupFull.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2866,7 +2866,7 @@ func (m *GroupParticipant) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_GroupParticipant.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -2955,7 +2955,7 @@ func (m *InputDocument) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_InputDocument.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -3015,7 +3015,7 @@ func (m *PrivacyRule) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_PrivacyRule.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -3267,7 +3267,7 @@ var fileDescriptor_fa76a373a8c28436 = []byte{
 func (m *MessageEnvelope) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3275,36 +3275,30 @@ func (m *MessageEnvelope) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageEnvelope) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageEnvelope) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Message != nil {
-		i -= len(m.Message)
-		copy(dAtA[i:], m.Message)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Message)))
-		i--
-		dAtA[i] = 0x22
-	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RequestID))
-	i--
-	dAtA[i] = 0x11
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Constructor))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Constructor))
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.RequestID))
+	i += 8
+	if m.Message != nil {
+		dAtA[i] = 0x22
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Message)))
+		i += copy(dAtA[i:], m.Message)
+	}
+	return i, nil
 }
 
 func (m *MessageContainer) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3312,39 +3306,32 @@ func (m *MessageContainer) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageContainer) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageContainer) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
 	if len(m.Envelopes) > 0 {
-		for iNdEx := len(m.Envelopes) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Envelopes[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.Envelopes {
 			dAtA[i] = 0x12
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *UpdateEnvelope) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3352,41 +3339,35 @@ func (m *UpdateEnvelope) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *UpdateEnvelope) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *UpdateEnvelope) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Timestamp))
-	i--
-	dAtA[i] = 0x28
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UpdateID))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UCount))
-	i--
-	dAtA[i] = 0x18
-	if m.Update != nil {
-		i -= len(m.Update)
-		copy(dAtA[i:], m.Update)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Update)))
-		i--
-		dAtA[i] = 0x12
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Constructor))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Constructor))
+	if m.Update != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Update)))
+		i += copy(dAtA[i:], m.Update)
+	}
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UCount))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UpdateID))
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Timestamp))
+	return i, nil
 }
 
 func (m *UpdateContainer) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3394,73 +3375,62 @@ func (m *UpdateContainer) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *UpdateContainer) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *UpdateContainer) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.Groups) > 0 {
-		for iNdEx := len(m.Groups) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Groups[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x32
-		}
-	}
-	if len(m.Users) > 0 {
-		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x2a
-		}
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MaxUpdateID))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MinUpdateID))
-	i--
-	dAtA[i] = 0x18
-	if len(m.Updates) > 0 {
-		for iNdEx := len(m.Updates) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Updates[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x12
-		}
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
+	if len(m.Updates) > 0 {
+		for _, msg := range m.Updates {
+			dAtA[i] = 0x12
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MinUpdateID))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MaxUpdateID))
+	if len(m.Users) > 0 {
+		for _, msg := range m.Users {
+			dAtA[i] = 0x2a
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	if len(m.Groups) > 0 {
+		for _, msg := range m.Groups {
+			dAtA[i] = 0x32
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
 }
 
 func (m *ProtoMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3468,39 +3438,32 @@ func (m *ProtoMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ProtoMessage) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ProtoMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Payload != nil {
-		i -= len(m.Payload)
-		copy(dAtA[i:], m.Payload)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Payload)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.MessageKey != nil {
-		i -= len(m.MessageKey)
-		copy(dAtA[i:], m.MessageKey)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MessageKey)))
-		i--
-		dAtA[i] = 0x12
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.AuthID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.AuthID))
+	if m.MessageKey != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MessageKey)))
+		i += copy(dAtA[i:], m.MessageKey)
+	}
+	if m.Payload != nil {
+		dAtA[i] = 0x1a
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Payload)))
+		i += copy(dAtA[i:], m.Payload)
+	}
+	return i, nil
 }
 
 func (m *ProtoEncryptedPayload) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3508,45 +3471,38 @@ func (m *ProtoEncryptedPayload) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ProtoEncryptedPayload) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ProtoEncryptedPayload) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ServerSalt))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageID))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.SessionID))
 	if m.Envelope == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Envelope")
 	} else {
-		{
-			size, err := m.Envelope.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x22
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Envelope.Size()))
+		n1, err1 := m.Envelope.MarshalTo(dAtA[i:])
+		if err1 != nil {
+			return 0, err1
+		}
+		i += n1
 	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.SessionID))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ServerSalt))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *Error) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3554,32 +3510,25 @@ func (m *Error) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Error) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Error) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Items)
-	copy(dAtA[i:], m.Items)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Items)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Code)
-	copy(dAtA[i:], m.Code)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Code)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Code)))
+	i += copy(dAtA[i:], m.Code)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Items)))
+	i += copy(dAtA[i:], m.Items)
+	return i, nil
 }
 
 func (m *Ack) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3587,29 +3536,24 @@ func (m *Ack) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Ack) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Ack) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.MessageIDs) > 0 {
-		for iNdEx := len(m.MessageIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageIDs[iNdEx]))
-			i--
+		for _, num := range m.MessageIDs {
 			dAtA[i] = 0x8
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(num))
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *Bool) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3617,30 +3561,25 @@ func (m *Bool) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Bool) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Bool) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	dAtA[i] = 0x8
+	i++
 	if m.Result {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *Dialog) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3648,79 +3587,70 @@ func (m *Dialog) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Dialog) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Dialog) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Draft != nil {
-		{
-			size, err := m.Draft.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.TopMessageID))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReadInboxMaxID))
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReadOutboxMaxID))
+	dAtA[i] = 0x30
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UnreadCount))
+	dAtA[i] = 0x39
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	if m.NotifySettings != nil {
+		dAtA[i] = 0x42
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.NotifySettings.Size()))
+		n2, err2 := m.NotifySettings.MarshalTo(dAtA[i:])
+		if err2 != nil {
+			return 0, err2
 		}
-		i--
-		dAtA[i] = 0x5a
+		i += n2
 	}
-	i--
+	dAtA[i] = 0x48
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MentionedCount))
+	dAtA[i] = 0x50
+	i++
 	if m.Pinned {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x50
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MentionedCount))
-	i--
-	dAtA[i] = 0x48
-	if m.NotifySettings != nil {
-		{
-			size, err := m.NotifySettings.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
+	i++
+	if m.Draft != nil {
+		dAtA[i] = 0x5a
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Draft.Size()))
+		n3, err3 := m.Draft.MarshalTo(dAtA[i:])
+		if err3 != nil {
+			return 0, err3
 		}
-		i--
-		dAtA[i] = 0x42
+		i += n3
 	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x39
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UnreadCount))
-	i--
-	dAtA[i] = 0x30
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReadOutboxMaxID))
-	i--
-	dAtA[i] = 0x28
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReadInboxMaxID))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.TopMessageID))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *Peer) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3728,32 +3658,27 @@ func (m *Peer) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Peer) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Peer) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x19
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	return i, nil
 }
 
 func (m *InputPeer) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3761,32 +3686,27 @@ func (m *InputPeer) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputPeer) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputPeer) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x19
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	return i, nil
 }
 
 func (m *InputUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3794,29 +3714,24 @@ func (m *InputUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x11
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	return i, nil
 }
 
 func (m *InputFileLocation) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3824,35 +3739,30 @@ func (m *InputFileLocation) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputFileLocation) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputFileLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Version))
-	i--
-	dAtA[i] = 0x20
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x19
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Version))
+	return i, nil
 }
 
 func (m *FileLocation) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3860,32 +3770,27 @@ func (m *FileLocation) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *FileLocation) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *FileLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x19
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
+	dAtA[i] = 0x19
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	return i, nil
 }
 
 func (m *UserPhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3893,53 +3798,44 @@ func (m *UserPhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *UserPhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *UserPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoID))
-	i--
-	dAtA[i] = 0x18
-	if m.PhotoSmall == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoSmall")
-	} else {
-		{
-			size, err := m.PhotoSmall.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
 	if m.PhotoBig == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoBig")
 	} else {
-		{
-			size, err := m.PhotoBig.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoBig.Size()))
+		n4, err4 := m.PhotoBig.MarshalTo(dAtA[i:])
+		if err4 != nil {
+			return 0, err4
+		}
+		i += n4
 	}
-	return len(dAtA) - i, nil
+	if m.PhotoSmall == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoSmall")
+	} else {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoSmall.Size()))
+		n5, err5 := m.PhotoSmall.MarshalTo(dAtA[i:])
+		if err5 != nil {
+			return 0, err5
+		}
+		i += n5
+	}
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoID))
+	return i, nil
 }
 
 func (m *User) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -3947,102 +3843,88 @@ func (m *User) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *User) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *User) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
-	if m.IsBot {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x68
-	if len(m.PhotoGallery) > 0 {
-		for iNdEx := len(m.PhotoGallery) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.PhotoGallery[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x62
-		}
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.LastSeen))
-	i--
-	dAtA[i] = 0x58
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0x52
-	i -= len(m.Bio)
-	copy(dAtA[i:], m.Bio)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Bio)))
-	i--
-	dAtA[i] = 0x4a
-	if m.Photo != nil {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x42
-	}
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x39
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Status))
+	dAtA[i] = 0x30
+	i++
 	if m.Restricted {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x30
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Status))
-	i--
-	dAtA[i] = 0x28
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x39
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	if m.Photo != nil {
+		dAtA[i] = 0x42
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
+		n6, err6 := m.Photo.MarshalTo(dAtA[i:])
+		if err6 != nil {
+			return 0, err6
+		}
+		i += n6
+	}
+	dAtA[i] = 0x4a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Bio)))
+	i += copy(dAtA[i:], m.Bio)
+	dAtA[i] = 0x52
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x58
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.LastSeen))
+	if len(m.PhotoGallery) > 0 {
+		for _, msg := range m.PhotoGallery {
+			dAtA[i] = 0x62
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	dAtA[i] = 0x68
+	i++
+	if m.IsBot {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	return i, nil
 }
 
 func (m *Bot) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4050,35 +3932,28 @@ func (m *Bot) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Bot) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Bot) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.Name)
-	copy(dAtA[i:], m.Name)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Name)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Name)))
+	i += copy(dAtA[i:], m.Name)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	return i, nil
 }
 
 func (m *ContactUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4086,64 +3961,53 @@ func (m *ContactUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactUser) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Photo != nil {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x42
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClientID))
-	i--
-	dAtA[i] = 0x38
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
-	i--
-	dAtA[i] = 0x32
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0x2a
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x21
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	dAtA[i] = 0x21
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	dAtA[i] = 0x32
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	dAtA[i] = 0x38
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClientID))
+	if m.Photo != nil {
+		dAtA[i] = 0x42
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
+		n7, err7 := m.Photo.MarshalTo(dAtA[i:])
+		if err7 != nil {
+			return 0, err7
+		}
+		i += n7
+	}
+	return i, nil
 }
 
 func (m *UserMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4151,137 +4015,126 @@ func (m *UserMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *UserMessage) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *UserMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.ReplyMarkupData != nil {
-		i -= len(m.ReplyMarkupData)
-		copy(dAtA[i:], m.ReplyMarkupData)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.ReplyMarkupData)))
-		i--
-		dAtA[i] = 0x1
-		i--
-		dAtA[i] = 0xb2
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyMarkup))
-	i--
-	dAtA[i] = 0x1
-	i--
-	dAtA[i] = 0xa8
-	if m.Media != nil {
-		i -= len(m.Media)
-		copy(dAtA[i:], m.Media)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Media)))
-		i--
-		dAtA[i] = 0x1
-		i--
-		dAtA[i] = 0xa2
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MediaType))
-	i--
-	dAtA[i] = 0x1
-	i--
-	dAtA[i] = 0x98
-	if len(m.Entities) > 0 {
-		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x1
-			i--
-			dAtA[i] = 0x92
-		}
-	}
-	if m.MessageActionData != nil {
-		i -= len(m.MessageActionData)
-		copy(dAtA[i:], m.MessageActionData)
-		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MessageActionData)))
-		i--
-		dAtA[i] = 0x1
-		i--
-		dAtA[i] = 0x8a
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageAction))
-	i--
-	dAtA[i] = 0x1
-	i--
-	dAtA[i] = 0x80
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyTo))
-	i--
-	dAtA[i] = 0x78
-	i--
-	if m.Inbox {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x70
-	i--
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.CreatedOn))
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedOn))
+	dAtA[i] = 0x30
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdSenderID))
+	dAtA[i] = 0x38
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdChannelID))
+	dAtA[i] = 0x40
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdChannelMessageID))
+	dAtA[i] = 0x48
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Flags))
+	dAtA[i] = 0x50
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageType))
+	dAtA[i] = 0x5a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Body)))
+	i += copy(dAtA[i:], m.Body)
+	dAtA[i] = 0x60
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.SenderID))
+	dAtA[i] = 0x68
+	i++
 	if m.ContentRead {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x68
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.SenderID))
-	i--
-	dAtA[i] = 0x60
-	i -= len(m.Body)
-	copy(dAtA[i:], m.Body)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Body)))
-	i--
-	dAtA[i] = 0x5a
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageType))
-	i--
-	dAtA[i] = 0x50
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Flags))
-	i--
-	dAtA[i] = 0x48
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdChannelMessageID))
-	i--
-	dAtA[i] = 0x40
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdChannelID))
-	i--
-	dAtA[i] = 0x38
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FwdSenderID))
-	i--
-	dAtA[i] = 0x30
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedOn))
-	i--
-	dAtA[i] = 0x28
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.CreatedOn))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	dAtA[i] = 0x70
+	i++
+	if m.Inbox {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i++
+	dAtA[i] = 0x78
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyTo))
+	dAtA[i] = 0x80
+	i++
+	dAtA[i] = 0x1
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MessageAction))
+	if m.MessageActionData != nil {
+		dAtA[i] = 0x8a
+		i++
+		dAtA[i] = 0x1
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MessageActionData)))
+		i += copy(dAtA[i:], m.MessageActionData)
+	}
+	if len(m.Entities) > 0 {
+		for _, msg := range m.Entities {
+			dAtA[i] = 0x92
+			i++
+			dAtA[i] = 0x1
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	dAtA[i] = 0x98
+	i++
+	dAtA[i] = 0x1
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MediaType))
+	if m.Media != nil {
+		dAtA[i] = 0xa2
+		i++
+		dAtA[i] = 0x1
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Media)))
+		i += copy(dAtA[i:], m.Media)
+	}
+	dAtA[i] = 0xa8
+	i++
+	dAtA[i] = 0x1
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyMarkup))
+	if m.ReplyMarkupData != nil {
+		dAtA[i] = 0xb2
+		i++
+		dAtA[i] = 0x1
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.ReplyMarkupData)))
+		i += copy(dAtA[i:], m.ReplyMarkupData)
+	}
+	return i, nil
 }
 
 func (m *DraftMessage) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4289,56 +4142,48 @@ func (m *DraftMessage) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *DraftMessage) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *DraftMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedID))
-	i--
-	dAtA[i] = 0x40
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyTo))
-	i--
-	dAtA[i] = 0x38
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Date))
+	dAtA[i] = 0x2a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Body)))
+	i += copy(dAtA[i:], m.Body)
 	if len(m.Entities) > 0 {
-		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.Entities {
 			dAtA[i] = 0x32
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	i -= len(m.Body)
-	copy(dAtA[i:], m.Body)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Body)))
-	i--
-	dAtA[i] = 0x2a
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Date))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerType))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PeerID))
-	i--
-	dAtA[i] = 0x10
-	return len(dAtA) - i, nil
+	dAtA[i] = 0x38
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ReplyTo))
+	dAtA[i] = 0x40
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedID))
+	return i, nil
 }
 
 func (m *MessageEntity) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4346,34 +4191,29 @@ func (m *MessageEntity) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageEntity) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MessageEntity) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Offset))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Offset))
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Length))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
+	return i, nil
 }
 
 func (m *RSAPublicKey) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4381,33 +4221,27 @@ func (m *RSAPublicKey) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *RSAPublicKey) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *RSAPublicKey) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.E))
-	i--
-	dAtA[i] = 0x18
-	i -= len(m.N)
-	copy(dAtA[i:], m.N)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.N)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FingerPrint))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FingerPrint))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.N)))
+	i += copy(dAtA[i:], m.N)
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.E))
+	return i, nil
 }
 
 func (m *DHGroup) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4415,33 +4249,27 @@ func (m *DHGroup) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *DHGroup) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *DHGroup) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Gen))
-	i--
-	dAtA[i] = 0x18
-	i -= len(m.Prime)
-	copy(dAtA[i:], m.Prime)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Prime)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FingerPrint))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FingerPrint))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Prime)))
+	i += copy(dAtA[i:], m.Prime)
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Gen))
+	return i, nil
 }
 
 func (m *PhoneContact) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4449,40 +4277,32 @@ func (m *PhoneContact) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *PhoneContact) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *PhoneContact) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClientID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClientID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Phone)))
+	i += copy(dAtA[i:], m.Phone)
+	return i, nil
 }
 
 func (m *PeerNotifySettings) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4490,33 +4310,27 @@ func (m *PeerNotifySettings) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *PeerNotifySettings) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *PeerNotifySettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Sound)
-	copy(dAtA[i:], m.Sound)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Sound)))
-	i--
-	dAtA[i] = 0x1a
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MuteUntil))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Flags))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Flags))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.MuteUntil))
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Sound)))
+	i += copy(dAtA[i:], m.Sound)
+	return i, nil
 }
 
 func (m *InputFile) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4524,38 +4338,31 @@ func (m *InputFile) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputFile) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputFile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.MD5Checksum)
-	copy(dAtA[i:], m.MD5Checksum)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MD5Checksum)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.FileName)
-	copy(dAtA[i:], m.FileName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FileName)))
-	i--
-	dAtA[i] = 0x1a
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.TotalParts))
-	i--
-	dAtA[i] = 0x10
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.FileID))
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.TotalParts))
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FileName)))
+	i += copy(dAtA[i:], m.FileName)
+	dAtA[i] = 0x22
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.MD5Checksum)))
+	i += copy(dAtA[i:], m.MD5Checksum)
+	return i, nil
 }
 
 func (m *GroupPhoto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4563,53 +4370,44 @@ func (m *GroupPhoto) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupPhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoID))
-	i--
-	dAtA[i] = 0x18
-	if m.PhotoSmall == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoSmall")
-	} else {
-		{
-			size, err := m.PhotoSmall.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
 	if m.PhotoBig == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoBig")
 	} else {
-		{
-			size, err := m.PhotoBig.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoBig.Size()))
+		n8, err8 := m.PhotoBig.MarshalTo(dAtA[i:])
+		if err8 != nil {
+			return 0, err8
+		}
+		i += n8
 	}
-	return len(dAtA) - i, nil
+	if m.PhotoSmall == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhotoSmall")
+	} else {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoSmall.Size()))
+		n9, err9 := m.PhotoSmall.MarshalTo(dAtA[i:])
+		if err9 != nil {
+			return 0, err9
+		}
+		i += n9
+	}
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PhotoID))
+	return i, nil
 }
 
 func (m *Group) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4617,58 +4415,50 @@ func (m *Group) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Group) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Group) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Photo != nil {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x3a
-	}
-	if len(m.Flags) > 0 {
-		for iNdEx := len(m.Flags) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Flags[iNdEx]))
-			i--
-			dAtA[i] = 0x30
-		}
-	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedOn))
-	i--
-	dAtA[i] = 0x28
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Participants))
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.CreatedOn))
-	i--
-	dAtA[i] = 0x18
-	i -= len(m.Title)
-	copy(dAtA[i:], m.Title)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Title)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Title)))
+	i += copy(dAtA[i:], m.Title)
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.CreatedOn))
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Participants))
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.EditedOn))
+	if len(m.Flags) > 0 {
+		for _, num := range m.Flags {
+			dAtA[i] = 0x30
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(num))
+		}
+	}
+	if m.Photo != nil {
+		dAtA[i] = 0x3a
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
+		n10, err10 := m.Photo.MarshalTo(dAtA[i:])
+		if err10 != nil {
+			return 0, err10
+		}
+		i += n10
+	}
+	return i, nil
 }
 
 func (m *GroupFull) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4676,92 +4466,77 @@ func (m *GroupFull) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupFull) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupFull) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.PhotoGallery) > 0 {
-		for iNdEx := len(m.PhotoGallery) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.PhotoGallery[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
+	if m.Group == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Group")
+	} else {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Group.Size()))
+		n11, err11 := m.Group.MarshalTo(dAtA[i:])
+		if err11 != nil {
+			return 0, err11
+		}
+		i += n11
+	}
+	if len(m.Users) > 0 {
+		for _, msg := range m.Users {
+			dAtA[i] = 0x12
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
 			}
-			i--
-			dAtA[i] = 0x2a
+			i += n
+		}
+	}
+	if len(m.Participants) > 0 {
+		for _, msg := range m.Participants {
+			dAtA[i] = 0x1a
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
 	if m.NotifySettings == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("NotifySettings")
 	} else {
-		{
-			size, err := m.NotifySettings.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
 		dAtA[i] = 0x22
-	}
-	if len(m.Participants) > 0 {
-		for iNdEx := len(m.Participants) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Participants[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x1a
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.NotifySettings.Size()))
+		n12, err12 := m.NotifySettings.MarshalTo(dAtA[i:])
+		if err12 != nil {
+			return 0, err12
 		}
+		i += n12
 	}
-	if len(m.Users) > 0 {
-		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x12
-		}
-	}
-	if m.Group == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Group")
-	} else {
-		{
-			size, err := m.Group.MarshalToSizedBuffer(dAtA[:i])
+	if len(m.PhotoGallery) > 0 {
+		for _, msg := range m.PhotoGallery {
+			dAtA[i] = 0x2a
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
 			if err != nil {
 				return 0, err
 			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
+			i += n
 		}
-		i--
-		dAtA[i] = 0xa
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *GroupParticipant) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4769,58 +4544,48 @@ func (m *GroupParticipant) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GroupParticipant) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GroupParticipant) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Photo != nil {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x42
-	}
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
-	i--
-	dAtA[i] = 0x32
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x28
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
-	i--
-	dAtA[i] = 0x20
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserID))
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.FirstName)))
+	i += copy(dAtA[i:], m.FirstName)
+	dAtA[i] = 0x1a
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.LastName)))
+	i += copy(dAtA[i:], m.LastName)
+	dAtA[i] = 0x20
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Type))
+	dAtA[i] = 0x28
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.AccessHash))
+	dAtA[i] = 0x32
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	if m.Photo != nil {
+		dAtA[i] = 0x42
+		i++
+		i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.Photo.Size()))
+		n13, err13 := m.Photo.MarshalTo(dAtA[i:])
+		if err13 != nil {
+			return 0, err13
+		}
+		i += n13
+	}
+	return i, nil
 }
 
 func (m *InputDocument) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4828,32 +4593,27 @@ func (m *InputDocument) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *InputDocument) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
-	i--
-	dAtA[i] = 0x18
-	i -= 8
-	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
-	i--
-	dAtA[i] = 0x11
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x11
+	i++
+	encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.AccessHash))
+	i += 8
+	dAtA[i] = 0x18
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.ClusterID))
+	return i, nil
 }
 
 func (m *PrivacyRule) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -4861,38 +4621,31 @@ func (m *PrivacyRule) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *PrivacyRule) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *PrivacyRule) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
+	dAtA[i] = 0x8
+	i++
+	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PrivacyType))
 	if len(m.UserIDs) > 0 {
-		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.UserIDs[iNdEx]))
-			i--
+		for _, num := range m.UserIDs {
 			dAtA[i] = 0x10
+			i++
+			i = encodeVarintChatCoreTypes(dAtA, i, uint64(num))
 		}
 	}
-	i = encodeVarintChatCoreTypes(dAtA, i, uint64(m.PrivacyType))
-	i--
-	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintChatCoreTypes(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatCoreTypes(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *MessageEnvelope) Size() (n int) {
 	if m == nil {
@@ -11645,7 +11398,6 @@ func (m *PrivacyRule) Unmarshal(dAtA []byte) error {
 func skipChatCoreTypes(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
-	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -11677,8 +11429,10 @@ func skipChatCoreTypes(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
+			return iNdEx, nil
 		case 1:
 			iNdEx += 8
+			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -11699,30 +11453,55 @@ func skipChatCoreTypes(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatCoreTypes
 			}
 			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupChatCoreTypes
+			if iNdEx < 0 {
+				return 0, ErrInvalidLengthChatCoreTypes
 			}
-			depth--
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowChatCoreTypes
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipChatCoreTypes(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatCoreTypes
+				}
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
 		case 5:
 			iNdEx += 4
+			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthChatCoreTypes
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
 	}
-	return 0, io.ErrUnexpectedEOF
+	panic("unreachable")
 }
 
 var (
-	ErrInvalidLengthChatCoreTypes        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatCoreTypes          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupChatCoreTypes = fmt.Errorf("proto: unexpected end of group")
+	ErrInvalidLengthChatCoreTypes = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatCoreTypes   = fmt.Errorf("proto: integer overflow")
 )

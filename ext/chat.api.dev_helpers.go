@@ -97,8 +97,64 @@ func ResultTestResponse(out *MessageEnvelope, res *TestResponse) {
 	res.MarshalTo(out.Message)
 }
 
+const C_TestRequestWithString int64 = 3760062575
+
+type poolTestRequestWithString struct {
+	pool sync.Pool
+}
+
+func (p *poolTestRequestWithString) Get() *TestRequestWithString {
+	x, ok := p.pool.Get().(*TestRequestWithString)
+	if !ok {
+		return &TestRequestWithString{}
+	}
+	return x
+}
+
+func (p *poolTestRequestWithString) Put(x *TestRequestWithString) {
+	p.pool.Put(x)
+}
+
+var PoolTestRequestWithString = poolTestRequestWithString{}
+
+func ResultTestRequestWithString(out *MessageEnvelope, res *TestRequestWithString) {
+	out.Constructor = C_TestRequestWithString
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_TestResponseWithString int64 = 556112423
+
+type poolTestResponseWithString struct {
+	pool sync.Pool
+}
+
+func (p *poolTestResponseWithString) Get() *TestResponseWithString {
+	x, ok := p.pool.Get().(*TestResponseWithString)
+	if !ok {
+		return &TestResponseWithString{}
+	}
+	return x
+}
+
+func (p *poolTestResponseWithString) Put(x *TestResponseWithString) {
+	p.pool.Put(x)
+}
+
+var PoolTestResponseWithString = poolTestResponseWithString{}
+
+func ResultTestResponseWithString(out *MessageEnvelope, res *TestResponseWithString) {
+	out.Constructor = C_TestResponseWithString
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[2861516000] = "EchoWithDelay"
 	ConstructorNames[475847033] = "TestRequest"
 	ConstructorNames[1999996896] = "TestResponse"
+	ConstructorNames[3760062575] = "TestRequestWithString"
+	ConstructorNames[556112423] = "TestResponseWithString"
 }

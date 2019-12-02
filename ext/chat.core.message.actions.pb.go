@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // MessageActionGroupAddUser
 type MessageActionGroupAddUser struct {
@@ -42,7 +42,7 @@ func (m *MessageActionGroupAddUser) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionGroupAddUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -87,7 +87,7 @@ func (m *MessageActionGroupDeleteUser) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_MessageActionGroupDeleteUser.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -133,7 +133,7 @@ func (m *MessageActionGroupCreated) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionGroupCreated.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -185,7 +185,7 @@ func (m *MessageActionGroupTitleChanged) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionGroupTitleChanged.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -229,7 +229,7 @@ func (m *MessageActionGroupPhotoChanged) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionGroupPhotoChanged.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -275,7 +275,7 @@ func (m *MessageActionClearHistory) XXX_Marshal(b []byte, deterministic bool) ([
 		return xxx_messageInfo_MessageActionClearHistory.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -326,7 +326,7 @@ func (m *MessageActionContactRegistered) XXX_Marshal(b []byte, deterministic boo
 		return xxx_messageInfo_MessageActionContactRegistered.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -365,7 +365,7 @@ func (m *MessageActionScreenShotTaken) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_MessageActionScreenShotTaken.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -440,7 +440,7 @@ var fileDescriptor_e134edebab6f8250 = []byte{
 func (m *MessageActionGroupAddUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -448,24 +448,29 @@ func (m *MessageActionGroupAddUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupAddUser) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionGroupAddUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.UserIDs) > 0 {
-		for _, num := range m.UserIDs {
+		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x8
-			i++
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionGroupDeleteUser) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -473,24 +478,29 @@ func (m *MessageActionGroupDeleteUser) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupDeleteUser) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionGroupDeleteUser) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if len(m.UserIDs) > 0 {
-		for _, num := range m.UserIDs {
+		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x8
-			i++
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionGroupCreated) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -498,28 +508,34 @@ func (m *MessageActionGroupCreated) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupCreated) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionGroupCreated) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
-	i += copy(dAtA[i:], m.GroupTitle)
 	if len(m.UserIDs) > 0 {
-		for _, num := range m.UserIDs {
+		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.UserIDs[iNdEx]))
+			i--
 			dAtA[i] = 0x10
-			i++
-			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(num))
 		}
 	}
-	return i, nil
+	i -= len(m.GroupTitle)
+	copy(dAtA[i:], m.GroupTitle)
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionGroupTitleChanged) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -527,21 +543,27 @@ func (m *MessageActionGroupTitleChanged) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupTitleChanged) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionGroupTitleChanged) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0xa
-	i++
+	i -= len(m.GroupTitle)
+	copy(dAtA[i:], m.GroupTitle)
 	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(len(m.GroupTitle)))
-	i += copy(dAtA[i:], m.GroupTitle)
-	return i, nil
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionGroupPhotoChanged) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -549,27 +571,34 @@ func (m *MessageActionGroupPhotoChanged) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionGroupPhotoChanged) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionGroupPhotoChanged) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	if m.Photo != nil {
-		dAtA[i] = 0xa
-		i++
-		i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.Photo.Size()))
-		n1, err1 := m.Photo.MarshalTo(dAtA[i:])
-		if err1 != nil {
-			return 0, err1
+		{
+			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(size))
 		}
-		i += n1
+		i--
+		dAtA[i] = 0xa
 	}
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionClearHistory) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -577,28 +606,33 @@ func (m *MessageActionClearHistory) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionClearHistory) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionClearHistory) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
-	dAtA[i] = 0x10
-	i++
+	i--
 	if m.Delete {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i++
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionContactRegistered) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -606,17 +640,22 @@ func (m *MessageActionContactRegistered) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionContactRegistered) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionContactRegistered) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	return i, nil
+	return len(dAtA) - i, nil
 }
 
 func (m *MessageActionScreenShotTaken) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -624,27 +663,34 @@ func (m *MessageActionScreenShotTaken) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MessageActionScreenShotTaken) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MessageActionScreenShotTaken) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MinID))
-	dAtA[i] = 0x10
-	i++
 	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MaxID))
-	return i, nil
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatCoreMessageActions(dAtA, i, uint64(m.MinID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintChatCoreMessageActions(dAtA []byte, offset int, v uint64) int {
+	offset -= sovChatCoreMessageActions(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *MessageActionGroupAddUser) Size() (n int) {
 	if m == nil {
@@ -1602,6 +1648,7 @@ func (m *MessageActionScreenShotTaken) Unmarshal(dAtA []byte) error {
 func skipChatCoreMessageActions(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -1633,10 +1680,8 @@ func skipChatCoreMessageActions(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -1657,55 +1702,30 @@ func skipChatCoreMessageActions(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatCoreMessageActions
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthChatCoreMessageActions
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowChatCoreMessageActions
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipChatCoreMessageActions(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthChatCoreMessageActions
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupChatCoreMessageActions
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthChatCoreMessageActions
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthChatCoreMessageActions = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatCoreMessageActions   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthChatCoreMessageActions        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatCoreMessageActions          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupChatCoreMessageActions = fmt.Errorf("proto: unexpected end of group")
 )

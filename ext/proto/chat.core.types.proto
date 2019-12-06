@@ -407,6 +407,7 @@ message PrivacyRule {
 message Label {
     required int32 ID = 1;
     required string Name = 2;
+    required string Colour = 3;
 }
 
 // LabelsMany

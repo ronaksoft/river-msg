@@ -5,7 +5,6 @@ import (
 	"git.ronaksoftware.com/river/pkg/db/scylla"
 	"git.ronaksoftware.com/river/pkg/metrics"
 	"git.ronaksoftware.com/river/pkg/tools"
-	ronak "git.ronaksoftware.com/ronak/toolbox"
 	"testing"
 	"time"
 )
@@ -75,8 +74,8 @@ func BenchmarkPool(b *testing.B) {
 }
 func benchBytes(b *testing.B) {
 	x := TestRequest{
-		Payload: tools.StrToByte(ronak.RandomID(1024)),
-		Hash:    tools.StrToByte(ronak.RandomID(100)),
+		Payload: tools.StrToByte(tools.RandomID(1024)),
+		Hash:    tools.StrToByte(tools.RandomID(100)),
 	}
 	xb, _ := x.Marshal()
 
@@ -103,8 +102,8 @@ func benchBytes(b *testing.B) {
 }
 func benchString(b *testing.B) {
 	x := TestRequestWithString{
-		Payload: ronak.RandomID(1024),
-		Hash:    ronak.RandomID(100),
+		Payload: tools.RandomID(1024),
+		Hash:    tools.RandomID(100),
 	}
 	xb, _ := x.Marshal()
 

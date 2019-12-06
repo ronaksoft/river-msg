@@ -58,6 +58,7 @@ func (p *poolMessagesBroadcast) Get() *MessagesBroadcast {
 	if !ok {
 		return &MessagesBroadcast{}
 	}
+	x.ReceiverIDs = x.ReceiverIDs[:0]
 	return x
 }
 
@@ -69,33 +70,6 @@ var PoolMessagesBroadcast = poolMessagesBroadcast{}
 
 func ResultMessagesBroadcast(out *MessageEnvelope, res *MessagesBroadcast) {
 	out.Constructor = C_MessagesBroadcast
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_MessagesBroadcastProgress int64 = 774574929
-
-type poolMessagesBroadcastProgress struct {
-	pool sync.Pool
-}
-
-func (p *poolMessagesBroadcastProgress) Get() *MessagesBroadcastProgress {
-	x, ok := p.pool.Get().(*MessagesBroadcastProgress)
-	if !ok {
-		return &MessagesBroadcastProgress{}
-	}
-	return x
-}
-
-func (p *poolMessagesBroadcastProgress) Put(x *MessagesBroadcastProgress) {
-	p.pool.Put(x)
-}
-
-var PoolMessagesBroadcastProgress = poolMessagesBroadcastProgress{}
-
-func ResultMessagesBroadcastProgress(out *MessageEnvelope, res *MessagesBroadcastProgress) {
-	out.Constructor = C_MessagesBroadcastProgress
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -616,6 +590,7 @@ func (p *poolMessagesDialogs) Get() *MessagesDialogs {
 	x.Users = x.Users[:0]
 	x.Messages = x.Messages[:0]
 	x.Groups = x.Groups[:0]
+	x.Labels = x.Labels[:0]
 	return x
 }
 
@@ -674,6 +649,7 @@ func (p *poolMessagesMany) Get() *MessagesMany {
 	x.Users = x.Users[:0]
 	x.Groups = x.Groups[:0]
 	x.Continuous = false
+	x.Labels = x.Labels[:0]
 	return x
 }
 
@@ -693,7 +669,6 @@ func ResultMessagesMany(out *MessageEnvelope, res *MessagesMany) {
 func init() {
 	ConstructorNames[3000244183] = "MessagesSend"
 	ConstructorNames[142289348] = "MessagesBroadcast"
-	ConstructorNames[774574929] = "MessagesBroadcastProgress"
 	ConstructorNames[25498545] = "MessagesSendMedia"
 	ConstructorNames[2492658432] = "MessagesEdit"
 	ConstructorNames[1300826534] = "MessagesReadHistory"

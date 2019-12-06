@@ -20,12 +20,7 @@ message MessagesSend {
 // MessageBroadcast
 message MessagesBroadcast {
     required string Body = 1;
-}
-
-// TODO:: Why do we need this ? @amin
-// MessageBroadcastProgress
-message MessagesBroadcastProgress {
-    required float Percentage = 1;
+    repeated int64 ReceiverIDs = 2;
 }
 
 enum InputMediaType {

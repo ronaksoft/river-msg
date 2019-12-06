@@ -281,6 +281,7 @@ func (p *poolDialog) Get() *Dialog {
 	x.NotifySettings = nil
 	x.MentionedCount = 0
 	x.Draft = nil
+	x.LabelIDs = x.LabelIDs[:0]
 	return x
 }
 
@@ -567,6 +568,7 @@ func (p *poolUserMessage) Get() *UserMessage {
 	x.Media = nil
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.LabelIDs = x.LabelIDs[:0]
 	return x
 }
 
@@ -948,6 +950,61 @@ func ResultPrivacyRule(out *MessageEnvelope, res *PrivacyRule) {
 	res.MarshalTo(out.Message)
 }
 
+const C_Label int64 = 3479601132
+
+type poolLabel struct {
+	pool sync.Pool
+}
+
+func (p *poolLabel) Get() *Label {
+	x, ok := p.pool.Get().(*Label)
+	if !ok {
+		return &Label{}
+	}
+	return x
+}
+
+func (p *poolLabel) Put(x *Label) {
+	p.pool.Put(x)
+}
+
+var PoolLabel = poolLabel{}
+
+func ResultLabel(out *MessageEnvelope, res *Label) {
+	out.Constructor = C_Label
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_LabelsMany int64 = 1423713603
+
+type poolLabelsMany struct {
+	pool sync.Pool
+}
+
+func (p *poolLabelsMany) Get() *LabelsMany {
+	x, ok := p.pool.Get().(*LabelsMany)
+	if !ok {
+		return &LabelsMany{}
+	}
+	x.Labels = x.Labels[:0]
+	return x
+}
+
+func (p *poolLabelsMany) Put(x *LabelsMany) {
+	p.pool.Put(x)
+}
+
+var PoolLabelsMany = poolLabelsMany{}
+
+func ResultLabelsMany(out *MessageEnvelope, res *LabelsMany) {
+	out.Constructor = C_LabelsMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[535232465] = "MessageEnvelope"
 	ConstructorNames[1972016308] = "MessageContainer"
@@ -982,4 +1039,6 @@ func init() {
 	ConstructorNames[4072279665] = "GroupParticipant"
 	ConstructorNames[4081048424] = "InputDocument"
 	ConstructorNames[3954700912] = "PrivacyRule"
+	ConstructorNames[3479601132] = "Label"
+	ConstructorNames[1423713603] = "LabelsMany"
 }

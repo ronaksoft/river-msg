@@ -1,4 +1,4 @@
-package admin
+package msgAdmin
 
 func IsValidType(t PushProviderType) bool {
 	switch t {

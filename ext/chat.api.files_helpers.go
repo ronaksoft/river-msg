@@ -70,34 +70,6 @@ func ResultFileGet(out *MessageEnvelope, res *FileGet) {
 	res.MarshalTo(out.Message)
 }
 
-const C_FileGetMany int64 = 2111810754
-
-type poolFileGetMany struct {
-	pool sync.Pool
-}
-
-func (p *poolFileGetMany) Get() *FileGetMany {
-	x, ok := p.pool.Get().(*FileGetMany)
-	if !ok {
-		return &FileGetMany{}
-	}
-	x.FileGetMany = x.FileGetMany[:0]
-	return x
-}
-
-func (p *poolFileGetMany) Put(x *FileGetMany) {
-	p.pool.Put(x)
-}
-
-var PoolFileGetMany = poolFileGetMany{}
-
-func ResultFileGetMany(out *MessageEnvelope, res *FileGetMany) {
-	out.Constructor = C_FileGetMany
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_File int64 = 749574446
 
 type poolFile struct {
@@ -126,38 +98,8 @@ func ResultFile(out *MessageEnvelope, res *File) {
 	res.MarshalTo(out.Message)
 }
 
-const C_FileMany int64 = 1222018159
-
-type poolFileMany struct {
-	pool sync.Pool
-}
-
-func (p *poolFileMany) Get() *FileMany {
-	x, ok := p.pool.Get().(*FileMany)
-	if !ok {
-		return &FileMany{}
-	}
-	x.FileMany = x.FileMany[:0]
-	return x
-}
-
-func (p *poolFileMany) Put(x *FileMany) {
-	p.pool.Put(x)
-}
-
-var PoolFileMany = poolFileMany{}
-
-func ResultFileMany(out *MessageEnvelope, res *FileMany) {
-	out.Constructor = C_FileMany
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 func init() {
 	ConstructorNames[3766876582] = "FileSavePart"
 	ConstructorNames[4282510672] = "FileGet"
-	ConstructorNames[2111810754] = "FileGetMany"
 	ConstructorNames[749574446] = "File"
-	ConstructorNames[1222018159] = "FileMany"
 }

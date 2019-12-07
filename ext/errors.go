@@ -82,4 +82,6 @@ const (
 	ErrItemFeature          = "FEATURE"
 	ErrItemMarshal          = "MARSHAL"
 	ErrItemUnMarshal        = "UNMARSHAL"
+	ErrItemName             = "NAME"
+	ErrItemColour           = "COLOUR"
 )

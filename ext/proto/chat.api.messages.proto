@@ -206,7 +206,6 @@ message MessagesDialogs {
     required int32 Count = 4;
     required int64 UpdateID = 5;
     repeated Group Groups = 6;
-    repeated Label Labels = 7;
 }
 
 // MessagesSent
@@ -222,6 +221,5 @@ message MessagesMany {
     repeated User Users = 2;
     repeated Group Groups = 3;
     optional bool Continuous = 4;
-    repeated Label Labels = 5;
 }
 

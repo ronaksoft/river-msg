@@ -590,7 +590,6 @@ func (p *poolMessagesDialogs) Get() *MessagesDialogs {
 	x.Users = x.Users[:0]
 	x.Messages = x.Messages[:0]
 	x.Groups = x.Groups[:0]
-	x.Labels = x.Labels[:0]
 	return x
 }
 
@@ -649,7 +648,6 @@ func (p *poolMessagesMany) Get() *MessagesMany {
 	x.Users = x.Users[:0]
 	x.Groups = x.Groups[:0]
 	x.Continuous = false
-	x.Labels = x.Labels[:0]
 	return x
 }
 

@@ -181,6 +181,8 @@ func (m *MessagesSend) GetEntities() []*MessageEntity {
 	return nil
 }
 
+// TODO:: Why do we need this ? @amin
+// MessageBroadcast
 type MessagesBroadcast struct {
 	Body        string  `protobuf:"bytes,1,req,name=Body" json:"Body"`
 	ReceiverIDs []int64 `protobuf:"varint,2,rep,name=ReceiverIDs" json:"ReceiverIDs,omitempty"`

@@ -7,6 +7,7 @@ package msg;
 message LabelsSet {
     required int32 LabelID = 1;
     required string Name = 2;
+    required string Colour = 3;
 }
 
 // LabelsDelete
@@ -60,13 +61,3 @@ message LabelsRemoveFromMessage {
     repeated int64 MessageIDs = 4;
 }
 
-// Label
-message Label {
-    required int32 ID = 1;
-    required string Name = 2;
-}
-
-// LabelsMany
-message LabelsMany {
-    repeated Label Labels = 1;
-}

@@ -851,6 +851,34 @@ func ResultUpdateLabelRemoved(out *MessageEnvelope, res *UpdateLabelRemoved) {
 	res.MarshalTo(out.Message)
 }
 
+const C_UpdateLabel int64 = 3233011647
+
+type poolUpdateLabel struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateLabel) Get() *UpdateLabel {
+	x, ok := p.pool.Get().(*UpdateLabel)
+	if !ok {
+		return &UpdateLabel{}
+	}
+	x.Labels = x.Labels[:0]
+	return x
+}
+
+func (p *poolUpdateLabel) Put(x *UpdateLabel) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateLabel = poolUpdateLabel{}
+
+func ResultUpdateLabel(out *MessageEnvelope, res *UpdateLabel) {
+	out.Constructor = C_UpdateLabel
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -882,4 +910,5 @@ func init() {
 	ConstructorNames[629173761] = "UpdateAccountPrivacy"
 	ConstructorNames[797455885] = "UpdateLabelAdded"
 	ConstructorNames[2315078909] = "UpdateLabelRemoved"
+	ConstructorNames[3233011647] = "UpdateLabel"
 }

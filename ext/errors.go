@@ -80,4 +80,8 @@ const (
 	ErrItemPhoto            = "PHOTO"
 	ErrItemMember           = "MEMBER"
 	ErrItemFeature          = "FEATURE"
+	ErrItemMarshal          = "MARSHAL"
+	ErrItemUnMarshal        = "UNMARSHAL"
+	ErrItemName             = "NAME"
+	ErrItemColour           = "COLOUR"
 )

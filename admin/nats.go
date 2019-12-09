@@ -28,4 +28,11 @@ const (
 
 	GetRiverVersionsSubj  = "get.river.vers"
 	GetRiverVersionsGroup = "get.river.vers"
+
+	GetReserveUserNamesSubj = "get.reserve.users"
+	GetReserveUserNamesGroup = "get.reserve.users"
+
+	UpdateReserveUserNamesSubj = "update.reserve.users"
+	UpdateReserveUserNamesGroup = "update.reserve.users"
+
 )

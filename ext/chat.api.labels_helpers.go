@@ -212,56 +212,60 @@ func ResultLabelsRemoveFromMessage(out *MessageEnvelope, res *LabelsRemoveFromMe
 	res.MarshalTo(out.Message)
 }
 
-const C_Label int64 = 3479601132
+const C_LabelsListItems int64 = 2351763198
 
-type poolLabel struct {
+type poolLabelsListItems struct {
 	pool sync.Pool
 }
 
-func (p *poolLabel) Get() *Label {
-	x, ok := p.pool.Get().(*Label)
+func (p *poolLabelsListItems) Get() *LabelsListItems {
+	x, ok := p.pool.Get().(*LabelsListItems)
 	if !ok {
-		return &Label{}
+		return &LabelsListItems{}
 	}
+	x.MinID = 0
+	x.MaxID = 0
+	x.Limit = 0
 	return x
 }
 
-func (p *poolLabel) Put(x *Label) {
+func (p *poolLabelsListItems) Put(x *LabelsListItems) {
 	p.pool.Put(x)
 }
 
-var PoolLabel = poolLabel{}
+var PoolLabelsListItems = poolLabelsListItems{}
 
-func ResultLabel(out *MessageEnvelope, res *Label) {
-	out.Constructor = C_Label
+func ResultLabelsListItems(out *MessageEnvelope, res *LabelsListItems) {
+	out.Constructor = C_LabelsListItems
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
-const C_LabelsMany int64 = 1423713603
+const C_LabelItems int64 = 4271841358
 
-type poolLabelsMany struct {
+type poolLabelItems struct {
 	pool sync.Pool
 }
 
-func (p *poolLabelsMany) Get() *LabelsMany {
-	x, ok := p.pool.Get().(*LabelsMany)
+func (p *poolLabelItems) Get() *LabelItems {
+	x, ok := p.pool.Get().(*LabelItems)
 	if !ok {
-		return &LabelsMany{}
+		return &LabelItems{}
 	}
-	x.Labels = x.Labels[:0]
+	x.Messages = x.Messages[:0]
+	x.Dialogs = x.Dialogs[:0]
 	return x
 }
 
-func (p *poolLabelsMany) Put(x *LabelsMany) {
+func (p *poolLabelItems) Put(x *LabelItems) {
 	p.pool.Put(x)
 }
 
-var PoolLabelsMany = poolLabelsMany{}
+var PoolLabelItems = poolLabelItems{}
 
-func ResultLabelsMany(out *MessageEnvelope, res *LabelsMany) {
-	out.Constructor = C_LabelsMany
+func ResultLabelItems(out *MessageEnvelope, res *LabelItems) {
+	out.Constructor = C_LabelItems
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -275,6 +279,6 @@ func init() {
 	ConstructorNames[2632121923] = "LabelsRemoveFromDialog"
 	ConstructorNames[180144503] = "LabelsAddToMessage"
 	ConstructorNames[4195197703] = "LabelsRemoveFromMessage"
-	ConstructorNames[3479601132] = "Label"
-	ConstructorNames[1423713603] = "LabelsMany"
+	ConstructorNames[2351763198] = "LabelsListItems"
+	ConstructorNames[4271841358] = "LabelItems"
 }

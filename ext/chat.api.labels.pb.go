@@ -29,6 +29,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type LabelsSet struct {
 	LabelID int32  `protobuf:"varint,1,req,name=LabelID" json:"LabelID"`
 	Name    string `protobuf:"bytes,2,req,name=Name" json:"Name"`
+	Colour  string `protobuf:"bytes,3,req,name=Colour" json:"Colour"`
 }
 
 func (m *LabelsSet) Reset()         { *m = LabelsSet{} }
@@ -74,6 +75,13 @@ func (m *LabelsSet) GetLabelID() int32 {
 func (m *LabelsSet) GetName() string {
 	if m != nil {
 		return m.Name
+	}
+	return ""
+}
+
+func (m *LabelsSet) GetColour() string {
+	if m != nil {
+		return m.Colour
 	}
 	return ""
 }
@@ -432,24 +440,28 @@ func (m *LabelsRemoveFromMessage) GetMessageIDs() []int64 {
 	return nil
 }
 
-// Label
-type Label struct {
-	ID   int32  `protobuf:"varint,1,req,name=ID" json:"ID"`
-	Name string `protobuf:"bytes,2,req,name=Name" json:"Name"`
+// LabelsListItems
+// @Function
+// @Returns: LabelItems
+type LabelsListItems struct {
+	LabelID int32 `protobuf:"varint,1,req,name=LabelID" json:"LabelID"`
+	MinID   int64 `protobuf:"varint,2,opt,name=MinID" json:"MinID"`
+	MaxID   int64 `protobuf:"varint,3,opt,name=MaxID" json:"MaxID"`
+	Limit   int32 `protobuf:"varint,4,opt,name=Limit" json:"Limit"`
 }
 
-func (m *Label) Reset()         { *m = Label{} }
-func (m *Label) String() string { return proto.CompactTextString(m) }
-func (*Label) ProtoMessage()    {}
-func (*Label) Descriptor() ([]byte, []int) {
+func (m *LabelsListItems) Reset()         { *m = LabelsListItems{} }
+func (m *LabelsListItems) String() string { return proto.CompactTextString(m) }
+func (*LabelsListItems) ProtoMessage()    {}
+func (*LabelsListItems) Descriptor() ([]byte, []int) {
 	return fileDescriptor_19cf62577bbff668, []int{7}
 }
-func (m *Label) XXX_Unmarshal(b []byte) error {
+func (m *LabelsListItems) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *Label) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *LabelsListItems) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_Label.Marshal(b, m, deterministic)
+		return xxx_messageInfo_LabelsListItems.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -459,49 +471,65 @@ func (m *Label) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *Label) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Label.Merge(m, src)
+func (m *LabelsListItems) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelsListItems.Merge(m, src)
 }
-func (m *Label) XXX_Size() int {
+func (m *LabelsListItems) XXX_Size() int {
 	return m.Size()
 }
-func (m *Label) XXX_DiscardUnknown() {
-	xxx_messageInfo_Label.DiscardUnknown(m)
+func (m *LabelsListItems) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelsListItems.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Label proto.InternalMessageInfo
+var xxx_messageInfo_LabelsListItems proto.InternalMessageInfo
 
-func (m *Label) GetID() int32 {
+func (m *LabelsListItems) GetLabelID() int32 {
 	if m != nil {
-		return m.ID
+		return m.LabelID
 	}
 	return 0
 }
 
-func (m *Label) GetName() string {
+func (m *LabelsListItems) GetMinID() int64 {
 	if m != nil {
-		return m.Name
+		return m.MinID
 	}
-	return ""
+	return 0
 }
 
-// LabelsMany
-type LabelsMany struct {
-	Labels []*Label `protobuf:"bytes,1,rep,name=Labels" json:"Labels,omitempty"`
+func (m *LabelsListItems) GetMaxID() int64 {
+	if m != nil {
+		return m.MaxID
+	}
+	return 0
 }
 
-func (m *LabelsMany) Reset()         { *m = LabelsMany{} }
-func (m *LabelsMany) String() string { return proto.CompactTextString(m) }
-func (*LabelsMany) ProtoMessage()    {}
-func (*LabelsMany) Descriptor() ([]byte, []int) {
+func (m *LabelsListItems) GetLimit() int32 {
+	if m != nil {
+		return m.Limit
+	}
+	return 0
+}
+
+// LabelItems
+type LabelItems struct {
+	LabelID  int32          `protobuf:"varint,1,req,name=LabelID" json:"LabelID"`
+	Messages []*UserMessage `protobuf:"bytes,2,rep,name=Messages" json:"Messages,omitempty"`
+	Dialogs  []*Dialog      `protobuf:"bytes,3,rep,name=Dialogs" json:"Dialogs,omitempty"`
+}
+
+func (m *LabelItems) Reset()         { *m = LabelItems{} }
+func (m *LabelItems) String() string { return proto.CompactTextString(m) }
+func (*LabelItems) ProtoMessage()    {}
+func (*LabelItems) Descriptor() ([]byte, []int) {
 	return fileDescriptor_19cf62577bbff668, []int{8}
 }
-func (m *LabelsMany) XXX_Unmarshal(b []byte) error {
+func (m *LabelItems) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *LabelsMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *LabelItems) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_LabelsMany.Marshal(b, m, deterministic)
+		return xxx_messageInfo_LabelItems.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -511,21 +539,35 @@ func (m *LabelsMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *LabelsMany) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LabelsMany.Merge(m, src)
+func (m *LabelItems) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelItems.Merge(m, src)
 }
-func (m *LabelsMany) XXX_Size() int {
+func (m *LabelItems) XXX_Size() int {
 	return m.Size()
 }
-func (m *LabelsMany) XXX_DiscardUnknown() {
-	xxx_messageInfo_LabelsMany.DiscardUnknown(m)
+func (m *LabelItems) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelItems.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_LabelsMany proto.InternalMessageInfo
+var xxx_messageInfo_LabelItems proto.InternalMessageInfo
 
-func (m *LabelsMany) GetLabels() []*Label {
+func (m *LabelItems) GetLabelID() int32 {
 	if m != nil {
-		return m.Labels
+		return m.LabelID
+	}
+	return 0
+}
+
+func (m *LabelItems) GetMessages() []*UserMessage {
+	if m != nil {
+		return m.Messages
+	}
+	return nil
+}
+
+func (m *LabelItems) GetDialogs() []*Dialog {
+	if m != nil {
+		return m.Dialogs
 	}
 	return nil
 }
@@ -538,34 +580,40 @@ func init() {
 	proto.RegisterType((*LabelsRemoveFromDialog)(nil), "msg.LabelsRemoveFromDialog")
 	proto.RegisterType((*LabelsAddToMessage)(nil), "msg.LabelsAddToMessage")
 	proto.RegisterType((*LabelsRemoveFromMessage)(nil), "msg.LabelsRemoveFromMessage")
-	proto.RegisterType((*Label)(nil), "msg.Label")
-	proto.RegisterType((*LabelsMany)(nil), "msg.LabelsMany")
+	proto.RegisterType((*LabelsListItems)(nil), "msg.LabelsListItems")
+	proto.RegisterType((*LabelItems)(nil), "msg.LabelItems")
 }
 
 func init() { proto.RegisterFile("chat.api.labels.proto", fileDescriptor_19cf62577bbff668) }
 
 var fileDescriptor_19cf62577bbff668 = []byte{
-	// 320 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x92, 0x4f, 0x4b, 0xc3, 0x30,
-	0x18, 0xc6, 0x9b, 0x66, 0x9b, 0xdb, 0x3b, 0x2f, 0x06, 0xff, 0x14, 0x91, 0x58, 0x72, 0x2a, 0x1e,
-	0x8a, 0x78, 0xf1, 0xec, 0xa8, 0xca, 0xc0, 0x89, 0xd4, 0x7d, 0x81, 0xe8, 0x5e, 0xea, 0xa0, 0x35,
-	0x63, 0x09, 0xc2, 0xbe, 0xc5, 0x2e, 0x7e, 0xa7, 0x1d, 0x77, 0xf4, 0x24, 0xb2, 0x7d, 0x11, 0x59,
-	0x9a, 0x8d, 0x6d, 0x07, 0x6f, 0x8a, 0xb7, 0x3e, 0xbf, 0xa7, 0xed, 0xef, 0x4d, 0x78, 0xe1, 0xe0,
-	0xf9, 0x45, 0x9a, 0x58, 0x0e, 0xfa, 0x71, 0x2e, 0x9f, 0x30, 0xd7, 0xf1, 0x60, 0xa8, 0x8c, 0x62,
-	0xb4, 0xd0, 0x99, 0xb8, 0x86, 0xc6, 0x9d, 0x85, 0x8f, 0x68, 0x18, 0x87, 0x1d, 0x1b, 0xda, 0x49,
-	0x40, 0x42, 0x3f, 0xaa, 0xb6, 0x2a, 0x93, 0xcf, 0x53, 0x2f, 0x5d, 0x42, 0x16, 0x40, 0xe5, 0x5e,
-	0x16, 0x18, 0xf8, 0xa1, 0x1f, 0x35, 0x5c, 0x69, 0x89, 0x38, 0x83, 0xdd, 0xf2, 0x37, 0x09, 0xe6,
-	0x68, 0x90, 0x1d, 0x43, 0xdd, 0x7d, 0xa4, 0x03, 0x12, 0xd2, 0xa8, 0x9a, 0xae, 0xb2, 0x68, 0x2e,
-	0x95, 0xb7, 0x68, 0x84, 0x82, 0xbd, 0x32, 0x5c, 0xf5, 0x7a, 0x5d, 0x95, 0xf4, 0x65, 0xae, 0x32,
-	0x16, 0x42, 0xfd, 0x01, 0x71, 0xd8, 0x1d, 0x0d, 0x70, 0x63, 0x90, 0x15, 0x65, 0x27, 0x50, 0x5b,
-	0x3c, 0xb7, 0x13, 0x3b, 0x0b, 0x75, 0xbd, 0x63, 0x1b, 0x76, 0xba, 0x65, 0x37, 0x70, 0x58, 0x0a,
-	0x53, 0x2c, 0xd4, 0x1b, 0xde, 0x0c, 0x55, 0xf1, 0x07, 0xd6, 0x31, 0x01, 0xb6, 0x76, 0xce, 0x0e,
-	0x6a, 0x2d, 0x33, 0xfc, 0x4d, 0x25, 0xe3, 0x00, 0x4e, 0xb3, 0x68, 0x2b, 0x21, 0x8d, 0x68, 0xba,
-	0x46, 0xc4, 0x3b, 0x81, 0xa3, 0xed, 0x9b, 0xf8, 0x0f, 0x73, 0x5d, 0x42, 0xd5, 0xbe, 0xcb, 0xf6,
-	0xc1, 0xdf, 0x5a, 0x44, 0xff, 0xc7, 0x1d, 0x3c, 0x07, 0x28, 0xcf, 0xd3, 0x91, 0xaf, 0x23, 0x26,
-	0xa0, 0x56, 0x26, 0xbb, 0x7f, 0xcd, 0x0b, 0x88, 0x0b, 0x9d, 0xc5, 0x16, 0xa5, 0xae, 0x69, 0x05,
-	0x93, 0x19, 0x27, 0xd3, 0x19, 0x27, 0x5f, 0x33, 0x4e, 0xc6, 0x73, 0xee, 0x4d, 0xe7, 0xdc, 0xfb,
-	0x98, 0x73, 0xef, 0x3b, 0x00, 0x00, 0xff, 0xff, 0xf3, 0xc6, 0xe1, 0x3a, 0x33, 0x03, 0x00, 0x00,
+	// 402 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x92, 0xc1, 0xaa, 0xd3, 0x40,
+	0x14, 0x86, 0x33, 0x99, 0xd4, 0xdb, 0x7b, 0x22, 0xa8, 0x03, 0xea, 0x50, 0x64, 0x0c, 0x01, 0x21,
+	0x88, 0x64, 0xd1, 0x37, 0xb0, 0x06, 0x25, 0xd0, 0x8a, 0xc4, 0xfa, 0x00, 0xb1, 0x3d, 0xc4, 0x40,
+	0xe2, 0x84, 0xcc, 0x28, 0x76, 0xe9, 0xc2, 0x7d, 0x37, 0xbe, 0x53, 0x97, 0x5d, 0xba, 0x12, 0x69,
+	0x5f, 0x44, 0x92, 0x49, 0x42, 0xdb, 0x8d, 0x6e, 0x94, 0xbb, 0xcb, 0xfc, 0xdf, 0xe1, 0xfc, 0x5f,
+	0x86, 0x81, 0xfb, 0xab, 0x0f, 0xa9, 0x0e, 0xd3, 0x2a, 0x0f, 0x8b, 0xf4, 0x3d, 0x16, 0x2a, 0xac,
+	0x6a, 0xa9, 0x25, 0xa3, 0xa5, 0xca, 0x26, 0x86, 0xad, 0x64, 0x8d, 0xa1, 0xde, 0x54, 0xd8, 0x31,
+	0x7f, 0x05, 0xd7, 0xf3, 0x76, 0xf6, 0x2d, 0x6a, 0x26, 0xe0, 0xaa, 0x3d, 0xc4, 0x11, 0x27, 0x9e,
+	0x1d, 0x8c, 0x66, 0xce, 0xee, 0xe7, 0x63, 0x2b, 0xe9, 0x43, 0xc6, 0xc1, 0x79, 0x9d, 0x96, 0xc8,
+	0x6d, 0xcf, 0x0e, 0xae, 0x3b, 0xd8, 0x26, 0xec, 0x11, 0xdc, 0x7a, 0x21, 0x0b, 0xf9, 0xa9, 0xe6,
+	0xf4, 0x84, 0x75, 0x99, 0xff, 0x14, 0x6e, 0x9b, 0x92, 0x08, 0x0b, 0xd4, 0xc8, 0x26, 0x30, 0xee,
+	0x56, 0x2a, 0x4e, 0x3c, 0x1a, 0x8c, 0x92, 0xe1, 0xec, 0xbb, 0xbd, 0xd0, 0x2b, 0xd4, 0xbe, 0x84,
+	0x7b, 0xe6, 0xf0, 0x7c, 0xbd, 0x5e, 0xca, 0x28, 0x4f, 0x0b, 0x99, 0x31, 0x0f, 0xc6, 0x6f, 0x10,
+	0xeb, 0xe5, 0xa6, 0xc2, 0x33, 0xcd, 0x21, 0x6d, 0x6c, 0x9a, 0xef, 0x38, 0x6a, 0x4d, 0x69, 0x6f,
+	0x63, 0xb2, 0xb3, 0x76, 0x7a, 0xd1, 0xae, 0xe1, 0x81, 0x29, 0x4c, 0xb0, 0x94, 0x9f, 0xf1, 0x65,
+	0x2d, 0xcb, 0xff, 0xd0, 0xba, 0x25, 0xc0, 0x4e, 0xfe, 0x73, 0x81, 0x4a, 0xa5, 0x19, 0xfe, 0xcb,
+	0x4a, 0x26, 0x00, 0xba, 0x9a, 0x86, 0x3a, 0x1e, 0x0d, 0x68, 0x72, 0x92, 0xf8, 0xdf, 0x09, 0x3c,
+	0xbc, 0xbc, 0x89, 0x9b, 0xe0, 0xf5, 0x8d, 0xc0, 0x1d, 0xe3, 0x35, 0xcf, 0x95, 0x8e, 0x35, 0x96,
+	0xea, 0x8f, 0xcf, 0x76, 0x02, 0xa3, 0x45, 0xfe, 0xb1, 0x95, 0x21, 0x83, 0x8c, 0x89, 0x5a, 0x96,
+	0x7e, 0x89, 0x23, 0x4e, 0xcf, 0x58, 0x13, 0x35, 0x6c, 0x9e, 0x97, 0xb9, 0xe6, 0x8e, 0x47, 0x86,
+	0xad, 0x26, 0xf2, 0xbf, 0x12, 0x00, 0xb3, 0xff, 0xaf, 0x14, 0x9e, 0xc1, 0xb8, 0xfb, 0x09, 0xc5,
+	0x6d, 0x8f, 0x06, 0xee, 0xf4, 0x6e, 0x58, 0xaa, 0x2c, 0x7c, 0xa7, 0xb0, 0xee, 0x40, 0x32, 0x4c,
+	0xb0, 0x27, 0x70, 0x65, 0x5e, 0x9d, 0xb9, 0x1f, 0x77, 0xea, 0xb6, 0xc3, 0x26, 0x4b, 0x7a, 0x36,
+	0xe3, 0xbb, 0x83, 0x20, 0xfb, 0x83, 0x20, 0xbf, 0x0e, 0x82, 0x6c, 0x8f, 0xc2, 0xda, 0x1f, 0x85,
+	0xf5, 0xe3, 0x28, 0xac, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xe2, 0x72, 0x3b, 0xc1, 0x09, 0x04,
+	0x00, 0x00,
 }
 
 func (m *LabelsSet) Marshal() (dAtA []byte, err error) {
@@ -588,6 +636,11 @@ func (m *LabelsSet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	i -= len(m.Colour)
+	copy(dAtA[i:], m.Colour)
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Colour)))
+	i--
+	dAtA[i] = 0x1a
 	i -= len(m.Name)
 	copy(dAtA[i:], m.Name)
 	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Name)))
@@ -810,7 +863,7 @@ func (m *LabelsRemoveFromMessage) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
-func (m *Label) Marshal() (dAtA []byte, err error) {
+func (m *LabelsListItems) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -820,28 +873,32 @@ func (m *Label) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *Label) MarshalTo(dAtA []byte) (int, error) {
+func (m *LabelsListItems) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *Label) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *LabelsListItems) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Name)
-	copy(dAtA[i:], m.Name)
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Name)))
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.Limit))
 	i--
-	dAtA[i] = 0x12
-	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.ID))
+	dAtA[i] = 0x20
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.MaxID))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.MinID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelID))
 	i--
 	dAtA[i] = 0x8
 	return len(dAtA) - i, nil
 }
 
-func (m *LabelsMany) Marshal() (dAtA []byte, err error) {
+func (m *LabelItems) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -851,20 +908,20 @@ func (m *LabelsMany) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *LabelsMany) MarshalTo(dAtA []byte) (int, error) {
+func (m *LabelItems) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *LabelsMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *LabelItems) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Labels) > 0 {
-		for iNdEx := len(m.Labels) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.Dialogs) > 0 {
+		for iNdEx := len(m.Dialogs) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.Labels[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.Dialogs[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -872,9 +929,26 @@ func (m *LabelsMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 				i = encodeVarintChatApiLabels(dAtA, i, uint64(size))
 			}
 			i--
-			dAtA[i] = 0xa
+			dAtA[i] = 0x1a
 		}
 	}
+	if len(m.Messages) > 0 {
+		for iNdEx := len(m.Messages) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Messages[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiLabels(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(m.LabelID))
+	i--
+	dAtA[i] = 0x8
 	return len(dAtA) - i, nil
 }
 
@@ -897,6 +971,8 @@ func (m *LabelsSet) Size() (n int) {
 	_ = l
 	n += 1 + sovChatApiLabels(uint64(m.LabelID))
 	l = len(m.Name)
+	n += 1 + l + sovChatApiLabels(uint64(l))
+	l = len(m.Colour)
 	n += 1 + l + sovChatApiLabels(uint64(l))
 	return n
 }
@@ -998,26 +1074,34 @@ func (m *LabelsRemoveFromMessage) Size() (n int) {
 	return n
 }
 
-func (m *Label) Size() (n int) {
+func (m *LabelsListItems) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	n += 1 + sovChatApiLabels(uint64(m.ID))
-	l = len(m.Name)
-	n += 1 + l + sovChatApiLabels(uint64(l))
+	n += 1 + sovChatApiLabels(uint64(m.LabelID))
+	n += 1 + sovChatApiLabels(uint64(m.MinID))
+	n += 1 + sovChatApiLabels(uint64(m.MaxID))
+	n += 1 + sovChatApiLabels(uint64(m.Limit))
 	return n
 }
 
-func (m *LabelsMany) Size() (n int) {
+func (m *LabelItems) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.Labels) > 0 {
-		for _, e := range m.Labels {
+	n += 1 + sovChatApiLabels(uint64(m.LabelID))
+	if len(m.Messages) > 0 {
+		for _, e := range m.Messages {
+			l = e.Size()
+			n += 1 + l + sovChatApiLabels(uint64(l))
+		}
+	}
+	if len(m.Dialogs) > 0 {
+		for _, e := range m.Dialogs {
 			l = e.Size()
 			n += 1 + l + sovChatApiLabels(uint64(l))
 		}
@@ -1114,6 +1198,39 @@ func (m *LabelsSet) Unmarshal(dAtA []byte) error {
 			m.Name = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Colour", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Colour = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000004)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipChatApiLabels(dAtA[iNdEx:])
@@ -1137,6 +1254,9 @@ func (m *LabelsSet) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Colour")
 	}
 
 	if iNdEx > l {
@@ -2182,7 +2302,7 @@ func (m *LabelsRemoveFromMessage) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *Label) Unmarshal(dAtA []byte) error {
+func (m *LabelsListItems) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
 	iNdEx := 0
@@ -2206,17 +2326,17 @@ func (m *Label) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: Label: wiretype end group for non-group")
+			return fmt.Errorf("proto: LabelsListItems: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Label: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: LabelsListItems: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ID", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field LabelID", wireType)
 			}
-			m.ID = 0
+			m.LabelID = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowChatApiLabels
@@ -2226,17 +2346,17 @@ func (m *Label) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ID |= int32(b&0x7F) << shift
+				m.LabelID |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
 			hasFields[0] |= uint64(0x00000001)
 		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MinID", wireType)
 			}
-			var stringLen uint64
+			m.MinID = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowChatApiLabels
@@ -2246,25 +2366,49 @@ func (m *Label) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				m.MinID |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatApiLabels
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxID", wireType)
 			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatApiLabels
+			m.MaxID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.MaxID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
 			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Limit", wireType)
 			}
-			m.Name = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
+			m.Limit = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Limit |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
 		default:
 			iNdEx = preIndex
 			skippy, err := skipChatApiLabels(dAtA[iNdEx:])
@@ -2284,10 +2428,7 @@ func (m *Label) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ID")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("LabelID")
 	}
 
 	if iNdEx > l {
@@ -2295,7 +2436,8 @@ func (m *Label) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *LabelsMany) Unmarshal(dAtA []byte) error {
+func (m *LabelItems) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2318,15 +2460,35 @@ func (m *LabelsMany) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: LabelsMany: wiretype end group for non-group")
+			return fmt.Errorf("proto: LabelItems: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: LabelsMany: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: LabelItems: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LabelID", wireType)
+			}
+			m.LabelID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.LabelID |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Labels", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Messages", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -2353,8 +2515,42 @@ func (m *LabelsMany) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Labels = append(m.Labels, &Label{})
-			if err := m.Labels[len(m.Labels)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.Messages = append(m.Messages, &UserMessage{})
+			if err := m.Messages[len(m.Messages)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Dialogs", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Dialogs = append(m.Dialogs, &Dialog{})
+			if err := m.Dialogs[len(m.Dialogs)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -2375,6 +2571,9 @@ func (m *LabelsMany) Unmarshal(dAtA []byte) error {
 			}
 			iNdEx += skippy
 		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("LabelID")
 	}
 
 	if iNdEx > l {

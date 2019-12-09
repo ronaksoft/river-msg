@@ -246,3 +246,10 @@ message UpdateLabelRemoved {
     repeated int64 MessageIDs = 3;
     repeated int32 LabelIDs = 4;
 }
+
+// UpdateLabel
+message UpdateLabel {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    repeated Label Labels = 1;
+}

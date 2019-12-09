@@ -1,5 +1,6 @@
 syntax = "proto2";
 package msg;
+import "chat.core.types.proto";
 
 // LabelsSet
 // @Function
@@ -7,6 +8,7 @@ package msg;
 message LabelsSet {
     required int32 LabelID = 1;
     required string Name = 2;
+    required string Colour = 3;
 }
 
 // LabelsDelete
@@ -60,13 +62,19 @@ message LabelsRemoveFromMessage {
     repeated int64 MessageIDs = 4;
 }
 
-// Label
-message Label {
-    required int32 ID = 1;
-    required string Name = 2;
+// LabelsListItems
+// @Function
+// @Returns: LabelItems
+message LabelsListItems {
+    required int32 LabelID = 1;
+    optional int64 MinID = 2;
+    optional int64 MaxID = 3;
+    optional int32 Limit = 4;
 }
 
-// LabelsMany
-message LabelsMany {
-    repeated Label Labels = 1;
+// LabelItems
+message LabelItems {
+    required int32 LabelID = 1;
+    repeated UserMessage Messages = 2;
+    repeated Dialog Dialogs = 3;
 }

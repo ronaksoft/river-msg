@@ -1,0 +1,19 @@
+
+{
+    "ConstructorsByName": {
+        "Message1": 3131464828,
+	    "Message2": 598674886,
+	    "Message22": 1760654981,
+	    "Message33": 116225874,
+	    "Messagewfwefe1": 729468012,
+	    "Messfewfwefwefwage2": 830313770,
+	},
+	"ConstructorsByValue": { 
+	    3131464828: "Message1",
+	    598674886: "Message2",
+	    1760654981: "Message22",
+	    116225874: "Message33",
+	    729468012: "Messagewfwefe1",
+	    830313770: "Messfewfwefwefwage2",
+	}
+}

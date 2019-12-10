@@ -142,6 +142,7 @@ func (p *poolClientFile) Get() *ClientFile {
 	x.PeerID = 0
 	x.PeerType = 0
 	x.Version = 0
+	x.Extension = ""
 	return x
 }
 

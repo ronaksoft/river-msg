@@ -84,4 +84,8 @@ const (
 	ErrItemUnMarshal        = "UNMARSHAL"
 	ErrItemName             = "NAME"
 	ErrItemColour           = "COLOUR"
+	ErrItemLabelID          = "LABEL_ID"
+	ErrItemLabelName        = "LABEL_NAME"
+	ErrItemLabelColour      = "LABEL_COLOUR"
+	ErrItemLabel            = "LABEL"
 )

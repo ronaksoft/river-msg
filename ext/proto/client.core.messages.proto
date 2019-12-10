@@ -78,6 +78,7 @@ message ClientFile {
     optional int64 PeerID = 10;
     optional int32 PeerType = 11;
     optional int32 Version = 12;
+    optional string Extension = 13;
 }
 
 // ClientFileStatus

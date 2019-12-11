@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // ContactsImport
 // @Function
@@ -45,7 +45,7 @@ func (m *ContactsImport) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_ContactsImport.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -100,7 +100,7 @@ func (m *ContactsGet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_ContactsGet.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -147,7 +147,7 @@ func (m *ContactsDelete) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return xxx_messageInfo_ContactsDelete.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -193,7 +193,7 @@ func (m *ContactsImported) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return xxx_messageInfo_ContactsImported.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -248,7 +248,7 @@ func (m *ContactsMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_ContactsMany.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -332,7 +332,7 @@ var fileDescriptor_133508c6c9c8f6f5 = []byte{
 func (m *ContactsImport) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -340,44 +340,37 @@ func (m *ContactsImport) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactsImport) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactsImport) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i--
+	if len(m.Contacts) > 0 {
+		for _, msg := range m.Contacts {
+			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	dAtA[i] = 0x10
+	i++
 	if m.Replace {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x10
-	if len(m.Contacts) > 0 {
-		for iNdEx := len(m.Contacts) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Contacts[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	i++
+	return i, nil
 }
 
 func (m *ContactsGet) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -385,25 +378,20 @@ func (m *ContactsGet) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactsGet) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactsGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Crc32Hash))
-	i--
 	dAtA[i] = 0x10
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Crc32Hash))
+	return i, nil
 }
 
 func (m *ContactsDelete) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -411,29 +399,24 @@ func (m *ContactsDelete) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactsDelete) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactsDelete) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.UserIDs) > 0 {
-		for iNdEx := len(m.UserIDs) - 1; iNdEx >= 0; iNdEx-- {
-			i = encodeVarintChatApiContacts(dAtA, i, uint64(m.UserIDs[iNdEx]))
-			i--
+		for _, num := range m.UserIDs {
 			dAtA[i] = 0x8
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(num))
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *ContactsImported) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -441,50 +424,41 @@ func (m *ContactsImported) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactsImported) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactsImported) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.Users) > 0 {
-		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x12
-		}
-	}
 	if len(m.ContactUsers) > 0 {
-		for iNdEx := len(m.ContactUsers) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.ContactUsers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.ContactUsers {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	if len(m.Users) > 0 {
+		for _, msg := range m.Users {
+			dAtA[i] = 0x12
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	return i, nil
 }
 
 func (m *ContactsMany) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -492,78 +466,65 @@ func (m *ContactsMany) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ContactsMany) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ContactsMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if len(m.Users) > 0 {
-		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+	if len(m.Contacts) > 0 {
+		for _, msg := range m.Contacts {
+			dAtA[i] = 0xa
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
 			}
-			i--
-			dAtA[i] = 0x22
+			i += n
 		}
 	}
-	i--
+	if len(m.ContactUsers) > 0 {
+		for _, msg := range m.ContactUsers {
+			dAtA[i] = 0x12
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
+		}
+	}
+	dAtA[i] = 0x18
+	i++
 	if m.Modified {
 		dAtA[i] = 1
 	} else {
 		dAtA[i] = 0
 	}
-	i--
-	dAtA[i] = 0x18
-	if len(m.ContactUsers) > 0 {
-		for iNdEx := len(m.ContactUsers) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.ContactUsers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+	i++
+	if len(m.Users) > 0 {
+		for _, msg := range m.Users {
+			dAtA[i] = 0x22
+			i++
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
 			}
-			i--
-			dAtA[i] = 0x12
+			i += n
 		}
 	}
-	if len(m.Contacts) > 0 {
-		for iNdEx := len(m.Contacts) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Contacts[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0xa
-		}
-	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintChatApiContacts(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiContacts(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *ContactsImport) Size() (n int) {
 	if m == nil {
@@ -1282,7 +1243,6 @@ func (m *ContactsMany) Unmarshal(dAtA []byte) error {
 func skipChatApiContacts(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
-	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -1314,8 +1274,10 @@ func skipChatApiContacts(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
+			return iNdEx, nil
 		case 1:
 			iNdEx += 8
+			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -1336,30 +1298,55 @@ func skipChatApiContacts(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiContacts
 			}
 			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupChatApiContacts
+			if iNdEx < 0 {
+				return 0, ErrInvalidLengthChatApiContacts
 			}
-			depth--
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowChatApiContacts
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipChatApiContacts(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiContacts
+				}
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
 		case 5:
 			iNdEx += 4
+			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthChatApiContacts
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
 	}
-	return 0, io.ErrUnexpectedEOF
+	panic("unreachable")
 }
 
 var (
-	ErrInvalidLengthChatApiContacts        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiContacts          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupChatApiContacts = fmt.Errorf("proto: unexpected end of group")
+	ErrInvalidLengthChatApiContacts = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiContacts   = fmt.Errorf("proto: integer overflow")
 )

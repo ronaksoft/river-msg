@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
 // EchoWithDelay
 type EchoWithDelay struct {
@@ -42,7 +42,7 @@ func (m *EchoWithDelay) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return xxx_messageInfo_EchoWithDelay.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -87,7 +87,7 @@ func (m *TestRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return xxx_messageInfo_TestRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -138,7 +138,7 @@ func (m *TestResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_TestResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -183,7 +183,7 @@ func (m *TestRequestWithString) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return xxx_messageInfo_TestRequestWithString.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -234,7 +234,7 @@ func (m *TestResponseWithString) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return xxx_messageInfo_TestResponseWithString.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -291,7 +291,7 @@ var fileDescriptor_d549237421a44291 = []byte{
 func (m *EchoWithDelay) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -299,25 +299,20 @@ func (m *EchoWithDelay) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *EchoWithDelay) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *EchoWithDelay) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintChatApiDev(dAtA, i, uint64(m.DelayInSeconds))
-	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiDev(dAtA, i, uint64(m.DelayInSeconds))
+	return i, nil
 }
 
 func (m *TestRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -325,36 +320,29 @@ func (m *TestRequest) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *TestRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TestRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	if m.Hash != nil {
-		i -= len(m.Hash)
-		copy(dAtA[i:], m.Hash)
-		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
-		i--
-		dAtA[i] = 0x12
-	}
 	if m.Payload != nil {
-		i -= len(m.Payload)
-		copy(dAtA[i:], m.Payload)
-		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Payload)))
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Payload)))
+		i += copy(dAtA[i:], m.Payload)
 	}
-	return len(dAtA) - i, nil
+	if m.Hash != nil {
+		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+		i += copy(dAtA[i:], m.Hash)
+	}
+	return i, nil
 }
 
 func (m *TestResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -362,29 +350,23 @@ func (m *TestResponse) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *TestResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TestResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Hash != nil {
-		i -= len(m.Hash)
-		copy(dAtA[i:], m.Hash)
-		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
-		i--
 		dAtA[i] = 0x12
+		i++
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+		i += copy(dAtA[i:], m.Hash)
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *TestRequestWithString) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -392,32 +374,25 @@ func (m *TestRequestWithString) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *TestRequestWithString) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TestRequestWithString) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i -= len(m.Hash)
-	copy(dAtA[i:], m.Hash)
-	i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Payload)
-	copy(dAtA[i:], m.Payload)
-	i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Payload)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Payload)))
+	i += copy(dAtA[i:], m.Payload)
+	dAtA[i] = 0x12
+	i++
+	i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+	i += copy(dAtA[i:], m.Hash)
+	return i, nil
 }
 
 func (m *TestResponseWithString) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -425,35 +400,27 @@ func (m *TestResponseWithString) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *TestResponseWithString) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TestResponseWithString) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if m.Hash != nil {
-		i -= len(m.Hash)
-		copy(dAtA[i:], m.Hash)
-		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
-		i--
 		dAtA[i] = 0xa
+		i++
+		i = encodeVarintChatApiDev(dAtA, i, uint64(len(m.Hash)))
+		i += copy(dAtA[i:], m.Hash)
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func encodeVarintChatApiDev(dAtA []byte, offset int, v uint64) int {
-	offset -= sovChatApiDev(v)
-	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return base
+	return offset + 1
 }
 func (m *EchoWithDelay) Size() (n int) {
 	if m == nil {
@@ -1047,7 +1014,6 @@ func (m *TestResponseWithString) Unmarshal(dAtA []byte) error {
 func skipChatApiDev(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
-	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -1079,8 +1045,10 @@ func skipChatApiDev(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
+			return iNdEx, nil
 		case 1:
 			iNdEx += 8
+			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -1101,30 +1069,55 @@ func skipChatApiDev(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthChatApiDev
 			}
 			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupChatApiDev
+			if iNdEx < 0 {
+				return 0, ErrInvalidLengthChatApiDev
 			}
-			depth--
+			return iNdEx, nil
+		case 3:
+			for {
+				var innerWire uint64
+				var start int = iNdEx
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return 0, ErrIntOverflowChatApiDev
+					}
+					if iNdEx >= l {
+						return 0, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					innerWire |= (uint64(b) & 0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				innerWireType := int(innerWire & 0x7)
+				if innerWireType == 4 {
+					break
+				}
+				next, err := skipChatApiDev(dAtA[start:])
+				if err != nil {
+					return 0, err
+				}
+				iNdEx = start + next
+				if iNdEx < 0 {
+					return 0, ErrInvalidLengthChatApiDev
+				}
+			}
+			return iNdEx, nil
+		case 4:
+			return iNdEx, nil
 		case 5:
 			iNdEx += 4
+			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthChatApiDev
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
 	}
-	return 0, io.ErrUnexpectedEOF
+	panic("unreachable")
 }
 
 var (
-	ErrInvalidLengthChatApiDev        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowChatApiDev          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupChatApiDev = fmt.Errorf("proto: unexpected end of group")
+	ErrInvalidLengthChatApiDev = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowChatApiDev   = fmt.Errorf("proto: integer overflow")
 )

@@ -53,6 +53,20 @@ enum PushProviderType {
     Apple = 2;
     PushKit = 3;
 }
+message ReserveUsername {
+    required string Username = 1 [(gogoproto.jsontag) = "username", (gogoproto.moretags) = "bson:\"username\""];
+    optional UpdateReserveUserNameType Type = 2 [(gogoproto.jsontag) = "type,omitempty", (gogoproto.moretags) = "bson:\"type\""];
+}
+
+message GetReserveUserNamesRequest {
+}
+message GetReservedUserNamesResponse {
+    repeated ReserveUsername ReserveUserNames = 1;
+}
+enum UpdateReserveUserNameType {
+    Delete = 0;
+    Insert = 1;
+}
 
 message GetNotifTemplatesRequest {
 }

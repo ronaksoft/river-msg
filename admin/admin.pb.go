@@ -465,7 +465,7 @@ func (m *ReserveUsername) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return xxx_messageInfo_ReserveUsername.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -515,7 +515,7 @@ func (m *GetReserveUserNamesRequest) XXX_Marshal(b []byte, deterministic bool) (
 		return xxx_messageInfo_GetReserveUserNamesRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -552,7 +552,7 @@ func (m *GetReservedUserNamesResponse) XXX_Marshal(b []byte, deterministic bool)
 		return xxx_messageInfo_GetReservedUserNamesResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
+		n, err := m.MarshalTo(b)
 		if err != nil {
 			return nil, err
 		}
@@ -1208,7 +1208,7 @@ func (m *PushProvider) MarshalTo(dAtA []byte) (int, error) {
 func (m *ReserveUsername) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1216,30 +1216,24 @@ func (m *ReserveUsername) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *ReserveUsername) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ReserveUsername) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	i = encodeVarintAdmin(dAtA, i, uint64(m.Type))
-	i--
-	dAtA[i] = 0x10
-	i -= len(m.Username)
-	copy(dAtA[i:], m.Username)
-	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Username)))
-	i--
 	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
+	i++
+	i = encodeVarintAdmin(dAtA, i, uint64(len(m.Username)))
+	i += copy(dAtA[i:], m.Username)
+	dAtA[i] = 0x10
+	i++
+	i = encodeVarintAdmin(dAtA, i, uint64(m.Type))
+	return i, nil
 }
 
 func (m *GetReserveUserNamesRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1247,22 +1241,17 @@ func (m *GetReserveUserNamesRequest) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GetReserveUserNamesRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GetReserveUserNamesRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *GetReservedUserNamesResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	n, err := m.MarshalTo(dAtA)
 	if err != nil {
 		return nil, err
 	}
@@ -1270,30 +1259,23 @@ func (m *GetReservedUserNamesResponse) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *GetReservedUserNamesResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *GetReservedUserNamesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
+	var i int
 	_ = i
 	var l int
 	_ = l
 	if len(m.ReserveUserNames) > 0 {
-		for iNdEx := len(m.ReserveUserNames) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.ReserveUserNames[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintAdmin(dAtA, i, uint64(size))
-			}
-			i--
+		for _, msg := range m.ReserveUserNames {
 			dAtA[i] = 0xa
+			i++
+			i = encodeVarintAdmin(dAtA, i, uint64(msg.Size()))
+			n, err := msg.MarshalTo(dAtA[i:])
+			if err != nil {
+				return 0, err
+			}
+			i += n
 		}
 	}
-	return len(dAtA) - i, nil
+	return i, nil
 }
 
 func (m *GetNotifTemplatesRequest) Marshal() (dAtA []byte, err error) {

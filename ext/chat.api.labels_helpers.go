@@ -125,62 +125,6 @@ func ResultLabelsGet(out *MessageEnvelope, res *LabelsGet) {
 	res.MarshalTo(out.Message)
 }
 
-const C_LabelsAddToDialog int64 = 572246739
-
-type poolLabelsAddToDialog struct {
-	pool sync.Pool
-}
-
-func (p *poolLabelsAddToDialog) Get() *LabelsAddToDialog {
-	x, ok := p.pool.Get().(*LabelsAddToDialog)
-	if !ok {
-		return &LabelsAddToDialog{}
-	}
-	x.LabelIDs = x.LabelIDs[:0]
-	return x
-}
-
-func (p *poolLabelsAddToDialog) Put(x *LabelsAddToDialog) {
-	p.pool.Put(x)
-}
-
-var PoolLabelsAddToDialog = poolLabelsAddToDialog{}
-
-func ResultLabelsAddToDialog(out *MessageEnvelope, res *LabelsAddToDialog) {
-	out.Constructor = C_LabelsAddToDialog
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_LabelsRemoveFromDialog int64 = 2632121923
-
-type poolLabelsRemoveFromDialog struct {
-	pool sync.Pool
-}
-
-func (p *poolLabelsRemoveFromDialog) Get() *LabelsRemoveFromDialog {
-	x, ok := p.pool.Get().(*LabelsRemoveFromDialog)
-	if !ok {
-		return &LabelsRemoveFromDialog{}
-	}
-	x.LabelIDs = x.LabelIDs[:0]
-	return x
-}
-
-func (p *poolLabelsRemoveFromDialog) Put(x *LabelsRemoveFromDialog) {
-	p.pool.Put(x)
-}
-
-var PoolLabelsRemoveFromDialog = poolLabelsRemoveFromDialog{}
-
-func ResultLabelsRemoveFromDialog(out *MessageEnvelope, res *LabelsRemoveFromDialog) {
-	out.Constructor = C_LabelsRemoveFromDialog
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_LabelsAddToMessage int64 = 180144503
 
 type poolLabelsAddToMessage struct {
@@ -303,8 +247,6 @@ func init() {
 	ConstructorNames[2790466877] = "LabelsEdit"
 	ConstructorNames[3401105936] = "LabelsDelete"
 	ConstructorNames[2575409921] = "LabelsGet"
-	ConstructorNames[572246739] = "LabelsAddToDialog"
-	ConstructorNames[2632121923] = "LabelsRemoveFromDialog"
 	ConstructorNames[180144503] = "LabelsAddToMessage"
 	ConstructorNames[4195197703] = "LabelsRemoveFromMessage"
 	ConstructorNames[2351763198] = "LabelsListItems"

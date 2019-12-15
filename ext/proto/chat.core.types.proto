@@ -92,7 +92,6 @@ message Dialog {
     optional int32 MentionedCount = 9;
     required bool Pinned = 10;
     optional DraftMessage Draft = 11;
-    repeated int32 LabelIDs = 12;
 }
 
 // Peer

@@ -793,87 +793,115 @@ func ResultUpdateAccountPrivacy(out *MessageEnvelope, res *UpdateAccountPrivacy)
 	res.MarshalTo(out.Message)
 }
 
-const C_UpdateLabelAdded int64 = 797455885
+const C_UpdateLabelItemsAdded int64 = 2216022057
 
-type poolUpdateLabelAdded struct {
+type poolUpdateLabelItemsAdded struct {
 	pool sync.Pool
 }
 
-func (p *poolUpdateLabelAdded) Get() *UpdateLabelAdded {
-	x, ok := p.pool.Get().(*UpdateLabelAdded)
+func (p *poolUpdateLabelItemsAdded) Get() *UpdateLabelItemsAdded {
+	x, ok := p.pool.Get().(*UpdateLabelItemsAdded)
 	if !ok {
-		return &UpdateLabelAdded{}
+		return &UpdateLabelItemsAdded{}
 	}
 	x.MessageIDs = x.MessageIDs[:0]
 	x.LabelIDs = x.LabelIDs[:0]
 	return x
 }
 
-func (p *poolUpdateLabelAdded) Put(x *UpdateLabelAdded) {
+func (p *poolUpdateLabelItemsAdded) Put(x *UpdateLabelItemsAdded) {
 	p.pool.Put(x)
 }
 
-var PoolUpdateLabelAdded = poolUpdateLabelAdded{}
+var PoolUpdateLabelItemsAdded = poolUpdateLabelItemsAdded{}
 
-func ResultUpdateLabelAdded(out *MessageEnvelope, res *UpdateLabelAdded) {
-	out.Constructor = C_UpdateLabelAdded
+func ResultUpdateLabelItemsAdded(out *MessageEnvelope, res *UpdateLabelItemsAdded) {
+	out.Constructor = C_UpdateLabelItemsAdded
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
-const C_UpdateLabelRemoved int64 = 2315078909
+const C_UpdateLabelItemsRemoved int64 = 830226827
 
-type poolUpdateLabelRemoved struct {
+type poolUpdateLabelItemsRemoved struct {
 	pool sync.Pool
 }
 
-func (p *poolUpdateLabelRemoved) Get() *UpdateLabelRemoved {
-	x, ok := p.pool.Get().(*UpdateLabelRemoved)
+func (p *poolUpdateLabelItemsRemoved) Get() *UpdateLabelItemsRemoved {
+	x, ok := p.pool.Get().(*UpdateLabelItemsRemoved)
 	if !ok {
-		return &UpdateLabelRemoved{}
+		return &UpdateLabelItemsRemoved{}
 	}
 	x.MessageIDs = x.MessageIDs[:0]
 	x.LabelIDs = x.LabelIDs[:0]
 	return x
 }
 
-func (p *poolUpdateLabelRemoved) Put(x *UpdateLabelRemoved) {
+func (p *poolUpdateLabelItemsRemoved) Put(x *UpdateLabelItemsRemoved) {
 	p.pool.Put(x)
 }
 
-var PoolUpdateLabelRemoved = poolUpdateLabelRemoved{}
+var PoolUpdateLabelItemsRemoved = poolUpdateLabelItemsRemoved{}
 
-func ResultUpdateLabelRemoved(out *MessageEnvelope, res *UpdateLabelRemoved) {
-	out.Constructor = C_UpdateLabelRemoved
+func ResultUpdateLabelItemsRemoved(out *MessageEnvelope, res *UpdateLabelItemsRemoved) {
+	out.Constructor = C_UpdateLabelItemsRemoved
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
-const C_UpdateLabel int64 = 3233011647
+const C_UpdateLabelSet int64 = 2353687359
 
-type poolUpdateLabel struct {
+type poolUpdateLabelSet struct {
 	pool sync.Pool
 }
 
-func (p *poolUpdateLabel) Get() *UpdateLabel {
-	x, ok := p.pool.Get().(*UpdateLabel)
+func (p *poolUpdateLabelSet) Get() *UpdateLabelSet {
+	x, ok := p.pool.Get().(*UpdateLabelSet)
 	if !ok {
-		return &UpdateLabel{}
+		return &UpdateLabelSet{}
 	}
 	x.Labels = x.Labels[:0]
 	return x
 }
 
-func (p *poolUpdateLabel) Put(x *UpdateLabel) {
+func (p *poolUpdateLabelSet) Put(x *UpdateLabelSet) {
 	p.pool.Put(x)
 }
 
-var PoolUpdateLabel = poolUpdateLabel{}
+var PoolUpdateLabelSet = poolUpdateLabelSet{}
 
-func ResultUpdateLabel(out *MessageEnvelope, res *UpdateLabel) {
-	out.Constructor = C_UpdateLabel
+func ResultUpdateLabelSet(out *MessageEnvelope, res *UpdateLabelSet) {
+	out.Constructor = C_UpdateLabelSet
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_UpdateLabelDeleted int64 = 3702192307
+
+type poolUpdateLabelDeleted struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateLabelDeleted) Get() *UpdateLabelDeleted {
+	x, ok := p.pool.Get().(*UpdateLabelDeleted)
+	if !ok {
+		return &UpdateLabelDeleted{}
+	}
+	x.LabelIDs = x.LabelIDs[:0]
+	return x
+}
+
+func (p *poolUpdateLabelDeleted) Put(x *UpdateLabelDeleted) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateLabelDeleted = poolUpdateLabelDeleted{}
+
+func ResultUpdateLabelDeleted(out *MessageEnvelope, res *UpdateLabelDeleted) {
+	out.Constructor = C_UpdateLabelDeleted
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -908,7 +936,8 @@ func init() {
 	ConstructorNames[231538299] = "UpdateDialogPinned"
 	ConstructorNames[1567423539] = "UpdateDialogPinnedReorder"
 	ConstructorNames[629173761] = "UpdateAccountPrivacy"
-	ConstructorNames[797455885] = "UpdateLabelAdded"
-	ConstructorNames[2315078909] = "UpdateLabelRemoved"
-	ConstructorNames[3233011647] = "UpdateLabel"
+	ConstructorNames[2216022057] = "UpdateLabelItemsAdded"
+	ConstructorNames[830226827] = "UpdateLabelItemsRemoved"
+	ConstructorNames[2353687359] = "UpdateLabelSet"
+	ConstructorNames[3702192307] = "UpdateLabelDeleted"
 }

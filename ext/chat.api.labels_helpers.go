@@ -16,28 +16,55 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-const C_LabelsSet int64 = 2192484525
+const C_LabelsCreate int64 = 2138857068
 
-type poolLabelsSet struct {
+type poolLabelsCreate struct {
 	pool sync.Pool
 }
 
-func (p *poolLabelsSet) Get() *LabelsSet {
-	x, ok := p.pool.Get().(*LabelsSet)
+func (p *poolLabelsCreate) Get() *LabelsCreate {
+	x, ok := p.pool.Get().(*LabelsCreate)
 	if !ok {
-		return &LabelsSet{}
+		return &LabelsCreate{}
 	}
 	return x
 }
 
-func (p *poolLabelsSet) Put(x *LabelsSet) {
+func (p *poolLabelsCreate) Put(x *LabelsCreate) {
 	p.pool.Put(x)
 }
 
-var PoolLabelsSet = poolLabelsSet{}
+var PoolLabelsCreate = poolLabelsCreate{}
 
-func ResultLabelsSet(out *MessageEnvelope, res *LabelsSet) {
-	out.Constructor = C_LabelsSet
+func ResultLabelsCreate(out *MessageEnvelope, res *LabelsCreate) {
+	out.Constructor = C_LabelsCreate
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_LabelsEdit int64 = 2790466877
+
+type poolLabelsEdit struct {
+	pool sync.Pool
+}
+
+func (p *poolLabelsEdit) Get() *LabelsEdit {
+	x, ok := p.pool.Get().(*LabelsEdit)
+	if !ok {
+		return &LabelsEdit{}
+	}
+	return x
+}
+
+func (p *poolLabelsEdit) Put(x *LabelsEdit) {
+	p.pool.Put(x)
+}
+
+var PoolLabelsEdit = poolLabelsEdit{}
+
+func ResultLabelsEdit(out *MessageEnvelope, res *LabelsEdit) {
+	out.Constructor = C_LabelsEdit
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -272,7 +299,8 @@ func ResultLabelItems(out *MessageEnvelope, res *LabelItems) {
 }
 
 func init() {
-	ConstructorNames[2192484525] = "LabelsSet"
+	ConstructorNames[2138857068] = "LabelsCreate"
+	ConstructorNames[2790466877] = "LabelsEdit"
 	ConstructorNames[3401105936] = "LabelsDelete"
 	ConstructorNames[2575409921] = "LabelsGet"
 	ConstructorNames[572246739] = "LabelsAddToDialog"

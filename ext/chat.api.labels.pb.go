@@ -23,27 +23,26 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// LabelsSet
+// LabelsCreate
 // @Function
-// @Returns: Bool
-type LabelsSet struct {
-	LabelID int32  `protobuf:"varint,1,req,name=LabelID" json:"LabelID"`
-	Name    string `protobuf:"bytes,2,req,name=Name" json:"Name"`
-	Colour  string `protobuf:"bytes,3,req,name=Colour" json:"Colour"`
+// @Returns Bool
+type LabelsCreate struct {
+	Name   string `protobuf:"bytes,2,req,name=Name" json:"Name"`
+	Colour string `protobuf:"bytes,3,req,name=Colour" json:"Colour"`
 }
 
-func (m *LabelsSet) Reset()         { *m = LabelsSet{} }
-func (m *LabelsSet) String() string { return proto.CompactTextString(m) }
-func (*LabelsSet) ProtoMessage()    {}
-func (*LabelsSet) Descriptor() ([]byte, []int) {
+func (m *LabelsCreate) Reset()         { *m = LabelsCreate{} }
+func (m *LabelsCreate) String() string { return proto.CompactTextString(m) }
+func (*LabelsCreate) ProtoMessage()    {}
+func (*LabelsCreate) Descriptor() ([]byte, []int) {
 	return fileDescriptor_19cf62577bbff668, []int{0}
 }
-func (m *LabelsSet) XXX_Unmarshal(b []byte) error {
+func (m *LabelsCreate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *LabelsSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *LabelsCreate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_LabelsSet.Marshal(b, m, deterministic)
+		return xxx_messageInfo_LabelsCreate.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -53,33 +52,89 @@ func (m *LabelsSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *LabelsSet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LabelsSet.Merge(m, src)
+func (m *LabelsCreate) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelsCreate.Merge(m, src)
 }
-func (m *LabelsSet) XXX_Size() int {
+func (m *LabelsCreate) XXX_Size() int {
 	return m.Size()
 }
-func (m *LabelsSet) XXX_DiscardUnknown() {
-	xxx_messageInfo_LabelsSet.DiscardUnknown(m)
+func (m *LabelsCreate) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelsCreate.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_LabelsSet proto.InternalMessageInfo
+var xxx_messageInfo_LabelsCreate proto.InternalMessageInfo
 
-func (m *LabelsSet) GetLabelID() int32 {
-	if m != nil {
-		return m.LabelID
-	}
-	return 0
-}
-
-func (m *LabelsSet) GetName() string {
+func (m *LabelsCreate) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *LabelsSet) GetColour() string {
+func (m *LabelsCreate) GetColour() string {
+	if m != nil {
+		return m.Colour
+	}
+	return ""
+}
+
+// LabelsEdit
+// @Function
+// @Returns: Bool
+type LabelsEdit struct {
+	LabelID int32  `protobuf:"varint,1,req,name=LabelID" json:"LabelID"`
+	Name    string `protobuf:"bytes,2,req,name=Name" json:"Name"`
+	Colour  string `protobuf:"bytes,3,req,name=Colour" json:"Colour"`
+}
+
+func (m *LabelsEdit) Reset()         { *m = LabelsEdit{} }
+func (m *LabelsEdit) String() string { return proto.CompactTextString(m) }
+func (*LabelsEdit) ProtoMessage()    {}
+func (*LabelsEdit) Descriptor() ([]byte, []int) {
+	return fileDescriptor_19cf62577bbff668, []int{1}
+}
+func (m *LabelsEdit) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *LabelsEdit) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_LabelsEdit.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *LabelsEdit) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LabelsEdit.Merge(m, src)
+}
+func (m *LabelsEdit) XXX_Size() int {
+	return m.Size()
+}
+func (m *LabelsEdit) XXX_DiscardUnknown() {
+	xxx_messageInfo_LabelsEdit.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LabelsEdit proto.InternalMessageInfo
+
+func (m *LabelsEdit) GetLabelID() int32 {
+	if m != nil {
+		return m.LabelID
+	}
+	return 0
+}
+
+func (m *LabelsEdit) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *LabelsEdit) GetColour() string {
 	if m != nil {
 		return m.Colour
 	}
@@ -97,7 +152,7 @@ func (m *LabelsDelete) Reset()         { *m = LabelsDelete{} }
 func (m *LabelsDelete) String() string { return proto.CompactTextString(m) }
 func (*LabelsDelete) ProtoMessage()    {}
 func (*LabelsDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{1}
+	return fileDescriptor_19cf62577bbff668, []int{2}
 }
 func (m *LabelsDelete) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -143,7 +198,7 @@ func (m *LabelsGet) Reset()         { *m = LabelsGet{} }
 func (m *LabelsGet) String() string { return proto.CompactTextString(m) }
 func (*LabelsGet) ProtoMessage()    {}
 func (*LabelsGet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{2}
+	return fileDescriptor_19cf62577bbff668, []int{3}
 }
 func (m *LabelsGet) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -185,7 +240,7 @@ func (m *LabelsAddToDialog) Reset()         { *m = LabelsAddToDialog{} }
 func (m *LabelsAddToDialog) String() string { return proto.CompactTextString(m) }
 func (*LabelsAddToDialog) ProtoMessage()    {}
 func (*LabelsAddToDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{3}
+	return fileDescriptor_19cf62577bbff668, []int{4}
 }
 func (m *LabelsAddToDialog) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -248,7 +303,7 @@ func (m *LabelsRemoveFromDialog) Reset()         { *m = LabelsRemoveFromDialog{}
 func (m *LabelsRemoveFromDialog) String() string { return proto.CompactTextString(m) }
 func (*LabelsRemoveFromDialog) ProtoMessage()    {}
 func (*LabelsRemoveFromDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{4}
+	return fileDescriptor_19cf62577bbff668, []int{5}
 }
 func (m *LabelsRemoveFromDialog) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -312,7 +367,7 @@ func (m *LabelsAddToMessage) Reset()         { *m = LabelsAddToMessage{} }
 func (m *LabelsAddToMessage) String() string { return proto.CompactTextString(m) }
 func (*LabelsAddToMessage) ProtoMessage()    {}
 func (*LabelsAddToMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{5}
+	return fileDescriptor_19cf62577bbff668, []int{6}
 }
 func (m *LabelsAddToMessage) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -383,7 +438,7 @@ func (m *LabelsRemoveFromMessage) Reset()         { *m = LabelsRemoveFromMessage
 func (m *LabelsRemoveFromMessage) String() string { return proto.CompactTextString(m) }
 func (*LabelsRemoveFromMessage) ProtoMessage()    {}
 func (*LabelsRemoveFromMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{6}
+	return fileDescriptor_19cf62577bbff668, []int{7}
 }
 func (m *LabelsRemoveFromMessage) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -454,7 +509,7 @@ func (m *LabelsListItems) Reset()         { *m = LabelsListItems{} }
 func (m *LabelsListItems) String() string { return proto.CompactTextString(m) }
 func (*LabelsListItems) ProtoMessage()    {}
 func (*LabelsListItems) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{7}
+	return fileDescriptor_19cf62577bbff668, []int{8}
 }
 func (m *LabelsListItems) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -522,7 +577,7 @@ func (m *LabelItems) Reset()         { *m = LabelItems{} }
 func (m *LabelItems) String() string { return proto.CompactTextString(m) }
 func (*LabelItems) ProtoMessage()    {}
 func (*LabelItems) Descriptor() ([]byte, []int) {
-	return fileDescriptor_19cf62577bbff668, []int{8}
+	return fileDescriptor_19cf62577bbff668, []int{9}
 }
 func (m *LabelItems) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -573,7 +628,8 @@ func (m *LabelItems) GetDialogs() []*Dialog {
 }
 
 func init() {
-	proto.RegisterType((*LabelsSet)(nil), "msg.LabelsSet")
+	proto.RegisterType((*LabelsCreate)(nil), "msg.LabelsCreate")
+	proto.RegisterType((*LabelsEdit)(nil), "msg.LabelsEdit")
 	proto.RegisterType((*LabelsDelete)(nil), "msg.LabelsDelete")
 	proto.RegisterType((*LabelsGet)(nil), "msg.LabelsGet")
 	proto.RegisterType((*LabelsAddToDialog)(nil), "msg.LabelsAddToDialog")
@@ -587,36 +643,36 @@ func init() {
 func init() { proto.RegisterFile("chat.api.labels.proto", fileDescriptor_19cf62577bbff668) }
 
 var fileDescriptor_19cf62577bbff668 = []byte{
-	// 402 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x92, 0xc1, 0xaa, 0xd3, 0x40,
-	0x14, 0x86, 0x33, 0x99, 0xd4, 0xdb, 0x7b, 0x22, 0xa8, 0x03, 0xea, 0x50, 0x64, 0x0c, 0x01, 0x21,
-	0x88, 0x64, 0xd1, 0x37, 0xb0, 0x06, 0x25, 0xd0, 0x8a, 0xc4, 0xfa, 0x00, 0xb1, 0x3d, 0xc4, 0x40,
-	0xe2, 0x84, 0xcc, 0x28, 0x76, 0xe9, 0xc2, 0x7d, 0x37, 0xbe, 0x53, 0x97, 0x5d, 0xba, 0x12, 0x69,
-	0x5f, 0x44, 0x92, 0x49, 0x42, 0xdb, 0x8d, 0x6e, 0x94, 0xbb, 0xcb, 0xfc, 0xdf, 0xe1, 0xfc, 0x5f,
-	0x86, 0x81, 0xfb, 0xab, 0x0f, 0xa9, 0x0e, 0xd3, 0x2a, 0x0f, 0x8b, 0xf4, 0x3d, 0x16, 0x2a, 0xac,
-	0x6a, 0xa9, 0x25, 0xa3, 0xa5, 0xca, 0x26, 0x86, 0xad, 0x64, 0x8d, 0xa1, 0xde, 0x54, 0xd8, 0x31,
-	0x7f, 0x05, 0xd7, 0xf3, 0x76, 0xf6, 0x2d, 0x6a, 0x26, 0xe0, 0xaa, 0x3d, 0xc4, 0x11, 0x27, 0x9e,
-	0x1d, 0x8c, 0x66, 0xce, 0xee, 0xe7, 0x63, 0x2b, 0xe9, 0x43, 0xc6, 0xc1, 0x79, 0x9d, 0x96, 0xc8,
-	0x6d, 0xcf, 0x0e, 0xae, 0x3b, 0xd8, 0x26, 0xec, 0x11, 0xdc, 0x7a, 0x21, 0x0b, 0xf9, 0xa9, 0xe6,
-	0xf4, 0x84, 0x75, 0x99, 0xff, 0x14, 0x6e, 0x9b, 0x92, 0x08, 0x0b, 0xd4, 0xc8, 0x26, 0x30, 0xee,
-	0x56, 0x2a, 0x4e, 0x3c, 0x1a, 0x8c, 0x92, 0xe1, 0xec, 0xbb, 0xbd, 0xd0, 0x2b, 0xd4, 0xbe, 0x84,
-	0x7b, 0xe6, 0xf0, 0x7c, 0xbd, 0x5e, 0xca, 0x28, 0x4f, 0x0b, 0x99, 0x31, 0x0f, 0xc6, 0x6f, 0x10,
-	0xeb, 0xe5, 0xa6, 0xc2, 0x33, 0xcd, 0x21, 0x6d, 0x6c, 0x9a, 0xef, 0x38, 0x6a, 0x4d, 0x69, 0x6f,
-	0x63, 0xb2, 0xb3, 0x76, 0x7a, 0xd1, 0xae, 0xe1, 0x81, 0x29, 0x4c, 0xb0, 0x94, 0x9f, 0xf1, 0x65,
-	0x2d, 0xcb, 0xff, 0xd0, 0xba, 0x25, 0xc0, 0x4e, 0xfe, 0x73, 0x81, 0x4a, 0xa5, 0x19, 0xfe, 0xcb,
-	0x4a, 0x26, 0x00, 0xba, 0x9a, 0x86, 0x3a, 0x1e, 0x0d, 0x68, 0x72, 0x92, 0xf8, 0xdf, 0x09, 0x3c,
-	0xbc, 0xbc, 0x89, 0x9b, 0xe0, 0xf5, 0x8d, 0xc0, 0x1d, 0xe3, 0x35, 0xcf, 0x95, 0x8e, 0x35, 0x96,
-	0xea, 0x8f, 0xcf, 0x76, 0x02, 0xa3, 0x45, 0xfe, 0xb1, 0x95, 0x21, 0x83, 0x8c, 0x89, 0x5a, 0x96,
-	0x7e, 0x89, 0x23, 0x4e, 0xcf, 0x58, 0x13, 0x35, 0x6c, 0x9e, 0x97, 0xb9, 0xe6, 0x8e, 0x47, 0x86,
-	0xad, 0x26, 0xf2, 0xbf, 0x12, 0x00, 0xb3, 0xff, 0xaf, 0x14, 0x9e, 0xc1, 0xb8, 0xfb, 0x09, 0xc5,
-	0x6d, 0x8f, 0x06, 0xee, 0xf4, 0x6e, 0x58, 0xaa, 0x2c, 0x7c, 0xa7, 0xb0, 0xee, 0x40, 0x32, 0x4c,
-	0xb0, 0x27, 0x70, 0x65, 0x5e, 0x9d, 0xb9, 0x1f, 0x77, 0xea, 0xb6, 0xc3, 0x26, 0x4b, 0x7a, 0x36,
-	0xe3, 0xbb, 0x83, 0x20, 0xfb, 0x83, 0x20, 0xbf, 0x0e, 0x82, 0x6c, 0x8f, 0xc2, 0xda, 0x1f, 0x85,
-	0xf5, 0xe3, 0x28, 0xac, 0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xe2, 0x72, 0x3b, 0xc1, 0x09, 0x04,
-	0x00, 0x00,
+	// 416 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x93, 0x41, 0x8b, 0xd4, 0x30,
+	0x18, 0x86, 0x27, 0x4d, 0xc7, 0x9d, 0xfd, 0x2a, 0xa8, 0x01, 0x35, 0x0c, 0x12, 0x4b, 0x41, 0x28,
+	0x22, 0x3d, 0xec, 0x3f, 0x70, 0xb7, 0xae, 0x14, 0x66, 0x45, 0xca, 0xfa, 0x03, 0xe2, 0xf6, 0xa3,
+	0x16, 0x5a, 0x53, 0x9a, 0x28, 0xee, 0xd1, 0x83, 0xf7, 0xbd, 0xf8, 0x9f, 0xf6, 0xb8, 0x47, 0x4f,
+	0x22, 0x33, 0x7f, 0x44, 0xda, 0xa4, 0x65, 0x66, 0x2e, 0x8a, 0xa0, 0x78, 0xeb, 0xf7, 0xbe, 0x2f,
+	0xdf, 0xfb, 0x24, 0xa4, 0x70, 0xff, 0xe2, 0x9d, 0x34, 0x89, 0x6c, 0xab, 0xa4, 0x96, 0x6f, 0xb1,
+	0xd6, 0x49, 0xdb, 0x29, 0xa3, 0x18, 0x6d, 0x74, 0xb9, 0xb4, 0xde, 0x85, 0xea, 0x30, 0x31, 0x97,
+	0x2d, 0x3a, 0x2f, 0x3a, 0x85, 0xdb, 0xab, 0x21, 0x7b, 0xd2, 0xa1, 0x34, 0xc8, 0x38, 0xf8, 0xaf,
+	0x64, 0x83, 0xdc, 0x0b, 0xbd, 0xf8, 0xf0, 0xd8, 0xbf, 0xfe, 0xfe, 0x78, 0x96, 0x0f, 0x0a, 0x7b,
+	0x04, 0xb7, 0x4e, 0x54, 0xad, 0x3e, 0x74, 0x9c, 0x6e, 0x79, 0x4e, 0x8b, 0x0a, 0x00, 0xbb, 0xe7,
+	0x45, 0x51, 0x19, 0x26, 0xe0, 0x60, 0x98, 0xb2, 0x94, 0x93, 0xd0, 0x8b, 0xe7, 0x2e, 0x3c, 0x8a,
+	0x7f, 0xdc, 0xf2, 0x74, 0xa4, 0x4d, 0xb1, 0x46, 0x83, 0x6c, 0x09, 0x0b, 0xb7, 0x52, 0x73, 0x12,
+	0xd2, 0x78, 0x9e, 0x4f, 0x73, 0x14, 0xc0, 0xa1, 0xcd, 0xbe, 0x44, 0x13, 0x29, 0xb8, 0x67, 0x87,
+	0xe7, 0x45, 0x71, 0xae, 0xd2, 0x4a, 0xd6, 0xaa, 0x64, 0x21, 0x2c, 0x5e, 0x23, 0x76, 0xe7, 0x97,
+	0x2d, 0xee, 0x60, 0x4e, 0x6a, 0x4f, 0xd3, 0x7f, 0x67, 0xe9, 0x40, 0x4a, 0x47, 0x1a, 0xab, 0xed,
+	0xb4, 0xd3, 0xbd, 0x76, 0x03, 0x0f, 0x6c, 0x61, 0x8e, 0x8d, 0xfa, 0x88, 0xa7, 0x9d, 0x6a, 0xfe,
+	0x41, 0xeb, 0x15, 0x01, 0xb6, 0x75, 0xce, 0x33, 0xd4, 0x5a, 0x96, 0xf8, 0x37, 0x2b, 0x99, 0x00,
+	0x70, 0x35, 0xbd, 0xeb, 0x87, 0x34, 0xa6, 0xf9, 0x96, 0x12, 0x7d, 0x25, 0xf0, 0x70, 0xff, 0x26,
+	0xfe, 0x07, 0xae, 0x2f, 0x04, 0xee, 0x58, 0xae, 0x55, 0xa5, 0x4d, 0x66, 0xb0, 0xd1, 0xbf, 0x7c,
+	0xb6, 0x4b, 0x98, 0x9f, 0x55, 0xef, 0x07, 0x18, 0x32, 0xc1, 0x58, 0x69, 0xf0, 0xe4, 0xa7, 0x2c,
+	0xe5, 0x74, 0xc7, 0xeb, 0xa5, 0xde, 0x5b, 0x55, 0x4d, 0x65, 0xb8, 0x1f, 0x92, 0x69, 0xab, 0x95,
+	0xa2, 0xcf, 0xc4, 0xfd, 0x39, 0xbf, 0x87, 0xf0, 0x0c, 0x16, 0xee, 0x10, 0x9a, 0x7b, 0x21, 0x8d,
+	0x83, 0xa3, 0xbb, 0x49, 0xa3, 0xcb, 0xe4, 0x8d, 0xc6, 0xce, 0x19, 0xf9, 0x94, 0x60, 0x4f, 0xe0,
+	0xc0, 0xbe, 0x3a, 0x7b, 0x3f, 0xc1, 0x51, 0x30, 0x84, 0xad, 0x96, 0x8f, 0xde, 0x31, 0xbf, 0x5e,
+	0x0b, 0x72, 0xb3, 0x16, 0xe4, 0xc7, 0x5a, 0x90, 0xab, 0x8d, 0x98, 0xdd, 0x6c, 0xc4, 0xec, 0xdb,
+	0x46, 0xcc, 0x7e, 0x06, 0x00, 0x00, 0xff, 0xff, 0x54, 0xe0, 0x7c, 0x27, 0x52, 0x04, 0x00, 0x00,
 }
 
-func (m *LabelsSet) Marshal() (dAtA []byte, err error) {
+func (m *LabelsCreate) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -626,12 +682,45 @@ func (m *LabelsSet) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *LabelsSet) MarshalTo(dAtA []byte) (int, error) {
+func (m *LabelsCreate) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *LabelsSet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *LabelsCreate) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.Colour)
+	copy(dAtA[i:], m.Colour)
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Colour)))
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.Name)
+	copy(dAtA[i:], m.Name)
+	i = encodeVarintChatApiLabels(dAtA, i, uint64(len(m.Name)))
+	i--
+	dAtA[i] = 0x12
+	return len(dAtA) - i, nil
+}
+
+func (m *LabelsEdit) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *LabelsEdit) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *LabelsEdit) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -963,7 +1052,20 @@ func encodeVarintChatApiLabels(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *LabelsSet) Size() (n int) {
+func (m *LabelsCreate) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Name)
+	n += 1 + l + sovChatApiLabels(uint64(l))
+	l = len(m.Colour)
+	n += 1 + l + sovChatApiLabels(uint64(l))
+	return n
+}
+
+func (m *LabelsEdit) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1115,7 +1217,7 @@ func sovChatApiLabels(x uint64) (n int) {
 func sozChatApiLabels(x uint64) (n int) {
 	return sovChatApiLabels(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *LabelsSet) Unmarshal(dAtA []byte) error {
+func (m *LabelsCreate) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
 	iNdEx := 0
@@ -1139,10 +1241,136 @@ func (m *LabelsSet) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: LabelsSet: wiretype end group for non-group")
+			return fmt.Errorf("proto: LabelsCreate: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: LabelsSet: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: LabelsCreate: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Colour", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiLabels
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Colour = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiLabels(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiLabels
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Colour")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *LabelsEdit) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiLabels
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: LabelsEdit: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: LabelsEdit: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

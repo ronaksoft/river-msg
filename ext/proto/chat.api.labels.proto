@@ -2,10 +2,18 @@ syntax = "proto2";
 package msg;
 import "chat.core.types.proto";
 
-// LabelsSet
+// LabelsCreate
+// @Function
+// @Returns Bool
+message LabelsCreate {
+    required string Name = 2;
+    required string Colour = 3;
+}
+
+// LabelsEdit
 // @Function
 // @Returns: Bool
-message LabelsSet {
+message LabelsEdit {
     required int32 LabelID = 1;
     required string Name = 2;
     required string Colour = 3;

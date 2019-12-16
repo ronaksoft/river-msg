@@ -2,10 +2,18 @@ syntax = "proto2";
 package msg;
 import "chat.core.types.proto";
 
-// LabelsSet
+// LabelsCreate
+// @Function
+// @Returns Bool
+message LabelsCreate {
+    required string Name = 2;
+    required string Colour = 3;
+}
+
+// LabelsEdit
 // @Function
 // @Returns: Bool
-message LabelsSet {
+message LabelsEdit {
     required int32 LabelID = 1;
     required string Name = 2;
     required string Colour = 3;
@@ -24,30 +32,11 @@ message LabelsDelete {
 message LabelsGet {
 }
 
-// LabelsAddToDialog
-// @Function
-// @Returns: Dialog
-message LabelsAddToDialog {
-    required int32 PeerType = 1;
-    required int64 PeerID = 2;
-    repeated int32 LabelIDs = 3;
-}
-
-// LabelsRemoveFromDialog
-// @Function
-// @Returns: Dialog
-message LabelsRemoveFromDialog {
-    required int32 PeerType = 1;
-    required int64 PeerID = 2;
-    repeated int32 LabelIDs = 3;
-}
-
 // LabelsAddToMessage
 // @Function
 // @Returns: Bool
 message LabelsAddToMessage {
-    required int32 PeerType = 1;
-    required int64 PeerID = 2;
+    required InputPeer Peer = 1;
     repeated int32 LabelIDs = 3;
     repeated int64 MessageIDs = 4;
 }
@@ -56,8 +45,7 @@ message LabelsAddToMessage {
 // @Function
 // @Returns: Bool
 message LabelsRemoveFromMessage {
-    required int32 PeerType = 1;
-    required int64 PeerID = 2;
+    required InputPeer Peer = 1;
     repeated int32 LabelIDs = 3;
     repeated int64 MessageIDs = 4;
 }

@@ -281,7 +281,6 @@ func (p *poolDialog) Get() *Dialog {
 	x.NotifySettings = nil
 	x.MentionedCount = 0
 	x.Draft = nil
-	x.LabelIDs = x.LabelIDs[:0]
 	return x
 }
 

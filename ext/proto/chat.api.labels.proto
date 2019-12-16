@@ -65,4 +65,6 @@ message LabelItems {
     required int32 LabelID = 1;
     repeated UserMessage Messages = 2;
     repeated Dialog Dialogs = 3;
+    repeated User Users = 4;
+    repeated Group Groups = 5;
 }

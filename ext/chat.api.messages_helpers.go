@@ -59,6 +59,7 @@ func (p *poolMessagesBroadcast) Get() *MessagesBroadcast {
 		return &MessagesBroadcast{}
 	}
 	x.ReceiverIDs = x.ReceiverIDs[:0]
+	x.Entities = x.Entities[:0]
 	return x
 }
 

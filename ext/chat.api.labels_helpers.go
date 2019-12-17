@@ -226,6 +226,8 @@ func (p *poolLabelItems) Get() *LabelItems {
 	}
 	x.Messages = x.Messages[:0]
 	x.Dialogs = x.Dialogs[:0]
+	x.Users = x.Users[:0]
+	x.Groups = x.Groups[:0]
 	return x
 }
 

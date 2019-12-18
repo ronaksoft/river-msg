@@ -806,6 +806,7 @@ func (p *poolUpdateLabelItemsAdded) Get() *UpdateLabelItemsAdded {
 	}
 	x.MessageIDs = x.MessageIDs[:0]
 	x.LabelIDs = x.LabelIDs[:0]
+	x.Labels = x.Labels[:0]
 	return x
 }
 
@@ -835,6 +836,7 @@ func (p *poolUpdateLabelItemsRemoved) Get() *UpdateLabelItemsRemoved {
 	}
 	x.MessageIDs = x.MessageIDs[:0]
 	x.LabelIDs = x.LabelIDs[:0]
+	x.Labels = x.Labels[:0]
 	return x
 }
 

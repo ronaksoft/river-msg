@@ -960,6 +960,7 @@ func (p *poolLabel) Get() *Label {
 	if !ok {
 		return &Label{}
 	}
+	x.Count = 0
 	return x
 }
 

@@ -45,6 +45,13 @@ message ClientSendMessageMedia {
     optional int32 FileTotalParts = 16;
 }
 
+// ClientGlobalSearch
+message ClientGlobalSearch {
+    optional string Text = 1;
+    repeated int32 LabelIDs = 2;
+    optional InputPeer Peer = 3;
+}
+
 // ClientSearchResult
 message ClientSearchResult {
     repeated UserMessage Messages = 1;

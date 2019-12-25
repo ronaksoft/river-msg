@@ -26,6 +26,7 @@ message ClientPendingMessage {
 }
 
 // ClientSendMessageMedia
+// @Function
 message ClientSendMessageMedia {
     required InputPeer Peer = 1;
     required InputMediaType MediaType = 2;
@@ -46,11 +47,18 @@ message ClientSendMessageMedia {
 }
 
 // ClientGlobalSearch
+// @Function
 message ClientGlobalSearch {
     optional string Text = 1;
     repeated int32 LabelIDs = 2;
     optional InputPeer Peer = 3;
     required int32 Limit = 4;
+}
+
+// ClientContactSearch
+// @Function
+message ClientContactSearch {
+    required string Text = 1;
 }
 
 // ClientSearchResult

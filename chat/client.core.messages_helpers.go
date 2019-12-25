@@ -122,6 +122,33 @@ func ResultClientGlobalSearch(out *MessageEnvelope, res *ClientGlobalSearch) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ClientContactSearch int64 = 1793449803
+
+type poolClientContactSearch struct {
+	pool sync.Pool
+}
+
+func (p *poolClientContactSearch) Get() *ClientContactSearch {
+	x, ok := p.pool.Get().(*ClientContactSearch)
+	if !ok {
+		return &ClientContactSearch{}
+	}
+	return x
+}
+
+func (p *poolClientContactSearch) Put(x *ClientContactSearch) {
+	p.pool.Put(x)
+}
+
+var PoolClientContactSearch = poolClientContactSearch{}
+
+func ResultClientContactSearch(out *MessageEnvelope, res *ClientContactSearch) {
+	out.Constructor = C_ClientContactSearch
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_ClientSearchResult int64 = 2957647709
 
 type poolClientSearchResult struct {
@@ -303,6 +330,7 @@ func init() {
 	ConstructorNames[2164891929] = "ClientPendingMessage"
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
 	ConstructorNames[1742781507] = "ClientGlobalSearch"
+	ConstructorNames[1793449803] = "ClientContactSearch"
 	ConstructorNames[2957647709] = "ClientSearchResult"
 	ConstructorNames[155127968] = "ClientFile"
 	ConstructorNames[2731095358] = "ClientFileStatus"

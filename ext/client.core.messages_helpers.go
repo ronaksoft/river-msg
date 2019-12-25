@@ -92,6 +92,36 @@ func ResultClientSendMessageMedia(out *MessageEnvelope, res *ClientSendMessageMe
 	res.MarshalTo(out.Message)
 }
 
+const C_ClientGlobalSearch int64 = 1742781507
+
+type poolClientGlobalSearch struct {
+	pool sync.Pool
+}
+
+func (p *poolClientGlobalSearch) Get() *ClientGlobalSearch {
+	x, ok := p.pool.Get().(*ClientGlobalSearch)
+	if !ok {
+		return &ClientGlobalSearch{}
+	}
+	x.Text = ""
+	x.LabelIDs = x.LabelIDs[:0]
+	x.Peer = nil
+	return x
+}
+
+func (p *poolClientGlobalSearch) Put(x *ClientGlobalSearch) {
+	p.pool.Put(x)
+}
+
+var PoolClientGlobalSearch = poolClientGlobalSearch{}
+
+func ResultClientGlobalSearch(out *MessageEnvelope, res *ClientGlobalSearch) {
+	out.Constructor = C_ClientGlobalSearch
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_ClientSearchResult int64 = 2957647709
 
 type poolClientSearchResult struct {
@@ -272,6 +302,7 @@ func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
 func init() {
 	ConstructorNames[2164891929] = "ClientPendingMessage"
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
+	ConstructorNames[1742781507] = "ClientGlobalSearch"
 	ConstructorNames[2957647709] = "ClientSearchResult"
 	ConstructorNames[155127968] = "ClientFile"
 	ConstructorNames[2731095358] = "ClientFileStatus"

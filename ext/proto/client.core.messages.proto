@@ -50,6 +50,7 @@ message ClientGlobalSearch {
     optional string Text = 1;
     repeated int32 LabelIDs = 2;
     optional InputPeer Peer = 3;
+    required int32 Limit = 4;
 }
 
 // ClientSearchResult

@@ -37,6 +37,7 @@ const (
 	ErrItemMessage          = "MESSAGE"
 	ErrItemMessageID        = "MESSAGE_ID"
 	ErrItemServer           = "SERVER"
+	ErrItemStorageServer    = "STORAGE_SERVER"
 	ErrItemPq               = "PQ"
 	ErrItemEncryption       = "ENCRYPTION"
 	ErrItemRsaKey           = "RSA_KEY"

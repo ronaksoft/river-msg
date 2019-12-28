@@ -117,6 +117,7 @@ message UpdateUserPhoto {
     required int64 UserID = 1 [jstype = JS_STRING];
     optional UserPhoto Photo = 2;
     optional int64 PhotoID = 3 [jstype = JS_STRING];
+    repeated int64 DeletedPhotoIDs = 4 [jstype = JS_STRING];
 }
 
 // UpdateNotifySettings

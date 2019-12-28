@@ -414,6 +414,7 @@ func (p *poolUpdateUserPhoto) Get() *UpdateUserPhoto {
 	}
 	x.Photo = nil
 	x.PhotoID = 0
+	x.DeletedPhotoIDs = x.DeletedPhotoIDs[:0]
 	return x
 }
 

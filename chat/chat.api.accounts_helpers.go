@@ -289,6 +289,33 @@ func ResultAccountRemovePhoto(out *MessageEnvelope, res *AccountRemovePhoto) {
 	res.MarshalTo(out.Message)
 }
 
+const C_AccountSendChangePhoneCode int64 = 1389121902
+
+type poolAccountSendChangePhoneCode struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSendChangePhoneCode) Get() *AccountSendChangePhoneCode {
+	x, ok := p.pool.Get().(*AccountSendChangePhoneCode)
+	if !ok {
+		return &AccountSendChangePhoneCode{}
+	}
+	return x
+}
+
+func (p *poolAccountSendChangePhoneCode) Put(x *AccountSendChangePhoneCode) {
+	p.pool.Put(x)
+}
+
+var PoolAccountSendChangePhoneCode = poolAccountSendChangePhoneCode{}
+
+func ResultAccountSendChangePhoneCode(out *MessageEnvelope, res *AccountSendChangePhoneCode) {
+	out.Constructor = C_AccountSendChangePhoneCode
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AccountChangePhone int64 = 4285969474
 
 type poolAccountChangePhone struct {
@@ -457,6 +484,33 @@ func ResultAccountUpdateStatus(out *MessageEnvelope, res *AccountUpdateStatus) {
 	res.MarshalTo(out.Message)
 }
 
+const C_AccountSetLang int64 = 2015777242
+
+type poolAccountSetLang struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSetLang) Get() *AccountSetLang {
+	x, ok := p.pool.Get().(*AccountSetLang)
+	if !ok {
+		return &AccountSetLang{}
+	}
+	return x
+}
+
+func (p *poolAccountSetLang) Put(x *AccountSetLang) {
+	p.pool.Put(x)
+}
+
+var PoolAccountSetLang = poolAccountSetLang{}
+
+func ResultAccountSetLang(out *MessageEnvelope, res *AccountSetLang) {
+	out.Constructor = C_AccountSetLang
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AccountAuthorizations int64 = 1092320500
 
 type poolAccountAuthorizations struct {
@@ -540,33 +594,6 @@ func ResultAccountPrivacyRules(out *MessageEnvelope, res *AccountPrivacyRules) {
 	res.MarshalTo(out.Message)
 }
 
-const C_AccountSetLang int64 = 2015777242
-
-type poolAccountSetLang struct {
-	pool sync.Pool
-}
-
-func (p *poolAccountSetLang) Get() *AccountSetLang {
-	x, ok := p.pool.Get().(*AccountSetLang)
-	if !ok {
-		return &AccountSetLang{}
-	}
-	return x
-}
-
-func (p *poolAccountSetLang) Put(x *AccountSetLang) {
-	p.pool.Put(x)
-}
-
-var PoolAccountSetLang = poolAccountSetLang{}
-
-func ResultAccountSetLang(out *MessageEnvelope, res *AccountSetLang) {
-	out.Constructor = C_AccountSetLang
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 func init() {
 	ConstructorNames[2016882075] = "AccountSetNotifySettings"
 	ConstructorNames[477008681] = "AccountGetNotifySettings"
@@ -578,14 +605,15 @@ func init() {
 	ConstructorNames[1222469957] = "AccountUploadPhoto"
 	ConstructorNames[406174115] = "AccountUpdatePhoto"
 	ConstructorNames[3728692172] = "AccountRemovePhoto"
+	ConstructorNames[1389121902] = "AccountSendChangePhoneCode"
 	ConstructorNames[4285969474] = "AccountChangePhone"
 	ConstructorNames[1599585002] = "AccountSetPrivacy"
 	ConstructorNames[1897044856] = "AccountGetPrivacy"
 	ConstructorNames[2112646192] = "AccountGetAuthorizations"
 	ConstructorNames[1045069116] = "AccountResetAuthorization"
 	ConstructorNames[666864933] = "AccountUpdateStatus"
+	ConstructorNames[2015777242] = "AccountSetLang"
 	ConstructorNames[1092320500] = "AccountAuthorizations"
 	ConstructorNames[275571966] = "AccountAuthorization"
 	ConstructorNames[3802018092] = "AccountPrivacyRules"
-	ConstructorNames[2015777242] = "AccountSetLang"
 }

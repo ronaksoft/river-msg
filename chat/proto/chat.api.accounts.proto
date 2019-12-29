@@ -83,6 +83,13 @@ message AccountRemovePhoto {
     optional int64 PhotoID = 1 [jstype = JS_STRING];
 }
 
+// AccountSendChangePhoneCode
+// @Function
+// @Return: User
+message AccountSendChangePhoneCode {
+    required string Phone = 1;
+}
+
 // AccountChangePhone
 // @Function
 // @Return: User
@@ -131,6 +138,14 @@ message AccountUpdateStatus {
     required bool Online = 1;
 }
 
+// AccountSetLang
+// @Function
+// @Returns: Bool
+message AccountSetLang {
+    required string LangCode = 1;
+}
+
+
 // AccountAuthorizations
 message AccountAuthorizations {
     repeated AccountAuthorization Authorizations = 1;
@@ -154,9 +169,3 @@ message AccountPrivacyRules {
     repeated PrivacyRule Rules = 1;
 }
 
-// AccountSetLang
-// @Function
-// @Returns: Bool
-message AccountSetLang {
-    required string LangCode = 1;
-}

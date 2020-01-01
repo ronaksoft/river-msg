@@ -478,6 +478,7 @@ func (p *poolUser) Get() *User {
 	x.LastSeen = 0
 	x.PhotoGallery = x.PhotoGallery[:0]
 	x.IsBot = false
+	x.Deleted = false
 	return x
 }
 

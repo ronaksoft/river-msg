@@ -89,4 +89,7 @@ const (
 	ErrItemLabelName        = "LABEL_NAME"
 	ErrItemLabelColour      = "LABEL_COLOUR"
 	ErrItemLabel            = "LABEL"
+	ErrItemAlgorithm        = "ALGORITHM"
+	ErrItemAlgorithmData    = "ALGORITHM_DATA"
+	ErrItemPasswordHash     = "PASSWORD_HASH"
 )

@@ -175,6 +175,7 @@ message AccountUpdatePasswordSettings {
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
     required string Email = 1;
+    required string Hint = 2;
 }
 
 // AccountPassword
@@ -185,8 +186,7 @@ message AccountPassword {
     required int64 Algorithm = 3;
     required bytes AlgorithmData = 4;
     required bytes SrpB = 5;
-    required int64 SrpID = 6;
-    optional bytes RandomData = 7;
+    optional bytes RandomData = 6;
 }
 
 // AccountAuthorizations

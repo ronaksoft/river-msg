@@ -16,33 +16,33 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-const C_PasswordAlgorithmKdfSha512Iter100000 int64 = 274693860
+const C_PasswordAlgorithmVer6A int64 = 341860043
 
-type poolPasswordAlgorithmKdfSha512Iter100000 struct {
+type poolPasswordAlgorithmVer6A struct {
 	pool sync.Pool
 }
 
-func (p *poolPasswordAlgorithmKdfSha512Iter100000) Get() *PasswordAlgorithmKdfSha512Iter100000 {
-	x, ok := p.pool.Get().(*PasswordAlgorithmKdfSha512Iter100000)
+func (p *poolPasswordAlgorithmVer6A) Get() *PasswordAlgorithmVer6A {
+	x, ok := p.pool.Get().(*PasswordAlgorithmVer6A)
 	if !ok {
-		return &PasswordAlgorithmKdfSha512Iter100000{}
+		return &PasswordAlgorithmVer6A{}
 	}
 	return x
 }
 
-func (p *poolPasswordAlgorithmKdfSha512Iter100000) Put(x *PasswordAlgorithmKdfSha512Iter100000) {
+func (p *poolPasswordAlgorithmVer6A) Put(x *PasswordAlgorithmVer6A) {
 	p.pool.Put(x)
 }
 
-var PoolPasswordAlgorithmKdfSha512Iter100000 = poolPasswordAlgorithmKdfSha512Iter100000{}
+var PoolPasswordAlgorithmVer6A = poolPasswordAlgorithmVer6A{}
 
-func ResultPasswordAlgorithmKdfSha512Iter100000(out *MessageEnvelope, res *PasswordAlgorithmKdfSha512Iter100000) {
-	out.Constructor = C_PasswordAlgorithmKdfSha512Iter100000
+func ResultPasswordAlgorithmVer6A(out *MessageEnvelope, res *PasswordAlgorithmVer6A) {
+	out.Constructor = C_PasswordAlgorithmVer6A
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
 func init() {
-	ConstructorNames[274693860] = "PasswordAlgorithmKdfSha512Iter100000"
+	ConstructorNames[341860043] = "PasswordAlgorithmVer6A"
 }

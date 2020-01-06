@@ -163,6 +163,12 @@ message AccountGetPasswordSettings {
 // @Function
 // @Returns: Bool
 message AccountUpdatePasswordSettings {
+    optional InputPassword Password = 1;
+    optional bytes PasswordHash = 2;
+    required int64 Algorithm = 3;
+    required bytes AlgorithmData = 4;
+    optional bytes Email = 5;
+    optional bytes Hint = 6;
 }
 
 // AccountPasswordSettings

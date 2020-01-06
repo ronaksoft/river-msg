@@ -576,6 +576,10 @@ func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings
 	if !ok {
 		return &AccountUpdatePasswordSettings{}
 	}
+	x.Password = nil
+	x.PasswordHash = nil
+	x.Email = nil
+	x.Hint = nil
 	return x
 }
 

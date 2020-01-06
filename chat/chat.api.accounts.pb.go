@@ -1005,6 +1005,265 @@ func (m *AccountSetLang) GetLangCode() string {
 	return ""
 }
 
+// AccountGetPassword
+// @Function
+// @Returns: AccountPassword
+// Obtain configuration for two-factor authorization with password
+type AccountGetPassword struct {
+}
+
+func (m *AccountGetPassword) Reset()         { *m = AccountGetPassword{} }
+func (m *AccountGetPassword) String() string { return proto.CompactTextString(m) }
+func (*AccountGetPassword) ProtoMessage()    {}
+func (*AccountGetPassword) Descriptor() ([]byte, []int) {
+	return fileDescriptor_36a0c5dd1cea0696, []int{18}
+}
+func (m *AccountGetPassword) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AccountGetPassword) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AccountGetPassword.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AccountGetPassword) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountGetPassword.Merge(m, src)
+}
+func (m *AccountGetPassword) XXX_Size() int {
+	return m.Size()
+}
+func (m *AccountGetPassword) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountGetPassword.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountGetPassword proto.InternalMessageInfo
+
+// AccountGetPasswordSettings
+// @Function
+// @Returns: AccountPasswordSettings
+// Get private info associated to the password info (recovery email & so on)
+type AccountGetPasswordSettings struct {
+}
+
+func (m *AccountGetPasswordSettings) Reset()         { *m = AccountGetPasswordSettings{} }
+func (m *AccountGetPasswordSettings) String() string { return proto.CompactTextString(m) }
+func (*AccountGetPasswordSettings) ProtoMessage()    {}
+func (*AccountGetPasswordSettings) Descriptor() ([]byte, []int) {
+	return fileDescriptor_36a0c5dd1cea0696, []int{19}
+}
+func (m *AccountGetPasswordSettings) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AccountGetPasswordSettings) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AccountGetPasswordSettings.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AccountGetPasswordSettings) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountGetPasswordSettings.Merge(m, src)
+}
+func (m *AccountGetPasswordSettings) XXX_Size() int {
+	return m.Size()
+}
+func (m *AccountGetPasswordSettings) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountGetPasswordSettings.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountGetPasswordSettings proto.InternalMessageInfo
+
+// AccountUpdatePassword
+// @Function
+// @Returns: Bool
+type AccountUpdatePasswordSettings struct {
+}
+
+func (m *AccountUpdatePasswordSettings) Reset()         { *m = AccountUpdatePasswordSettings{} }
+func (m *AccountUpdatePasswordSettings) String() string { return proto.CompactTextString(m) }
+func (*AccountUpdatePasswordSettings) ProtoMessage()    {}
+func (*AccountUpdatePasswordSettings) Descriptor() ([]byte, []int) {
+	return fileDescriptor_36a0c5dd1cea0696, []int{20}
+}
+func (m *AccountUpdatePasswordSettings) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AccountUpdatePasswordSettings) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AccountUpdatePasswordSettings.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AccountUpdatePasswordSettings) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountUpdatePasswordSettings.Merge(m, src)
+}
+func (m *AccountUpdatePasswordSettings) XXX_Size() int {
+	return m.Size()
+}
+func (m *AccountUpdatePasswordSettings) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountUpdatePasswordSettings.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountUpdatePasswordSettings proto.InternalMessageInfo
+
+// AccountPasswordSettings
+// Private info associated to the password info (recovery email and so on)
+type AccountPasswordSettings struct {
+	Email string `protobuf:"bytes,1,req,name=Email" json:"Email"`
+}
+
+func (m *AccountPasswordSettings) Reset()         { *m = AccountPasswordSettings{} }
+func (m *AccountPasswordSettings) String() string { return proto.CompactTextString(m) }
+func (*AccountPasswordSettings) ProtoMessage()    {}
+func (*AccountPasswordSettings) Descriptor() ([]byte, []int) {
+	return fileDescriptor_36a0c5dd1cea0696, []int{21}
+}
+func (m *AccountPasswordSettings) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AccountPasswordSettings) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AccountPasswordSettings.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AccountPasswordSettings) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountPasswordSettings.Merge(m, src)
+}
+func (m *AccountPasswordSettings) XXX_Size() int {
+	return m.Size()
+}
+func (m *AccountPasswordSettings) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountPasswordSettings.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountPasswordSettings proto.InternalMessageInfo
+
+func (m *AccountPasswordSettings) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+// AccountPassword
+// Configuration for two-factor authorization
+type AccountPassword struct {
+	HasPassword   bool   `protobuf:"varint,1,req,name=HasPassword" json:"HasPassword"`
+	Hint          string `protobuf:"bytes,2,req,name=Hint" json:"Hint"`
+	Algorithm     int64  `protobuf:"varint,3,req,name=Algorithm" json:"Algorithm"`
+	AlgorithmData []byte `protobuf:"bytes,4,req,name=AlgorithmData" json:"AlgorithmData"`
+	SrpB          []byte `protobuf:"bytes,5,req,name=SrpB" json:"SrpB"`
+	SrpID         int64  `protobuf:"varint,6,req,name=SrpID" json:"SrpID"`
+	RandomData    []byte `protobuf:"bytes,7,opt,name=RandomData" json:"RandomData"`
+}
+
+func (m *AccountPassword) Reset()         { *m = AccountPassword{} }
+func (m *AccountPassword) String() string { return proto.CompactTextString(m) }
+func (*AccountPassword) ProtoMessage()    {}
+func (*AccountPassword) Descriptor() ([]byte, []int) {
+	return fileDescriptor_36a0c5dd1cea0696, []int{22}
+}
+func (m *AccountPassword) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AccountPassword) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AccountPassword.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AccountPassword) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountPassword.Merge(m, src)
+}
+func (m *AccountPassword) XXX_Size() int {
+	return m.Size()
+}
+func (m *AccountPassword) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountPassword.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountPassword proto.InternalMessageInfo
+
+func (m *AccountPassword) GetHasPassword() bool {
+	if m != nil {
+		return m.HasPassword
+	}
+	return false
+}
+
+func (m *AccountPassword) GetHint() string {
+	if m != nil {
+		return m.Hint
+	}
+	return ""
+}
+
+func (m *AccountPassword) GetAlgorithm() int64 {
+	if m != nil {
+		return m.Algorithm
+	}
+	return 0
+}
+
+func (m *AccountPassword) GetAlgorithmData() []byte {
+	if m != nil {
+		return m.AlgorithmData
+	}
+	return nil
+}
+
+func (m *AccountPassword) GetSrpB() []byte {
+	if m != nil {
+		return m.SrpB
+	}
+	return nil
+}
+
+func (m *AccountPassword) GetSrpID() int64 {
+	if m != nil {
+		return m.SrpID
+	}
+	return 0
+}
+
+func (m *AccountPassword) GetRandomData() []byte {
+	if m != nil {
+		return m.RandomData
+	}
+	return nil
+}
+
 // AccountAuthorizations
 type AccountAuthorizations struct {
 	Authorizations []*AccountAuthorization `protobuf:"bytes,1,rep,name=Authorizations" json:"Authorizations,omitempty"`
@@ -1014,7 +1273,7 @@ func (m *AccountAuthorizations) Reset()         { *m = AccountAuthorizations{} }
 func (m *AccountAuthorizations) String() string { return proto.CompactTextString(m) }
 func (*AccountAuthorizations) ProtoMessage()    {}
 func (*AccountAuthorizations) Descriptor() ([]byte, []int) {
-	return fileDescriptor_36a0c5dd1cea0696, []int{18}
+	return fileDescriptor_36a0c5dd1cea0696, []int{23}
 }
 func (m *AccountAuthorizations) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1067,7 +1326,7 @@ func (m *AccountAuthorization) Reset()         { *m = AccountAuthorization{} }
 func (m *AccountAuthorization) String() string { return proto.CompactTextString(m) }
 func (*AccountAuthorization) ProtoMessage()    {}
 func (*AccountAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_36a0c5dd1cea0696, []int{19}
+	return fileDescriptor_36a0c5dd1cea0696, []int{24}
 }
 func (m *AccountAuthorization) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1168,7 +1427,7 @@ func (m *AccountPrivacyRules) Reset()         { *m = AccountPrivacyRules{} }
 func (m *AccountPrivacyRules) String() string { return proto.CompactTextString(m) }
 func (*AccountPrivacyRules) ProtoMessage()    {}
 func (*AccountPrivacyRules) Descriptor() ([]byte, []int) {
-	return fileDescriptor_36a0c5dd1cea0696, []int{20}
+	return fileDescriptor_36a0c5dd1cea0696, []int{25}
 }
 func (m *AccountPrivacyRules) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1223,6 +1482,11 @@ func init() {
 	proto.RegisterType((*AccountResetAuthorization)(nil), "msg.AccountResetAuthorization")
 	proto.RegisterType((*AccountUpdateStatus)(nil), "msg.AccountUpdateStatus")
 	proto.RegisterType((*AccountSetLang)(nil), "msg.AccountSetLang")
+	proto.RegisterType((*AccountGetPassword)(nil), "msg.AccountGetPassword")
+	proto.RegisterType((*AccountGetPasswordSettings)(nil), "msg.AccountGetPasswordSettings")
+	proto.RegisterType((*AccountUpdatePasswordSettings)(nil), "msg.AccountUpdatePasswordSettings")
+	proto.RegisterType((*AccountPasswordSettings)(nil), "msg.AccountPasswordSettings")
+	proto.RegisterType((*AccountPassword)(nil), "msg.AccountPassword")
 	proto.RegisterType((*AccountAuthorizations)(nil), "msg.AccountAuthorizations")
 	proto.RegisterType((*AccountAuthorization)(nil), "msg.AccountAuthorization")
 	proto.RegisterType((*AccountPrivacyRules)(nil), "msg.AccountPrivacyRules")
@@ -1231,65 +1495,73 @@ func init() {
 func init() { proto.RegisterFile("chat.api.accounts.proto", fileDescriptor_36a0c5dd1cea0696) }
 
 var fileDescriptor_36a0c5dd1cea0696 = []byte{
-	// 917 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0x41, 0x6f, 0x1b, 0x45,
-	0x14, 0xce, 0xee, 0xda, 0x69, 0xf2, 0x52, 0x4c, 0x19, 0x68, 0xb3, 0xb5, 0x90, 0xb1, 0x46, 0x55,
-	0xb1, 0x10, 0xb2, 0x2a, 0x17, 0xa1, 0x02, 0x05, 0xc9, 0x71, 0x94, 0x12, 0x85, 0xa6, 0xd6, 0xba,
-	0x45, 0x82, 0xdb, 0x66, 0xf7, 0xd5, 0x1e, 0xba, 0xde, 0xb5, 0x66, 0xc6, 0x46, 0xe6, 0xc4, 0x4f,
-	0xe0, 0x8f, 0xf0, 0x23, 0xb8, 0xf5, 0xd8, 0x03, 0x07, 0x4e, 0x08, 0x25, 0x7f, 0x04, 0xcd, 0xec,
-	0xee, 0x78, 0x36, 0xb6, 0x2b, 0xc1, 0x6d, 0xfd, 0xbd, 0xef, 0x7b, 0x6f, 0xe6, 0xf9, 0x7d, 0xf3,
-	0xe0, 0x30, 0x9a, 0x84, 0xb2, 0x1b, 0xce, 0x58, 0x37, 0x8c, 0xa2, 0x6c, 0x9e, 0x4a, 0xd1, 0x9d,
-	0xf1, 0x4c, 0x66, 0xc4, 0x9b, 0x8a, 0x71, 0xf3, 0xb6, 0x8e, 0x46, 0x19, 0xc7, 0xae, 0x5c, 0xce,
-	0xb0, 0x88, 0x51, 0x01, 0x7e, 0x3f, 0x67, 0x8f, 0x50, 0x9e, 0x67, 0x92, 0xbd, 0x5c, 0x8e, 0x50,
-	0x4a, 0x96, 0x8e, 0x05, 0xa1, 0x50, 0x1b, 0x22, 0x72, 0xdf, 0x69, 0xbb, 0x9d, 0x83, 0x5e, 0xa3,
-	0x3b, 0x15, 0xe3, 0xee, 0x69, 0x3a, 0x9b, 0x4b, 0x85, 0x06, 0x3a, 0x46, 0x1e, 0xc2, 0x5e, 0xc9,
-	0xf7, 0x5d, 0xcd, 0x3b, 0xd4, 0x3c, 0x15, 0xac, 0xa6, 0x0b, 0x0c, 0x91, 0x7e, 0x63, 0x8a, 0x3e,
-	0xf9, 0x3f, 0x45, 0xe9, 0xef, 0x2e, 0xdc, 0x2e, 0x12, 0x04, 0x38, 0x66, 0x42, 0x22, 0x3f, 0xc6,
-	0x05, 0x8b, 0x90, 0x34, 0xa1, 0xfe, 0x3c, 0x7b, 0x85, 0xa9, 0x3e, 0xcb, 0xfe, 0x51, 0xed, 0xf5,
-	0xdf, 0x1f, 0xed, 0x04, 0x39, 0x44, 0xee, 0xc3, 0x41, 0xce, 0x7a, 0x9a, 0xc5, 0x98, 0xf8, 0x9e,
-	0xc5, 0xb0, 0x03, 0xe4, 0x13, 0x78, 0x67, 0xb4, 0x14, 0x12, 0xa7, 0xdf, 0x23, 0x17, 0x2c, 0x4b,
-	0xfd, 0x9a, 0xc5, 0xac, 0x86, 0xc8, 0x3d, 0x80, 0xfe, 0x6c, 0x56, 0x12, 0xeb, 0x16, 0xd1, 0xc2,
-	0x49, 0x1b, 0xf6, 0xbe, 0x0b, 0xd3, 0xf1, 0x20, 0x8b, 0xd1, 0xdf, 0xb5, 0x38, 0x06, 0x25, 0x5f,
-	0xc2, 0xbe, 0x3e, 0xe4, 0xf3, 0xe5, 0x0c, 0xfd, 0x1b, 0x6d, 0xb7, 0xd3, 0xe8, 0xdd, 0xc9, 0xfb,
-	0x38, 0x17, 0x13, 0x1d, 0x19, 0xf2, 0x6c, 0xc1, 0x62, 0xe4, 0x85, 0x74, 0x45, 0x57, 0xd9, 0x07,
-	0x09, 0xc3, 0x54, 0x9e, 0x1e, 0xfb, 0x7b, 0x76, 0xf6, 0x12, 0xa5, 0x3f, 0xc0, 0x61, 0xd1, 0xae,
-	0x17, 0x29, 0xaf, 0x36, 0x8c, 0xda, 0x85, 0x55, 0xcf, 0xeb, 0xeb, 0x05, 0xde, 0xd2, 0x54, 0x2a,
-	0xe1, 0x83, 0x32, 0xf5, 0x2c, 0x0e, 0x25, 0x0e, 0x79, 0xf6, 0x92, 0x25, 0x3a, 0xef, 0x09, 0xe3,
-	0x42, 0x9e, 0x87, 0xd3, 0x3c, 0x6f, 0xa9, 0x5b, 0xc1, 0x79, 0x5b, 0x0a, 0x8a, 0x5b, 0x6d, 0x4b,
-	0xc1, 0xb8, 0x03, 0xde, 0x11, 0xcb, 0x7c, 0xaf, 0xed, 0x98, 0xa0, 0x02, 0xe8, 0x23, 0x53, 0x75,
-	0x30, 0xc1, 0xe8, 0xd5, 0x0b, 0x81, 0x3c, 0x2d, 0x32, 0x96, 0xdf, 0x95, 0xa2, 0x06, 0xa5, 0x5f,
-	0x98, 0xc9, 0xc9, 0xcf, 0xfb, 0x1f, 0xa4, 0x17, 0x40, 0x8c, 0x34, 0xc9, 0xc2, 0x78, 0x38, 0x51,
-	0xe6, 0xa2, 0x50, 0x3b, 0x61, 0x09, 0xae, 0xcf, 0xab, 0x42, 0x03, 0x1d, 0x23, 0x1d, 0xb8, 0x19,
-	0xa0, 0x9c, 0xf3, 0xf4, 0xd9, 0xc5, 0x4f, 0x18, 0x49, 0xdf, 0x6d, 0x3b, 0x9d, 0xbd, 0x22, 0x7f,
-	0x25, 0x42, 0x3f, 0xb7, 0x6a, 0xe8, 0x76, 0xea, 0x1a, 0x6d, 0xb8, 0xa1, 0x3f, 0x4e, 0x8f, 0x75,
-	0x19, 0xef, 0x68, 0x57, 0x49, 0x1f, 0x38, 0x41, 0x09, 0x5b, 0xba, 0x00, 0xa7, 0xd9, 0x62, 0x93,
-	0xce, 0xd9, 0xa4, 0x7b, 0x04, 0x4d, 0x63, 0xff, 0x34, 0x1e, 0x4c, 0xc2, 0x74, 0xac, 0xb4, 0x29,
-	0xea, 0xa9, 0x6c, 0x42, 0x5d, 0xff, 0xa8, 0x34, 0x24, 0x87, 0xe8, 0xaf, 0x8e, 0x29, 0x69, 0xc9,
-	0xde, 0x26, 0x51, 0xc6, 0x32, 0xb9, 0xbf, 0x0d, 0xc5, 0xa4, 0xf2, 0xa7, 0x57, 0x43, 0x6a, 0x7e,
-	0x0c, 0x50, 0xb1, 0xea, 0x0a, 0xa6, 0x7f, 0xb8, 0xf0, 0xde, 0xea, 0xf1, 0x1a, 0x72, 0xb6, 0x08,
-	0xa3, 0x25, 0x79, 0x00, 0x30, 0x98, 0x84, 0xf2, 0x34, 0x5d, 0x30, 0xa9, 0x8e, 0xe1, 0x75, 0x0e,
-	0x7a, 0xb7, 0x72, 0x2f, 0xe5, 0x8c, 0x60, 0x9e, 0x60, 0x60, 0x71, 0xc8, 0xa7, 0xf9, 0x1c, 0x8e,
-	0x50, 0x8f, 0xf8, 0x66, 0xbe, 0x61, 0x90, 0x1e, 0x1c, 0xe8, 0x23, 0x9c, 0xcf, 0xa7, 0x17, 0xc8,
-	0x7d, 0x6f, 0x8b, 0xc0, 0x26, 0x91, 0xcf, 0xe0, 0x66, 0x61, 0x0c, 0xdd, 0x78, 0xbf, 0xb6, 0x45,
-	0x54, 0x61, 0x91, 0xc7, 0x70, 0xeb, 0x24, 0xe3, 0x3f, 0x87, 0x3c, 0xc6, 0xf8, 0x29, 0x0a, 0x11,
-	0x8e, 0xd1, 0xaf, 0x6f, 0x51, 0xae, 0x31, 0xc9, 0x3d, 0xa8, 0x0d, 0xc2, 0x24, 0xf1, 0x77, 0xb7,
-	0x28, 0x74, 0x94, 0x3e, 0x36, 0x2d, 0x7c, 0xb2, 0x6a, 0xe1, 0xc7, 0xe0, 0x9d, 0xe1, 0x52, 0xff,
-	0x85, 0x8d, 0xde, 0xbb, 0xb6, 0xf2, 0x0c, 0x97, 0xa5, 0x0f, 0xcf, 0x70, 0x49, 0x9b, 0xf6, 0x43,
-	0xde, 0x9f, 0xcb, 0x49, 0xc6, 0xd9, 0x2f, 0xa1, 0x64, 0x59, 0x2a, 0xe8, 0x57, 0x70, 0xd7, 0x8c,
-	0xa4, 0xb8, 0x16, 0x25, 0x2d, 0xd8, 0x55, 0xc0, 0xda, 0x40, 0x17, 0x28, 0x7d, 0x08, 0xef, 0x57,
-	0x7c, 0x30, 0x92, 0xa1, 0x9c, 0x0b, 0xf2, 0x21, 0xec, 0x3e, 0x4b, 0x13, 0x56, 0x8c, 0x57, 0x69,
-	0xa1, 0x02, 0xa3, 0x3d, 0x68, 0xac, 0xc6, 0x41, 0x3d, 0xad, 0x95, 0x87, 0xd7, 0xd9, 0xf4, 0xf0,
-	0xd2, 0x1f, 0xcd, 0x7b, 0x50, 0x3d, 0x3e, 0xe9, 0x43, 0xa3, 0x8a, 0x14, 0xa3, 0x74, 0x57, 0xb7,
-	0x63, 0x93, 0x26, 0xb8, 0x26, 0xa0, 0x7f, 0xba, 0xe6, 0x99, 0xda, 0x76, 0xfb, 0x78, 0xd3, 0xed,
-	0x95, 0x89, 0xf2, 0x1d, 0x55, 0x31, 0x51, 0xbe, 0x9d, 0xaa, 0x1b, 0xc7, 0xdd, 0xb2, 0x71, 0xd6,
-	0x76, 0x98, 0xb7, 0x7d, 0x87, 0xd9, 0x4d, 0xaa, 0x6d, 0xdc, 0x4e, 0x14, 0xf6, 0x07, 0x1c, 0x43,
-	0x89, 0x71, 0x5f, 0xea, 0x25, 0xe7, 0x95, 0x66, 0x34, 0xb0, 0xca, 0xd2, 0x8f, 0x24, 0x5b, 0x60,
-	0x5f, 0xea, 0x1d, 0x57, 0x52, 0x0c, 0x6a, 0xed, 0xa9, 0xa1, 0x5e, 0x71, 0xd7, 0xf7, 0xd4, 0x50,
-	0xdd, 0x4d, 0xd9, 0xac, 0x1f, 0x45, 0x28, 0x84, 0xde, 0x65, 0x65, 0x16, 0x0b, 0xa7, 0x5f, 0x9b,
-	0xd9, 0xb0, 0xc6, 0x59, 0x90, 0xfb, 0x50, 0xd7, 0x1f, 0x5b, 0x2d, 0x9f, 0x87, 0x8f, 0xfc, 0xd7,
-	0x97, 0x2d, 0xe7, 0xcd, 0x65, 0xcb, 0xf9, 0xe7, 0xb2, 0xe5, 0xfc, 0x76, 0xd5, 0xda, 0x79, 0x73,
-	0xd5, 0xda, 0xf9, 0xeb, 0xaa, 0xb5, 0xf3, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf1, 0x0d, 0x99,
-	0x92, 0x41, 0x09, 0x00, 0x00,
+	// 1053 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0xdd, 0x6e, 0x1b, 0x45,
+	0x14, 0xce, 0xfa, 0x27, 0x3f, 0x27, 0x21, 0x2d, 0x43, 0xdb, 0x6c, 0xa3, 0xe2, 0x5a, 0xa3, 0xaa,
+	0x44, 0x08, 0x59, 0x95, 0x0b, 0xa8, 0x40, 0x41, 0x72, 0x1c, 0xd2, 0x44, 0xa1, 0xa9, 0xb5, 0x6e,
+	0x91, 0xe0, 0x6e, 0xb2, 0x3b, 0xb5, 0x87, 0xae, 0x77, 0x57, 0x33, 0x63, 0x57, 0xe6, 0x8a, 0x47,
+	0xe0, 0x45, 0x78, 0x08, 0xee, 0x7a, 0xd9, 0x0b, 0x2e, 0xb8, 0x42, 0x28, 0x79, 0x10, 0xd0, 0xcc,
+	0xee, 0x8e, 0x67, 0xfc, 0x53, 0x09, 0xee, 0x76, 0xbf, 0xf3, 0x7d, 0xe7, 0xec, 0x9e, 0x39, 0xdf,
+	0xcc, 0xc0, 0x5e, 0x38, 0x24, 0xb2, 0x45, 0x32, 0xd6, 0x22, 0x61, 0x98, 0x8e, 0x13, 0x29, 0x5a,
+	0x19, 0x4f, 0x65, 0x8a, 0xaa, 0x23, 0x31, 0xd8, 0xbf, 0xa9, 0xa3, 0x61, 0xca, 0x69, 0x4b, 0x4e,
+	0x33, 0x5a, 0xc4, 0xb0, 0x00, 0xbf, 0x93, 0xb3, 0xfb, 0x54, 0x9e, 0xa7, 0x92, 0xbd, 0x9c, 0xf6,
+	0xa9, 0x94, 0x2c, 0x19, 0x08, 0x84, 0xa1, 0xd6, 0xa3, 0x94, 0xfb, 0x5e, 0xb3, 0x72, 0xb0, 0xdd,
+	0xde, 0x6d, 0x8d, 0xc4, 0xa0, 0x75, 0x9a, 0x64, 0x63, 0xa9, 0xd0, 0x40, 0xc7, 0xd0, 0x43, 0xd8,
+	0x2c, 0xf9, 0x7e, 0x45, 0xf3, 0xf6, 0x34, 0x4f, 0x05, 0xdd, 0x74, 0x81, 0x21, 0xe2, 0x6f, 0x4c,
+	0xd1, 0x27, 0xff, 0xa7, 0x28, 0xfe, 0xad, 0x02, 0x37, 0x8b, 0x04, 0x01, 0x1d, 0x30, 0x21, 0x29,
+	0x3f, 0xa2, 0x13, 0x16, 0x52, 0xb4, 0x0f, 0xf5, 0xe7, 0xe9, 0x2b, 0x9a, 0xe8, 0x6f, 0xd9, 0x3a,
+	0xac, 0xbd, 0xf9, 0xeb, 0xee, 0x5a, 0x90, 0x43, 0xe8, 0x3e, 0x6c, 0xe7, 0xac, 0xa7, 0x69, 0x44,
+	0x63, 0xbf, 0x6a, 0x31, 0xec, 0x00, 0xfa, 0x18, 0xde, 0xeb, 0x4f, 0x85, 0xa4, 0xa3, 0xef, 0x29,
+	0x17, 0x2c, 0x4d, 0xfc, 0x9a, 0xc5, 0x74, 0x43, 0xe8, 0x1e, 0x40, 0x27, 0xcb, 0x4a, 0x62, 0xdd,
+	0x22, 0x5a, 0x38, 0x6a, 0xc2, 0xe6, 0x77, 0x24, 0x19, 0x74, 0xd3, 0x88, 0xfa, 0xeb, 0x16, 0xc7,
+	0xa0, 0xe8, 0x4b, 0xd8, 0xd2, 0x1f, 0xf9, 0x7c, 0x9a, 0x51, 0x7f, 0xa3, 0x59, 0x39, 0xd8, 0x6d,
+	0xdf, 0xca, 0xfb, 0x38, 0x16, 0x43, 0x1d, 0xe9, 0xf1, 0x74, 0xc2, 0x22, 0xca, 0x0b, 0xe9, 0x8c,
+	0xae, 0xb2, 0x77, 0x63, 0x46, 0x13, 0x79, 0x7a, 0xe4, 0x6f, 0xda, 0xd9, 0x4b, 0x14, 0xff, 0x00,
+	0x7b, 0x45, 0xbb, 0x5e, 0x24, 0xdc, 0x6d, 0x18, 0xb6, 0x0b, 0xab, 0x9e, 0xd7, 0x17, 0x0b, 0xbc,
+	0xa3, 0xa9, 0x58, 0xc2, 0x8d, 0x32, 0x75, 0x16, 0x11, 0x49, 0x7b, 0x3c, 0x7d, 0xc9, 0x62, 0x9d,
+	0xf7, 0x98, 0x71, 0x21, 0xcf, 0xc9, 0x28, 0xcf, 0x5b, 0xea, 0x66, 0x70, 0xde, 0x96, 0x82, 0x52,
+	0x71, 0xdb, 0x52, 0x30, 0x6e, 0x41, 0xf5, 0x90, 0xa5, 0x7e, 0xb5, 0xe9, 0x99, 0xa0, 0x02, 0xf0,
+	0x23, 0x53, 0xb5, 0x3b, 0xa4, 0xe1, 0xab, 0x17, 0x82, 0xf2, 0xa4, 0xc8, 0x58, 0x3e, 0x3b, 0x45,
+	0x0d, 0x8a, 0xbf, 0x30, 0x93, 0x93, 0x7f, 0xef, 0x7f, 0x90, 0x5e, 0x00, 0x32, 0xd2, 0x38, 0x25,
+	0x51, 0x6f, 0xa8, 0xcc, 0x85, 0xa1, 0x76, 0xcc, 0x62, 0xba, 0x38, 0xaf, 0x0a, 0x0d, 0x74, 0x0c,
+	0x1d, 0xc0, 0x4e, 0x40, 0xe5, 0x98, 0x27, 0xcf, 0x2e, 0x7e, 0xa2, 0xa1, 0xf4, 0x2b, 0x4d, 0xef,
+	0x60, 0xb3, 0xc8, 0xef, 0x44, 0xf0, 0xe7, 0x56, 0x0d, 0xdd, 0x4e, 0x5d, 0xa3, 0x09, 0x1b, 0xfa,
+	0xe1, 0xf4, 0x48, 0x97, 0xa9, 0x1e, 0xae, 0x2b, 0xe9, 0x03, 0x2f, 0x28, 0x61, 0x4b, 0x17, 0xd0,
+	0x51, 0x3a, 0x59, 0xa6, 0xf3, 0x96, 0xe9, 0x1e, 0xc1, 0xbe, 0xb1, 0x7f, 0x12, 0x75, 0x87, 0x24,
+	0x19, 0x28, 0x6d, 0x42, 0xf5, 0x54, 0xee, 0x43, 0x5d, 0xbf, 0x38, 0x0d, 0xc9, 0x21, 0xfc, 0x8b,
+	0x67, 0x4a, 0x5a, 0xb2, 0x77, 0x49, 0x94, 0xb1, 0x4c, 0xee, 0x13, 0x22, 0x86, 0xce, 0xa2, 0xbb,
+	0x21, 0x35, 0x3f, 0x06, 0x70, 0xac, 0x3a, 0x83, 0xf1, 0xef, 0x15, 0x78, 0x7f, 0xb6, 0x79, 0xf5,
+	0x38, 0x9b, 0x90, 0x70, 0x8a, 0x1e, 0x00, 0x74, 0x87, 0x44, 0x9e, 0x26, 0x13, 0x26, 0xd5, 0x67,
+	0x54, 0x0f, 0xb6, 0xdb, 0xd7, 0x73, 0x2f, 0xe5, 0x8c, 0x60, 0x1c, 0xd3, 0xc0, 0xe2, 0xa0, 0x4f,
+	0xf2, 0x39, 0xec, 0x53, 0x3d, 0xe2, 0xcb, 0xf9, 0x86, 0x81, 0xda, 0xb0, 0xad, 0x3f, 0xe1, 0x7c,
+	0x3c, 0xba, 0xa0, 0xdc, 0xaf, 0xae, 0x10, 0xd8, 0x24, 0xf4, 0x29, 0xec, 0x14, 0xc6, 0xd0, 0x8d,
+	0xf7, 0x6b, 0x2b, 0x44, 0x0e, 0x0b, 0x3d, 0x86, 0xeb, 0xc7, 0x29, 0x7f, 0x4d, 0x78, 0x44, 0xa3,
+	0xa7, 0x54, 0x08, 0x32, 0xa0, 0x7e, 0x7d, 0x85, 0x72, 0x81, 0x89, 0xee, 0x41, 0xad, 0x4b, 0xe2,
+	0xd8, 0x5f, 0x5f, 0xa1, 0xd0, 0x51, 0xfc, 0xd8, 0xb4, 0xf0, 0xc9, 0xac, 0x85, 0x1f, 0x41, 0xf5,
+	0x8c, 0x4e, 0xf5, 0x12, 0xee, 0xb6, 0xaf, 0xd9, 0xca, 0x33, 0x3a, 0x2d, 0x7d, 0x78, 0x46, 0xa7,
+	0x78, 0xdf, 0xde, 0xc8, 0x3b, 0x63, 0x39, 0x4c, 0x39, 0xfb, 0x99, 0x48, 0x96, 0x26, 0x02, 0x7f,
+	0x05, 0xb7, 0xcd, 0x48, 0x8a, 0xb9, 0x28, 0x6a, 0xc0, 0xba, 0x02, 0x16, 0x06, 0xba, 0x40, 0xf1,
+	0x43, 0xf8, 0xc0, 0xf1, 0x41, 0x5f, 0x12, 0x39, 0x16, 0xe8, 0x0e, 0xac, 0x3f, 0x4b, 0x62, 0x56,
+	0x8c, 0x57, 0x69, 0xa1, 0x02, 0xc3, 0x6d, 0xd8, 0x9d, 0x8d, 0x83, 0xda, 0x5a, 0x9d, 0x8d, 0xd7,
+	0x5b, 0xb6, 0xf1, 0xe2, 0x1b, 0x66, 0x8a, 0xd5, 0xff, 0x13, 0x21, 0x5e, 0xa7, 0x3c, 0xc2, 0x77,
+	0x8c, 0x2d, 0x2c, 0xd4, 0x1c, 0x5f, 0x77, 0xe1, 0x43, 0xd7, 0xa4, 0xf3, 0x84, 0xcf, 0xcc, 0x7e,
+	0x3b, 0x1f, 0x52, 0xfe, 0xf8, 0x76, 0x44, 0x58, 0xec, 0xfa, 0x43, 0x43, 0xf8, 0x1f, 0x0f, 0xae,
+	0xcd, 0xe9, 0xd4, 0xa1, 0x75, 0x42, 0x44, 0xf9, 0xea, 0xfc, 0xb6, 0x1d, 0x40, 0x3e, 0xd4, 0x4e,
+	0x58, 0x22, 0x1d, 0x4b, 0x69, 0x44, 0x39, 0xa9, 0x13, 0x0f, 0x52, 0xce, 0xe4, 0x70, 0xa4, 0x9d,
+	0x54, 0x2d, 0x9d, 0x64, 0x60, 0xe5, 0x4c, 0xf3, 0x72, 0x44, 0x24, 0xd1, 0x47, 0xde, 0x4e, 0xe9,
+	0x4c, 0x27, 0xa4, 0x2a, 0xf5, 0x79, 0x76, 0xa8, 0x0f, 0xbb, 0x92, 0xa2, 0x11, 0xf5, 0x6f, 0x7d,
+	0x9e, 0x9d, 0x1e, 0xe9, 0x33, 0xae, 0xac, 0x92, 0x43, 0xea, 0xa0, 0x0c, 0x48, 0x12, 0xa5, 0x79,
+	0xfa, 0x8d, 0xa6, 0x67, 0xb4, 0x16, 0x8e, 0x7f, 0x34, 0xbb, 0xb3, 0x3b, 0x4c, 0xa8, 0x03, 0xbb,
+	0x2e, 0x52, 0x18, 0xfb, 0xb6, 0x1e, 0xce, 0x65, 0x9a, 0x60, 0x4e, 0x80, 0xff, 0xa8, 0x98, 0x43,
+	0x63, 0xd5, 0x2c, 0x46, 0xcb, 0x66, 0x51, 0xfd, 0x56, 0x7e, 0x63, 0x70, 0x96, 0x2c, 0xbf, 0x2b,
+	0xb8, 0xe7, 0x7f, 0x65, 0xc5, 0xf9, 0xbf, 0x70, 0xa3, 0xa8, 0xae, 0xbe, 0x51, 0xd8, 0x23, 0x5b,
+	0x5b, 0x7a, 0x57, 0xc0, 0xb0, 0xd5, 0xe5, 0x94, 0x48, 0x1a, 0x75, 0xa4, 0x5e, 0x05, 0xb3, 0xa0,
+	0x06, 0x56, 0x59, 0x3a, 0xa1, 0x64, 0x13, 0xda, 0x91, 0xce, 0x6a, 0x18, 0xd4, 0xba, 0x35, 0xf4,
+	0xf4, 0x85, 0x63, 0xfe, 0xd6, 0xd0, 0x53, 0xff, 0xa6, 0x36, 0xbd, 0x4e, 0x18, 0x52, 0x21, 0xf4,
+	0xcd, 0xa2, 0xcc, 0x62, 0xe1, 0xf8, 0x6b, 0xe3, 0x54, 0x6b, 0x73, 0x11, 0xe8, 0x3e, 0xd4, 0xf5,
+	0xc3, 0xca, 0x0d, 0x38, 0x0f, 0x1f, 0xfa, 0x6f, 0x2e, 0x1b, 0xde, 0xdb, 0xcb, 0x86, 0xf7, 0xf7,
+	0x65, 0xc3, 0xfb, 0xf5, 0xaa, 0xb1, 0xf6, 0xf6, 0xaa, 0xb1, 0xf6, 0xe7, 0x55, 0x63, 0xed, 0xdf,
+	0x00, 0x00, 0x00, 0xff, 0xff, 0xa2, 0xf3, 0xdc, 0xd1, 0xcf, 0x0a, 0x00, 0x00,
 }
 
 func (m *AccountSetNotifySettings) Marshal() (dAtA []byte, err error) {
@@ -1965,6 +2237,166 @@ func (m *AccountSetLang) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *AccountGetPassword) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AccountGetPassword) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountGetPassword) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *AccountGetPasswordSettings) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AccountGetPasswordSettings) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountGetPasswordSettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *AccountUpdatePasswordSettings) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AccountUpdatePasswordSettings) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountUpdatePasswordSettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *AccountPasswordSettings) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AccountPasswordSettings) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountPasswordSettings) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.Email)
+	copy(dAtA[i:], m.Email)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Email)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *AccountPassword) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AccountPassword) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AccountPassword) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.RandomData != nil {
+		i -= len(m.RandomData)
+		copy(dAtA[i:], m.RandomData)
+		i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.RandomData)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.SrpID))
+	i--
+	dAtA[i] = 0x30
+	if m.SrpB != nil {
+		i -= len(m.SrpB)
+		copy(dAtA[i:], m.SrpB)
+		i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.SrpB)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if m.AlgorithmData != nil {
+		i -= len(m.AlgorithmData)
+		copy(dAtA[i:], m.AlgorithmData)
+		i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.AlgorithmData)))
+		i--
+		dAtA[i] = 0x22
+	}
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(m.Algorithm))
+	i--
+	dAtA[i] = 0x18
+	i -= len(m.Hint)
+	copy(dAtA[i:], m.Hint)
+	i = encodeVarintChatApiAccounts(dAtA, i, uint64(len(m.Hint)))
+	i--
+	dAtA[i] = 0x12
+	i--
+	if m.HasPassword {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
 func (m *AccountAuthorizations) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -2365,6 +2797,70 @@ func (m *AccountSetLang) Size() (n int) {
 	_ = l
 	l = len(m.LangCode)
 	n += 1 + l + sovChatApiAccounts(uint64(l))
+	return n
+}
+
+func (m *AccountGetPassword) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *AccountGetPasswordSettings) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *AccountUpdatePasswordSettings) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *AccountPasswordSettings) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Email)
+	n += 1 + l + sovChatApiAccounts(uint64(l))
+	return n
+}
+
+func (m *AccountPassword) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	l = len(m.Hint)
+	n += 1 + l + sovChatApiAccounts(uint64(l))
+	n += 1 + sovChatApiAccounts(uint64(m.Algorithm))
+	if m.AlgorithmData != nil {
+		l = len(m.AlgorithmData)
+		n += 1 + l + sovChatApiAccounts(uint64(l))
+	}
+	if m.SrpB != nil {
+		l = len(m.SrpB)
+		n += 1 + l + sovChatApiAccounts(uint64(l))
+	}
+	n += 1 + sovChatApiAccounts(uint64(m.SrpID))
+	if m.RandomData != nil {
+		l = len(m.RandomData)
+		n += 1 + l + sovChatApiAccounts(uint64(l))
+	}
 	return n
 }
 
@@ -4539,6 +5035,525 @@ func (m *AccountSetLang) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("LangCode")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AccountGetPassword) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAccounts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AccountGetPassword: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AccountGetPassword: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAccounts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AccountGetPasswordSettings) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAccounts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AccountGetPasswordSettings: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AccountGetPasswordSettings: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAccounts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AccountUpdatePasswordSettings) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAccounts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AccountUpdatePasswordSettings: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AccountUpdatePasswordSettings: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAccounts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AccountPasswordSettings) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAccounts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AccountPasswordSettings: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AccountPasswordSettings: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Email", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Email = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAccounts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Email")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AccountPassword) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAccounts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AccountPassword: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AccountPassword: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field HasPassword", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.HasPassword = bool(v != 0)
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Hint", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Hint = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Algorithm", wireType)
+			}
+			m.Algorithm = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Algorithm |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AlgorithmData", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AlgorithmData = append(m.AlgorithmData[:0], dAtA[iNdEx:postIndex]...)
+			if m.AlgorithmData == nil {
+				m.AlgorithmData = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000008)
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SrpB", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SrpB = append(m.SrpB[:0], dAtA[iNdEx:postIndex]...)
+			if m.SrpB == nil {
+				m.SrpB = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000010)
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SrpID", wireType)
+			}
+			m.SrpID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.SrpID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000020)
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RandomData", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAccounts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.RandomData = append(m.RandomData[:0], dAtA[iNdEx:postIndex]...)
+			if m.RandomData == nil {
+				m.RandomData = []byte{}
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAccounts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAccounts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("HasPassword")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Hint")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Algorithm")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AlgorithmData")
+	}
+	if hasFields[0]&uint64(0x00000010) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("SrpB")
+	}
+	if hasFields[0]&uint64(0x00000020) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("SrpID")
 	}
 
 	if iNdEx > l {

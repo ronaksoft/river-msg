@@ -511,6 +511,142 @@ func ResultAccountSetLang(out *MessageEnvelope, res *AccountSetLang) {
 	res.MarshalTo(out.Message)
 }
 
+const C_AccountGetPassword int64 = 1702207851
+
+type poolAccountGetPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetPassword) Get() *AccountGetPassword {
+	x, ok := p.pool.Get().(*AccountGetPassword)
+	if !ok {
+		return &AccountGetPassword{}
+	}
+	return x
+}
+
+func (p *poolAccountGetPassword) Put(x *AccountGetPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAccountGetPassword = poolAccountGetPassword{}
+
+func ResultAccountGetPassword(out *MessageEnvelope, res *AccountGetPassword) {
+	out.Constructor = C_AccountGetPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AccountGetPasswordSettings int64 = 2052309739
+
+type poolAccountGetPasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetPasswordSettings) Get() *AccountGetPasswordSettings {
+	x, ok := p.pool.Get().(*AccountGetPasswordSettings)
+	if !ok {
+		return &AccountGetPasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountGetPasswordSettings) Put(x *AccountGetPasswordSettings) {
+	p.pool.Put(x)
+}
+
+var PoolAccountGetPasswordSettings = poolAccountGetPasswordSettings{}
+
+func ResultAccountGetPasswordSettings(out *MessageEnvelope, res *AccountGetPasswordSettings) {
+	out.Constructor = C_AccountGetPasswordSettings
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AccountUpdatePasswordSettings int64 = 3193945896
+
+type poolAccountUpdatePasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings {
+	x, ok := p.pool.Get().(*AccountUpdatePasswordSettings)
+	if !ok {
+		return &AccountUpdatePasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdatePasswordSettings) Put(x *AccountUpdatePasswordSettings) {
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdatePasswordSettings = poolAccountUpdatePasswordSettings{}
+
+func ResultAccountUpdatePasswordSettings(out *MessageEnvelope, res *AccountUpdatePasswordSettings) {
+	out.Constructor = C_AccountUpdatePasswordSettings
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AccountPasswordSettings int64 = 3362978866
+
+type poolAccountPasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountPasswordSettings) Get() *AccountPasswordSettings {
+	x, ok := p.pool.Get().(*AccountPasswordSettings)
+	if !ok {
+		return &AccountPasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountPasswordSettings) Put(x *AccountPasswordSettings) {
+	p.pool.Put(x)
+}
+
+var PoolAccountPasswordSettings = poolAccountPasswordSettings{}
+
+func ResultAccountPasswordSettings(out *MessageEnvelope, res *AccountPasswordSettings) {
+	out.Constructor = C_AccountPasswordSettings
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AccountPassword int64 = 4178767656
+
+type poolAccountPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountPassword) Get() *AccountPassword {
+	x, ok := p.pool.Get().(*AccountPassword)
+	if !ok {
+		return &AccountPassword{}
+	}
+	x.RandomData = nil
+	return x
+}
+
+func (p *poolAccountPassword) Put(x *AccountPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAccountPassword = poolAccountPassword{}
+
+func ResultAccountPassword(out *MessageEnvelope, res *AccountPassword) {
+	out.Constructor = C_AccountPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AccountAuthorizations int64 = 1092320500
 
 type poolAccountAuthorizations struct {
@@ -613,6 +749,11 @@ func init() {
 	ConstructorNames[1045069116] = "AccountResetAuthorization"
 	ConstructorNames[666864933] = "AccountUpdateStatus"
 	ConstructorNames[2015777242] = "AccountSetLang"
+	ConstructorNames[1702207851] = "AccountGetPassword"
+	ConstructorNames[2052309739] = "AccountGetPasswordSettings"
+	ConstructorNames[3193945896] = "AccountUpdatePasswordSettings"
+	ConstructorNames[3362978866] = "AccountPasswordSettings"
+	ConstructorNames[4178767656] = "AccountPassword"
 	ConstructorNames[1092320500] = "AccountAuthorizations"
 	ConstructorNames[275571966] = "AccountAuthorization"
 	ConstructorNames[3802018092] = "AccountPrivacyRules"

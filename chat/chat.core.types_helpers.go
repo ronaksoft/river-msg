@@ -378,6 +378,33 @@ func ResultInputUser(out *MessageEnvelope, res *InputUser) {
 	res.MarshalTo(out.Message)
 }
 
+const C_InputPassword int64 = 513021899
+
+type poolInputPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolInputPassword) Get() *InputPassword {
+	x, ok := p.pool.Get().(*InputPassword)
+	if !ok {
+		return &InputPassword{}
+	}
+	return x
+}
+
+func (p *poolInputPassword) Put(x *InputPassword) {
+	p.pool.Put(x)
+}
+
+var PoolInputPassword = poolInputPassword{}
+
+func ResultInputPassword(out *MessageEnvelope, res *InputPassword) {
+	out.Constructor = C_InputPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_InputFileLocation int64 = 354669666
 
 type poolInputFileLocation struct {
@@ -1020,6 +1047,7 @@ func init() {
 	ConstructorNames[47470215] = "Peer"
 	ConstructorNames[3374092470] = "InputPeer"
 	ConstructorNames[3865689926] = "InputUser"
+	ConstructorNames[513021899] = "InputPassword"
 	ConstructorNames[354669666] = "InputFileLocation"
 	ConstructorNames[2432133155] = "FileLocation"
 	ConstructorNames[1881347437] = "UserPhoto"

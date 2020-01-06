@@ -98,6 +98,87 @@ func ResultAuthLogin(out *MessageEnvelope, res *AuthLogin) {
 	res.MarshalTo(out.Message)
 }
 
+const C_AuthCheckPassword int64 = 3346962908
+
+type poolAuthCheckPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAuthCheckPassword) Get() *AuthCheckPassword {
+	x, ok := p.pool.Get().(*AuthCheckPassword)
+	if !ok {
+		return &AuthCheckPassword{}
+	}
+	return x
+}
+
+func (p *poolAuthCheckPassword) Put(x *AuthCheckPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAuthCheckPassword = poolAuthCheckPassword{}
+
+func ResultAuthCheckPassword(out *MessageEnvelope, res *AuthCheckPassword) {
+	out.Constructor = C_AuthCheckPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AuthRecoverPassword int64 = 2711231991
+
+type poolAuthRecoverPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAuthRecoverPassword) Get() *AuthRecoverPassword {
+	x, ok := p.pool.Get().(*AuthRecoverPassword)
+	if !ok {
+		return &AuthRecoverPassword{}
+	}
+	return x
+}
+
+func (p *poolAuthRecoverPassword) Put(x *AuthRecoverPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAuthRecoverPassword = poolAuthRecoverPassword{}
+
+func ResultAuthRecoverPassword(out *MessageEnvelope, res *AuthRecoverPassword) {
+	out.Constructor = C_AuthRecoverPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AuthRequestPasswordRecovery int64 = 656695421
+
+type poolAuthRequestPasswordRecovery struct {
+	pool sync.Pool
+}
+
+func (p *poolAuthRequestPasswordRecovery) Get() *AuthRequestPasswordRecovery {
+	x, ok := p.pool.Get().(*AuthRequestPasswordRecovery)
+	if !ok {
+		return &AuthRequestPasswordRecovery{}
+	}
+	return x
+}
+
+func (p *poolAuthRequestPasswordRecovery) Put(x *AuthRequestPasswordRecovery) {
+	p.pool.Put(x)
+}
+
+var PoolAuthRequestPasswordRecovery = poolAuthRequestPasswordRecovery{}
+
+func ResultAuthRequestPasswordRecovery(out *MessageEnvelope, res *AuthRequestPasswordRecovery) {
+	out.Constructor = C_AuthRequestPasswordRecovery
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AuthLogout int64 = 992431648
 
 type poolAuthLogout struct {
@@ -295,6 +376,33 @@ func ResultAuthDestroyKey(out *MessageEnvelope, res *AuthDestroyKey) {
 	res.MarshalTo(out.Message)
 }
 
+const C_AuthPasswordRecovery int64 = 3813475914
+
+type poolAuthPasswordRecovery struct {
+	pool sync.Pool
+}
+
+func (p *poolAuthPasswordRecovery) Get() *AuthPasswordRecovery {
+	x, ok := p.pool.Get().(*AuthPasswordRecovery)
+	if !ok {
+		return &AuthPasswordRecovery{}
+	}
+	return x
+}
+
+func (p *poolAuthPasswordRecovery) Put(x *AuthPasswordRecovery) {
+	p.pool.Put(x)
+}
+
+var PoolAuthPasswordRecovery = poolAuthPasswordRecovery{}
+
+func ResultAuthPasswordRecovery(out *MessageEnvelope, res *AuthPasswordRecovery) {
+	out.Constructor = C_AuthPasswordRecovery
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AuthRecalled int64 = 3249025459
 
 type poolAuthRecalled struct {
@@ -439,6 +547,9 @@ func init() {
 	ConstructorNames[2228369460] = "AuthRegister"
 	ConstructorNames[1579606687] = "AuthBotRegister"
 	ConstructorNames[2587620888] = "AuthLogin"
+	ConstructorNames[3346962908] = "AuthCheckPassword"
+	ConstructorNames[2711231991] = "AuthRecoverPassword"
+	ConstructorNames[656695421] = "AuthRequestPasswordRecovery"
 	ConstructorNames[992431648] = "AuthLogout"
 	ConstructorNames[2851553023] = "AuthLoginByToken"
 	ConstructorNames[4134648516] = "AuthCheckPhone"
@@ -446,6 +557,7 @@ func init() {
 	ConstructorNames[2682713491] = "AuthResendCode"
 	ConstructorNames[1172029049] = "AuthRecall"
 	ConstructorNames[3673422656] = "AuthDestroyKey"
+	ConstructorNames[3813475914] = "AuthPasswordRecovery"
 	ConstructorNames[3249025459] = "AuthRecalled"
 	ConstructorNames[1140037965] = "AuthAuthorization"
 	ConstructorNames[3304560814] = "AuthBotAuthorization"

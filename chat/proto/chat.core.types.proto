@@ -123,6 +123,13 @@ message InputUser {
     required fixed64 AccessHash = 2 [jstype = JS_STRING];
 }
 
+// InputPassword
+message InputPassword {
+    required int64 SrpID = 1;
+    required bytes A = 2;
+    required bytes M1 = 3;
+}
+
 // UserStatus
 enum UserStatus {
     UserStatusOffline = 0;

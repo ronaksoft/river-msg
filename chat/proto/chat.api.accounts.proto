@@ -145,6 +145,43 @@ message AccountSetLang {
     required string LangCode = 1;
 }
 
+// AccountGetPassword
+// @Function
+// @Returns: AccountPassword
+// Obtain configuration for two-factor authorization with password
+message AccountGetPassword {
+}
+
+// AccountGetPasswordSettings
+// @Function
+// @Returns: AccountPasswordSettings
+// Get private info associated to the password info (recovery email & so on)
+message AccountGetPasswordSettings {
+}
+
+// AccountUpdatePassword
+// @Function
+// @Returns: Bool
+message AccountUpdatePasswordSettings {
+}
+
+// AccountPasswordSettings
+// Private info associated to the password info (recovery email and so on)
+message AccountPasswordSettings {
+    required string Email = 1;
+}
+
+// AccountPassword
+// Configuration for two-factor authorization
+message AccountPassword {
+    required bool HasPassword = 1;
+    required string Hint = 2;
+    required int64 Algorithm = 3;
+    required bytes AlgorithmData = 4;
+    required bytes SrpB = 5;
+    required int64 SrpID = 6;
+    optional bytes RandomData = 7;
+}
 
 // AccountAuthorizations
 message AccountAuthorizations {

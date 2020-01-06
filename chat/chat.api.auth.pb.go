@@ -229,6 +229,139 @@ func (m *AuthLogin) GetPhoneCode() string {
 	return ""
 }
 
+// AuthCheckPassword
+// @Function
+// @Return: AuthAuthorization
+type AuthCheckPassword struct {
+	Password *InputPassword `protobuf:"bytes,1,req,name=Password" json:"Password,omitempty"`
+}
+
+func (m *AuthCheckPassword) Reset()         { *m = AuthCheckPassword{} }
+func (m *AuthCheckPassword) String() string { return proto.CompactTextString(m) }
+func (*AuthCheckPassword) ProtoMessage()    {}
+func (*AuthCheckPassword) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{3}
+}
+func (m *AuthCheckPassword) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthCheckPassword) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthCheckPassword.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthCheckPassword) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthCheckPassword.Merge(m, src)
+}
+func (m *AuthCheckPassword) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthCheckPassword) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthCheckPassword.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthCheckPassword proto.InternalMessageInfo
+
+func (m *AuthCheckPassword) GetPassword() *InputPassword {
+	if m != nil {
+		return m.Password
+	}
+	return nil
+}
+
+// AuthRecoverPassword
+// @Function
+// @Returns AuthAuthorization
+type AuthRecoverPassword struct {
+	Code string `protobuf:"bytes,1,req,name=Code" json:"Code"`
+}
+
+func (m *AuthRecoverPassword) Reset()         { *m = AuthRecoverPassword{} }
+func (m *AuthRecoverPassword) String() string { return proto.CompactTextString(m) }
+func (*AuthRecoverPassword) ProtoMessage()    {}
+func (*AuthRecoverPassword) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{4}
+}
+func (m *AuthRecoverPassword) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthRecoverPassword) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthRecoverPassword.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthRecoverPassword) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthRecoverPassword.Merge(m, src)
+}
+func (m *AuthRecoverPassword) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthRecoverPassword) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthRecoverPassword.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthRecoverPassword proto.InternalMessageInfo
+
+func (m *AuthRecoverPassword) GetCode() string {
+	if m != nil {
+		return m.Code
+	}
+	return ""
+}
+
+// AuthRequestPasswordRecovery
+// @Function
+// @Returns: AuthPasswordRecovery
+type AuthRequestPasswordRecovery struct {
+}
+
+func (m *AuthRequestPasswordRecovery) Reset()         { *m = AuthRequestPasswordRecovery{} }
+func (m *AuthRequestPasswordRecovery) String() string { return proto.CompactTextString(m) }
+func (*AuthRequestPasswordRecovery) ProtoMessage()    {}
+func (*AuthRequestPasswordRecovery) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{5}
+}
+func (m *AuthRequestPasswordRecovery) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthRequestPasswordRecovery) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthRequestPasswordRecovery.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthRequestPasswordRecovery) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthRequestPasswordRecovery.Merge(m, src)
+}
+func (m *AuthRequestPasswordRecovery) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthRequestPasswordRecovery) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthRequestPasswordRecovery.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthRequestPasswordRecovery proto.InternalMessageInfo
+
 // AuthLogout
 // @Function
 // @Return: Bool
@@ -240,7 +373,7 @@ func (m *AuthLogout) Reset()         { *m = AuthLogout{} }
 func (m *AuthLogout) String() string { return proto.CompactTextString(m) }
 func (*AuthLogout) ProtoMessage()    {}
 func (*AuthLogout) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{3}
+	return fileDescriptor_3b771a58039c158f, []int{6}
 }
 func (m *AuthLogout) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -288,7 +421,7 @@ func (m *AuthLoginByToken) Reset()         { *m = AuthLoginByToken{} }
 func (m *AuthLoginByToken) String() string { return proto.CompactTextString(m) }
 func (*AuthLoginByToken) ProtoMessage()    {}
 func (*AuthLoginByToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{4}
+	return fileDescriptor_3b771a58039c158f, []int{7}
 }
 func (m *AuthLoginByToken) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -342,7 +475,7 @@ func (m *AuthCheckPhone) Reset()         { *m = AuthCheckPhone{} }
 func (m *AuthCheckPhone) String() string { return proto.CompactTextString(m) }
 func (*AuthCheckPhone) ProtoMessage()    {}
 func (*AuthCheckPhone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{5}
+	return fileDescriptor_3b771a58039c158f, []int{8}
 }
 func (m *AuthCheckPhone) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -390,7 +523,7 @@ func (m *AuthSendCode) Reset()         { *m = AuthSendCode{} }
 func (m *AuthSendCode) String() string { return proto.CompactTextString(m) }
 func (*AuthSendCode) ProtoMessage()    {}
 func (*AuthSendCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{6}
+	return fileDescriptor_3b771a58039c158f, []int{9}
 }
 func (m *AuthSendCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -446,7 +579,7 @@ func (m *AuthResendCode) Reset()         { *m = AuthResendCode{} }
 func (m *AuthResendCode) String() string { return proto.CompactTextString(m) }
 func (*AuthResendCode) ProtoMessage()    {}
 func (*AuthResendCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{7}
+	return fileDescriptor_3b771a58039c158f, []int{10}
 }
 func (m *AuthResendCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -512,7 +645,7 @@ func (m *AuthRecall) Reset()         { *m = AuthRecall{} }
 func (m *AuthRecall) String() string { return proto.CompactTextString(m) }
 func (*AuthRecall) ProtoMessage()    {}
 func (*AuthRecall) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{8}
+	return fileDescriptor_3b771a58039c158f, []int{11}
 }
 func (m *AuthRecall) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -593,7 +726,7 @@ func (m *AuthDestroyKey) Reset()         { *m = AuthDestroyKey{} }
 func (m *AuthDestroyKey) String() string { return proto.CompactTextString(m) }
 func (*AuthDestroyKey) ProtoMessage()    {}
 func (*AuthDestroyKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{9}
+	return fileDescriptor_3b771a58039c158f, []int{12}
 }
 func (m *AuthDestroyKey) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -622,6 +755,51 @@ func (m *AuthDestroyKey) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AuthDestroyKey proto.InternalMessageInfo
 
+// AuthPasswordRecovery
+type AuthPasswordRecovery struct {
+	EmailPattern string `protobuf:"bytes,1,req,name=EmailPattern" json:"EmailPattern"`
+}
+
+func (m *AuthPasswordRecovery) Reset()         { *m = AuthPasswordRecovery{} }
+func (m *AuthPasswordRecovery) String() string { return proto.CompactTextString(m) }
+func (*AuthPasswordRecovery) ProtoMessage()    {}
+func (*AuthPasswordRecovery) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3b771a58039c158f, []int{13}
+}
+func (m *AuthPasswordRecovery) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AuthPasswordRecovery) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AuthPasswordRecovery.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AuthPasswordRecovery) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthPasswordRecovery.Merge(m, src)
+}
+func (m *AuthPasswordRecovery) XXX_Size() int {
+	return m.Size()
+}
+func (m *AuthPasswordRecovery) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthPasswordRecovery.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthPasswordRecovery proto.InternalMessageInfo
+
+func (m *AuthPasswordRecovery) GetEmailPattern() string {
+	if m != nil {
+		return m.EmailPattern
+	}
+	return ""
+}
+
 // AuthRecalled
 type AuthRecalled struct {
 	ClientID       int64  `protobuf:"varint,1,req,name=ClientID" json:"ClientID"`
@@ -636,7 +814,7 @@ func (m *AuthRecalled) Reset()         { *m = AuthRecalled{} }
 func (m *AuthRecalled) String() string { return proto.CompactTextString(m) }
 func (*AuthRecalled) ProtoMessage()    {}
 func (*AuthRecalled) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{10}
+	return fileDescriptor_3b771a58039c158f, []int{14}
 }
 func (m *AuthRecalled) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -717,7 +895,7 @@ func (m *AuthAuthorization) Reset()         { *m = AuthAuthorization{} }
 func (m *AuthAuthorization) String() string { return proto.CompactTextString(m) }
 func (*AuthAuthorization) ProtoMessage()    {}
 func (*AuthAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{11}
+	return fileDescriptor_3b771a58039c158f, []int{15}
 }
 func (m *AuthAuthorization) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -771,7 +949,7 @@ func (m *AuthBotAuthorization) Reset()         { *m = AuthBotAuthorization{} }
 func (m *AuthBotAuthorization) String() string { return proto.CompactTextString(m) }
 func (*AuthBotAuthorization) ProtoMessage()    {}
 func (*AuthBotAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{12}
+	return fileDescriptor_3b771a58039c158f, []int{16}
 }
 func (m *AuthBotAuthorization) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -831,7 +1009,7 @@ func (m *AuthCheckedPhone) Reset()         { *m = AuthCheckedPhone{} }
 func (m *AuthCheckedPhone) String() string { return proto.CompactTextString(m) }
 func (*AuthCheckedPhone) ProtoMessage()    {}
 func (*AuthCheckedPhone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{13}
+	return fileDescriptor_3b771a58039c158f, []int{17}
 }
 func (m *AuthCheckedPhone) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -885,7 +1063,7 @@ func (m *AuthSentCode) Reset()         { *m = AuthSentCode{} }
 func (m *AuthSentCode) String() string { return proto.CompactTextString(m) }
 func (*AuthSentCode) ProtoMessage()    {}
 func (*AuthSentCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3b771a58039c158f, []int{14}
+	return fileDescriptor_3b771a58039c158f, []int{18}
 }
 func (m *AuthSentCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -939,6 +1117,9 @@ func init() {
 	proto.RegisterType((*AuthRegister)(nil), "msg.AuthRegister")
 	proto.RegisterType((*AuthBotRegister)(nil), "msg.AuthBotRegister")
 	proto.RegisterType((*AuthLogin)(nil), "msg.AuthLogin")
+	proto.RegisterType((*AuthCheckPassword)(nil), "msg.AuthCheckPassword")
+	proto.RegisterType((*AuthRecoverPassword)(nil), "msg.AuthRecoverPassword")
+	proto.RegisterType((*AuthRequestPasswordRecovery)(nil), "msg.AuthRequestPasswordRecovery")
 	proto.RegisterType((*AuthLogout)(nil), "msg.AuthLogout")
 	proto.RegisterType((*AuthLoginByToken)(nil), "msg.AuthLoginByToken")
 	proto.RegisterType((*AuthCheckPhone)(nil), "msg.AuthCheckPhone")
@@ -946,6 +1127,7 @@ func init() {
 	proto.RegisterType((*AuthResendCode)(nil), "msg.AuthResendCode")
 	proto.RegisterType((*AuthRecall)(nil), "msg.AuthRecall")
 	proto.RegisterType((*AuthDestroyKey)(nil), "msg.AuthDestroyKey")
+	proto.RegisterType((*AuthPasswordRecovery)(nil), "msg.AuthPasswordRecovery")
 	proto.RegisterType((*AuthRecalled)(nil), "msg.AuthRecalled")
 	proto.RegisterType((*AuthAuthorization)(nil), "msg.AuthAuthorization")
 	proto.RegisterType((*AuthBotAuthorization)(nil), "msg.AuthBotAuthorization")
@@ -956,52 +1138,58 @@ func init() {
 func init() { proto.RegisterFile("chat.api.auth.proto", fileDescriptor_3b771a58039c158f) }
 
 var fileDescriptor_3b771a58039c158f = []byte{
-	// 713 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xdf, 0x6a, 0x13, 0x4f,
-	0x14, 0xc7, 0xb3, 0xd9, 0x34, 0x4d, 0x4e, 0xff, 0xfc, 0xfa, 0x5b, 0x15, 0x96, 0x52, 0xd7, 0x30,
-	0x88, 0x94, 0x52, 0x42, 0xe9, 0x1b, 0xe4, 0x8f, 0xc5, 0xd8, 0xaa, 0x65, 0x5b, 0x8b, 0xb7, 0x6b,
-	0xf6, 0x98, 0x2c, 0x4d, 0x76, 0x96, 0xd9, 0x49, 0x6d, 0xbc, 0xf0, 0x19, 0x7c, 0xac, 0x5e, 0xf6,
-	0x52, 0xbc, 0x10, 0x49, 0xc1, 0xe7, 0x90, 0x99, 0xd9, 0x99, 0x4e, 0x6a, 0x2d, 0x15, 0xbc, 0x08,
-	0x64, 0x3f, 0x67, 0xf8, 0x9e, 0xf9, 0x9e, 0x33, 0xe7, 0xc0, 0x83, 0xfe, 0x30, 0xe2, 0xcd, 0x28,
-	0x4b, 0x9a, 0xd1, 0x84, 0x0f, 0x9b, 0x19, 0xa3, 0x9c, 0x7a, 0xee, 0x38, 0x1f, 0xac, 0x3f, 0x92,
-	0x91, 0x3e, 0x65, 0xd8, 0xe4, 0xd3, 0x0c, 0x73, 0x15, 0x23, 0x33, 0x07, 0x96, 0x5b, 0x13, 0x3e,
-	0x0c, 0x71, 0x90, 0xe4, 0x1c, 0x99, 0xb7, 0x0e, 0x0b, 0x87, 0x43, 0x9a, 0xa2, 0xef, 0x34, 0xca,
-	0x9b, 0xf5, 0x76, 0xe5, 0xe2, 0xfb, 0x93, 0x52, 0xa8, 0x90, 0x47, 0xa0, 0xbe, 0x97, 0xb0, 0x9c,
-	0xbf, 0x8e, 0xc6, 0xe8, 0x97, 0xad, 0xf8, 0x35, 0xf6, 0x1a, 0x50, 0x3b, 0x88, 0x8a, 0x23, 0xae,
-	0x75, 0xc4, 0x50, 0xa1, 0x22, 0xe5, 0x3a, 0x34, 0x46, 0xbf, 0x62, 0xab, 0x18, 0xec, 0x6d, 0xc1,
-	0x8a, 0xf9, 0x78, 0x11, 0xe5, 0x43, 0x7f, 0xc1, 0x3a, 0x37, 0x1f, 0x52, 0x19, 0xd3, 0x81, 0x94,
-	0xab, 0x36, 0x1c, 0x3b, 0xa3, 0xa2, 0xe4, 0x15, 0xfc, 0x27, 0x3c, 0xb6, 0x29, 0x37, 0x36, 0x7d,
-	0xa8, 0xc8, 0x2b, 0xda, 0x2e, 0x2b, 0xda, 0xc0, 0xdb, 0x1c, 0x59, 0x7a, 0xd3, 0xa3, 0xa1, 0xe4,
-	0x23, 0xd4, 0x85, 0xdc, 0x01, 0x1d, 0x24, 0xe9, 0x9d, 0xf5, 0xfa, 0xcd, 0x45, 0xf9, 0xcf, 0x2e,
-	0xe6, 0xaa, 0xe2, 0xde, 0x5a, 0x15, 0xb2, 0x05, 0x50, 0x24, 0xa6, 0x13, 0xee, 0x6d, 0xc0, 0xa2,
-	0xf8, 0xea, 0x75, 0x73, 0xdf, 0x69, 0xb8, 0x9b, 0x6e, 0xbb, 0xbc, 0xe3, 0x84, 0x1a, 0x91, 0x43,
-	0x58, 0x33, 0x97, 0x6c, 0x4f, 0x8f, 0xe9, 0x29, 0xca, 0xbb, 0xca, 0x3f, 0xf3, 0x77, 0x55, 0xb1,
-	0x06, 0xd4, 0x0e, 0x19, 0x3d, 0x4b, 0x62, 0x64, 0xf3, 0xb6, 0x35, 0x25, 0xdb, 0xb0, 0x2a, 0x14,
-	0x3b, 0x43, 0xec, 0x9f, 0x2a, 0x7f, 0x77, 0x78, 0x27, 0x2f, 0xd5, 0xbb, 0x3a, 0xc2, 0x34, 0x96,
-	0x1d, 0xbd, 0xab, 0x4e, 0x01, 0x2c, 0xb6, 0xb2, 0xac, 0xa8, 0xd0, 0x75, 0x03, 0x35, 0x24, 0xe7,
-	0x2a, 0x73, 0x88, 0xf9, 0x7d, 0xd4, 0xfe, 0xa6, 0xea, 0x56, 0x66, 0xf7, 0xb6, 0xcc, 0xdf, 0x1c,
-	0x55, 0xf2, 0x10, 0xfb, 0xd1, 0x68, 0xe4, 0x11, 0xa8, 0x75, 0x46, 0x09, 0xa6, 0xbc, 0xd7, 0x95,
-	0x99, 0xdd, 0x76, 0x55, 0x9c, 0xdf, 0x71, 0x42, 0xc3, 0x85, 0xe4, 0x09, 0xb2, 0x3c, 0xa1, 0xa9,
-	0x34, 0xb3, 0xa2, 0x25, 0x0b, 0xe8, 0x3d, 0x05, 0x68, 0x65, 0x99, 0x3e, 0x62, 0x67, 0xb5, 0xb8,
-	0x6c, 0xc7, 0x28, 0xe2, 0x1f, 0x28, 0x1b, 0xfb, 0x15, 0xfb, 0x51, 0x6b, 0xea, 0x6d, 0x40, 0xf5,
-	0x04, 0xd3, 0x98, 0x32, 0x7f, 0xc1, 0x8a, 0x17, 0x4c, 0x3c, 0xa7, 0x37, 0x47, 0x3a, 0x89, 0x3d,
-	0x15, 0xd7, 0x98, 0xac, 0xa9, 0xb2, 0x76, 0x31, 0xe7, 0x8c, 0x4e, 0xf7, 0x71, 0x4a, 0x7e, 0x9a,
-	0x6d, 0x20, 0xec, 0x62, 0x7c, 0x2f, 0xc3, 0x04, 0xea, 0xc7, 0xc9, 0x18, 0x73, 0x1e, 0x8d, 0x33,
-	0x59, 0x6b, 0x57, 0xa7, 0x32, 0x58, 0x0e, 0x55, 0x16, 0x47, 0x1c, 0x7b, 0x5d, 0x69, 0xd9, 0x35,
-	0x43, 0x55, 0x50, 0xa1, 0xd2, 0x3a, 0x8b, 0x92, 0x51, 0xf4, 0x7e, 0x84, 0xd2, 0x71, 0x4d, 0xab,
-	0x18, 0x2c, 0xba, 0xbe, 0x47, 0x59, 0x1f, 0xa5, 0x63, 0x1d, 0x57, 0xc8, 0xdb, 0x86, 0xd5, 0xce,
-	0x84, 0x31, 0x4c, 0xf9, 0x6d, 0xae, 0x6f, 0xc4, 0x48, 0x08, 0xff, 0x0b, 0x9f, 0xe2, 0x47, 0x59,
-	0xf2, 0x29, 0xe2, 0xa2, 0xe6, 0x01, 0x2c, 0x3e, 0x3f, 0xcf, 0x12, 0x86, 0xb1, 0xf4, 0x5a, 0xd5,
-	0x9d, 0x2b, 0xa0, 0xf7, 0x18, 0x2a, 0x62, 0x07, 0x48, 0x8f, 0x4b, 0xbb, 0xf5, 0xe6, 0x38, 0x1f,
-	0x34, 0x05, 0x08, 0x25, 0x26, 0x19, 0x3c, 0x2c, 0xb6, 0xcc, 0xbc, 0xec, 0x06, 0x54, 0xd5, 0x50,
-	0x16, 0x15, 0x2c, 0x1a, 0xa5, 0x98, 0x7c, 0x81, 0x13, 0x3e, 0xdc, 0xc7, 0xa9, 0xd4, 0x5d, 0x36,
-	0x2f, 0x50, 0x41, 0x6f, 0x1d, 0xdc, 0x36, 0xe5, 0x72, 0x23, 0x2c, 0xed, 0xd6, 0x64, 0x4e, 0xb1,
-	0xc7, 0x04, 0x24, 0xef, 0xd4, 0x8c, 0xcb, 0x89, 0xc4, 0xd8, 0xcc, 0x52, 0x2f, 0x3d, 0x4b, 0x78,
-	0x61, 0x42, 0x57, 0x49, 0x43, 0xf1, 0xfc, 0xf4, 0x12, 0xc4, 0x58, 0xa6, 0xd4, 0x47, 0x2c, 0x4e,
-	0x3e, 0x9b, 0xe9, 0xe5, 0xff, 0x74, 0xde, 0x9e, 0xc1, 0x92, 0xd8, 0x08, 0xc7, 0x54, 0xa9, 0xb9,
-	0x56, 0x1f, 0xed, 0x40, 0xdb, 0xbf, 0x98, 0x05, 0xce, 0xe5, 0x2c, 0x70, 0x7e, 0xcc, 0x02, 0xe7,
-	0xcb, 0x55, 0x50, 0xba, 0xbc, 0x0a, 0x4a, 0x5f, 0xaf, 0x82, 0xd2, 0xaf, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0x25, 0x6a, 0xf4, 0x17, 0xe2, 0x06, 0x00, 0x00,
+	// 803 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x51, 0x6f, 0xe3, 0x44,
+	0x10, 0xc7, 0xe3, 0x38, 0x4d, 0x93, 0x49, 0xef, 0x38, 0x7c, 0x20, 0x59, 0xa5, 0x67, 0xa2, 0x15,
+	0x42, 0xd5, 0xe9, 0x14, 0x4e, 0xfd, 0x04, 0xc4, 0xc9, 0x55, 0x84, 0x16, 0x88, 0xdc, 0x52, 0xf1,
+	0xba, 0xc4, 0x43, 0x62, 0x35, 0xf1, 0x9a, 0xf5, 0x26, 0x6d, 0x78, 0xe0, 0x33, 0xf0, 0xb1, 0xfa,
+	0xd8, 0x47, 0xc4, 0x03, 0x42, 0xa9, 0xc4, 0xe7, 0x40, 0xbb, 0xeb, 0xdd, 0xd8, 0xa5, 0x54, 0x45,
+	0xba, 0x87, 0x48, 0xf1, 0x6f, 0xd6, 0xff, 0xf1, 0xfc, 0x67, 0x76, 0xe0, 0xe5, 0x64, 0x46, 0x45,
+	0x8f, 0x66, 0x49, 0x8f, 0x2e, 0xc5, 0xac, 0x97, 0x71, 0x26, 0x98, 0xe7, 0x2e, 0xf2, 0xe9, 0xfe,
+	0xc7, 0x2a, 0x32, 0x61, 0x1c, 0x7b, 0x62, 0x9d, 0x61, 0xae, 0x63, 0x64, 0xe3, 0xc0, 0x5e, 0x7f,
+	0x29, 0x66, 0x11, 0x4e, 0x93, 0x5c, 0x20, 0xf7, 0xf6, 0x61, 0x67, 0x3c, 0x63, 0x29, 0xfa, 0x4e,
+	0xb7, 0x7e, 0xd8, 0x0e, 0x1b, 0x37, 0x7f, 0x7e, 0x5a, 0x8b, 0x34, 0xf2, 0x08, 0xb4, 0x8f, 0x13,
+	0x9e, 0x8b, 0x6f, 0xe9, 0x02, 0xfd, 0x7a, 0x29, 0xbe, 0xc5, 0x5e, 0x17, 0x5a, 0xa7, 0xb4, 0x38,
+	0xe2, 0x96, 0x8e, 0x58, 0x2a, 0x55, 0x94, 0xdc, 0x80, 0xc5, 0xe8, 0x37, 0xca, 0x2a, 0x16, 0x7b,
+	0xaf, 0xe1, 0x99, 0x7d, 0xf8, 0x8a, 0xe6, 0x33, 0x7f, 0xa7, 0x74, 0xae, 0x1a, 0xd2, 0x19, 0xd3,
+	0xa9, 0x92, 0x6b, 0x76, 0x9d, 0x72, 0x46, 0x4d, 0xc9, 0x37, 0xf0, 0x81, 0xac, 0x31, 0x64, 0xc2,
+	0x96, 0xe9, 0x43, 0x43, 0x7d, 0x62, 0xb9, 0xca, 0x86, 0x29, 0xe0, 0xfb, 0x1c, 0x79, 0x7a, 0xbf,
+	0x46, 0x4b, 0xc9, 0x15, 0xb4, 0xa5, 0xdc, 0x29, 0x9b, 0x26, 0xe9, 0xa3, 0x7e, 0xfd, 0xab, 0x8a,
+	0xfa, 0x7f, 0x57, 0x51, 0x71, 0xc5, 0x7d, 0xd0, 0x15, 0x32, 0x80, 0x0f, 0x65, 0xe2, 0xc1, 0x0c,
+	0x27, 0x97, 0x63, 0x9a, 0xe7, 0x57, 0x8c, 0xc7, 0x5e, 0x0f, 0x5a, 0xe6, 0xbf, 0xfa, 0x86, 0xce,
+	0x91, 0xd7, 0x5b, 0xe4, 0xd3, 0xde, 0x28, 0xcd, 0x96, 0xc2, 0x44, 0x22, 0x7b, 0x86, 0x7c, 0x01,
+	0x2f, 0x75, 0xc3, 0x27, 0x6c, 0x85, 0xdc, 0xca, 0xf8, 0xd0, 0x50, 0xa9, 0x2b, 0x86, 0xa8, 0xac,
+	0xaf, 0xe0, 0x13, 0xfd, 0xc2, 0xcf, 0x4b, 0xcc, 0xb7, 0x8a, 0xfa, 0xfd, 0x35, 0x79, 0x0d, 0x50,
+	0xb8, 0xc1, 0x96, 0xc2, 0x3b, 0x80, 0x5d, 0xf9, 0x34, 0x1a, 0xe6, 0xbe, 0xd3, 0x75, 0x0f, 0xdd,
+	0xb0, 0xfe, 0xd6, 0x89, 0x0c, 0x22, 0x63, 0x78, 0x61, 0x9d, 0x0b, 0xd7, 0xe7, 0xec, 0x12, 0x95,
+	0x81, 0xea, 0x4f, 0xd5, 0x40, 0x1d, 0xeb, 0x42, 0x6b, 0xcc, 0xd9, 0x2a, 0x89, 0x91, 0x57, 0x7b,
+	0x61, 0x28, 0x79, 0x03, 0xcf, 0xb7, 0x96, 0x28, 0xd3, 0x1f, 0x69, 0x08, 0xf9, 0x5a, 0x0f, 0xfb,
+	0x19, 0xa6, 0xb1, 0x1a, 0xb3, 0xc7, 0x9a, 0x17, 0xc0, 0x6e, 0x3f, 0xcb, 0x8a, 0xb6, 0x6d, 0xa7,
+	0xca, 0x40, 0x72, 0xad, 0x33, 0x47, 0x98, 0x3f, 0x45, 0xed, 0xff, 0x8c, 0x42, 0x29, 0xb3, 0xfb,
+	0x50, 0xe6, 0x3f, 0x1c, 0x6d, 0x79, 0x84, 0x13, 0x3a, 0x9f, 0x7b, 0x04, 0x5a, 0x83, 0x79, 0x82,
+	0xa9, 0x18, 0x0d, 0x55, 0x66, 0x37, 0x6c, 0xca, 0xf3, 0x6f, 0x9d, 0xc8, 0x72, 0x29, 0x79, 0x81,
+	0x3c, 0x4f, 0x58, 0xaa, 0x8a, 0x79, 0x66, 0x24, 0x0b, 0xe8, 0x7d, 0x06, 0xd0, 0xcf, 0x32, 0x73,
+	0xa4, 0x9c, 0xb5, 0xc4, 0x55, 0x3b, 0xe6, 0x54, 0xfc, 0xc4, 0xf8, 0xc2, 0x6f, 0x94, 0x6f, 0x9a,
+	0xa1, 0xde, 0x01, 0x34, 0x2f, 0x30, 0x8d, 0x19, 0xf7, 0x77, 0x4a, 0xf1, 0x82, 0xc9, 0x19, 0xff,
+	0xee, 0xcc, 0x24, 0x29, 0x5f, 0xd5, 0x2d, 0x26, 0x2f, 0xb4, 0xad, 0x43, 0xcc, 0x05, 0x67, 0xeb,
+	0x13, 0x5c, 0x93, 0x2f, 0xe1, 0x23, 0x49, 0xee, 0x0f, 0x9e, 0x77, 0x08, 0x7b, 0xef, 0x16, 0x34,
+	0x99, 0x8f, 0xa9, 0x10, 0xc8, 0xab, 0xf3, 0x53, 0x89, 0x90, 0xbf, 0xed, 0x92, 0x93, 0x86, 0x61,
+	0xfc, 0x24, 0xcb, 0x08, 0xb4, 0xcf, 0x93, 0x05, 0xe6, 0x82, 0x2e, 0x32, 0xd5, 0x2d, 0xd7, 0x7c,
+	0xac, 0xc5, 0x6a, 0x57, 0x64, 0x31, 0x15, 0x38, 0x1a, 0x2a, 0xd3, 0x5c, 0xbb, 0x2b, 0x0a, 0x2a,
+	0x55, 0xfa, 0x2b, 0x9a, 0xcc, 0xe9, 0x8f, 0x73, 0x54, 0x9e, 0xb5, 0x8c, 0x8a, 0xc5, 0x72, 0x6e,
+	0x8e, 0x19, 0x9f, 0xa0, 0xf2, 0xcc, 0xc4, 0x35, 0xf2, 0xde, 0xc0, 0xf3, 0xc1, 0x92, 0x73, 0x4c,
+	0xc5, 0x43, 0xbe, 0xdd, 0x8b, 0x91, 0x48, 0x2f, 0x08, 0xf9, 0x63, 0x3c, 0xf9, 0x85, 0x0a, 0xd9,
+	0xb5, 0x00, 0x76, 0xdf, 0x5d, 0x67, 0x09, 0x47, 0xbd, 0x1f, 0x9a, 0xa6, 0xf7, 0x05, 0xf4, 0x5e,
+	0x41, 0x43, 0xae, 0x36, 0x55, 0x63, 0xe7, 0xa8, 0xad, 0x96, 0x87, 0x04, 0x91, 0xc2, 0x24, 0xd3,
+	0xf6, 0x87, 0x4c, 0x54, 0x65, 0x0f, 0xa0, 0xa9, 0xaf, 0x75, 0xe1, 0x60, 0xd1, 0x6a, 0xcd, 0xd4,
+	0x0c, 0x2f, 0xc5, 0xec, 0x04, 0xd7, 0x4a, 0x77, 0xcf, 0xce, 0xb0, 0x86, 0xde, 0x3e, 0xb8, 0x21,
+	0x13, 0x6a, 0xd1, 0x75, 0x8e, 0x5a, 0x2a, 0xa7, 0x5c, 0xcf, 0x12, 0x92, 0x1f, 0xf4, 0x96, 0x50,
+	0x77, 0x1a, 0x63, 0x7b, 0x1b, 0x47, 0xe9, 0x2a, 0x11, 0x45, 0x11, 0xc6, 0x25, 0x03, 0xe5, 0x00,
+	0x9b, 0xdd, 0x8e, 0xb1, 0x4a, 0x69, 0x8e, 0x94, 0x38, 0xf9, 0xd5, 0xde, 0x7f, 0xf1, 0x5e, 0x6f,
+	0xec, 0xe7, 0xd0, 0x91, 0x3b, 0xe5, 0x9c, 0x69, 0x35, 0xb7, 0xd4, 0xc7, 0x72, 0x20, 0xf4, 0x6f,
+	0x36, 0x81, 0x73, 0xbb, 0x09, 0x9c, 0xbf, 0x36, 0x81, 0xf3, 0xdb, 0x5d, 0x50, 0xbb, 0xbd, 0x0b,
+	0x6a, 0xbf, 0xdf, 0x05, 0xb5, 0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0x9b, 0x66, 0xec, 0xa9, 0xb9,
+	0x07, 0x00, 0x00,
 }
 
 func (m *AuthRegister) Marshal() (dAtA []byte, err error) {
@@ -1125,6 +1313,94 @@ func (m *AuthLogin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Phone)))
 	i--
 	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *AuthCheckPassword) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthCheckPassword) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AuthCheckPassword) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Password == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Password")
+	} else {
+		{
+			size, err := m.Password.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiAuth(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *AuthRecoverPassword) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthRecoverPassword) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AuthRecoverPassword) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.Code)
+	copy(dAtA[i:], m.Code)
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.Code)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *AuthRequestPasswordRecovery) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthRequestPasswordRecovery) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AuthRequestPasswordRecovery) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
 	return len(dAtA) - i, nil
 }
 
@@ -1359,6 +1635,34 @@ func (m *AuthDestroyKey) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *AuthPasswordRecovery) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AuthPasswordRecovery) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AuthPasswordRecovery) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.EmailPattern)
+	copy(dAtA[i:], m.EmailPattern)
+	i = encodeVarintChatApiAuth(dAtA, i, uint64(len(m.EmailPattern)))
+	i--
+	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -1643,6 +1947,39 @@ func (m *AuthLogin) Size() (n int) {
 	return n
 }
 
+func (m *AuthCheckPassword) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Password != nil {
+		l = m.Password.Size()
+		n += 1 + l + sovChatApiAuth(uint64(l))
+	}
+	return n
+}
+
+func (m *AuthRecoverPassword) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Code)
+	n += 1 + l + sovChatApiAuth(uint64(l))
+	return n
+}
+
+func (m *AuthRequestPasswordRecovery) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
 func (m *AuthLogout) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1734,6 +2071,17 @@ func (m *AuthDestroyKey) Size() (n int) {
 	}
 	var l int
 	_ = l
+	return n
+}
+
+func (m *AuthPasswordRecovery) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.EmailPattern)
+	n += 1 + l + sovChatApiAuth(uint64(l))
 	return n
 }
 
@@ -2363,6 +2711,243 @@ func (m *AuthLogin) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000004) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhoneCode")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthCheckPassword) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthCheckPassword: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthCheckPassword: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Password", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Password == nil {
+				m.Password = &InputPassword{}
+			}
+			if err := m.Password.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Password")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthRecoverPassword) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthRecoverPassword: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthRecoverPassword: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Code", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Code = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Code")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthRequestPasswordRecovery) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthRequestPasswordRecovery: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthRequestPasswordRecovery: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
 	}
 
 	if iNdEx > l {
@@ -3265,6 +3850,96 @@ func (m *AuthDestroyKey) Unmarshal(dAtA []byte) error {
 			}
 			iNdEx += skippy
 		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AuthPasswordRecovery) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiAuth
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AuthPasswordRecovery: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AuthPasswordRecovery: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field EmailPattern", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiAuth
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.EmailPattern = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiAuth(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiAuth
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("EmailPattern")
 	}
 
 	if iNdEx > l {

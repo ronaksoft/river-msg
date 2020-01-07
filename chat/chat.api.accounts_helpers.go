@@ -637,6 +637,7 @@ func (p *poolAccountPassword) Get() *AccountPassword {
 	x.Hint = nil
 	x.SrpB = nil
 	x.RandomData = nil
+	x.SrpID = 0
 	return x
 }
 

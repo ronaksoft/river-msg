@@ -174,18 +174,18 @@ message AccountUpdatePasswordSettings {
 // AccountPasswordSettings
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
-    required string Email = 1;
-    required string Hint = 2;
+    required bytes Email = 1;
+    required bytes Hint = 2;
 }
 
 // AccountPassword
 // Configuration for two-factor authorization
 message AccountPassword {
     required bool HasPassword = 1;
-    required string Hint = 2;
+    optional bytes Hint = 2;
     required int64 Algorithm = 3;
     required bytes AlgorithmData = 4;
-    required bytes SrpB = 5;
+    optional bytes SrpB = 5;
     optional bytes RandomData = 6;
 }
 

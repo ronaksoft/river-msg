@@ -93,5 +93,6 @@ const (
 	ErrItemAlgorithm        = "ALGORITHM"
 	ErrItemAlgorithmData    = "ALGORITHM_DATA"
 	ErrItemPasswordHash     = "PASSWORD_HASH"
+	ErrItemPassword         = "PASSWORD"
 	ErrItemSrpB             = "SRP_B"
 )

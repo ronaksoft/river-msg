@@ -23,6 +23,7 @@ const (
 	ErrCodeBusy             = "E09"
 	ErrCodeOutOfRange       = "E10"
 	ErrCodePartiallyApplied = "E11"
+	ErrCodeExpired          = "E12"
 )
 
 // Error Items
@@ -92,4 +93,5 @@ const (
 	ErrItemAlgorithm        = "ALGORITHM"
 	ErrItemAlgorithmData    = "ALGORITHM_DATA"
 	ErrItemPasswordHash     = "PASSWORD_HASH"
+	ErrItemSrpB             = "SRP_B"
 )

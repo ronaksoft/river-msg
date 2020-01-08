@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 currentWorkingDir=$(pwd)
-rm ./ext/*.pb.go
+rm ./chat/*.pb.go
 
 # Create 'msg' package
-cd ./ext/proto/ || exit
+cd ./chat/proto/ || exit
 protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto
 protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gohelpers_out=../ ./*.proto
 protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gokk_out=../ ./*.proto

@@ -1,0 +1,122 @@
+syntax = "proto2";
+package msg;
+import "chat.core.types.proto";
+import "chat.api.messages.proto";
+import "chat.core.message.medias.proto";
+
+// ClientPendingMessage
+message ClientPendingMessage {
+    required int64 ID = 1;
+    required int64 RequestID = 2;
+    required int64 PeerID = 3;
+    required int32 PeerType = 4;
+    required fixed64 AccessHash = 5;
+    required int64 CreatedOn = 6;
+    required int64 ReplyTo = 7;
+    required string Body = 8;
+    required int64 SenderID = 9;
+    repeated MessageEntity Entities = 10;
+    optional InputMediaType MediaType = 11;
+    optional bytes Media = 12;
+    optional bool ClearDraft = 13;
+    optional string FileUploadID = 14;
+    optional string ThumbUploadID = 15;
+    optional int64 FileID = 16;
+    optional int64 ThumbID = 17;
+}
+
+// ClientSendMessageMedia
+// @Function
+message ClientSendMessageMedia {
+    required InputPeer Peer = 1;
+    required InputMediaType MediaType = 2;
+    optional string Caption = 3;
+    optional string FileName = 4;
+    optional string FilePath = 5;
+    optional string ThumbFilePath = 6;
+    optional string FileMIME = 7;
+    optional string ThumbMIME = 8;
+    optional int64 ReplyTo = 9;
+    optional bool ClearDraft = 10;
+    repeated DocumentAttribute Attributes = 11;
+    optional string FileUploadID = 12;
+    optional string ThumbUploadID = 13;
+    optional int64 FileID = 14;
+    optional int64 ThumbID = 15;
+    optional int32 FileTotalParts = 16;
+}
+
+// ClientGlobalSearch
+// @Function
+message ClientGlobalSearch {
+    optional string Text = 1;
+    repeated int32 LabelIDs = 2;
+    optional InputPeer Peer = 3;
+    required int32 Limit = 4;
+}
+
+// ClientContactSearch
+// @Function
+message ClientContactSearch {
+    required string Text = 1;
+}
+
+// ClientSearchResult
+message ClientSearchResult {
+    repeated UserMessage Messages = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
+    repeated User MatchedUsers = 4;
+    repeated Group MatchedGroups = 5;
+}
+
+// ClientFileType
+enum ClientFileType {
+    Unknown = 0;
+    Message = 1;
+    AccountProfilePhoto = 2;
+    GroupProfilePhoto = 3;
+    Sticker = 4;
+    Thumbnail = 5;
+}
+
+// ClientFile
+message ClientFile {
+    required int32 ClusterID = 1;
+    required int64 FileID = 2;
+    required uint64 AccessHash = 3;
+    required ClientFileType Type = 4;
+    optional string MimeType = 5;
+    optional int64 UserID = 6;
+    optional int64 GroupID = 7;
+    required int64 FileSize = 8;
+    optional int64 MessageID = 9;
+    optional int64 PeerID = 10;
+    optional int32 PeerType = 11;
+    optional int32 Version = 12;
+    optional string Extension = 13;
+}
+
+// ClientFileStatus
+message ClientFileStatus {
+    required int32 Status = 1;
+    required int64 Progress = 2;
+    required string FilePath = 3;
+}
+
+// DBMediaInfo
+message DBMediaInfo {
+    repeated PeerMediaInfo MediaInfo = 1;
+}
+
+// PeerMediaInfo
+message PeerMediaInfo {
+    required int64 PeerID = 1;
+    repeated MediaSize Media = 2;
+}
+
+// MediaSize
+message MediaSize {
+    required int32 MediaType = 1;
+    required int32 TotalSize = 2;
+}

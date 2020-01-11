@@ -261,3 +261,11 @@ message UpdateLabelDeleted {
     required int64 UpdateID = 101;
     repeated int32 LabelIDs = 1;
 }
+
+// UpdateUserBlocked
+message UpdateUserBlocked {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 UserID = 1;
+    required bool Blocked = 2;
+}

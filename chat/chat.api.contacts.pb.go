@@ -173,6 +173,261 @@ func (m *ContactsDelete) GetUserIDs() []int64 {
 	return nil
 }
 
+// ContactsBlock
+// @Function
+// @Return: Bool
+type ContactsBlock struct {
+	User *InputUser `protobuf:"bytes,1,req,name=User" json:"User,omitempty"`
+}
+
+func (m *ContactsBlock) Reset()         { *m = ContactsBlock{} }
+func (m *ContactsBlock) String() string { return proto.CompactTextString(m) }
+func (*ContactsBlock) ProtoMessage()    {}
+func (*ContactsBlock) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{3}
+}
+func (m *ContactsBlock) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContactsBlock) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContactsBlock.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ContactsBlock) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContactsBlock.Merge(m, src)
+}
+func (m *ContactsBlock) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContactsBlock) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContactsBlock.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContactsBlock proto.InternalMessageInfo
+
+func (m *ContactsBlock) GetUser() *InputUser {
+	if m != nil {
+		return m.User
+	}
+	return nil
+}
+
+// ContactsUnblock
+// @Function
+// @Return: Bool
+type ContactsUnblock struct {
+	User *InputUser `protobuf:"bytes,2,req,name=User" json:"User,omitempty"`
+}
+
+func (m *ContactsUnblock) Reset()         { *m = ContactsUnblock{} }
+func (m *ContactsUnblock) String() string { return proto.CompactTextString(m) }
+func (*ContactsUnblock) ProtoMessage()    {}
+func (*ContactsUnblock) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{4}
+}
+func (m *ContactsUnblock) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContactsUnblock) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContactsUnblock.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ContactsUnblock) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContactsUnblock.Merge(m, src)
+}
+func (m *ContactsUnblock) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContactsUnblock) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContactsUnblock.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContactsUnblock proto.InternalMessageInfo
+
+func (m *ContactsUnblock) GetUser() *InputUser {
+	if m != nil {
+		return m.User
+	}
+	return nil
+}
+
+// ContactsGetBlocked
+// @Function
+// @Returns: BlockedContacts
+type ContactsGetBlocked struct {
+	Offset int32 `protobuf:"varint,1,req,name=Offset" json:"Offset"`
+	Limit  int32 `protobuf:"varint,2,req,name=Limit" json:"Limit"`
+}
+
+func (m *ContactsGetBlocked) Reset()         { *m = ContactsGetBlocked{} }
+func (m *ContactsGetBlocked) String() string { return proto.CompactTextString(m) }
+func (*ContactsGetBlocked) ProtoMessage()    {}
+func (*ContactsGetBlocked) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{5}
+}
+func (m *ContactsGetBlocked) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContactsGetBlocked) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContactsGetBlocked.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ContactsGetBlocked) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContactsGetBlocked.Merge(m, src)
+}
+func (m *ContactsGetBlocked) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContactsGetBlocked) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContactsGetBlocked.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContactsGetBlocked proto.InternalMessageInfo
+
+func (m *ContactsGetBlocked) GetOffset() int32 {
+	if m != nil {
+		return m.Offset
+	}
+	return 0
+}
+
+func (m *ContactsGetBlocked) GetLimit() int32 {
+	if m != nil {
+		return m.Limit
+	}
+	return 0
+}
+
+// BlockedContactsMany
+type BlockedContactsMany struct {
+	Contacts []*BlockedContact `protobuf:"bytes,1,rep,name=Contacts" json:"Contacts,omitempty"`
+	Users    []*User           `protobuf:"bytes,2,rep,name=Users" json:"Users,omitempty"`
+}
+
+func (m *BlockedContactsMany) Reset()         { *m = BlockedContactsMany{} }
+func (m *BlockedContactsMany) String() string { return proto.CompactTextString(m) }
+func (*BlockedContactsMany) ProtoMessage()    {}
+func (*BlockedContactsMany) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{6}
+}
+func (m *BlockedContactsMany) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *BlockedContactsMany) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_BlockedContactsMany.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *BlockedContactsMany) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BlockedContactsMany.Merge(m, src)
+}
+func (m *BlockedContactsMany) XXX_Size() int {
+	return m.Size()
+}
+func (m *BlockedContactsMany) XXX_DiscardUnknown() {
+	xxx_messageInfo_BlockedContactsMany.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BlockedContactsMany proto.InternalMessageInfo
+
+func (m *BlockedContactsMany) GetContacts() []*BlockedContact {
+	if m != nil {
+		return m.Contacts
+	}
+	return nil
+}
+
+func (m *BlockedContactsMany) GetUsers() []*User {
+	if m != nil {
+		return m.Users
+	}
+	return nil
+}
+
+// BlockedContact
+type BlockedContact struct {
+	UserID int64 `protobuf:"varint,1,req,name=UserID" json:"UserID"`
+	Date   int64 `protobuf:"varint,2,req,name=Date" json:"Date"`
+}
+
+func (m *BlockedContact) Reset()         { *m = BlockedContact{} }
+func (m *BlockedContact) String() string { return proto.CompactTextString(m) }
+func (*BlockedContact) ProtoMessage()    {}
+func (*BlockedContact) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{7}
+}
+func (m *BlockedContact) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *BlockedContact) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_BlockedContact.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *BlockedContact) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BlockedContact.Merge(m, src)
+}
+func (m *BlockedContact) XXX_Size() int {
+	return m.Size()
+}
+func (m *BlockedContact) XXX_DiscardUnknown() {
+	xxx_messageInfo_BlockedContact.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BlockedContact proto.InternalMessageInfo
+
+func (m *BlockedContact) GetUserID() int64 {
+	if m != nil {
+		return m.UserID
+	}
+	return 0
+}
+
+func (m *BlockedContact) GetDate() int64 {
+	if m != nil {
+		return m.Date
+	}
+	return 0
+}
+
 // ContactsImported
 type ContactsImported struct {
 	ContactUsers []*ContactUser `protobuf:"bytes,1,rep,name=ContactUsers" json:"ContactUsers,omitempty"`
@@ -183,7 +438,7 @@ func (m *ContactsImported) Reset()         { *m = ContactsImported{} }
 func (m *ContactsImported) String() string { return proto.CompactTextString(m) }
 func (*ContactsImported) ProtoMessage()    {}
 func (*ContactsImported) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{3}
+	return fileDescriptor_133508c6c9c8f6f5, []int{8}
 }
 func (m *ContactsImported) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -238,7 +493,7 @@ func (m *ContactsMany) Reset()         { *m = ContactsMany{} }
 func (m *ContactsMany) String() string { return proto.CompactTextString(m) }
 func (*ContactsMany) ProtoMessage()    {}
 func (*ContactsMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{4}
+	return fileDescriptor_133508c6c9c8f6f5, []int{9}
 }
 func (m *ContactsMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -299,6 +554,11 @@ func init() {
 	proto.RegisterType((*ContactsImport)(nil), "msg.ContactsImport")
 	proto.RegisterType((*ContactsGet)(nil), "msg.ContactsGet")
 	proto.RegisterType((*ContactsDelete)(nil), "msg.ContactsDelete")
+	proto.RegisterType((*ContactsBlock)(nil), "msg.ContactsBlock")
+	proto.RegisterType((*ContactsUnblock)(nil), "msg.ContactsUnblock")
+	proto.RegisterType((*ContactsGetBlocked)(nil), "msg.ContactsGetBlocked")
+	proto.RegisterType((*BlockedContactsMany)(nil), "msg.BlockedContactsMany")
+	proto.RegisterType((*BlockedContact)(nil), "msg.BlockedContact")
 	proto.RegisterType((*ContactsImported)(nil), "msg.ContactsImported")
 	proto.RegisterType((*ContactsMany)(nil), "msg.ContactsMany")
 }
@@ -306,27 +566,35 @@ func init() {
 func init() { proto.RegisterFile("chat.api.contacts.proto", fileDescriptor_133508c6c9c8f6f5) }
 
 var fileDescriptor_133508c6c9c8f6f5 = []byte{
-	// 307 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x90, 0xcd, 0x4a, 0x33, 0x31,
-	0x18, 0x85, 0x27, 0x33, 0xfd, 0x68, 0x9b, 0x7e, 0x4a, 0x0d, 0x88, 0x83, 0x48, 0x5a, 0xb2, 0xea,
-	0xc6, 0xa0, 0xd5, 0x2b, 0x68, 0x0b, 0xda, 0x45, 0x41, 0x06, 0x5c, 0x4b, 0x48, 0x5f, 0xdb, 0x81,
-	0x76, 0x32, 0x4c, 0xb2, 0xe9, 0x5d, 0x78, 0x35, 0x5e, 0x43, 0x97, 0x5d, 0xba, 0x12, 0x99, 0xb9,
-	0x11, 0x31, 0xf3, 0xd7, 0x8a, 0x0b, 0xdd, 0x3e, 0xe7, 0x49, 0x38, 0xe7, 0xc5, 0x67, 0x72, 0x29,
-	0x0c, 0x17, 0x71, 0xc8, 0xa5, 0x8a, 0x8c, 0x90, 0x46, 0xf3, 0x38, 0x51, 0x46, 0x11, 0x6f, 0xad,
-	0x17, 0xe7, 0xa7, 0x36, 0x95, 0x2a, 0x01, 0x6e, 0x36, 0x31, 0x14, 0x19, 0x7b, 0xc2, 0xc7, 0xe3,
-	0xc2, 0x9e, 0xae, 0x63, 0x95, 0x18, 0x72, 0x89, 0x5b, 0x25, 0xf1, 0x51, 0xdf, 0x1b, 0x74, 0x86,
-	0x27, 0x7c, 0xad, 0x17, 0xfc, 0x61, 0xa9, 0x22, 0x28, 0x92, 0xa0, 0x52, 0x08, 0xc5, 0xcd, 0x00,
-	0xe2, 0x95, 0x90, 0xe0, 0xbb, 0x7d, 0x77, 0xd0, 0x1a, 0x35, 0xb6, 0xef, 0x3d, 0x27, 0x28, 0x21,
-	0xbb, 0xc6, 0x9d, 0xd2, 0xbd, 0x03, 0x43, 0x18, 0x6e, 0x8f, 0x13, 0x79, 0x33, 0xbc, 0x17, 0x7a,
-	0x69, 0x1f, 0x1c, 0x15, 0x0f, 0x6a, 0xcc, 0x78, 0xdd, 0x69, 0x02, 0x2b, 0x30, 0x40, 0x2e, 0x70,
-	0xf3, 0x51, 0x43, 0x32, 0x9d, 0xe4, 0x95, 0xbc, 0x91, 0x7b, 0x85, 0x82, 0x12, 0xb1, 0x10, 0x77,
-	0x0f, 0x37, 0xc0, 0x9c, 0xdc, 0xe2, 0xff, 0x05, 0xfb, 0xb2, 0xca, 0x25, 0x5d, 0xbb, 0x64, 0x2f,
-	0x08, 0x0e, 0x2c, 0xd2, 0xc3, 0xff, 0x72, 0xdd, 0xb5, 0x7a, 0xdb, 0xea, 0xd6, 0xcb, 0x39, 0x7b,
-	0x45, 0xd5, 0xbf, 0x7a, 0x26, 0xa2, 0xcd, 0x5f, 0xaf, 0xf5, 0xbd, 0x96, 0xfb, 0xab, 0x5a, 0x7d,
-	0xdc, 0x9a, 0xa9, 0x79, 0xf8, 0x1c, 0xc2, 0xdc, 0xf7, 0xf6, 0x8e, 0x5c, 0xd1, 0xba, 0x78, 0xe3,
-	0xe7, 0xe2, 0x23, 0x7f, 0x9b, 0x52, 0xb4, 0x4b, 0x29, 0xfa, 0x48, 0x29, 0x7a, 0xc9, 0xa8, 0xb3,
-	0xcb, 0xa8, 0xf3, 0x96, 0x51, 0xe7, 0x33, 0x00, 0x00, 0xff, 0xff, 0xff, 0x99, 0xf4, 0x30, 0x37,
-	0x02, 0x00, 0x00,
+	// 434 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xcb, 0xae, 0xd2, 0x40,
+	0x18, 0xc7, 0x7b, 0xc3, 0xc3, 0xf9, 0xf0, 0xe0, 0x71, 0x4e, 0x8c, 0x0d, 0x21, 0xa5, 0x99, 0x15,
+	0x1b, 0xab, 0x82, 0xbe, 0x40, 0x21, 0x11, 0x12, 0x51, 0xd3, 0x84, 0xb5, 0xa9, 0xed, 0x00, 0x8d,
+	0xb4, 0xd3, 0xb4, 0xe3, 0x82, 0xb7, 0xf0, 0x69, 0x7c, 0x06, 0x96, 0x2c, 0x5d, 0x19, 0x03, 0x2f,
+	0x62, 0x3a, 0x17, 0x68, 0xd5, 0x78, 0xd9, 0xfe, 0x2f, 0xdf, 0xfc, 0x66, 0xe6, 0x83, 0xc7, 0xd1,
+	0x26, 0x64, 0x5e, 0x98, 0x27, 0x5e, 0x44, 0x33, 0x16, 0x46, 0xac, 0xf4, 0xf2, 0x82, 0x32, 0x8a,
+	0xcc, 0xb4, 0x5c, 0xf7, 0x1e, 0x71, 0x37, 0xa2, 0x05, 0xf1, 0xd8, 0x2e, 0x27, 0xd2, 0xc3, 0xef,
+	0xa1, 0x3b, 0x91, 0xe9, 0x79, 0x9a, 0xd3, 0x82, 0xa1, 0x27, 0xd0, 0x56, 0x8a, 0xad, 0xbb, 0xe6,
+	0xb0, 0x33, 0x7a, 0xe8, 0xa5, 0xe5, 0xda, 0x7b, 0xb7, 0xa1, 0x19, 0x91, 0x4e, 0x70, 0x8e, 0x20,
+	0x07, 0xae, 0x02, 0x92, 0x6f, 0xc3, 0x88, 0xd8, 0x86, 0x6b, 0x0c, 0xdb, 0xbe, 0xb5, 0xff, 0x36,
+	0xd0, 0x02, 0x25, 0xe2, 0xe7, 0xd0, 0x51, 0xd9, 0x57, 0x84, 0x21, 0x0c, 0xd7, 0x93, 0x22, 0x1a,
+	0x8f, 0x66, 0x61, 0xb9, 0xe1, 0x85, 0x1b, 0x59, 0xb8, 0xc8, 0xd8, 0xbb, 0x30, 0x4d, 0xc9, 0x96,
+	0x30, 0x82, 0xfa, 0x70, 0xb5, 0x2c, 0x49, 0x31, 0x9f, 0x0a, 0x24, 0xd3, 0x37, 0x9e, 0xe9, 0x81,
+	0x92, 0xf0, 0x18, 0x6e, 0x54, 0xde, 0xdf, 0xd2, 0xe8, 0x23, 0xc2, 0x60, 0x55, 0x9e, 0xad, 0xbb,
+	0xc6, 0xb0, 0x33, 0xea, 0x72, 0xfc, 0x79, 0x96, 0x7f, 0x62, 0x95, 0x1a, 0x70, 0x0f, 0xbf, 0x84,
+	0x07, 0xaa, 0xb4, 0xcc, 0x3e, 0x34, 0x6a, 0xc6, 0x1f, 0x6a, 0x6f, 0x00, 0xd5, 0xae, 0xc3, 0x8f,
+	0x23, 0x31, 0xea, 0xc3, 0xbd, 0xb7, 0xab, 0x55, 0x49, 0x18, 0x3f, 0xb2, 0x25, 0xaf, 0x24, 0x35,
+	0xd4, 0x83, 0xd6, 0xeb, 0x24, 0x4d, 0x18, 0x1f, 0xac, 0x4c, 0x21, 0xe1, 0x35, 0xdc, 0xc9, 0x21,
+	0x6a, 0xec, 0x22, 0xcc, 0x76, 0xe8, 0xe9, 0x2f, 0x9f, 0x70, 0xc7, 0x71, 0x9a, 0xd9, 0xda, 0x37,
+	0x0c, 0xa0, 0x55, 0xf1, 0x95, 0xb6, 0xc1, 0xd3, 0xd7, 0x3c, 0xcd, 0xb9, 0x85, 0x8e, 0x67, 0xd0,
+	0x6d, 0x96, 0x2b, 0x68, 0xf1, 0x82, 0x1c, 0xda, 0x54, 0xd0, 0x42, 0x43, 0x36, 0x58, 0xd3, 0x90,
+	0x89, 0x4f, 0x55, 0x1e, 0x57, 0x70, 0x02, 0xb7, 0xcd, 0x95, 0x21, 0x31, 0x7a, 0x01, 0xf7, 0xa5,
+	0x26, 0x28, 0x04, 0xf3, 0x2d, 0xa7, 0xa8, 0x19, 0x41, 0x23, 0xf5, 0x77, 0xe8, 0x2f, 0xfa, 0x79,
+	0xae, 0x78, 0x97, 0xff, 0x5c, 0xce, 0x9f, 0xb1, 0x8c, 0x7f, 0xc2, 0x72, 0xa1, 0xbd, 0xa0, 0x71,
+	0xb2, 0x4a, 0x48, 0x6c, 0x9b, 0xb5, 0x9d, 0x3e, 0xab, 0x17, 0x70, 0xeb, 0xf7, 0xe0, 0xbe, 0xbd,
+	0x3f, 0x3a, 0xfa, 0xe1, 0xe8, 0xe8, 0xdf, 0x8f, 0x8e, 0xfe, 0xf9, 0xe4, 0x68, 0x87, 0x93, 0xa3,
+	0x7d, 0x3d, 0x39, 0xda, 0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x90, 0x88, 0xfe, 0x71, 0xa6, 0x03,
+	0x00, 0x00,
 }
 
 func (m *ContactsImport) Marshal() (dAtA []byte, err error) {
@@ -427,6 +695,189 @@ func (m *ContactsDelete) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			dAtA[i] = 0x8
 		}
 	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ContactsBlock) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ContactsBlock) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ContactsBlock) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.User == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	} else {
+		{
+			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ContactsUnblock) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ContactsUnblock) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ContactsUnblock) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.User == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	} else {
+		{
+			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ContactsGetBlocked) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ContactsGetBlocked) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ContactsGetBlocked) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Limit))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Offset))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *BlockedContactsMany) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *BlockedContactsMany) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *BlockedContactsMany) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Users) > 0 {
+		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	if len(m.Contacts) > 0 {
+		for iNdEx := len(m.Contacts) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Contacts[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *BlockedContact) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *BlockedContact) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *BlockedContact) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Date))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.UserID))
+	i--
+	dAtA[i] = 0x8
 	return len(dAtA) - i, nil
 }
 
@@ -602,6 +1053,75 @@ func (m *ContactsDelete) Size() (n int) {
 			n += 1 + sovChatApiContacts(uint64(e))
 		}
 	}
+	return n
+}
+
+func (m *ContactsBlock) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.User != nil {
+		l = m.User.Size()
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	return n
+}
+
+func (m *ContactsUnblock) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.User != nil {
+		l = m.User.Size()
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	return n
+}
+
+func (m *ContactsGetBlocked) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatApiContacts(uint64(m.Offset))
+	n += 1 + sovChatApiContacts(uint64(m.Limit))
+	return n
+}
+
+func (m *BlockedContactsMany) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Contacts) > 0 {
+		for _, e := range m.Contacts {
+			l = e.Size()
+			n += 1 + l + sovChatApiContacts(uint64(l))
+		}
+	}
+	if len(m.Users) > 0 {
+		for _, e := range m.Users {
+			l = e.Size()
+			n += 1 + l + sovChatApiContacts(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *BlockedContact) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatApiContacts(uint64(m.UserID))
+	n += 1 + sovChatApiContacts(uint64(m.Date))
 	return n
 }
 
@@ -971,6 +1491,515 @@ func (m *ContactsDelete) Unmarshal(dAtA []byte) error {
 			}
 			iNdEx += skippy
 		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ContactsBlock) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ContactsBlock: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ContactsBlock: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field User", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.User == nil {
+				m.User = &InputUser{}
+			}
+			if err := m.User.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ContactsUnblock) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ContactsUnblock: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ContactsUnblock: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field User", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.User == nil {
+				m.User = &InputUser{}
+			}
+			if err := m.User.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ContactsGetBlocked) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ContactsGetBlocked: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ContactsGetBlocked: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Offset", wireType)
+			}
+			m.Offset = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Offset |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Limit", wireType)
+			}
+			m.Limit = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Limit |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Offset")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Limit")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *BlockedContactsMany) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: BlockedContactsMany: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: BlockedContactsMany: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Contacts", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Contacts = append(m.Contacts, &BlockedContact{})
+			if err := m.Contacts[len(m.Contacts)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Users", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Users = append(m.Users, &User{})
+			if err := m.Users[len(m.Users)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *BlockedContact) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: BlockedContact: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: BlockedContact: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field UserID", wireType)
+			}
+			m.UserID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.UserID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Date", wireType)
+			}
+			m.Date = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Date |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Date")
 	}
 
 	if iNdEx > l {

@@ -25,6 +25,40 @@ message ContactsDelete {
     repeated int64 UserIDs = 1 [jstype = JS_STRING];
 }
 
+// ContactsBlock
+// @Function
+// @Return: Bool
+message ContactsBlock {
+    required InputUser User = 1;
+}
+
+// ContactsUnblock
+// @Function
+// @Return: Bool
+message ContactsUnblock {
+    required InputUser User = 2;
+}
+
+// ContactsGetBlocked
+// @Function
+// @Returns: BlockedContacts
+message ContactsGetBlocked {
+    required int32 Offset = 1;
+    required int32 Limit = 2;
+}
+
+// BlockedContactsMany
+message BlockedContactsMany {
+    repeated BlockedContact Contacts = 1;
+    repeated User Users = 2;
+}
+
+// BlockedContact
+message BlockedContact {
+    required int64 UserID = 1;
+    required int64 Date = 2;
+}
+
 // ContactsImported
 message ContactsImported {
     repeated ContactUser ContactUsers = 1;

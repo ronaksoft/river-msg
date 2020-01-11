@@ -506,6 +506,7 @@ func (p *poolUser) Get() *User {
 	x.PhotoGallery = x.PhotoGallery[:0]
 	x.IsBot = false
 	x.Deleted = false
+	x.Blocked = false
 	return x
 }
 

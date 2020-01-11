@@ -910,6 +910,33 @@ func ResultUpdateLabelDeleted(out *MessageEnvelope, res *UpdateLabelDeleted) {
 	res.MarshalTo(out.Message)
 }
 
+const C_UpdateUserBlocked int64 = 3750625773
+
+type poolUpdateUserBlocked struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateUserBlocked) Get() *UpdateUserBlocked {
+	x, ok := p.pool.Get().(*UpdateUserBlocked)
+	if !ok {
+		return &UpdateUserBlocked{}
+	}
+	return x
+}
+
+func (p *poolUpdateUserBlocked) Put(x *UpdateUserBlocked) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateUserBlocked = poolUpdateUserBlocked{}
+
+func ResultUpdateUserBlocked(out *MessageEnvelope, res *UpdateUserBlocked) {
+	out.Constructor = C_UpdateUserBlocked
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -943,4 +970,5 @@ func init() {
 	ConstructorNames[830226827] = "UpdateLabelItemsRemoved"
 	ConstructorNames[2353687359] = "UpdateLabelSet"
 	ConstructorNames[3702192307] = "UpdateLabelDeleted"
+	ConstructorNames[3750625773] = "UpdateUserBlocked"
 }

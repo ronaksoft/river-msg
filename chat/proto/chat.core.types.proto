@@ -177,6 +177,7 @@ message User {
     repeated UserPhoto PhotoGallery = 12;
     optional bool IsBot = 13;
     optional bool Deleted = 14;
+    optional bool Blocked = 15;
 }
 
 // Bot

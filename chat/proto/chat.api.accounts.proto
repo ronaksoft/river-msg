@@ -97,6 +97,7 @@ message AccountChangePhone {
     required string Phone = 1;
     required string PhoneCodeHash = 2;
     required string PhoneCode = 3;
+    optional InputPassword Password = 4;
 }
 
 // AccountSetPrivacy

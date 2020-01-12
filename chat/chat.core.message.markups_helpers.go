@@ -88,6 +88,7 @@ func (p *poolReplyInlineMarkup) Get() *ReplyInlineMarkup {
 	if !ok {
 		return &ReplyInlineMarkup{}
 	}
+	x.Rows = x.Rows[:0]
 	return x
 }
 

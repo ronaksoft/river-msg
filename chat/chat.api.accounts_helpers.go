@@ -327,6 +327,7 @@ func (p *poolAccountChangePhone) Get() *AccountChangePhone {
 	if !ok {
 		return &AccountChangePhone{}
 	}
+	x.Password = nil
 	return x
 }
 

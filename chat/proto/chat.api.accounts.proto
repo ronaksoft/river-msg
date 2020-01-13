@@ -158,6 +158,7 @@ message AccountGetPassword {
 // @Returns: AccountPasswordSettings
 // Get private info associated to the password info (recovery email & so on)
 message AccountGetPasswordSettings {
+    optional InputPassword Password = 1;
 }
 
 // AccountUpdatePassword

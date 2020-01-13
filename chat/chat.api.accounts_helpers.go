@@ -550,6 +550,7 @@ func (p *poolAccountGetPasswordSettings) Get() *AccountGetPasswordSettings {
 	if !ok {
 		return &AccountGetPasswordSettings{}
 	}
+	x.Password = nil
 	return x
 }
 

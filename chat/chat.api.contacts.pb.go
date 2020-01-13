@@ -78,6 +78,77 @@ func (m *ContactsImport) GetReplace() bool {
 	return false
 }
 
+// ContactsAdd
+// @Function
+// @Return: Bool
+type ContactsAdd struct {
+	User      *InputUser `protobuf:"bytes,1,req,name=User" json:"User,omitempty"`
+	FirstName []byte     `protobuf:"bytes,2,req,name=FirstName" json:"FirstName"`
+	LastName  []byte     `protobuf:"bytes,3,opt,name=LastName" json:"LastName"`
+	Phone     []byte     `protobuf:"bytes,4,opt,name=Phone" json:"Phone"`
+}
+
+func (m *ContactsAdd) Reset()         { *m = ContactsAdd{} }
+func (m *ContactsAdd) String() string { return proto.CompactTextString(m) }
+func (*ContactsAdd) ProtoMessage()    {}
+func (*ContactsAdd) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{1}
+}
+func (m *ContactsAdd) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContactsAdd) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContactsAdd.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ContactsAdd) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContactsAdd.Merge(m, src)
+}
+func (m *ContactsAdd) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContactsAdd) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContactsAdd.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContactsAdd proto.InternalMessageInfo
+
+func (m *ContactsAdd) GetUser() *InputUser {
+	if m != nil {
+		return m.User
+	}
+	return nil
+}
+
+func (m *ContactsAdd) GetFirstName() []byte {
+	if m != nil {
+		return m.FirstName
+	}
+	return nil
+}
+
+func (m *ContactsAdd) GetLastName() []byte {
+	if m != nil {
+		return m.LastName
+	}
+	return nil
+}
+
+func (m *ContactsAdd) GetPhone() []byte {
+	if m != nil {
+		return m.Phone
+	}
+	return nil
+}
+
 // ContactsGet
 // @Function
 // @Return: ContactsMany
@@ -90,7 +161,7 @@ func (m *ContactsGet) Reset()         { *m = ContactsGet{} }
 func (m *ContactsGet) String() string { return proto.CompactTextString(m) }
 func (*ContactsGet) ProtoMessage()    {}
 func (*ContactsGet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{1}
+	return fileDescriptor_133508c6c9c8f6f5, []int{2}
 }
 func (m *ContactsGet) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -137,7 +208,7 @@ func (m *ContactsDelete) Reset()         { *m = ContactsDelete{} }
 func (m *ContactsDelete) String() string { return proto.CompactTextString(m) }
 func (*ContactsDelete) ProtoMessage()    {}
 func (*ContactsDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{2}
+	return fileDescriptor_133508c6c9c8f6f5, []int{3}
 }
 func (m *ContactsDelete) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -184,7 +255,7 @@ func (m *ContactsBlock) Reset()         { *m = ContactsBlock{} }
 func (m *ContactsBlock) String() string { return proto.CompactTextString(m) }
 func (*ContactsBlock) ProtoMessage()    {}
 func (*ContactsBlock) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{3}
+	return fileDescriptor_133508c6c9c8f6f5, []int{4}
 }
 func (m *ContactsBlock) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -231,7 +302,7 @@ func (m *ContactsUnblock) Reset()         { *m = ContactsUnblock{} }
 func (m *ContactsUnblock) String() string { return proto.CompactTextString(m) }
 func (*ContactsUnblock) ProtoMessage()    {}
 func (*ContactsUnblock) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{4}
+	return fileDescriptor_133508c6c9c8f6f5, []int{5}
 }
 func (m *ContactsUnblock) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -279,7 +350,7 @@ func (m *ContactsGetBlocked) Reset()         { *m = ContactsGetBlocked{} }
 func (m *ContactsGetBlocked) String() string { return proto.CompactTextString(m) }
 func (*ContactsGetBlocked) ProtoMessage()    {}
 func (*ContactsGetBlocked) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{5}
+	return fileDescriptor_133508c6c9c8f6f5, []int{6}
 }
 func (m *ContactsGetBlocked) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -322,6 +393,53 @@ func (m *ContactsGetBlocked) GetLimit() int32 {
 	return 0
 }
 
+// ContactsSearch
+// @Function
+// @Returns: UsersMany
+type ContactsSearch struct {
+	Q []byte `protobuf:"bytes,1,req,name=Q" json:"Q"`
+}
+
+func (m *ContactsSearch) Reset()         { *m = ContactsSearch{} }
+func (m *ContactsSearch) String() string { return proto.CompactTextString(m) }
+func (*ContactsSearch) ProtoMessage()    {}
+func (*ContactsSearch) Descriptor() ([]byte, []int) {
+	return fileDescriptor_133508c6c9c8f6f5, []int{7}
+}
+func (m *ContactsSearch) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ContactsSearch) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ContactsSearch.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ContactsSearch) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContactsSearch.Merge(m, src)
+}
+func (m *ContactsSearch) XXX_Size() int {
+	return m.Size()
+}
+func (m *ContactsSearch) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContactsSearch.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContactsSearch proto.InternalMessageInfo
+
+func (m *ContactsSearch) GetQ() []byte {
+	if m != nil {
+		return m.Q
+	}
+	return nil
+}
+
 // BlockedContactsMany
 type BlockedContactsMany struct {
 	Contacts []*BlockedContact `protobuf:"bytes,1,rep,name=Contacts" json:"Contacts,omitempty"`
@@ -332,7 +450,7 @@ func (m *BlockedContactsMany) Reset()         { *m = BlockedContactsMany{} }
 func (m *BlockedContactsMany) String() string { return proto.CompactTextString(m) }
 func (*BlockedContactsMany) ProtoMessage()    {}
 func (*BlockedContactsMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{6}
+	return fileDescriptor_133508c6c9c8f6f5, []int{8}
 }
 func (m *BlockedContactsMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -385,7 +503,7 @@ func (m *BlockedContact) Reset()         { *m = BlockedContact{} }
 func (m *BlockedContact) String() string { return proto.CompactTextString(m) }
 func (*BlockedContact) ProtoMessage()    {}
 func (*BlockedContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{7}
+	return fileDescriptor_133508c6c9c8f6f5, []int{9}
 }
 func (m *BlockedContact) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -438,7 +556,7 @@ func (m *ContactsImported) Reset()         { *m = ContactsImported{} }
 func (m *ContactsImported) String() string { return proto.CompactTextString(m) }
 func (*ContactsImported) ProtoMessage()    {}
 func (*ContactsImported) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{8}
+	return fileDescriptor_133508c6c9c8f6f5, []int{10}
 }
 func (m *ContactsImported) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -493,7 +611,7 @@ func (m *ContactsMany) Reset()         { *m = ContactsMany{} }
 func (m *ContactsMany) String() string { return proto.CompactTextString(m) }
 func (*ContactsMany) ProtoMessage()    {}
 func (*ContactsMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_133508c6c9c8f6f5, []int{9}
+	return fileDescriptor_133508c6c9c8f6f5, []int{11}
 }
 func (m *ContactsMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -552,11 +670,13 @@ func (m *ContactsMany) GetUsers() []*User {
 
 func init() {
 	proto.RegisterType((*ContactsImport)(nil), "msg.ContactsImport")
+	proto.RegisterType((*ContactsAdd)(nil), "msg.ContactsAdd")
 	proto.RegisterType((*ContactsGet)(nil), "msg.ContactsGet")
 	proto.RegisterType((*ContactsDelete)(nil), "msg.ContactsDelete")
 	proto.RegisterType((*ContactsBlock)(nil), "msg.ContactsBlock")
 	proto.RegisterType((*ContactsUnblock)(nil), "msg.ContactsUnblock")
 	proto.RegisterType((*ContactsGetBlocked)(nil), "msg.ContactsGetBlocked")
+	proto.RegisterType((*ContactsSearch)(nil), "msg.ContactsSearch")
 	proto.RegisterType((*BlockedContactsMany)(nil), "msg.BlockedContactsMany")
 	proto.RegisterType((*BlockedContact)(nil), "msg.BlockedContact")
 	proto.RegisterType((*ContactsImported)(nil), "msg.ContactsImported")
@@ -566,35 +686,39 @@ func init() {
 func init() { proto.RegisterFile("chat.api.contacts.proto", fileDescriptor_133508c6c9c8f6f5) }
 
 var fileDescriptor_133508c6c9c8f6f5 = []byte{
-	// 434 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xcb, 0xae, 0xd2, 0x40,
-	0x18, 0xc7, 0x7b, 0xc3, 0xc3, 0xf9, 0xf0, 0xe0, 0x71, 0x4e, 0x8c, 0x0d, 0x21, 0xa5, 0x99, 0x15,
-	0x1b, 0xab, 0x82, 0xbe, 0x40, 0x21, 0x11, 0x12, 0x51, 0xd3, 0x84, 0xb5, 0xa9, 0xed, 0x00, 0x8d,
-	0xb4, 0xd3, 0xb4, 0xe3, 0x82, 0xb7, 0xf0, 0x69, 0x7c, 0x06, 0x96, 0x2c, 0x5d, 0x19, 0x03, 0x2f,
-	0x62, 0x3a, 0x17, 0x68, 0xd5, 0x78, 0xd9, 0xfe, 0x2f, 0xdf, 0xfc, 0x66, 0xe6, 0x83, 0xc7, 0xd1,
-	0x26, 0x64, 0x5e, 0x98, 0x27, 0x5e, 0x44, 0x33, 0x16, 0x46, 0xac, 0xf4, 0xf2, 0x82, 0x32, 0x8a,
-	0xcc, 0xb4, 0x5c, 0xf7, 0x1e, 0x71, 0x37, 0xa2, 0x05, 0xf1, 0xd8, 0x2e, 0x27, 0xd2, 0xc3, 0xef,
-	0xa1, 0x3b, 0x91, 0xe9, 0x79, 0x9a, 0xd3, 0x82, 0xa1, 0x27, 0xd0, 0x56, 0x8a, 0xad, 0xbb, 0xe6,
-	0xb0, 0x33, 0x7a, 0xe8, 0xa5, 0xe5, 0xda, 0x7b, 0xb7, 0xa1, 0x19, 0x91, 0x4e, 0x70, 0x8e, 0x20,
-	0x07, 0xae, 0x02, 0x92, 0x6f, 0xc3, 0x88, 0xd8, 0x86, 0x6b, 0x0c, 0xdb, 0xbe, 0xb5, 0xff, 0x36,
-	0xd0, 0x02, 0x25, 0xe2, 0xe7, 0xd0, 0x51, 0xd9, 0x57, 0x84, 0x21, 0x0c, 0xd7, 0x93, 0x22, 0x1a,
-	0x8f, 0x66, 0x61, 0xb9, 0xe1, 0x85, 0x1b, 0x59, 0xb8, 0xc8, 0xd8, 0xbb, 0x30, 0x4d, 0xc9, 0x96,
-	0x30, 0x82, 0xfa, 0x70, 0xb5, 0x2c, 0x49, 0x31, 0x9f, 0x0a, 0x24, 0xd3, 0x37, 0x9e, 0xe9, 0x81,
-	0x92, 0xf0, 0x18, 0x6e, 0x54, 0xde, 0xdf, 0xd2, 0xe8, 0x23, 0xc2, 0x60, 0x55, 0x9e, 0xad, 0xbb,
-	0xc6, 0xb0, 0x33, 0xea, 0x72, 0xfc, 0x79, 0x96, 0x7f, 0x62, 0x95, 0x1a, 0x70, 0x0f, 0xbf, 0x84,
-	0x07, 0xaa, 0xb4, 0xcc, 0x3e, 0x34, 0x6a, 0xc6, 0x1f, 0x6a, 0x6f, 0x00, 0xd5, 0xae, 0xc3, 0x8f,
-	0x23, 0x31, 0xea, 0xc3, 0xbd, 0xb7, 0xab, 0x55, 0x49, 0x18, 0x3f, 0xb2, 0x25, 0xaf, 0x24, 0x35,
-	0xd4, 0x83, 0xd6, 0xeb, 0x24, 0x4d, 0x18, 0x1f, 0xac, 0x4c, 0x21, 0xe1, 0x35, 0xdc, 0xc9, 0x21,
-	0x6a, 0xec, 0x22, 0xcc, 0x76, 0xe8, 0xe9, 0x2f, 0x9f, 0x70, 0xc7, 0x71, 0x9a, 0xd9, 0xda, 0x37,
-	0x0c, 0xa0, 0x55, 0xf1, 0x95, 0xb6, 0xc1, 0xd3, 0xd7, 0x3c, 0xcd, 0xb9, 0x85, 0x8e, 0x67, 0xd0,
-	0x6d, 0x96, 0x2b, 0x68, 0xf1, 0x82, 0x1c, 0xda, 0x54, 0xd0, 0x42, 0x43, 0x36, 0x58, 0xd3, 0x90,
-	0x89, 0x4f, 0x55, 0x1e, 0x57, 0x70, 0x02, 0xb7, 0xcd, 0x95, 0x21, 0x31, 0x7a, 0x01, 0xf7, 0xa5,
-	0x26, 0x28, 0x04, 0xf3, 0x2d, 0xa7, 0xa8, 0x19, 0x41, 0x23, 0xf5, 0x77, 0xe8, 0x2f, 0xfa, 0x79,
-	0xae, 0x78, 0x97, 0xff, 0x5c, 0xce, 0x9f, 0xb1, 0x8c, 0x7f, 0xc2, 0x72, 0xa1, 0xbd, 0xa0, 0x71,
-	0xb2, 0x4a, 0x48, 0x6c, 0x9b, 0xb5, 0x9d, 0x3e, 0xab, 0x17, 0x70, 0xeb, 0xf7, 0xe0, 0xbe, 0xbd,
-	0x3f, 0x3a, 0xfa, 0xe1, 0xe8, 0xe8, 0xdf, 0x8f, 0x8e, 0xfe, 0xf9, 0xe4, 0x68, 0x87, 0x93, 0xa3,
-	0x7d, 0x3d, 0x39, 0xda, 0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x90, 0x88, 0xfe, 0x71, 0xa6, 0x03,
-	0x00, 0x00,
+	// 504 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0xcb, 0x6e, 0xd3, 0x40,
+	0x14, 0x86, 0x33, 0xb6, 0x43, 0xd3, 0x93, 0x36, 0x94, 0xa9, 0x10, 0x56, 0x55, 0xb9, 0xd6, 0x88,
+	0x45, 0x36, 0x18, 0x48, 0xe1, 0x01, 0x48, 0x23, 0x68, 0xa4, 0xb6, 0x50, 0xa3, 0xae, 0xd1, 0x60,
+	0x4f, 0x12, 0x8b, 0xf8, 0x22, 0x7b, 0x58, 0xf4, 0x2d, 0x90, 0x78, 0x17, 0x9e, 0xa1, 0xcb, 0x2e,
+	0x59, 0x21, 0x94, 0xbc, 0x08, 0xf2, 0x5c, 0x7c, 0x01, 0x04, 0xe9, 0xf6, 0x3b, 0xff, 0x9c, 0xf3,
+	0xff, 0x47, 0x67, 0xe0, 0x51, 0xb0, 0xa0, 0xdc, 0xa3, 0x59, 0xe4, 0x05, 0x69, 0xc2, 0x69, 0xc0,
+	0x0b, 0x2f, 0xcb, 0x53, 0x9e, 0x62, 0x33, 0x2e, 0xe6, 0x07, 0x0f, 0x45, 0x35, 0x48, 0x73, 0xe6,
+	0xf1, 0xeb, 0x8c, 0xa9, 0x1a, 0xf9, 0x00, 0x83, 0x13, 0xa5, 0x9e, 0xc6, 0x59, 0x9a, 0x73, 0xfc,
+	0x04, 0x7a, 0x9a, 0xd8, 0xc8, 0x35, 0x87, 0xfd, 0xd1, 0x03, 0x2f, 0x2e, 0xe6, 0xde, 0xbb, 0x45,
+	0x9a, 0x30, 0x55, 0xf1, 0x2b, 0x09, 0x76, 0x60, 0xcb, 0x67, 0xd9, 0x92, 0x06, 0xcc, 0x36, 0x5c,
+	0x63, 0xd8, 0x1b, 0x5b, 0x37, 0x3f, 0x8e, 0x3a, 0xbe, 0x86, 0xe4, 0x2b, 0x82, 0xbe, 0x16, 0xbf,
+	0x0a, 0x43, 0x4c, 0xc0, 0xba, 0x2a, 0x58, 0x6e, 0x23, 0xd7, 0x18, 0xf6, 0x47, 0x03, 0xd1, 0x7a,
+	0x9a, 0x64, 0x9f, 0x79, 0x49, 0x7d, 0x51, 0xc3, 0x04, 0xb6, 0x5f, 0x47, 0x79, 0xc1, 0x2f, 0x68,
+	0x2c, 0xbb, 0xee, 0xa8, 0xae, 0x35, 0xc6, 0x2e, 0xf4, 0xce, 0xa8, 0x92, 0x98, 0x2e, 0xaa, 0x24,
+	0x15, 0xc5, 0x07, 0xd0, 0x15, 0x9e, 0x6d, 0xab, 0x51, 0x96, 0x88, 0x3c, 0xaf, 0x4d, 0xbd, 0x61,
+	0xbc, 0x1c, 0x78, 0x92, 0x07, 0xc7, 0xa3, 0x53, 0x5a, 0x2c, 0xc4, 0xc0, 0x5d, 0x3d, 0xb0, 0xc2,
+	0xc4, 0xab, 0x37, 0x35, 0x61, 0x4b, 0xc6, 0x19, 0x3e, 0x84, 0xad, 0xd2, 0xee, 0x74, 0x22, 0x17,
+	0x65, 0x8e, 0x8d, 0x67, 0xc8, 0xd7, 0x88, 0x1c, 0xc3, 0xae, 0xd6, 0x8f, 0x97, 0x69, 0xf0, 0x69,
+	0x93, 0xe4, 0xe4, 0x25, 0xdc, 0xd7, 0x8f, 0xae, 0x92, 0x8f, 0xad, 0x67, 0xc6, 0x3f, 0x9e, 0x5d,
+	0x00, 0x6e, 0xc4, 0x11, 0xe3, 0x58, 0x88, 0x0f, 0xe1, 0xde, 0xdb, 0xd9, 0xac, 0x60, 0x5c, 0x8c,
+	0xec, 0xaa, 0x48, 0x8a, 0x95, 0xeb, 0x39, 0x8b, 0xe2, 0x88, 0x8b, 0xc6, 0xba, 0x28, 0x11, 0x79,
+	0x5c, 0x67, 0x7d, 0xcf, 0x68, 0x1e, 0x2c, 0x30, 0x06, 0x74, 0x29, 0xda, 0xe8, 0x45, 0xa2, 0x4b,
+	0x32, 0x87, 0x7d, 0x35, 0x4a, 0x8b, 0xcf, 0x69, 0x72, 0x8d, 0x9f, 0xfe, 0x71, 0x40, 0xfb, 0xc2,
+	0x74, 0x5b, 0xdb, 0x38, 0xa1, 0x23, 0xe8, 0x96, 0x29, 0x0a, 0xdb, 0x10, 0xea, 0x6d, 0xa1, 0x16,
+	0xe9, 0x24, 0x27, 0xa7, 0x30, 0x68, 0x3f, 0x2e, 0xa3, 0xc9, 0x3d, 0x0b, 0x4f, 0xa6, 0x8e, 0x26,
+	0x19, 0xb6, 0xc1, 0x9a, 0x50, 0x2e, 0x4f, 0x47, 0xd7, 0x04, 0x21, 0x11, 0xec, 0xb5, 0xcf, 0x9d,
+	0x85, 0xf8, 0x05, 0xec, 0x28, 0x26, 0x5d, 0x48, 0xcf, 0x7b, 0xc2, 0x45, 0xa3, 0xe0, 0xb7, 0x54,
+	0xff, 0x37, 0xfd, 0x0d, 0x55, 0x7d, 0xe5, 0x5e, 0xee, 0xf8, 0xb1, 0x7e, 0xb7, 0x65, 0x6c, 0x64,
+	0xcb, 0x85, 0xde, 0x79, 0x1a, 0x46, 0xb3, 0x88, 0x85, 0xb6, 0xd9, 0xf8, 0x8f, 0x15, 0xad, 0x8d,
+	0x5b, 0x7f, 0x37, 0x3e, 0xb6, 0x6f, 0x56, 0x0e, 0xba, 0x5d, 0x39, 0xe8, 0xe7, 0xca, 0x41, 0x5f,
+	0xd6, 0x4e, 0xe7, 0x76, 0xed, 0x74, 0xbe, 0xaf, 0x9d, 0xce, 0xaf, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0x6e, 0xf7, 0x65, 0xe7, 0x62, 0x04, 0x00, 0x00,
 }
 
 func (m *ContactsImport) Marshal() (dAtA []byte, err error) {
@@ -638,6 +762,64 @@ func (m *ContactsImport) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			i--
 			dAtA[i] = 0xa
 		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ContactsAdd) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ContactsAdd) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ContactsAdd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Phone != nil {
+		i -= len(m.Phone)
+		copy(dAtA[i:], m.Phone)
+		i = encodeVarintChatApiContacts(dAtA, i, uint64(len(m.Phone)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if m.LastName != nil {
+		i -= len(m.LastName)
+		copy(dAtA[i:], m.LastName)
+		i = encodeVarintChatApiContacts(dAtA, i, uint64(len(m.LastName)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.FirstName != nil {
+		i -= len(m.FirstName)
+		copy(dAtA[i:], m.FirstName)
+		i = encodeVarintChatApiContacts(dAtA, i, uint64(len(m.FirstName)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.User == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	} else {
+		{
+			size, err := m.User.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatApiContacts(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
@@ -798,6 +980,36 @@ func (m *ContactsGetBlocked) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i = encodeVarintChatApiContacts(dAtA, i, uint64(m.Offset))
 	i--
 	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *ContactsSearch) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ContactsSearch) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ContactsSearch) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Q != nil {
+		i -= len(m.Q)
+		copy(dAtA[i:], m.Q)
+		i = encodeVarintChatApiContacts(dAtA, i, uint64(len(m.Q)))
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -1032,6 +1244,31 @@ func (m *ContactsImport) Size() (n int) {
 	return n
 }
 
+func (m *ContactsAdd) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.User != nil {
+		l = m.User.Size()
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	if m.FirstName != nil {
+		l = len(m.FirstName)
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	if m.LastName != nil {
+		l = len(m.LastName)
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	if m.Phone != nil {
+		l = len(m.Phone)
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
+	return n
+}
+
 func (m *ContactsGet) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1090,6 +1327,19 @@ func (m *ContactsGetBlocked) Size() (n int) {
 	_ = l
 	n += 1 + sovChatApiContacts(uint64(m.Offset))
 	n += 1 + sovChatApiContacts(uint64(m.Limit))
+	return n
+}
+
+func (m *ContactsSearch) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Q != nil {
+		l = len(m.Q)
+		n += 1 + l + sovChatApiContacts(uint64(l))
+	}
 	return n
 }
 
@@ -1285,6 +1535,206 @@ func (m *ContactsImport) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Replace")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ContactsAdd) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ContactsAdd: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ContactsAdd: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field User", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.User == nil {
+				m.User = &InputUser{}
+			}
+			if err := m.User.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FirstName", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FirstName = append(m.FirstName[:0], dAtA[iNdEx:postIndex]...)
+			if m.FirstName == nil {
+				m.FirstName = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LastName", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.LastName = append(m.LastName[:0], dAtA[iNdEx:postIndex]...)
+			if m.LastName == nil {
+				m.LastName = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phone", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Phone = append(m.Phone[:0], dAtA[iNdEx:postIndex]...)
+			if m.Phone == nil {
+				m.Phone = []byte{}
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("User")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("FirstName")
 	}
 
 	if iNdEx > l {
@@ -1779,6 +2229,98 @@ func (m *ContactsGetBlocked) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Limit")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ContactsSearch) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiContacts
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ContactsSearch: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ContactsSearch: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Q", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiContacts
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Q = append(m.Q[:0], dAtA[iNdEx:postIndex]...)
+			if m.Q == nil {
+				m.Q = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiContacts(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiContacts
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Q")
 	}
 
 	if iNdEx > l {

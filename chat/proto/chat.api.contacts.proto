@@ -10,6 +10,16 @@ message ContactsImport {
     required bool Replace = 2;
 }
 
+// ContactsAdd
+// @Function
+// @Return: Bool
+message ContactsAdd {
+    required InputUser User = 1;
+    required bytes FirstName = 2;
+    optional bytes LastName = 3;
+    optional bytes Phone = 4;
+}
+
 // ContactsGet
 // @Function
 // @Return: ContactsMany
@@ -45,6 +55,13 @@ message ContactsUnblock {
 message ContactsGetBlocked {
     required int32 Offset = 1;
     required int32 Limit = 2;
+}
+
+// ContactsSearch
+// @Function
+// @Returns: UsersMany
+message ContactsSearch {
+    required bytes Q = 1;
 }
 
 // BlockedContactsMany

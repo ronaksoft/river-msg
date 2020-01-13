@@ -44,6 +44,35 @@ func ResultContactsImport(out *MessageEnvelope, res *ContactsImport) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ContactsAdd int64 = 1410714478
+
+type poolContactsAdd struct {
+	pool sync.Pool
+}
+
+func (p *poolContactsAdd) Get() *ContactsAdd {
+	x, ok := p.pool.Get().(*ContactsAdd)
+	if !ok {
+		return &ContactsAdd{}
+	}
+	x.LastName = nil
+	x.Phone = nil
+	return x
+}
+
+func (p *poolContactsAdd) Put(x *ContactsAdd) {
+	p.pool.Put(x)
+}
+
+var PoolContactsAdd = poolContactsAdd{}
+
+func ResultContactsAdd(out *MessageEnvelope, res *ContactsAdd) {
+	out.Constructor = C_ContactsAdd
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_ContactsGet int64 = 1412732665
 
 type poolContactsGet struct {
@@ -180,6 +209,33 @@ func ResultContactsGetBlocked(out *MessageEnvelope, res *ContactsGetBlocked) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ContactsSearch int64 = 3870802464
+
+type poolContactsSearch struct {
+	pool sync.Pool
+}
+
+func (p *poolContactsSearch) Get() *ContactsSearch {
+	x, ok := p.pool.Get().(*ContactsSearch)
+	if !ok {
+		return &ContactsSearch{}
+	}
+	return x
+}
+
+func (p *poolContactsSearch) Put(x *ContactsSearch) {
+	p.pool.Put(x)
+}
+
+var PoolContactsSearch = poolContactsSearch{}
+
+func ResultContactsSearch(out *MessageEnvelope, res *ContactsSearch) {
+	out.Constructor = C_ContactsSearch
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_BlockedContactsMany int64 = 2067026404
 
 type poolBlockedContactsMany struct {
@@ -297,11 +353,13 @@ func ResultContactsMany(out *MessageEnvelope, res *ContactsMany) {
 
 func init() {
 	ConstructorNames[3473528730] = "ContactsImport"
+	ConstructorNames[1410714478] = "ContactsAdd"
 	ConstructorNames[1412732665] = "ContactsGet"
 	ConstructorNames[1750426880] = "ContactsDelete"
 	ConstructorNames[2900371089] = "ContactsBlock"
 	ConstructorNames[662011773] = "ContactsUnblock"
 	ConstructorNames[1073733371] = "ContactsGetBlocked"
+	ConstructorNames[3870802464] = "ContactsSearch"
 	ConstructorNames[2067026404] = "BlockedContactsMany"
 	ConstructorNames[53788553] = "BlockedContact"
 	ConstructorNames[2157298354] = "ContactsImported"

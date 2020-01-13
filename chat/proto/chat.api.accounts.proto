@@ -169,14 +169,13 @@ message AccountUpdatePasswordSettings {
     optional bytes PasswordHash = 2;
     required int64 Algorithm = 3;
     required bytes AlgorithmData = 4;
-    optional bytes Email = 5;
     optional bytes Hint = 6;
 }
+
 
 // AccountPasswordSettings
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
-    required bytes Email = 1;
     required bytes Hint = 2;
 }
 

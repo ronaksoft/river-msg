@@ -85,9 +85,18 @@ message AccountRemovePhoto {
 
 // AccountSendChangePhoneCode
 // @Function
-// @Return: User
+// @Return: AuthSentCode
 message AccountSendChangePhoneCode {
     required string Phone = 1;
+    optional string AppHash = 2;
+}
+
+// AccountResendChangePhoneCode
+// @Function
+// @Return: Bool
+message AccountResendChangePhoneCode {
+    required string Phone = 1;
+    required string PhoneCodeHash = 2;
 }
 
 // AccountChangePhone
@@ -171,7 +180,6 @@ message AccountUpdatePasswordSettings {
     required bytes AlgorithmData = 4;
     optional bytes Hint = 6;
 }
-
 
 // AccountPasswordSettings
 // Private info associated to the password info (recovery email and so on)

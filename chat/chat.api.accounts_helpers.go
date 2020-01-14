@@ -300,6 +300,7 @@ func (p *poolAccountSendChangePhoneCode) Get() *AccountSendChangePhoneCode {
 	if !ok {
 		return &AccountSendChangePhoneCode{}
 	}
+	x.AppHash = ""
 	return x
 }
 
@@ -311,6 +312,33 @@ var PoolAccountSendChangePhoneCode = poolAccountSendChangePhoneCode{}
 
 func ResultAccountSendChangePhoneCode(out *MessageEnvelope, res *AccountSendChangePhoneCode) {
 	out.Constructor = C_AccountSendChangePhoneCode
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_AccountResendChangePhoneCode int64 = 4200771569
+
+type poolAccountResendChangePhoneCode struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountResendChangePhoneCode) Get() *AccountResendChangePhoneCode {
+	x, ok := p.pool.Get().(*AccountResendChangePhoneCode)
+	if !ok {
+		return &AccountResendChangePhoneCode{}
+	}
+	return x
+}
+
+func (p *poolAccountResendChangePhoneCode) Put(x *AccountResendChangePhoneCode) {
+	p.pool.Put(x)
+}
+
+var PoolAccountResendChangePhoneCode = poolAccountResendChangePhoneCode{}
+
+func ResultAccountResendChangePhoneCode(out *MessageEnvelope, res *AccountResendChangePhoneCode) {
+	out.Constructor = C_AccountResendChangePhoneCode
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -750,6 +778,7 @@ func init() {
 	ConstructorNames[406174115] = "AccountUpdatePhoto"
 	ConstructorNames[3728692172] = "AccountRemovePhoto"
 	ConstructorNames[1389121902] = "AccountSendChangePhoneCode"
+	ConstructorNames[4200771569] = "AccountResendChangePhoneCode"
 	ConstructorNames[4285969474] = "AccountChangePhone"
 	ConstructorNames[1599585002] = "AccountSetPrivacy"
 	ConstructorNames[1897044856] = "AccountGetPrivacy"

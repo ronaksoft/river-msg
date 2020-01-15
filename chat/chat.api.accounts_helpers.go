@@ -609,6 +609,7 @@ func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings
 	x.Password = nil
 	x.PasswordHash = nil
 	x.Hint = ""
+	x.Questions = x.Questions[:0]
 	return x
 }
 
@@ -636,6 +637,7 @@ func (p *poolAccountPasswordSettings) Get() *AccountPasswordSettings {
 	if !ok {
 		return &AccountPasswordSettings{}
 	}
+	x.Questions = x.Questions[:0]
 	return x
 }
 
@@ -647,6 +649,61 @@ var PoolAccountPasswordSettings = poolAccountPasswordSettings{}
 
 func ResultAccountPasswordSettings(out *MessageEnvelope, res *AccountPasswordSettings) {
 	out.Constructor = C_AccountPasswordSettings
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_SecurityQuestions int64 = 1797596734
+
+type poolSecurityQuestions struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityQuestions) Get() *SecurityQuestions {
+	x, ok := p.pool.Get().(*SecurityQuestions)
+	if !ok {
+		return &SecurityQuestions{}
+	}
+	x.Questions = x.Questions[:0]
+	return x
+}
+
+func (p *poolSecurityQuestions) Put(x *SecurityQuestions) {
+	p.pool.Put(x)
+}
+
+var PoolSecurityQuestions = poolSecurityQuestions{}
+
+func ResultSecurityQuestions(out *MessageEnvelope, res *SecurityQuestions) {
+	out.Constructor = C_SecurityQuestions
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_SecurityQuestion int64 = 1092467205
+
+type poolSecurityQuestion struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityQuestion) Get() *SecurityQuestion {
+	x, ok := p.pool.Get().(*SecurityQuestion)
+	if !ok {
+		return &SecurityQuestion{}
+	}
+	return x
+}
+
+func (p *poolSecurityQuestion) Put(x *SecurityQuestion) {
+	p.pool.Put(x)
+}
+
+var PoolSecurityQuestion = poolSecurityQuestion{}
+
+func ResultSecurityQuestion(out *MessageEnvelope, res *SecurityQuestion) {
+	out.Constructor = C_SecurityQuestion
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -790,6 +847,8 @@ func init() {
 	ConstructorNames[2052309739] = "AccountGetPasswordSettings"
 	ConstructorNames[3193945896] = "AccountUpdatePasswordSettings"
 	ConstructorNames[3362978866] = "AccountPasswordSettings"
+	ConstructorNames[1797596734] = "SecurityQuestions"
+	ConstructorNames[1092467205] = "SecurityQuestion"
 	ConstructorNames[4178767656] = "AccountPassword"
 	ConstructorNames[1092320500] = "AccountAuthorizations"
 	ConstructorNames[275571966] = "AccountAuthorization"

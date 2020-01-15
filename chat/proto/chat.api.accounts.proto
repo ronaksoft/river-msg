@@ -179,12 +179,24 @@ message AccountUpdatePasswordSettings {
     required int64 Algorithm = 3;
     required bytes AlgorithmData = 4;
     optional string Hint = 6;
+    repeated SecurityQuestion Questions = 7;
 }
 
 // AccountPasswordSettings
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
     required string Hint = 2;
+    repeated SecurityQuestion Questions = 3;
+}
+
+message SecurityQuestions {
+    repeated SecurityQuestion Questions = 1;
+}
+
+message SecurityQuestion {
+    required int32 ID = 1;
+    required string Text = 2;
+    required bytes AnswerHash = 3;
 }
 
 // AccountPassword

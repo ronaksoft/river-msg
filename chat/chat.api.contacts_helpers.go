@@ -55,8 +55,8 @@ func (p *poolContactsAdd) Get() *ContactsAdd {
 	if !ok {
 		return &ContactsAdd{}
 	}
-	x.LastName = nil
-	x.Phone = nil
+	x.LastName = ""
+	x.Phone = ""
 	return x
 }
 

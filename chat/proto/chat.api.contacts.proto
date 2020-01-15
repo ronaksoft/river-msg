@@ -15,9 +15,9 @@ message ContactsImport {
 // @Return: Bool
 message ContactsAdd {
     required InputUser User = 1;
-    required bytes FirstName = 2;
-    optional bytes LastName = 3;
-    optional bytes Phone = 4;
+    required string FirstName = 2;
+    optional string LastName = 3;
+    optional string Phone = 4;
 }
 
 // ContactsGet

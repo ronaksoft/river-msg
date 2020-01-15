@@ -196,7 +196,7 @@ message AccountPassword {
     required bytes AlgorithmData = 4;
     optional bytes SrpB = 5;
     optional bytes RandomData = 6;
-    optional int64 SrpID = 7;
+    optional int64 SrpID = 7 [jstype = JS_STRING];
 }
 
 // AccountAuthorizations

@@ -608,7 +608,7 @@ func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings
 	}
 	x.Password = nil
 	x.PasswordHash = nil
-	x.Hint = nil
+	x.Hint = ""
 	return x
 }
 
@@ -663,7 +663,7 @@ func (p *poolAccountPassword) Get() *AccountPassword {
 	if !ok {
 		return &AccountPassword{}
 	}
-	x.Hint = nil
+	x.Hint = ""
 	x.SrpB = nil
 	x.RandomData = nil
 	x.SrpID = 0

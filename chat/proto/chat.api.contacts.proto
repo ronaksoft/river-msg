@@ -61,7 +61,7 @@ message ContactsGetBlocked {
 // @Function
 // @Returns: UsersMany
 message ContactsSearch {
-    required bytes Q = 1;
+    required string Q = 1;
 }
 
 // BlockedContactsMany

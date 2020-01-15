@@ -97,4 +97,5 @@ const (
 	ErrItemSrpB             = "SRP_B"
 	ErrItemLogin            = "LOGIN"
 	ErrItemSecurityQuestion = "SECURITY_QUESTION"
+	ErrItemSecurityAnswer   = "SECURITY_ANSWER"
 )

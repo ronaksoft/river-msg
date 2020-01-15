@@ -626,6 +626,34 @@ func ResultAccountUpdatePasswordSettings(out *MessageEnvelope, res *AccountUpdat
 	res.MarshalTo(out.Message)
 }
 
+const C_AccountRecoverPassword int64 = 1086766738
+
+type poolAccountRecoverPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountRecoverPassword) Get() *AccountRecoverPassword {
+	x, ok := p.pool.Get().(*AccountRecoverPassword)
+	if !ok {
+		return &AccountRecoverPassword{}
+	}
+	x.Answers = x.Answers[:0]
+	return x
+}
+
+func (p *poolAccountRecoverPassword) Put(x *AccountRecoverPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAccountRecoverPassword = poolAccountRecoverPassword{}
+
+func ResultAccountRecoverPassword(out *MessageEnvelope, res *AccountRecoverPassword) {
+	out.Constructor = C_AccountRecoverPassword
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_AccountPasswordSettings int64 = 3362978866
 
 type poolAccountPasswordSettings struct {
@@ -704,6 +732,33 @@ var PoolSecurityQuestion = poolSecurityQuestion{}
 
 func ResultSecurityQuestion(out *MessageEnvelope, res *SecurityQuestion) {
 	out.Constructor = C_SecurityQuestion
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_SecurityAnswer int64 = 1989228797
+
+type poolSecurityAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityAnswer) Get() *SecurityAnswer {
+	x, ok := p.pool.Get().(*SecurityAnswer)
+	if !ok {
+		return &SecurityAnswer{}
+	}
+	return x
+}
+
+func (p *poolSecurityAnswer) Put(x *SecurityAnswer) {
+	p.pool.Put(x)
+}
+
+var PoolSecurityAnswer = poolSecurityAnswer{}
+
+func ResultSecurityAnswer(out *MessageEnvelope, res *SecurityAnswer) {
+	out.Constructor = C_SecurityAnswer
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -846,9 +901,11 @@ func init() {
 	ConstructorNames[1702207851] = "AccountGetPassword"
 	ConstructorNames[2052309739] = "AccountGetPasswordSettings"
 	ConstructorNames[3193945896] = "AccountUpdatePasswordSettings"
+	ConstructorNames[1086766738] = "AccountRecoverPassword"
 	ConstructorNames[3362978866] = "AccountPasswordSettings"
 	ConstructorNames[1797596734] = "SecurityQuestions"
 	ConstructorNames[1092467205] = "SecurityQuestion"
+	ConstructorNames[1989228797] = "SecurityAnswer"
 	ConstructorNames[4178767656] = "AccountPassword"
 	ConstructorNames[1092320500] = "AccountAuthorizations"
 	ConstructorNames[275571966] = "AccountAuthorization"

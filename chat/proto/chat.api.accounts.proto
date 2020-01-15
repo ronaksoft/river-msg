@@ -182,6 +182,15 @@ message AccountUpdatePasswordSettings {
     repeated SecurityQuestion Questions = 7;
 }
 
+// AccountRecoverPassword
+// @Function
+// @Returns: AccountPassword
+message AccountRecoverPassword {
+    repeated SecurityAnswer Answers = 1;
+    required int64 Algorithm = 2;
+    required bytes AlgorithmData = 3;
+}
+
 // AccountPasswordSettings
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
@@ -189,14 +198,22 @@ message AccountPasswordSettings {
     repeated SecurityQuestion Questions = 3;
 }
 
+// SecurityQuestions
 message SecurityQuestions {
     repeated SecurityQuestion Questions = 1;
 }
 
+// SecurityQuestion
 message SecurityQuestion {
     required int32 ID = 1;
     required string Text = 2;
     required bytes AnswerHash = 3;
+}
+
+// SecurityAnswer
+message SecurityAnswer {
+    required int32 QuestionID = 1;
+    required InputPassword Answer = 2;
 }
 
 // AccountPassword

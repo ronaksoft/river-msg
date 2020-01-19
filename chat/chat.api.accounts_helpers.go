@@ -710,6 +710,33 @@ func ResultSecurityQuestions(out *MessageEnvelope, res *SecurityQuestions) {
 	res.MarshalTo(out.Message)
 }
 
+const C_RecoveryQuestion int64 = 1697591959
+
+type poolRecoveryQuestion struct {
+	pool sync.Pool
+}
+
+func (p *poolRecoveryQuestion) Get() *RecoveryQuestion {
+	x, ok := p.pool.Get().(*RecoveryQuestion)
+	if !ok {
+		return &RecoveryQuestion{}
+	}
+	return x
+}
+
+func (p *poolRecoveryQuestion) Put(x *RecoveryQuestion) {
+	p.pool.Put(x)
+}
+
+var PoolRecoveryQuestion = poolRecoveryQuestion{}
+
+func ResultRecoveryQuestion(out *MessageEnvelope, res *RecoveryQuestion) {
+	out.Constructor = C_RecoveryQuestion
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_SecurityQuestion int64 = 1092467205
 
 type poolSecurityQuestion struct {
@@ -779,6 +806,7 @@ func (p *poolAccountPassword) Get() *AccountPassword {
 	x.SrpB = nil
 	x.RandomData = nil
 	x.SrpID = 0
+	x.Questions = x.Questions[:0]
 	return x
 }
 
@@ -904,6 +932,7 @@ func init() {
 	ConstructorNames[1086766738] = "AccountRecoverPassword"
 	ConstructorNames[3362978866] = "AccountPasswordSettings"
 	ConstructorNames[1797596734] = "SecurityQuestions"
+	ConstructorNames[1697591959] = "RecoveryQuestion"
 	ConstructorNames[1092467205] = "SecurityQuestion"
 	ConstructorNames[1989228797] = "SecurityAnswer"
 	ConstructorNames[4178767656] = "AccountPassword"

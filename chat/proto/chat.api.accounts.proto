@@ -203,6 +203,12 @@ message SecurityQuestions {
     repeated SecurityQuestion Questions = 1;
 }
 
+// RecoverQuestion
+message RecoveryQuestion {
+    required int32 ID = 1;
+    required string Text = 2;
+}
+
 // SecurityQuestion
 message SecurityQuestion {
     required int32 ID = 1;
@@ -226,6 +232,7 @@ message AccountPassword {
     optional bytes SrpB = 5;
     optional bytes RandomData = 6;
     optional int64 SrpID = 7 [jstype = JS_STRING];
+    repeated RecoveryQuestion Questions = 8;
 }
 
 // AccountAuthorizations

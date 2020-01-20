@@ -195,7 +195,7 @@ message AccountRecoverPassword {
 // Private info associated to the password info (recovery email and so on)
 message AccountPasswordSettings {
     required string Hint = 2;
-    repeated SecurityQuestion Questions = 3;
+    repeated RecoveryQuestion Questions = 3;
 }
 
 // SecurityQuestions

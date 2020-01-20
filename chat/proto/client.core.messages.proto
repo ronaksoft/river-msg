@@ -4,27 +4,6 @@ import "chat.core.types.proto";
 import "chat.api.messages.proto";
 import "chat.core.message.medias.proto";
 
-// ClientPendingMessage
-message ClientPendingMessage {
-    required int64 ID = 1;
-    required int64 RequestID = 2;
-    required int64 PeerID = 3;
-    required int32 PeerType = 4;
-    required fixed64 AccessHash = 5;
-    required int64 CreatedOn = 6;
-    required int64 ReplyTo = 7;
-    required string Body = 8;
-    required int64 SenderID = 9;
-    repeated MessageEntity Entities = 10;
-    optional InputMediaType MediaType = 11;
-    optional bytes Media = 12;
-    optional bool ClearDraft = 13;
-    optional string FileUploadID = 14;
-    optional string ThumbUploadID = 15;
-    optional int64 FileID = 16;
-    optional int64 ThumbID = 17;
-}
-
 // ClientSendMessageMedia
 // @Function
 message ClientSendMessageMedia {
@@ -59,6 +38,41 @@ message ClientGlobalSearch {
 // @Function
 message ClientContactSearch {
     required string Text = 1;
+}
+
+// ClientGetCachedMedia
+// @Function
+// @Return: ClientCachedMedia
+message ClientGetCachedMedia {
+}
+
+// ClientClearCachedMedia
+// @Function
+// @Return: Bool
+message ClientClearCachedMedia {
+    optional InputPeer Peer = 1;
+    repeated int32 MediaTypes = 2;
+}
+
+// ClientPendingMessage
+message ClientPendingMessage {
+    required int64 ID = 1;
+    required int64 RequestID = 2;
+    required int64 PeerID = 3;
+    required int32 PeerType = 4;
+    required fixed64 AccessHash = 5;
+    required int64 CreatedOn = 6;
+    required int64 ReplyTo = 7;
+    required string Body = 8;
+    required int64 SenderID = 9;
+    repeated MessageEntity Entities = 10;
+    optional InputMediaType MediaType = 11;
+    optional bytes Media = 12;
+    optional bool ClearDraft = 13;
+    optional string FileUploadID = 14;
+    optional string ThumbUploadID = 15;
+    optional int64 FileID = 16;
+    optional int64 ThumbID = 17;
 }
 
 // ClientSearchResult
@@ -104,15 +118,16 @@ message ClientFileStatus {
     required string FilePath = 3;
 }
 
-// DBMediaInfo
-message DBMediaInfo {
+// CachedMediaInfo
+message CachedMediaInfo {
     repeated PeerMediaInfo MediaInfo = 1;
 }
 
 // PeerMediaInfo
 message PeerMediaInfo {
     required int64 PeerID = 1;
-    repeated MediaSize Media = 2;
+    required PeerType PeerType = 2;
+    repeated MediaSize Media = 3;
 }
 
 // MediaSize

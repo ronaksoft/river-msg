@@ -16,41 +16,6 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-const C_ClientPendingMessage int64 = 2164891929
-
-type poolClientPendingMessage struct {
-	pool sync.Pool
-}
-
-func (p *poolClientPendingMessage) Get() *ClientPendingMessage {
-	x, ok := p.pool.Get().(*ClientPendingMessage)
-	if !ok {
-		return &ClientPendingMessage{}
-	}
-	x.Entities = x.Entities[:0]
-	x.MediaType = 0
-	x.Media = nil
-	x.ClearDraft = false
-	x.FileUploadID = ""
-	x.ThumbUploadID = ""
-	x.FileID = 0
-	x.ThumbID = 0
-	return x
-}
-
-func (p *poolClientPendingMessage) Put(x *ClientPendingMessage) {
-	p.pool.Put(x)
-}
-
-var PoolClientPendingMessage = poolClientPendingMessage{}
-
-func ResultClientPendingMessage(out *MessageEnvelope, res *ClientPendingMessage) {
-	out.Constructor = C_ClientPendingMessage
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_ClientSendMessageMedia int64 = 1095038539
 
 type poolClientSendMessageMedia struct {
@@ -144,6 +109,97 @@ var PoolClientContactSearch = poolClientContactSearch{}
 
 func ResultClientContactSearch(out *MessageEnvelope, res *ClientContactSearch) {
 	out.Constructor = C_ClientContactSearch
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_ClientGetCachedMedia int64 = 856595701
+
+type poolClientGetCachedMedia struct {
+	pool sync.Pool
+}
+
+func (p *poolClientGetCachedMedia) Get() *ClientGetCachedMedia {
+	x, ok := p.pool.Get().(*ClientGetCachedMedia)
+	if !ok {
+		return &ClientGetCachedMedia{}
+	}
+	return x
+}
+
+func (p *poolClientGetCachedMedia) Put(x *ClientGetCachedMedia) {
+	p.pool.Put(x)
+}
+
+var PoolClientGetCachedMedia = poolClientGetCachedMedia{}
+
+func ResultClientGetCachedMedia(out *MessageEnvelope, res *ClientGetCachedMedia) {
+	out.Constructor = C_ClientGetCachedMedia
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_ClientClearCachedMedia int64 = 1199927718
+
+type poolClientClearCachedMedia struct {
+	pool sync.Pool
+}
+
+func (p *poolClientClearCachedMedia) Get() *ClientClearCachedMedia {
+	x, ok := p.pool.Get().(*ClientClearCachedMedia)
+	if !ok {
+		return &ClientClearCachedMedia{}
+	}
+	x.Peer = nil
+	x.MediaTypes = x.MediaTypes[:0]
+	return x
+}
+
+func (p *poolClientClearCachedMedia) Put(x *ClientClearCachedMedia) {
+	p.pool.Put(x)
+}
+
+var PoolClientClearCachedMedia = poolClientClearCachedMedia{}
+
+func ResultClientClearCachedMedia(out *MessageEnvelope, res *ClientClearCachedMedia) {
+	out.Constructor = C_ClientClearCachedMedia
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_ClientPendingMessage int64 = 2164891929
+
+type poolClientPendingMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolClientPendingMessage) Get() *ClientPendingMessage {
+	x, ok := p.pool.Get().(*ClientPendingMessage)
+	if !ok {
+		return &ClientPendingMessage{}
+	}
+	x.Entities = x.Entities[:0]
+	x.MediaType = 0
+	x.Media = nil
+	x.ClearDraft = false
+	x.FileUploadID = ""
+	x.ThumbUploadID = ""
+	x.FileID = 0
+	x.ThumbID = 0
+	return x
+}
+
+func (p *poolClientPendingMessage) Put(x *ClientPendingMessage) {
+	p.pool.Put(x)
+}
+
+var PoolClientPendingMessage = poolClientPendingMessage{}
+
+func ResultClientPendingMessage(out *MessageEnvelope, res *ClientPendingMessage) {
+	out.Constructor = C_ClientPendingMessage
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -243,29 +299,29 @@ func ResultClientFileStatus(out *MessageEnvelope, res *ClientFileStatus) {
 	res.MarshalTo(out.Message)
 }
 
-const C_DBMediaInfo int64 = 2652925823
+const C_CachedMediaInfo int64 = 1880501705
 
-type poolDBMediaInfo struct {
+type poolCachedMediaInfo struct {
 	pool sync.Pool
 }
 
-func (p *poolDBMediaInfo) Get() *DBMediaInfo {
-	x, ok := p.pool.Get().(*DBMediaInfo)
+func (p *poolCachedMediaInfo) Get() *CachedMediaInfo {
+	x, ok := p.pool.Get().(*CachedMediaInfo)
 	if !ok {
-		return &DBMediaInfo{}
+		return &CachedMediaInfo{}
 	}
 	x.MediaInfo = x.MediaInfo[:0]
 	return x
 }
 
-func (p *poolDBMediaInfo) Put(x *DBMediaInfo) {
+func (p *poolCachedMediaInfo) Put(x *CachedMediaInfo) {
 	p.pool.Put(x)
 }
 
-var PoolDBMediaInfo = poolDBMediaInfo{}
+var PoolCachedMediaInfo = poolCachedMediaInfo{}
 
-func ResultDBMediaInfo(out *MessageEnvelope, res *DBMediaInfo) {
-	out.Constructor = C_DBMediaInfo
+func ResultCachedMediaInfo(out *MessageEnvelope, res *CachedMediaInfo) {
+	out.Constructor = C_CachedMediaInfo
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -327,14 +383,16 @@ func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
 }
 
 func init() {
-	ConstructorNames[2164891929] = "ClientPendingMessage"
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
 	ConstructorNames[1742781507] = "ClientGlobalSearch"
 	ConstructorNames[1793449803] = "ClientContactSearch"
+	ConstructorNames[856595701] = "ClientGetCachedMedia"
+	ConstructorNames[1199927718] = "ClientClearCachedMedia"
+	ConstructorNames[2164891929] = "ClientPendingMessage"
 	ConstructorNames[2957647709] = "ClientSearchResult"
 	ConstructorNames[155127968] = "ClientFile"
 	ConstructorNames[2731095358] = "ClientFileStatus"
-	ConstructorNames[2652925823] = "DBMediaInfo"
+	ConstructorNames[1880501705] = "CachedMediaInfo"
 	ConstructorNames[1816749655] = "PeerMediaInfo"
 	ConstructorNames[3543753456] = "MediaSize"
 }

@@ -213,13 +213,13 @@ message RecoveryQuestion {
 message SecurityQuestion {
     required int32 ID = 1;
     required string Text = 2;
-    required bytes AnswerHash = 3;
+    required string Answer = 3;
 }
 
 // SecurityAnswer
 message SecurityAnswer {
     required int32 QuestionID = 1;
-    required InputPassword Answer = 2;
+    required string Answer = 2;
 }
 
 // AccountPassword

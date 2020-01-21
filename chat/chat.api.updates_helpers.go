@@ -385,6 +385,7 @@ func (p *poolUpdateUsername) Get() *UpdateUsername {
 	if !ok {
 		return &UpdateUsername{}
 	}
+	x.Phone = ""
 	return x
 }
 

@@ -95,6 +95,7 @@ const (
 	ErrItemPasswordHash     = "PASSWORD_HASH"
 	ErrItemPassword         = "PASSWORD"
 	ErrItemSrpB             = "SRP_B"
+	ErrItemSrpID            = "SRP_ID"
 	ErrItemLogin            = "LOGIN"
 	ErrItemSecurityQuestion = "SECURITY_QUESTION"
 	ErrItemSecurityAnswer   = "SECURITY_ANSWER"

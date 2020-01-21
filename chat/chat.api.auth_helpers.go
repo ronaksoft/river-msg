@@ -152,33 +152,6 @@ func ResultAuthRecoverPassword(out *MessageEnvelope, res *AuthRecoverPassword) {
 	res.MarshalTo(out.Message)
 }
 
-const C_AuthRequestPasswordRecovery int64 = 656695421
-
-type poolAuthRequestPasswordRecovery struct {
-	pool sync.Pool
-}
-
-func (p *poolAuthRequestPasswordRecovery) Get() *AuthRequestPasswordRecovery {
-	x, ok := p.pool.Get().(*AuthRequestPasswordRecovery)
-	if !ok {
-		return &AuthRequestPasswordRecovery{}
-	}
-	return x
-}
-
-func (p *poolAuthRequestPasswordRecovery) Put(x *AuthRequestPasswordRecovery) {
-	p.pool.Put(x)
-}
-
-var PoolAuthRequestPasswordRecovery = poolAuthRequestPasswordRecovery{}
-
-func ResultAuthRequestPasswordRecovery(out *MessageEnvelope, res *AuthRequestPasswordRecovery) {
-	out.Constructor = C_AuthRequestPasswordRecovery
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_AuthLogout int64 = 992431648
 
 type poolAuthLogout struct {
@@ -549,7 +522,6 @@ func init() {
 	ConstructorNames[2587620888] = "AuthLogin"
 	ConstructorNames[3346962908] = "AuthCheckPassword"
 	ConstructorNames[2711231991] = "AuthRecoverPassword"
-	ConstructorNames[656695421] = "AuthRequestPasswordRecovery"
 	ConstructorNames[992431648] = "AuthLogout"
 	ConstructorNames[2851553023] = "AuthLoginByToken"
 	ConstructorNames[4134648516] = "AuthCheckPhone"

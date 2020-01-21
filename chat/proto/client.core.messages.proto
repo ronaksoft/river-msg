@@ -3,6 +3,9 @@ package msg;
 import "chat.core.types.proto";
 import "chat.api.messages.proto";
 import "chat.core.message.medias.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.goproto_enum_prefix_all) = false;
 
 // ClientSendMessageMedia
 // @Function
@@ -119,19 +122,29 @@ message ClientFileStatus {
 }
 
 // CachedMediaInfo
-message CachedMediaInfo {
-    repeated PeerMediaInfo MediaInfo = 1;
+message ClientCachedMediaInfo {
+    repeated ClientPeerMediaInfo MediaInfo = 1;
 }
 
 // PeerMediaInfo
-message PeerMediaInfo {
+message ClientPeerMediaInfo {
     required int64 PeerID = 1;
     required PeerType PeerType = 2;
-    repeated MediaSize Media = 3;
+    repeated ClientMediaSize Media = 3;
 }
 
-// MediaSize
-message MediaSize {
-    required int32 MediaType = 1;
+// ClientMediaSize
+message ClientMediaSize {
+    required ClientMediaType MediaType = 1;
     required int32 TotalSize = 2;
+}
+
+// ClientMediaType
+enum ClientMediaType {
+    ClientMediaNone = 0;
+    ClientMediaFile = 1;
+    ClientMediaMedia = 2;
+    ClientMediaVoice = 3;
+    ClientMediaAudio = 4;
+    ClientMediaLink = 5;
 }

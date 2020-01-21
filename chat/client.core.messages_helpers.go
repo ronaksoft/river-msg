@@ -299,84 +299,84 @@ func ResultClientFileStatus(out *MessageEnvelope, res *ClientFileStatus) {
 	res.MarshalTo(out.Message)
 }
 
-const C_CachedMediaInfo int64 = 1880501705
+const C_ClientCachedMediaInfo int64 = 442767121
 
-type poolCachedMediaInfo struct {
+type poolClientCachedMediaInfo struct {
 	pool sync.Pool
 }
 
-func (p *poolCachedMediaInfo) Get() *CachedMediaInfo {
-	x, ok := p.pool.Get().(*CachedMediaInfo)
+func (p *poolClientCachedMediaInfo) Get() *ClientCachedMediaInfo {
+	x, ok := p.pool.Get().(*ClientCachedMediaInfo)
 	if !ok {
-		return &CachedMediaInfo{}
+		return &ClientCachedMediaInfo{}
 	}
 	x.MediaInfo = x.MediaInfo[:0]
 	return x
 }
 
-func (p *poolCachedMediaInfo) Put(x *CachedMediaInfo) {
+func (p *poolClientCachedMediaInfo) Put(x *ClientCachedMediaInfo) {
 	p.pool.Put(x)
 }
 
-var PoolCachedMediaInfo = poolCachedMediaInfo{}
+var PoolClientCachedMediaInfo = poolClientCachedMediaInfo{}
 
-func ResultCachedMediaInfo(out *MessageEnvelope, res *CachedMediaInfo) {
-	out.Constructor = C_CachedMediaInfo
+func ResultClientCachedMediaInfo(out *MessageEnvelope, res *ClientCachedMediaInfo) {
+	out.Constructor = C_ClientCachedMediaInfo
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
-const C_PeerMediaInfo int64 = 1816749655
+const C_ClientPeerMediaInfo int64 = 2711408875
 
-type poolPeerMediaInfo struct {
+type poolClientPeerMediaInfo struct {
 	pool sync.Pool
 }
 
-func (p *poolPeerMediaInfo) Get() *PeerMediaInfo {
-	x, ok := p.pool.Get().(*PeerMediaInfo)
+func (p *poolClientPeerMediaInfo) Get() *ClientPeerMediaInfo {
+	x, ok := p.pool.Get().(*ClientPeerMediaInfo)
 	if !ok {
-		return &PeerMediaInfo{}
+		return &ClientPeerMediaInfo{}
 	}
 	x.Media = x.Media[:0]
 	return x
 }
 
-func (p *poolPeerMediaInfo) Put(x *PeerMediaInfo) {
+func (p *poolClientPeerMediaInfo) Put(x *ClientPeerMediaInfo) {
 	p.pool.Put(x)
 }
 
-var PoolPeerMediaInfo = poolPeerMediaInfo{}
+var PoolClientPeerMediaInfo = poolClientPeerMediaInfo{}
 
-func ResultPeerMediaInfo(out *MessageEnvelope, res *PeerMediaInfo) {
-	out.Constructor = C_PeerMediaInfo
+func ResultClientPeerMediaInfo(out *MessageEnvelope, res *ClientPeerMediaInfo) {
+	out.Constructor = C_ClientPeerMediaInfo
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
 }
 
-const C_MediaSize int64 = 3543753456
+const C_ClientMediaSize int64 = 1541024203
 
-type poolMediaSize struct {
+type poolClientMediaSize struct {
 	pool sync.Pool
 }
 
-func (p *poolMediaSize) Get() *MediaSize {
-	x, ok := p.pool.Get().(*MediaSize)
+func (p *poolClientMediaSize) Get() *ClientMediaSize {
+	x, ok := p.pool.Get().(*ClientMediaSize)
 	if !ok {
-		return &MediaSize{}
+		return &ClientMediaSize{}
 	}
 	return x
 }
 
-func (p *poolMediaSize) Put(x *MediaSize) {
+func (p *poolClientMediaSize) Put(x *ClientMediaSize) {
 	p.pool.Put(x)
 }
 
-var PoolMediaSize = poolMediaSize{}
+var PoolClientMediaSize = poolClientMediaSize{}
 
-func ResultMediaSize(out *MessageEnvelope, res *MediaSize) {
-	out.Constructor = C_MediaSize
+func ResultClientMediaSize(out *MessageEnvelope, res *ClientMediaSize) {
+	out.Constructor = C_ClientMediaSize
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -392,7 +392,7 @@ func init() {
 	ConstructorNames[2957647709] = "ClientSearchResult"
 	ConstructorNames[155127968] = "ClientFile"
 	ConstructorNames[2731095358] = "ClientFileStatus"
-	ConstructorNames[1880501705] = "CachedMediaInfo"
-	ConstructorNames[1816749655] = "PeerMediaInfo"
-	ConstructorNames[3543753456] = "MediaSize"
+	ConstructorNames[442767121] = "ClientCachedMediaInfo"
+	ConstructorNames[2711408875] = "ClientPeerMediaInfo"
+	ConstructorNames[1541024203] = "ClientMediaSize"
 }

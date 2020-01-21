@@ -88,6 +88,9 @@ func (m *StartBot) GetStartParam() string {
 	return ""
 }
 
+// BotIsStarted
+// @Function
+// @Return: Bool
 type BotIsStarted struct {
 	Bot      *InputPeer `protobuf:"bytes,1,req,name=Bot" json:"Bot,omitempty"`
 	RandomID int64      `protobuf:"varint,2,req,name=RandomID" json:"RandomID"`

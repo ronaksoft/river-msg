@@ -44,6 +44,34 @@ func ResultStartBot(out *MessageEnvelope, res *StartBot) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotIsStarted int64 = 766180107
+
+type poolBotIsStarted struct {
+	pool sync.Pool
+}
+
+func (p *poolBotIsStarted) Get() *BotIsStarted {
+	x, ok := p.pool.Get().(*BotIsStarted)
+	if !ok {
+		return &BotIsStarted{}
+	}
+	return x
+}
+
+func (p *poolBotIsStarted) Put(x *BotIsStarted) {
+	p.pool.Put(x)
+}
+
+var PoolBotIsStarted = poolBotIsStarted{}
+
+func ResultBotIsStarted(out *MessageEnvelope, res *BotIsStarted) {
+	out.Constructor = C_BotIsStarted
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[3294108684] = "StartBot"
+	ConstructorNames[766180107] = "BotIsStarted"
 }

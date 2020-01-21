@@ -3,6 +3,9 @@ package msg;
 import "chat.core.types.proto";
 import "chat.api.messages.proto";
 import "chat.core.message.medias.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.goproto_enum_prefix_all) = false;
 
 // ClientSendMessageMedia
 // @Function

@@ -54,7 +54,7 @@ message ClientGetCachedMedia {
 // @Return: Bool
 message ClientClearCachedMedia {
     optional InputPeer Peer = 1;
-    repeated int32 MediaTypes = 2;
+    repeated ClientMediaType MediaTypes = 2;
 }
 
 // ClientPendingMessage

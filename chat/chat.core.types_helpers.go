@@ -550,6 +550,63 @@ func ResultBot(out *MessageEnvelope, res *Bot) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotCommands int64 = 1852470005
+
+type poolBotCommands struct {
+	pool sync.Pool
+}
+
+func (p *poolBotCommands) Get() *BotCommands {
+	x, ok := p.pool.Get().(*BotCommands)
+	if !ok {
+		return &BotCommands{}
+	}
+	x.Description = ""
+	return x
+}
+
+func (p *poolBotCommands) Put(x *BotCommands) {
+	p.pool.Put(x)
+}
+
+var PoolBotCommands = poolBotCommands{}
+
+func ResultBotCommands(out *MessageEnvelope, res *BotCommands) {
+	out.Constructor = C_BotCommands
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotInfo int64 = 4059496923
+
+type poolBotInfo struct {
+	pool sync.Pool
+}
+
+func (p *poolBotInfo) Get() *BotInfo {
+	x, ok := p.pool.Get().(*BotInfo)
+	if !ok {
+		return &BotInfo{}
+	}
+	x.Description = ""
+	x.BotCommands = x.BotCommands[:0]
+	return x
+}
+
+func (p *poolBotInfo) Put(x *BotInfo) {
+	p.pool.Put(x)
+}
+
+var PoolBotInfo = poolBotInfo{}
+
+func ResultBotInfo(out *MessageEnvelope, res *BotInfo) {
+	out.Constructor = C_BotInfo
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_ContactUser int64 = 460099170
 
 type poolContactUser struct {
@@ -1054,6 +1111,8 @@ func init() {
 	ConstructorNames[1881347437] = "UserPhoto"
 	ConstructorNames[765557111] = "User"
 	ConstructorNames[961692401] = "Bot"
+	ConstructorNames[1852470005] = "BotCommands"
+	ConstructorNames[4059496923] = "BotInfo"
 	ConstructorNames[460099170] = "ContactUser"
 	ConstructorNames[1677556362] = "UserMessage"
 	ConstructorNames[869564229] = "DraftMessage"

@@ -99,8 +99,66 @@ func ResultBotSetInfo(out *MessageEnvelope, res *BotSetInfo) {
 	res.MarshalTo(out.Message)
 }
 
+const C_Bots int64 = 3515703235
+
+type poolBots struct {
+	pool sync.Pool
+}
+
+func (p *poolBots) Get() *Bots {
+	x, ok := p.pool.Get().(*Bots)
+	if !ok {
+		return &Bots{}
+	}
+	x.Limit = 0
+	return x
+}
+
+func (p *poolBots) Put(x *Bots) {
+	p.pool.Put(x)
+}
+
+var PoolBots = poolBots{}
+
+func ResultBots(out *MessageEnvelope, res *Bots) {
+	out.Constructor = C_Bots
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotsMany int64 = 2942918011
+
+type poolBotsMany struct {
+	pool sync.Pool
+}
+
+func (p *poolBotsMany) Get() *BotsMany {
+	x, ok := p.pool.Get().(*BotsMany)
+	if !ok {
+		return &BotsMany{}
+	}
+	x.Bots = x.Bots[:0]
+	return x
+}
+
+func (p *poolBotsMany) Put(x *BotsMany) {
+	p.pool.Put(x)
+}
+
+var PoolBotsMany = poolBotsMany{}
+
+func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
+	out.Constructor = C_BotsMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[3294108684] = "StartBot"
 	ConstructorNames[766180107] = "BotIsStarted"
 	ConstructorNames[3735815245] = "BotSetInfo"
+	ConstructorNames[3515703235] = "Bots"
+	ConstructorNames[2942918011] = "BotsMany"
 }

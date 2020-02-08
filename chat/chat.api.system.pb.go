@@ -273,6 +273,263 @@ func (m *SystemGetSalts) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SystemGetSalts proto.InternalMessageInfo
 
+// SystemGetConfig
+// @Function
+// @Returns: SystemConfig
+type SystemGetConfig struct {
+}
+
+func (m *SystemGetConfig) Reset()         { *m = SystemGetConfig{} }
+func (m *SystemGetConfig) String() string { return proto.CompactTextString(m) }
+func (*SystemGetConfig) ProtoMessage()    {}
+func (*SystemGetConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c566bdbff65da108, []int{6}
+}
+func (m *SystemGetConfig) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SystemGetConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SystemGetConfig.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *SystemGetConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemGetConfig.Merge(m, src)
+}
+func (m *SystemGetConfig) XXX_Size() int {
+	return m.Size()
+}
+func (m *SystemGetConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemGetConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemGetConfig proto.InternalMessageInfo
+
+// SystemConfig
+type SystemConfig struct {
+	TestMode              bool          `protobuf:"varint,1,req,name=TestMode" json:"TestMode"`
+	PhoneCallEnabled      bool          `protobuf:"varint,2,req,name=PhoneCallEnabled" json:"PhoneCallEnabled"`
+	ExpireOn              int64         `protobuf:"varint,3,req,name=ExpireOn" json:"ExpireOn"`
+	GroupMaxSize          int32         `protobuf:"varint,4,req,name=GroupMaxSize" json:"GroupMaxSize"`
+	ForwardedMaxCount     int32         `protobuf:"varint,5,req,name=ForwardedMaxCount" json:"ForwardedMaxCount"`
+	OnlineUpdatePeriodMs  int32         `protobuf:"varint,6,req,name=OnlineUpdatePeriodMs" json:"OnlineUpdatePeriodMs"`
+	EditTimeLimit         int32         `protobuf:"varint,7,req,name=EditTimeLimit" json:"EditTimeLimit"`
+	RevokeTimeLimit       int32         `protobuf:"varint,8,req,name=RevokeTimeLimit" json:"RevokeTimeLimit"`
+	PinnedDialogsMaxCount int32         `protobuf:"varint,9,req,name=PinnedDialogsMaxCount" json:"PinnedDialogsMaxCount"`
+	UrlPrefix             int32         `protobuf:"varint,10,req,name=UrlPrefix" json:"UrlPrefix"`
+	MessageMaxLength      int32         `protobuf:"varint,11,req,name=MessageMaxLength" json:"MessageMaxLength"`
+	CaptionMaxLength      int32         `protobuf:"varint,12,req,name=CaptionMaxLength" json:"CaptionMaxLength"`
+	DCs                   []*DataCenter `protobuf:"bytes,13,rep,name=DCs" json:"DCs,omitempty"`
+}
+
+func (m *SystemConfig) Reset()         { *m = SystemConfig{} }
+func (m *SystemConfig) String() string { return proto.CompactTextString(m) }
+func (*SystemConfig) ProtoMessage()    {}
+func (*SystemConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c566bdbff65da108, []int{7}
+}
+func (m *SystemConfig) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SystemConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SystemConfig.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *SystemConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemConfig.Merge(m, src)
+}
+func (m *SystemConfig) XXX_Size() int {
+	return m.Size()
+}
+func (m *SystemConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemConfig proto.InternalMessageInfo
+
+func (m *SystemConfig) GetTestMode() bool {
+	if m != nil {
+		return m.TestMode
+	}
+	return false
+}
+
+func (m *SystemConfig) GetPhoneCallEnabled() bool {
+	if m != nil {
+		return m.PhoneCallEnabled
+	}
+	return false
+}
+
+func (m *SystemConfig) GetExpireOn() int64 {
+	if m != nil {
+		return m.ExpireOn
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetGroupMaxSize() int32 {
+	if m != nil {
+		return m.GroupMaxSize
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetForwardedMaxCount() int32 {
+	if m != nil {
+		return m.ForwardedMaxCount
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetOnlineUpdatePeriodMs() int32 {
+	if m != nil {
+		return m.OnlineUpdatePeriodMs
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetEditTimeLimit() int32 {
+	if m != nil {
+		return m.EditTimeLimit
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetRevokeTimeLimit() int32 {
+	if m != nil {
+		return m.RevokeTimeLimit
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetPinnedDialogsMaxCount() int32 {
+	if m != nil {
+		return m.PinnedDialogsMaxCount
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetUrlPrefix() int32 {
+	if m != nil {
+		return m.UrlPrefix
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetMessageMaxLength() int32 {
+	if m != nil {
+		return m.MessageMaxLength
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetCaptionMaxLength() int32 {
+	if m != nil {
+		return m.CaptionMaxLength
+	}
+	return 0
+}
+
+func (m *SystemConfig) GetDCs() []*DataCenter {
+	if m != nil {
+		return m.DCs
+	}
+	return nil
+}
+
+// DataCenter
+type DataCenter struct {
+	IP        string `protobuf:"bytes,1,req,name=IP" json:"IP"`
+	Port      int32  `protobuf:"varint,2,req,name=Port" json:"Port"`
+	Http      bool   `protobuf:"varint,3,req,name=Http" json:"Http"`
+	Websocket bool   `protobuf:"varint,4,req,name=Websocket" json:"Websocket"`
+	Quic      bool   `protobuf:"varint,5,req,name=Quic" json:"Quic"`
+}
+
+func (m *DataCenter) Reset()         { *m = DataCenter{} }
+func (m *DataCenter) String() string { return proto.CompactTextString(m) }
+func (*DataCenter) ProtoMessage()    {}
+func (*DataCenter) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c566bdbff65da108, []int{8}
+}
+func (m *DataCenter) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DataCenter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DataCenter.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *DataCenter) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DataCenter.Merge(m, src)
+}
+func (m *DataCenter) XXX_Size() int {
+	return m.Size()
+}
+func (m *DataCenter) XXX_DiscardUnknown() {
+	xxx_messageInfo_DataCenter.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DataCenter proto.InternalMessageInfo
+
+func (m *DataCenter) GetIP() string {
+	if m != nil {
+		return m.IP
+	}
+	return ""
+}
+
+func (m *DataCenter) GetPort() int32 {
+	if m != nil {
+		return m.Port
+	}
+	return 0
+}
+
+func (m *DataCenter) GetHttp() bool {
+	if m != nil {
+		return m.Http
+	}
+	return false
+}
+
+func (m *DataCenter) GetWebsocket() bool {
+	if m != nil {
+		return m.Websocket
+	}
+	return false
+}
+
+func (m *DataCenter) GetQuic() bool {
+	if m != nil {
+		return m.Quic
+	}
+	return false
+}
+
 // SystemSalts
 type SystemSalts struct {
 	Salts      []int64 `protobuf:"varint,1,rep,name=Salts" json:"Salts,omitempty"`
@@ -284,7 +541,7 @@ func (m *SystemSalts) Reset()         { *m = SystemSalts{} }
 func (m *SystemSalts) String() string { return proto.CompactTextString(m) }
 func (*SystemSalts) ProtoMessage()    {}
 func (*SystemSalts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{6}
+	return fileDescriptor_c566bdbff65da108, []int{9}
 }
 func (m *SystemSalts) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -349,7 +606,7 @@ func (m *AppUpdate) Reset()         { *m = AppUpdate{} }
 func (m *AppUpdate) String() string { return proto.CompactTextString(m) }
 func (*AppUpdate) ProtoMessage()    {}
 func (*AppUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{7}
+	return fileDescriptor_c566bdbff65da108, []int{10}
 }
 func (m *AppUpdate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -439,7 +696,7 @@ func (m *SystemInfo) Reset()         { *m = SystemInfo{} }
 func (m *SystemInfo) String() string { return proto.CompactTextString(m) }
 func (*SystemInfo) ProtoMessage()    {}
 func (*SystemInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{8}
+	return fileDescriptor_c566bdbff65da108, []int{11}
 }
 func (m *SystemInfo) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -505,7 +762,7 @@ func (m *SystemServerTime) Reset()         { *m = SystemServerTime{} }
 func (m *SystemServerTime) String() string { return proto.CompactTextString(m) }
 func (*SystemServerTime) ProtoMessage()    {}
 func (*SystemServerTime) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{9}
+	return fileDescriptor_c566bdbff65da108, []int{12}
 }
 func (m *SystemServerTime) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -550,7 +807,7 @@ func (m *SystemPublicKeys) Reset()         { *m = SystemPublicKeys{} }
 func (m *SystemPublicKeys) String() string { return proto.CompactTextString(m) }
 func (*SystemPublicKeys) ProtoMessage()    {}
 func (*SystemPublicKeys) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{10}
+	return fileDescriptor_c566bdbff65da108, []int{13}
 }
 func (m *SystemPublicKeys) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -595,7 +852,7 @@ func (m *SystemDHGroups) Reset()         { *m = SystemDHGroups{} }
 func (m *SystemDHGroups) String() string { return proto.CompactTextString(m) }
 func (*SystemDHGroups) ProtoMessage()    {}
 func (*SystemDHGroups) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c566bdbff65da108, []int{11}
+	return fileDescriptor_c566bdbff65da108, []int{14}
 }
 func (m *SystemDHGroups) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -638,6 +895,9 @@ func init() {
 	proto.RegisterType((*SystemGetAppUpdate)(nil), "msg.SystemGetAppUpdate")
 	proto.RegisterType((*SystemGetInfo)(nil), "msg.SystemGetInfo")
 	proto.RegisterType((*SystemGetSalts)(nil), "msg.SystemGetSalts")
+	proto.RegisterType((*SystemGetConfig)(nil), "msg.SystemGetConfig")
+	proto.RegisterType((*SystemConfig)(nil), "msg.SystemConfig")
+	proto.RegisterType((*DataCenter)(nil), "msg.DataCenter")
 	proto.RegisterType((*SystemSalts)(nil), "msg.SystemSalts")
 	proto.RegisterType((*AppUpdate)(nil), "msg.AppUpdate")
 	proto.RegisterType((*SystemInfo)(nil), "msg.SystemInfo")
@@ -649,41 +909,60 @@ func init() {
 func init() { proto.RegisterFile("chat.api.system.proto", fileDescriptor_c566bdbff65da108) }
 
 var fileDescriptor_c566bdbff65da108 = []byte{
-	// 532 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x53, 0x4d, 0x6e, 0x13, 0x31,
-	0x18, 0xcd, 0x24, 0x2d, 0x4d, 0xbe, 0x10, 0xda, 0x4e, 0xa9, 0x34, 0x62, 0x31, 0x44, 0x16, 0x42,
-	0x11, 0x8b, 0x59, 0xb0, 0x00, 0x89, 0x5d, 0x42, 0x44, 0x89, 0x2a, 0x50, 0x95, 0xb4, 0x20, 0xb1,
-	0x73, 0x13, 0x37, 0xb5, 0xea, 0x19, 0x5b, 0xb6, 0x13, 0x34, 0xb7, 0xe0, 0x0a, 0x5c, 0x81, 0x53,
-	0x74, 0xd9, 0x25, 0x2b, 0x84, 0x92, 0x8b, 0x20, 0x7b, 0x7e, 0xec, 0xb0, 0x9a, 0xf1, 0x7b, 0xcf,
-	0x9f, 0x9f, 0xbf, 0xef, 0x19, 0x4e, 0xe7, 0xb7, 0x58, 0x27, 0x58, 0xd0, 0x44, 0xe5, 0x4a, 0x93,
-	0x34, 0x11, 0x92, 0x6b, 0x1e, 0xb6, 0x52, 0xb5, 0x7c, 0x56, 0x70, 0x73, 0x2e, 0x49, 0xa2, 0x73,
-	0x41, 0x54, 0xc1, 0xa1, 0x53, 0x38, 0x99, 0x59, 0xed, 0x19, 0xd1, 0x17, 0xab, 0x6b, 0x46, 0xe7,
-	0xe7, 0x24, 0x57, 0xe8, 0x04, 0x8e, 0x6b, 0x78, 0xfc, 0xf1, 0x4c, 0xf2, 0x95, 0x50, 0x3b, 0xda,
-	0x19, 0x91, 0x6b, 0x22, 0x2f, 0x69, 0x4a, 0xd0, 0x37, 0x08, 0x6b, 0x78, 0x28, 0xc4, 0x95, 0x58,
-	0x60, 0x4d, 0xc2, 0x17, 0x00, 0xef, 0x19, 0x25, 0x99, 0xbe, 0xcc, 0x05, 0x89, 0x82, 0x7e, 0x73,
-	0xd0, 0x19, 0xed, 0xdd, 0xff, 0x79, 0xde, 0x98, 0x7a, 0x78, 0x18, 0xc3, 0xc1, 0x17, 0x22, 0x15,
-	0xe5, 0x59, 0xd4, 0xec, 0x37, 0x07, 0xfb, 0xa5, 0xa4, 0x02, 0xd1, 0x21, 0xf4, 0xea, 0xda, 0x93,
-	0xec, 0x86, 0xa3, 0x23, 0x78, 0xe2, 0x3c, 0x60, 0xa6, 0x15, 0xba, 0x83, 0x6e, 0x81, 0xd8, 0x65,
-	0xf8, 0x14, 0xf6, 0xed, 0x4f, 0x14, 0xf4, 0x5b, 0x83, 0xd6, 0xb4, 0x58, 0x18, 0x37, 0x33, 0x8d,
-	0xa5, 0x56, 0x1f, 0x24, 0x4f, 0xed, 0x51, 0xad, 0xca, 0x8d, 0xc3, 0xc3, 0x3e, 0xb4, 0xc7, 0x2b,
-	0x89, 0xb5, 0xb1, 0xd3, 0xf2, 0x34, 0x35, 0x8a, 0x7e, 0x36, 0xa1, 0xe3, 0xee, 0x88, 0xa0, 0x33,
-	0x5c, 0x63, 0xca, 0xf0, 0x35, 0x2b, 0xae, 0xd8, 0x2e, 0x37, 0x38, 0xd8, 0x68, 0x3e, 0xe1, 0x6c,
-	0x81, 0x35, 0x97, 0xb9, 0x3d, 0xb8, 0xd6, 0xd4, 0xb0, 0x71, 0x37, 0x59, 0x90, 0x4c, 0xd3, 0x1b,
-	0x4a, 0xa4, 0x3d, 0xb9, 0xee, 0x95, 0xc3, 0xc3, 0x97, 0xd0, 0x2d, 0xdb, 0xf2, 0x19, 0xa7, 0x24,
-	0xda, 0xf3, 0x64, 0x3e, 0x61, 0x74, 0x63, 0xfe, 0x3d, 0x63, 0x1c, 0x2f, 0xae, 0x24, 0x8b, 0xf6,
-	0x7d, 0x9d, 0x47, 0x58, 0x1d, 0x51, 0x73, 0x49, 0x85, 0xbd, 0xf0, 0xa3, 0x1d, 0x9d, 0x23, 0xc2,
-	0x04, 0x0e, 0xc7, 0x54, 0x09, 0x86, 0xf3, 0x49, 0xa6, 0x89, 0x5c, 0x63, 0x16, 0x1d, 0x78, 0xb3,
-	0xfa, 0x9f, 0x44, 0xbf, 0x02, 0x80, 0x62, 0x22, 0x66, 0x62, 0xe1, 0x2b, 0xe8, 0x7d, 0xe5, 0xf2,
-	0xce, 0x66, 0xc8, 0x1a, 0xf7, 0xb3, 0xb0, 0x4b, 0x19, 0x4b, 0x23, 0xba, 0xbc, 0xb8, 0xe5, 0x9a,
-	0x1b, 0xeb, 0x4d, 0xdf, 0x92, 0x47, 0x98, 0x9a, 0xb3, 0x14, 0x33, 0x56, 0x2b, 0xfd, 0x9e, 0xed,
-	0x52, 0xc5, 0xe8, 0xb9, 0xc4, 0x4b, 0x62, 0x84, 0x7b, 0xfd, 0xc0, 0x35, 0xd7, 0xe1, 0xe8, 0x0d,
-	0x1c, 0x95, 0x29, 0xaa, 0x83, 0x6d, 0x46, 0x67, 0xbe, 0x4a, 0xe3, 0x54, 0x58, 0xd7, 0x55, 0x1e,
-	0x1c, 0x8c, 0xce, 0xab, 0x7d, 0xee, 0xf1, 0x84, 0x6f, 0xa1, 0x37, 0x9d, 0x0d, 0x1d, 0x60, 0xa3,
-	0xd8, 0x7d, 0x7d, 0x9c, 0xa4, 0x6a, 0x99, 0xf8, 0xcc, 0x74, 0x57, 0x87, 0xde, 0x55, 0xe1, 0xae,
-	0x9e, 0x5c, 0x38, 0x80, 0x76, 0xf5, 0x5f, 0x56, 0x79, 0x6c, 0xab, 0x94, 0xe0, 0xb4, 0x66, 0x47,
-	0xd1, 0xfd, 0x26, 0x0e, 0x1e, 0x36, 0x71, 0xf0, 0x77, 0x13, 0x07, 0x3f, 0xb6, 0x71, 0xe3, 0x61,
-	0x1b, 0x37, 0x7e, 0x6f, 0xe3, 0xc6, 0xbf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x1f, 0xc7, 0xc4, 0x1f,
-	0x16, 0x04, 0x00, 0x00,
+	// 845 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x55, 0xcd, 0x6e, 0xe3, 0x36,
+	0x10, 0x8e, 0x7f, 0xd2, 0x8d, 0xc7, 0x49, 0x93, 0x70, 0x13, 0x40, 0xe8, 0xc1, 0x75, 0x85, 0xa2,
+	0x30, 0x7a, 0x30, 0x8a, 0x1c, 0xda, 0x62, 0x6f, 0x89, 0x9d, 0xdd, 0x35, 0x76, 0xdd, 0x55, 0xed,
+	0xa4, 0x0b, 0xf4, 0xc6, 0x58, 0x13, 0x87, 0x88, 0x44, 0x0a, 0x24, 0xed, 0xb5, 0xfb, 0x14, 0x3d,
+	0xf4, 0x05, 0xfa, 0x0a, 0x7d, 0x8a, 0x3d, 0xee, 0xb1, 0xa7, 0xb6, 0x48, 0x5e, 0xa4, 0x20, 0x65,
+	0x89, 0x54, 0x92, 0x53, 0x9c, 0xef, 0xfb, 0x86, 0x1a, 0xcd, 0x7c, 0x1f, 0x05, 0xc7, 0xb3, 0x1b,
+	0xaa, 0xfb, 0x34, 0x63, 0x7d, 0xb5, 0x56, 0x1a, 0xd3, 0x7e, 0x26, 0x85, 0x16, 0xa4, 0x91, 0xaa,
+	0xf9, 0x17, 0x39, 0x37, 0x13, 0x12, 0xfb, 0x7a, 0x9d, 0xa1, 0xca, 0xb9, 0xf0, 0x18, 0x9e, 0x4f,
+	0xad, 0xf6, 0x15, 0xea, 0x68, 0x71, 0x95, 0xb0, 0xd9, 0x1b, 0x5c, 0xab, 0xf0, 0x39, 0x1c, 0x96,
+	0xf0, 0xf0, 0xf5, 0x2b, 0x29, 0x16, 0x99, 0xaa, 0x68, 0xa7, 0x28, 0x97, 0x28, 0x2f, 0x58, 0x8a,
+	0xe1, 0xaf, 0x40, 0x4a, 0xf8, 0x34, 0xcb, 0x2e, 0xb3, 0x98, 0x6a, 0x24, 0x5f, 0x03, 0x0c, 0x12,
+	0x86, 0x5c, 0x5f, 0xac, 0x33, 0x0c, 0x6a, 0xdd, 0x7a, 0xaf, 0x75, 0xd6, 0xfc, 0xf8, 0xcf, 0x97,
+	0x5b, 0x13, 0x0f, 0x27, 0x1d, 0x78, 0xf6, 0x0b, 0x4a, 0xc5, 0x04, 0x0f, 0xea, 0xdd, 0x7a, 0x6f,
+	0x7b, 0x23, 0x29, 0xc0, 0x70, 0x1f, 0xf6, 0xca, 0xb3, 0x47, 0xfc, 0x5a, 0x84, 0x07, 0xf0, 0xb9,
+	0xeb, 0x81, 0x26, 0x5a, 0x85, 0x87, 0xb0, 0x5f, 0x22, 0x03, 0xc1, 0xaf, 0xd9, 0x3c, 0xfc, 0xb7,
+	0x09, 0xbb, 0x39, 0x96, 0x03, 0xa4, 0x0b, 0x3b, 0x17, 0xa8, 0xf4, 0x58, 0xc4, 0x79, 0x2b, 0x3b,
+	0x9b, 0xe7, 0x94, 0x28, 0xf9, 0x0e, 0x0e, 0xa2, 0x1b, 0xc1, 0x71, 0x40, 0x93, 0xe4, 0x9c, 0xd3,
+	0xab, 0x04, 0x63, 0xdb, 0x51, 0xa1, 0x7c, 0xc4, 0x9a, 0x33, 0xcf, 0x57, 0x19, 0x93, 0xf8, 0x8e,
+	0x07, 0x8d, 0x6e, 0xbd, 0xd7, 0x28, 0xce, 0x2c, 0x50, 0xd2, 0x83, 0x5d, 0x3b, 0xb9, 0x31, 0x5d,
+	0x4d, 0xd9, 0x6f, 0x18, 0x34, 0xbd, 0x37, 0xac, 0x30, 0xe4, 0x04, 0x0e, 0x5f, 0x0a, 0xf9, 0x81,
+	0xca, 0x18, 0xe3, 0x31, 0x5d, 0x0d, 0xc4, 0x82, 0xeb, 0x60, 0xdb, 0x93, 0x3f, 0xa6, 0xc9, 0x8f,
+	0x70, 0xf4, 0x8e, 0x27, 0x8c, 0x63, 0x3e, 0xf0, 0x08, 0x25, 0x13, 0xf1, 0x58, 0x05, 0x9f, 0x79,
+	0x65, 0x4f, 0x2a, 0xc8, 0xb7, 0xb0, 0x77, 0x1e, 0x33, 0x6d, 0x96, 0xf7, 0x96, 0xa5, 0x4c, 0x07,
+	0xcf, 0xbc, 0x92, 0x2a, 0x45, 0xfa, 0xb0, 0x3f, 0xc1, 0xa5, 0xb8, 0x45, 0xa7, 0xde, 0xf1, 0xd4,
+	0x0f, 0x49, 0xf2, 0x02, 0x8e, 0x23, 0xc6, 0x39, 0xc6, 0x43, 0x46, 0x13, 0x31, 0x57, 0xe5, 0xdb,
+	0xb4, 0xbc, 0xaa, 0xa7, 0x25, 0x24, 0x84, 0xd6, 0xa5, 0x4c, 0x22, 0x89, 0xd7, 0x6c, 0x15, 0x80,
+	0xa7, 0x77, 0xb0, 0xd9, 0xd3, 0x18, 0x95, 0xa2, 0x73, 0x1c, 0xd3, 0xd5, 0x5b, 0xe4, 0x73, 0x7d,
+	0x13, 0xb4, 0x3d, 0xe9, 0x23, 0xd6, 0x54, 0x0c, 0x68, 0xa6, 0x99, 0xe0, 0xae, 0x62, 0xd7, 0xaf,
+	0x78, 0xc8, 0x92, 0xaf, 0xa0, 0x31, 0x1c, 0xa8, 0x60, 0xaf, 0xdb, 0xe8, 0xb5, 0x4f, 0xf6, 0xfb,
+	0xa9, 0x9a, 0xf7, 0x87, 0x54, 0xd3, 0x01, 0x72, 0x8d, 0x72, 0x62, 0xb8, 0xf0, 0x8f, 0x1a, 0x80,
+	0xc3, 0xc8, 0x11, 0xd4, 0x47, 0x51, 0xc5, 0xe4, 0xf5, 0x51, 0x44, 0x02, 0x68, 0x46, 0x42, 0xea,
+	0x8a, 0xb3, 0x2d, 0x62, 0x98, 0xd7, 0x5a, 0x67, 0xd6, 0x37, 0x85, 0xc3, 0x2c, 0x62, 0x66, 0xf0,
+	0x1e, 0xaf, 0x94, 0x98, 0xdd, 0xa2, 0xb6, 0x86, 0x29, 0x68, 0x07, 0x9b, 0xea, 0x9f, 0x17, 0x6c,
+	0x66, 0x0d, 0x52, 0x56, 0x1b, 0x24, 0xbc, 0x85, 0x76, 0xee, 0x7b, 0x1b, 0x0d, 0x72, 0x04, 0xdb,
+	0xf6, 0x47, 0x50, 0xeb, 0x36, 0x7a, 0x8d, 0x49, 0xfe, 0x8f, 0x49, 0xe6, 0x54, 0x53, 0xa9, 0xd5,
+	0x4b, 0x29, 0x52, 0xdb, 0x5c, 0x61, 0x5d, 0x0f, 0x37, 0xf6, 0x1e, 0x2e, 0x24, 0x35, 0x93, 0xa9,
+	0xda, 0xbb, 0x40, 0xc3, 0x3f, 0xeb, 0xd0, 0x72, 0x79, 0x0f, 0xa1, 0x75, 0xba, 0xa4, 0x2c, 0x31,
+	0xe1, 0xa8, 0x64, 0xcc, 0xc1, 0x46, 0x33, 0xa6, 0x3c, 0xa6, 0x5a, 0xc8, 0x75, 0x25, 0x5d, 0x0e,
+	0x36, 0xdd, 0x8d, 0x62, 0xe4, 0x9a, 0x5d, 0x33, 0x94, 0xf6, 0xc9, 0xe5, 0xbd, 0xe1, 0x70, 0xf2,
+	0x0d, 0xb4, 0x37, 0x57, 0xc4, 0x4f, 0x34, 0xcd, 0x93, 0x55, 0xc8, 0x7c, 0xc2, 0xe8, 0x86, 0xe2,
+	0x03, 0x4f, 0x04, 0x8d, 0x2f, 0x65, 0x62, 0x27, 0x56, 0xea, 0x3c, 0xc2, 0xea, 0x50, 0xcd, 0x24,
+	0xb3, 0x56, 0xb0, 0x19, 0x72, 0x3a, 0x47, 0x98, 0x38, 0x0c, 0x99, 0xca, 0x12, 0xba, 0x1e, 0x99,
+	0xc5, 0x2f, 0x69, 0x52, 0x09, 0xcf, 0x43, 0x32, 0xfc, 0xab, 0x06, 0x90, 0x6f, 0xc4, 0xdc, 0x5e,
+	0x26, 0x79, 0xef, 0x85, 0xbc, 0xb5, 0xd9, 0xb7, 0x8d, 0xfb, 0x96, 0xa9, 0x52, 0xa6, 0xa5, 0x33,
+	0x36, 0x8f, 0x6e, 0x84, 0x16, 0xa6, 0xf5, 0xba, 0xdf, 0x92, 0x47, 0x98, 0x33, 0xa7, 0x29, 0x4d,
+	0x92, 0x52, 0xe9, 0xcf, 0xac, 0x4a, 0xe5, 0xab, 0x17, 0x92, 0xce, 0xd1, 0x08, 0x9b, 0xdd, 0x9a,
+	0x1b, 0xae, 0xc3, 0xc3, 0xef, 0xe1, 0x60, 0xe3, 0xa2, 0xf2, 0x92, 0x37, 0xab, 0x33, 0x7f, 0x95,
+	0xa6, 0x69, 0x66, 0xbb, 0x2e, 0xfc, 0xe0, 0xe0, 0xf0, 0x4d, 0x51, 0xe7, 0x3e, 0x24, 0xe4, 0x07,
+	0xd8, 0x9b, 0x4c, 0x4f, 0x1d, 0x60, 0xad, 0xd8, 0x3e, 0x39, 0xb4, 0xa9, 0xf2, 0x99, 0x49, 0x55,
+	0x17, 0xbe, 0x28, 0x2e, 0xfa, 0xe2, 0xf3, 0x43, 0x7a, 0xb0, 0x53, 0xfc, 0xde, 0x9c, 0xb2, 0x9b,
+	0x67, 0x33, 0x07, 0x27, 0x25, 0x7b, 0x16, 0x7c, 0xbc, 0xeb, 0xd4, 0x3e, 0xdd, 0x75, 0x6a, 0xff,
+	0xdd, 0x75, 0x6a, 0xbf, 0xdf, 0x77, 0xb6, 0x3e, 0xdd, 0x77, 0xb6, 0xfe, 0xbe, 0xef, 0x6c, 0xfd,
+	0x1f, 0x00, 0x00, 0xff, 0xff, 0x08, 0xf6, 0x45, 0x34, 0x22, 0x07, 0x00, 0x00,
 }
 
 func (m *SystemGetPublicKeys) Marshal() (dAtA []byte, err error) {
@@ -829,6 +1108,167 @@ func (m *SystemGetSalts) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *SystemGetConfig) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *SystemGetConfig) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemGetConfig) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *SystemConfig) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *SystemConfig) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *SystemConfig) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.DCs) > 0 {
+		for iNdEx := len(m.DCs) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.DCs[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatApiSystem(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x6a
+		}
+	}
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.CaptionMaxLength))
+	i--
+	dAtA[i] = 0x60
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.MessageMaxLength))
+	i--
+	dAtA[i] = 0x58
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.UrlPrefix))
+	i--
+	dAtA[i] = 0x50
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.PinnedDialogsMaxCount))
+	i--
+	dAtA[i] = 0x48
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.RevokeTimeLimit))
+	i--
+	dAtA[i] = 0x40
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.EditTimeLimit))
+	i--
+	dAtA[i] = 0x38
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.OnlineUpdatePeriodMs))
+	i--
+	dAtA[i] = 0x30
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.ForwardedMaxCount))
+	i--
+	dAtA[i] = 0x28
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.GroupMaxSize))
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.ExpireOn))
+	i--
+	dAtA[i] = 0x18
+	i--
+	if m.PhoneCallEnabled {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x10
+	i--
+	if m.TestMode {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *DataCenter) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DataCenter) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DataCenter) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i--
+	if m.Quic {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x28
+	i--
+	if m.Websocket {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x20
+	i--
+	if m.Http {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(m.Port))
+	i--
+	dAtA[i] = 0x10
+	i -= len(m.IP)
+	copy(dAtA[i:], m.IP)
+	i = encodeVarintChatApiSystem(dAtA, i, uint64(len(m.IP)))
+	i--
+	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -1138,6 +1578,57 @@ func (m *SystemGetSalts) Size() (n int) {
 	}
 	var l int
 	_ = l
+	return n
+}
+
+func (m *SystemGetConfig) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *SystemConfig) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	n += 2
+	n += 1 + sovChatApiSystem(uint64(m.ExpireOn))
+	n += 1 + sovChatApiSystem(uint64(m.GroupMaxSize))
+	n += 1 + sovChatApiSystem(uint64(m.ForwardedMaxCount))
+	n += 1 + sovChatApiSystem(uint64(m.OnlineUpdatePeriodMs))
+	n += 1 + sovChatApiSystem(uint64(m.EditTimeLimit))
+	n += 1 + sovChatApiSystem(uint64(m.RevokeTimeLimit))
+	n += 1 + sovChatApiSystem(uint64(m.PinnedDialogsMaxCount))
+	n += 1 + sovChatApiSystem(uint64(m.UrlPrefix))
+	n += 1 + sovChatApiSystem(uint64(m.MessageMaxLength))
+	n += 1 + sovChatApiSystem(uint64(m.CaptionMaxLength))
+	if len(m.DCs) > 0 {
+		for _, e := range m.DCs {
+			l = e.Size()
+			n += 1 + l + sovChatApiSystem(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *DataCenter) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.IP)
+	n += 1 + l + sovChatApiSystem(uint64(l))
+	n += 1 + sovChatApiSystem(uint64(m.Port))
+	n += 2
+	n += 2
+	n += 2
 	return n
 }
 
@@ -1611,6 +2102,610 @@ func (m *SystemGetSalts) Unmarshal(dAtA []byte) error {
 			}
 			iNdEx += skippy
 		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *SystemGetConfig) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiSystem
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: SystemGetConfig: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: SystemGetConfig: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiSystem(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *SystemConfig) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiSystem
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: SystemConfig: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: SystemConfig: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TestMode", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.TestMode = bool(v != 0)
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PhoneCallEnabled", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.PhoneCallEnabled = bool(v != 0)
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ExpireOn", wireType)
+			}
+			m.ExpireOn = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ExpireOn |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GroupMaxSize", wireType)
+			}
+			m.GroupMaxSize = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.GroupMaxSize |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000008)
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ForwardedMaxCount", wireType)
+			}
+			m.ForwardedMaxCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ForwardedMaxCount |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000010)
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OnlineUpdatePeriodMs", wireType)
+			}
+			m.OnlineUpdatePeriodMs = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.OnlineUpdatePeriodMs |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000020)
+		case 7:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field EditTimeLimit", wireType)
+			}
+			m.EditTimeLimit = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.EditTimeLimit |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000040)
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RevokeTimeLimit", wireType)
+			}
+			m.RevokeTimeLimit = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.RevokeTimeLimit |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000080)
+		case 9:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PinnedDialogsMaxCount", wireType)
+			}
+			m.PinnedDialogsMaxCount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.PinnedDialogsMaxCount |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000100)
+		case 10:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field UrlPrefix", wireType)
+			}
+			m.UrlPrefix = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.UrlPrefix |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000200)
+		case 11:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MessageMaxLength", wireType)
+			}
+			m.MessageMaxLength = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.MessageMaxLength |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000400)
+		case 12:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CaptionMaxLength", wireType)
+			}
+			m.CaptionMaxLength = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CaptionMaxLength |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000800)
+		case 13:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DCs", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DCs = append(m.DCs, &DataCenter{})
+			if err := m.DCs[len(m.DCs)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiSystem(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("TestMode")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PhoneCallEnabled")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ExpireOn")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("GroupMaxSize")
+	}
+	if hasFields[0]&uint64(0x00000010) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ForwardedMaxCount")
+	}
+	if hasFields[0]&uint64(0x00000020) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("OnlineUpdatePeriodMs")
+	}
+	if hasFields[0]&uint64(0x00000040) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("EditTimeLimit")
+	}
+	if hasFields[0]&uint64(0x00000080) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("RevokeTimeLimit")
+	}
+	if hasFields[0]&uint64(0x00000100) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("PinnedDialogsMaxCount")
+	}
+	if hasFields[0]&uint64(0x00000200) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UrlPrefix")
+	}
+	if hasFields[0]&uint64(0x00000400) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("MessageMaxLength")
+	}
+	if hasFields[0]&uint64(0x00000800) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("CaptionMaxLength")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *DataCenter) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatApiSystem
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: DataCenter: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: DataCenter: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field IP", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.IP = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Port", wireType)
+			}
+			m.Port = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Port |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Http", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Http = bool(v != 0)
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Websocket", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Websocket = bool(v != 0)
+			hasFields[0] |= uint64(0x00000008)
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Quic", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatApiSystem
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Quic = bool(v != 0)
+			hasFields[0] |= uint64(0x00000010)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatApiSystem(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatApiSystem
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("IP")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Port")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Http")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Websocket")
+	}
+	if hasFields[0]&uint64(0x00000010) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Quic")
 	}
 
 	if iNdEx > l {

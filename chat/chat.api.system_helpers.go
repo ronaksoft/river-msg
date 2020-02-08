@@ -178,6 +178,88 @@ func ResultSystemGetSalts(out *MessageEnvelope, res *SystemGetSalts) {
 	res.MarshalTo(out.Message)
 }
 
+const C_SystemGetConfig int64 = 1910333714
+
+type poolSystemGetConfig struct {
+	pool sync.Pool
+}
+
+func (p *poolSystemGetConfig) Get() *SystemGetConfig {
+	x, ok := p.pool.Get().(*SystemGetConfig)
+	if !ok {
+		return &SystemGetConfig{}
+	}
+	return x
+}
+
+func (p *poolSystemGetConfig) Put(x *SystemGetConfig) {
+	p.pool.Put(x)
+}
+
+var PoolSystemGetConfig = poolSystemGetConfig{}
+
+func ResultSystemGetConfig(out *MessageEnvelope, res *SystemGetConfig) {
+	out.Constructor = C_SystemGetConfig
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_SystemConfig int64 = 367036084
+
+type poolSystemConfig struct {
+	pool sync.Pool
+}
+
+func (p *poolSystemConfig) Get() *SystemConfig {
+	x, ok := p.pool.Get().(*SystemConfig)
+	if !ok {
+		return &SystemConfig{}
+	}
+	x.DCs = x.DCs[:0]
+	return x
+}
+
+func (p *poolSystemConfig) Put(x *SystemConfig) {
+	p.pool.Put(x)
+}
+
+var PoolSystemConfig = poolSystemConfig{}
+
+func ResultSystemConfig(out *MessageEnvelope, res *SystemConfig) {
+	out.Constructor = C_SystemConfig
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_DataCenter int64 = 3431386561
+
+type poolDataCenter struct {
+	pool sync.Pool
+}
+
+func (p *poolDataCenter) Get() *DataCenter {
+	x, ok := p.pool.Get().(*DataCenter)
+	if !ok {
+		return &DataCenter{}
+	}
+	return x
+}
+
+func (p *poolDataCenter) Put(x *DataCenter) {
+	p.pool.Put(x)
+}
+
+var PoolDataCenter = poolDataCenter{}
+
+func ResultDataCenter(out *MessageEnvelope, res *DataCenter) {
+	out.Constructor = C_DataCenter
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_SystemSalts int64 = 871116906
 
 type poolSystemSalts struct {
@@ -351,6 +433,9 @@ func init() {
 	ConstructorNames[450761036] = "SystemGetAppUpdate"
 	ConstructorNames[1486296237] = "SystemGetInfo"
 	ConstructorNames[1705203315] = "SystemGetSalts"
+	ConstructorNames[1910333714] = "SystemGetConfig"
+	ConstructorNames[367036084] = "SystemConfig"
+	ConstructorNames[3431386561] = "DataCenter"
 	ConstructorNames[871116906] = "SystemSalts"
 	ConstructorNames[1100207036] = "AppUpdate"
 	ConstructorNames[2754948760] = "SystemInfo"

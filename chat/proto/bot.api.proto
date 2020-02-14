@@ -42,3 +42,15 @@ message BotSetInfo {
     required string      Description = 5;
 }
 
+// Bots
+// @Function
+// @Return: BotInfo
+message Bots {
+    required int64 UserID = 1 [jstype = JS_STRING];
+    optional int32 Limit = 2;
+}
+
+// BotsMany
+message BotsMany {
+    repeated BotInfo Bots = 1;
+}

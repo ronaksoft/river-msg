@@ -576,6 +576,61 @@ func ResultMessagesSendScreenShotNotification(out *MessageEnvelope, res *Message
 	res.MarshalTo(out.Message)
 }
 
+const C_MessagesSendVote int64 = 2566114356
+
+type poolMessagesSendVote struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSendVote) Get() *MessagesSendVote {
+	x, ok := p.pool.Get().(*MessagesSendVote)
+	if !ok {
+		return &MessagesSendVote{}
+	}
+	x.Options = x.Options[:0]
+	return x
+}
+
+func (p *poolMessagesSendVote) Put(x *MessagesSendVote) {
+	p.pool.Put(x)
+}
+
+var PoolMessagesSendVote = poolMessagesSendVote{}
+
+func ResultMessagesSendVote(out *MessageEnvelope, res *MessagesSendVote) {
+	out.Constructor = C_MessagesSendVote
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MessagesGetPollResults int64 = 1918165418
+
+type poolMessagesGetPollResults struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetPollResults) Get() *MessagesGetPollResults {
+	x, ok := p.pool.Get().(*MessagesGetPollResults)
+	if !ok {
+		return &MessagesGetPollResults{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetPollResults) Put(x *MessagesGetPollResults) {
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetPollResults = poolMessagesGetPollResults{}
+
+func ResultMessagesGetPollResults(out *MessageEnvelope, res *MessagesGetPollResults) {
+	out.Constructor = C_MessagesGetPollResults
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_MessagesDialogs int64 = 3252610224
 
 type poolMessagesDialogs struct {
@@ -686,6 +741,8 @@ func init() {
 	ConstructorNames[1352871220] = "MessagesToggleDialogPin"
 	ConstructorNames[1409872986] = "MessagesReorderPinnedDialogs"
 	ConstructorNames[3682116055] = "MessagesSendScreenShotNotification"
+	ConstructorNames[2566114356] = "MessagesSendVote"
+	ConstructorNames[1918165418] = "MessagesGetPollResults"
 	ConstructorNames[3252610224] = "MessagesDialogs"
 	ConstructorNames[2942502835] = "MessagesSent"
 	ConstructorNames[1713238910] = "MessagesMany"

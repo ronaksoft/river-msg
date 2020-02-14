@@ -938,6 +938,34 @@ func ResultUpdateUserBlocked(out *MessageEnvelope, res *UpdateUserBlocked) {
 	res.MarshalTo(out.Message)
 }
 
+const C_UpdateMessagePoll int64 = 383248674
+
+type poolUpdateMessagePoll struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateMessagePoll) Get() *UpdateMessagePoll {
+	x, ok := p.pool.Get().(*UpdateMessagePoll)
+	if !ok {
+		return &UpdateMessagePoll{}
+	}
+	x.Poll = nil
+	return x
+}
+
+func (p *poolUpdateMessagePoll) Put(x *UpdateMessagePoll) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateMessagePoll = poolUpdateMessagePoll{}
+
+func ResultUpdateMessagePoll(out *MessageEnvelope, res *UpdateMessagePoll) {
+	out.Constructor = C_UpdateMessagePoll
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -972,4 +1000,5 @@ func init() {
 	ConstructorNames[2353687359] = "UpdateLabelSet"
 	ConstructorNames[3702192307] = "UpdateLabelDeleted"
 	ConstructorNames[3750625773] = "UpdateUserBlocked"
+	ConstructorNames[383248674] = "UpdateMessagePoll"
 }

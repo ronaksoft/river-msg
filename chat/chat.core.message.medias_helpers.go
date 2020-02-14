@@ -184,57 +184,28 @@ func ResultDocument(out *MessageEnvelope, res *Document) {
 	res.MarshalTo(out.Message)
 }
 
-const C_InputMediaUploadedPhoto int64 = 849930963
+const C_InputMediaPoll int64 = 3633337678
 
-type poolInputMediaUploadedPhoto struct {
+type poolInputMediaPoll struct {
 	pool sync.Pool
 }
 
-func (p *poolInputMediaUploadedPhoto) Get() *InputMediaUploadedPhoto {
-	x, ok := p.pool.Get().(*InputMediaUploadedPhoto)
+func (p *poolInputMediaPoll) Get() *InputMediaPoll {
+	x, ok := p.pool.Get().(*InputMediaPoll)
 	if !ok {
-		return &InputMediaUploadedPhoto{}
-	}
-	x.Stickers = x.Stickers[:0]
-	x.Attributes = x.Attributes[:0]
-	return x
-}
-
-func (p *poolInputMediaUploadedPhoto) Put(x *InputMediaUploadedPhoto) {
-	p.pool.Put(x)
-}
-
-var PoolInputMediaUploadedPhoto = poolInputMediaUploadedPhoto{}
-
-func ResultInputMediaUploadedPhoto(out *MessageEnvelope, res *InputMediaUploadedPhoto) {
-	out.Constructor = C_InputMediaUploadedPhoto
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_InputMediaPhoto int64 = 2201579839
-
-type poolInputMediaPhoto struct {
-	pool sync.Pool
-}
-
-func (p *poolInputMediaPhoto) Get() *InputMediaPhoto {
-	x, ok := p.pool.Get().(*InputMediaPhoto)
-	if !ok {
-		return &InputMediaPhoto{}
+		return &InputMediaPoll{}
 	}
 	return x
 }
 
-func (p *poolInputMediaPhoto) Put(x *InputMediaPhoto) {
+func (p *poolInputMediaPoll) Put(x *InputMediaPoll) {
 	p.pool.Put(x)
 }
 
-var PoolInputMediaPhoto = poolInputMediaPhoto{}
+var PoolInputMediaPoll = poolInputMediaPoll{}
 
-func ResultInputMediaPhoto(out *MessageEnvelope, res *InputMediaPhoto) {
-	out.Constructor = C_InputMediaPhoto
+func ResultInputMediaPoll(out *MessageEnvelope, res *InputMediaPoll) {
+	out.Constructor = C_InputMediaPoll
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -352,28 +323,142 @@ func ResultInputMediaGeoLocation(out *MessageEnvelope, res *InputMediaGeoLocatio
 	res.MarshalTo(out.Message)
 }
 
-const C_MediaPhoto int64 = 71894788
+const C_MediaPoll int64 = 2688924895
 
-type poolMediaPhoto struct {
+type poolMediaPoll struct {
 	pool sync.Pool
 }
 
-func (p *poolMediaPhoto) Get() *MediaPhoto {
-	x, ok := p.pool.Get().(*MediaPhoto)
+func (p *poolMediaPoll) Get() *MediaPoll {
+	x, ok := p.pool.Get().(*MediaPoll)
 	if !ok {
-		return &MediaPhoto{}
+		return &MediaPoll{}
+	}
+	x.Closed = false
+	x.PublicVoters = false
+	x.MultiChoice = false
+	x.Quiz = false
+	x.Answers = x.Answers[:0]
+	return x
+}
+
+func (p *poolMediaPoll) Put(x *MediaPoll) {
+	p.pool.Put(x)
+}
+
+var PoolMediaPoll = poolMediaPoll{}
+
+func ResultMediaPoll(out *MessageEnvelope, res *MediaPoll) {
+	out.Constructor = C_MediaPoll
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_PollAnswer int64 = 2124799390
+
+type poolPollAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolPollAnswer) Get() *PollAnswer {
+	x, ok := p.pool.Get().(*PollAnswer)
+	if !ok {
+		return &PollAnswer{}
 	}
 	return x
 }
 
-func (p *poolMediaPhoto) Put(x *MediaPhoto) {
+func (p *poolPollAnswer) Put(x *PollAnswer) {
 	p.pool.Put(x)
 }
 
-var PoolMediaPhoto = poolMediaPhoto{}
+var PoolPollAnswer = poolPollAnswer{}
 
-func ResultMediaPhoto(out *MessageEnvelope, res *MediaPhoto) {
-	out.Constructor = C_MediaPhoto
+func ResultPollAnswer(out *MessageEnvelope, res *PollAnswer) {
+	out.Constructor = C_PollAnswer
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_PollResults int64 = 3283416711
+
+type poolPollResults struct {
+	pool sync.Pool
+}
+
+func (p *poolPollResults) Get() *PollResults {
+	x, ok := p.pool.Get().(*PollResults)
+	if !ok {
+		return &PollResults{}
+	}
+	x.Results = x.Results[:0]
+	return x
+}
+
+func (p *poolPollResults) Put(x *PollResults) {
+	p.pool.Put(x)
+}
+
+var PoolPollResults = poolPollResults{}
+
+func ResultPollResults(out *MessageEnvelope, res *PollResults) {
+	out.Constructor = C_PollResults
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_PollAnswerVoters int64 = 2095107985
+
+type poolPollAnswerVoters struct {
+	pool sync.Pool
+}
+
+func (p *poolPollAnswerVoters) Get() *PollAnswerVoters {
+	x, ok := p.pool.Get().(*PollAnswerVoters)
+	if !ok {
+		return &PollAnswerVoters{}
+	}
+	return x
+}
+
+func (p *poolPollAnswerVoters) Put(x *PollAnswerVoters) {
+	p.pool.Put(x)
+}
+
+var PoolPollAnswerVoters = poolPollAnswerVoters{}
+
+func ResultPollAnswerVoters(out *MessageEnvelope, res *PollAnswerVoters) {
+	out.Constructor = C_PollAnswerVoters
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaInvoice int64 = 44271741
+
+type poolMediaInvoice struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaInvoice) Get() *MediaInvoice {
+	x, ok := p.pool.Get().(*MediaInvoice)
+	if !ok {
+		return &MediaInvoice{}
+	}
+	return x
+}
+
+func (p *poolMediaInvoice) Put(x *MediaInvoice) {
+	p.pool.Put(x)
+}
+
+var PoolMediaInvoice = poolMediaInvoice{}
+
+func ResultMediaInvoice(out *MessageEnvelope, res *MediaInvoice) {
+	out.Constructor = C_MediaInvoice
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -495,13 +580,16 @@ func init() {
 	ConstructorNames[2227452062] = "DocumentAttributeFile"
 	ConstructorNames[4146719643] = "DocumentAttribute"
 	ConstructorNames[555739168] = "Document"
-	ConstructorNames[849930963] = "InputMediaUploadedPhoto"
-	ConstructorNames[2201579839] = "InputMediaPhoto"
+	ConstructorNames[3633337678] = "InputMediaPoll"
 	ConstructorNames[1534117184] = "InputMediaContact"
 	ConstructorNames[870692909] = "InputMediaUploadedDocument"
 	ConstructorNames[2258657627] = "InputMediaDocument"
 	ConstructorNames[185664060] = "InputMediaGeoLocation"
-	ConstructorNames[71894788] = "MediaPhoto"
+	ConstructorNames[2688924895] = "MediaPoll"
+	ConstructorNames[2124799390] = "PollAnswer"
+	ConstructorNames[3283416711] = "PollResults"
+	ConstructorNames[2095107985] = "PollAnswerVoters"
+	ConstructorNames[44271741] = "MediaInvoice"
 	ConstructorNames[2281620705] = "MediaDocument"
 	ConstructorNames[3735320833] = "MediaContact"
 	ConstructorNames[2625326500] = "MediaGeoLocation"

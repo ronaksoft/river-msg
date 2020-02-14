@@ -29,16 +29,16 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type DocumentAttributeType int32
 
 const (
-	AttributeTypeNone  DocumentAttributeType = 0
-	AttributeTypeAudio DocumentAttributeType = 1
-	AttributeTypeVideo DocumentAttributeType = 2
-	AttributeTypePhoto DocumentAttributeType = 3
-	AttributeTypeFile  DocumentAttributeType = 4
-	AttributeAnimated  DocumentAttributeType = 5
-	AttributeReserved1 DocumentAttributeType = 6
-	AttributeReserved2 DocumentAttributeType = 7
-	AttributeReserved3 DocumentAttributeType = 8
-	AttributeReserved4 DocumentAttributeType = 9
+	AttributeTypeNone     DocumentAttributeType = 0
+	AttributeTypeAudio    DocumentAttributeType = 1
+	AttributeTypeVideo    DocumentAttributeType = 2
+	AttributeTypePhoto    DocumentAttributeType = 3
+	AttributeTypeFile     DocumentAttributeType = 4
+	AttributeTypeAnimated DocumentAttributeType = 5
+	AttributeReserved1    DocumentAttributeType = 6
+	AttributeReserved2    DocumentAttributeType = 7
+	AttributeReserved3    DocumentAttributeType = 8
+	AttributeReserved4    DocumentAttributeType = 9
 )
 
 var DocumentAttributeType_name = map[int32]string{
@@ -47,7 +47,7 @@ var DocumentAttributeType_name = map[int32]string{
 	2: "AttributeTypeVideo",
 	3: "AttributeTypePhoto",
 	4: "AttributeTypeFile",
-	5: "AttributeAnimated",
+	5: "AttributeTypeAnimated",
 	6: "AttributeReserved1",
 	7: "AttributeReserved2",
 	8: "AttributeReserved3",
@@ -55,16 +55,16 @@ var DocumentAttributeType_name = map[int32]string{
 }
 
 var DocumentAttributeType_value = map[string]int32{
-	"AttributeTypeNone":  0,
-	"AttributeTypeAudio": 1,
-	"AttributeTypeVideo": 2,
-	"AttributeTypePhoto": 3,
-	"AttributeTypeFile":  4,
-	"AttributeAnimated":  5,
-	"AttributeReserved1": 6,
-	"AttributeReserved2": 7,
-	"AttributeReserved3": 8,
-	"AttributeReserved4": 9,
+	"AttributeTypeNone":     0,
+	"AttributeTypeAudio":    1,
+	"AttributeTypeVideo":    2,
+	"AttributeTypePhoto":    3,
+	"AttributeTypeFile":     4,
+	"AttributeTypeAnimated": 5,
+	"AttributeReserved1":    6,
+	"AttributeReserved2":    7,
+	"AttributeReserved3":    8,
+	"AttributeReserved4":    9,
 }
 
 func (x DocumentAttributeType) Enum() *DocumentAttributeType {
@@ -574,26 +574,23 @@ func (m *Document) GetMD5Checksum() string {
 	return ""
 }
 
-// InputMediaUploadedPhoto
-type InputMediaUploadedPhoto struct {
-	Caption    string               `protobuf:"bytes,1,req,name=Caption" json:"Caption"`
-	Stickers   []*InputDocument     `protobuf:"bytes,2,rep,name=Stickers" json:"Stickers,omitempty"`
-	File       *InputFile           `protobuf:"bytes,3,req,name=File" json:"File,omitempty"`
-	Attributes []*DocumentAttribute `protobuf:"bytes,4,rep,name=Attributes" json:"Attributes,omitempty"`
+// InputMediaPoll
+type InputMediaPoll struct {
+	Poll *MediaPoll `protobuf:"bytes,1,req,name=Poll" json:"Poll,omitempty"`
 }
 
-func (m *InputMediaUploadedPhoto) Reset()         { *m = InputMediaUploadedPhoto{} }
-func (m *InputMediaUploadedPhoto) String() string { return proto.CompactTextString(m) }
-func (*InputMediaUploadedPhoto) ProtoMessage()    {}
-func (*InputMediaUploadedPhoto) Descriptor() ([]byte, []int) {
+func (m *InputMediaPoll) Reset()         { *m = InputMediaPoll{} }
+func (m *InputMediaPoll) String() string { return proto.CompactTextString(m) }
+func (*InputMediaPoll) ProtoMessage()    {}
+func (*InputMediaPoll) Descriptor() ([]byte, []int) {
 	return fileDescriptor_313bfacbac33da31, []int{6}
 }
-func (m *InputMediaUploadedPhoto) XXX_Unmarshal(b []byte) error {
+func (m *InputMediaPoll) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *InputMediaUploadedPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *InputMediaPoll) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_InputMediaUploadedPhoto.Marshal(b, m, deterministic)
+		return xxx_messageInfo_InputMediaPoll.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -603,95 +600,21 @@ func (m *InputMediaUploadedPhoto) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return b[:n], nil
 	}
 }
-func (m *InputMediaUploadedPhoto) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InputMediaUploadedPhoto.Merge(m, src)
+func (m *InputMediaPoll) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputMediaPoll.Merge(m, src)
 }
-func (m *InputMediaUploadedPhoto) XXX_Size() int {
+func (m *InputMediaPoll) XXX_Size() int {
 	return m.Size()
 }
-func (m *InputMediaUploadedPhoto) XXX_DiscardUnknown() {
-	xxx_messageInfo_InputMediaUploadedPhoto.DiscardUnknown(m)
+func (m *InputMediaPoll) XXX_DiscardUnknown() {
+	xxx_messageInfo_InputMediaPoll.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_InputMediaUploadedPhoto proto.InternalMessageInfo
+var xxx_messageInfo_InputMediaPoll proto.InternalMessageInfo
 
-func (m *InputMediaUploadedPhoto) GetCaption() string {
+func (m *InputMediaPoll) GetPoll() *MediaPoll {
 	if m != nil {
-		return m.Caption
-	}
-	return ""
-}
-
-func (m *InputMediaUploadedPhoto) GetStickers() []*InputDocument {
-	if m != nil {
-		return m.Stickers
-	}
-	return nil
-}
-
-func (m *InputMediaUploadedPhoto) GetFile() *InputFile {
-	if m != nil {
-		return m.File
-	}
-	return nil
-}
-
-func (m *InputMediaUploadedPhoto) GetAttributes() []*DocumentAttribute {
-	if m != nil {
-		return m.Attributes
-	}
-	return nil
-}
-
-// InputMediaPhoto
-type InputMediaPhoto struct {
-	Caption string         `protobuf:"bytes,1,req,name=Caption" json:"Caption"`
-	Photo   *InputDocument `protobuf:"bytes,2,req,name=Photo" json:"Photo,omitempty"`
-}
-
-func (m *InputMediaPhoto) Reset()         { *m = InputMediaPhoto{} }
-func (m *InputMediaPhoto) String() string { return proto.CompactTextString(m) }
-func (*InputMediaPhoto) ProtoMessage()    {}
-func (*InputMediaPhoto) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{7}
-}
-func (m *InputMediaPhoto) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *InputMediaPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_InputMediaPhoto.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *InputMediaPhoto) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InputMediaPhoto.Merge(m, src)
-}
-func (m *InputMediaPhoto) XXX_Size() int {
-	return m.Size()
-}
-func (m *InputMediaPhoto) XXX_DiscardUnknown() {
-	xxx_messageInfo_InputMediaPhoto.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InputMediaPhoto proto.InternalMessageInfo
-
-func (m *InputMediaPhoto) GetCaption() string {
-	if m != nil {
-		return m.Caption
-	}
-	return ""
-}
-
-func (m *InputMediaPhoto) GetPhoto() *InputDocument {
-	if m != nil {
-		return m.Photo
+		return m.Poll
 	}
 	return nil
 }
@@ -708,7 +631,7 @@ func (m *InputMediaContact) Reset()         { *m = InputMediaContact{} }
 func (m *InputMediaContact) String() string { return proto.CompactTextString(m) }
 func (*InputMediaContact) ProtoMessage()    {}
 func (*InputMediaContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{8}
+	return fileDescriptor_313bfacbac33da31, []int{7}
 }
 func (m *InputMediaContact) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -779,7 +702,7 @@ func (m *InputMediaUploadedDocument) Reset()         { *m = InputMediaUploadedDo
 func (m *InputMediaUploadedDocument) String() string { return proto.CompactTextString(m) }
 func (*InputMediaUploadedDocument) ProtoMessage()    {}
 func (*InputMediaUploadedDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{9}
+	return fileDescriptor_313bfacbac33da31, []int{8}
 }
 func (m *InputMediaUploadedDocument) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -860,7 +783,7 @@ func (m *InputMediaDocument) Reset()         { *m = InputMediaDocument{} }
 func (m *InputMediaDocument) String() string { return proto.CompactTextString(m) }
 func (*InputMediaDocument) ProtoMessage()    {}
 func (*InputMediaDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{10}
+	return fileDescriptor_313bfacbac33da31, []int{9}
 }
 func (m *InputMediaDocument) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -913,7 +836,7 @@ func (m *InputMediaGeoLocation) Reset()         { *m = InputMediaGeoLocation{} }
 func (m *InputMediaGeoLocation) String() string { return proto.CompactTextString(m) }
 func (*InputMediaGeoLocation) ProtoMessage()    {}
 func (*InputMediaGeoLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{11}
+	return fileDescriptor_313bfacbac33da31, []int{10}
 }
 func (m *InputMediaGeoLocation) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -956,22 +879,29 @@ func (m *InputMediaGeoLocation) GetLong() float32 {
 	return 0
 }
 
-// MediaPhoto
-type MediaPhoto struct {
+// MediaPoll
+type MediaPoll struct {
+	ID           int64         `protobuf:"varint,1,req,name=ID" json:"ID"`
+	Closed       bool          `protobuf:"varint,2,opt,name=Closed" json:"Closed"`
+	PublicVoters bool          `protobuf:"varint,3,opt,name=PublicVoters" json:"PublicVoters"`
+	MultiChoice  bool          `protobuf:"varint,4,opt,name=MultiChoice" json:"MultiChoice"`
+	Quiz         bool          `protobuf:"varint,5,opt,name=Quiz" json:"Quiz"`
+	Question     string        `protobuf:"bytes,6,req,name=Question" json:"Question"`
+	Answers      []*PollAnswer `protobuf:"bytes,7,rep,name=Answers" json:"Answers,omitempty"`
 }
 
-func (m *MediaPhoto) Reset()         { *m = MediaPhoto{} }
-func (m *MediaPhoto) String() string { return proto.CompactTextString(m) }
-func (*MediaPhoto) ProtoMessage()    {}
-func (*MediaPhoto) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{12}
+func (m *MediaPoll) Reset()         { *m = MediaPoll{} }
+func (m *MediaPoll) String() string { return proto.CompactTextString(m) }
+func (*MediaPoll) ProtoMessage()    {}
+func (*MediaPoll) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{11}
 }
-func (m *MediaPhoto) XXX_Unmarshal(b []byte) error {
+func (m *MediaPoll) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MediaPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MediaPoll) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MediaPhoto.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MediaPoll.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -981,17 +911,278 @@ func (m *MediaPhoto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *MediaPhoto) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaPhoto.Merge(m, src)
+func (m *MediaPoll) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaPoll.Merge(m, src)
 }
-func (m *MediaPhoto) XXX_Size() int {
+func (m *MediaPoll) XXX_Size() int {
 	return m.Size()
 }
-func (m *MediaPhoto) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaPhoto.DiscardUnknown(m)
+func (m *MediaPoll) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaPoll.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MediaPhoto proto.InternalMessageInfo
+var xxx_messageInfo_MediaPoll proto.InternalMessageInfo
+
+func (m *MediaPoll) GetID() int64 {
+	if m != nil {
+		return m.ID
+	}
+	return 0
+}
+
+func (m *MediaPoll) GetClosed() bool {
+	if m != nil {
+		return m.Closed
+	}
+	return false
+}
+
+func (m *MediaPoll) GetPublicVoters() bool {
+	if m != nil {
+		return m.PublicVoters
+	}
+	return false
+}
+
+func (m *MediaPoll) GetMultiChoice() bool {
+	if m != nil {
+		return m.MultiChoice
+	}
+	return false
+}
+
+func (m *MediaPoll) GetQuiz() bool {
+	if m != nil {
+		return m.Quiz
+	}
+	return false
+}
+
+func (m *MediaPoll) GetQuestion() string {
+	if m != nil {
+		return m.Question
+	}
+	return ""
+}
+
+func (m *MediaPoll) GetAnswers() []*PollAnswer {
+	if m != nil {
+		return m.Answers
+	}
+	return nil
+}
+
+// PollAnswer
+type PollAnswer struct {
+	Text   string `protobuf:"bytes,1,req,name=Text" json:"Text"`
+	Option []byte `protobuf:"bytes,2,req,name=Option" json:"Option"`
+}
+
+func (m *PollAnswer) Reset()         { *m = PollAnswer{} }
+func (m *PollAnswer) String() string { return proto.CompactTextString(m) }
+func (*PollAnswer) ProtoMessage()    {}
+func (*PollAnswer) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{12}
+}
+func (m *PollAnswer) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PollAnswer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PollAnswer.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PollAnswer) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PollAnswer.Merge(m, src)
+}
+func (m *PollAnswer) XXX_Size() int {
+	return m.Size()
+}
+func (m *PollAnswer) XXX_DiscardUnknown() {
+	xxx_messageInfo_PollAnswer.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PollAnswer proto.InternalMessageInfo
+
+func (m *PollAnswer) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+func (m *PollAnswer) GetOption() []byte {
+	if m != nil {
+		return m.Option
+	}
+	return nil
+}
+
+// PollResults
+type PollResults struct {
+	Results     []*PollAnswerVoters `protobuf:"bytes,1,rep,name=Results" json:"Results,omitempty"`
+	TotalVoters int64               `protobuf:"varint,2,req,name=TotalVoters" json:"TotalVoters"`
+}
+
+func (m *PollResults) Reset()         { *m = PollResults{} }
+func (m *PollResults) String() string { return proto.CompactTextString(m) }
+func (*PollResults) ProtoMessage()    {}
+func (*PollResults) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{13}
+}
+func (m *PollResults) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PollResults) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PollResults.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PollResults) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PollResults.Merge(m, src)
+}
+func (m *PollResults) XXX_Size() int {
+	return m.Size()
+}
+func (m *PollResults) XXX_DiscardUnknown() {
+	xxx_messageInfo_PollResults.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PollResults proto.InternalMessageInfo
+
+func (m *PollResults) GetResults() []*PollAnswerVoters {
+	if m != nil {
+		return m.Results
+	}
+	return nil
+}
+
+func (m *PollResults) GetTotalVoters() int64 {
+	if m != nil {
+		return m.TotalVoters
+	}
+	return 0
+}
+
+// PollAnswerVoters
+type PollAnswerVoters struct {
+	Chosen  bool   `protobuf:"varint,1,req,name=Chosen" json:"Chosen"`
+	Correct bool   `protobuf:"varint,2,req,name=Correct" json:"Correct"`
+	Option  []byte `protobuf:"bytes,3,req,name=Option" json:"Option"`
+	Voters  int64  `protobuf:"varint,4,req,name=Voters" json:"Voters"`
+}
+
+func (m *PollAnswerVoters) Reset()         { *m = PollAnswerVoters{} }
+func (m *PollAnswerVoters) String() string { return proto.CompactTextString(m) }
+func (*PollAnswerVoters) ProtoMessage()    {}
+func (*PollAnswerVoters) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{14}
+}
+func (m *PollAnswerVoters) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PollAnswerVoters) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PollAnswerVoters.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PollAnswerVoters) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PollAnswerVoters.Merge(m, src)
+}
+func (m *PollAnswerVoters) XXX_Size() int {
+	return m.Size()
+}
+func (m *PollAnswerVoters) XXX_DiscardUnknown() {
+	xxx_messageInfo_PollAnswerVoters.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PollAnswerVoters proto.InternalMessageInfo
+
+func (m *PollAnswerVoters) GetChosen() bool {
+	if m != nil {
+		return m.Chosen
+	}
+	return false
+}
+
+func (m *PollAnswerVoters) GetCorrect() bool {
+	if m != nil {
+		return m.Correct
+	}
+	return false
+}
+
+func (m *PollAnswerVoters) GetOption() []byte {
+	if m != nil {
+		return m.Option
+	}
+	return nil
+}
+
+func (m *PollAnswerVoters) GetVoters() int64 {
+	if m != nil {
+		return m.Voters
+	}
+	return 0
+}
+
+// MediaInvoice
+type MediaInvoice struct {
+}
+
+func (m *MediaInvoice) Reset()         { *m = MediaInvoice{} }
+func (m *MediaInvoice) String() string { return proto.CompactTextString(m) }
+func (*MediaInvoice) ProtoMessage()    {}
+func (*MediaInvoice) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{15}
+}
+func (m *MediaInvoice) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaInvoice) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaInvoice.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaInvoice) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaInvoice.Merge(m, src)
+}
+func (m *MediaInvoice) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaInvoice) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaInvoice.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaInvoice proto.InternalMessageInfo
 
 // MediaDocument
 type MediaDocument struct {
@@ -1004,7 +1195,7 @@ func (m *MediaDocument) Reset()         { *m = MediaDocument{} }
 func (m *MediaDocument) String() string { return proto.CompactTextString(m) }
 func (*MediaDocument) ProtoMessage()    {}
 func (*MediaDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{13}
+	return fileDescriptor_313bfacbac33da31, []int{16}
 }
 func (m *MediaDocument) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1066,7 +1257,7 @@ func (m *MediaContact) Reset()         { *m = MediaContact{} }
 func (m *MediaContact) String() string { return proto.CompactTextString(m) }
 func (*MediaContact) ProtoMessage()    {}
 func (*MediaContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{14}
+	return fileDescriptor_313bfacbac33da31, []int{17}
 }
 func (m *MediaContact) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1133,7 +1324,7 @@ func (m *MediaGeoLocation) Reset()         { *m = MediaGeoLocation{} }
 func (m *MediaGeoLocation) String() string { return proto.CompactTextString(m) }
 func (*MediaGeoLocation) ProtoMessage()    {}
 func (*MediaGeoLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{15}
+	return fileDescriptor_313bfacbac33da31, []int{18}
 }
 func (m *MediaGeoLocation) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1184,7 +1375,7 @@ func (m *MediaWebPage) Reset()         { *m = MediaWebPage{} }
 func (m *MediaWebPage) String() string { return proto.CompactTextString(m) }
 func (*MediaWebPage) ProtoMessage()    {}
 func (*MediaWebPage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{16}
+	return fileDescriptor_313bfacbac33da31, []int{19}
 }
 func (m *MediaWebPage) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1222,13 +1413,16 @@ func init() {
 	proto.RegisterType((*DocumentAttributeFile)(nil), "msg.DocumentAttributeFile")
 	proto.RegisterType((*DocumentAttribute)(nil), "msg.DocumentAttribute")
 	proto.RegisterType((*Document)(nil), "msg.Document")
-	proto.RegisterType((*InputMediaUploadedPhoto)(nil), "msg.InputMediaUploadedPhoto")
-	proto.RegisterType((*InputMediaPhoto)(nil), "msg.InputMediaPhoto")
+	proto.RegisterType((*InputMediaPoll)(nil), "msg.InputMediaPoll")
 	proto.RegisterType((*InputMediaContact)(nil), "msg.InputMediaContact")
 	proto.RegisterType((*InputMediaUploadedDocument)(nil), "msg.InputMediaUploadedDocument")
 	proto.RegisterType((*InputMediaDocument)(nil), "msg.InputMediaDocument")
 	proto.RegisterType((*InputMediaGeoLocation)(nil), "msg.InputMediaGeoLocation")
-	proto.RegisterType((*MediaPhoto)(nil), "msg.MediaPhoto")
+	proto.RegisterType((*MediaPoll)(nil), "msg.MediaPoll")
+	proto.RegisterType((*PollAnswer)(nil), "msg.PollAnswer")
+	proto.RegisterType((*PollResults)(nil), "msg.PollResults")
+	proto.RegisterType((*PollAnswerVoters)(nil), "msg.PollAnswerVoters")
+	proto.RegisterType((*MediaInvoice)(nil), "msg.MediaInvoice")
 	proto.RegisterType((*MediaDocument)(nil), "msg.MediaDocument")
 	proto.RegisterType((*MediaContact)(nil), "msg.MediaContact")
 	proto.RegisterType((*MediaGeoLocation)(nil), "msg.MediaGeoLocation")
@@ -1238,71 +1432,82 @@ func init() {
 func init() { proto.RegisterFile("chat.core.message.medias.proto", fileDescriptor_313bfacbac33da31) }
 
 var fileDescriptor_313bfacbac33da31 = []byte{
-	// 1023 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x4f, 0x6f, 0xdb, 0xc6,
-	0x13, 0x15, 0x49, 0x49, 0x96, 0xc7, 0x7f, 0x7e, 0xf4, 0xfe, 0x60, 0x85, 0x15, 0x02, 0x46, 0xe0,
-	0x21, 0x10, 0x82, 0x56, 0x6e, 0x15, 0xb7, 0x40, 0x8f, 0xb2, 0x84, 0x34, 0x02, 0xe4, 0xc0, 0xa0,
-	0x15, 0xfb, 0xd0, 0x13, 0x45, 0x6e, 0x24, 0xc2, 0x22, 0x57, 0x20, 0x97, 0x29, 0x92, 0x73, 0x8f,
-	0x3d, 0xa4, 0xb7, 0x7e, 0xa1, 0x02, 0x39, 0xfa, 0xd0, 0x43, 0x4f, 0x45, 0x6b, 0x7f, 0x82, 0x7e,
-	0x80, 0x02, 0xc5, 0x0e, 0xff, 0x5b, 0x72, 0xaa, 0x16, 0x3d, 0xf4, 0x44, 0xf1, 0xcd, 0xdb, 0xdd,
-	0x99, 0x37, 0x6f, 0x56, 0x04, 0xdd, 0x9e, 0x5b, 0xbc, 0x6b, 0xb3, 0x80, 0x76, 0x3d, 0x1a, 0x86,
-	0xd6, 0x4c, 0x3c, 0x1d, 0xd7, 0x0a, 0xbb, 0xcb, 0x80, 0x71, 0x46, 0x14, 0x2f, 0x9c, 0xb5, 0x0e,
-	0x73, 0x12, 0x7f, 0xb3, 0xa4, 0x49, 0xac, 0xf5, 0xc9, 0xcc, 0xe5, 0xf3, 0x68, 0xda, 0xb5, 0x99,
-	0x77, 0x34, 0x63, 0x33, 0x76, 0x84, 0xf0, 0x34, 0x7a, 0x85, 0x6f, 0xf8, 0x82, 0xbf, 0x62, 0xba,
-	0xf1, 0x93, 0x04, 0xcd, 0x21, 0xb3, 0x23, 0x8f, 0xfa, 0xbc, 0xcf, 0x79, 0xe0, 0x4e, 0x23, 0x4e,
-	0xfb, 0x91, 0xe3, 0x32, 0xd2, 0x82, 0xda, 0x05, 0x73, 0x6d, 0xaa, 0x49, 0x6d, 0xb9, 0xd3, 0x38,
-	0xa9, 0xbe, 0xff, 0xe5, 0x51, 0xc5, 0x8c, 0x21, 0xd2, 0x86, 0xc6, 0x30, 0x0a, 0x2c, 0xee, 0x32,
-	0x5f, 0x93, 0xdb, 0x72, 0x67, 0x2f, 0x09, 0x67, 0xa8, 0x58, 0x3d, 0x71, 0xf9, 0x82, 0x6a, 0x4a,
-	0x5b, 0xee, 0x6c, 0xa7, 0xab, 0x11, 0x22, 0x06, 0x6c, 0x9f, 0xd1, 0xe0, 0x15, 0x0b, 0x3c, 0x1a,
-	0x68, 0xd5, 0x42, 0x3c, 0x87, 0xc5, 0xfa, 0xfe, 0x62, 0x1a, 0x79, 0x5a, 0xad, 0xb8, 0x1e, 0x21,
-	0x71, 0xfa, 0xa5, 0xf5, 0x9a, 0x0a, 0xa6, 0x56, 0x6f, 0x4b, 0x9d, 0xdd, 0xf4, 0xf4, 0x14, 0x35,
-	0xde, 0xad, 0x2b, 0xeb, 0xc2, 0x75, 0x28, 0x96, 0x75, 0xe9, 0x3a, 0x7c, 0x8e, 0x65, 0xa5, 0x79,
-	0xc7, 0x10, 0x79, 0x08, 0xf5, 0xe7, 0xd4, 0x9d, 0xcd, 0x79, 0xa9, 0xa8, 0x04, 0x2b, 0x15, 0xad,
-	0xdc, 0x57, 0xb4, 0xc9, 0x22, 0xdf, 0xc1, 0xa2, 0x32, 0xc9, 0x10, 0x32, 0xcc, 0x35, 0x19, 0x9d,
-	0xcd, 0x45, 0x3b, 0xff, 0x71, 0x46, 0xc6, 0x97, 0x70, 0xb8, 0xb2, 0xe7, 0x33, 0x77, 0x81, 0xfd,
-	0x11, 0x4f, 0xdf, 0xf2, 0xe2, 0xf6, 0xa5, 0x02, 0x66, 0xa8, 0x61, 0xc3, 0xc1, 0xca, 0x52, 0x72,
-	0x0c, 0xd5, 0xc9, 0x9b, 0x65, 0xbc, 0x64, 0xbf, 0xd7, 0xea, 0x7a, 0xe1, 0xac, 0xbb, 0xc2, 0x12,
-	0x8c, 0x64, 0x3b, 0x64, 0x13, 0x0d, 0xaa, 0x43, 0x8b, 0x5b, 0x9a, 0x5c, 0x68, 0x05, 0x22, 0xc6,
-	0x1f, 0x32, 0x34, 0xd2, 0xf5, 0xa4, 0x09, 0xf2, 0x68, 0x88, 0x5b, 0x2b, 0x27, 0x75, 0x41, 0xfa,
-	0x54, 0x32, 0xe5, 0xd1, 0x90, 0x3c, 0x06, 0xe8, 0xdb, 0x36, 0x0d, 0xc3, 0xe7, 0x56, 0x38, 0xc7,
-	0x32, 0xeb, 0x59, 0xbc, 0x10, 0x49, 0x8e, 0x89, 0x0d, 0xa5, 0x14, 0x8e, 0xc1, 0x6a, 0x4f, 0x5d,
-	0x0f, 0x13, 0x2b, 0xd9, 0x29, 0x43, 0x53, 0x3d, 0xce, 0xdd, 0xb7, 0x14, 0x0d, 0x55, 0x2b, 0xea,
-	0x21, 0x50, 0xa2, 0xc3, 0xd6, 0x05, 0x0d, 0x42, 0xd1, 0xdb, 0x7a, 0x81, 0x90, 0x82, 0xc2, 0xb3,
-	0x83, 0x45, 0x14, 0x72, 0x1a, 0x8c, 0x86, 0xda, 0x56, 0x81, 0x91, 0xc3, 0xe4, 0x0b, 0x80, 0x4c,
-	0xa5, 0x50, 0x6b, 0xb4, 0x95, 0xce, 0x4e, 0xaf, 0xb9, 0x5e, 0x44, 0xb3, 0xc0, 0x24, 0x47, 0xb0,
-	0x3d, 0x99, 0x47, 0xde, 0xd4, 0xb7, 0xdc, 0x85, 0xb6, 0xdd, 0x96, 0x3a, 0x3b, 0xbd, 0x03, 0x5c,
-	0x26, 0xb2, 0x1b, 0x33, 0x1b, 0xcd, 0x65, 0xe6, 0x1c, 0xf2, 0x18, 0x76, 0x4e, 0x87, 0x9f, 0x0f,
-	0xe6, 0xd4, 0xbe, 0x0a, 0x23, 0x4f, 0x83, 0xb6, 0x94, 0xd5, 0x5c, 0x0c, 0x18, 0x3f, 0x4a, 0xf0,
-	0x60, 0xe4, 0x2f, 0x23, 0x7e, 0x2a, 0xae, 0x8f, 0x97, 0xcb, 0x05, 0xb3, 0x1c, 0xea, 0xc4, 0xae,
-	0xd3, 0x61, 0x6b, 0x60, 0x2d, 0xd1, 0xcc, 0x45, 0x87, 0xa4, 0x20, 0xe9, 0x42, 0xe3, 0x9c, 0xbb,
-	0xf6, 0x15, 0x0d, 0x42, 0x4d, 0xc6, 0x52, 0x08, 0xe6, 0x84, 0xfb, 0xa5, 0xf5, 0x98, 0x19, 0x87,
-	0x18, 0x50, 0x15, 0xe9, 0x62, 0x7b, 0x76, 0x7a, 0xfb, 0x39, 0x57, 0xa0, 0x26, 0xc6, 0xee, 0x08,
-	0x54, 0xdd, 0x54, 0x20, 0xe3, 0x6b, 0xf8, 0x5f, 0x5e, 0xc6, 0x66, 0xe9, 0x77, 0xa0, 0x86, 0x44,
-	0x34, 0xd4, 0xfa, 0xdc, 0x63, 0x82, 0xf1, 0xbd, 0x04, 0x07, 0xf9, 0xee, 0x03, 0xe6, 0x73, 0xcb,
-	0xe6, 0x62, 0x28, 0xcf, 0xe6, 0xcc, 0x2f, 0x8f, 0x4f, 0x0c, 0x09, 0x2f, 0x3c, 0x73, 0x83, 0x90,
-	0xbf, 0x10, 0xe3, 0x25, 0x17, 0xef, 0xaf, 0x0c, 0x16, 0x8e, 0x1b, 0x5b, 0x09, 0xa5, 0x78, 0x05,
-	0x66, 0x28, 0xde, 0xaf, 0x03, 0x2b, 0x10, 0x97, 0x45, 0xde, 0xbe, 0x18, 0x32, 0x7e, 0x90, 0xa1,
-	0xb5, 0xda, 0xb8, 0x6c, 0x94, 0x52, 0xad, 0xa5, 0x0f, 0x68, 0xfd, 0x71, 0xd1, 0x54, 0x32, 0x9a,
-	0xea, 0x2e, 0xb1, 0xe0, 0xa8, 0xe2, 0x08, 0x29, 0x6b, 0x47, 0xa8, 0x20, 0x78, 0xf5, 0xaf, 0xfc,
-	0x52, 0xdb, 0xc0, 0x2f, 0x65, 0x2f, 0xd4, 0x37, 0xf6, 0x82, 0x03, 0x24, 0x57, 0x26, 0x53, 0x64,
-	0x03, 0x37, 0xa7, 0xdc, 0x0f, 0x38, 0x22, 0xe3, 0x18, 0x23, 0x38, 0xcc, 0x4f, 0xf9, 0x8a, 0xb2,
-	0x74, 0x0a, 0x49, 0x13, 0x94, 0xb1, 0xc5, 0xf1, 0x10, 0x39, 0x39, 0x44, 0x00, 0xe2, 0x76, 0x1a,
-	0x33, 0x7f, 0x86, 0x9b, 0xa7, 0x01, 0x44, 0x8c, 0x5d, 0x80, 0xdc, 0xb7, 0xc6, 0x5b, 0xd8, 0xfb,
-	0x7b, 0x99, 0x77, 0x60, 0x77, 0x32, 0x19, 0xbb, 0xfe, 0x39, 0xb5, 0x99, 0xef, 0x84, 0x78, 0x40,
-	0x7a, 0xf7, 0x94, 0x22, 0xe4, 0x11, 0x28, 0x43, 0x66, 0x27, 0x03, 0xb8, 0x57, 0x92, 0xd2, 0x14,
-	0x11, 0xe3, 0x3b, 0x09, 0x76, 0xff, 0x43, 0x26, 0x1f, 0x82, 0xfa, 0x2f, 0xc8, 0xbb, 0x9f, 0xd4,
-	0x74, 0x49, 0xa7, 0x67, 0xd6, 0x8c, 0x3e, 0xf9, 0x56, 0x5e, 0xf3, 0xa7, 0x88, 0x0e, 0x3e, 0x84,
-	0x83, 0x12, 0xf0, 0x82, 0xf9, 0x54, 0xad, 0x90, 0x26, 0x90, 0x12, 0x8c, 0x5f, 0x3f, 0xaa, 0xb4,
-	0x82, 0xe3, 0xe7, 0x83, 0x2a, 0xaf, 0xe0, 0xd8, 0x57, 0x55, 0x59, 0xd9, 0x5e, 0x8c, 0x98, 0x5a,
-	0x2d, 0xc1, 0x7d, 0xdf, 0xf5, 0x2c, 0x4e, 0x1d, 0xb5, 0x56, 0xda, 0xc5, 0xa4, 0x21, 0x0d, 0x5e,
-	0x53, 0xe7, 0x33, 0xb5, 0xbe, 0x16, 0xef, 0xa9, 0x5b, 0x6b, 0xf1, 0xa7, 0x6a, 0x63, 0x2d, 0x7e,
-	0xac, 0x6e, 0x3f, 0xf9, 0x5d, 0x82, 0xdd, 0x54, 0x06, 0xac, 0xfe, 0x01, 0xfc, 0xbf, 0xf8, 0xfe,
-	0xd2, 0xbf, 0xf2, 0xd9, 0x37, 0xbe, 0x5a, 0x11, 0x09, 0x16, 0x03, 0x71, 0x39, 0xd2, 0x5d, 0x18,
-	0xbf, 0xfb, 0x54, 0x79, 0x05, 0x46, 0x51, 0x94, 0xbb, 0xbb, 0x27, 0xcd, 0x50, 0xab, 0xe4, 0xa3,
-	0xbc, 0x1b, 0x22, 0x90, 0x97, 0x5a, 0xbb, 0x2f, 0xd4, 0x53, 0xeb, 0xf7, 0x85, 0x9e, 0xaa, 0x5b,
-	0xf7, 0x85, 0x8e, 0xd5, 0xc6, 0xc9, 0xc3, 0xeb, 0xdf, 0xf4, 0xca, 0xfb, 0x1b, 0x5d, 0xba, 0xbe,
-	0xd1, 0xa5, 0x5f, 0x6f, 0x74, 0xe9, 0xdd, 0xad, 0x5e, 0xb9, 0xbe, 0xd5, 0x2b, 0x3f, 0xdf, 0xea,
-	0x95, 0x3f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x2d, 0xa6, 0x6e, 0xee, 0x56, 0x0b, 0x00, 0x00,
+	// 1200 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x4f, 0x8f, 0xdb, 0x44,
+	0x14, 0x8f, 0xed, 0xfc, 0xdb, 0xb7, 0xe9, 0xe2, 0x1d, 0xc8, 0x62, 0x56, 0x55, 0x1a, 0xf9, 0x50,
+	0x85, 0x0a, 0x52, 0x48, 0x17, 0x24, 0x8e, 0xdb, 0x44, 0xa5, 0x91, 0xb6, 0x25, 0x75, 0xd3, 0xed,
+	0xd9, 0xb1, 0xa7, 0x89, 0x55, 0xdb, 0x13, 0xd9, 0xe3, 0x96, 0xf6, 0x13, 0x70, 0xe0, 0x50, 0x6e,
+	0x7c, 0xa4, 0x1e, 0x7b, 0xe0, 0xc0, 0x09, 0x41, 0xfb, 0x09, 0xb8, 0x71, 0x41, 0x42, 0xf3, 0xfc,
+	0x6f, 0x9c, 0x3f, 0x12, 0x20, 0x0e, 0x9c, 0x6c, 0xff, 0xde, 0x9b, 0x79, 0xef, 0xfd, 0xde, 0x6f,
+	0x9e, 0x07, 0x7a, 0xce, 0xca, 0xe6, 0x43, 0x87, 0x45, 0x74, 0x18, 0xd0, 0x38, 0xb6, 0x97, 0xe2,
+	0xe9, 0x7a, 0x76, 0x3c, 0x5c, 0x47, 0x8c, 0x33, 0xa2, 0x05, 0xf1, 0xf2, 0xb4, 0x5b, 0x3a, 0xf1,
+	0x17, 0x6b, 0x9a, 0xd9, 0x4e, 0x3f, 0x5d, 0x7a, 0x7c, 0x95, 0x2c, 0x86, 0x0e, 0x0b, 0x6e, 0x2e,
+	0xd9, 0x92, 0xdd, 0x44, 0x78, 0x91, 0x3c, 0xc1, 0x2f, 0xfc, 0xc0, 0xb7, 0xd4, 0xdd, 0xfc, 0x49,
+	0x81, 0x93, 0x09, 0x73, 0x92, 0x80, 0x86, 0xfc, 0x9c, 0xf3, 0xc8, 0x5b, 0x24, 0x9c, 0x9e, 0x27,
+	0xae, 0xc7, 0xc8, 0x29, 0x34, 0x2e, 0x99, 0xe7, 0x50, 0x43, 0xe9, 0xab, 0x83, 0xf6, 0xed, 0xfa,
+	0xeb, 0x5f, 0xae, 0xd5, 0xac, 0x14, 0x22, 0x7d, 0x68, 0x4f, 0x92, 0xc8, 0xe6, 0x1e, 0x0b, 0x0d,
+	0xb5, 0xaf, 0x0e, 0xae, 0x64, 0xe6, 0x02, 0x15, 0xab, 0xe7, 0x1e, 0xf7, 0xa9, 0xa1, 0xf5, 0xd5,
+	0xc1, 0x41, 0xbe, 0x1a, 0x21, 0x62, 0xc2, 0xc1, 0x8c, 0x46, 0x4f, 0x58, 0x14, 0xd0, 0xc8, 0xa8,
+	0x4b, 0xf6, 0x12, 0x16, 0xeb, 0xcf, 0xfd, 0x45, 0x12, 0x18, 0x0d, 0x79, 0x3d, 0x42, 0x22, 0xfa,
+	0x63, 0xfb, 0x19, 0x15, 0x9e, 0x46, 0xb3, 0xaf, 0x0c, 0x3a, 0x79, 0xf4, 0x1c, 0x35, 0x5f, 0xed,
+	0x2a, 0xeb, 0xd2, 0x73, 0x29, 0x96, 0xf5, 0xd8, 0x73, 0xf9, 0x0a, 0xcb, 0xca, 0xf3, 0x4e, 0x21,
+	0x72, 0x15, 0x9a, 0x77, 0xa9, 0xb7, 0x5c, 0xf1, 0x4a, 0x51, 0x19, 0x56, 0x29, 0x5a, 0xdb, 0x57,
+	0xb4, 0xc5, 0x92, 0xd0, 0xc5, 0xa2, 0x0a, 0xca, 0x10, 0x32, 0xad, 0x1d, 0x19, 0xcd, 0x56, 0xa2,
+	0x9d, 0xff, 0x3a, 0x23, 0xf3, 0x2b, 0xe8, 0x6e, 0xed, 0x79, 0xc7, 0xf3, 0xb1, 0x3f, 0xe2, 0x19,
+	0xda, 0x41, 0xda, 0xbe, 0x9c, 0xc0, 0x02, 0x35, 0x1d, 0x38, 0xde, 0x5a, 0x4a, 0xce, 0xa0, 0x3e,
+	0x7f, 0xb1, 0x4e, 0x97, 0x1c, 0x8d, 0x4e, 0x87, 0x41, 0xbc, 0x1c, 0x6e, 0x79, 0x09, 0x8f, 0x6c,
+	0x3b, 0xf4, 0x26, 0x06, 0xd4, 0x27, 0x36, 0xb7, 0x0d, 0x55, 0x6a, 0x05, 0x22, 0xe6, 0x9f, 0x2a,
+	0xb4, 0xf3, 0xf5, 0xe4, 0x04, 0xd4, 0xe9, 0x04, 0xb7, 0xd6, 0x6e, 0x37, 0x85, 0xd3, 0x67, 0x8a,
+	0xa5, 0x4e, 0x27, 0xe4, 0x3a, 0xc0, 0xb9, 0xe3, 0xd0, 0x38, 0xbe, 0x6b, 0xc7, 0x2b, 0x2c, 0xb3,
+	0x59, 0xd8, 0x25, 0x4b, 0x16, 0x26, 0x15, 0x94, 0x26, 0x85, 0xc1, 0x6a, 0xef, 0x79, 0x01, 0x26,
+	0x56, 0x91, 0x53, 0x81, 0xe6, 0x7c, 0x3c, 0xf4, 0x5e, 0x52, 0x14, 0x54, 0x43, 0xe6, 0x43, 0xa0,
+	0xa4, 0x07, 0xad, 0x4b, 0x1a, 0xc5, 0xa2, 0xb7, 0x4d, 0xc9, 0x21, 0x07, 0x85, 0x66, 0xc7, 0x7e,
+	0x12, 0x73, 0x1a, 0x4d, 0x27, 0x46, 0x4b, 0xf2, 0x28, 0x61, 0xf2, 0x25, 0x40, 0xc1, 0x52, 0x6c,
+	0xb4, 0xfb, 0xda, 0xe0, 0x70, 0x74, 0xb2, 0x9b, 0x44, 0x4b, 0xf2, 0x24, 0x37, 0xe1, 0x60, 0xbe,
+	0x4a, 0x82, 0x45, 0x68, 0x7b, 0xbe, 0x71, 0xd0, 0x57, 0x06, 0x87, 0xa3, 0x63, 0x5c, 0x26, 0xb2,
+	0xbb, 0x60, 0x0e, 0x8a, 0xcb, 0x2a, 0x7d, 0xc8, 0x75, 0x38, 0xbc, 0x37, 0xf9, 0x62, 0xbc, 0xa2,
+	0xce, 0xd3, 0x38, 0x09, 0x0c, 0xe8, 0x2b, 0x45, 0xcd, 0xb2, 0xc1, 0x3c, 0x83, 0xa3, 0x69, 0xb8,
+	0x4e, 0xf8, 0x3d, 0x31, 0x3d, 0x66, 0xcc, 0xf7, 0x89, 0x09, 0x75, 0xf1, 0xc4, 0x36, 0x1c, 0x8e,
+	0x8e, 0x30, 0x4a, 0x61, 0xb5, 0xd0, 0x66, 0xfe, 0xa0, 0xc0, 0x71, 0xb9, 0x6c, 0xcc, 0x42, 0x6e,
+	0x3b, 0x5c, 0xa8, 0x74, 0xb6, 0x62, 0x61, 0x55, 0x4f, 0x29, 0x24, 0xc8, 0xb9, 0xe3, 0x45, 0x31,
+	0xbf, 0x2f, 0xf4, 0xa6, 0xca, 0x07, 0xba, 0x80, 0x45, 0x0b, 0x2e, 0xec, 0xcc, 0x45, 0x9e, 0x09,
+	0x05, 0x8a, 0x03, 0x67, 0x6c, 0x47, 0xe2, 0xf4, 0x94, 0xf5, 0xa4, 0x90, 0xf9, 0xa3, 0x0a, 0xa7,
+	0x65, 0x4e, 0x8f, 0xd6, 0x3e, 0xb3, 0x5d, 0xea, 0x16, 0xda, 0x32, 0xa1, 0x2e, 0xb8, 0xaa, 0x94,
+	0x85, 0xee, 0x02, 0xb5, 0xd0, 0x46, 0x3e, 0x91, 0x59, 0x56, 0x91, 0xe5, 0x4d, 0x47, 0x89, 0x62,
+	0x59, 0x53, 0xda, 0x4e, 0x4d, 0xf5, 0xa0, 0x35, 0xb6, 0xd7, 0x38, 0x0d, 0x64, 0xd1, 0xe5, 0x20,
+	0x19, 0x42, 0xfb, 0x21, 0xf7, 0x9c, 0xa7, 0x34, 0x8a, 0x8d, 0x06, 0x6a, 0x81, 0x94, 0xe1, 0xf2,
+	0xcc, 0xad, 0xc2, 0x67, 0x43, 0x3d, 0xcd, 0xbf, 0xab, 0x1e, 0xd3, 0x05, 0x52, 0x32, 0x53, 0x30,
+	0x22, 0x65, 0xa7, 0xec, 0xc9, 0x2e, 0xf7, 0xc5, 0x8e, 0xed, 0xc9, 0x2e, 0x7f, 0x33, 0xa7, 0xd0,
+	0x2d, 0xa3, 0x7c, 0x4d, 0x59, 0x2e, 0x4b, 0x72, 0x02, 0xda, 0x85, 0xcd, 0x31, 0x88, 0x9a, 0x05,
+	0x11, 0x80, 0x38, 0xae, 0x17, 0x2c, 0x5c, 0xe2, 0xe6, 0xb9, 0x01, 0x11, 0xf3, 0x0f, 0x05, 0x0e,
+	0x4a, 0x45, 0x7e, 0x20, 0x8d, 0x85, 0xd4, 0x4b, 0x0c, 0x85, 0xab, 0xd0, 0x1c, 0xfb, 0x2c, 0xa6,
+	0x2e, 0x76, 0x2a, 0x1f, 0xa5, 0x19, 0x46, 0x06, 0xd0, 0x99, 0x25, 0x0b, 0xdf, 0x73, 0x2e, 0x19,
+	0x17, 0xf4, 0x6a, 0x92, 0x4f, 0xc5, 0x82, 0x27, 0x25, 0xf1, 0xb9, 0x37, 0x5e, 0xe1, 0xaf, 0xac,
+	0x2e, 0x39, 0xca, 0x06, 0x91, 0xed, 0x83, 0xc4, 0x7b, 0x69, 0x34, 0x24, 0x07, 0x44, 0x84, 0x10,
+	0x1e, 0x24, 0x34, 0xe6, 0xf9, 0x64, 0x28, 0x84, 0x90, 0xa3, 0xe4, 0x63, 0x68, 0x9d, 0x87, 0xf1,
+	0x73, 0x91, 0x48, 0x0b, 0xbb, 0xf6, 0x1e, 0x32, 0x29, 0xaa, 0x4b, 0x71, 0x2b, 0xb7, 0x9b, 0x13,
+	0x80, 0x12, 0x16, 0x41, 0xe7, 0xf4, 0x5b, 0x5e, 0x69, 0x10, 0x22, 0xa2, 0xfc, 0x6f, 0xd6, 0xc5,
+	0xdf, 0x35, 0x1f, 0xaa, 0x19, 0x66, 0x3e, 0x81, 0x43, 0x3c, 0xae, 0x34, 0x4e, 0x7c, 0x2e, 0xc6,
+	0x47, 0x2b, 0x7b, 0x35, 0x14, 0x8c, 0xdf, 0xdd, 0x88, 0x9f, 0x72, 0x61, 0xe5, 0x5e, 0x82, 0x94,
+	0x39, 0xe3, 0xb6, 0x9f, 0xb1, 0xa7, 0x4a, 0xdc, 0xcb, 0x06, 0xf3, 0x7b, 0x05, 0xf4, 0xcd, 0x5d,
+	0xb0, 0x33, 0x2b, 0x16, 0xd3, 0xb0, 0x72, 0x2f, 0xc8, 0x30, 0x94, 0x1d, 0x8b, 0x22, 0xea, 0xa4,
+	0xaa, 0x6a, 0x17, 0xb2, 0x4b, 0x41, 0xa9, 0x30, 0x6d, 0xbb, 0x30, 0x61, 0xcd, 0x72, 0xaa, 0x4b,
+	0x39, 0x65, 0x98, 0x79, 0x04, 0x1d, 0x94, 0xcd, 0x34, 0x7c, 0x26, 0x7a, 0x66, 0xbe, 0x84, 0x2b,
+	0xff, 0x4c, 0xf3, 0x03, 0xe8, 0xcc, 0xe7, 0x17, 0x5e, 0xf8, 0x90, 0x3a, 0x2c, 0x74, 0xd3, 0xc2,
+	0xf3, 0x31, 0x5e, 0xb1, 0x90, 0x6b, 0xa0, 0x4d, 0x98, 0x83, 0x39, 0x1e, 0x8e, 0xae, 0x54, 0x0e,
+	0xa1, 0x25, 0x2c, 0x82, 0x9a, 0xce, 0xff, 0x68, 0x3c, 0x4e, 0x40, 0xff, 0x0f, 0x0e, 0x66, 0x4e,
+	0xf0, 0x63, 0xba, 0x98, 0xd9, 0x4b, 0x7a, 0xe3, 0x3b, 0x75, 0xc7, 0xfd, 0x02, 0x67, 0x5f, 0x17,
+	0x8e, 0x2b, 0xc0, 0x7d, 0x16, 0x52, 0xbd, 0x46, 0x4e, 0x80, 0x54, 0x60, 0xbc, 0x48, 0xea, 0xca,
+	0x16, 0x8e, 0x37, 0x31, 0x5d, 0xdd, 0xc2, 0xf1, 0x3e, 0xa4, 0x6b, 0x5b, 0xdb, 0x8b, 0xe1, 0xac,
+	0xd7, 0xc9, 0x47, 0xd0, 0xad, 0x6e, 0x1f, 0x7a, 0x81, 0xcd, 0xa9, 0xab, 0x37, 0x2a, 0x3b, 0x59,
+	0x34, 0xa6, 0xd1, 0x33, 0xea, 0x7e, 0xae, 0x37, 0x77, 0xe2, 0x23, 0xbd, 0xb5, 0x13, 0xbf, 0xa5,
+	0xb7, 0x77, 0xe2, 0x67, 0xfa, 0xc1, 0x8d, 0xdf, 0x15, 0xe8, 0xe4, 0x54, 0x20, 0x03, 0x1f, 0xc2,
+	0xfb, 0xf2, 0xf7, 0xa3, 0xf0, 0x69, 0xc8, 0x9e, 0x87, 0x7a, 0x4d, 0xe4, 0x2e, 0x1b, 0xd2, 0x92,
+	0x94, 0x4d, 0x18, 0xaf, 0xd1, 0xba, 0xba, 0x05, 0x23, 0x31, 0xda, 0xe6, 0xee, 0x59, 0x43, 0x52,
+	0x0a, 0x64, 0x43, 0x59, 0x6a, 0x63, 0x9f, 0x69, 0xa4, 0x37, 0xf7, 0x99, 0x6e, 0xe9, 0xad, 0x7d,
+	0xa6, 0x33, 0xbd, 0x7d, 0xfb, 0xea, 0x9b, 0xdf, 0x7a, 0xb5, 0xd7, 0x6f, 0x7b, 0xca, 0x9b, 0xb7,
+	0x3d, 0xe5, 0xd7, 0xb7, 0x3d, 0xe5, 0xd5, 0xbb, 0x5e, 0xed, 0xcd, 0xbb, 0x5e, 0xed, 0xe7, 0x77,
+	0xbd, 0xda, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0xfd, 0xbd, 0x1e, 0xef, 0xa5, 0x0c, 0x00, 0x00,
 }
 
 func (m *DocumentAttributeAudio) Marshal() (dAtA []byte, err error) {
@@ -1569,7 +1774,7 @@ func (m *Document) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *InputMediaUploadedPhoto) Marshal() (dAtA []byte, err error) {
+func (m *InputMediaPoll) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1579,35 +1784,21 @@ func (m *InputMediaUploadedPhoto) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *InputMediaUploadedPhoto) MarshalTo(dAtA []byte) (int, error) {
+func (m *InputMediaPoll) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *InputMediaUploadedPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *InputMediaPoll) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Attributes) > 0 {
-		for iNdEx := len(m.Attributes) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Attributes[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x22
-		}
-	}
-	if m.File == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
+	if m.Poll == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
 	} else {
 		{
-			size, err := m.File.MarshalToSizedBuffer(dAtA[:i])
+			size, err := m.Poll.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -1615,69 +1806,8 @@ func (m *InputMediaUploadedPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error)
 			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
 		}
 		i--
-		dAtA[i] = 0x1a
+		dAtA[i] = 0xa
 	}
-	if len(m.Stickers) > 0 {
-		for iNdEx := len(m.Stickers) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Stickers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x12
-		}
-	}
-	i -= len(m.Caption)
-	copy(dAtA[i:], m.Caption)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Caption)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
-}
-
-func (m *InputMediaPhoto) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *InputMediaPhoto) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *InputMediaPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.Photo == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Photo")
-	} else {
-		{
-			size, err := m.Photo.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x12
-	}
-	i -= len(m.Caption)
-	copy(dAtA[i:], m.Caption)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Caption)))
-	i--
-	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -1884,7 +2014,7 @@ func (m *InputMediaGeoLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MediaPhoto) Marshal() (dAtA []byte, err error) {
+func (m *MediaPoll) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1894,12 +2024,213 @@ func (m *MediaPhoto) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MediaPhoto) MarshalTo(dAtA []byte) (int, error) {
+func (m *MediaPoll) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MediaPhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MediaPoll) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Answers) > 0 {
+		for iNdEx := len(m.Answers) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Answers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x3a
+		}
+	}
+	i -= len(m.Question)
+	copy(dAtA[i:], m.Question)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Question)))
+	i--
+	dAtA[i] = 0x32
+	i--
+	if m.Quiz {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x28
+	i--
+	if m.MultiChoice {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x20
+	i--
+	if m.PublicVoters {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x18
+	i--
+	if m.Closed {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(m.ID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *PollAnswer) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PollAnswer) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PollAnswer) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Option != nil {
+		i -= len(m.Option)
+		copy(dAtA[i:], m.Option)
+		i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Option)))
+		i--
+		dAtA[i] = 0x12
+	}
+	i -= len(m.Text)
+	copy(dAtA[i:], m.Text)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Text)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *PollResults) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PollResults) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PollResults) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(m.TotalVoters))
+	i--
+	dAtA[i] = 0x10
+	if len(m.Results) > 0 {
+		for iNdEx := len(m.Results) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Results[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *PollAnswerVoters) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PollAnswerVoters) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PollAnswerVoters) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(m.Voters))
+	i--
+	dAtA[i] = 0x20
+	if m.Option != nil {
+		i -= len(m.Option)
+		copy(dAtA[i:], m.Option)
+		i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Option)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	i--
+	if m.Correct {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x10
+	i--
+	if m.Chosen {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaInvoice) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaInvoice) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaInvoice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -2159,43 +2490,14 @@ func (m *Document) Size() (n int) {
 	return n
 }
 
-func (m *InputMediaUploadedPhoto) Size() (n int) {
+func (m *InputMediaPoll) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Caption)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	if len(m.Stickers) > 0 {
-		for _, e := range m.Stickers {
-			l = e.Size()
-			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-		}
-	}
-	if m.File != nil {
-		l = m.File.Size()
-		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	}
-	if len(m.Attributes) > 0 {
-		for _, e := range m.Attributes {
-			l = e.Size()
-			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *InputMediaPhoto) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Caption)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	if m.Photo != nil {
-		l = m.Photo.Size()
+	if m.Poll != nil {
+		l = m.Poll.Size()
 		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
 	}
 	return n
@@ -2277,7 +2579,76 @@ func (m *InputMediaGeoLocation) Size() (n int) {
 	return n
 }
 
-func (m *MediaPhoto) Size() (n int) {
+func (m *MediaPoll) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatCoreMessageMedias(uint64(m.ID))
+	n += 2
+	n += 2
+	n += 2
+	n += 2
+	l = len(m.Question)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	if len(m.Answers) > 0 {
+		for _, e := range m.Answers {
+			l = e.Size()
+			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *PollAnswer) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Text)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	if m.Option != nil {
+		l = len(m.Option)
+		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	}
+	return n
+}
+
+func (m *PollResults) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Results) > 0 {
+		for _, e := range m.Results {
+			l = e.Size()
+			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+		}
+	}
+	n += 1 + sovChatCoreMessageMedias(uint64(m.TotalVoters))
+	return n
+}
+
+func (m *PollAnswerVoters) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	n += 2
+	if m.Option != nil {
+		l = len(m.Option)
+		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	}
+	n += 1 + sovChatCoreMessageMedias(uint64(m.Voters))
+	return n
+}
+
+func (m *MediaInvoice) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -3357,7 +3728,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
+func (m *InputMediaPoll) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
 	iNdEx := 0
@@ -3381,17 +3752,17 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: InputMediaUploadedPhoto: wiretype end group for non-group")
+			return fmt.Errorf("proto: InputMediaPoll: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: InputMediaUploadedPhoto: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: InputMediaPoll: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Caption", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Poll", wireType)
 			}
-			var stringLen uint64
+			var msglen int
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowChatCoreMessageMedias
@@ -3401,130 +3772,29 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
+			if msglen < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
-			postIndex := iNdEx + intStringLen
+			postIndex := iNdEx + msglen
 			if postIndex < 0 {
 				return ErrInvalidLengthChatCoreMessageMedias
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Caption = string(dAtA[iNdEx:postIndex])
+			if m.Poll == nil {
+				m.Poll = &MediaPoll{}
+			}
+			if err := m.Poll.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Stickers", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Stickers = append(m.Stickers, &InputDocument{})
-			if err := m.Stickers[len(m.Stickers)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field File", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.File == nil {
-				m.File = &InputFile{}
-			}
-			if err := m.File.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Attributes", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Attributes = append(m.Attributes, &DocumentAttribute{})
-			if err := m.Attributes[len(m.Attributes)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
@@ -3544,140 +3814,7 @@ func (m *InputMediaUploadedPhoto) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Caption")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("File")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *InputMediaPhoto) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: InputMediaPhoto: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: InputMediaPhoto: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Caption", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Caption = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Photo", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Photo == nil {
-				m.Photo = &InputDocument{}
-			}
-			if err := m.Photo.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Caption")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Photo")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
 	}
 
 	if iNdEx > l {
@@ -4363,7 +4500,8 @@ func (m *InputMediaGeoLocation) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MediaPhoto) Unmarshal(dAtA []byte) error {
+func (m *MediaPoll) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -4386,10 +4524,638 @@ func (m *MediaPhoto) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MediaPhoto: wiretype end group for non-group")
+			return fmt.Errorf("proto: MediaPoll: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaPhoto: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MediaPoll: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ID", wireType)
+			}
+			m.ID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Closed", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Closed = bool(v != 0)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PublicVoters", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.PublicVoters = bool(v != 0)
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MultiChoice", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.MultiChoice = bool(v != 0)
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Quiz", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Quiz = bool(v != 0)
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Question", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Question = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Answers", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Answers = append(m.Answers, &PollAnswer{})
+			if err := m.Answers[len(m.Answers)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ID")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Question")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PollAnswer) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PollAnswer: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PollAnswer: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Text", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Text = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Option", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Option = append(m.Option[:0], dAtA[iNdEx:postIndex]...)
+			if m.Option == nil {
+				m.Option = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Text")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Option")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PollResults) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PollResults: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PollResults: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Results", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Results = append(m.Results, &PollAnswerVoters{})
+			if err := m.Results[len(m.Results)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TotalVoters", wireType)
+			}
+			m.TotalVoters = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.TotalVoters |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("TotalVoters")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PollAnswerVoters) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PollAnswerVoters: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PollAnswerVoters: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Chosen", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Chosen = bool(v != 0)
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Correct", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Correct = bool(v != 0)
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Option", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Option = append(m.Option[:0], dAtA[iNdEx:postIndex]...)
+			if m.Option == nil {
+				m.Option = []byte{}
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Voters", wireType)
+			}
+			m.Voters = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Voters |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000008)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Chosen")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Correct")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Option")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Voters")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaInvoice) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaInvoice: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaInvoice: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

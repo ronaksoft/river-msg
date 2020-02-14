@@ -44,33 +44,6 @@ func ResultStartBot(out *MessageEnvelope, res *StartBot) {
 	res.MarshalTo(out.Message)
 }
 
-const C_BotIsStarted int64 = 766180107
-
-type poolBotIsStarted struct {
-	pool sync.Pool
-}
-
-func (p *poolBotIsStarted) Get() *BotIsStarted {
-	x, ok := p.pool.Get().(*BotIsStarted)
-	if !ok {
-		return &BotIsStarted{}
-	}
-	return x
-}
-
-func (p *poolBotIsStarted) Put(x *BotIsStarted) {
-	p.pool.Put(x)
-}
-
-var PoolBotIsStarted = poolBotIsStarted{}
-
-func ResultBotIsStarted(out *MessageEnvelope, res *BotIsStarted) {
-	out.Constructor = C_BotIsStarted
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_BotSetInfo int64 = 3735815245
 
 type poolBotSetInfo struct {
@@ -99,29 +72,29 @@ func ResultBotSetInfo(out *MessageEnvelope, res *BotSetInfo) {
 	res.MarshalTo(out.Message)
 }
 
-const C_Bots int64 = 3515703235
+const C_BotGet int64 = 911895569
 
-type poolBots struct {
+type poolBotGet struct {
 	pool sync.Pool
 }
 
-func (p *poolBots) Get() *Bots {
-	x, ok := p.pool.Get().(*Bots)
+func (p *poolBotGet) Get() *BotGet {
+	x, ok := p.pool.Get().(*BotGet)
 	if !ok {
-		return &Bots{}
+		return &BotGet{}
 	}
 	x.Limit = 0
 	return x
 }
 
-func (p *poolBots) Put(x *Bots) {
+func (p *poolBotGet) Put(x *BotGet) {
 	p.pool.Put(x)
 }
 
-var PoolBots = poolBots{}
+var PoolBotGet = poolBotGet{}
 
-func ResultBots(out *MessageEnvelope, res *Bots) {
-	out.Constructor = C_Bots
+func ResultBotGet(out *MessageEnvelope, res *BotGet) {
+	out.Constructor = C_BotGet
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -157,8 +130,7 @@ func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
 
 func init() {
 	ConstructorNames[3294108684] = "StartBot"
-	ConstructorNames[766180107] = "BotIsStarted"
 	ConstructorNames[3735815245] = "BotSetInfo"
-	ConstructorNames[3515703235] = "Bots"
+	ConstructorNames[911895569] = "BotGet"
 	ConstructorNames[2942918011] = "BotsMany"
 }

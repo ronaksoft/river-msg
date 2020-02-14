@@ -23,14 +23,6 @@ message StartBot {
     required string StartParam = 3;
 }
 
-// BotIsStarted
-// @Function
-// @Return: Bool
-message BotIsStarted {
-    required InputPeer Bot = 1;
-    required int64 RandomID = 2;
-}
-
 // BotSetInfo
 // @Function
 // @Return: Bool
@@ -42,10 +34,10 @@ message BotSetInfo {
     required string      Description = 5;
 }
 
-// Bots
+// BotGet
 // @Function
 // @Return: BotInfo
-message Bots {
+message BotGet {
     required int64 UserID = 1 [jstype = JS_STRING];
     optional int32 Limit = 2;
 }

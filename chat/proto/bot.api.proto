@@ -3,8 +3,8 @@ syntax = "proto2";
 package msg;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
 import "chat.core.types.proto";
+import "chat.core.message.markups.proto";
 
 // Enable custom Marshal method.
 option (gogoproto.marshaler_all) = true;
@@ -14,10 +14,14 @@ option (gogoproto.unmarshaler_all) = true;
 option (gogoproto.sizer_all) = true;
 
 service BotProxy {
-    rpc ServeBotRequest (stream MessageEnvelope) returns (stream MessageEnvelope) {}
+    rpc ServeBotRequest (stream MessageEnvelope) returns (stream MessageEnvelope) {
+    }
 }
 
-message StartBot {
+// BotStart
+// @Function
+// @Return: Bool
+message BotStart {
     required InputPeer Bot = 1;
     required int64 RandomID = 2;
     required string StartParam = 3;
@@ -27,11 +31,11 @@ message StartBot {
 // @Function
 // @Return: Bool
 message BotSetInfo {
-    required int64       BotID       = 1;
-    required int64       RandomID    = 2;
-    required int64       Owner       = 3;
+    required int64 BotID = 1;
+    required int64 RandomID = 2;
+    required int64 Owner = 3;
     repeated BotCommands BotCommands = 4;
-    required string      Description = 5;
+    required string Description = 5;
 }
 
 // BotGet
@@ -40,6 +44,20 @@ message BotSetInfo {
 message BotGet {
     required int64 UserID = 1 [jstype = JS_STRING];
     optional int32 Limit = 2;
+}
+
+// BotSendMessage
+// @Function
+// @Return: Bool
+message BotSendMessage {
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required string Body = 5;
+    optional int64 ReplyTo = 6;
+    optional bool ClearDraft = 7;
+    repeated MessageEntity Entities = 8;
+    repeated ReplyKeyboardMarkup Markups = 9;
+    repeated ReplyInlineMarkup InlineMarkups = 10;
 }
 
 // BotsMany

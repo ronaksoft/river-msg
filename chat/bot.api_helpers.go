@@ -17,28 +17,28 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-const C_StartBot int64 = 3294108684
+const C_BotStart int64 = 2068702388
 
-type poolStartBot struct {
+type poolBotStart struct {
 	pool sync.Pool
 }
 
-func (p *poolStartBot) Get() *StartBot {
-	x, ok := p.pool.Get().(*StartBot)
+func (p *poolBotStart) Get() *BotStart {
+	x, ok := p.pool.Get().(*BotStart)
 	if !ok {
-		return &StartBot{}
+		return &BotStart{}
 	}
 	return x
 }
 
-func (p *poolStartBot) Put(x *StartBot) {
+func (p *poolBotStart) Put(x *BotStart) {
 	p.pool.Put(x)
 }
 
-var PoolStartBot = poolStartBot{}
+var PoolBotStart = poolBotStart{}
 
-func ResultStartBot(out *MessageEnvelope, res *StartBot) {
-	out.Constructor = C_StartBot
+func ResultBotStart(out *MessageEnvelope, res *BotStart) {
+	out.Constructor = C_BotStart
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -100,6 +100,38 @@ func ResultBotGet(out *MessageEnvelope, res *BotGet) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotSendMessage int64 = 2371725696
+
+type poolBotSendMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolBotSendMessage) Get() *BotSendMessage {
+	x, ok := p.pool.Get().(*BotSendMessage)
+	if !ok {
+		return &BotSendMessage{}
+	}
+	x.ReplyTo = 0
+	x.ClearDraft = false
+	x.Entities = x.Entities[:0]
+	x.Markups = x.Markups[:0]
+	x.InlineMarkups = x.InlineMarkups[:0]
+	return x
+}
+
+func (p *poolBotSendMessage) Put(x *BotSendMessage) {
+	p.pool.Put(x)
+}
+
+var PoolBotSendMessage = poolBotSendMessage{}
+
+func ResultBotSendMessage(out *MessageEnvelope, res *BotSendMessage) {
+	out.Constructor = C_BotSendMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_BotsMany int64 = 2942918011
 
 type poolBotsMany struct {
@@ -129,8 +161,9 @@ func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
 }
 
 func init() {
-	ConstructorNames[3294108684] = "StartBot"
+	ConstructorNames[2068702388] = "BotStart"
 	ConstructorNames[3735815245] = "BotSetInfo"
 	ConstructorNames[911895569] = "BotGet"
+	ConstructorNames[2371725696] = "BotSendMessage"
 	ConstructorNames[2942918011] = "BotsMany"
 }

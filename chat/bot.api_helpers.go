@@ -114,8 +114,8 @@ func (p *poolBotSendMessage) Get() *BotSendMessage {
 	x.ReplyTo = 0
 	x.ClearDraft = false
 	x.Entities = x.Entities[:0]
-	x.Markups = x.Markups[:0]
-	x.InlineMarkups = x.InlineMarkups[:0]
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = nil
 	return x
 }
 

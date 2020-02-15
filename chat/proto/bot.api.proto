@@ -4,7 +4,6 @@ package msg;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "chat.core.types.proto";
-import "chat.core.message.markups.proto";
 
 // Enable custom Marshal method.
 option (gogoproto.marshaler_all) = true;
@@ -56,8 +55,8 @@ message BotSendMessage {
     optional int64 ReplyTo = 6;
     optional bool ClearDraft = 7;
     repeated MessageEntity Entities = 8;
-    repeated ReplyKeyboardMarkup Markups = 9;
-    repeated ReplyInlineMarkup InlineMarkups = 10;
+    optional int64 ReplyMarkup = 9;
+    optional bytes ReplyMarkupData = 10;
 }
 
 // BotsMany

@@ -17,35 +17,6 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-const C_ReplyKeyboardForceReply int64 = 258469686
-
-type poolReplyKeyboardForceReply struct {
-	pool sync.Pool
-}
-
-func (p *poolReplyKeyboardForceReply) Get() *ReplyKeyboardForceReply {
-	x, ok := p.pool.Get().(*ReplyKeyboardForceReply)
-	if !ok {
-		return &ReplyKeyboardForceReply{}
-	}
-	x.SingleUse = false
-	x.Selective = false
-	return x
-}
-
-func (p *poolReplyKeyboardForceReply) Put(x *ReplyKeyboardForceReply) {
-	p.pool.Put(x)
-}
-
-var PoolReplyKeyboardForceReply = poolReplyKeyboardForceReply{}
-
-func ResultReplyKeyboardForceReply(out *MessageEnvelope, res *ReplyKeyboardForceReply) {
-	out.Constructor = C_ReplyKeyboardForceReply
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_ReplyKeyboardMarkup int64 = 3207405102
 
 type poolReplyKeyboardMarkup struct {
@@ -410,7 +381,6 @@ func ResultInputButtonUrlAuth(out *MessageEnvelope, res *InputButtonUrlAuth) {
 }
 
 func init() {
-	ConstructorNames[258469686] = "ReplyKeyboardForceReply"
 	ConstructorNames[3207405102] = "ReplyKeyboardMarkup"
 	ConstructorNames[2436413989] = "ReplyInlineMarkup"
 	ConstructorNames[2222403758] = "KeyboardButtonRow"

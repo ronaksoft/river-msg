@@ -160,10 +160,39 @@ func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotUpdateProfile int64 = 2820005221
+
+type poolBotUpdateProfile struct {
+	pool sync.Pool
+}
+
+func (p *poolBotUpdateProfile) Get() *BotUpdateProfile {
+	x, ok := p.pool.Get().(*BotUpdateProfile)
+	if !ok {
+		return &BotUpdateProfile{}
+	}
+	x.Bio = ""
+	return x
+}
+
+func (p *poolBotUpdateProfile) Put(x *BotUpdateProfile) {
+	p.pool.Put(x)
+}
+
+var PoolBotUpdateProfile = poolBotUpdateProfile{}
+
+func ResultBotUpdateProfile(out *MessageEnvelope, res *BotUpdateProfile) {
+	out.Constructor = C_BotUpdateProfile
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[2068702388] = "BotStart"
 	ConstructorNames[3735815245] = "BotSetInfo"
 	ConstructorNames[911895569] = "BotGet"
 	ConstructorNames[2371725696] = "BotSendMessage"
 	ConstructorNames[2942918011] = "BotsMany"
+	ConstructorNames[2820005221] = "BotUpdateProfile"
 }

@@ -534,6 +534,7 @@ func (p *poolBot) Get() *Bot {
 	if !ok {
 		return &Bot{}
 	}
+	x.Bio = ""
 	return x
 }
 

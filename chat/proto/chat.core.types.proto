@@ -185,6 +185,7 @@ message Bot {
     required int64 ID = 1 [jstype = JS_STRING];
     required string Name = 2;
     required string Username = 3;
+    optional string Bio = 4;
 }
 
 // BotCommands

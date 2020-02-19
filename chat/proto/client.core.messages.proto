@@ -139,6 +139,12 @@ message ClientMediaSize {
     required int32 TotalSize = 2;
 }
 
+// ClientGetMediaHistory
+// return @MessagesMany
+message ClientGetMediaHistory {
+    required ClientMediaType MediaType = 1;
+}
+
 // ClientMediaType
 enum ClientMediaType {
     ClientMediaNone = 0;

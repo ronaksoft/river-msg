@@ -10,5 +10,5 @@ go get -u github.com/gogo/protobuf/protoc-gen-gogo
 go get -u github.com/gogo/protobuf/protoc-gen-gogofast
 go get -u github.com/gogo/protobuf/protoc-gen-gogofaster
 go get -u github.com/gogo/protobuf/gogoproto
-go install ./tools/protoc-gen-helpers
+go install ./tools/protoc-gen-gohelpers
 go install ./tools/protoc-gen-gokk

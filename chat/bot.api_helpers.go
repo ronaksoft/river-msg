@@ -132,34 +132,6 @@ func ResultBotSendMessage(out *MessageEnvelope, res *BotSendMessage) {
 	res.MarshalTo(out.Message)
 }
 
-const C_BotsMany int64 = 2942918011
-
-type poolBotsMany struct {
-	pool sync.Pool
-}
-
-func (p *poolBotsMany) Get() *BotsMany {
-	x, ok := p.pool.Get().(*BotsMany)
-	if !ok {
-		return &BotsMany{}
-	}
-	x.Bots = x.Bots[:0]
-	return x
-}
-
-func (p *poolBotsMany) Put(x *BotsMany) {
-	p.pool.Put(x)
-}
-
-var PoolBotsMany = poolBotsMany{}
-
-func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
-	out.Constructor = C_BotsMany
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_BotUpdateProfile int64 = 2820005221
 
 type poolBotUpdateProfile struct {
@@ -188,11 +160,127 @@ func ResultBotUpdateProfile(out *MessageEnvelope, res *BotUpdateProfile) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotSetCallbackAnswer int64 = 1891806754
+
+type poolBotSetCallbackAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolBotSetCallbackAnswer) Get() *BotSetCallbackAnswer {
+	x, ok := p.pool.Get().(*BotSetCallbackAnswer)
+	if !ok {
+		return &BotSetCallbackAnswer{}
+	}
+	x.Url = ""
+	x.Message = ""
+	return x
+}
+
+func (p *poolBotSetCallbackAnswer) Put(x *BotSetCallbackAnswer) {
+	p.pool.Put(x)
+}
+
+var PoolBotSetCallbackAnswer = poolBotSetCallbackAnswer{}
+
+func ResultBotSetCallbackAnswer(out *MessageEnvelope, res *BotSetCallbackAnswer) {
+	out.Constructor = C_BotSetCallbackAnswer
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotGetCallbackAnswer int64 = 345706640
+
+type poolBotGetCallbackAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolBotGetCallbackAnswer) Get() *BotGetCallbackAnswer {
+	x, ok := p.pool.Get().(*BotGetCallbackAnswer)
+	if !ok {
+		return &BotGetCallbackAnswer{}
+	}
+	return x
+}
+
+func (p *poolBotGetCallbackAnswer) Put(x *BotGetCallbackAnswer) {
+	p.pool.Put(x)
+}
+
+var PoolBotGetCallbackAnswer = poolBotGetCallbackAnswer{}
+
+func ResultBotGetCallbackAnswer(out *MessageEnvelope, res *BotGetCallbackAnswer) {
+	out.Constructor = C_BotGetCallbackAnswer
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotCallbackAnswer int64 = 3344545062
+
+type poolBotCallbackAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolBotCallbackAnswer) Get() *BotCallbackAnswer {
+	x, ok := p.pool.Get().(*BotCallbackAnswer)
+	if !ok {
+		return &BotCallbackAnswer{}
+	}
+	x.Url = ""
+	x.Message = ""
+	return x
+}
+
+func (p *poolBotCallbackAnswer) Put(x *BotCallbackAnswer) {
+	p.pool.Put(x)
+}
+
+var PoolBotCallbackAnswer = poolBotCallbackAnswer{}
+
+func ResultBotCallbackAnswer(out *MessageEnvelope, res *BotCallbackAnswer) {
+	out.Constructor = C_BotCallbackAnswer
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotsMany int64 = 2942918011
+
+type poolBotsMany struct {
+	pool sync.Pool
+}
+
+func (p *poolBotsMany) Get() *BotsMany {
+	x, ok := p.pool.Get().(*BotsMany)
+	if !ok {
+		return &BotsMany{}
+	}
+	x.Bots = x.Bots[:0]
+	return x
+}
+
+func (p *poolBotsMany) Put(x *BotsMany) {
+	p.pool.Put(x)
+}
+
+var PoolBotsMany = poolBotsMany{}
+
+func ResultBotsMany(out *MessageEnvelope, res *BotsMany) {
+	out.Constructor = C_BotsMany
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[2068702388] = "BotStart"
 	ConstructorNames[3735815245] = "BotSetInfo"
 	ConstructorNames[911895569] = "BotGet"
 	ConstructorNames[2371725696] = "BotSendMessage"
-	ConstructorNames[2942918011] = "BotsMany"
 	ConstructorNames[2820005221] = "BotUpdateProfile"
+	ConstructorNames[1891806754] = "BotSetCallbackAnswer"
+	ConstructorNames[345706640] = "BotGetCallbackAnswer"
+	ConstructorNames[3344545062] = "BotCallbackAnswer"
+	ConstructorNames[2942918011] = "BotsMany"
 }

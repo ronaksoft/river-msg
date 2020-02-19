@@ -383,6 +383,33 @@ func ResultClientMediaSize(out *MessageEnvelope, res *ClientMediaSize) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ClientGetMediaHistory int64 = 1354863379
+
+type poolClientGetMediaHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolClientGetMediaHistory) Get() *ClientGetMediaHistory {
+	x, ok := p.pool.Get().(*ClientGetMediaHistory)
+	if !ok {
+		return &ClientGetMediaHistory{}
+	}
+	return x
+}
+
+func (p *poolClientGetMediaHistory) Put(x *ClientGetMediaHistory) {
+	p.pool.Put(x)
+}
+
+var PoolClientGetMediaHistory = poolClientGetMediaHistory{}
+
+func ResultClientGetMediaHistory(out *MessageEnvelope, res *ClientGetMediaHistory) {
+	out.Constructor = C_ClientGetMediaHistory
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
 	ConstructorNames[1742781507] = "ClientGlobalSearch"
@@ -396,4 +423,5 @@ func init() {
 	ConstructorNames[442767121] = "ClientCachedMediaInfo"
 	ConstructorNames[2711408875] = "ClientPeerMediaInfo"
 	ConstructorNames[1541024203] = "ClientMediaSize"
+	ConstructorNames[1354863379] = "ClientGetMediaHistory"
 }

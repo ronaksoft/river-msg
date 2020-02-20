@@ -200,6 +200,7 @@ func (p *poolBotGetCallbackAnswer) Get() *BotGetCallbackAnswer {
 	if !ok {
 		return &BotGetCallbackAnswer{}
 	}
+	x.MessageID = 0
 	return x
 }
 

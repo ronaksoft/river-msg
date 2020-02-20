@@ -83,7 +83,7 @@ message BotSetCallbackAnswer {
 // @Returns: BotCallbackAnswer
 message BotGetCallbackAnswer {
     required InputPeer Peer = 1;
-    required int64 MessageID = 2;       // ID of the Message if button is the inline keyboard
+    optional int64 MessageID = 2;       // ID of the Message if button is the inline keyboard
     required bytes Data = 3;            // Callback data
 }
 

@@ -966,6 +966,64 @@ func ResultUpdateMessagePoll(out *MessageEnvelope, res *UpdateMessagePoll) {
 	res.MarshalTo(out.Message)
 }
 
+const C_UpdateBotCallbackQuery int64 = 3408999713
+
+type poolUpdateBotCallbackQuery struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateBotCallbackQuery) Get() *UpdateBotCallbackQuery {
+	x, ok := p.pool.Get().(*UpdateBotCallbackQuery)
+	if !ok {
+		return &UpdateBotCallbackQuery{}
+	}
+	x.MessageID = 0
+	x.Data = nil
+	return x
+}
+
+func (p *poolUpdateBotCallbackQuery) Put(x *UpdateBotCallbackQuery) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateBotCallbackQuery = poolUpdateBotCallbackQuery{}
+
+func ResultUpdateBotCallbackQuery(out *MessageEnvelope, res *UpdateBotCallbackQuery) {
+	out.Constructor = C_UpdateBotCallbackQuery
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_UpdateBotInlineCallbackQuery int64 = 426698513
+
+type poolUpdateBotInlineCallbackQuery struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateBotInlineCallbackQuery) Get() *UpdateBotInlineCallbackQuery {
+	x, ok := p.pool.Get().(*UpdateBotInlineCallbackQuery)
+	if !ok {
+		return &UpdateBotInlineCallbackQuery{}
+	}
+	x.MessageID = 0
+	x.Data = nil
+	return x
+}
+
+func (p *poolUpdateBotInlineCallbackQuery) Put(x *UpdateBotInlineCallbackQuery) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateBotInlineCallbackQuery = poolUpdateBotInlineCallbackQuery{}
+
+func ResultUpdateBotInlineCallbackQuery(out *MessageEnvelope, res *UpdateBotInlineCallbackQuery) {
+	out.Constructor = C_UpdateBotInlineCallbackQuery
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -1001,4 +1059,6 @@ func init() {
 	ConstructorNames[3702192307] = "UpdateLabelDeleted"
 	ConstructorNames[3750625773] = "UpdateUserBlocked"
 	ConstructorNames[383248674] = "UpdateMessagePoll"
+	ConstructorNames[3408999713] = "UpdateBotCallbackQuery"
+	ConstructorNames[426698513] = "UpdateBotInlineCallbackQuery"
 }

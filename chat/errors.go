@@ -100,4 +100,5 @@ const (
 	ErrItemSecurityQuestion = "SECURITY_QUESTION"
 	ErrItemSecurityAnswer   = "SECURITY_ANSWER"
 	ErrItemPasswordRecover  = "PASSWORD_RECOVER"
+	ErrItemQuery            = "QUERY"
 )

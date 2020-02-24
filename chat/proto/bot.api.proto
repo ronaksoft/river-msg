@@ -99,4 +99,14 @@ message BotsMany {
     repeated BotInfo Bots = 1;
 }
 
+// BotGetCommands
+// @Function
+// @Return: BotCommandsMany
+message BotGetCommands {
+    required InputPeer Peer = 1;
+}
 
+// BotCommandsMany
+message BotCommandsMany {
+    repeated BotCommands Commands = 1;
+}

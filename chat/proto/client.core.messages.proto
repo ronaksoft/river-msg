@@ -154,3 +154,9 @@ enum ClientMediaType {
     ClientMediaAudio = 4;
     ClientMediaLink = 5;
 }
+
+// ClientGetLastBotKeyboard
+// return @UserMessage
+message ClientGetLastBotKeyboard {
+    required InputPeer peer = 1;
+}

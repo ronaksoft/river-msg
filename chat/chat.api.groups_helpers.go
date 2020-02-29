@@ -217,6 +217,7 @@ func (p *poolGroupsUploadPhoto) Get() *GroupsUploadPhoto {
 	if !ok {
 		return &GroupsUploadPhoto{}
 	}
+	x.ReturnObject = false
 	return x
 }
 

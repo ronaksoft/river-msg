@@ -410,6 +410,33 @@ func ResultClientGetMediaHistory(out *MessageEnvelope, res *ClientGetMediaHistor
 	res.MarshalTo(out.Message)
 }
 
+const C_ClientGetLastBotKeyboard int64 = 177544569
+
+type poolClientGetLastBotKeyboard struct {
+	pool sync.Pool
+}
+
+func (p *poolClientGetLastBotKeyboard) Get() *ClientGetLastBotKeyboard {
+	x, ok := p.pool.Get().(*ClientGetLastBotKeyboard)
+	if !ok {
+		return &ClientGetLastBotKeyboard{}
+	}
+	return x
+}
+
+func (p *poolClientGetLastBotKeyboard) Put(x *ClientGetLastBotKeyboard) {
+	p.pool.Put(x)
+}
+
+var PoolClientGetLastBotKeyboard = poolClientGetLastBotKeyboard{}
+
+func ResultClientGetLastBotKeyboard(out *MessageEnvelope, res *ClientGetLastBotKeyboard) {
+	out.Constructor = C_ClientGetLastBotKeyboard
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
 	ConstructorNames[1742781507] = "ClientGlobalSearch"
@@ -424,4 +451,5 @@ func init() {
 	ConstructorNames[2711408875] = "ClientPeerMediaInfo"
 	ConstructorNames[1541024203] = "ClientMediaSize"
 	ConstructorNames[1354863379] = "ClientGetMediaHistory"
+	ConstructorNames[177544569] = "ClientGetLastBotKeyboard"
 }

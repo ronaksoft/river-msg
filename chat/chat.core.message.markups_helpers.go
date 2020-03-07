@@ -76,6 +76,33 @@ func ResultReplyInlineMarkup(out *MessageEnvelope, res *ReplyInlineMarkup) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ReplyKeyboardHide int64 = 3134153306
+
+type poolReplyKeyboardHide struct {
+	pool sync.Pool
+}
+
+func (p *poolReplyKeyboardHide) Get() *ReplyKeyboardHide {
+	x, ok := p.pool.Get().(*ReplyKeyboardHide)
+	if !ok {
+		return &ReplyKeyboardHide{}
+	}
+	return x
+}
+
+func (p *poolReplyKeyboardHide) Put(x *ReplyKeyboardHide) {
+	p.pool.Put(x)
+}
+
+var PoolReplyKeyboardHide = poolReplyKeyboardHide{}
+
+func ResultReplyKeyboardHide(out *MessageEnvelope, res *ReplyKeyboardHide) {
+	out.Constructor = C_ReplyKeyboardHide
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_KeyboardButtonRow int64 = 2222403758
 
 type poolKeyboardButtonRow struct {
@@ -323,66 +350,10 @@ func ResultButtonBuy(out *MessageEnvelope, res *ButtonBuy) {
 	res.MarshalTo(out.Message)
 }
 
-const C_ButtonUrlAuth int64 = 2344836100
-
-type poolButtonUrlAuth struct {
-	pool sync.Pool
-}
-
-func (p *poolButtonUrlAuth) Get() *ButtonUrlAuth {
-	x, ok := p.pool.Get().(*ButtonUrlAuth)
-	if !ok {
-		return &ButtonUrlAuth{}
-	}
-	x.FwdText = ""
-	return x
-}
-
-func (p *poolButtonUrlAuth) Put(x *ButtonUrlAuth) {
-	p.pool.Put(x)
-}
-
-var PoolButtonUrlAuth = poolButtonUrlAuth{}
-
-func ResultButtonUrlAuth(out *MessageEnvelope, res *ButtonUrlAuth) {
-	out.Constructor = C_ButtonUrlAuth
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_InputButtonUrlAuth int64 = 2325608894
-
-type poolInputButtonUrlAuth struct {
-	pool sync.Pool
-}
-
-func (p *poolInputButtonUrlAuth) Get() *InputButtonUrlAuth {
-	x, ok := p.pool.Get().(*InputButtonUrlAuth)
-	if !ok {
-		return &InputButtonUrlAuth{}
-	}
-	x.FwdText = ""
-	x.RequestWriteAccess = false
-	return x
-}
-
-func (p *poolInputButtonUrlAuth) Put(x *InputButtonUrlAuth) {
-	p.pool.Put(x)
-}
-
-var PoolInputButtonUrlAuth = poolInputButtonUrlAuth{}
-
-func ResultInputButtonUrlAuth(out *MessageEnvelope, res *InputButtonUrlAuth) {
-	out.Constructor = C_InputButtonUrlAuth
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 func init() {
 	ConstructorNames[3207405102] = "ReplyKeyboardMarkup"
 	ConstructorNames[2436413989] = "ReplyInlineMarkup"
+	ConstructorNames[3134153306] = "ReplyKeyboardHide"
 	ConstructorNames[2222403758] = "KeyboardButtonRow"
 	ConstructorNames[2639543624] = "KeyboardButtonEnvelope"
 	ConstructorNames[1034594571] = "Button"
@@ -392,6 +363,4 @@ func init() {
 	ConstructorNames[323515934] = "ButtonRequestGeoLocation"
 	ConstructorNames[3842667878] = "ButtonSwitchInline"
 	ConstructorNames[2992465437] = "ButtonBuy"
-	ConstructorNames[2344836100] = "ButtonUrlAuth"
-	ConstructorNames[2325608894] = "InputButtonUrlAuth"
 }

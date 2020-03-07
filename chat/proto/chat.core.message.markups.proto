@@ -12,6 +12,7 @@ option (gogoproto.goproto_enum_prefix_all) = false;
     Copyright Ronak Software Group 2018
 */
 
+// ReplyKeyboardMarkup
 message ReplyKeyboardMarkup {
     // Requests clients to hide the keyboard as soon as it's been used.
     // The keyboard will still be available, but clients will automatically display the usual letter-keyboard
@@ -31,10 +32,12 @@ message ReplyKeyboardMarkup {
     repeated KeyboardButtonRow Rows = 4;
 }
 
+// ReplyInlineMarkup
 message ReplyInlineMarkup {
     repeated KeyboardButtonRow Rows = 1;
 }
 
+// ReplyKeyboardHide
 message ReplyKeyboardHide {
     // Use this flag if you want to remove the keyboard for specific users only. Targets:
     // 1) users that are @mentioned in the text of the Message object;
@@ -44,14 +47,16 @@ message ReplyKeyboardHide {
 
 
 
-
-
 // Keyboard Buttons
 
+// KeyboardButtonRow
+// This is a list of buttons
 message KeyboardButtonRow {
     repeated KeyboardButtonEnvelope Buttons = 1;
 }
 
+// KeyboardButtonEnvelope
+// This is an envelope for buttons
 message KeyboardButtonEnvelope {
     required int64 Constructor = 1;
     optional bytes Data = 2;

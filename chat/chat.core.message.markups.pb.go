@@ -24,6 +24,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
+// ReplyKeyboardMarkup
 type ReplyKeyboardMarkup struct {
 	// Requests clients to hide the keyboard as soon as it's been used.
 	// The keyboard will still be available, but clients will automatically display the usual letter-keyboard
@@ -104,6 +105,7 @@ func (m *ReplyKeyboardMarkup) GetRows() []*KeyboardButtonRow {
 	return nil
 }
 
+// ReplyInlineMarkup
 type ReplyInlineMarkup struct {
 	Rows []*KeyboardButtonRow `protobuf:"bytes,1,rep,name=Rows" json:"Rows,omitempty"`
 }
@@ -148,6 +150,7 @@ func (m *ReplyInlineMarkup) GetRows() []*KeyboardButtonRow {
 	return nil
 }
 
+// ReplyKeyboardHide
 type ReplyKeyboardHide struct {
 	// Use this flag if you want to remove the keyboard for specific users only. Targets:
 	// 1) users that are @mentioned in the text of the Message object;
@@ -195,6 +198,8 @@ func (m *ReplyKeyboardHide) GetSelective() bool {
 	return false
 }
 
+// KeyboardButtonRow
+// This is a list of buttons
 type KeyboardButtonRow struct {
 	Buttons []*KeyboardButtonEnvelope `protobuf:"bytes,1,rep,name=Buttons" json:"Buttons,omitempty"`
 }
@@ -239,6 +244,8 @@ func (m *KeyboardButtonRow) GetButtons() []*KeyboardButtonEnvelope {
 	return nil
 }
 
+// KeyboardButtonEnvelope
+// This is an envelope for buttons
 type KeyboardButtonEnvelope struct {
 	Constructor int64  `protobuf:"varint,1,req,name=Constructor" json:"Constructor"`
 	Data        []byte `protobuf:"bytes,2,opt,name=Data" json:"Data"`

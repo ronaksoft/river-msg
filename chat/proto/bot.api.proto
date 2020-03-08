@@ -28,7 +28,7 @@ message BotStart {
 
 // BotConnect
 // @Function (BotOnly)
-// @Return: BotInfo
+// @Return: BotAuthorization
 message BotConnect {
     required int32 Version = 1;
 }
@@ -70,7 +70,7 @@ message BotSendMessage {
 // @Function (BotOnly)
 // @Return: Bool
 message BotUpdateProfile {
-    required int64  BotID = 1;
+    required int64 BotID = 1;
     required string Name = 2;
     optional string Bio = 4;
 }
@@ -80,9 +80,9 @@ message BotUpdateProfile {
 // @Returns: Bool
 message BotSetCallbackAnswer {
     required int64 QueryID = 1;
-    optional string Url = 2;        // URL to open
-    optional string Message = 3;    // Alert to show
-    required int32 CacheTime = 4;   // For how long should this answer be cached (in seconds) [Default is  300]
+    optional string Url = 2; // URL to open
+    optional string Message = 3; // Alert to show
+    required int32 CacheTime = 4; // For how long should this answer be cached (in seconds) [Default is  300]
 }
 
 // BotGetCallbackAnswer
@@ -90,15 +90,21 @@ message BotSetCallbackAnswer {
 // @Returns: BotCallbackAnswer
 message BotGetCallbackAnswer {
     required InputPeer Peer = 1;
-    optional int64 MessageID = 2;       // ID of the Message if button is the inline keyboard
-    required bytes Data = 3;            // Callback data
+    optional int64 MessageID = 2; // ID of the Message if button is the inline keyboard
+    required bytes Data = 3; // Callback data
+}
+
+// BotAuthorization
+message BotAuthorization {
+    required int64 ID = 1;
+    required string Username = 2;
 }
 
 // BotCallbackAnswer
 message BotCallbackAnswer {
-    optional string Url = 1;        // URL to open
-    optional string Message = 2;    // Alert to show
-    required int32 CacheTime = 3;   // For how long should this answer be cached (in seconds)
+    optional string Url = 1; // URL to open
+    optional string Message = 2; // Alert to show
+    required int32 CacheTime = 3; // For how long should this answer be cached (in seconds)
 }
 
 // BotsMany

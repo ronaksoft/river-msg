@@ -244,6 +244,33 @@ func ResultBotGetCallbackAnswer(out *MessageEnvelope, res *BotGetCallbackAnswer)
 	res.MarshalTo(out.Message)
 }
 
+const C_BotAuthorization int64 = 1719116916
+
+type poolBotAuthorization struct {
+	pool sync.Pool
+}
+
+func (p *poolBotAuthorization) Get() *BotAuthorization {
+	x, ok := p.pool.Get().(*BotAuthorization)
+	if !ok {
+		return &BotAuthorization{}
+	}
+	return x
+}
+
+func (p *poolBotAuthorization) Put(x *BotAuthorization) {
+	p.pool.Put(x)
+}
+
+var PoolBotAuthorization = poolBotAuthorization{}
+
+func ResultBotAuthorization(out *MessageEnvelope, res *BotAuthorization) {
+	out.Constructor = C_BotAuthorization
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_BotCallbackAnswer int64 = 3344545062
 
 type poolBotCallbackAnswer struct {
@@ -365,6 +392,7 @@ func init() {
 	ConstructorNames[2820005221] = "BotUpdateProfile"
 	ConstructorNames[1891806754] = "BotSetCallbackAnswer"
 	ConstructorNames[345706640] = "BotGetCallbackAnswer"
+	ConstructorNames[1719116916] = "BotAuthorization"
 	ConstructorNames[3344545062] = "BotCallbackAnswer"
 	ConstructorNames[2942918011] = "BotsMany"
 	ConstructorNames[473628905] = "BotGetCommands"

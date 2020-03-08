@@ -5,9 +5,9 @@ rm ./chat/*.pb.go
 
 # Create 'msg' package
 cd ./chat/proto/ || exit
-protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto
-protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gohelpers_out=../ ./*.proto
-protoc  -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gokk_out=../ ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gohelpers_out=../ ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gokk_out=../ ./*.proto
 cd ..
 go fmt
 
@@ -16,9 +16,9 @@ go fmt
 cd "${currentWorkingDir}" || exit
 rm ./admin/*.pb.go
 cd ./admin/proto/ || exit
-protoc  -I="${currentWorkingDir}"/../vendor -I="${GOPATH}"/src/git.ronaksoftware.com -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src -I=. --gogofaster_out=../ ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I="${GOPATH}"/src/git.ronaksoftware.com -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src -I=. --gogofaster_out=../ ./*.proto
 
 
 # Create Notification gRPC Stubs
 cd "${currentWorkingDir}"/notif/proto/ || exit
-protoc -I="${currentWorkingDir}"/../vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto
+protoc -I="${currentWorkingDir}"/vendor -I=. -I="${GOPATH}"/src/github.com/gogo/protobuf/protobuf -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto

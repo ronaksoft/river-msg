@@ -44,6 +44,33 @@ func ResultBotStart(out *MessageEnvelope, res *BotStart) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotConnect int64 = 4095439113
+
+type poolBotConnect struct {
+	pool sync.Pool
+}
+
+func (p *poolBotConnect) Get() *BotConnect {
+	x, ok := p.pool.Get().(*BotConnect)
+	if !ok {
+		return &BotConnect{}
+	}
+	return x
+}
+
+func (p *poolBotConnect) Put(x *BotConnect) {
+	p.pool.Put(x)
+}
+
+var PoolBotConnect = poolBotConnect{}
+
+func ResultBotConnect(out *MessageEnvelope, res *BotConnect) {
+	out.Constructor = C_BotConnect
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_BotSetInfo int64 = 3735815245
 
 type poolBotSetInfo struct {
@@ -331,6 +358,7 @@ func ResultBotCommandsMany(out *MessageEnvelope, res *BotCommandsMany) {
 
 func init() {
 	ConstructorNames[2068702388] = "BotStart"
+	ConstructorNames[4095439113] = "BotConnect"
 	ConstructorNames[3735815245] = "BotSetInfo"
 	ConstructorNames[911895569] = "BotGet"
 	ConstructorNames[2371725696] = "BotSendMessage"

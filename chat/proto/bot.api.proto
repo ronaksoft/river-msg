@@ -26,10 +26,10 @@ message BotStart {
     required string StartParam = 3;
 }
 
-// BotConnect
+// BotRecall
 // @Function (BotOnly)
-// @Return: BotAuthorization
-message BotConnect {
+// @Return: BotRecalled
+message BotRecall {
     required int32 Version = 1;
 }
 
@@ -94,8 +94,8 @@ message BotGetCallbackAnswer {
     required bytes Data = 3; // Callback data
 }
 
-// BotAuthorization
-message BotAuthorization {
+// BotRecalled
+message BotRecalled {
     required int64 ID = 1;
     required string Username = 2;
 }

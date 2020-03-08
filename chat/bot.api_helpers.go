@@ -44,28 +44,28 @@ func ResultBotStart(out *MessageEnvelope, res *BotStart) {
 	res.MarshalTo(out.Message)
 }
 
-const C_BotConnect int64 = 4095439113
+const C_BotRecall int64 = 4208974051
 
-type poolBotConnect struct {
+type poolBotRecall struct {
 	pool sync.Pool
 }
 
-func (p *poolBotConnect) Get() *BotConnect {
-	x, ok := p.pool.Get().(*BotConnect)
+func (p *poolBotRecall) Get() *BotRecall {
+	x, ok := p.pool.Get().(*BotRecall)
 	if !ok {
-		return &BotConnect{}
+		return &BotRecall{}
 	}
 	return x
 }
 
-func (p *poolBotConnect) Put(x *BotConnect) {
+func (p *poolBotRecall) Put(x *BotRecall) {
 	p.pool.Put(x)
 }
 
-var PoolBotConnect = poolBotConnect{}
+var PoolBotRecall = poolBotRecall{}
 
-func ResultBotConnect(out *MessageEnvelope, res *BotConnect) {
-	out.Constructor = C_BotConnect
+func ResultBotRecall(out *MessageEnvelope, res *BotRecall) {
+	out.Constructor = C_BotRecall
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -244,28 +244,28 @@ func ResultBotGetCallbackAnswer(out *MessageEnvelope, res *BotGetCallbackAnswer)
 	res.MarshalTo(out.Message)
 }
 
-const C_BotAuthorization int64 = 1719116916
+const C_BotRecalled int64 = 4007077962
 
-type poolBotAuthorization struct {
+type poolBotRecalled struct {
 	pool sync.Pool
 }
 
-func (p *poolBotAuthorization) Get() *BotAuthorization {
-	x, ok := p.pool.Get().(*BotAuthorization)
+func (p *poolBotRecalled) Get() *BotRecalled {
+	x, ok := p.pool.Get().(*BotRecalled)
 	if !ok {
-		return &BotAuthorization{}
+		return &BotRecalled{}
 	}
 	return x
 }
 
-func (p *poolBotAuthorization) Put(x *BotAuthorization) {
+func (p *poolBotRecalled) Put(x *BotRecalled) {
 	p.pool.Put(x)
 }
 
-var PoolBotAuthorization = poolBotAuthorization{}
+var PoolBotRecalled = poolBotRecalled{}
 
-func ResultBotAuthorization(out *MessageEnvelope, res *BotAuthorization) {
-	out.Constructor = C_BotAuthorization
+func ResultBotRecalled(out *MessageEnvelope, res *BotRecalled) {
+	out.Constructor = C_BotRecalled
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -385,14 +385,14 @@ func ResultBotCommandsMany(out *MessageEnvelope, res *BotCommandsMany) {
 
 func init() {
 	ConstructorNames[2068702388] = "BotStart"
-	ConstructorNames[4095439113] = "BotConnect"
+	ConstructorNames[4208974051] = "BotRecall"
 	ConstructorNames[3735815245] = "BotSetInfo"
 	ConstructorNames[911895569] = "BotGet"
 	ConstructorNames[2371725696] = "BotSendMessage"
 	ConstructorNames[2820005221] = "BotUpdateProfile"
 	ConstructorNames[1891806754] = "BotSetCallbackAnswer"
 	ConstructorNames[345706640] = "BotGetCallbackAnswer"
-	ConstructorNames[1719116916] = "BotAuthorization"
+	ConstructorNames[4007077962] = "BotRecalled"
 	ConstructorNames[3344545062] = "BotCallbackAnswer"
 	ConstructorNames[2942918011] = "BotsMany"
 	ConstructorNames[473628905] = "BotGetCommands"

@@ -18,7 +18,7 @@ service BotProxy {
 }
 
 // BotStart
-// @Function
+// @Function (Client)
 // @Return: Bool
 message BotStart {
     required InputPeer Bot = 1;
@@ -26,8 +26,15 @@ message BotStart {
     required string StartParam = 3;
 }
 
+// BotConnect
+// @Function (BotOnly)
+// @Return: BotInfo
+message BotConnect {
+    required int32 Version = 1;
+}
+
 // BotSetInfo
-// @Function
+// @Function (BotOnly)
 // @Return: Bool
 message BotSetInfo {
     required int64 BotID = 1;
@@ -38,7 +45,7 @@ message BotSetInfo {
 }
 
 // BotGet
-// @Function
+// @Function (BotOnly)
 // @Return: BotInfo
 message BotGet {
     required int64 UserID = 1 [jstype = JS_STRING];
@@ -46,7 +53,7 @@ message BotGet {
 }
 
 // BotSendMessage
-// @Function
+// @Function (BotOnly)
 // @Return: Bool
 message BotSendMessage {
     required int64 RandomID = 1;
@@ -60,7 +67,7 @@ message BotSendMessage {
 }
 
 // BotUpdateProfile
-// @Function
+// @Function (BotOnly)
 // @Return: Bool
 message BotUpdateProfile {
     required int64  BotID = 1;
@@ -69,7 +76,7 @@ message BotUpdateProfile {
 }
 
 // BotSetCallbackAnswer
-// @Function
+// @Function (BotOnly)
 // @Returns: Bool
 message BotSetCallbackAnswer {
     required int64 QueryID = 1;
@@ -79,7 +86,7 @@ message BotSetCallbackAnswer {
 }
 
 // BotGetCallbackAnswer
-// @Function
+// @Function (Client)
 // @Returns: BotCallbackAnswer
 message BotGetCallbackAnswer {
     required InputPeer Peer = 1;

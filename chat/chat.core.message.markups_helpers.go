@@ -103,6 +103,35 @@ func ResultReplyKeyboardHide(out *MessageEnvelope, res *ReplyKeyboardHide) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ReplyKeyboardForceReply int64 = 258469686
+
+type poolReplyKeyboardForceReply struct {
+	pool sync.Pool
+}
+
+func (p *poolReplyKeyboardForceReply) Get() *ReplyKeyboardForceReply {
+	x, ok := p.pool.Get().(*ReplyKeyboardForceReply)
+	if !ok {
+		return &ReplyKeyboardForceReply{}
+	}
+	x.SingleUse = false
+	x.Selective = false
+	return x
+}
+
+func (p *poolReplyKeyboardForceReply) Put(x *ReplyKeyboardForceReply) {
+	p.pool.Put(x)
+}
+
+var PoolReplyKeyboardForceReply = poolReplyKeyboardForceReply{}
+
+func ResultReplyKeyboardForceReply(out *MessageEnvelope, res *ReplyKeyboardForceReply) {
+	out.Constructor = C_ReplyKeyboardForceReply
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_KeyboardButtonRow int64 = 2222403758
 
 type poolKeyboardButtonRow struct {
@@ -354,6 +383,7 @@ func init() {
 	ConstructorNames[3207405102] = "ReplyKeyboardMarkup"
 	ConstructorNames[2436413989] = "ReplyInlineMarkup"
 	ConstructorNames[3134153306] = "ReplyKeyboardHide"
+	ConstructorNames[258469686] = "ReplyKeyboardForceReply"
 	ConstructorNames[2222403758] = "KeyboardButtonRow"
 	ConstructorNames[2639543624] = "KeyboardButtonEnvelope"
 	ConstructorNames[1034594571] = "Button"

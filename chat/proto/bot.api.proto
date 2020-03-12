@@ -54,7 +54,7 @@ message BotGet {
 
 // BotSendMessage
 // @Function (BotOnly)
-// @Return: Bool
+// @Return: UserMessage
 message BotSendMessage {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
@@ -64,6 +64,17 @@ message BotSendMessage {
     repeated MessageEntity Entities = 8;
     optional int64 ReplyMarkup = 9;
     optional bytes ReplyMarkupData = 10;
+}
+
+// BotEditMessage
+// @Function (BotOnly)
+// @Return: UserMessage
+message BotEditMessage {
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required string Body = 3;
+    required int64 MessageID = 4;
+    repeated MessageEntity Entities = 5;
 }
 
 // BotUpdateProfile

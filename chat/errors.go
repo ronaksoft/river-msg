@@ -102,4 +102,5 @@ const (
 	ErrItemPasswordRecover  = "PASSWORD_RECOVER"
 	ErrItemQuery            = "QUERY"
 	ErrItemBotFather        = "BOT_FATHER"
+	ErrItemAdminBot         = "ADMIN_BOT"
 )

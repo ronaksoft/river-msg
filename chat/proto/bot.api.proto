@@ -75,6 +75,8 @@ message BotEditMessage {
     required string Body = 3;
     required int64 MessageID = 4;
     repeated MessageEntity Entities = 5;
+    optional int64 ReplyMarkup = 6;
+    optional bytes ReplyMarkupData = 7;
 }
 
 // BotUpdateProfile

@@ -171,6 +171,8 @@ func (p *poolBotEditMessage) Get() *BotEditMessage {
 		return &BotEditMessage{}
 	}
 	x.Entities = x.Entities[:0]
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = nil
 	return x
 }
 

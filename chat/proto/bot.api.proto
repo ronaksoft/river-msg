@@ -4,6 +4,7 @@ package msg;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "chat.core.types.proto";
+import "chat.api.messages.proto";
 
 // Enable custom Marshal method.
 option (gogoproto.marshaler_all) = true;
@@ -77,6 +78,27 @@ message BotEditMessage {
     repeated MessageEntity Entities = 5;
     optional int64 ReplyMarkup = 6;
     optional bytes ReplyMarkupData = 7;
+}
+
+// BotSendMedia
+// @Function (BotOnly)
+// @Return: UserMessage
+message BotSendMedia {
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required InputMediaType MediaType = 3;
+    required bytes MediaData = 4;
+    optional int64 ReplyTo = 5;
+}
+
+// BotSaveFilePart
+// @Function (BotOnly)
+// @Returns: Bool
+message BotSaveFilePart {
+    required int64 FileID = 1 [jstype = JS_STRING];
+    required int32 PartID = 2;
+    required int32 TotalParts = 3;
+    required bytes Bytes = 4;
 }
 
 // BotUpdateProfile

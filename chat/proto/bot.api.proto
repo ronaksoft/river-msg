@@ -114,7 +114,7 @@ message BotUpdateProfile {
 // @Function (BotOnly)
 // @Returns: Bool
 message BotUpdatePhoto {
-    optional InputFile File = 1;
+    optional InputFileLocation File = 1;
     required int64 BotID = 2;
 }
 

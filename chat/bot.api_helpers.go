@@ -272,6 +272,34 @@ func ResultBotUpdateProfile(out *MessageEnvelope, res *BotUpdateProfile) {
 	res.MarshalTo(out.Message)
 }
 
+const C_BotUpdatePhoto int64 = 3464973784
+
+type poolBotUpdatePhoto struct {
+	pool sync.Pool
+}
+
+func (p *poolBotUpdatePhoto) Get() *BotUpdatePhoto {
+	x, ok := p.pool.Get().(*BotUpdatePhoto)
+	if !ok {
+		return &BotUpdatePhoto{}
+	}
+	x.File = nil
+	return x
+}
+
+func (p *poolBotUpdatePhoto) Put(x *BotUpdatePhoto) {
+	p.pool.Put(x)
+}
+
+var PoolBotUpdatePhoto = poolBotUpdatePhoto{}
+
+func ResultBotUpdatePhoto(out *MessageEnvelope, res *BotUpdatePhoto) {
+	out.Constructor = C_BotUpdatePhoto
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_BotSetCallbackAnswer int64 = 1891806754
 
 type poolBotSetCallbackAnswer struct {
@@ -478,6 +506,7 @@ func init() {
 	ConstructorNames[1844738193] = "BotSendMedia"
 	ConstructorNames[905437522] = "BotSaveFilePart"
 	ConstructorNames[2820005221] = "BotUpdateProfile"
+	ConstructorNames[3464973784] = "BotUpdatePhoto"
 	ConstructorNames[1891806754] = "BotSetCallbackAnswer"
 	ConstructorNames[345706640] = "BotGetCallbackAnswer"
 	ConstructorNames[4007077962] = "BotRecalled"

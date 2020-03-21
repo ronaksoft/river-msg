@@ -110,6 +110,14 @@ message BotUpdateProfile {
     optional string Bio = 4;
 }
 
+// BotUpdatePhoto
+// @Function (BotOnly)
+// @Returns: Bool
+message BotUpdatePhoto {
+    optional InputFile File = 1;
+    required int64 BotID = 2;
+}
+
 // BotSetCallbackAnswer
 // @Function (BotOnly)
 // @Returns: Bool

@@ -122,7 +122,8 @@ message BotUpdatePhoto {
 // @Function (BotOnly)
 // @Returns: BotToken
 message BotRevokeToken {
-    required bool GetNew = 1;
+    required int64 BotID = 1;
+    required bool GetNew = 2;
 }
 
 // BotSetCallbackAnswer

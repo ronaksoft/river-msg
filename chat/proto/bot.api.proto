@@ -147,7 +147,7 @@ message BotGetCallbackAnswer {
 
 // BotToken
 message BotToken {
-    required string Token = 1;
+    required bytes Token = 1;
 }
 
 // BotRecalled

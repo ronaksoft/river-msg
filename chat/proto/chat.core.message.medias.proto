@@ -110,12 +110,14 @@ message InputMediaUploadedDocument {
     required string Caption = 4;
     repeated InputDocument Stickers = 5;
     repeated DocumentAttribute Attributes = 6;
+    optional MessageEntity Entities = 7;
 }
 
 // InputMediaDocument
 message InputMediaDocument {
     required string Caption = 1;
     required InputDocument Document = 2;
+    optional MessageEntity Entities = 3;
 }
 
 // InputMediaGeoLocation

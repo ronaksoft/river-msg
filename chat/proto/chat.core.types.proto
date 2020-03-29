@@ -330,8 +330,6 @@ message InputFile {
     required int32 TotalParts = 2;
     required string FileName = 3;
     required string MD5Checksum = 4;
-    optional int32 ClusterID = 5;
-    optional fixed64 AccessHash = 6 [jstype = JS_STRING];
 }
 
 // GroupFlags

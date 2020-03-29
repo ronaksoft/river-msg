@@ -851,6 +851,8 @@ func (p *poolInputFile) Get() *InputFile {
 	if !ok {
 		return &InputFile{}
 	}
+	x.ClusterID = 0
+	x.AccessHash = 0
 	return x
 }
 

@@ -77,6 +77,8 @@ message ClientPendingMessage {
     optional string ThumbUploadID = 15;
     optional int64 FileID = 16;
     optional int64 ThumbID = 17;
+    optional string Sha256 = 18;
+    optional FileLocation ServerFile = 19;
 }
 
 // ClientSearchResult

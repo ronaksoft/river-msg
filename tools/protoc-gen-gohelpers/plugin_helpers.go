@@ -41,6 +41,7 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 	initFunc.WriteString("func init() {\n")
 	for _, mt := range file.MessageType {
 		constructor := crc32.ChecksumIEEE([]byte(*mt.Name))
+
 		g.g.P(fmt.Sprintf("const C_%s int64 = %d", *mt.Name, constructor))
 		initFunc.WriteString(fmt.Sprintf("ConstructorNames[%d] = \"%s\"\n", constructor, *mt.Name))
 		g.g.P(fmt.Sprintf("type pool%s struct{", *mt.Name))
@@ -109,7 +110,6 @@ func zeroValue(t *descriptor.FieldDescriptorProto_Type) string {
 }
 
 func (g *GenPools) GenerateImports(file *generator.FileDescriptor) {
-
 	g.g.AddImport("sync")
 	g.g.AddImport("git.ronaksoftware.com/river")
 }

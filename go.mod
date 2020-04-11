@@ -1,6 +1,6 @@
 module git.ronaksoftware.com/river/msg
 
-go 1.13
+go 1.14
 
 require (
 	github.com/gobwas/pool v0.2.0

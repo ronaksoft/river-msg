@@ -85,8 +85,10 @@ message ContactsGetTopPeers {
 }
 
 // ContactsTopPeer
-message ContactsTopPeer {
-
+message ContactsTopPeers {
+    repeated TopPeerCategoryPeers Categories = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
 }
 
 // TopPeerCategory

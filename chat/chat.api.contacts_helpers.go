@@ -296,28 +296,31 @@ func ResultContactsGetTopPeers(out *MessageEnvelope, res *ContactsGetTopPeers) {
 	res.MarshalTo(out.Message)
 }
 
-const C_ContactsTopPeer int64 = 3576016391
+const C_ContactsTopPeers int64 = 2243919622
 
-type poolContactsTopPeer struct {
+type poolContactsTopPeers struct {
 	pool sync.Pool
 }
 
-func (p *poolContactsTopPeer) Get() *ContactsTopPeer {
-	x, ok := p.pool.Get().(*ContactsTopPeer)
+func (p *poolContactsTopPeers) Get() *ContactsTopPeers {
+	x, ok := p.pool.Get().(*ContactsTopPeers)
 	if !ok {
-		return &ContactsTopPeer{}
+		return &ContactsTopPeers{}
 	}
+	x.Categories = x.Categories[:0]
+	x.Users = x.Users[:0]
+	x.Groups = x.Groups[:0]
 	return x
 }
 
-func (p *poolContactsTopPeer) Put(x *ContactsTopPeer) {
+func (p *poolContactsTopPeers) Put(x *ContactsTopPeers) {
 	p.pool.Put(x)
 }
 
-var PoolContactsTopPeer = poolContactsTopPeer{}
+var PoolContactsTopPeers = poolContactsTopPeers{}
 
-func ResultContactsTopPeer(out *MessageEnvelope, res *ContactsTopPeer) {
-	out.Constructor = C_ContactsTopPeer
+func ResultContactsTopPeers(out *MessageEnvelope, res *ContactsTopPeers) {
+	out.Constructor = C_ContactsTopPeers
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -505,7 +508,7 @@ func init() {
 	ConstructorNames[1073733371] = "ContactsGetBlocked"
 	ConstructorNames[3870802464] = "ContactsSearch"
 	ConstructorNames[1378126220] = "ContactsGetTopPeers"
-	ConstructorNames[3576016391] = "ContactsTopPeer"
+	ConstructorNames[2243919622] = "ContactsTopPeers"
 	ConstructorNames[78563632] = "TopPeerCategoryPeers"
 	ConstructorNames[1763100161] = "TopPeer"
 	ConstructorNames[2067026404] = "BlockedContactsMany"

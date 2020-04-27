@@ -70,6 +70,47 @@ message ContactsSearch {
     required string Q = 1;
 }
 
+// ContactsGetTopPeers
+// @Function
+// @Returns: ContactsTopPeers
+message ContactsGetTopPeers {
+    optional int32 Hash = 1;
+    required int32 Limit = 2;
+    required int32 Offset = 3;
+    optional bool Users = 4;
+    optional bool BotsMessage = 5;
+    optional bool BotsInline = 6;
+    optional bool Groups = 7;
+    optional bool Forwards = 8;
+}
+
+// ContactsTopPeer
+message ContactsTopPeer {
+
+}
+
+// TopPeerCategory
+enum TopPeerCategory {
+    Users = 0;
+    Groups = 1;
+    Forwards = 2;
+    BotsMessage = 3;
+    BotsInline = 4;
+}
+
+// TopPeerCategory
+message TopPeerCategoryPeers {
+    required TopPeerCategory Category = 1;
+    required int32 Count = 2;
+    repeated TopPeer Peers = 3;
+}
+
+// TopPeer
+message TopPeer {
+    required Peer Peer = 1;
+    required float Rate = 2;
+}
+
 // BlockedContactsMany
 message BlockedContactsMany {
     repeated BlockedContact Contacts = 1;

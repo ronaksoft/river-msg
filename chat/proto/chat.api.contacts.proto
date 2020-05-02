@@ -84,6 +84,14 @@ message ContactsGetTopPeers {
     optional bool Forwards = 8;
 }
 
+// ContactsResetTopPeer
+// @Function
+// @Returns: Bool
+message ContactsResetTopPeer {
+    required TopPeerCategory Category = 1;
+    required InputPeer Peer = 2;
+}
+
 // ContactsTopPeer
 message ContactsTopPeers {
     repeated TopPeerCategoryPeers Categories = 1;

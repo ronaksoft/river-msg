@@ -365,6 +365,7 @@ func (p *poolTopPeer) Get() *TopPeer {
 	if !ok {
 		return &TopPeer{}
 	}
+	x.LastUpdate = 0
 	return x
 }
 

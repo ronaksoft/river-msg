@@ -111,6 +111,7 @@ message TopPeerCategoryPeers {
 message TopPeer {
     required Peer Peer = 1;
     required float Rate = 2;
+    optional int64 LastUpdate = 3;
 }
 
 // BlockedContactsMany

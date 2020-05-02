@@ -296,6 +296,33 @@ func ResultContactsGetTopPeers(out *MessageEnvelope, res *ContactsGetTopPeers) {
 	res.MarshalTo(out.Message)
 }
 
+const C_ContactsResetTopPeer int64 = 1114887378
+
+type poolContactsResetTopPeer struct {
+	pool sync.Pool
+}
+
+func (p *poolContactsResetTopPeer) Get() *ContactsResetTopPeer {
+	x, ok := p.pool.Get().(*ContactsResetTopPeer)
+	if !ok {
+		return &ContactsResetTopPeer{}
+	}
+	return x
+}
+
+func (p *poolContactsResetTopPeer) Put(x *ContactsResetTopPeer) {
+	p.pool.Put(x)
+}
+
+var PoolContactsResetTopPeer = poolContactsResetTopPeer{}
+
+func ResultContactsResetTopPeer(out *MessageEnvelope, res *ContactsResetTopPeer) {
+	out.Constructor = C_ContactsResetTopPeer
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_ContactsTopPeers int64 = 2243919622
 
 type poolContactsTopPeers struct {
@@ -509,6 +536,7 @@ func init() {
 	ConstructorNames[1073733371] = "ContactsGetBlocked"
 	ConstructorNames[3870802464] = "ContactsSearch"
 	ConstructorNames[1378126220] = "ContactsGetTopPeers"
+	ConstructorNames[1114887378] = "ContactsResetTopPeer"
 	ConstructorNames[2243919622] = "ContactsTopPeers"
 	ConstructorNames[78563632] = "TopPeerCategoryPeers"
 	ConstructorNames[1763100161] = "TopPeer"

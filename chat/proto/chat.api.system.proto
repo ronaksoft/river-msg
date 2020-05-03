@@ -55,10 +55,10 @@ message SystemUploadUsage {
 
 // ClientUsage
 message ClientUsage {
-    required string Year = 1; // 4-digit year
-    required string Month = 2; // 2-digit month e.x: 01, 02, 12
-    required string Day = 3; // 2-digit day e.x: 01, 02, 31
-    required int64 UserID = 4; //
+    required int32 Year = 1;
+    required int32 Month = 2;
+    required int32 Day = 3;
+    required int64 UserID = 4;
     required int64 ForegroundTime = 5; // The time client is on foreground in seconds
     required int64 AvgResponseTime = 6; // The average response time for each api
     optional int64 ReceivedMessages = 7;

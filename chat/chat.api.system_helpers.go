@@ -97,33 +97,6 @@ func ResultSystemGetServerTime(out *MessageEnvelope, res *SystemGetServerTime) {
 	res.MarshalTo(out.Message)
 }
 
-const C_SystemGetAppUpdate int64 = 450761036
-
-type poolSystemGetAppUpdate struct {
-	pool sync.Pool
-}
-
-func (p *poolSystemGetAppUpdate) Get() *SystemGetAppUpdate {
-	x, ok := p.pool.Get().(*SystemGetAppUpdate)
-	if !ok {
-		return &SystemGetAppUpdate{}
-	}
-	return x
-}
-
-func (p *poolSystemGetAppUpdate) Put(x *SystemGetAppUpdate) {
-	p.pool.Put(x)
-}
-
-var PoolSystemGetAppUpdate = poolSystemGetAppUpdate{}
-
-func ResultSystemGetAppUpdate(out *MessageEnvelope, res *SystemGetAppUpdate) {
-	out.Constructor = C_SystemGetAppUpdate
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 const C_SystemGetInfo int64 = 1486296237
 
 type poolSystemGetInfo struct {
@@ -491,7 +464,6 @@ func init() {
 	ConstructorNames[1191522796] = "SystemGetPublicKeys"
 	ConstructorNames[1786665018] = "SystemGetDHGroups"
 	ConstructorNames[1321179349] = "SystemGetServerTime"
-	ConstructorNames[450761036] = "SystemGetAppUpdate"
 	ConstructorNames[1486296237] = "SystemGetInfo"
 	ConstructorNames[1705203315] = "SystemGetSalts"
 	ConstructorNames[1910333714] = "SystemGetConfig"

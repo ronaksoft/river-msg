@@ -52,13 +52,13 @@ message ClientUsage {
     required int32 Day = 3;
     required int64 UserID = 4;
     required int64 ForegroundTime = 5; // The time client is on foreground in seconds
-    required int64 AvgResponseTime = 6; // The average response time for each api
+    optional int64 AvgResponseTime = 6; // The average response time for each api
     optional int64 ReceivedMessages = 7;
     optional int64 SentMessages = 8;
     optional int64 ReceivedMedia = 9;
     optional int64 SentMedia = 10;
-    optional int64 ReceivedError = 11;
-    optional int64 ReceivedInternalError = 12;
+    optional int64 UploadBytes = 11;
+    optional int64 DownloadBytes = 12;
 }
 
 // SystemConfig

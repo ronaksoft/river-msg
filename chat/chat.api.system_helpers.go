@@ -217,12 +217,13 @@ func (p *poolClientUsage) Get() *ClientUsage {
 	if !ok {
 		return &ClientUsage{}
 	}
+	x.AvgResponseTime = 0
 	x.ReceivedMessages = 0
 	x.SentMessages = 0
 	x.ReceivedMedia = 0
 	x.SentMedia = 0
-	x.ReceivedError = 0
-	x.ReceivedInternalError = 0
+	x.UploadBytes = 0
+	x.DownloadBytes = 0
 	return x
 }
 

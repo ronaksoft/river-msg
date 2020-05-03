@@ -20,14 +20,6 @@ message SystemGetDHGroups {
 message SystemGetServerTime {
 }
 
-// SystemGetAppUpdate
-// @Function
-// @Returns: AppUpdate
-message SystemGetAppUpdate {
-    required string ClientType = 1;
-    required int32 Version = 2;
-}
-
 // SystemGetInfo
 // @Function
 // @Returns: SystemInfo
@@ -95,6 +87,7 @@ message DataCenter {
     required bool Quic = 5;
 
 }
+
 // SystemSalts
 message SystemSalts {
     repeated int64 Salts = 1;

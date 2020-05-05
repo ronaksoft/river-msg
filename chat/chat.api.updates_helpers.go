@@ -996,30 +996,58 @@ func ResultUpdateBotCallbackQuery(out *MessageEnvelope, res *UpdateBotCallbackQu
 	res.MarshalTo(out.Message)
 }
 
-const C_UpdateBotInlineCallbackQuery int64 = 426698513
+const C_UpdateBotInlineQuery int64 = 4065328876
 
-type poolUpdateBotInlineCallbackQuery struct {
+type poolUpdateBotInlineQuery struct {
 	pool sync.Pool
 }
 
-func (p *poolUpdateBotInlineCallbackQuery) Get() *UpdateBotInlineCallbackQuery {
-	x, ok := p.pool.Get().(*UpdateBotInlineCallbackQuery)
+func (p *poolUpdateBotInlineQuery) Get() *UpdateBotInlineQuery {
+	x, ok := p.pool.Get().(*UpdateBotInlineQuery)
 	if !ok {
-		return &UpdateBotInlineCallbackQuery{}
+		return &UpdateBotInlineQuery{}
 	}
-	x.MessageID = 0
-	x.Data = nil
+	x.Offset = ""
+	x.Geo = nil
 	return x
 }
 
-func (p *poolUpdateBotInlineCallbackQuery) Put(x *UpdateBotInlineCallbackQuery) {
+func (p *poolUpdateBotInlineQuery) Put(x *UpdateBotInlineQuery) {
 	p.pool.Put(x)
 }
 
-var PoolUpdateBotInlineCallbackQuery = poolUpdateBotInlineCallbackQuery{}
+var PoolUpdateBotInlineQuery = poolUpdateBotInlineQuery{}
 
-func ResultUpdateBotInlineCallbackQuery(out *MessageEnvelope, res *UpdateBotInlineCallbackQuery) {
-	out.Constructor = C_UpdateBotInlineCallbackQuery
+func ResultUpdateBotInlineQuery(out *MessageEnvelope, res *UpdateBotInlineQuery) {
+	out.Constructor = C_UpdateBotInlineQuery
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_UpdateBotInlineSend int64 = 2208028013
+
+type poolUpdateBotInlineSend struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateBotInlineSend) Get() *UpdateBotInlineSend {
+	x, ok := p.pool.Get().(*UpdateBotInlineSend)
+	if !ok {
+		return &UpdateBotInlineSend{}
+	}
+	x.Geo = nil
+	return x
+}
+
+func (p *poolUpdateBotInlineSend) Put(x *UpdateBotInlineSend) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateBotInlineSend = poolUpdateBotInlineSend{}
+
+func ResultUpdateBotInlineSend(out *MessageEnvelope, res *UpdateBotInlineSend) {
+	out.Constructor = C_UpdateBotInlineSend
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -1061,5 +1089,6 @@ func init() {
 	ConstructorNames[3750625773] = "UpdateUserBlocked"
 	ConstructorNames[383248674] = "UpdateMessagePoll"
 	ConstructorNames[3408999713] = "UpdateBotCallbackQuery"
-	ConstructorNames[426698513] = "UpdateBotInlineCallbackQuery"
+	ConstructorNames[4065328876] = "UpdateBotInlineQuery"
+	ConstructorNames[2208028013] = "UpdateBotInlineSend"
 }

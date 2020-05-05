@@ -1094,6 +1094,60 @@ func ResultLabelsMany(out *MessageEnvelope, res *LabelsMany) {
 	res.MarshalTo(out.Message)
 }
 
+const C_GeoLocation int64 = 3794405429
+
+type poolGeoLocation struct {
+	pool sync.Pool
+}
+
+func (p *poolGeoLocation) Get() *GeoLocation {
+	x, ok := p.pool.Get().(*GeoLocation)
+	if !ok {
+		return &GeoLocation{}
+	}
+	return x
+}
+
+func (p *poolGeoLocation) Put(x *GeoLocation) {
+	p.pool.Put(x)
+}
+
+var PoolGeoLocation = poolGeoLocation{}
+
+func ResultGeoLocation(out *MessageEnvelope, res *GeoLocation) {
+	out.Constructor = C_GeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_InputGeoLocation int64 = 1403425127
+
+type poolInputGeoLocation struct {
+	pool sync.Pool
+}
+
+func (p *poolInputGeoLocation) Get() *InputGeoLocation {
+	x, ok := p.pool.Get().(*InputGeoLocation)
+	if !ok {
+		return &InputGeoLocation{}
+	}
+	return x
+}
+
+func (p *poolInputGeoLocation) Put(x *InputGeoLocation) {
+	p.pool.Put(x)
+}
+
+var PoolInputGeoLocation = poolInputGeoLocation{}
+
+func ResultInputGeoLocation(out *MessageEnvelope, res *InputGeoLocation) {
+	out.Constructor = C_InputGeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[535232465] = "MessageEnvelope"
 	ConstructorNames[1972016308] = "MessageContainer"
@@ -1133,4 +1187,6 @@ func init() {
 	ConstructorNames[3954700912] = "PrivacyRule"
 	ConstructorNames[3479601132] = "Label"
 	ConstructorNames[1423713603] = "LabelsMany"
+	ConstructorNames[3794405429] = "GeoLocation"
+	ConstructorNames[1403425127] = "InputGeoLocation"
 }

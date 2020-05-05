@@ -446,3 +446,15 @@ message Label {
 message LabelsMany {
     repeated Label Labels = 1;
 }
+
+// GeoLocation
+message GeoLocation {
+    required float Lat = 1;
+    required float Long = 2;
+}
+
+// InputGeoLocation
+message InputGeoLocation {
+    required float Lat = 1;
+    required float Long = 2;
+}

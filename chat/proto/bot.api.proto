@@ -266,8 +266,3 @@ message BotCommandsMany {
     repeated BotCommands Commands = 1;
 }
 
-// InputGeoLocation
-message InputGeoLocation {
-    required float Lat = 1;
-    required float Long = 2;
-}

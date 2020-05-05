@@ -158,47 +158,58 @@ message BotGetCallbackAnswer {
 // @Function (Client)
 // @Returns: BotResults
 message BotGetInlineResults {
-    required InputUser Bot = 1;
-    required InputPeer Peer = 2;
-    required string Query = 3;
-    required string Offset = 4;
+    required InputUser Bot = 1;         // The bot to query
+    required InputPeer Peer = 2;        // The currently opened chat
+    required string Query = 3;          // The query
+    required string Offset = 4;         // The offset within the results, will be passed directly as-is to the bot.
+    optional InputGeoLocation Location = 5;     // The geolocation, if requested
 }
 
 // BotSetInlineResults
 // @Function (BotOnly)
-// @Returns:
+// @Returns: Bool
 message BotSetInlineResults {
+    // Set this flag if the results are composed of media files
     required bool Gallery = 1;
     // Set this flag if results may be cached on the server side only for the user that sent the query.
     // By default, results may be returned to any user who sends the same query
     required bool Private = 2;
+    // The maximum amount of time in seconds that the result of the inline query may be cached on the server.
+    // Defaults to 300.
     required int64 CacheTime = 3;
     // Pass the offset that a client should send in the next query with the same text to receive more results.
     // Pass an empty string if there are no more results or if you don‘t
     // support pagination. Offset length can’t exceed 64 bytes.
     optional string NextOffset = 4;
+    // Vector of results for the inline query
+    repeated BotInlineResult Results = 5;
+    // If passed, clients will display a button with specified text that switches the user to a private chat with
+    // the bot and sends the bot a start message with a certain parameter.
+    optional BotInlineSwitchPM SwitchPM = 6;
+    // Unique identifier for the answered query
+    required int64 QueryID = 7;
 }
 
 // BotSendInlineResults
 // @Function (Client)
-// @Returns:
+// @Returns: Bool + Updates
 message BotSendInlineResults {
     required int64 RandomID = 1;
-    required int64 QueryID = 2;
-    required string ResultID = 3;
+    required int64 QueryID = 2;         // Query ID from BotResults response of BotGetInlineResults
+    required string ResultID = 3;       // Result ID from BotResults response of BotGetInlineResults
     required bool ClearDraft = 4;
-    required InputPeer Peer = 5;
+    required InputPeer Peer = 5;        // Destination
     required int64 ReplyTo = 6;
-    optional bool Silent = 7;
+    optional bool Silent = 7;           // Do not send notification
 }
 
 // BotResults
 message BotResults {
     required bool Gallery = 1;
     required int64 QueryID = 2;
-    optional string NextOffset = 3;
-    optional BotInlineSwitchPM SwitchPM = 4;
-    repeated BotInlineResult Results = 5;
+    optional string NextOffset = 3;             // The next offset to use when navigating through results
+    optional BotInlineSwitchPM SwitchPM = 4;    // Whether the bot requested the user to message him in private
+    repeated BotInlineResult Results = 5;       // The results
 }
 
 // BotInlineSwitchPM
@@ -253,4 +264,10 @@ message BotGetCommands {
 // BotCommandsMany
 message BotCommandsMany {
     repeated BotCommands Commands = 1;
+}
+
+// InputGeoLocation
+message InputGeoLocation {
+    required float Lat = 1;
+    required float Long = 2;
 }

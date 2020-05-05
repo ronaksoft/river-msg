@@ -423,6 +423,7 @@ func (p *poolBotGetInlineResults) Get() *BotGetInlineResults {
 	if !ok {
 		return &BotGetInlineResults{}
 	}
+	x.Location = nil
 	return x
 }
 
@@ -451,6 +452,8 @@ func (p *poolBotSetInlineResults) Get() *BotSetInlineResults {
 		return &BotSetInlineResults{}
 	}
 	x.NextOffset = ""
+	x.Results = x.Results[:0]
+	x.SwitchPM = nil
 	return x
 }
 
@@ -749,6 +752,33 @@ func ResultBotCommandsMany(out *MessageEnvelope, res *BotCommandsMany) {
 	res.MarshalTo(out.Message)
 }
 
+const C_InputGeoLocation int64 = 1403425127
+
+type poolInputGeoLocation struct {
+	pool sync.Pool
+}
+
+func (p *poolInputGeoLocation) Get() *InputGeoLocation {
+	x, ok := p.pool.Get().(*InputGeoLocation)
+	if !ok {
+		return &InputGeoLocation{}
+	}
+	return x
+}
+
+func (p *poolInputGeoLocation) Put(x *InputGeoLocation) {
+	p.pool.Put(x)
+}
+
+var PoolInputGeoLocation = poolInputGeoLocation{}
+
+func ResultInputGeoLocation(out *MessageEnvelope, res *InputGeoLocation) {
+	out.Constructor = C_InputGeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 func init() {
 	ConstructorNames[2068702388] = "BotStart"
 	ConstructorNames[4208974051] = "BotRecall"
@@ -776,4 +806,5 @@ func init() {
 	ConstructorNames[2942918011] = "BotsMany"
 	ConstructorNames[473628905] = "BotGetCommands"
 	ConstructorNames[6153347] = "BotCommandsMany"
+	ConstructorNames[1403425127] = "InputGeoLocation"
 }

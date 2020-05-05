@@ -201,6 +201,7 @@ message BotSendInlineResults {
     required InputPeer Peer = 5;        // Destination
     required int64 ReplyTo = 6;
     optional bool Silent = 7;           // Do not send notification
+    optional bool HideVia = 8;          // Hid via bot
 }
 
 // BotResults

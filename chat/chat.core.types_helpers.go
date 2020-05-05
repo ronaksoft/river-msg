@@ -657,6 +657,7 @@ func (p *poolUserMessage) Get() *UserMessage {
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
 	x.LabelIDs = x.LabelIDs[:0]
+	x.ViaBotID = 0
 	return x
 }
 

@@ -482,6 +482,7 @@ func (p *poolBotSendInlineResults) Get() *BotSendInlineResults {
 		return &BotSendInlineResults{}
 	}
 	x.Silent = false
+	x.HideVia = false
 	return x
 }
 

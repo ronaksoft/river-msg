@@ -629,12 +629,7 @@ func (p *poolBotInlineMessage) Get() *BotInlineMessage {
 	if !ok {
 		return &BotInlineMessage{}
 	}
-	x.Contact = nil
-	x.Geo = nil
-	x.Doc = nil
-	x.Poll = nil
-	x.Invoice = nil
-	x.WebDoc = nil
+	x.MediaData = nil
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	x.ReplyTo = 0
@@ -667,13 +662,7 @@ func (p *poolInputBotInlineMessage) Get() *InputBotInlineMessage {
 	if !ok {
 		return &InputBotInlineMessage{}
 	}
-	x.Contact = nil
-	x.Geo = nil
-	x.Doc = nil
-	x.Poll = nil
-	x.Invoice = nil
-	x.UploadedDocument = nil
-	x.WebDoc = nil
+	x.InputMediaData = nil
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	x.ReplyTo = 0

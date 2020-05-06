@@ -4,24 +4,6 @@ import "chat.core.types.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 option (gogoproto.goproto_enum_prefix_all) = false;
 
-enum InputMediaType {
-    InputMediaTypeEmpty = 0;
-    InputMediaTypeInvoice = 1;
-    InputMediaTypePoll = 2;
-    InputMediaTypeContact = 3;
-    InputMediaTypeUploadedDocument = 4;
-    InputMediaTypeDocument = 5;
-    InputMediaTypeGeoLocation = 6;
-    InputMediaTypeReserved1 = 7;
-    InputMediaTypeReserved2 = 8;
-    InputMediaTypeReserved3 = 9;
-    InputMediaTypeReserved4 = 10;
-    InputMediaTypeReserved5 = 11;
-    InputMediaTypeReserved6 = 12;
-    InputMediaTypeReserved7 = 13;
-    InputMediaTypeReserved8 = 14;
-}
-
 // MessageSend
 // @Function
 // @Return: MessagesSent

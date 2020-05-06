@@ -276,6 +276,15 @@ func (p *poolMediaWebDocument) Get() *MediaWebDocument {
 	if !ok {
 		return &MediaWebDocument{}
 	}
+	x.SiteTitle = ""
+	x.Title = ""
+	x.EmbedUrl = ""
+	x.EmbedType = ""
+	x.EmbedHeight = 0
+	x.EmbedWidth = 0
+	x.Duration = 0
+	x.Author = ""
+	x.Doc = nil
 	return x
 }
 

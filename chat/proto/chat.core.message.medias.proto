@@ -106,7 +106,19 @@ message InputMediaWebDocument {
 
 // MediaWebDocument
 message MediaWebDocument {
-
+    required int64 ID = 1 [jstype = JS_STRING];
+    required fixed64 AccessHash = 2 [jstype = JS_STRING];
+    required string Url = 3;
+    required string DisplayUrl = 4;
+    optional string SiteTitle = 5;
+    optional string Title = 6;
+    optional string EmbedUrl = 7;
+    optional string EmbedType = 8;
+    optional int32 EmbedHeight = 9;
+    optional int32 EmbedWidth = 10;
+    optional int32 Duration = 11;
+    optional string Author = 12;
+    optional Document Doc = 13;
 }
 
 // MediaWebPage

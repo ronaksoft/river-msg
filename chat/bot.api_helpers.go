@@ -570,7 +570,7 @@ func (p *poolBotInlineResult) Get() *BotInlineResult {
 	x.Title = ""
 	x.Description = ""
 	x.Url = ""
-	x.Doc = nil
+	x.Thumb = nil
 	return x
 }
 
@@ -582,6 +582,114 @@ var PoolBotInlineResult = poolBotInlineResult{}
 
 func ResultBotInlineResult(out *MessageEnvelope, res *BotInlineResult) {
 	out.Constructor = C_BotInlineResult
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_InputBotInlineResult int64 = 2158273502
+
+type poolInputBotInlineResult struct {
+	pool sync.Pool
+}
+
+func (p *poolInputBotInlineResult) Get() *InputBotInlineResult {
+	x, ok := p.pool.Get().(*InputBotInlineResult)
+	if !ok {
+		return &InputBotInlineResult{}
+	}
+	x.Title = ""
+	x.Description = ""
+	x.Url = ""
+	x.Thumb = nil
+	return x
+}
+
+func (p *poolInputBotInlineResult) Put(x *InputBotInlineResult) {
+	p.pool.Put(x)
+}
+
+var PoolInputBotInlineResult = poolInputBotInlineResult{}
+
+func ResultInputBotInlineResult(out *MessageEnvelope, res *InputBotInlineResult) {
+	out.Constructor = C_InputBotInlineResult
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_BotInlineMessage int64 = 3297841032
+
+type poolBotInlineMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolBotInlineMessage) Get() *BotInlineMessage {
+	x, ok := p.pool.Get().(*BotInlineMessage)
+	if !ok {
+		return &BotInlineMessage{}
+	}
+	x.Contact = nil
+	x.Geo = nil
+	x.Doc = nil
+	x.Poll = nil
+	x.Invoice = nil
+	x.WebDoc = nil
+	x.Body = ""
+	x.Entities = x.Entities[:0]
+	x.ReplyTo = 0
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = nil
+	return x
+}
+
+func (p *poolBotInlineMessage) Put(x *BotInlineMessage) {
+	p.pool.Put(x)
+}
+
+var PoolBotInlineMessage = poolBotInlineMessage{}
+
+func ResultBotInlineMessage(out *MessageEnvelope, res *BotInlineMessage) {
+	out.Constructor = C_BotInlineMessage
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_InputBotInlineMessage int64 = 1408974864
+
+type poolInputBotInlineMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolInputBotInlineMessage) Get() *InputBotInlineMessage {
+	x, ok := p.pool.Get().(*InputBotInlineMessage)
+	if !ok {
+		return &InputBotInlineMessage{}
+	}
+	x.Contact = nil
+	x.Geo = nil
+	x.Doc = nil
+	x.Poll = nil
+	x.Invoice = nil
+	x.UploadedDocument = nil
+	x.WebDoc = nil
+	x.Body = ""
+	x.Entities = x.Entities[:0]
+	x.ReplyTo = 0
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = nil
+	return x
+}
+
+func (p *poolInputBotInlineMessage) Put(x *InputBotInlineMessage) {
+	p.pool.Put(x)
+}
+
+var PoolInputBotInlineMessage = poolInputBotInlineMessage{}
+
+func ResultInputBotInlineMessage(out *MessageEnvelope, res *InputBotInlineMessage) {
+	out.Constructor = C_InputBotInlineMessage
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -774,6 +882,9 @@ func init() {
 	ConstructorNames[527920130] = "BotResults"
 	ConstructorNames[3014743726] = "BotInlineSwitchPM"
 	ConstructorNames[942846933] = "BotInlineResult"
+	ConstructorNames[2158273502] = "InputBotInlineResult"
+	ConstructorNames[3297841032] = "BotInlineMessage"
+	ConstructorNames[1408974864] = "InputBotInlineMessage"
 	ConstructorNames[3137540096] = "BotToken"
 	ConstructorNames[4007077962] = "BotRecalled"
 	ConstructorNames[3344545062] = "BotCallbackAnswer"

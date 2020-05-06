@@ -4,7 +4,6 @@ package msg;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "chat.core.types.proto";
-import "chat.api.messages.proto";
 import "chat.core.message.medias.proto";
 
 // Enable custom Marshal method.
@@ -158,11 +157,11 @@ message BotGetCallbackAnswer {
 // @Function (Client)
 // @Returns: BotResults
 message BotGetInlineResults {
-    required InputUser Bot = 1;         // The bot to query
-    required InputPeer Peer = 2;        // The currently opened chat
-    required string Query = 3;          // The query
-    required string Offset = 4;         // The offset within the results, will be passed directly as-is to the bot.
-    optional InputGeoLocation Location = 5;     // The geolocation, if requested
+    required InputUser Bot = 1; // The bot to query
+    required InputPeer Peer = 2; // The currently opened chat
+    required string Query = 3; // The query
+    required string Offset = 4; // The offset within the results, will be passed directly as-is to the bot.
+    optional InputGeoLocation Location = 5; // The geolocation, if requested
 }
 
 // BotSetInlineResults
@@ -182,7 +181,7 @@ message BotSetInlineResults {
     // support pagination. Offset length can’t exceed 64 bytes.
     optional string NextOffset = 4;
     // Vector of results for the inline query
-    repeated BotInlineResult Results = 5;
+    repeated InputBotInlineResult Results = 5;
     // If passed, clients will display a button with specified text that switches the user to a private chat with
     // the bot and sends the bot a start message with a certain parameter.
     optional BotInlineSwitchPM SwitchPM = 6;
@@ -195,22 +194,22 @@ message BotSetInlineResults {
 // @Returns: Bool + Updates
 message BotSendInlineResults {
     required int64 RandomID = 1;
-    required int64 QueryID = 2;         // Query ID from BotResults response of BotGetInlineResults
-    required string ResultID = 3;       // Result ID from BotResults response of BotGetInlineResults
+    required int64 QueryID = 2; // Query ID from BotResults response of BotGetInlineResults
+    required string ResultID = 3; // Result ID from BotResults response of BotGetInlineResults
     required bool ClearDraft = 4;
-    required InputPeer Peer = 5;        // Destination
+    required InputPeer Peer = 5; // Destination
     required int64 ReplyTo = 6;
-    optional bool Silent = 7;           // Do not send notification
-    optional bool HideVia = 8;          // Hid via bot
+    optional bool Silent = 7; // Do not send notification
+    optional bool HideVia = 8; // Hid via bot
 }
 
 // BotResults
 message BotResults {
     required bool Gallery = 1;
     required int64 QueryID = 2;
-    optional string NextOffset = 3;             // The next offset to use when navigating through results
-    optional BotInlineSwitchPM SwitchPM = 4;    // Whether the bot requested the user to message him in private
-    repeated BotInlineResult Results = 5;       // The results
+    optional string NextOffset = 3; // The next offset to use when navigating through results
+    optional BotInlineSwitchPM SwitchPM = 4; // Whether the bot requested the user to message him in private
+    repeated BotInlineResult Results = 5; // The results
 }
 
 // BotInlineSwitchPM
@@ -225,11 +224,53 @@ message BotInlineSwitchPM {
 // BotInlineResult
 message BotInlineResult {
     required string ID = 1;
-    required string Type = 2;
+    required MediaType Type = 2;
     optional string Title = 3;
     optional string Description = 4;
     optional string Url = 5;
-    optional MediaDocument Doc = 6;
+    optional MediaWebDocument Thumb = 6;
+    required BotInlineMessage Message = 7;
+}
+
+message InputBotInlineResult {
+    required string ID = 1;
+    required InputMediaType Type = 2;
+    optional string Title = 3;
+    optional string Description = 4;
+    optional string Url = 5;
+    optional InputMediaWebDocument Thumb = 6;
+    required InputBotInlineMessage Message = 8;
+}
+
+// BotInlineMessage
+message BotInlineMessage {
+    optional MediaContact Contact = 1;
+    optional MediaGeoLocation Geo = 2;
+    optional MediaDocument Doc = 3;
+    optional MediaPoll Poll = 4;
+    optional MediaInvoice Invoice = 5;
+    optional MediaWebDocument WebDoc = 6;
+    optional string Body = 10;
+    repeated MessageEntity Entities = 11;
+    optional int64 ReplyTo = 12;
+    optional int64 ReplyMarkup = 13;
+    optional bytes ReplyMarkupData = 14;
+}
+
+// InputBotInlineMessage
+message InputBotInlineMessage {
+    optional InputMediaContact Contact = 1;
+    optional InputMediaGeoLocation Geo = 2;
+    optional InputMediaDocument Doc = 3;
+    optional InputMediaPoll Poll = 4;
+    optional InputMediaInvoice Invoice = 5;
+    optional InputMediaUploadedDocument UploadedDocument = 6;
+    optional InputMediaWebDocument WebDoc = 7;
+    optional string Body = 10;
+    repeated MessageEntity Entities = 11;
+    optional int64 ReplyTo = 12;
+    optional int64 ReplyMarkup = 13;
+    optional bytes ReplyMarkupData = 14;
 }
 
 // BotToken

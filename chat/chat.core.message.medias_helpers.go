@@ -184,28 +184,136 @@ func ResultDocument(out *MessageEnvelope, res *Document) {
 	res.MarshalTo(out.Message)
 }
 
-const C_InputMediaPoll int64 = 3633337678
+const C_InputMediaInvoice int64 = 2272736316
 
-type poolInputMediaPoll struct {
+type poolInputMediaInvoice struct {
 	pool sync.Pool
 }
 
-func (p *poolInputMediaPoll) Get() *InputMediaPoll {
-	x, ok := p.pool.Get().(*InputMediaPoll)
+func (p *poolInputMediaInvoice) Get() *InputMediaInvoice {
+	x, ok := p.pool.Get().(*InputMediaInvoice)
 	if !ok {
-		return &InputMediaPoll{}
+		return &InputMediaInvoice{}
 	}
 	return x
 }
 
-func (p *poolInputMediaPoll) Put(x *InputMediaPoll) {
+func (p *poolInputMediaInvoice) Put(x *InputMediaInvoice) {
 	p.pool.Put(x)
 }
 
-var PoolInputMediaPoll = poolInputMediaPoll{}
+var PoolInputMediaInvoice = poolInputMediaInvoice{}
 
-func ResultInputMediaPoll(out *MessageEnvelope, res *InputMediaPoll) {
-	out.Constructor = C_InputMediaPoll
+func ResultInputMediaInvoice(out *MessageEnvelope, res *InputMediaInvoice) {
+	out.Constructor = C_InputMediaInvoice
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaInvoice int64 = 44271741
+
+type poolMediaInvoice struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaInvoice) Get() *MediaInvoice {
+	x, ok := p.pool.Get().(*MediaInvoice)
+	if !ok {
+		return &MediaInvoice{}
+	}
+	return x
+}
+
+func (p *poolMediaInvoice) Put(x *MediaInvoice) {
+	p.pool.Put(x)
+}
+
+var PoolMediaInvoice = poolMediaInvoice{}
+
+func ResultMediaInvoice(out *MessageEnvelope, res *MediaInvoice) {
+	out.Constructor = C_MediaInvoice
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_InputMediaWebDocument int64 = 3529450013
+
+type poolInputMediaWebDocument struct {
+	pool sync.Pool
+}
+
+func (p *poolInputMediaWebDocument) Get() *InputMediaWebDocument {
+	x, ok := p.pool.Get().(*InputMediaWebDocument)
+	if !ok {
+		return &InputMediaWebDocument{}
+	}
+	return x
+}
+
+func (p *poolInputMediaWebDocument) Put(x *InputMediaWebDocument) {
+	p.pool.Put(x)
+}
+
+var PoolInputMediaWebDocument = poolInputMediaWebDocument{}
+
+func ResultInputMediaWebDocument(out *MessageEnvelope, res *InputMediaWebDocument) {
+	out.Constructor = C_InputMediaWebDocument
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaWebDocument int64 = 1161129349
+
+type poolMediaWebDocument struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaWebDocument) Get() *MediaWebDocument {
+	x, ok := p.pool.Get().(*MediaWebDocument)
+	if !ok {
+		return &MediaWebDocument{}
+	}
+	return x
+}
+
+func (p *poolMediaWebDocument) Put(x *MediaWebDocument) {
+	p.pool.Put(x)
+}
+
+var PoolMediaWebDocument = poolMediaWebDocument{}
+
+func ResultMediaWebDocument(out *MessageEnvelope, res *MediaWebDocument) {
+	out.Constructor = C_MediaWebDocument
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaWebPage int64 = 148034084
+
+type poolMediaWebPage struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaWebPage) Get() *MediaWebPage {
+	x, ok := p.pool.Get().(*MediaWebPage)
+	if !ok {
+		return &MediaWebPage{}
+	}
+	return x
+}
+
+func (p *poolMediaWebPage) Put(x *MediaWebPage) {
+	p.pool.Put(x)
+}
+
+var PoolMediaWebPage = poolMediaWebPage{}
+
+func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
+	out.Constructor = C_MediaWebPage
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -234,6 +342,34 @@ var PoolInputMediaContact = poolInputMediaContact{}
 
 func ResultInputMediaContact(out *MessageEnvelope, res *InputMediaContact) {
 	out.Constructor = C_InputMediaContact
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaContact int64 = 3735320833
+
+type poolMediaContact struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaContact) Get() *MediaContact {
+	x, ok := p.pool.Get().(*MediaContact)
+	if !ok {
+		return &MediaContact{}
+	}
+	x.VCard = ""
+	return x
+}
+
+func (p *poolMediaContact) Put(x *MediaContact) {
+	p.pool.Put(x)
+}
+
+var PoolMediaContact = poolMediaContact{}
+
+func ResultMediaContact(out *MessageEnvelope, res *MediaContact) {
+	out.Constructor = C_MediaContact
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -300,6 +436,34 @@ func ResultInputMediaDocument(out *MessageEnvelope, res *InputMediaDocument) {
 	res.MarshalTo(out.Message)
 }
 
+const C_MediaDocument int64 = 2281620705
+
+type poolMediaDocument struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaDocument) Get() *MediaDocument {
+	x, ok := p.pool.Get().(*MediaDocument)
+	if !ok {
+		return &MediaDocument{}
+	}
+	x.Entities = x.Entities[:0]
+	return x
+}
+
+func (p *poolMediaDocument) Put(x *MediaDocument) {
+	p.pool.Put(x)
+}
+
+var PoolMediaDocument = poolMediaDocument{}
+
+func ResultMediaDocument(out *MessageEnvelope, res *MediaDocument) {
+	out.Constructor = C_MediaDocument
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
 const C_InputMediaGeoLocation int64 = 185664060
 
 type poolInputMediaGeoLocation struct {
@@ -322,6 +486,60 @@ var PoolInputMediaGeoLocation = poolInputMediaGeoLocation{}
 
 func ResultInputMediaGeoLocation(out *MessageEnvelope, res *InputMediaGeoLocation) {
 	out.Constructor = C_InputMediaGeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_MediaGeoLocation int64 = 2625326500
+
+type poolMediaGeoLocation struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaGeoLocation) Get() *MediaGeoLocation {
+	x, ok := p.pool.Get().(*MediaGeoLocation)
+	if !ok {
+		return &MediaGeoLocation{}
+	}
+	return x
+}
+
+func (p *poolMediaGeoLocation) Put(x *MediaGeoLocation) {
+	p.pool.Put(x)
+}
+
+var PoolMediaGeoLocation = poolMediaGeoLocation{}
+
+func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
+	out.Constructor = C_MediaGeoLocation
+	pbytes.Put(out.Message)
+	out.Message = pbytes.GetLen(res.Size())
+	res.MarshalTo(out.Message)
+}
+
+const C_InputMediaPoll int64 = 3633337678
+
+type poolInputMediaPoll struct {
+	pool sync.Pool
+}
+
+func (p *poolInputMediaPoll) Get() *InputMediaPoll {
+	x, ok := p.pool.Get().(*InputMediaPoll)
+	if !ok {
+		return &InputMediaPoll{}
+	}
+	return x
+}
+
+func (p *poolInputMediaPoll) Put(x *InputMediaPoll) {
+	p.pool.Put(x)
+}
+
+var PoolInputMediaPoll = poolInputMediaPoll{}
+
+func ResultInputMediaPoll(out *MessageEnvelope, res *InputMediaPoll) {
+	out.Constructor = C_InputMediaPoll
 	pbytes.Put(out.Message)
 	out.Message = pbytes.GetLen(res.Size())
 	res.MarshalTo(out.Message)
@@ -441,143 +659,6 @@ func ResultPollAnswerVoters(out *MessageEnvelope, res *PollAnswerVoters) {
 	res.MarshalTo(out.Message)
 }
 
-const C_MediaInvoice int64 = 44271741
-
-type poolMediaInvoice struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaInvoice) Get() *MediaInvoice {
-	x, ok := p.pool.Get().(*MediaInvoice)
-	if !ok {
-		return &MediaInvoice{}
-	}
-	return x
-}
-
-func (p *poolMediaInvoice) Put(x *MediaInvoice) {
-	p.pool.Put(x)
-}
-
-var PoolMediaInvoice = poolMediaInvoice{}
-
-func ResultMediaInvoice(out *MessageEnvelope, res *MediaInvoice) {
-	out.Constructor = C_MediaInvoice
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_MediaDocument int64 = 2281620705
-
-type poolMediaDocument struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaDocument) Get() *MediaDocument {
-	x, ok := p.pool.Get().(*MediaDocument)
-	if !ok {
-		return &MediaDocument{}
-	}
-	x.Entities = x.Entities[:0]
-	return x
-}
-
-func (p *poolMediaDocument) Put(x *MediaDocument) {
-	p.pool.Put(x)
-}
-
-var PoolMediaDocument = poolMediaDocument{}
-
-func ResultMediaDocument(out *MessageEnvelope, res *MediaDocument) {
-	out.Constructor = C_MediaDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_MediaContact int64 = 3735320833
-
-type poolMediaContact struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaContact) Get() *MediaContact {
-	x, ok := p.pool.Get().(*MediaContact)
-	if !ok {
-		return &MediaContact{}
-	}
-	x.VCard = ""
-	return x
-}
-
-func (p *poolMediaContact) Put(x *MediaContact) {
-	p.pool.Put(x)
-}
-
-var PoolMediaContact = poolMediaContact{}
-
-func ResultMediaContact(out *MessageEnvelope, res *MediaContact) {
-	out.Constructor = C_MediaContact
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_MediaGeoLocation int64 = 2625326500
-
-type poolMediaGeoLocation struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaGeoLocation) Get() *MediaGeoLocation {
-	x, ok := p.pool.Get().(*MediaGeoLocation)
-	if !ok {
-		return &MediaGeoLocation{}
-	}
-	return x
-}
-
-func (p *poolMediaGeoLocation) Put(x *MediaGeoLocation) {
-	p.pool.Put(x)
-}
-
-var PoolMediaGeoLocation = poolMediaGeoLocation{}
-
-func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
-	out.Constructor = C_MediaGeoLocation
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
-const C_MediaWebPage int64 = 148034084
-
-type poolMediaWebPage struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaWebPage) Get() *MediaWebPage {
-	x, ok := p.pool.Get().(*MediaWebPage)
-	if !ok {
-		return &MediaWebPage{}
-	}
-	return x
-}
-
-func (p *poolMediaWebPage) Put(x *MediaWebPage) {
-	p.pool.Put(x)
-}
-
-var PoolMediaWebPage = poolMediaWebPage{}
-
-func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
-	out.Constructor = C_MediaWebPage
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
-}
-
 func init() {
 	ConstructorNames[309707708] = "DocumentAttributeAudio"
 	ConstructorNames[1993289477] = "DocumentAttributeVideo"
@@ -585,18 +666,21 @@ func init() {
 	ConstructorNames[2227452062] = "DocumentAttributeFile"
 	ConstructorNames[4146719643] = "DocumentAttribute"
 	ConstructorNames[555739168] = "Document"
-	ConstructorNames[3633337678] = "InputMediaPoll"
+	ConstructorNames[2272736316] = "InputMediaInvoice"
+	ConstructorNames[44271741] = "MediaInvoice"
+	ConstructorNames[3529450013] = "InputMediaWebDocument"
+	ConstructorNames[1161129349] = "MediaWebDocument"
+	ConstructorNames[148034084] = "MediaWebPage"
 	ConstructorNames[1534117184] = "InputMediaContact"
+	ConstructorNames[3735320833] = "MediaContact"
 	ConstructorNames[870692909] = "InputMediaUploadedDocument"
 	ConstructorNames[2258657627] = "InputMediaDocument"
+	ConstructorNames[2281620705] = "MediaDocument"
 	ConstructorNames[185664060] = "InputMediaGeoLocation"
+	ConstructorNames[2625326500] = "MediaGeoLocation"
+	ConstructorNames[3633337678] = "InputMediaPoll"
 	ConstructorNames[2688924895] = "MediaPoll"
 	ConstructorNames[2124799390] = "PollAnswer"
 	ConstructorNames[3283416711] = "PollResults"
 	ConstructorNames[2095107985] = "PollAnswerVoters"
-	ConstructorNames[44271741] = "MediaInvoice"
-	ConstructorNames[2281620705] = "MediaDocument"
-	ConstructorNames[3735320833] = "MediaContact"
-	ConstructorNames[2625326500] = "MediaGeoLocation"
-	ConstructorNames[148034084] = "MediaWebPage"
 }

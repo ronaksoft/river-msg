@@ -89,13 +89,41 @@ message Document {
     optional string MD5Checksum = 10;
 }
 
-// InputMediaPoll
-message InputMediaPoll {
-    required MediaPoll Poll = 1;
+// InputMediaInvoice
+message InputMediaInvoice {
+
+}
+
+// MediaInvoice
+message MediaInvoice {
+
+}
+
+// InputMediaWebDocument
+message InputMediaWebDocument {
+
+}
+
+// MediaWebDocument
+message MediaWebDocument {
+
+}
+
+// MediaWebPage
+message MediaWebPage {
+
 }
 
 // InputMediaContact
 message InputMediaContact {
+    required string Phone = 1;
+    required string FirstName = 2;
+    required string LastName = 3;
+    optional string VCard = 4;
+}
+
+// MediaContact
+message MediaContact {
     required string Phone = 1;
     required string FirstName = 2;
     required string LastName = 3;
@@ -122,10 +150,29 @@ message InputMediaDocument {
     repeated DocumentAttribute Attributes = 5;
 }
 
+// MediaDocument
+message MediaDocument {
+    required string Caption = 1;
+    required int32 TTLinSeconds = 2; // Seconds
+    required Document Doc = 3;
+    repeated MessageEntity Entities = 4;
+}
+
 // InputMediaGeoLocation
 message InputMediaGeoLocation {
     required float Lat = 1;
     required float Long = 2;
+}
+
+// MediaGeoLocation
+message MediaGeoLocation {
+    required float Lat = 1;
+    required float Long = 2;
+}
+
+// InputMediaPoll
+message InputMediaPoll {
+    required MediaPoll Poll = 1;
 }
 
 // MediaPoll
@@ -160,34 +207,7 @@ message PollAnswerVoters {
 
 }
 
-// MediaInvoice
-message MediaInvoice {
 
-}
 
-// MediaDocument
-message MediaDocument {
-    required string Caption = 1;
-    required int32 TTLinSeconds = 2; // Seconds
-    required Document Doc = 3;
-    repeated MessageEntity Entities = 4;
-}
 
-// MediaContact
-message MediaContact {
-    required string Phone = 1;
-    required string FirstName = 2;
-    required string LastName = 3;
-    optional string VCard = 4;
-}
 
-// MediaGeoLocation
-message MediaGeoLocation {
-    required float Lat = 1;
-    required float Long = 2;
-}
-
-// MediaWebPage
-message MediaWebPage {
-
-}

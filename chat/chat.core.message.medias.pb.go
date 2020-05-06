@@ -574,23 +574,22 @@ func (m *Document) GetMD5Checksum() string {
 	return ""
 }
 
-// InputMediaPoll
-type InputMediaPoll struct {
-	Poll *MediaPoll `protobuf:"bytes,1,req,name=Poll" json:"Poll,omitempty"`
+// InputMediaInvoice
+type InputMediaInvoice struct {
 }
 
-func (m *InputMediaPoll) Reset()         { *m = InputMediaPoll{} }
-func (m *InputMediaPoll) String() string { return proto.CompactTextString(m) }
-func (*InputMediaPoll) ProtoMessage()    {}
-func (*InputMediaPoll) Descriptor() ([]byte, []int) {
+func (m *InputMediaInvoice) Reset()         { *m = InputMediaInvoice{} }
+func (m *InputMediaInvoice) String() string { return proto.CompactTextString(m) }
+func (*InputMediaInvoice) ProtoMessage()    {}
+func (*InputMediaInvoice) Descriptor() ([]byte, []int) {
 	return fileDescriptor_313bfacbac33da31, []int{6}
 }
-func (m *InputMediaPoll) XXX_Unmarshal(b []byte) error {
+func (m *InputMediaInvoice) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *InputMediaPoll) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *InputMediaInvoice) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_InputMediaPoll.Marshal(b, m, deterministic)
+		return xxx_messageInfo_InputMediaInvoice.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -600,24 +599,165 @@ func (m *InputMediaPoll) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-func (m *InputMediaPoll) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InputMediaPoll.Merge(m, src)
+func (m *InputMediaInvoice) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputMediaInvoice.Merge(m, src)
 }
-func (m *InputMediaPoll) XXX_Size() int {
+func (m *InputMediaInvoice) XXX_Size() int {
 	return m.Size()
 }
-func (m *InputMediaPoll) XXX_DiscardUnknown() {
-	xxx_messageInfo_InputMediaPoll.DiscardUnknown(m)
+func (m *InputMediaInvoice) XXX_DiscardUnknown() {
+	xxx_messageInfo_InputMediaInvoice.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_InputMediaPoll proto.InternalMessageInfo
+var xxx_messageInfo_InputMediaInvoice proto.InternalMessageInfo
 
-func (m *InputMediaPoll) GetPoll() *MediaPoll {
-	if m != nil {
-		return m.Poll
+// MediaInvoice
+type MediaInvoice struct {
+}
+
+func (m *MediaInvoice) Reset()         { *m = MediaInvoice{} }
+func (m *MediaInvoice) String() string { return proto.CompactTextString(m) }
+func (*MediaInvoice) ProtoMessage()    {}
+func (*MediaInvoice) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{7}
+}
+func (m *MediaInvoice) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaInvoice) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaInvoice.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
 	}
-	return nil
 }
+func (m *MediaInvoice) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaInvoice.Merge(m, src)
+}
+func (m *MediaInvoice) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaInvoice) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaInvoice.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaInvoice proto.InternalMessageInfo
+
+// InputMediaWebDocument
+type InputMediaWebDocument struct {
+}
+
+func (m *InputMediaWebDocument) Reset()         { *m = InputMediaWebDocument{} }
+func (m *InputMediaWebDocument) String() string { return proto.CompactTextString(m) }
+func (*InputMediaWebDocument) ProtoMessage()    {}
+func (*InputMediaWebDocument) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{8}
+}
+func (m *InputMediaWebDocument) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InputMediaWebDocument) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InputMediaWebDocument.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *InputMediaWebDocument) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputMediaWebDocument.Merge(m, src)
+}
+func (m *InputMediaWebDocument) XXX_Size() int {
+	return m.Size()
+}
+func (m *InputMediaWebDocument) XXX_DiscardUnknown() {
+	xxx_messageInfo_InputMediaWebDocument.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InputMediaWebDocument proto.InternalMessageInfo
+
+// MediaWebDocument
+type MediaWebDocument struct {
+}
+
+func (m *MediaWebDocument) Reset()         { *m = MediaWebDocument{} }
+func (m *MediaWebDocument) String() string { return proto.CompactTextString(m) }
+func (*MediaWebDocument) ProtoMessage()    {}
+func (*MediaWebDocument) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{9}
+}
+func (m *MediaWebDocument) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaWebDocument) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaWebDocument.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaWebDocument) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaWebDocument.Merge(m, src)
+}
+func (m *MediaWebDocument) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaWebDocument) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaWebDocument.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaWebDocument proto.InternalMessageInfo
+
+// MediaWebPage
+type MediaWebPage struct {
+}
+
+func (m *MediaWebPage) Reset()         { *m = MediaWebPage{} }
+func (m *MediaWebPage) String() string { return proto.CompactTextString(m) }
+func (*MediaWebPage) ProtoMessage()    {}
+func (*MediaWebPage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{10}
+}
+func (m *MediaWebPage) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaWebPage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaWebPage.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaWebPage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaWebPage.Merge(m, src)
+}
+func (m *MediaWebPage) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaWebPage) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaWebPage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaWebPage proto.InternalMessageInfo
 
 // InputMediaContact
 type InputMediaContact struct {
@@ -631,7 +771,7 @@ func (m *InputMediaContact) Reset()         { *m = InputMediaContact{} }
 func (m *InputMediaContact) String() string { return proto.CompactTextString(m) }
 func (*InputMediaContact) ProtoMessage()    {}
 func (*InputMediaContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{7}
+	return fileDescriptor_313bfacbac33da31, []int{11}
 }
 func (m *InputMediaContact) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -688,6 +828,75 @@ func (m *InputMediaContact) GetVCard() string {
 	return ""
 }
 
+// MediaContact
+type MediaContact struct {
+	Phone     string `protobuf:"bytes,1,req,name=Phone" json:"Phone"`
+	FirstName string `protobuf:"bytes,2,req,name=FirstName" json:"FirstName"`
+	LastName  string `protobuf:"bytes,3,req,name=LastName" json:"LastName"`
+	VCard     string `protobuf:"bytes,4,opt,name=VCard" json:"VCard"`
+}
+
+func (m *MediaContact) Reset()         { *m = MediaContact{} }
+func (m *MediaContact) String() string { return proto.CompactTextString(m) }
+func (*MediaContact) ProtoMessage()    {}
+func (*MediaContact) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{12}
+}
+func (m *MediaContact) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaContact) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaContact.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaContact) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaContact.Merge(m, src)
+}
+func (m *MediaContact) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaContact) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaContact.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaContact proto.InternalMessageInfo
+
+func (m *MediaContact) GetPhone() string {
+	if m != nil {
+		return m.Phone
+	}
+	return ""
+}
+
+func (m *MediaContact) GetFirstName() string {
+	if m != nil {
+		return m.FirstName
+	}
+	return ""
+}
+
+func (m *MediaContact) GetLastName() string {
+	if m != nil {
+		return m.LastName
+	}
+	return ""
+}
+
+func (m *MediaContact) GetVCard() string {
+	if m != nil {
+		return m.VCard
+	}
+	return ""
+}
+
 // InputMediaUploadedDocument
 type InputMediaUploadedDocument struct {
 	File       *InputFile           `protobuf:"bytes,1,req,name=File" json:"File,omitempty"`
@@ -703,7 +912,7 @@ func (m *InputMediaUploadedDocument) Reset()         { *m = InputMediaUploadedDo
 func (m *InputMediaUploadedDocument) String() string { return proto.CompactTextString(m) }
 func (*InputMediaUploadedDocument) ProtoMessage()    {}
 func (*InputMediaUploadedDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{8}
+	return fileDescriptor_313bfacbac33da31, []int{13}
 }
 func (m *InputMediaUploadedDocument) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -794,7 +1003,7 @@ func (m *InputMediaDocument) Reset()         { *m = InputMediaDocument{} }
 func (m *InputMediaDocument) String() string { return proto.CompactTextString(m) }
 func (*InputMediaDocument) ProtoMessage()    {}
 func (*InputMediaDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{9}
+	return fileDescriptor_313bfacbac33da31, []int{14}
 }
 func (m *InputMediaDocument) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -858,6 +1067,75 @@ func (m *InputMediaDocument) GetAttributes() []*DocumentAttribute {
 	return nil
 }
 
+// MediaDocument
+type MediaDocument struct {
+	Caption      string           `protobuf:"bytes,1,req,name=Caption" json:"Caption"`
+	TTLinSeconds int32            `protobuf:"varint,2,req,name=TTLinSeconds" json:"TTLinSeconds"`
+	Doc          *Document        `protobuf:"bytes,3,req,name=Doc" json:"Doc,omitempty"`
+	Entities     []*MessageEntity `protobuf:"bytes,4,rep,name=Entities" json:"Entities,omitempty"`
+}
+
+func (m *MediaDocument) Reset()         { *m = MediaDocument{} }
+func (m *MediaDocument) String() string { return proto.CompactTextString(m) }
+func (*MediaDocument) ProtoMessage()    {}
+func (*MediaDocument) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{15}
+}
+func (m *MediaDocument) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaDocument) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaDocument.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaDocument) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaDocument.Merge(m, src)
+}
+func (m *MediaDocument) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaDocument) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaDocument.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaDocument proto.InternalMessageInfo
+
+func (m *MediaDocument) GetCaption() string {
+	if m != nil {
+		return m.Caption
+	}
+	return ""
+}
+
+func (m *MediaDocument) GetTTLinSeconds() int32 {
+	if m != nil {
+		return m.TTLinSeconds
+	}
+	return 0
+}
+
+func (m *MediaDocument) GetDoc() *Document {
+	if m != nil {
+		return m.Doc
+	}
+	return nil
+}
+
+func (m *MediaDocument) GetEntities() []*MessageEntity {
+	if m != nil {
+		return m.Entities
+	}
+	return nil
+}
+
 // InputMediaGeoLocation
 type InputMediaGeoLocation struct {
 	Lat  float32 `protobuf:"fixed32,1,req,name=Lat" json:"Lat"`
@@ -868,7 +1146,7 @@ func (m *InputMediaGeoLocation) Reset()         { *m = InputMediaGeoLocation{} }
 func (m *InputMediaGeoLocation) String() string { return proto.CompactTextString(m) }
 func (*InputMediaGeoLocation) ProtoMessage()    {}
 func (*InputMediaGeoLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{10}
+	return fileDescriptor_313bfacbac33da31, []int{16}
 }
 func (m *InputMediaGeoLocation) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -911,6 +1189,104 @@ func (m *InputMediaGeoLocation) GetLong() float32 {
 	return 0
 }
 
+// MediaGeoLocation
+type MediaGeoLocation struct {
+	Lat  float32 `protobuf:"fixed32,1,req,name=Lat" json:"Lat"`
+	Long float32 `protobuf:"fixed32,2,req,name=Long" json:"Long"`
+}
+
+func (m *MediaGeoLocation) Reset()         { *m = MediaGeoLocation{} }
+func (m *MediaGeoLocation) String() string { return proto.CompactTextString(m) }
+func (*MediaGeoLocation) ProtoMessage()    {}
+func (*MediaGeoLocation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{17}
+}
+func (m *MediaGeoLocation) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MediaGeoLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MediaGeoLocation.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MediaGeoLocation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaGeoLocation.Merge(m, src)
+}
+func (m *MediaGeoLocation) XXX_Size() int {
+	return m.Size()
+}
+func (m *MediaGeoLocation) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaGeoLocation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaGeoLocation proto.InternalMessageInfo
+
+func (m *MediaGeoLocation) GetLat() float32 {
+	if m != nil {
+		return m.Lat
+	}
+	return 0
+}
+
+func (m *MediaGeoLocation) GetLong() float32 {
+	if m != nil {
+		return m.Long
+	}
+	return 0
+}
+
+// InputMediaPoll
+type InputMediaPoll struct {
+	Poll *MediaPoll `protobuf:"bytes,1,req,name=Poll" json:"Poll,omitempty"`
+}
+
+func (m *InputMediaPoll) Reset()         { *m = InputMediaPoll{} }
+func (m *InputMediaPoll) String() string { return proto.CompactTextString(m) }
+func (*InputMediaPoll) ProtoMessage()    {}
+func (*InputMediaPoll) Descriptor() ([]byte, []int) {
+	return fileDescriptor_313bfacbac33da31, []int{18}
+}
+func (m *InputMediaPoll) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *InputMediaPoll) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_InputMediaPoll.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *InputMediaPoll) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputMediaPoll.Merge(m, src)
+}
+func (m *InputMediaPoll) XXX_Size() int {
+	return m.Size()
+}
+func (m *InputMediaPoll) XXX_DiscardUnknown() {
+	xxx_messageInfo_InputMediaPoll.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InputMediaPoll proto.InternalMessageInfo
+
+func (m *InputMediaPoll) GetPoll() *MediaPoll {
+	if m != nil {
+		return m.Poll
+	}
+	return nil
+}
+
 // MediaPoll
 type MediaPoll struct {
 	ID           int64         `protobuf:"varint,1,req,name=ID" json:"ID"`
@@ -926,7 +1302,7 @@ func (m *MediaPoll) Reset()         { *m = MediaPoll{} }
 func (m *MediaPoll) String() string { return proto.CompactTextString(m) }
 func (*MediaPoll) ProtoMessage()    {}
 func (*MediaPoll) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{11}
+	return fileDescriptor_313bfacbac33da31, []int{19}
 }
 func (m *MediaPoll) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1014,7 +1390,7 @@ func (m *PollAnswer) Reset()         { *m = PollAnswer{} }
 func (m *PollAnswer) String() string { return proto.CompactTextString(m) }
 func (*PollAnswer) ProtoMessage()    {}
 func (*PollAnswer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{12}
+	return fileDescriptor_313bfacbac33da31, []int{20}
 }
 func (m *PollAnswer) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1067,7 +1443,7 @@ func (m *PollResults) Reset()         { *m = PollResults{} }
 func (m *PollResults) String() string { return proto.CompactTextString(m) }
 func (*PollResults) ProtoMessage()    {}
 func (*PollResults) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{13}
+	return fileDescriptor_313bfacbac33da31, []int{21}
 }
 func (m *PollResults) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1122,7 +1498,7 @@ func (m *PollAnswerVoters) Reset()         { *m = PollAnswerVoters{} }
 func (m *PollAnswerVoters) String() string { return proto.CompactTextString(m) }
 func (*PollAnswerVoters) ProtoMessage()    {}
 func (*PollAnswerVoters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{14}
+	return fileDescriptor_313bfacbac33da31, []int{22}
 }
 func (m *PollAnswerVoters) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1179,271 +1555,6 @@ func (m *PollAnswerVoters) GetVoters() int64 {
 	return 0
 }
 
-// MediaInvoice
-type MediaInvoice struct {
-}
-
-func (m *MediaInvoice) Reset()         { *m = MediaInvoice{} }
-func (m *MediaInvoice) String() string { return proto.CompactTextString(m) }
-func (*MediaInvoice) ProtoMessage()    {}
-func (*MediaInvoice) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{15}
-}
-func (m *MediaInvoice) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MediaInvoice) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MediaInvoice.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MediaInvoice) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaInvoice.Merge(m, src)
-}
-func (m *MediaInvoice) XXX_Size() int {
-	return m.Size()
-}
-func (m *MediaInvoice) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaInvoice.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaInvoice proto.InternalMessageInfo
-
-// MediaDocument
-type MediaDocument struct {
-	Caption      string           `protobuf:"bytes,1,req,name=Caption" json:"Caption"`
-	TTLinSeconds int32            `protobuf:"varint,2,req,name=TTLinSeconds" json:"TTLinSeconds"`
-	Doc          *Document        `protobuf:"bytes,3,req,name=Doc" json:"Doc,omitempty"`
-	Entities     []*MessageEntity `protobuf:"bytes,4,rep,name=Entities" json:"Entities,omitempty"`
-}
-
-func (m *MediaDocument) Reset()         { *m = MediaDocument{} }
-func (m *MediaDocument) String() string { return proto.CompactTextString(m) }
-func (*MediaDocument) ProtoMessage()    {}
-func (*MediaDocument) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{16}
-}
-func (m *MediaDocument) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MediaDocument) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MediaDocument.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MediaDocument) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaDocument.Merge(m, src)
-}
-func (m *MediaDocument) XXX_Size() int {
-	return m.Size()
-}
-func (m *MediaDocument) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaDocument.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaDocument proto.InternalMessageInfo
-
-func (m *MediaDocument) GetCaption() string {
-	if m != nil {
-		return m.Caption
-	}
-	return ""
-}
-
-func (m *MediaDocument) GetTTLinSeconds() int32 {
-	if m != nil {
-		return m.TTLinSeconds
-	}
-	return 0
-}
-
-func (m *MediaDocument) GetDoc() *Document {
-	if m != nil {
-		return m.Doc
-	}
-	return nil
-}
-
-func (m *MediaDocument) GetEntities() []*MessageEntity {
-	if m != nil {
-		return m.Entities
-	}
-	return nil
-}
-
-// MediaContact
-type MediaContact struct {
-	Phone     string `protobuf:"bytes,1,req,name=Phone" json:"Phone"`
-	FirstName string `protobuf:"bytes,2,req,name=FirstName" json:"FirstName"`
-	LastName  string `protobuf:"bytes,3,req,name=LastName" json:"LastName"`
-	VCard     string `protobuf:"bytes,4,opt,name=VCard" json:"VCard"`
-}
-
-func (m *MediaContact) Reset()         { *m = MediaContact{} }
-func (m *MediaContact) String() string { return proto.CompactTextString(m) }
-func (*MediaContact) ProtoMessage()    {}
-func (*MediaContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{17}
-}
-func (m *MediaContact) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MediaContact) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MediaContact.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MediaContact) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaContact.Merge(m, src)
-}
-func (m *MediaContact) XXX_Size() int {
-	return m.Size()
-}
-func (m *MediaContact) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaContact.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaContact proto.InternalMessageInfo
-
-func (m *MediaContact) GetPhone() string {
-	if m != nil {
-		return m.Phone
-	}
-	return ""
-}
-
-func (m *MediaContact) GetFirstName() string {
-	if m != nil {
-		return m.FirstName
-	}
-	return ""
-}
-
-func (m *MediaContact) GetLastName() string {
-	if m != nil {
-		return m.LastName
-	}
-	return ""
-}
-
-func (m *MediaContact) GetVCard() string {
-	if m != nil {
-		return m.VCard
-	}
-	return ""
-}
-
-// MediaGeoLocation
-type MediaGeoLocation struct {
-	Lat  float32 `protobuf:"fixed32,1,req,name=Lat" json:"Lat"`
-	Long float32 `protobuf:"fixed32,2,req,name=Long" json:"Long"`
-}
-
-func (m *MediaGeoLocation) Reset()         { *m = MediaGeoLocation{} }
-func (m *MediaGeoLocation) String() string { return proto.CompactTextString(m) }
-func (*MediaGeoLocation) ProtoMessage()    {}
-func (*MediaGeoLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{18}
-}
-func (m *MediaGeoLocation) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MediaGeoLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MediaGeoLocation.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MediaGeoLocation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaGeoLocation.Merge(m, src)
-}
-func (m *MediaGeoLocation) XXX_Size() int {
-	return m.Size()
-}
-func (m *MediaGeoLocation) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaGeoLocation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaGeoLocation proto.InternalMessageInfo
-
-func (m *MediaGeoLocation) GetLat() float32 {
-	if m != nil {
-		return m.Lat
-	}
-	return 0
-}
-
-func (m *MediaGeoLocation) GetLong() float32 {
-	if m != nil {
-		return m.Long
-	}
-	return 0
-}
-
-// MediaWebPage
-type MediaWebPage struct {
-}
-
-func (m *MediaWebPage) Reset()         { *m = MediaWebPage{} }
-func (m *MediaWebPage) String() string { return proto.CompactTextString(m) }
-func (*MediaWebPage) ProtoMessage()    {}
-func (*MediaWebPage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_313bfacbac33da31, []int{19}
-}
-func (m *MediaWebPage) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *MediaWebPage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_MediaWebPage.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *MediaWebPage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaWebPage.Merge(m, src)
-}
-func (m *MediaWebPage) XXX_Size() int {
-	return m.Size()
-}
-func (m *MediaWebPage) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaWebPage.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaWebPage proto.InternalMessageInfo
-
 func init() {
 	proto.RegisterEnum("msg.DocumentAttributeType", DocumentAttributeType_name, DocumentAttributeType_value)
 	proto.RegisterEnum("msg.DocumentType", DocumentType_name, DocumentType_value)
@@ -1453,105 +1564,109 @@ func init() {
 	proto.RegisterType((*DocumentAttributeFile)(nil), "msg.DocumentAttributeFile")
 	proto.RegisterType((*DocumentAttribute)(nil), "msg.DocumentAttribute")
 	proto.RegisterType((*Document)(nil), "msg.Document")
-	proto.RegisterType((*InputMediaPoll)(nil), "msg.InputMediaPoll")
+	proto.RegisterType((*InputMediaInvoice)(nil), "msg.InputMediaInvoice")
+	proto.RegisterType((*MediaInvoice)(nil), "msg.MediaInvoice")
+	proto.RegisterType((*InputMediaWebDocument)(nil), "msg.InputMediaWebDocument")
+	proto.RegisterType((*MediaWebDocument)(nil), "msg.MediaWebDocument")
+	proto.RegisterType((*MediaWebPage)(nil), "msg.MediaWebPage")
 	proto.RegisterType((*InputMediaContact)(nil), "msg.InputMediaContact")
+	proto.RegisterType((*MediaContact)(nil), "msg.MediaContact")
 	proto.RegisterType((*InputMediaUploadedDocument)(nil), "msg.InputMediaUploadedDocument")
 	proto.RegisterType((*InputMediaDocument)(nil), "msg.InputMediaDocument")
+	proto.RegisterType((*MediaDocument)(nil), "msg.MediaDocument")
 	proto.RegisterType((*InputMediaGeoLocation)(nil), "msg.InputMediaGeoLocation")
+	proto.RegisterType((*MediaGeoLocation)(nil), "msg.MediaGeoLocation")
+	proto.RegisterType((*InputMediaPoll)(nil), "msg.InputMediaPoll")
 	proto.RegisterType((*MediaPoll)(nil), "msg.MediaPoll")
 	proto.RegisterType((*PollAnswer)(nil), "msg.PollAnswer")
 	proto.RegisterType((*PollResults)(nil), "msg.PollResults")
 	proto.RegisterType((*PollAnswerVoters)(nil), "msg.PollAnswerVoters")
-	proto.RegisterType((*MediaInvoice)(nil), "msg.MediaInvoice")
-	proto.RegisterType((*MediaDocument)(nil), "msg.MediaDocument")
-	proto.RegisterType((*MediaContact)(nil), "msg.MediaContact")
-	proto.RegisterType((*MediaGeoLocation)(nil), "msg.MediaGeoLocation")
-	proto.RegisterType((*MediaWebPage)(nil), "msg.MediaWebPage")
 }
 
 func init() { proto.RegisterFile("chat.core.message.medias.proto", fileDescriptor_313bfacbac33da31) }
 
 var fileDescriptor_313bfacbac33da31 = []byte{
-	// 1252 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x57, 0xcd, 0x8e, 0xdb, 0x54,
-	0x14, 0x8e, 0xed, 0xfc, 0xcd, 0xc9, 0x74, 0xf0, 0x5c, 0xc8, 0x60, 0x46, 0x55, 0x1a, 0x79, 0x51,
-	0x85, 0x0a, 0x52, 0x48, 0x07, 0x24, 0x96, 0xd3, 0x84, 0xd2, 0x48, 0x33, 0x25, 0x75, 0xd3, 0xe9,
-	0xda, 0x71, 0x6e, 0x13, 0xab, 0xb6, 0x6f, 0x64, 0x5f, 0xb7, 0xb4, 0x4f, 0xc0, 0xa2, 0x8b, 0xf2,
-	0x1a, 0x3c, 0x49, 0x97, 0x5d, 0xb0, 0x60, 0x85, 0xa0, 0x7d, 0x02, 0x76, 0x08, 0x09, 0x09, 0xdd,
-	0xe3, 0xbf, 0xeb, 0xfc, 0xa8, 0x05, 0xb1, 0x60, 0x95, 0xf1, 0x77, 0xce, 0xbd, 0xf7, 0x7c, 0xdf,
-	0xf9, 0xee, 0xb1, 0x07, 0x3a, 0xce, 0xd2, 0xe6, 0x7d, 0x87, 0x85, 0xb4, 0xef, 0xd3, 0x28, 0xb2,
-	0x17, 0xe2, 0x77, 0xee, 0xda, 0x51, 0x7f, 0x15, 0x32, 0xce, 0x88, 0xe6, 0x47, 0x8b, 0xe3, 0x76,
-	0x91, 0xc4, 0x9f, 0xae, 0x68, 0x1a, 0x3b, 0xfe, 0x74, 0xe1, 0xf2, 0x65, 0x3c, 0xeb, 0x3b, 0xcc,
-	0xbf, 0xbe, 0x60, 0x0b, 0x76, 0x1d, 0xe1, 0x59, 0xfc, 0x10, 0x9f, 0xf0, 0x01, 0xff, 0x4a, 0xd2,
-	0xcd, 0x9f, 0x14, 0x38, 0x1a, 0x31, 0x27, 0xf6, 0x69, 0xc0, 0x4f, 0x39, 0x0f, 0xdd, 0x59, 0xcc,
-	0xe9, 0x69, 0x3c, 0x77, 0x19, 0x39, 0x86, 0xda, 0x05, 0x73, 0x1d, 0x6a, 0x28, 0x5d, 0xb5, 0xd7,
-	0xbc, 0x59, 0x7d, 0xf9, 0xcb, 0x95, 0x8a, 0x95, 0x40, 0xa4, 0x0b, 0xcd, 0x51, 0x1c, 0xda, 0xdc,
-	0x65, 0x81, 0xa1, 0x76, 0xd5, 0xde, 0xa5, 0x34, 0x9c, 0xa3, 0x62, 0xf5, 0xd4, 0xe5, 0x1e, 0x35,
-	0xb4, 0xae, 0xda, 0xdb, 0xcb, 0x56, 0x23, 0x44, 0x4c, 0xd8, 0x9b, 0xd0, 0xf0, 0x21, 0x0b, 0x7d,
-	0x1a, 0x1a, 0x55, 0x29, 0x5e, 0xc0, 0x62, 0xfd, 0xa9, 0x37, 0x8b, 0x7d, 0xa3, 0x26, 0xaf, 0x47,
-	0x48, 0x9c, 0xfe, 0xc0, 0x7e, 0x4c, 0x45, 0xa6, 0x51, 0xef, 0x2a, 0xbd, 0xfd, 0xec, 0xf4, 0x0c,
-	0x35, 0x5f, 0x6c, 0xa3, 0x75, 0xe1, 0xce, 0x29, 0xd2, 0x7a, 0xe0, 0xce, 0xf9, 0x12, 0x69, 0x65,
-	0x75, 0x27, 0x10, 0xb9, 0x0c, 0xf5, 0xdb, 0xd4, 0x5d, 0x2c, 0x79, 0x89, 0x54, 0x8a, 0x95, 0x48,
-	0x6b, 0xbb, 0x48, 0x5b, 0x2c, 0x0e, 0xe6, 0x48, 0x2a, 0x97, 0x0c, 0x21, 0xd3, 0xda, 0x52, 0xd1,
-	0x64, 0x29, 0xda, 0xf9, 0xaf, 0x2b, 0x32, 0xbf, 0x82, 0xf6, 0xc6, 0x9e, 0xb7, 0x5c, 0x0f, 0xfb,
-	0x23, 0x7e, 0x03, 0xdb, 0x4f, 0xda, 0x97, 0x09, 0x98, 0xa3, 0xa6, 0x03, 0x87, 0x1b, 0x4b, 0xc9,
-	0x09, 0x54, 0xa7, 0x4f, 0x57, 0xc9, 0x92, 0x83, 0xc1, 0x71, 0xdf, 0x8f, 0x16, 0xfd, 0x8d, 0x2c,
-	0x91, 0x91, 0x6e, 0x87, 0xd9, 0xc4, 0x80, 0xea, 0xc8, 0xe6, 0xb6, 0xa1, 0x4a, 0xad, 0x40, 0xc4,
-	0xfc, 0x4b, 0x85, 0x66, 0xb6, 0x9e, 0x1c, 0x81, 0x3a, 0x1e, 0xe1, 0xd6, 0xda, 0xcd, 0xba, 0x48,
-	0xfa, 0x4c, 0xb1, 0xd4, 0xf1, 0x88, 0x5c, 0x05, 0x38, 0x75, 0x1c, 0x1a, 0x45, 0xb7, 0xed, 0x68,
-	0x89, 0x34, 0xeb, 0x79, 0x5c, 0x8a, 0xa4, 0xc7, 0x24, 0x86, 0xd2, 0xa4, 0x63, 0x90, 0xed, 0xb9,
-	0xeb, 0x63, 0x61, 0x25, 0x3b, 0xe5, 0x68, 0xa6, 0xc7, 0x3d, 0xf7, 0x19, 0x45, 0x43, 0xd5, 0x64,
-	0x3d, 0x04, 0x4a, 0x3a, 0xd0, 0xb8, 0xa0, 0x61, 0x24, 0x7a, 0x5b, 0x97, 0x12, 0x32, 0x50, 0x78,
-	0x76, 0xe8, 0xc5, 0x11, 0xa7, 0xe1, 0x78, 0x64, 0x34, 0xa4, 0x8c, 0x02, 0x26, 0x5f, 0x02, 0xe4,
-	0x2a, 0x45, 0x46, 0xb3, 0xab, 0xf5, 0x5a, 0x83, 0xa3, 0xed, 0x22, 0x5a, 0x52, 0x26, 0xb9, 0x0e,
-	0x7b, 0xd3, 0x65, 0xec, 0xcf, 0x02, 0xdb, 0xf5, 0x8c, 0xbd, 0xae, 0xd2, 0x6b, 0x0d, 0x0e, 0x71,
-	0x99, 0xa8, 0xee, 0x8c, 0x39, 0x68, 0x2e, 0xab, 0xc8, 0x21, 0x57, 0xa1, 0x75, 0x3e, 0xfa, 0x62,
-	0xb8, 0xa4, 0xce, 0xa3, 0x28, 0xf6, 0x0d, 0xe8, 0x2a, 0x39, 0x67, 0x39, 0x60, 0x9e, 0xc0, 0xc1,
-	0x38, 0x58, 0xc5, 0xfc, 0x5c, 0x4c, 0x8f, 0x09, 0xf3, 0x3c, 0x62, 0x42, 0x55, 0xfc, 0x62, 0x1b,
-	0x5a, 0x83, 0x03, 0x3c, 0x25, 0x8f, 0x5a, 0x18, 0x33, 0x7f, 0x50, 0xe0, 0xb0, 0x58, 0x36, 0x64,
-	0x01, 0xb7, 0x1d, 0x2e, 0x5c, 0x3a, 0x59, 0xb2, 0xa0, 0xec, 0xa7, 0x04, 0x12, 0xe2, 0xdc, 0x72,
-	0xc3, 0x88, 0xdf, 0x11, 0x7e, 0x53, 0xe5, 0x0b, 0x9d, 0xc3, 0xa2, 0x05, 0x67, 0x76, 0x9a, 0x22,
-	0xcf, 0x84, 0x1c, 0xc5, 0x81, 0x33, 0xb4, 0x43, 0x71, 0x7b, 0x0a, 0x3e, 0x09, 0x64, 0xbe, 0x54,
-	0xe1, 0xb8, 0xa8, 0xe9, 0xfe, 0xca, 0x63, 0xf6, 0x9c, 0xce, 0x73, 0x6f, 0x99, 0x50, 0x15, 0x5a,
-	0x95, 0x68, 0x61, 0xba, 0x40, 0x2d, 0x8c, 0x91, 0x4f, 0x64, 0x95, 0x55, 0x54, 0x79, 0x3d, 0x51,
-	0x92, 0x58, 0xf6, 0x94, 0xb6, 0xd5, 0x53, 0x1d, 0x68, 0x0c, 0xed, 0x15, 0x4e, 0x03, 0xd9, 0x74,
-	0x19, 0x48, 0xfa, 0xd0, 0xbc, 0xc7, 0x5d, 0xe7, 0x11, 0x0d, 0x23, 0xa3, 0x86, 0x5e, 0x20, 0xc5,
-	0x71, 0x59, 0xe5, 0x56, 0x9e, 0xb3, 0xe6, 0x9e, 0xfa, 0x3b, 0xbb, 0xa7, 0x0f, 0xcd, 0xaf, 0x03,
-	0xee, 0x72, 0x97, 0x46, 0x46, 0x43, 0x3a, 0xe7, 0x3c, 0x79, 0x75, 0x60, 0xec, 0xa9, 0x95, 0xe7,
-	0x98, 0x7f, 0x2a, 0x40, 0x0a, 0x29, 0x73, 0x09, 0x25, 0x3a, 0xca, 0x0e, 0x3a, 0x59, 0x2e, 0xb6,
-	0x78, 0x07, 0x9d, 0x7c, 0x3f, 0xb9, 0x2c, 0xed, 0xed, 0x65, 0x95, 0xdb, 0x53, 0x7d, 0x5b, 0x7b,
-	0xca, 0x62, 0xd5, 0xde, 0x55, 0x2c, 0x73, 0x0c, 0xed, 0x82, 0xfb, 0x37, 0x94, 0x65, 0xb7, 0x8b,
-	0x1c, 0x81, 0x76, 0x66, 0x73, 0xa4, 0xae, 0xa6, 0xd4, 0x05, 0x20, 0xa6, 0xce, 0x19, 0x0b, 0x16,
-	0x48, 0x39, 0x0b, 0x20, 0x62, 0xfe, 0xa1, 0xc0, 0x5e, 0x71, 0xb1, 0x3e, 0x90, 0xa6, 0x5b, 0x92,
-	0x25, 0x66, 0xdb, 0x65, 0xa8, 0x0f, 0x3d, 0x16, 0xd1, 0x39, 0x1a, 0x2e, 0x7b, 0x23, 0xa4, 0x18,
-	0xe9, 0xc1, 0xfe, 0x24, 0x9e, 0x79, 0xae, 0x73, 0xc1, 0xb8, 0x70, 0x89, 0x26, 0xe5, 0x94, 0x22,
-	0x78, 0xe1, 0x63, 0x8f, 0xbb, 0xc3, 0x25, 0xbe, 0x91, 0xab, 0x52, 0xa2, 0x1c, 0x10, 0xd5, 0xde,
-	0x8d, 0xdd, 0x67, 0x46, 0x4d, 0x4a, 0x40, 0x44, 0xf8, 0xf9, 0x6e, 0x4c, 0x23, 0x9e, 0x0d, 0xb8,
-	0xdc, 0xcf, 0x19, 0x4a, 0x3e, 0x86, 0xc6, 0x69, 0x10, 0x3d, 0x11, 0x85, 0x24, 0x36, 0x7a, 0x0f,
-	0xf5, 0x14, 0xec, 0x12, 0xdc, 0xca, 0xe2, 0xe6, 0x08, 0xa0, 0x80, 0xc5, 0xa1, 0x53, 0xfa, 0x1d,
-	0x2f, 0xd9, 0x06, 0x11, 0x41, 0xff, 0xdb, 0x55, 0xfe, 0x91, 0x90, 0xbd, 0x1b, 0x52, 0xcc, 0x7c,
-	0x08, 0x2d, 0x9c, 0x3a, 0x34, 0x8a, 0x3d, 0x2e, 0xa6, 0x60, 0x23, 0xfd, 0xd3, 0x50, 0xf0, 0xfc,
-	0xf6, 0xda, 0xf9, 0x89, 0x16, 0x56, 0x96, 0x25, 0x44, 0x99, 0x32, 0x6e, 0x7b, 0xa9, 0x7a, 0xaa,
-	0xa4, 0xbd, 0x1c, 0x30, 0x9f, 0x2b, 0xa0, 0xaf, 0xef, 0x82, 0x9d, 0x59, 0xb2, 0x88, 0x06, 0xa5,
-	0xcf, 0x9b, 0x14, 0xc3, 0xcb, 0xc0, 0xc2, 0x90, 0x3a, 0x89, 0xd7, 0x9b, 0xf9, 0x65, 0x48, 0x40,
-	0x89, 0x98, 0xb6, 0x49, 0x4c, 0x44, 0xd3, 0x9a, 0xaa, 0x52, 0x4d, 0x29, 0x66, 0x1e, 0xc0, 0x3e,
-	0xda, 0x66, 0x1c, 0x3c, 0x16, 0x3d, 0x33, 0x7f, 0x54, 0xe0, 0xd2, 0x3f, 0xbb, 0x8a, 0x3d, 0xd8,
-	0x9f, 0x4e, 0xcf, 0xdc, 0xe0, 0x1e, 0x75, 0x58, 0x30, 0x4f, 0x98, 0x67, 0xaf, 0xa3, 0x52, 0x84,
-	0x5c, 0x01, 0x6d, 0xc4, 0x1c, 0x2c, 0xb2, 0x35, 0xb8, 0x54, 0xba, 0x1f, 0x96, 0x88, 0x94, 0x6e,
-	0x69, 0xf5, 0x1d, 0x86, 0xc7, 0x73, 0x25, 0xad, 0xfe, 0xff, 0xf1, 0x5a, 0x18, 0x81, 0xfe, 0x1f,
-	0xdc, 0xe4, 0xac, 0x23, 0x0f, 0xe8, 0x6c, 0x62, 0x2f, 0xe8, 0xb5, 0xef, 0xd5, 0x2d, 0xdf, 0x55,
-	0x38, 0xf3, 0xdb, 0x70, 0x58, 0x02, 0xee, 0xb0, 0x80, 0xea, 0x15, 0x72, 0x04, 0xa4, 0x04, 0xe3,
-	0x07, 0xb4, 0xae, 0x6c, 0xe0, 0xf8, 0x05, 0xaa, 0xab, 0x1b, 0x38, 0x7e, 0x07, 0xea, 0xda, 0xc6,
-	0xf6, 0x62, 0xea, 0xe9, 0x55, 0xf2, 0x11, 0xb4, 0xcb, 0xdb, 0x07, 0xae, 0x6f, 0x73, 0x3a, 0xd7,
-	0x6b, 0xa5, 0x9d, 0x2c, 0x1a, 0xd1, 0xf0, 0x31, 0x9d, 0x7f, 0xae, 0xd7, 0xb7, 0xe2, 0x03, 0xbd,
-	0xb1, 0x15, 0xbf, 0xa1, 0x37, 0xb7, 0xe2, 0x27, 0xfa, 0xde, 0xb5, 0xdf, 0x15, 0xd8, 0xcf, 0xa4,
-	0x40, 0x05, 0x3e, 0x84, 0xf7, 0xe5, 0xe7, 0xfb, 0xc1, 0xa3, 0x80, 0x3d, 0x09, 0xf4, 0x8a, 0xa8,
-	0x5d, 0x0e, 0x24, 0x94, 0x94, 0x75, 0x18, 0xff, 0x7d, 0xd0, 0xd5, 0x0d, 0x18, 0x85, 0xd1, 0xd6,
-	0x77, 0x4f, 0x1b, 0x92, 0x48, 0x20, 0x07, 0x0a, 0xaa, 0xb5, 0x5d, 0xa1, 0x81, 0x5e, 0xdf, 0x15,
-	0xba, 0xa1, 0x37, 0x76, 0x85, 0x4e, 0xf4, 0xe6, 0xcd, 0xcb, 0xaf, 0x7e, 0xeb, 0x54, 0x5e, 0xbe,
-	0xee, 0x28, 0xaf, 0x5e, 0x77, 0x94, 0x5f, 0x5f, 0x77, 0x94, 0x17, 0x6f, 0x3a, 0x95, 0x57, 0x6f,
-	0x3a, 0x95, 0x9f, 0xdf, 0x74, 0x2a, 0x7f, 0x07, 0x00, 0x00, 0xff, 0xff, 0x83, 0x52, 0x2e, 0x91,
-	0x9d, 0x0d, 0x00, 0x00,
+	// 1266 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x57, 0xcb, 0x6e, 0xdb, 0x46,
+	0x17, 0x16, 0x49, 0x5d, 0x47, 0x8e, 0x7f, 0x7a, 0xf2, 0xcb, 0x61, 0x0d, 0x43, 0x11, 0xb8, 0x08,
+	0xd4, 0xa0, 0x95, 0x5b, 0xc5, 0x2d, 0xd0, 0xa5, 0x2d, 0x35, 0x8d, 0x00, 0x3b, 0x55, 0x68, 0xc5,
+	0x5e, 0x53, 0xd4, 0x58, 0x22, 0x4c, 0x72, 0x04, 0x72, 0xe8, 0xd4, 0x79, 0x82, 0x2e, 0xba, 0x48,
+	0x5f, 0xa3, 0x4f, 0xe2, 0xa5, 0x17, 0x5d, 0x74, 0x55, 0xb4, 0xf6, 0x13, 0x74, 0x57, 0x14, 0x28,
+	0x50, 0xcc, 0xe1, 0x6d, 0xa8, 0x0b, 0xe2, 0xb6, 0x9b, 0xae, 0x64, 0x7e, 0xdf, 0x99, 0x99, 0xf3,
+	0x9d, 0xdb, 0x8c, 0x51, 0xd3, 0x9a, 0x99, 0xac, 0x63, 0x51, 0x9f, 0x74, 0x5c, 0x12, 0x04, 0xe6,
+	0x94, 0xff, 0x4e, 0x6c, 0x33, 0xe8, 0xcc, 0x7d, 0xca, 0x28, 0x56, 0xdc, 0x60, 0xba, 0xd3, 0xc8,
+	0x8c, 0xd8, 0xd5, 0x9c, 0xc4, 0xdc, 0xce, 0xc7, 0x53, 0x9b, 0xcd, 0xc2, 0x71, 0xc7, 0xa2, 0xee,
+	0xde, 0x94, 0x4e, 0xe9, 0x1e, 0xc0, 0xe3, 0xf0, 0x1c, 0xbe, 0xe0, 0x03, 0xfe, 0x8a, 0xcc, 0xf5,
+	0x1f, 0x25, 0xb4, 0xdd, 0xa7, 0x56, 0xe8, 0x12, 0x8f, 0x1d, 0x30, 0xe6, 0xdb, 0xe3, 0x90, 0x91,
+	0x83, 0x70, 0x62, 0x53, 0xbc, 0x83, 0x4a, 0xa7, 0xd4, 0xb6, 0x88, 0x26, 0xb5, 0xe4, 0x76, 0xf5,
+	0xb0, 0x78, 0xfd, 0xf3, 0xe3, 0x82, 0x11, 0x41, 0xb8, 0x85, 0xaa, 0xfd, 0xd0, 0x37, 0x99, 0x4d,
+	0x3d, 0x4d, 0x6e, 0xc9, 0xed, 0x07, 0x31, 0x9d, 0xa2, 0x7c, 0xf5, 0xc8, 0x66, 0x0e, 0xd1, 0x94,
+	0x96, 0xdc, 0xae, 0x25, 0xab, 0x01, 0xc2, 0x3a, 0xaa, 0x0d, 0x89, 0x7f, 0x4e, 0x7d, 0x97, 0xf8,
+	0x5a, 0x51, 0xe0, 0x33, 0x98, 0xaf, 0x3f, 0x70, 0xc6, 0xa1, 0xab, 0x95, 0xc4, 0xf5, 0x00, 0xf1,
+	0xd3, 0xcf, 0xcc, 0x4b, 0xc2, 0x2d, 0xb5, 0x72, 0x4b, 0x6a, 0x6f, 0x24, 0xa7, 0x27, 0xa8, 0xfe,
+	0x6e, 0x95, 0xac, 0x53, 0x7b, 0x42, 0x40, 0xd6, 0x99, 0x3d, 0x61, 0x33, 0x90, 0x95, 0xf8, 0x1d,
+	0x41, 0x78, 0x17, 0x95, 0x5f, 0x10, 0x7b, 0x3a, 0x63, 0x39, 0x51, 0x31, 0x96, 0x13, 0xad, 0xac,
+	0x13, 0x6d, 0xd0, 0xd0, 0x9b, 0x80, 0xa8, 0x34, 0x64, 0x00, 0xe9, 0xc6, 0x0a, 0x8f, 0x86, 0x33,
+	0x9e, 0xce, 0x7f, 0xec, 0x91, 0xfe, 0x05, 0x6a, 0x2c, 0xed, 0xf9, 0xdc, 0x76, 0x20, 0x3f, 0xfc,
+	0xd7, 0x33, 0xdd, 0x28, 0x7d, 0x49, 0x00, 0x53, 0x54, 0xb7, 0xd0, 0xd6, 0xd2, 0x52, 0xbc, 0x8f,
+	0x8a, 0xa3, 0xab, 0x79, 0xb4, 0x64, 0xb3, 0xbb, 0xd3, 0x71, 0x83, 0x69, 0x67, 0xc9, 0x8a, 0x5b,
+	0xc4, 0xdb, 0x81, 0x35, 0xd6, 0x50, 0xb1, 0x6f, 0x32, 0x53, 0x93, 0x85, 0x54, 0x00, 0xa2, 0xff,
+	0x29, 0xa3, 0x6a, 0xb2, 0x1e, 0x6f, 0x23, 0x79, 0xd0, 0x87, 0xad, 0x95, 0xc3, 0x32, 0x37, 0xfa,
+	0x44, 0x32, 0xe4, 0x41, 0x1f, 0x3f, 0x41, 0xe8, 0xc0, 0xb2, 0x48, 0x10, 0xbc, 0x30, 0x83, 0x19,
+	0xc8, 0x2c, 0xa7, 0xbc, 0xc0, 0xc4, 0xc7, 0x44, 0x05, 0xa5, 0x08, 0xc7, 0x80, 0xda, 0x63, 0xdb,
+	0x05, 0xc7, 0x72, 0xe5, 0x94, 0xa2, 0x49, 0x3c, 0x4e, 0xec, 0xb7, 0x04, 0x0a, 0xaa, 0x24, 0xc6,
+	0x83, 0xa3, 0xb8, 0x89, 0x2a, 0xa7, 0xc4, 0x0f, 0x78, 0x6e, 0xcb, 0x82, 0x41, 0x02, 0xf2, 0x9a,
+	0xed, 0x39, 0x61, 0xc0, 0x88, 0x3f, 0xe8, 0x6b, 0x15, 0xc1, 0x22, 0x83, 0xf1, 0xe7, 0x08, 0xa5,
+	0x51, 0x0a, 0xb4, 0x6a, 0x4b, 0x69, 0xd7, 0xbb, 0xdb, 0xab, 0x83, 0x68, 0x08, 0x96, 0x78, 0x0f,
+	0xd5, 0x46, 0xb3, 0xd0, 0x1d, 0x7b, 0xa6, 0xed, 0x68, 0xb5, 0x96, 0xd4, 0xae, 0x77, 0xb7, 0x60,
+	0x19, 0xf7, 0xee, 0x88, 0x5a, 0x50, 0x5c, 0x46, 0x66, 0x83, 0x9f, 0xa0, 0xfa, 0x71, 0xff, 0xb3,
+	0xde, 0x8c, 0x58, 0x17, 0x41, 0xe8, 0x6a, 0xa8, 0x25, 0xa5, 0x9a, 0x45, 0x42, 0x7f, 0x88, 0xb6,
+	0x06, 0xde, 0x3c, 0x64, 0xc7, 0x7c, 0x7a, 0x0c, 0xbc, 0x4b, 0xde, 0xbb, 0xfa, 0x26, 0xda, 0xc8,
+	0x7d, 0x3f, 0x42, 0x8d, 0xcc, 0xe8, 0x8c, 0x8c, 0x13, 0x5f, 0x75, 0x8c, 0xd4, 0x25, 0x2c, 0x59,
+	0x7c, 0x46, 0xc6, 0x43, 0x73, 0x4a, 0xf4, 0xef, 0x25, 0xf1, 0x88, 0x1e, 0xf5, 0x98, 0x69, 0x31,
+	0x5e, 0xd1, 0xc3, 0x19, 0xf5, 0xf2, 0xb5, 0x17, 0x41, 0x3c, 0x90, 0xcf, 0x6d, 0x3f, 0x60, 0x2f,
+	0x79, 0x6d, 0xca, 0x62, 0xf3, 0xa7, 0x30, 0x4f, 0xd7, 0x91, 0x19, 0x9b, 0x88, 0xf3, 0x23, 0x45,
+	0x61, 0x38, 0xf5, 0x4c, 0x9f, 0x77, 0x5a, 0xa6, 0x3d, 0x82, 0xf4, 0xef, 0xa4, 0xd8, 0xc9, 0xff,
+	0x86, 0x3b, 0xd7, 0x32, 0xda, 0xc9, 0x42, 0xf4, 0x7a, 0xee, 0x50, 0x73, 0x42, 0x26, 0x69, 0x5b,
+	0xe8, 0xa8, 0xc8, 0xd3, 0x0c, 0xbe, 0xd5, 0xbb, 0x9b, 0x90, 0x77, 0x30, 0xe7, 0xa8, 0x01, 0x1c,
+	0xfe, 0x48, 0x2c, 0x10, 0x19, 0x0a, 0x64, 0xd1, 0x50, 0xa8, 0x0e, 0xb1, 0x1d, 0x94, 0x95, 0xed,
+	0xd0, 0x44, 0x95, 0x9e, 0x39, 0x87, 0x41, 0x26, 0xf6, 0x4b, 0x02, 0xe2, 0x0e, 0xaa, 0x9e, 0x30,
+	0xdb, 0xba, 0x20, 0x7e, 0xa0, 0x95, 0xa0, 0x8c, 0x71, 0x76, 0x5c, 0xe2, 0xb9, 0x91, 0xda, 0x2c,
+	0x14, 0x7e, 0xf9, 0xde, 0x85, 0xdf, 0x41, 0xd5, 0x2f, 0x3d, 0x66, 0x33, 0x9b, 0x04, 0x5a, 0x45,
+	0x38, 0xe7, 0x38, 0xba, 0xf5, 0x80, 0xbb, 0x32, 0x52, 0x1b, 0xfd, 0x0f, 0x09, 0xe1, 0x2c, 0x94,
+	0x69, 0x08, 0x05, 0x39, 0xd2, 0x1a, 0x39, 0x89, 0x2d, 0xa4, 0x78, 0x8d, 0x9c, 0x74, 0x3f, 0xd1,
+	0x2d, 0xe5, 0xfd, 0x6e, 0xe5, 0xd3, 0x53, 0x7c, 0x5f, 0x7a, 0xf2, 0xc1, 0x2a, 0xdd, 0x37, 0x58,
+	0xfa, 0x0f, 0x12, 0x7a, 0xf0, 0xf7, 0x74, 0xb7, 0xd1, 0xc6, 0x68, 0x74, 0x64, 0x7b, 0x27, 0xc4,
+	0xa2, 0xde, 0x24, 0x00, 0xed, 0xc9, 0xd8, 0xca, 0x31, 0xf8, 0x31, 0x52, 0xfa, 0xd4, 0x82, 0x6a,
+	0xa9, 0x77, 0x1f, 0xe4, 0x9c, 0x31, 0x38, 0x93, 0x0b, 0x49, 0xf1, 0x1e, 0x99, 0x1a, 0x88, 0x43,
+	0xe5, 0x2b, 0x42, 0x93, 0x29, 0x86, 0xb7, 0x91, 0x72, 0x64, 0x32, 0xf0, 0x57, 0x8e, 0x5d, 0xe1,
+	0x00, 0x9f, 0xee, 0x47, 0xd4, 0x9b, 0x82, 0x8f, 0x09, 0x01, 0x88, 0xde, 0x8f, 0xc7, 0xd0, 0xbf,
+	0xdb, 0x65, 0x1f, 0x6d, 0x66, 0x0e, 0x0d, 0xa9, 0xe3, 0xf0, 0xc6, 0xe3, 0xbf, 0xb9, 0xc6, 0x4b,
+	0x59, 0x03, 0x38, 0xfd, 0x77, 0x09, 0xd5, 0xb2, 0x15, 0xff, 0x17, 0x6e, 0xb0, 0x68, 0x6f, 0x7e,
+	0x7f, 0xed, 0xa2, 0x72, 0xcf, 0xa1, 0x01, 0x99, 0x40, 0x67, 0x26, 0xb7, 0x7e, 0x8c, 0xf1, 0x1c,
+	0x0c, 0xc3, 0xb1, 0x63, 0x5b, 0xa7, 0x94, 0xf1, 0x76, 0x52, 0x04, 0x9b, 0x1c, 0x03, 0x43, 0x3d,
+	0x74, 0x98, 0xdd, 0x9b, 0xc1, 0xab, 0xab, 0x28, 0x18, 0x8a, 0x04, 0xd7, 0xf8, 0x2a, 0xb4, 0xdf,
+	0x6a, 0x25, 0xc1, 0x00, 0x10, 0xde, 0xf8, 0xaf, 0x42, 0x12, 0xb0, 0xe4, 0x12, 0x4b, 0x1b, 0x3f,
+	0x41, 0xf1, 0x87, 0xa8, 0x72, 0xe0, 0x05, 0x6f, 0xb8, 0x23, 0x51, 0xbf, 0xfd, 0x0f, 0x64, 0x73,
+	0x75, 0x11, 0x6e, 0x24, 0xbc, 0xde, 0x47, 0x28, 0x83, 0xf9, 0xa1, 0x23, 0xf2, 0x0d, 0xcb, 0xd5,
+	0x19, 0x20, 0x5c, 0xfe, 0xd7, 0xf3, 0xf4, 0x21, 0x98, 0xdc, 0xff, 0x31, 0xa6, 0x9f, 0xa3, 0x3a,
+	0x84, 0x93, 0x04, 0xa1, 0xc3, 0xf8, 0x4d, 0x57, 0x89, 0xff, 0xd4, 0x24, 0x38, 0xbf, 0xb1, 0x70,
+	0x7e, 0x14, 0x0b, 0x23, 0xb1, 0xe2, 0x41, 0x19, 0x51, 0x66, 0x3a, 0x71, 0xf4, 0x64, 0x21, 0xf6,
+	0x22, 0xc1, 0x67, 0xbe, 0xba, 0xb8, 0x0b, 0x64, 0x66, 0x46, 0x03, 0xe2, 0xe5, 0x9e, 0xb0, 0x31,
+	0x06, 0xdd, 0x43, 0x7d, 0x9f, 0x58, 0xd1, 0x50, 0xa8, 0xa6, 0xdd, 0x13, 0x81, 0x82, 0x30, 0x65,
+	0x59, 0x18, 0x67, 0x63, 0x9f, 0x8a, 0x82, 0x4f, 0x31, 0xf6, 0xf4, 0x5b, 0x79, 0xc5, 0xcb, 0x0c,
+	0x46, 0x6f, 0x03, 0x6d, 0xe5, 0x80, 0x97, 0xd4, 0x23, 0x6a, 0x01, 0x6f, 0x23, 0x9c, 0x83, 0xe1,
+	0x09, 0xae, 0x4a, 0x4b, 0x38, 0xbc, 0x61, 0x55, 0x79, 0x09, 0x87, 0x97, 0xa4, 0xaa, 0x2c, 0x6d,
+	0xcf, 0x87, 0x8f, 0x5a, 0xc4, 0x1f, 0xa0, 0x46, 0x7e, 0x7b, 0xcf, 0x76, 0x4d, 0x46, 0x26, 0x6a,
+	0x29, 0xb7, 0x93, 0x41, 0x02, 0xe2, 0x5f, 0x92, 0xc9, 0xa7, 0x6a, 0x79, 0x25, 0xde, 0x55, 0x2b,
+	0x2b, 0xf1, 0x67, 0x6a, 0x75, 0x25, 0xbe, 0xaf, 0xd6, 0x9e, 0xfe, 0x26, 0xa1, 0x8d, 0x24, 0x14,
+	0x10, 0x81, 0x47, 0xe8, 0xa1, 0xf8, 0xfd, 0xda, 0xbb, 0xf0, 0xe8, 0x1b, 0x4f, 0x2d, 0x70, 0xdf,
+	0x45, 0x22, 0x92, 0x24, 0x2d, 0xc2, 0xf0, 0x0f, 0x88, 0x2a, 0x2f, 0xc1, 0x10, 0x18, 0x65, 0x71,
+	0xf7, 0xf8, 0x9d, 0x12, 0x85, 0x40, 0x24, 0x32, 0xa9, 0xa5, 0x75, 0x54, 0x57, 0x2d, 0xaf, 0xa3,
+	0x9e, 0xa9, 0x95, 0x75, 0xd4, 0xbe, 0x5a, 0x3d, 0xdc, 0xbd, 0xf9, 0xb5, 0x59, 0xb8, 0xbe, 0x6d,
+	0x4a, 0x37, 0xb7, 0x4d, 0xe9, 0x97, 0xdb, 0xa6, 0xf4, 0xee, 0xae, 0x59, 0xb8, 0xb9, 0x6b, 0x16,
+	0x7e, 0xba, 0x6b, 0x16, 0xfe, 0x0a, 0x00, 0x00, 0xff, 0xff, 0x5f, 0xe6, 0xb8, 0xab, 0xdf, 0x0d,
+	0x00, 0x00,
 }
 
 func (m *DocumentAttributeAudio) Marshal() (dAtA []byte, err error) {
@@ -1818,7 +1933,7 @@ func (m *Document) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *InputMediaPoll) Marshal() (dAtA []byte, err error) {
+func (m *InputMediaInvoice) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1828,30 +1943,108 @@ func (m *InputMediaPoll) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *InputMediaPoll) MarshalTo(dAtA []byte) (int, error) {
+func (m *InputMediaInvoice) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *InputMediaPoll) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *InputMediaInvoice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Poll == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
-	} else {
-		{
-			size, err := m.Poll.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaInvoice) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
 	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaInvoice) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaInvoice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *InputMediaWebDocument) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *InputMediaWebDocument) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *InputMediaWebDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaWebDocument) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaWebDocument) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaWebDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaWebPage) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaWebPage) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaWebPage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
 	return len(dAtA) - i, nil
 }
 
@@ -1871,6 +2064,49 @@ func (m *InputMediaContact) MarshalTo(dAtA []byte) (int, error) {
 }
 
 func (m *InputMediaContact) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.VCard)
+	copy(dAtA[i:], m.VCard)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.VCard)))
+	i--
+	dAtA[i] = 0x22
+	i -= len(m.LastName)
+	copy(dAtA[i:], m.LastName)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.LastName)))
+	i--
+	dAtA[i] = 0x1a
+	i -= len(m.FirstName)
+	copy(dAtA[i:], m.FirstName)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.FirstName)))
+	i--
+	dAtA[i] = 0x12
+	i -= len(m.Phone)
+	copy(dAtA[i:], m.Phone)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Phone)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaContact) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaContact) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaContact) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -2081,6 +2317,65 @@ func (m *InputMediaDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *MediaDocument) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaDocument) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Entities) > 0 {
+		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	if m.Doc == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Doc")
+	} else {
+		{
+			size, err := m.Doc.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x1a
+	}
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(m.TTLinSeconds))
+	i--
+	dAtA[i] = 0x10
+	i -= len(m.Caption)
+	copy(dAtA[i:], m.Caption)
+	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Caption)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
 func (m *InputMediaGeoLocation) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -2109,6 +2404,74 @@ func (m *InputMediaGeoLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Lat))))
 	i--
 	dAtA[i] = 0xd
+	return len(dAtA) - i, nil
+}
+
+func (m *MediaGeoLocation) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MediaGeoLocation) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MediaGeoLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= 4
+	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Long))))
+	i--
+	dAtA[i] = 0x15
+	i -= 4
+	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Lat))))
+	i--
+	dAtA[i] = 0xd
+	return len(dAtA) - i, nil
+}
+
+func (m *InputMediaPoll) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *InputMediaPoll) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *InputMediaPoll) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Poll == nil {
+		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
+	} else {
+		{
+			size, err := m.Poll.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
 	return len(dAtA) - i, nil
 }
 
@@ -2313,185 +2676,6 @@ func (m *PollAnswerVoters) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MediaInvoice) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MediaInvoice) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MediaInvoice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
-}
-
-func (m *MediaDocument) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MediaDocument) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MediaDocument) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Entities) > 0 {
-		for iNdEx := len(m.Entities) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Entities[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-			}
-			i--
-			dAtA[i] = 0x22
-		}
-	}
-	if m.Doc == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Doc")
-	} else {
-		{
-			size, err := m.Doc.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x1a
-	}
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(m.TTLinSeconds))
-	i--
-	dAtA[i] = 0x10
-	i -= len(m.Caption)
-	copy(dAtA[i:], m.Caption)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Caption)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
-}
-
-func (m *MediaContact) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MediaContact) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MediaContact) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	i -= len(m.VCard)
-	copy(dAtA[i:], m.VCard)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.VCard)))
-	i--
-	dAtA[i] = 0x22
-	i -= len(m.LastName)
-	copy(dAtA[i:], m.LastName)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.LastName)))
-	i--
-	dAtA[i] = 0x1a
-	i -= len(m.FirstName)
-	copy(dAtA[i:], m.FirstName)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.FirstName)))
-	i--
-	dAtA[i] = 0x12
-	i -= len(m.Phone)
-	copy(dAtA[i:], m.Phone)
-	i = encodeVarintChatCoreMessageMedias(dAtA, i, uint64(len(m.Phone)))
-	i--
-	dAtA[i] = 0xa
-	return len(dAtA) - i, nil
-}
-
-func (m *MediaGeoLocation) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MediaGeoLocation) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MediaGeoLocation) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	i -= 4
-	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Long))))
-	i--
-	dAtA[i] = 0x15
-	i -= 4
-	encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(m.Lat))))
-	i--
-	dAtA[i] = 0xd
-	return len(dAtA) - i, nil
-}
-
-func (m *MediaWebPage) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *MediaWebPage) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *MediaWebPage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	return len(dAtA) - i, nil
-}
-
 func encodeVarintChatCoreMessageMedias(dAtA []byte, offset int, v uint64) int {
 	offset -= sovChatCoreMessageMedias(v)
 	base := offset
@@ -2602,20 +2786,69 @@ func (m *Document) Size() (n int) {
 	return n
 }
 
-func (m *InputMediaPoll) Size() (n int) {
+func (m *InputMediaInvoice) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if m.Poll != nil {
-		l = m.Poll.Size()
-		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	return n
+}
+
+func (m *MediaInvoice) Size() (n int) {
+	if m == nil {
+		return 0
 	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *InputMediaWebDocument) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MediaWebDocument) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MediaWebPage) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
 	return n
 }
 
 func (m *InputMediaContact) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Phone)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	l = len(m.FirstName)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	l = len(m.LastName)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	l = len(m.VCard)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	return n
+}
+
+func (m *MediaContact) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2702,6 +2935,28 @@ func (m *InputMediaDocument) Size() (n int) {
 	return n
 }
 
+func (m *MediaDocument) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Caption)
+	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	n += 1 + sovChatCoreMessageMedias(uint64(m.TTLinSeconds))
+	if m.Doc != nil {
+		l = m.Doc.Size()
+		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	}
+	if len(m.Entities) > 0 {
+		for _, e := range m.Entities {
+			l = e.Size()
+			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+		}
+	}
+	return n
+}
+
 func (m *InputMediaGeoLocation) Size() (n int) {
 	if m == nil {
 		return 0
@@ -2710,6 +2965,30 @@ func (m *InputMediaGeoLocation) Size() (n int) {
 	_ = l
 	n += 5
 	n += 5
+	return n
+}
+
+func (m *MediaGeoLocation) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 5
+	n += 5
+	return n
+}
+
+func (m *InputMediaPoll) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Poll != nil {
+		l = m.Poll.Size()
+		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
+	}
 	return n
 }
 
@@ -2779,74 +3058,6 @@ func (m *PollAnswerVoters) Size() (n int) {
 		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
 	}
 	n += 1 + sovChatCoreMessageMedias(uint64(m.Voters))
-	return n
-}
-
-func (m *MediaInvoice) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	return n
-}
-
-func (m *MediaDocument) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Caption)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	n += 1 + sovChatCoreMessageMedias(uint64(m.TTLinSeconds))
-	if m.Doc != nil {
-		l = m.Doc.Size()
-		n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	}
-	if len(m.Entities) > 0 {
-		for _, e := range m.Entities {
-			l = e.Size()
-			n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-		}
-	}
-	return n
-}
-
-func (m *MediaContact) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Phone)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	l = len(m.FirstName)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	l = len(m.LastName)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	l = len(m.VCard)
-	n += 1 + l + sovChatCoreMessageMedias(uint64(l))
-	return n
-}
-
-func (m *MediaGeoLocation) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	n += 5
-	n += 5
-	return n
-}
-
-func (m *MediaWebPage) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
 	return n
 }
 
@@ -3868,8 +4079,7 @@ func (m *Document) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *InputMediaPoll) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
+func (m *InputMediaInvoice) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3892,49 +4102,12 @@ func (m *InputMediaPoll) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: InputMediaPoll: wiretype end group for non-group")
+			return fmt.Errorf("proto: InputMediaInvoice: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: InputMediaPoll: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: InputMediaInvoice: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Poll", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Poll == nil {
-				m.Poll = &MediaPoll{}
-			}
-			if err := m.Poll.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
@@ -3953,8 +4126,217 @@ func (m *InputMediaPoll) Unmarshal(dAtA []byte) error {
 			iNdEx += skippy
 		}
 	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaInvoice) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaInvoice: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaInvoice: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *InputMediaWebDocument) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: InputMediaWebDocument: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: InputMediaWebDocument: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaWebDocument) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaWebDocument: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaWebDocument: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaWebPage) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaWebPage: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaWebPage: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
 	}
 
 	if iNdEx > l {
@@ -3990,6 +4372,200 @@ func (m *InputMediaContact) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: InputMediaContact: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Phone", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Phone = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FirstName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FirstName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LastName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.LastName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field VCard", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.VCard = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Phone")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("FirstName")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("LastName")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaContact) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaContact: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaContact: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -4694,6 +5270,193 @@ func (m *InputMediaDocument) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+func (m *MediaDocument) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaDocument: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaDocument: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Caption", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Caption = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TTLinSeconds", wireType)
+			}
+			m.TTLinSeconds = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.TTLinSeconds |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Doc", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Doc == nil {
+				m.Doc = &Document{}
+			}
+			if err := m.Doc.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Entities", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Entities = append(m.Entities, &MessageEntity{})
+			if err := m.Entities[len(m.Entities)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Caption")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("TTLinSeconds")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Doc")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func (m *InputMediaGeoLocation) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
@@ -4771,6 +5534,184 @@ func (m *InputMediaGeoLocation) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Long")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MediaGeoLocation) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MediaGeoLocation: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MediaGeoLocation: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 5 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lat", wireType)
+			}
+			var v uint32
+			if (iNdEx + 4) > l {
+				return io.ErrUnexpectedEOF
+			}
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			iNdEx += 4
+			m.Lat = float32(math.Float32frombits(v))
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 5 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Long", wireType)
+			}
+			var v uint32
+			if (iNdEx + 4) > l {
+				return io.ErrUnexpectedEOF
+			}
+			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
+			iNdEx += 4
+			m.Long = float32(math.Float32frombits(v))
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Lat")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Long")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *InputMediaPoll) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatCoreMessageMedias
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: InputMediaPoll: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: InputMediaPoll: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Poll", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatCoreMessageMedias
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Poll == nil {
+				m.Poll = &MediaPoll{}
+			}
+			if err := m.Poll.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatCoreMessageMedias
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Poll")
 	}
 
 	if iNdEx > l {
@@ -5400,577 +6341,6 @@ func (m *PollAnswerVoters) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000008) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Voters")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MediaInvoice) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MediaInvoice: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaInvoice: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MediaDocument) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MediaDocument: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaDocument: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Caption", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Caption = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field TTLinSeconds", wireType)
-			}
-			m.TTLinSeconds = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.TTLinSeconds |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Doc", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Doc == nil {
-				m.Doc = &Document{}
-			}
-			if err := m.Doc.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Entities", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Entities = append(m.Entities, &MessageEntity{})
-			if err := m.Entities[len(m.Entities)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Caption")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("TTLinSeconds")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Doc")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MediaContact) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MediaContact: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaContact: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Phone", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Phone = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field FirstName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.FirstName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field LastName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.LastName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field VCard", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowChatCoreMessageMedias
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.VCard = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Phone")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("FirstName")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("LastName")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MediaGeoLocation) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MediaGeoLocation: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaGeoLocation: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Lat", wireType)
-			}
-			var v uint32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			m.Lat = float32(math.Float32frombits(v))
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Long", wireType)
-			}
-			var v uint32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			m.Long = float32(math.Float32frombits(v))
-			hasFields[0] |= uint64(0x00000002)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Lat")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Long")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MediaWebPage) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowChatCoreMessageMedias
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MediaWebPage: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MediaWebPage: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipChatCoreMessageMedias(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthChatCoreMessageMedias
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
 	}
 
 	if iNdEx > l {

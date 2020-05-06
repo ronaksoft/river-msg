@@ -224,11 +224,29 @@ enum MediaType {
     MediaTypeContact = 3;
     MediaTypeGeoLocation = 4;
     MediaTypeInvoice = 5;
-    MediaTypeReserved1 = 6;
+    MediaTypeWebDocument = 6;
     MediaTypeReserved2 = 7;
     MediaTypeReserved3 = 8;
     MediaTypeReserved4 = 9;
     MediaTypeReserved5 = 10;
+}
+
+enum InputMediaType {
+    InputMediaTypeEmpty = 0;
+    InputMediaTypeInvoice = 1;
+    InputMediaTypePoll = 2;
+    InputMediaTypeContact = 3;
+    InputMediaTypeUploadedDocument = 4;
+    InputMediaTypeDocument = 5;
+    InputMediaTypeGeoLocation = 6;
+    InputMediaTypeWebDocument = 7;
+    InputMediaTypeReserved2 = 8;
+    InputMediaTypeReserved3 = 9;
+    InputMediaTypeReserved4 = 10;
+    InputMediaTypeReserved5 = 11;
+    InputMediaTypeReserved6 = 12;
+    InputMediaTypeReserved7 = 13;
+    InputMediaTypeReserved8 = 14;
 }
 
 // UserMessage

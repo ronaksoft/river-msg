@@ -102,7 +102,7 @@ message MediaInvoice {
 // InputMediaWebDocument
 message InputMediaWebDocument {
     required string Url = 1;
-    required int32 Size = 2;
+    required int32 DocSize = 2;
     required string MimeType = 3;
     repeated DocumentAttribute Attributes = 4;
 }
@@ -110,7 +110,7 @@ message InputMediaWebDocument {
 // MediaWebDocument
 message MediaWebDocument {
     required string Url = 1;
-    required int32 Size = 2;
+    required int32 DocSize = 2;
     required string MimeType = 3;
     repeated DocumentAttribute Attributes = 4;
     required fixed64 AccessHash = 5 [jstype = JS_STRING];

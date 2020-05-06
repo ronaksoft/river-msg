@@ -249,6 +249,7 @@ func (p *poolInputMediaWebDocument) Get() *InputMediaWebDocument {
 	if !ok {
 		return &InputMediaWebDocument{}
 	}
+	x.Attributes = x.Attributes[:0]
 	return x
 }
 
@@ -276,15 +277,7 @@ func (p *poolMediaWebDocument) Get() *MediaWebDocument {
 	if !ok {
 		return &MediaWebDocument{}
 	}
-	x.SiteTitle = ""
-	x.Title = ""
-	x.EmbedUrl = ""
-	x.EmbedType = ""
-	x.EmbedHeight = 0
-	x.EmbedWidth = 0
-	x.Duration = 0
-	x.Author = ""
-	x.Doc = nil
+	x.Attributes = x.Attributes[:0]
 	return x
 }
 

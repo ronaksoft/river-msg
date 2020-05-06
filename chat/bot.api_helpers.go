@@ -663,6 +663,7 @@ func (p *poolInputBotInlineMessage) Get() *InputBotInlineMessage {
 		return &InputBotInlineMessage{}
 	}
 	x.InputMediaData = nil
+	x.NoWebPage = false
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	x.ReplyTo = 0

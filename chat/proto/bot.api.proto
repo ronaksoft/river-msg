@@ -255,6 +255,7 @@ message BotInlineMessage {
 // InputBotInlineMessage
 message InputBotInlineMessage {
     optional bytes InputMediaData = 1;
+    optional bool NoWebPage = 2;
     optional string Body = 10;
     repeated MessageEntity Entities = 11;
     optional int64 ReplyTo = 12;

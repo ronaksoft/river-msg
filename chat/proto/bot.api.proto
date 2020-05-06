@@ -244,12 +244,7 @@ message InputBotInlineResult {
 
 // BotInlineMessage
 message BotInlineMessage {
-    optional MediaContact Contact = 1;
-    optional MediaGeoLocation Geo = 2;
-    optional MediaDocument Doc = 3;
-    optional MediaPoll Poll = 4;
-    optional MediaInvoice Invoice = 5;
-    optional MediaWebDocument WebDoc = 6;
+    optional bytes MediaData = 1;
     optional string Body = 10;
     repeated MessageEntity Entities = 11;
     optional int64 ReplyTo = 12;
@@ -259,13 +254,7 @@ message BotInlineMessage {
 
 // InputBotInlineMessage
 message InputBotInlineMessage {
-    optional InputMediaContact Contact = 1;
-    optional InputMediaGeoLocation Geo = 2;
-    optional InputMediaDocument Doc = 3;
-    optional InputMediaPoll Poll = 4;
-    optional InputMediaInvoice Invoice = 5;
-    optional InputMediaUploadedDocument UploadedDocument = 6;
-    optional InputMediaWebDocument WebDoc = 7;
+    optional bytes InputMediaData = 1;
     optional string Body = 10;
     repeated MessageEntity Entities = 11;
     optional int64 ReplyTo = 12;

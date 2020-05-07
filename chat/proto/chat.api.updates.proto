@@ -299,9 +299,10 @@ message UpdateBotInlineQuery {
     required int64 UpdateID = 101;
     required int64 QueryID = 1;
     required int64 UserID = 2;
-    required string Query = 3;
-    optional string Offset = 4;
-    optional GeoLocation Geo = 5;
+    required Peer Peer = 3;
+    required string Query = 4;
+    optional string Offset = 5;
+    optional GeoLocation Geo = 6;
 }
 
 // UpdateBotInlineSend

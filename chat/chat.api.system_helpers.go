@@ -251,6 +251,8 @@ func (p *poolSystemConfig) Get() *SystemConfig {
 		return &SystemConfig{}
 	}
 	x.DCs = x.DCs[:0]
+	x.GifBot = ""
+	x.WikiBot = ""
 	return x
 }
 

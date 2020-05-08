@@ -69,9 +69,9 @@ message SystemConfig {
     required int64 ExpireOn = 3;
     required int32 GroupMaxSize = 4;
     required int32 ForwardedMaxCount = 5;
-    required int32 OnlineUpdatePeriodMs = 6; // The client should update its online status every N milliseconds
-    required int32 EditTimeLimit = 7;
-    required int32 RevokeTimeLimit = 8;
+    required int32 OnlineUpdatePeriodInSec = 6; // The client should update its online status every N milliseconds
+    required int32 EditTimeLimitInSec = 7;
+    required int32 RevokeTimeLimitInSec = 8;
     required int32 PinnedDialogsMaxCount = 9;
     required int32 UrlPrefix = 10;
     required int32 MessageMaxLength = 11;

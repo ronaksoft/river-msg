@@ -38,9 +38,14 @@ var PoolGifGetSaved = poolGifGetSaved{}
 
 func ResultGifGetSaved(out *MessageEnvelope, res *GifGetSaved) {
 	out.Constructor = C_GifGetSaved
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_GifSave int64 = 4049142282
@@ -65,9 +70,14 @@ var PoolGifSave = poolGifSave{}
 
 func ResultGifSave(out *MessageEnvelope, res *GifSave) {
 	out.Constructor = C_GifSave
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_GifSearch int64 = 2040973085
@@ -92,9 +102,14 @@ var PoolGifSearch = poolGifSearch{}
 
 func ResultGifSearch(out *MessageEnvelope, res *GifSearch) {
 	out.Constructor = C_GifSearch
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_FoundGifs int64 = 423157907
@@ -120,9 +135,14 @@ var PoolFoundGifs = poolFoundGifs{}
 
 func ResultFoundGifs(out *MessageEnvelope, res *FoundGifs) {
 	out.Constructor = C_FoundGifs
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_FoundGif int64 = 1539084995
@@ -147,9 +167,14 @@ var PoolFoundGif = poolFoundGif{}
 
 func ResultFoundGif(out *MessageEnvelope, res *FoundGif) {
 	out.Constructor = C_FoundGif
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_SavedGifs int64 = 2982813633
@@ -175,9 +200,14 @@ var PoolSavedGifs = poolSavedGifs{}
 
 func ResultSavedGifs(out *MessageEnvelope, res *SavedGifs) {
 	out.Constructor = C_SavedGifs
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 func init() {

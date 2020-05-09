@@ -40,9 +40,14 @@ var PoolDocumentAttributeAudio = poolDocumentAttributeAudio{}
 
 func ResultDocumentAttributeAudio(out *MessageEnvelope, res *DocumentAttributeAudio) {
 	out.Constructor = C_DocumentAttributeAudio
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_DocumentAttributeVideo int64 = 1993289477
@@ -67,9 +72,14 @@ var PoolDocumentAttributeVideo = poolDocumentAttributeVideo{}
 
 func ResultDocumentAttributeVideo(out *MessageEnvelope, res *DocumentAttributeVideo) {
 	out.Constructor = C_DocumentAttributeVideo
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_DocumentAttributePhoto int64 = 515862833
@@ -94,9 +104,14 @@ var PoolDocumentAttributePhoto = poolDocumentAttributePhoto{}
 
 func ResultDocumentAttributePhoto(out *MessageEnvelope, res *DocumentAttributePhoto) {
 	out.Constructor = C_DocumentAttributePhoto
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_DocumentAttributeFile int64 = 2227452062
@@ -121,9 +136,14 @@ var PoolDocumentAttributeFile = poolDocumentAttributeFile{}
 
 func ResultDocumentAttributeFile(out *MessageEnvelope, res *DocumentAttributeFile) {
 	out.Constructor = C_DocumentAttributeFile
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_DocumentAttribute int64 = 4146719643
@@ -149,9 +169,14 @@ var PoolDocumentAttribute = poolDocumentAttribute{}
 
 func ResultDocumentAttribute(out *MessageEnvelope, res *DocumentAttribute) {
 	out.Constructor = C_DocumentAttribute
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_Document int64 = 555739168
@@ -179,9 +204,14 @@ var PoolDocument = poolDocument{}
 
 func ResultDocument(out *MessageEnvelope, res *Document) {
 	out.Constructor = C_Document
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaInvoice int64 = 2272736316
@@ -206,9 +236,14 @@ var PoolInputMediaInvoice = poolInputMediaInvoice{}
 
 func ResultInputMediaInvoice(out *MessageEnvelope, res *InputMediaInvoice) {
 	out.Constructor = C_InputMediaInvoice
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaInvoice int64 = 44271741
@@ -233,9 +268,14 @@ var PoolMediaInvoice = poolMediaInvoice{}
 
 func ResultMediaInvoice(out *MessageEnvelope, res *MediaInvoice) {
 	out.Constructor = C_MediaInvoice
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaWebDocument int64 = 3529450013
@@ -261,9 +301,14 @@ var PoolInputMediaWebDocument = poolInputMediaWebDocument{}
 
 func ResultInputMediaWebDocument(out *MessageEnvelope, res *InputMediaWebDocument) {
 	out.Constructor = C_InputMediaWebDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaWebDocument int64 = 1161129349
@@ -289,9 +334,14 @@ var PoolMediaWebDocument = poolMediaWebDocument{}
 
 func ResultMediaWebDocument(out *MessageEnvelope, res *MediaWebDocument) {
 	out.Constructor = C_MediaWebDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaWebPage int64 = 148034084
@@ -316,9 +366,14 @@ var PoolMediaWebPage = poolMediaWebPage{}
 
 func ResultMediaWebPage(out *MessageEnvelope, res *MediaWebPage) {
 	out.Constructor = C_MediaWebPage
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaContact int64 = 1534117184
@@ -344,9 +399,14 @@ var PoolInputMediaContact = poolInputMediaContact{}
 
 func ResultInputMediaContact(out *MessageEnvelope, res *InputMediaContact) {
 	out.Constructor = C_InputMediaContact
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaContact int64 = 3735320833
@@ -372,9 +432,14 @@ var PoolMediaContact = poolMediaContact{}
 
 func ResultMediaContact(out *MessageEnvelope, res *MediaContact) {
 	out.Constructor = C_MediaContact
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaUploadedDocument int64 = 870692909
@@ -403,9 +468,14 @@ var PoolInputMediaUploadedDocument = poolInputMediaUploadedDocument{}
 
 func ResultInputMediaUploadedDocument(out *MessageEnvelope, res *InputMediaUploadedDocument) {
 	out.Constructor = C_InputMediaUploadedDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaDocument int64 = 2258657627
@@ -433,9 +503,14 @@ var PoolInputMediaDocument = poolInputMediaDocument{}
 
 func ResultInputMediaDocument(out *MessageEnvelope, res *InputMediaDocument) {
 	out.Constructor = C_InputMediaDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaDocument int64 = 2281620705
@@ -461,9 +536,14 @@ var PoolMediaDocument = poolMediaDocument{}
 
 func ResultMediaDocument(out *MessageEnvelope, res *MediaDocument) {
 	out.Constructor = C_MediaDocument
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaGeoLocation int64 = 185664060
@@ -488,9 +568,14 @@ var PoolInputMediaGeoLocation = poolInputMediaGeoLocation{}
 
 func ResultInputMediaGeoLocation(out *MessageEnvelope, res *InputMediaGeoLocation) {
 	out.Constructor = C_InputMediaGeoLocation
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaGeoLocation int64 = 2625326500
@@ -515,9 +600,14 @@ var PoolMediaGeoLocation = poolMediaGeoLocation{}
 
 func ResultMediaGeoLocation(out *MessageEnvelope, res *MediaGeoLocation) {
 	out.Constructor = C_MediaGeoLocation
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_InputMediaPoll int64 = 3633337678
@@ -542,9 +632,14 @@ var PoolInputMediaPoll = poolInputMediaPoll{}
 
 func ResultInputMediaPoll(out *MessageEnvelope, res *InputMediaPoll) {
 	out.Constructor = C_InputMediaPoll
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_MediaPoll int64 = 2688924895
@@ -574,9 +669,14 @@ var PoolMediaPoll = poolMediaPoll{}
 
 func ResultMediaPoll(out *MessageEnvelope, res *MediaPoll) {
 	out.Constructor = C_MediaPoll
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_PollAnswer int64 = 2124799390
@@ -601,9 +701,14 @@ var PoolPollAnswer = poolPollAnswer{}
 
 func ResultPollAnswer(out *MessageEnvelope, res *PollAnswer) {
 	out.Constructor = C_PollAnswer
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_PollResults int64 = 3283416711
@@ -629,9 +734,14 @@ var PoolPollResults = poolPollResults{}
 
 func ResultPollResults(out *MessageEnvelope, res *PollResults) {
 	out.Constructor = C_PollResults
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_PollAnswerVoters int64 = 2095107985
@@ -656,9 +766,14 @@ var PoolPollAnswerVoters = poolPollAnswerVoters{}
 
 func ResultPollAnswerVoters(out *MessageEnvelope, res *PollAnswerVoters) {
 	out.Constructor = C_PollAnswerVoters
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 func init() {

@@ -594,6 +594,8 @@ func (p *poolBotInfo) Get() *BotInfo {
 	}
 	x.Description = ""
 	x.BotCommands = x.BotCommands[:0]
+	x.InlineGeo = false
+	x.InlinePlaceHolder = ""
 	return x
 }
 

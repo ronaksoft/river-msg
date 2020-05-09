@@ -53,9 +53,14 @@ var PoolClientSendMessageMedia = poolClientSendMessageMedia{}
 
 func ResultClientSendMessageMedia(out *MessageEnvelope, res *ClientSendMessageMedia) {
 	out.Constructor = C_ClientSendMessageMedia
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientGlobalSearch int64 = 1742781507
@@ -84,9 +89,14 @@ var PoolClientGlobalSearch = poolClientGlobalSearch{}
 
 func ResultClientGlobalSearch(out *MessageEnvelope, res *ClientGlobalSearch) {
 	out.Constructor = C_ClientGlobalSearch
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientContactSearch int64 = 1793449803
@@ -111,9 +121,14 @@ var PoolClientContactSearch = poolClientContactSearch{}
 
 func ResultClientContactSearch(out *MessageEnvelope, res *ClientContactSearch) {
 	out.Constructor = C_ClientContactSearch
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientGetCachedMedia int64 = 856595701
@@ -138,9 +153,14 @@ var PoolClientGetCachedMedia = poolClientGetCachedMedia{}
 
 func ResultClientGetCachedMedia(out *MessageEnvelope, res *ClientGetCachedMedia) {
 	out.Constructor = C_ClientGetCachedMedia
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientClearCachedMedia int64 = 1199927718
@@ -167,9 +187,14 @@ var PoolClientClearCachedMedia = poolClientClearCachedMedia{}
 
 func ResultClientClearCachedMedia(out *MessageEnvelope, res *ClientClearCachedMedia) {
 	out.Constructor = C_ClientClearCachedMedia
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientPendingMessage int64 = 2164891929
@@ -204,9 +229,14 @@ var PoolClientPendingMessage = poolClientPendingMessage{}
 
 func ResultClientPendingMessage(out *MessageEnvelope, res *ClientPendingMessage) {
 	out.Constructor = C_ClientPendingMessage
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientSearchResult int64 = 2957647709
@@ -236,9 +266,14 @@ var PoolClientSearchResult = poolClientSearchResult{}
 
 func ResultClientSearchResult(out *MessageEnvelope, res *ClientSearchResult) {
 	out.Constructor = C_ClientSearchResult
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientFile int64 = 155127968
@@ -272,9 +307,14 @@ var PoolClientFile = poolClientFile{}
 
 func ResultClientFile(out *MessageEnvelope, res *ClientFile) {
 	out.Constructor = C_ClientFile
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientFileStatus int64 = 2731095358
@@ -299,9 +339,14 @@ var PoolClientFileStatus = poolClientFileStatus{}
 
 func ResultClientFileStatus(out *MessageEnvelope, res *ClientFileStatus) {
 	out.Constructor = C_ClientFileStatus
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientCachedMediaInfo int64 = 442767121
@@ -327,9 +372,14 @@ var PoolClientCachedMediaInfo = poolClientCachedMediaInfo{}
 
 func ResultClientCachedMediaInfo(out *MessageEnvelope, res *ClientCachedMediaInfo) {
 	out.Constructor = C_ClientCachedMediaInfo
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientPeerMediaInfo int64 = 2711408875
@@ -355,9 +405,14 @@ var PoolClientPeerMediaInfo = poolClientPeerMediaInfo{}
 
 func ResultClientPeerMediaInfo(out *MessageEnvelope, res *ClientPeerMediaInfo) {
 	out.Constructor = C_ClientPeerMediaInfo
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientMediaSize int64 = 1541024203
@@ -382,9 +437,14 @@ var PoolClientMediaSize = poolClientMediaSize{}
 
 func ResultClientMediaSize(out *MessageEnvelope, res *ClientMediaSize) {
 	out.Constructor = C_ClientMediaSize
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientGetMediaHistory int64 = 1354863379
@@ -409,9 +469,14 @@ var PoolClientGetMediaHistory = poolClientGetMediaHistory{}
 
 func ResultClientGetMediaHistory(out *MessageEnvelope, res *ClientGetMediaHistory) {
 	out.Constructor = C_ClientGetMediaHistory
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 const C_ClientGetLastBotKeyboard int64 = 177544569
@@ -436,9 +501,14 @@ var PoolClientGetLastBotKeyboard = poolClientGetLastBotKeyboard{}
 
 func ResultClientGetLastBotKeyboard(out *MessageEnvelope, res *ClientGetLastBotKeyboard) {
 	out.Constructor = C_ClientGetLastBotKeyboard
-	pbytes.Put(out.Message)
-	out.Message = pbytes.GetLen(res.Size())
-	res.MarshalTo(out.Message)
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
 }
 
 func init() {

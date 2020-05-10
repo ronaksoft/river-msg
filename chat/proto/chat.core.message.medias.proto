@@ -56,6 +56,10 @@ message DocumentAttributeFile {
     required string Filename = 1;
 }
 
+// DocumentAttributeAnimated
+message DocumentAttributeAnimated {
+}
+
 // DocumentAttribute
 message DocumentAttribute {
     required DocumentAttributeType Type = 1;
@@ -115,7 +119,6 @@ message MediaWebDocument {
     repeated DocumentAttribute Attributes = 4;
     required fixed64 AccessHash = 5 [jstype = JS_STRING];
 }
-
 
 // MediaWebPage
 message MediaWebPage {

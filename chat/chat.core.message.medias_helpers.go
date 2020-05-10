@@ -146,6 +146,38 @@ func ResultDocumentAttributeFile(out *MessageEnvelope, res *DocumentAttributeFil
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_DocumentAttributeAnimated int64 = 1040723836
+
+type poolDocumentAttributeAnimated struct {
+	pool sync.Pool
+}
+
+func (p *poolDocumentAttributeAnimated) Get() *DocumentAttributeAnimated {
+	x, ok := p.pool.Get().(*DocumentAttributeAnimated)
+	if !ok {
+		return &DocumentAttributeAnimated{}
+	}
+	return x
+}
+
+func (p *poolDocumentAttributeAnimated) Put(x *DocumentAttributeAnimated) {
+	p.pool.Put(x)
+}
+
+var PoolDocumentAttributeAnimated = poolDocumentAttributeAnimated{}
+
+func ResultDocumentAttributeAnimated(out *MessageEnvelope, res *DocumentAttributeAnimated) {
+	out.Constructor = C_DocumentAttributeAnimated
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_DocumentAttribute int64 = 4146719643
 
 type poolDocumentAttribute struct {
@@ -781,6 +813,7 @@ func init() {
 	ConstructorNames[1993289477] = "DocumentAttributeVideo"
 	ConstructorNames[515862833] = "DocumentAttributePhoto"
 	ConstructorNames[2227452062] = "DocumentAttributeFile"
+	ConstructorNames[1040723836] = "DocumentAttributeAnimated"
 	ConstructorNames[4146719643] = "DocumentAttribute"
 	ConstructorNames[555739168] = "Document"
 	ConstructorNames[2272736316] = "InputMediaInvoice"

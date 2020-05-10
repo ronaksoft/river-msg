@@ -8,7 +8,7 @@ import "chat.core.types.proto";
 // @Function
 // @Return: SavedGifs
 message GifGetSaved {
-    required int64 Hash = 1;
+    required fixed32 Hash = 1;
 }
 
 // GifSave
@@ -42,7 +42,7 @@ message FoundGif {
 
 // SavedGifs
 message SavedGifs {
-    required int64 Hash = 1;
+    required fixed32 Hash = 1;
     repeated MediaDocument Docs = 2;
 }
 

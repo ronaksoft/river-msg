@@ -24,7 +24,6 @@ message ContactsAdd {
 // @Function
 // @Return: ContactsMany
 message ContactsGet {
-    //    required string MD5Hash = 1;
     required uint32 Crc32Hash = 2;
 }
 

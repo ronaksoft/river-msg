@@ -44,5 +44,6 @@ message FoundGif {
 message SavedGifs {
     required fixed32 Hash = 1;
     repeated MediaDocument Docs = 2;
+    required bool NotModified = 3;
 }
 

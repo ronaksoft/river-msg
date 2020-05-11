@@ -43,6 +43,8 @@ message BotSetInfo {
     required int64 Owner = 3;
     repeated BotCommands BotCommands = 4;
     required string Description = 5;
+    optional string InlinePlaceholder = 6;
+    optional bool InlineGeo = 7;
 }
 
 // BotGet

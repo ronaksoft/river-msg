@@ -42,6 +42,7 @@ func (p *poolClientSendMessageMedia) Get() *ClientSendMessageMedia {
 	x.FileID = 0
 	x.ThumbID = 0
 	x.FileTotalParts = 0
+	x.Entities = x.Entities[:0]
 	return x
 }
 

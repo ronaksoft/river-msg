@@ -204,6 +204,7 @@ message BotInfo {
     repeated BotCommands BotCommands = 4;
     optional bool InlineGeo = 5;
     optional string InlinePlaceHolder = 6;
+    optional bool InlineQuery = 7;
 }
 
 // ContactUser

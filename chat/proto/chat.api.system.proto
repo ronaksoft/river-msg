@@ -78,8 +78,11 @@ message SystemConfig {
     required int32 CaptionMaxLength = 12;
     repeated DataCenter DCs = 13;
     required int32 MaxLabels = 14;
+    required float TopPeerDecayRate = 15;
+    required float TopPeerMaxStep = 16;
     optional string GifBot = 110;
     optional string WikiBot = 111;
+
 
 }
 

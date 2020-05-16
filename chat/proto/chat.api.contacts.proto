@@ -89,9 +89,11 @@ message ContactsResetTopPeer {
 
 // ContactsTopPeer
 message ContactsTopPeers {
-    repeated TopPeerCategoryPeers Categories = 1;
-    repeated User Users = 2;
-    repeated Group Groups = 3;
+    required TopPeerCategory Category = 1;
+    required int32 Count = 2;
+    repeated TopPeer Peers = 3;
+    repeated User Users = 4;
+    repeated Group Groups = 5;
 }
 
 // TopPeerCategory
@@ -101,13 +103,6 @@ enum TopPeerCategory {
     Forwards = 2;
     BotsMessage = 3;
     BotsInline = 4;
-}
-
-// TopPeerCategory
-message TopPeerCategoryPeers {
-    required TopPeerCategory Category = 1;
-    required int32 Count = 2;
-    repeated TopPeer Peers = 3;
 }
 
 // TopPeer

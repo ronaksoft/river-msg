@@ -3,6 +3,16 @@ package msg;
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 option (gogoproto.goproto_enum_prefix_all) = false;
 
+// Ping
+message Ping {
+    required int64 ID = 1;
+}
+
+// Pong
+message Pong {
+    required int64 ID = 2;
+}
+
 // MessageEnvelope
 // This type of message will be used to contain another ProtoBuffer Message inside
 message MessageEnvelope {

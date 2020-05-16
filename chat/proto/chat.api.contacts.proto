@@ -73,10 +73,9 @@ message ContactsSearch {
 // @Function
 // @Returns: ContactsTopPeers
 message ContactsGetTopPeers {
-    optional int32 Hash = 1;
+    required int32 Offset = 1;
     required int32 Limit = 2;
-    required int32 Offset = 3;
-    required TopPeerCategory Category = 4;
+    required TopPeerCategory Category = 3;
 }
 
 // ContactsResetTopPeer

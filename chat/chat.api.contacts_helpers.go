@@ -319,7 +319,6 @@ func (p *poolContactsGetTopPeers) Get() *ContactsGetTopPeers {
 	if !ok {
 		return &ContactsGetTopPeers{}
 	}
-	x.Hash = 0
 	return x
 }
 

@@ -76,11 +76,7 @@ message ContactsGetTopPeers {
     optional int32 Hash = 1;
     required int32 Limit = 2;
     required int32 Offset = 3;
-    optional bool Users = 4;
-    optional bool BotsMessage = 5;
-    optional bool BotsInline = 6;
-    optional bool Groups = 7;
-    optional bool Forwards = 8;
+    required TopPeerCategory Category = 4;
 }
 
 // ContactsResetTopPeer

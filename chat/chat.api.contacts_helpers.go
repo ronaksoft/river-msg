@@ -320,11 +320,6 @@ func (p *poolContactsGetTopPeers) Get() *ContactsGetTopPeers {
 		return &ContactsGetTopPeers{}
 	}
 	x.Hash = 0
-	x.Users = false
-	x.BotsMessage = false
-	x.BotsInline = false
-	x.Groups = false
-	x.Forwards = false
 	return x
 }
 

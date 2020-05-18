@@ -240,7 +240,7 @@ enum InputMediaType {
     InputMediaTypeGeoLocation = 6;
     InputMediaTypeWebDocument = 7;
     InputMediaTypeSealed = 8;
-    InputMediaTypeReserved3 = 9;
+    InputMediaTypeMessageDocument = 9;
     InputMediaTypeReserved4 = 10;
     InputMediaTypeReserved5 = 11;
     InputMediaTypeReserved6 = 12;

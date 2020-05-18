@@ -3,17 +3,10 @@ package msg;
 import "chat.core.types.proto";
 import "chat.core.message.medias.proto";
 
-// WallPaperGet
-// @Function
-// @Return: WallPaper
-message WallPaperGet {
-    required InputWallPaper WallPaper = 1;
-}
-
 // WallPaperGetAll
 // @Function
 // @Return: WallPapersMany
-message WallPaperGetAll {
+message WallPaperGet {
     required uint32 Crc32Hash = 2;
 }
 
@@ -33,6 +26,12 @@ message WallPaperUpload {
     required InputFile File = 1;
     required string MimeType = 2;
     required WallPaperSettings Settings = 3;
+}
+
+// WallPaperReset
+// @Function
+// @Return: Bool
+message WallPaperReset {
 }
 
 // InputWallPaper

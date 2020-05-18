@@ -80,6 +80,38 @@ func ResultWallPaperSave(out *MessageEnvelope, res *WallPaperSave) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_WallPaperDelete int64 = 3006268108
+
+type poolWallPaperDelete struct {
+	pool sync.Pool
+}
+
+func (p *poolWallPaperDelete) Get() *WallPaperDelete {
+	x, ok := p.pool.Get().(*WallPaperDelete)
+	if !ok {
+		return &WallPaperDelete{}
+	}
+	return x
+}
+
+func (p *poolWallPaperDelete) Put(x *WallPaperDelete) {
+	p.pool.Put(x)
+}
+
+var PoolWallPaperDelete = poolWallPaperDelete{}
+
+func ResultWallPaperDelete(out *MessageEnvelope, res *WallPaperDelete) {
+	out.Constructor = C_WallPaperDelete
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_WallPaperUpload int64 = 2661259348
 
 type poolWallPaperUpload struct {
@@ -155,9 +187,6 @@ func (p *poolInputWallPaper) Get() *InputWallPaper {
 	if !ok {
 		return &InputWallPaper{}
 	}
-	x.Slug = ""
-	x.ID = 0
-	x.AccessHash = 0
 	return x
 }
 
@@ -292,6 +321,7 @@ func ResultWallPapersMany(out *MessageEnvelope, res *WallPapersMany) {
 func init() {
 	ConstructorNames[183906980] = "WallPaperGet"
 	ConstructorNames[3559907599] = "WallPaperSave"
+	ConstructorNames[3006268108] = "WallPaperDelete"
 	ConstructorNames[2661259348] = "WallPaperUpload"
 	ConstructorNames[2714244308] = "WallPaperReset"
 	ConstructorNames[4000784410] = "InputWallPaper"

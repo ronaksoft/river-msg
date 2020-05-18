@@ -15,8 +15,11 @@ message WallPaperGet {
 // @Return: Bool
 message WallPaperSave {
     required InputWallPaper WallPaper = 1;
-    required bool Delete = 2;
-    required WallPaperSettings Settings = 3;
+    required WallPaperSettings Settings = 2;
+}
+
+message WallPaperDelete {
+    required InputWallPaper WallPaper = 1;
 }
 
 // WallPaperUpload
@@ -36,9 +39,9 @@ message WallPaperReset {
 
 // InputWallPaper
 message InputWallPaper {
-    optional string Slug = 1;
-    optional int64 ID = 2;
-    optional int64 AccessHash = 3;
+    required int32 ClusterID = 1;
+    required int64 ID = 2;
+    required int64 AccessHash = 3;
 }
 
 // WallPaperSettings

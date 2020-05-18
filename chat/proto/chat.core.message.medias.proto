@@ -180,12 +180,16 @@ message MediaDocument {
 message InputMediaGeoLocation {
     required float Lat = 1;
     required float Long = 2;
+    optional string Caption = 3;
+    repeated MessageEntity Entities = 4;
 }
 
 // MediaGeoLocation
 message MediaGeoLocation {
     required float Lat = 1;
     required float Long = 2;
+    optional string Caption = 3;
+    repeated MessageEntity Entities = 4;
 }
 
 // InputMediaPoll

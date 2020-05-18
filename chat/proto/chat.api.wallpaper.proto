@@ -41,7 +41,7 @@ message WallPaperReset {
 message InputWallPaper {
     required int32 ClusterID = 1;
     required int64 ID = 2;
-    required int64 AccessHash = 3;
+    required fixed64 AccessHash = 3;
 }
 
 // WallPaperSettings

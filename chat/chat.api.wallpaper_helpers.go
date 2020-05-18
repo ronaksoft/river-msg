@@ -48,38 +48,6 @@ func ResultWallPaperGet(out *MessageEnvelope, res *WallPaperGet) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_WallPaperGetAll int64 = 1686815187
-
-type poolWallPaperGetAll struct {
-	pool sync.Pool
-}
-
-func (p *poolWallPaperGetAll) Get() *WallPaperGetAll {
-	x, ok := p.pool.Get().(*WallPaperGetAll)
-	if !ok {
-		return &WallPaperGetAll{}
-	}
-	return x
-}
-
-func (p *poolWallPaperGetAll) Put(x *WallPaperGetAll) {
-	p.pool.Put(x)
-}
-
-var PoolWallPaperGetAll = poolWallPaperGetAll{}
-
-func ResultWallPaperGetAll(out *MessageEnvelope, res *WallPaperGetAll) {
-	out.Constructor = C_WallPaperGetAll
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_WallPaperSave int64 = 3559907599
 
 type poolWallPaperSave struct {
@@ -134,6 +102,38 @@ var PoolWallPaperUpload = poolWallPaperUpload{}
 
 func ResultWallPaperUpload(out *MessageEnvelope, res *WallPaperUpload) {
 	out.Constructor = C_WallPaperUpload
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_WallPaperReset int64 = 2714244308
+
+type poolWallPaperReset struct {
+	pool sync.Pool
+}
+
+func (p *poolWallPaperReset) Get() *WallPaperReset {
+	x, ok := p.pool.Get().(*WallPaperReset)
+	if !ok {
+		return &WallPaperReset{}
+	}
+	return x
+}
+
+func (p *poolWallPaperReset) Put(x *WallPaperReset) {
+	p.pool.Put(x)
+}
+
+var PoolWallPaperReset = poolWallPaperReset{}
+
+func ResultWallPaperReset(out *MessageEnvelope, res *WallPaperReset) {
+	out.Constructor = C_WallPaperReset
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -291,9 +291,9 @@ func ResultWallPapersMany(out *MessageEnvelope, res *WallPapersMany) {
 
 func init() {
 	ConstructorNames[183906980] = "WallPaperGet"
-	ConstructorNames[1686815187] = "WallPaperGetAll"
 	ConstructorNames[3559907599] = "WallPaperSave"
 	ConstructorNames[2661259348] = "WallPaperUpload"
+	ConstructorNames[2714244308] = "WallPaperReset"
 	ConstructorNames[4000784410] = "InputWallPaper"
 	ConstructorNames[1098244882] = "WallPaperSettings"
 	ConstructorNames[2527250827] = "WallPaper"

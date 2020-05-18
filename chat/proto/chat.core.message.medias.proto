@@ -218,7 +218,18 @@ message PollAnswerVoters {
 
 }
 
+// InputMediaSealed
+message InputMediaSealed {
+    required InputMediaType MediaType = 1;
+    optional bytes Media = 2;
+    optional string Body = 3;
+    repeated MessageEntity Entities = 4;
+}
 
-
-
-
+// MediaSealed
+message MediaSealed {
+    required MediaType MediaType = 1;
+    optional bytes Media = 2;
+    optional string Body = 3;
+    repeated MessageEntity Entities = 4;
+}

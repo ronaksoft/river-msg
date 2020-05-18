@@ -144,7 +144,8 @@ message ClientMediaSize {
 }
 
 // ClientGetMediaHistory
-// return @MessagesMany
+// @Function
+// @Return: @MessagesMany
 message ClientGetMediaHistory {
     required ClientMediaType MediaType = 1;
 }

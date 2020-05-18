@@ -622,6 +622,8 @@ func (p *poolInputMediaGeoLocation) Get() *InputMediaGeoLocation {
 	if !ok {
 		return &InputMediaGeoLocation{}
 	}
+	x.Caption = ""
+	x.Entities = x.Entities[:0]
 	return x
 }
 
@@ -654,6 +656,8 @@ func (p *poolMediaGeoLocation) Get() *MediaGeoLocation {
 	if !ok {
 		return &MediaGeoLocation{}
 	}
+	x.Caption = ""
+	x.Entities = x.Entities[:0]
 	return x
 }
 

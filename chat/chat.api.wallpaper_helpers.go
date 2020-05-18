@@ -263,7 +263,6 @@ func (p *poolWallPaper) Get() *WallPaper {
 	x.Dark = false
 	x.Document = nil
 	x.Settings = nil
-	x.Slug = ""
 	return x
 }
 

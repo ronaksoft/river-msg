@@ -163,9 +163,10 @@ message InputMediaDocument {
 
 // InputMediaMessageDocument
 message InputMediaMessageDocument {
-    required int64 MessageID = 1;
-    required string Caption = 2;
-    repeated MessageEntity Entities = 3;
+    required InputPeer Peer = 1;
+    required int64 MessageID = 2;
+    required string Caption = 3;
+    repeated MessageEntity Entities = 4;
 }
 
 // MediaDocument

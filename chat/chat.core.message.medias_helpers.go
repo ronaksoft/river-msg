@@ -545,29 +545,29 @@ func ResultInputMediaDocument(out *MessageEnvelope, res *InputMediaDocument) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_InputMediaLabeledDocument int64 = 706255038
+const C_InputMediaMessageDocument int64 = 3638653559
 
-type poolInputMediaLabeledDocument struct {
+type poolInputMediaMessageDocument struct {
 	pool sync.Pool
 }
 
-func (p *poolInputMediaLabeledDocument) Get() *InputMediaLabeledDocument {
-	x, ok := p.pool.Get().(*InputMediaLabeledDocument)
+func (p *poolInputMediaMessageDocument) Get() *InputMediaMessageDocument {
+	x, ok := p.pool.Get().(*InputMediaMessageDocument)
 	if !ok {
-		return &InputMediaLabeledDocument{}
+		return &InputMediaMessageDocument{}
 	}
 	x.Entities = x.Entities[:0]
 	return x
 }
 
-func (p *poolInputMediaLabeledDocument) Put(x *InputMediaLabeledDocument) {
+func (p *poolInputMediaMessageDocument) Put(x *InputMediaMessageDocument) {
 	p.pool.Put(x)
 }
 
-var PoolInputMediaLabeledDocument = poolInputMediaLabeledDocument{}
+var PoolInputMediaMessageDocument = poolInputMediaMessageDocument{}
 
-func ResultInputMediaLabeledDocument(out *MessageEnvelope, res *InputMediaLabeledDocument) {
-	out.Constructor = C_InputMediaLabeledDocument
+func ResultInputMediaMessageDocument(out *MessageEnvelope, res *InputMediaMessageDocument) {
+	out.Constructor = C_InputMediaMessageDocument
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -932,7 +932,7 @@ func init() {
 	ConstructorNames[3735320833] = "MediaContact"
 	ConstructorNames[870692909] = "InputMediaUploadedDocument"
 	ConstructorNames[2258657627] = "InputMediaDocument"
-	ConstructorNames[706255038] = "InputMediaLabeledDocument"
+	ConstructorNames[3638653559] = "InputMediaMessageDocument"
 	ConstructorNames[2281620705] = "MediaDocument"
 	ConstructorNames[185664060] = "InputMediaGeoLocation"
 	ConstructorNames[2625326500] = "MediaGeoLocation"

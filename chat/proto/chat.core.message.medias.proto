@@ -161,8 +161,8 @@ message InputMediaDocument {
     repeated DocumentAttribute Attributes = 5;
 }
 
-// InputMediaLabeledDocument
-message InputMediaLabeledDocument {
+// InputMediaMessageDocument
+message InputMediaMessageDocument {
     required int64 MessageID = 1;
     required string Caption = 2;
     repeated MessageEntity Entities = 3;

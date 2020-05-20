@@ -5,6 +5,7 @@ package msg;
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "chat.core.types.proto";
 import "chat.core.message.medias.proto";
+import "chat.api.wallpaper.proto";
 
 // Enable custom Marshal method.
 option (gogoproto.marshaler_all) = true;
@@ -203,6 +204,14 @@ message BotSendInlineResults {
     required int64 ReplyTo = 6;
     optional bool Silent = 7; // Do not send notification
     optional bool HideVia = 8; // Hid via bot
+}
+
+// BotUploadWallPaper
+// @Function (BotFather, AdminBot)
+// @Return: WallPaper
+message BotUploadWallPaper {
+    required InputDocument File = 1;
+    required WallPaperSettings Settings = 4;
 }
 
 // BotResults

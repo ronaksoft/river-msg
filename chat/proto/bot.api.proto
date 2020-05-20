@@ -210,7 +210,9 @@ message BotSendInlineResults {
 // @Function (BotFather, AdminBot)
 // @Return: WallPaper
 message BotUploadWallPaper {
-    required InputDocument File = 1;
+    required InputFileLocation File = 1;
+    required bool Dark = 2;
+    required bool Pattern = 3;
     required WallPaperSettings Settings = 4;
 }
 

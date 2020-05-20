@@ -26,9 +26,10 @@ message WallPaperDelete {
 // @Function
 // @Return: WallPaper
 message WallPaperUpload {
-    required InputFile File = 1;
-    required string MimeType = 2;
-    required WallPaperSettings Settings = 3;
+    optional InputFile UploadedFile = 1;
+    optional InputDocument File = 2;
+    required string MimeType = 3;
+    required WallPaperSettings Settings = 4;
 }
 
 // WallPaperReset

@@ -208,7 +208,7 @@ message BotSendInlineResults {
 
 // BotUploadWallPaper
 // @Function (BotFather, AdminBot)
-// @Return: WallPaper
+// @Return: Bool
 message BotUploadWallPaper {
     required InputFileLocation File = 1;
     required bool Dark = 2;
@@ -245,6 +245,7 @@ message BotInlineResult {
     required BotInlineMessage Message = 7;
 }
 
+// InputBotInlineResult
 message InputBotInlineResult {
     required string ID = 1;
     required InputMediaType Type = 2;

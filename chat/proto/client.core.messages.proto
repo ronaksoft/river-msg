@@ -98,6 +98,7 @@ enum ClientFileType {
     GroupProfilePhoto = 3;
     Sticker = 4;
     Thumbnail = 5;
+    Wallpaper = 6;
 }
 
 // ClientFile
@@ -116,6 +117,7 @@ message ClientFile {
     optional int32 Version = 12;
     optional string Extension = 13;
     optional string MD5Checksum = 14;
+    optional int64 WallpaperID = 15;
 }
 
 // ClientFileStatus

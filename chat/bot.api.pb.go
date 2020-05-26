@@ -1289,7 +1289,7 @@ func (m *BotSendInlineResults) GetHideVia() bool {
 
 // BotUploadWallPaper
 // @Function (BotFather, AdminBot)
-// @Return: WallPaper
+// @Return: Bool
 type BotUploadWallPaper struct {
 	File     *InputFileLocation `protobuf:"bytes,1,req,name=File" json:"File,omitempty"`
 	Dark     bool               `protobuf:"varint,2,req,name=Dark" json:"Dark"`
@@ -1584,6 +1584,7 @@ func (m *BotInlineResult) GetMessage() *BotInlineMessage {
 	return nil
 }
 
+// InputBotInlineResult
 type InputBotInlineResult struct {
 	ID          string                 `protobuf:"bytes,1,req,name=ID" json:"ID"`
 	Type        InputMediaType         `protobuf:"varint,2,req,name=Type,enum=msg.InputMediaType" json:"Type"`

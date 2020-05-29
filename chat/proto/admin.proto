@@ -3,7 +3,6 @@ package msg;
 
 // WelcomeMessage
 message WelcomeMessage {
-    required string Vendor = 1;
     required string Lang = 2;
     required string Template = 3;
 }

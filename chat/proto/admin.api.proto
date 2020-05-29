@@ -1,0 +1,95 @@
+syntax = "proto2";
+package msg;
+import "admin.proto";
+
+// AdminSetWelcomeMessage
+// @Function
+// @Return: Bool
+message AdminSetWelcomeMessage {
+    required string AccessToken = 1;
+    required string Lang = 2;
+    required string Template = 3;
+}
+
+// AdminGetWelcomeMessage
+// @Function
+// @Return: WelcomeMessagesMany
+message AdminGetWelcomeMessages {
+    required string AccessToken = 1;
+}
+
+// AdminSetPushProvider
+// @Function
+// @Return: Bool
+message AdminSetPushProvider {
+    required string AccessToken = 1;
+    required PushProvider Provider = 2;
+}
+
+// AdminGetPushProvider
+// @Function
+// @Return: PushProvidersMany
+message AdminGetPushProviders {
+    required string AccessToken = 1;
+}
+
+// AdminSetVersion
+// @Function
+// @Return: Bool
+message AdminSetVersion {
+    required string AccessToken = 1;
+    required Version Version = 2;
+}
+
+// AdminGetVersions
+// @Function
+// @Return: VersionsMany
+message AdminGetVersions {
+    required string AccessToken = 1;
+}
+
+// AdminPrivilege
+enum AdminPrivilege  {
+    PrivilegeNone = 0;
+    PrivilegeAdmin = 1;
+    PrivilegeSuperAdmin = 2;
+}
+
+// AdminSetToken
+// @Function
+// @Return: AdminToken
+message AdminSetToken {
+    required string AccessToken = 1;
+    required AdminPrivilege Privilege = 2;
+}
+
+// AdminDeleteToken
+// @Function
+// @Return: Bool
+message AdminDeleteToken {
+    required string AccessToken = 1;
+    required string DeletedToken = 2;
+}
+
+// AdminToken
+message AdminToken {
+    required AdminPrivilege Privilege = 1;
+    required string Token = 2;
+}
+// WelcomeMessagesMany
+message WelcomeMessagesMany {
+    repeated WelcomeMessage Messages = 1;
+    required int32 Count = 2;
+}
+
+// VersionsMany
+message VersionsMany {
+    repeated Version Versions = 1;
+    required int32 Count = 2;
+}
+
+// PushProvidersMany
+message PushProvidersMany {
+    repeated PushProvider Providers = 1;
+    required int32 Count = 2;
+}

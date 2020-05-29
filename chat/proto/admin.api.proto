@@ -53,7 +53,7 @@ message AdminGetVersions {
 }
 
 // AdminPrivilege
-enum AdminPrivilege  {
+enum AdminPrivilege {
     PrivilegeNone = 0;
     PrivilegeAdmin = 1;
     PrivilegeSuperAdmin = 2;
@@ -73,6 +73,22 @@ message AdminSetToken {
 message AdminDeleteToken {
     required string AccessToken = 1;
     required string DeletedToken = 2;
+}
+
+// AdminReserveUsername
+// @Function
+// @Return: Bool
+message AdminReserveUsername {
+    required string AccessToken = 1;
+    repeated string Usernames = 2;
+    required bool Delete = 3;
+}
+
+// AdminGetReservedUsernames
+// @Function
+// @Return: ReservedUsername
+message AdminGetReservedUsernames {
+    required string AccessToken = 1;
 }
 
 // AdminToken

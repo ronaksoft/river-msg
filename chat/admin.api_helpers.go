@@ -273,6 +273,71 @@ func ResultAdminDeleteToken(out *MessageEnvelope, res *AdminDeleteToken) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_AdminReserveUsername int64 = 1947723452
+
+type poolAdminReserveUsername struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminReserveUsername) Get() *AdminReserveUsername {
+	x, ok := p.pool.Get().(*AdminReserveUsername)
+	if !ok {
+		return &AdminReserveUsername{}
+	}
+	x.Usernames = x.Usernames[:0]
+	return x
+}
+
+func (p *poolAdminReserveUsername) Put(x *AdminReserveUsername) {
+	p.pool.Put(x)
+}
+
+var PoolAdminReserveUsername = poolAdminReserveUsername{}
+
+func ResultAdminReserveUsername(out *MessageEnvelope, res *AdminReserveUsername) {
+	out.Constructor = C_AdminReserveUsername
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_AdminGetReservedUsernames int64 = 1588181579
+
+type poolAdminGetReservedUsernames struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminGetReservedUsernames) Get() *AdminGetReservedUsernames {
+	x, ok := p.pool.Get().(*AdminGetReservedUsernames)
+	if !ok {
+		return &AdminGetReservedUsernames{}
+	}
+	return x
+}
+
+func (p *poolAdminGetReservedUsernames) Put(x *AdminGetReservedUsernames) {
+	p.pool.Put(x)
+}
+
+var PoolAdminGetReservedUsernames = poolAdminGetReservedUsernames{}
+
+func ResultAdminGetReservedUsernames(out *MessageEnvelope, res *AdminGetReservedUsernames) {
+	out.Constructor = C_AdminGetReservedUsernames
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_AdminToken int64 = 2895609620
 
 type poolAdminToken struct {
@@ -413,6 +478,8 @@ func init() {
 	ConstructorNames[934752256] = "AdminGetVersions"
 	ConstructorNames[2892519162] = "AdminSetToken"
 	ConstructorNames[3154441897] = "AdminDeleteToken"
+	ConstructorNames[1947723452] = "AdminReserveUsername"
+	ConstructorNames[1588181579] = "AdminGetReservedUsernames"
 	ConstructorNames[2895609620] = "AdminToken"
 	ConstructorNames[414982091] = "WelcomeMessagesMany"
 	ConstructorNames[2123920547] = "VersionsMany"

@@ -118,8 +118,42 @@ func ResultVersion(out *MessageEnvelope, res *Version) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_ReservedUsernames int64 = 1388055751
+
+type poolReservedUsernames struct {
+	pool sync.Pool
+}
+
+func (p *poolReservedUsernames) Get() *ReservedUsernames {
+	x, ok := p.pool.Get().(*ReservedUsernames)
+	if !ok {
+		return &ReservedUsernames{}
+	}
+	x.Usernames = x.Usernames[:0]
+	return x
+}
+
+func (p *poolReservedUsernames) Put(x *ReservedUsernames) {
+	p.pool.Put(x)
+}
+
+var PoolReservedUsernames = poolReservedUsernames{}
+
+func ResultReservedUsernames(out *MessageEnvelope, res *ReservedUsernames) {
+	out.Constructor = C_ReservedUsernames
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[2506678571] = "WelcomeMessage"
 	ConstructorNames[1015984470] = "PushProvider"
 	ConstructorNames[1889659487] = "Version"
+	ConstructorNames[1388055751] = "ReservedUsernames"
 }

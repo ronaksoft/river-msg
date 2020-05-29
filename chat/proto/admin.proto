@@ -40,3 +40,9 @@ message Version {
     required string CurrentVersion = 5;
     repeated string ForcedVersions = 6;
 }
+
+// ReservedUsernames
+message ReservedUsernames {
+    repeated string Usernames = 1;
+    required int32 Count = 2;
+}

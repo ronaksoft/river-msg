@@ -22,6 +22,14 @@ message AdminGetWelcomeMessages {
     required string AccessToken = 1;
 }
 
+// AdminDeleteWelcomeMessage
+// @Function
+// @Return: Bool
+message AdminDeleteWelcomeMessage {
+    required string AccessToken = 1;
+    required string Lang = 2;
+}
+
 // AdminSetPushProvider
 // @Function
 // @Return: Bool
@@ -35,6 +43,15 @@ message AdminSetPushProvider {
 // @Return: PushProvidersMany
 message AdminGetPushProviders {
     required string AccessToken = 1;
+}
+
+// AdminDeletePushProvider
+// @Function
+// @Return: Bool
+message AdminDeletePushProvider {
+    required string AccessToken = 1;
+    required string Name = 2;
+    required PushProviderType Type = 3;
 }
 
 // AdminSetVersion

@@ -81,6 +81,38 @@ func ResultAdminGetWelcomeMessages(out *MessageEnvelope, res *AdminGetWelcomeMes
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_AdminDeleteWelcomeMessage int64 = 3940015991
+
+type poolAdminDeleteWelcomeMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminDeleteWelcomeMessage) Get() *AdminDeleteWelcomeMessage {
+	x, ok := p.pool.Get().(*AdminDeleteWelcomeMessage)
+	if !ok {
+		return &AdminDeleteWelcomeMessage{}
+	}
+	return x
+}
+
+func (p *poolAdminDeleteWelcomeMessage) Put(x *AdminDeleteWelcomeMessage) {
+	p.pool.Put(x)
+}
+
+var PoolAdminDeleteWelcomeMessage = poolAdminDeleteWelcomeMessage{}
+
+func ResultAdminDeleteWelcomeMessage(out *MessageEnvelope, res *AdminDeleteWelcomeMessage) {
+	out.Constructor = C_AdminDeleteWelcomeMessage
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_AdminSetPushProvider int64 = 1758606947
 
 type poolAdminSetPushProvider struct {
@@ -135,6 +167,38 @@ var PoolAdminGetPushProviders = poolAdminGetPushProviders{}
 
 func ResultAdminGetPushProviders(out *MessageEnvelope, res *AdminGetPushProviders) {
 	out.Constructor = C_AdminGetPushProviders
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_AdminDeletePushProvider int64 = 1864898932
+
+type poolAdminDeletePushProvider struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminDeletePushProvider) Get() *AdminDeletePushProvider {
+	x, ok := p.pool.Get().(*AdminDeletePushProvider)
+	if !ok {
+		return &AdminDeletePushProvider{}
+	}
+	return x
+}
+
+func (p *poolAdminDeletePushProvider) Put(x *AdminDeletePushProvider) {
+	p.pool.Put(x)
+}
+
+var PoolAdminDeletePushProvider = poolAdminDeletePushProvider{}
+
+func ResultAdminDeletePushProvider(out *MessageEnvelope, res *AdminDeletePushProvider) {
+	out.Constructor = C_AdminDeletePushProvider
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -472,8 +536,10 @@ func ResultPushProvidersMany(out *MessageEnvelope, res *PushProvidersMany) {
 func init() {
 	ConstructorNames[1149591874] = "AdminSetWelcomeMessage"
 	ConstructorNames[2794709448] = "AdminGetWelcomeMessages"
+	ConstructorNames[3940015991] = "AdminDeleteWelcomeMessage"
 	ConstructorNames[1758606947] = "AdminSetPushProvider"
 	ConstructorNames[4257963974] = "AdminGetPushProviders"
+	ConstructorNames[1864898932] = "AdminDeletePushProvider"
 	ConstructorNames[1311023404] = "AdminSetVersion"
 	ConstructorNames[934752256] = "AdminGetVersions"
 	ConstructorNames[2892519162] = "AdminSetToken"

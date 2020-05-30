@@ -178,6 +178,61 @@ func (m *AdminGetWelcomeMessages) GetAccessToken() string {
 	return ""
 }
 
+// AdminDeleteWelcomeMessage
+// @Function
+// @Return: Bool
+type AdminDeleteWelcomeMessage struct {
+	AccessToken string `protobuf:"bytes,1,req,name=AccessToken" json:"AccessToken"`
+	Lang        string `protobuf:"bytes,2,req,name=Lang" json:"Lang"`
+}
+
+func (m *AdminDeleteWelcomeMessage) Reset()         { *m = AdminDeleteWelcomeMessage{} }
+func (m *AdminDeleteWelcomeMessage) String() string { return proto.CompactTextString(m) }
+func (*AdminDeleteWelcomeMessage) ProtoMessage()    {}
+func (*AdminDeleteWelcomeMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2cd753a9a0a622d5, []int{2}
+}
+func (m *AdminDeleteWelcomeMessage) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AdminDeleteWelcomeMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AdminDeleteWelcomeMessage.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AdminDeleteWelcomeMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AdminDeleteWelcomeMessage.Merge(m, src)
+}
+func (m *AdminDeleteWelcomeMessage) XXX_Size() int {
+	return m.Size()
+}
+func (m *AdminDeleteWelcomeMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_AdminDeleteWelcomeMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AdminDeleteWelcomeMessage proto.InternalMessageInfo
+
+func (m *AdminDeleteWelcomeMessage) GetAccessToken() string {
+	if m != nil {
+		return m.AccessToken
+	}
+	return ""
+}
+
+func (m *AdminDeleteWelcomeMessage) GetLang() string {
+	if m != nil {
+		return m.Lang
+	}
+	return ""
+}
+
 // AdminSetPushProvider
 // @Function
 // @Return: Bool
@@ -190,7 +245,7 @@ func (m *AdminSetPushProvider) Reset()         { *m = AdminSetPushProvider{} }
 func (m *AdminSetPushProvider) String() string { return proto.CompactTextString(m) }
 func (*AdminSetPushProvider) ProtoMessage()    {}
 func (*AdminSetPushProvider) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{2}
+	return fileDescriptor_2cd753a9a0a622d5, []int{3}
 }
 func (m *AdminSetPushProvider) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -244,7 +299,7 @@ func (m *AdminGetPushProviders) Reset()         { *m = AdminGetPushProviders{} }
 func (m *AdminGetPushProviders) String() string { return proto.CompactTextString(m) }
 func (*AdminGetPushProviders) ProtoMessage()    {}
 func (*AdminGetPushProviders) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{3}
+	return fileDescriptor_2cd753a9a0a622d5, []int{4}
 }
 func (m *AdminGetPushProviders) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -280,6 +335,69 @@ func (m *AdminGetPushProviders) GetAccessToken() string {
 	return ""
 }
 
+// AdminDeletePushProvider
+// @Function
+// @Return: Bool
+type AdminDeletePushProvider struct {
+	AccessToken string           `protobuf:"bytes,1,req,name=AccessToken" json:"AccessToken"`
+	Name        string           `protobuf:"bytes,2,req,name=Name" json:"Name"`
+	Type        PushProviderType `protobuf:"varint,3,req,name=Type,enum=msg.PushProviderType" json:"Type"`
+}
+
+func (m *AdminDeletePushProvider) Reset()         { *m = AdminDeletePushProvider{} }
+func (m *AdminDeletePushProvider) String() string { return proto.CompactTextString(m) }
+func (*AdminDeletePushProvider) ProtoMessage()    {}
+func (*AdminDeletePushProvider) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2cd753a9a0a622d5, []int{5}
+}
+func (m *AdminDeletePushProvider) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AdminDeletePushProvider) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AdminDeletePushProvider.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AdminDeletePushProvider) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AdminDeletePushProvider.Merge(m, src)
+}
+func (m *AdminDeletePushProvider) XXX_Size() int {
+	return m.Size()
+}
+func (m *AdminDeletePushProvider) XXX_DiscardUnknown() {
+	xxx_messageInfo_AdminDeletePushProvider.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AdminDeletePushProvider proto.InternalMessageInfo
+
+func (m *AdminDeletePushProvider) GetAccessToken() string {
+	if m != nil {
+		return m.AccessToken
+	}
+	return ""
+}
+
+func (m *AdminDeletePushProvider) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AdminDeletePushProvider) GetType() PushProviderType {
+	if m != nil {
+		return m.Type
+	}
+	return PushProviderUnknown
+}
+
 // AdminSetVersion
 // @Function
 // @Return: Bool
@@ -292,7 +410,7 @@ func (m *AdminSetVersion) Reset()         { *m = AdminSetVersion{} }
 func (m *AdminSetVersion) String() string { return proto.CompactTextString(m) }
 func (*AdminSetVersion) ProtoMessage()    {}
 func (*AdminSetVersion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{4}
+	return fileDescriptor_2cd753a9a0a622d5, []int{6}
 }
 func (m *AdminSetVersion) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -346,7 +464,7 @@ func (m *AdminGetVersions) Reset()         { *m = AdminGetVersions{} }
 func (m *AdminGetVersions) String() string { return proto.CompactTextString(m) }
 func (*AdminGetVersions) ProtoMessage()    {}
 func (*AdminGetVersions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{5}
+	return fileDescriptor_2cd753a9a0a622d5, []int{7}
 }
 func (m *AdminGetVersions) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -394,7 +512,7 @@ func (m *AdminSetToken) Reset()         { *m = AdminSetToken{} }
 func (m *AdminSetToken) String() string { return proto.CompactTextString(m) }
 func (*AdminSetToken) ProtoMessage()    {}
 func (*AdminSetToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{6}
+	return fileDescriptor_2cd753a9a0a622d5, []int{8}
 }
 func (m *AdminSetToken) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -449,7 +567,7 @@ func (m *AdminDeleteToken) Reset()         { *m = AdminDeleteToken{} }
 func (m *AdminDeleteToken) String() string { return proto.CompactTextString(m) }
 func (*AdminDeleteToken) ProtoMessage()    {}
 func (*AdminDeleteToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{7}
+	return fileDescriptor_2cd753a9a0a622d5, []int{9}
 }
 func (m *AdminDeleteToken) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -505,7 +623,7 @@ func (m *AdminReserveUsername) Reset()         { *m = AdminReserveUsername{} }
 func (m *AdminReserveUsername) String() string { return proto.CompactTextString(m) }
 func (*AdminReserveUsername) ProtoMessage()    {}
 func (*AdminReserveUsername) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{8}
+	return fileDescriptor_2cd753a9a0a622d5, []int{10}
 }
 func (m *AdminReserveUsername) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -566,7 +684,7 @@ func (m *AdminGetReservedUsernames) Reset()         { *m = AdminGetReservedUsern
 func (m *AdminGetReservedUsernames) String() string { return proto.CompactTextString(m) }
 func (*AdminGetReservedUsernames) ProtoMessage()    {}
 func (*AdminGetReservedUsernames) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{9}
+	return fileDescriptor_2cd753a9a0a622d5, []int{11}
 }
 func (m *AdminGetReservedUsernames) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -612,7 +730,7 @@ func (m *AdminToken) Reset()         { *m = AdminToken{} }
 func (m *AdminToken) String() string { return proto.CompactTextString(m) }
 func (*AdminToken) ProtoMessage()    {}
 func (*AdminToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{10}
+	return fileDescriptor_2cd753a9a0a622d5, []int{12}
 }
 func (m *AdminToken) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -665,7 +783,7 @@ func (m *WelcomeMessagesMany) Reset()         { *m = WelcomeMessagesMany{} }
 func (m *WelcomeMessagesMany) String() string { return proto.CompactTextString(m) }
 func (*WelcomeMessagesMany) ProtoMessage()    {}
 func (*WelcomeMessagesMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{11}
+	return fileDescriptor_2cd753a9a0a622d5, []int{13}
 }
 func (m *WelcomeMessagesMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -718,7 +836,7 @@ func (m *VersionsMany) Reset()         { *m = VersionsMany{} }
 func (m *VersionsMany) String() string { return proto.CompactTextString(m) }
 func (*VersionsMany) ProtoMessage()    {}
 func (*VersionsMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{12}
+	return fileDescriptor_2cd753a9a0a622d5, []int{14}
 }
 func (m *VersionsMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -771,7 +889,7 @@ func (m *PushProvidersMany) Reset()         { *m = PushProvidersMany{} }
 func (m *PushProvidersMany) String() string { return proto.CompactTextString(m) }
 func (*PushProvidersMany) ProtoMessage()    {}
 func (*PushProvidersMany) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2cd753a9a0a622d5, []int{13}
+	return fileDescriptor_2cd753a9a0a622d5, []int{15}
 }
 func (m *PushProvidersMany) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -818,8 +936,10 @@ func init() {
 	proto.RegisterEnum("msg.AdminPrivilege", AdminPrivilege_name, AdminPrivilege_value)
 	proto.RegisterType((*AdminSetWelcomeMessage)(nil), "msg.AdminSetWelcomeMessage")
 	proto.RegisterType((*AdminGetWelcomeMessages)(nil), "msg.AdminGetWelcomeMessages")
+	proto.RegisterType((*AdminDeleteWelcomeMessage)(nil), "msg.AdminDeleteWelcomeMessage")
 	proto.RegisterType((*AdminSetPushProvider)(nil), "msg.AdminSetPushProvider")
 	proto.RegisterType((*AdminGetPushProviders)(nil), "msg.AdminGetPushProviders")
+	proto.RegisterType((*AdminDeletePushProvider)(nil), "msg.AdminDeletePushProvider")
 	proto.RegisterType((*AdminSetVersion)(nil), "msg.AdminSetVersion")
 	proto.RegisterType((*AdminGetVersions)(nil), "msg.AdminGetVersions")
 	proto.RegisterType((*AdminSetToken)(nil), "msg.AdminSetToken")
@@ -835,41 +955,45 @@ func init() {
 func init() { proto.RegisterFile("admin.api.proto", fileDescriptor_2cd753a9a0a622d5) }
 
 var fileDescriptor_2cd753a9a0a622d5 = []byte{
-	// 543 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0xb5, 0x93, 0x16, 0x92, 0x49, 0x9a, 0x26, 0x1b, 0xa0, 0x26, 0x8a, 0x4c, 0xb4, 0x87, 0x2a,
-	0x42, 0x6a, 0x22, 0xf5, 0x82, 0xc4, 0x05, 0xa5, 0x45, 0xe2, 0x42, 0x51, 0xe4, 0x06, 0xb8, 0xe2,
-	0xc4, 0x83, 0x6b, 0x11, 0x7b, 0x2d, 0xaf, 0x1d, 0x09, 0xc4, 0x47, 0xf0, 0x59, 0x3d, 0xe6, 0xc8,
-	0x09, 0x41, 0xf2, 0x23, 0xa8, 0xeb, 0x5d, 0xc7, 0x2e, 0x55, 0x65, 0x6e, 0x99, 0x37, 0x6f, 0xde,
-	0x7b, 0x9e, 0xcc, 0xc2, 0xa1, 0xed, 0xf8, 0x5e, 0x30, 0xb2, 0x43, 0x6f, 0x14, 0x46, 0x2c, 0x66,
-	0xa4, 0xea, 0x73, 0xb7, 0x77, 0xe2, 0x7a, 0xf1, 0x55, 0x32, 0x1f, 0x2d, 0x98, 0x3f, 0x76, 0x99,
-	0xcb, 0xc6, 0xa2, 0x37, 0x4f, 0x3e, 0x8b, 0x4a, 0x14, 0xe2, 0x57, 0x3a, 0xd3, 0x6b, 0xa4, 0x22,
-	0xa2, 0xa0, 0xdf, 0xe1, 0xc9, 0xe4, 0xa6, 0xbc, 0xc4, 0xf8, 0x23, 0x2e, 0x17, 0xcc, 0xc7, 0x0b,
-	0xe4, 0xdc, 0x76, 0x91, 0x1c, 0x43, 0x63, 0xb2, 0x58, 0x20, 0xe7, 0x33, 0xf6, 0x05, 0x03, 0x43,
-	0x1f, 0x54, 0x86, 0xf5, 0xb3, 0xbd, 0xeb, 0x5f, 0xcf, 0x34, 0x2b, 0xdf, 0x20, 0x06, 0xec, 0xbd,
-	0xb5, 0x03, 0xd7, 0xa8, 0xe4, 0x08, 0x02, 0x21, 0x03, 0xa8, 0xcd, 0xd0, 0x0f, 0x97, 0x76, 0x8c,
-	0x46, 0x35, 0xd7, 0xcd, 0x50, 0x3a, 0x81, 0x23, 0xe1, 0xfe, 0xe6, 0xb6, 0x3b, 0x2f, 0x6b, 0x4f,
-	0x7d, 0x78, 0xa4, 0x3e, 0x60, 0x9a, 0xf0, 0xab, 0x69, 0xc4, 0x56, 0x9e, 0x83, 0x51, 0xe9, 0xf8,
-	0x27, 0x50, 0x53, 0x33, 0xe2, 0x13, 0x1a, 0xa7, 0x9d, 0x91, 0xcf, 0xdd, 0x51, 0x5e, 0xcc, 0xca,
-	0x28, 0xf4, 0x15, 0x3c, 0x56, 0x89, 0xf3, 0x8c, 0xf2, 0x79, 0x6d, 0x38, 0x54, 0x79, 0x3f, 0x60,
-	0xc4, 0x3d, 0x16, 0x94, 0x8e, 0x7a, 0x0c, 0x0f, 0xe5, 0x88, 0x4c, 0xda, 0x14, 0x49, 0x25, 0x66,
-	0xa9, 0x26, 0x7d, 0x09, 0x6d, 0x95, 0x51, 0x42, 0xe5, 0xe3, 0x85, 0x70, 0xa0, 0xe2, 0x29, 0xd3,
-	0x72, 0xe1, 0x5e, 0x40, 0x7d, 0x1a, 0x79, 0x2b, 0x6f, 0x89, 0x2e, 0x8a, 0x78, 0xad, 0xd3, 0xae,
-	0x88, 0x27, 0xe4, 0xb2, 0x96, 0x1c, 0xdd, 0x71, 0xa9, 0x23, 0xd3, 0xbe, 0xc6, 0x25, 0xc6, 0xf8,
-	0x7f, 0xa6, 0x43, 0x68, 0xa6, 0x63, 0x4e, 0x4a, 0xcc, 0xdf, 0x60, 0xa1, 0x43, 0xbf, 0xc9, 0x33,
-	0xb1, 0x90, 0x63, 0xb4, 0xc2, 0xf7, 0x1c, 0xa3, 0xc0, 0xf6, 0xcb, 0x5f, 0x79, 0x1f, 0xea, 0x6a,
-	0x86, 0x1b, 0x95, 0x41, 0x75, 0x58, 0xb7, 0x76, 0x00, 0xe9, 0xc3, 0x83, 0xd4, 0x4d, 0xdc, 0x79,
-	0x4d, 0x0a, 0x48, 0x8c, 0x9e, 0xc3, 0x53, 0xf5, 0x7f, 0x48, 0x7b, 0x67, 0x37, 0x5a, 0xfe, 0x6e,
-	0x40, 0x88, 0xdc, 0xb1, 0x6d, 0xbd, 0xfc, 0xb6, 0x49, 0x0f, 0xf6, 0xff, 0x5d, 0x55, 0x0a, 0xd1,
-	0x39, 0x74, 0x6f, 0xbd, 0xc2, 0x0b, 0x3b, 0xf8, 0x4a, 0xc6, 0x50, 0x53, 0xb5, 0xa1, 0x0f, 0xaa,
-	0xc3, 0x86, 0xb4, 0x2a, 0x72, 0xad, 0x8c, 0x74, 0xe3, 0x71, 0xce, 0x92, 0x20, 0x16, 0x1e, 0xfb,
-	0xca, 0x43, 0x40, 0x74, 0x06, 0x4d, 0x75, 0x93, 0x42, 0x7c, 0x08, 0x35, 0x55, 0x4b, 0xf1, 0xe2,
-	0x51, 0x67, 0xdd, 0x7b, 0x55, 0x3f, 0x41, 0xa7, 0xf0, 0x1a, 0x65, 0xee, 0x7a, 0x06, 0x48, 0xed,
-	0x3b, 0x9e, 0xf6, 0x8e, 0x73, 0x9f, 0xc3, 0xf3, 0x29, 0xb4, 0x8a, 0xab, 0x25, 0x1d, 0x38, 0xc8,
-	0x8a, 0x77, 0x2c, 0xc0, 0xb6, 0x46, 0x08, 0xb4, 0x32, 0x48, 0xb0, 0xdb, 0x3a, 0x39, 0x82, 0x6e,
-	0x86, 0x5d, 0x26, 0x21, 0x46, 0x69, 0xa3, 0x72, 0xd6, 0x5f, 0xff, 0x31, 0xb5, 0xeb, 0x8d, 0xa9,
-	0xaf, 0x37, 0xa6, 0xfe, 0x7b, 0x63, 0xea, 0x3f, 0xb6, 0xa6, 0xb6, 0xde, 0x9a, 0xda, 0xcf, 0xad,
-	0xa9, 0xfd, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x70, 0xb5, 0x51, 0xfa, 0xea, 0x05, 0x00, 0x00,
+	// 600 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x4f, 0x6f, 0xda, 0x4e,
+	0x10, 0xb5, 0x81, 0xfc, 0x7e, 0x30, 0x24, 0x04, 0x96, 0xa6, 0x71, 0x11, 0x72, 0xd1, 0x1e, 0x22,
+	0x54, 0x29, 0x20, 0x71, 0xa9, 0xd4, 0x4b, 0x45, 0x52, 0x29, 0x97, 0x26, 0x42, 0x0e, 0x6d, 0x4f,
+	0x95, 0x6a, 0x60, 0xea, 0x58, 0xc5, 0x7f, 0xe4, 0x35, 0x48, 0xa9, 0xfa, 0x11, 0x7a, 0xe8, 0xc7,
+	0xca, 0x91, 0x63, 0x4f, 0x55, 0x0b, 0x5f, 0xa4, 0xf2, 0x7a, 0xd7, 0xd8, 0x49, 0x14, 0xb9, 0x55,
+	0x6f, 0x9e, 0x37, 0x33, 0xef, 0xcd, 0xbe, 0x59, 0x2f, 0xec, 0x9b, 0x33, 0xc7, 0x76, 0x7b, 0xa6,
+	0x6f, 0xf7, 0xfc, 0xc0, 0x0b, 0x3d, 0x52, 0x74, 0x98, 0xd5, 0x3a, 0xb6, 0xec, 0xf0, 0x6a, 0x31,
+	0xe9, 0x4d, 0x3d, 0xa7, 0x6f, 0x79, 0x96, 0xd7, 0xe7, 0xb9, 0xc9, 0xe2, 0x23, 0x8f, 0x78, 0xc0,
+	0xbf, 0xe2, 0x9e, 0x56, 0x35, 0x26, 0xe1, 0x01, 0xfd, 0x02, 0x8f, 0x87, 0x51, 0x78, 0x89, 0xe1,
+	0x3b, 0x9c, 0x4f, 0x3d, 0x07, 0xcf, 0x91, 0x31, 0xd3, 0x42, 0x72, 0x04, 0xd5, 0xe1, 0x74, 0x8a,
+	0x8c, 0x8d, 0xbd, 0x4f, 0xe8, 0x6a, 0x6a, 0xa7, 0xd0, 0xad, 0x9c, 0x94, 0x6e, 0x7e, 0x3c, 0x55,
+	0x8c, 0x74, 0x82, 0x68, 0x50, 0x7a, 0x6d, 0xba, 0x96, 0x56, 0x48, 0x15, 0x70, 0x84, 0x74, 0xa0,
+	0x3c, 0x46, 0xc7, 0x9f, 0x9b, 0x21, 0x6a, 0xc5, 0x54, 0x36, 0x41, 0xe9, 0x10, 0x0e, 0xb9, 0xfa,
+	0xd9, 0x6d, 0x75, 0x96, 0x57, 0x9e, 0xbe, 0x87, 0x27, 0x9c, 0xe2, 0x15, 0xce, 0x31, 0xc4, 0x7f,
+	0x7d, 0x06, 0xea, 0xc0, 0x23, 0xe9, 0xcf, 0x68, 0xc1, 0xae, 0x46, 0x81, 0xb7, 0xb4, 0x67, 0x18,
+	0xe4, 0x66, 0x3e, 0x86, 0xb2, 0xec, 0xe1, 0xec, 0xd5, 0x41, 0xa3, 0xe7, 0x30, 0xab, 0x97, 0x26,
+	0x33, 0x92, 0x12, 0xfa, 0x12, 0x0e, 0xa4, 0x21, 0xe9, 0x8a, 0xfc, 0x76, 0x7c, 0x55, 0x85, 0xa5,
+	0xb1, 0x1f, 0x7f, 0x35, 0xb3, 0x06, 0xa5, 0x0b, 0xd3, 0xc1, 0xac, 0x1b, 0x11, 0x42, 0xfa, 0x50,
+	0x1a, 0x5f, 0xfb, 0xf1, 0x36, 0x6b, 0x83, 0x83, 0x3b, 0x27, 0x89, 0x92, 0xb2, 0x21, 0xfa, 0xa6,
+	0x26, 0xec, 0x4b, 0xfb, 0xde, 0x62, 0xc0, 0x6c, 0xcf, 0xcd, 0x3d, 0xc5, 0x11, 0xfc, 0x2f, 0x5a,
+	0x84, 0x71, 0xbb, 0x5c, 0x4e, 0x60, 0x86, 0x4c, 0xd2, 0x17, 0x50, 0x97, 0x96, 0x09, 0x28, 0xbf,
+	0x5b, 0x3e, 0xec, 0xc9, 0xf1, 0xa4, 0x68, 0xbe, 0xe1, 0x9e, 0x43, 0x65, 0x14, 0xd8, 0x4b, 0x7b,
+	0x8e, 0x56, 0xec, 0x53, 0x6d, 0xd0, 0xe4, 0xe3, 0x71, 0xba, 0x24, 0x25, 0x5a, 0xb7, 0xb5, 0x74,
+	0x26, 0xa6, 0x8d, 0xd7, 0xf3, 0x67, 0xa2, 0x5d, 0xd8, 0x8d, 0xdb, 0x66, 0x71, 0x61, 0x7a, 0x3f,
+	0x99, 0x0c, 0xfd, 0x2c, 0x6e, 0xad, 0x81, 0x0c, 0x83, 0x25, 0xbe, 0x61, 0x18, 0xb8, 0xd1, 0xfe,
+	0xf2, 0x2a, 0xb5, 0xa1, 0x22, 0x7b, 0x98, 0x56, 0xe8, 0x14, 0xbb, 0x15, 0x63, 0x0b, 0x90, 0x36,
+	0xfc, 0x17, 0xab, 0xf1, 0x7b, 0x50, 0x16, 0x04, 0x02, 0xa3, 0xa7, 0xe2, 0x87, 0x3c, 0xc3, 0x50,
+	0xc8, 0xcf, 0xb6, 0xad, 0x79, 0x17, 0x63, 0x02, 0x70, 0x92, 0x7b, 0xdc, 0x56, 0xf3, 0xbb, 0x4d,
+	0x5a, 0xb0, 0x73, 0xd7, 0xaa, 0x18, 0xa2, 0x13, 0x68, 0xde, 0x7a, 0x73, 0xce, 0x4d, 0xf7, 0x9a,
+	0xf4, 0xa1, 0x2c, 0x63, 0x4d, 0xed, 0x14, 0xbb, 0x55, 0x21, 0x95, 0xad, 0x35, 0x92, 0xa2, 0x48,
+	0xe3, 0xd4, 0x5b, 0xb8, 0x21, 0xd7, 0xd8, 0x91, 0x1a, 0x1c, 0xa2, 0x63, 0xd8, 0x95, 0x77, 0x92,
+	0x93, 0x77, 0xa1, 0x2c, 0x63, 0x41, 0x9e, 0xbd, 0xd4, 0x49, 0xf6, 0x41, 0xd6, 0x0f, 0xd0, 0xc8,
+	0x3c, 0x0e, 0x62, 0xee, 0x4a, 0x02, 0x08, 0xee, 0x7b, 0x5e, 0x9a, 0x6d, 0xcd, 0x43, 0x0a, 0xcf,
+	0x46, 0x50, 0xcb, 0x5a, 0x4b, 0x1a, 0xb0, 0x97, 0x04, 0x17, 0x9e, 0x8b, 0x75, 0x85, 0x10, 0xa8,
+	0x25, 0x10, 0xaf, 0xae, 0xab, 0xe4, 0x10, 0x9a, 0x09, 0x76, 0xb9, 0xf0, 0x31, 0x88, 0x13, 0x85,
+	0x93, 0xf6, 0xea, 0x97, 0xae, 0xdc, 0xac, 0x75, 0x75, 0xb5, 0xd6, 0xd5, 0x9f, 0x6b, 0x5d, 0xfd,
+	0xb6, 0xd1, 0x95, 0xd5, 0x46, 0x57, 0xbe, 0x6f, 0x74, 0xe5, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0xcc, 0x88, 0x1b, 0x8c, 0xd8, 0x06, 0x00, 0x00,
 }
 
 func (m *AdminSetWelcomeMessage) Marshal() (dAtA []byte, err error) {
@@ -930,6 +1054,39 @@ func (m *AdminGetWelcomeMessages) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	_ = i
 	var l int
 	_ = l
+	i -= len(m.AccessToken)
+	copy(dAtA[i:], m.AccessToken)
+	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.AccessToken)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *AdminDeleteWelcomeMessage) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AdminDeleteWelcomeMessage) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AdminDeleteWelcomeMessage) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.Lang)
+	copy(dAtA[i:], m.Lang)
+	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.Lang)))
+	i--
+	dAtA[i] = 0x12
 	i -= len(m.AccessToken)
 	copy(dAtA[i:], m.AccessToken)
 	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.AccessToken)))
@@ -1000,6 +1157,42 @@ func (m *AdminGetPushProviders) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
+	i -= len(m.AccessToken)
+	copy(dAtA[i:], m.AccessToken)
+	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.AccessToken)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *AdminDeletePushProvider) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AdminDeletePushProvider) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AdminDeletePushProvider) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintAdminApi(dAtA, i, uint64(m.Type))
+	i--
+	dAtA[i] = 0x18
+	i -= len(m.Name)
+	copy(dAtA[i:], m.Name)
+	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.Name)))
+	i--
+	dAtA[i] = 0x12
 	i -= len(m.AccessToken)
 	copy(dAtA[i:], m.AccessToken)
 	i = encodeVarintAdminApi(dAtA, i, uint64(len(m.AccessToken)))
@@ -1403,6 +1596,19 @@ func (m *AdminGetWelcomeMessages) Size() (n int) {
 	return n
 }
 
+func (m *AdminDeleteWelcomeMessage) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.AccessToken)
+	n += 1 + l + sovAdminApi(uint64(l))
+	l = len(m.Lang)
+	n += 1 + l + sovAdminApi(uint64(l))
+	return n
+}
+
 func (m *AdminSetPushProvider) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1426,6 +1632,20 @@ func (m *AdminGetPushProviders) Size() (n int) {
 	_ = l
 	l = len(m.AccessToken)
 	n += 1 + l + sovAdminApi(uint64(l))
+	return n
+}
+
+func (m *AdminDeletePushProvider) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.AccessToken)
+	n += 1 + l + sovAdminApi(uint64(l))
+	l = len(m.Name)
+	n += 1 + l + sovAdminApi(uint64(l))
+	n += 1 + sovAdminApi(uint64(m.Type))
 	return n
 }
 
@@ -1827,6 +2047,132 @@ func (m *AdminGetWelcomeMessages) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+func (m *AdminDeleteWelcomeMessage) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowAdminApi
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AdminDeleteWelcomeMessage: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AdminDeleteWelcomeMessage: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AccessToken", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowAdminApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AccessToken = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Lang", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowAdminApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Lang = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipAdminApi(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AccessToken")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Lang")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func (m *AdminSetPushProvider) Unmarshal(dAtA []byte) error {
 	var hasFields [1]uint64
 	l := len(dAtA)
@@ -2040,6 +2386,155 @@ func (m *AdminGetPushProviders) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AccessToken")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AdminDeletePushProvider) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowAdminApi
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AdminDeletePushProvider: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AdminDeletePushProvider: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AccessToken", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowAdminApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.AccessToken = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowAdminApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Type", wireType)
+			}
+			m.Type = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowAdminApi
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Type |= PushProviderType(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000004)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipAdminApi(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthAdminApi
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AccessToken")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Type")
 	}
 
 	if iNdEx > l {

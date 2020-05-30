@@ -520,6 +520,7 @@ func (p *poolContactsImported) Get() *ContactsImported {
 	}
 	x.ContactUsers = x.ContactUsers[:0]
 	x.Users = x.Users[:0]
+	x.Empty = false
 	return x
 }
 

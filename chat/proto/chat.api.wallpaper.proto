@@ -71,4 +71,5 @@ message WallPapersMany {
     repeated WallPaper WallPapers = 1;
     required int32 Count = 2;
     required uint32 Crc32Hash = 3;
+    optional bool Empty = 5;
 }

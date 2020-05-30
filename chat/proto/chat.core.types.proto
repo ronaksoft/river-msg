@@ -481,6 +481,7 @@ message Label {
 // LabelsMany
 message LabelsMany {
     repeated Label Labels = 1;
+    optional bool Empty = 5;
 }
 
 // InputGeoLocation

@@ -136,4 +136,5 @@ message ContactsMany {
     repeated ContactUser ContactUsers = 2;
     required bool Modified = 3;
     repeated User Users = 4;
+    optional bool Empty = 5;
 }

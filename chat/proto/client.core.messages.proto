@@ -167,3 +167,32 @@ enum ClientMediaType {
 message ClientGetLastBotKeyboard {
     required InputPeer peer = 1;
 }
+
+// ClientGetRecentSearch
+// return @RecentSearchMany
+message ClientGetRecentSearch {
+    required int32 Limit = 1;
+}
+
+// PutRecentSearch
+// return @Bool
+message ClientPutRecentSearch {
+    required InputPeer Peer = 1;
+}
+
+// PutRecentSearch
+// return @Bool
+message ClientRemoveRecentSearch {
+    required InputPeer Peer = 1;
+}
+
+message RecentSearch {
+    required Peer Peer = 1;
+    required int32 Date = 2;
+}
+
+message RecentSearchMany {
+    repeated RecentSearch RecentSearches = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
+}

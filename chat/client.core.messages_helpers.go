@@ -609,6 +609,38 @@ func ResultClientRemoveRecentSearch(out *MessageEnvelope, res *ClientRemoveRecen
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_ClientRemoveAllRecentSearches int64 = 3599155822
+
+type poolClientRemoveAllRecentSearches struct {
+	pool sync.Pool
+}
+
+func (p *poolClientRemoveAllRecentSearches) Get() *ClientRemoveAllRecentSearches {
+	x, ok := p.pool.Get().(*ClientRemoveAllRecentSearches)
+	if !ok {
+		return &ClientRemoveAllRecentSearches{}
+	}
+	return x
+}
+
+func (p *poolClientRemoveAllRecentSearches) Put(x *ClientRemoveAllRecentSearches) {
+	p.pool.Put(x)
+}
+
+var PoolClientRemoveAllRecentSearches = poolClientRemoveAllRecentSearches{}
+
+func ResultClientRemoveAllRecentSearches(out *MessageEnvelope, res *ClientRemoveAllRecentSearches) {
+	out.Constructor = C_ClientRemoveAllRecentSearches
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_RecentSearch int64 = 2045409949
 
 type poolRecentSearch struct {
@@ -694,6 +726,7 @@ func init() {
 	ConstructorNames[2622949116] = "ClientGetRecentSearch"
 	ConstructorNames[629582533] = "ClientPutRecentSearch"
 	ConstructorNames[1281490259] = "ClientRemoveRecentSearch"
+	ConstructorNames[3599155822] = "ClientRemoveAllRecentSearches"
 	ConstructorNames[2045409949] = "RecentSearch"
 	ConstructorNames[1217165147] = "RecentSearchMany"
 }

@@ -186,6 +186,12 @@ message ClientRemoveRecentSearch {
     required InputPeer Peer = 1;
 }
 
+// ClientRemoveAllRecentSearches
+// return @Bool
+message ClientRemoveAllRecentSearches {
+    required bool extra = 1;
+}
+
 message RecentSearch {
     required Peer Peer = 1;
     required int32 Date = 2;

@@ -713,6 +713,8 @@ func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings
 	}
 	x.Password = nil
 	x.PasswordHash = nil
+	x.PasswordHash = x.PasswordHash[:0]
+	x.AlgorithmData = x.AlgorithmData[:0]
 	x.Hint = ""
 	x.Questions = x.Questions[:0]
 	return x
@@ -748,6 +750,7 @@ func (p *poolAccountRecoverPassword) Get() *AccountRecoverPassword {
 		return &AccountRecoverPassword{}
 	}
 	x.Answers = x.Answers[:0]
+	x.AlgorithmData = x.AlgorithmData[:0]
 	return x
 }
 
@@ -943,8 +946,11 @@ func (p *poolAccountPassword) Get() *AccountPassword {
 		return &AccountPassword{}
 	}
 	x.Hint = ""
+	x.AlgorithmData = x.AlgorithmData[:0]
 	x.SrpB = nil
+	x.SrpB = x.SrpB[:0]
 	x.RandomData = nil
+	x.RandomData = x.RandomData[:0]
 	x.SrpID = 0
 	x.Questions = x.Questions[:0]
 	return x

@@ -62,7 +62,7 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
 				g.g.P(fmt.Sprintf("x.%s = %s", *ft.Name, zeroValue(ft.Type)))
 			}
-			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED {
+			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED || *ft.Type == descriptor.FieldDescriptorProto_TYPE_BYTES {
 				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
 			}
 		}

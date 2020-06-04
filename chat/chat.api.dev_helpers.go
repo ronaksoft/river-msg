@@ -59,6 +59,8 @@ func (p *poolTestRequest) Get() *TestRequest {
 	if !ok {
 		return &TestRequest{}
 	}
+	x.Payload = x.Payload[:0]
+	x.Hash = x.Hash[:0]
 	return x
 }
 
@@ -91,6 +93,7 @@ func (p *poolTestResponse) Get() *TestResponse {
 	if !ok {
 		return &TestResponse{}
 	}
+	x.Hash = x.Hash[:0]
 	return x
 }
 
@@ -155,6 +158,7 @@ func (p *poolTestResponseWithString) Get() *TestResponseWithString {
 	if !ok {
 		return &TestResponseWithString{}
 	}
+	x.Hash = x.Hash[:0]
 	return x
 }
 

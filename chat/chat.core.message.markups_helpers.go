@@ -197,6 +197,7 @@ func (p *poolKeyboardButtonEnvelope) Get() *KeyboardButtonEnvelope {
 		return &KeyboardButtonEnvelope{}
 	}
 	x.Data = nil
+	x.Data = x.Data[:0]
 	return x
 }
 
@@ -294,6 +295,7 @@ func (p *poolButtonCallback) Get() *ButtonCallback {
 		return &ButtonCallback{}
 	}
 	x.Data = nil
+	x.Data = x.Data[:0]
 	return x
 }
 

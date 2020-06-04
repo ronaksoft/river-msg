@@ -18,6 +18,9 @@ message WallPaperSave {
     required WallPaperSettings Settings = 2;
 }
 
+// WallPaperDelete
+// @Function
+// @Return: Bool
 message WallPaperDelete {
     required InputWallPaper WallPaper = 1;
 }

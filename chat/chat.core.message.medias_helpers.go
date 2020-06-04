@@ -29,6 +29,7 @@ func (p *poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
 		return &DocumentAttributeAudio{}
 	}
 	x.Waveform = nil
+	x.Waveform = x.Waveform[:0]
 	return x
 }
 
@@ -190,6 +191,7 @@ func (p *poolDocumentAttribute) Get() *DocumentAttribute {
 		return &DocumentAttribute{}
 	}
 	x.Data = nil
+	x.Data = x.Data[:0]
 	return x
 }
 
@@ -759,6 +761,7 @@ func (p *poolPollAnswer) Get() *PollAnswer {
 	if !ok {
 		return &PollAnswer{}
 	}
+	x.Option = x.Option[:0]
 	return x
 }
 
@@ -824,6 +827,7 @@ func (p *poolPollAnswerVoters) Get() *PollAnswerVoters {
 	if !ok {
 		return &PollAnswerVoters{}
 	}
+	x.Option = x.Option[:0]
 	return x
 }
 
@@ -857,6 +861,7 @@ func (p *poolInputMediaSealed) Get() *InputMediaSealed {
 		return &InputMediaSealed{}
 	}
 	x.Media = nil
+	x.Media = x.Media[:0]
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	return x
@@ -892,6 +897,7 @@ func (p *poolMediaSealed) Get() *MediaSealed {
 		return &MediaSealed{}
 	}
 	x.Media = nil
+	x.Media = x.Media[:0]
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	return x

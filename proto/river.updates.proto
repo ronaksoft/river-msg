@@ -1,7 +1,7 @@
 syntax = "proto2";
 package msg;
 import "core.types.proto";
-import "chat.message.medias.proto";
+import "chat.messages.medias.proto";
 
 // UpdateGetState
 // @Function

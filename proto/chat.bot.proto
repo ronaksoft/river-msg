@@ -4,7 +4,7 @@ package msg;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "core.types.proto";
-import "chat.message.medias.proto";
+import "chat.messages.medias.proto";
 import "chat.wallpaper.proto";
 
 // Enable custom Marshal method.

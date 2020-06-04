@@ -479,38 +479,6 @@ func ResultPeer(out *MessageEnvelope, res *Peer) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_InputUser int64 = 3865689926
-
-type poolInputUser struct {
-	pool sync.Pool
-}
-
-func (p *poolInputUser) Get() *InputUser {
-	x, ok := p.pool.Get().(*InputUser)
-	if !ok {
-		return &InputUser{}
-	}
-	return x
-}
-
-func (p *poolInputUser) Put(x *InputUser) {
-	p.pool.Put(x)
-}
-
-var PoolInputUser = poolInputUser{}
-
-func ResultInputUser(out *MessageEnvelope, res *InputUser) {
-	out.Constructor = C_InputUser
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_InputPassword int64 = 513021899
 
 type poolInputPassword struct {
@@ -642,6 +610,38 @@ func ResultUserPhoto(out *MessageEnvelope, res *UserPhoto) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_InputUser int64 = 3865689926
+
+type poolInputUser struct {
+	pool sync.Pool
+}
+
+func (p *poolInputUser) Get() *InputUser {
+	x, ok := p.pool.Get().(*InputUser)
+	if !ok {
+		return &InputUser{}
+	}
+	return x
+}
+
+func (p *poolInputUser) Put(x *InputUser) {
+	p.pool.Put(x)
+}
+
+var PoolInputUser = poolInputUser{}
+
+func ResultInputUser(out *MessageEnvelope, res *InputUser) {
+	out.Constructor = C_InputUser
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_User int64 = 765557111
 
 type poolUser struct {
@@ -675,6 +675,39 @@ var PoolUser = poolUser{}
 
 func ResultUser(out *MessageEnvelope, res *User) {
 	out.Constructor = C_User
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_ContactUser int64 = 460099170
+
+type poolContactUser struct {
+	pool sync.Pool
+}
+
+func (p *poolContactUser) Get() *ContactUser {
+	x, ok := p.pool.Get().(*ContactUser)
+	if !ok {
+		return &ContactUser{}
+	}
+	x.Photo = nil
+	return x
+}
+
+func (p *poolContactUser) Put(x *ContactUser) {
+	p.pool.Put(x)
+}
+
+var PoolContactUser = poolContactUser{}
+
+func ResultContactUser(out *MessageEnvelope, res *ContactUser) {
+	out.Constructor = C_ContactUser
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -788,29 +821,132 @@ func ResultBotInfo(out *MessageEnvelope, res *BotInfo) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_ContactUser int64 = 460099170
+const C_GroupPhoto int64 = 3998516135
 
-type poolContactUser struct {
+type poolGroupPhoto struct {
 	pool sync.Pool
 }
 
-func (p *poolContactUser) Get() *ContactUser {
-	x, ok := p.pool.Get().(*ContactUser)
+func (p *poolGroupPhoto) Get() *GroupPhoto {
+	x, ok := p.pool.Get().(*GroupPhoto)
 	if !ok {
-		return &ContactUser{}
+		return &GroupPhoto{}
+	}
+	x.PhotoID = 0
+	return x
+}
+
+func (p *poolGroupPhoto) Put(x *GroupPhoto) {
+	p.pool.Put(x)
+}
+
+var PoolGroupPhoto = poolGroupPhoto{}
+
+func ResultGroupPhoto(out *MessageEnvelope, res *GroupPhoto) {
+	out.Constructor = C_GroupPhoto
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_Group int64 = 2885774273
+
+type poolGroup struct {
+	pool sync.Pool
+}
+
+func (p *poolGroup) Get() *Group {
+	x, ok := p.pool.Get().(*Group)
+	if !ok {
+		return &Group{}
+	}
+	x.EditedOn = 0
+	x.Flags = x.Flags[:0]
+	x.Photo = nil
+	return x
+}
+
+func (p *poolGroup) Put(x *Group) {
+	p.pool.Put(x)
+}
+
+var PoolGroup = poolGroup{}
+
+func ResultGroup(out *MessageEnvelope, res *Group) {
+	out.Constructor = C_Group
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_GroupFull int64 = 205850814
+
+type poolGroupFull struct {
+	pool sync.Pool
+}
+
+func (p *poolGroupFull) Get() *GroupFull {
+	x, ok := p.pool.Get().(*GroupFull)
+	if !ok {
+		return &GroupFull{}
+	}
+	x.Users = x.Users[:0]
+	x.Participants = x.Participants[:0]
+	x.PhotoGallery = x.PhotoGallery[:0]
+	return x
+}
+
+func (p *poolGroupFull) Put(x *GroupFull) {
+	p.pool.Put(x)
+}
+
+var PoolGroupFull = poolGroupFull{}
+
+func ResultGroupFull(out *MessageEnvelope, res *GroupFull) {
+	out.Constructor = C_GroupFull
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_GroupParticipant int64 = 4072279665
+
+type poolGroupParticipant struct {
+	pool sync.Pool
+}
+
+func (p *poolGroupParticipant) Get() *GroupParticipant {
+	x, ok := p.pool.Get().(*GroupParticipant)
+	if !ok {
+		return &GroupParticipant{}
 	}
 	x.Photo = nil
 	return x
 }
 
-func (p *poolContactUser) Put(x *ContactUser) {
+func (p *poolGroupParticipant) Put(x *GroupParticipant) {
 	p.pool.Put(x)
 }
 
-var PoolContactUser = poolContactUser{}
+var PoolGroupParticipant = poolGroupParticipant{}
 
-func ResultContactUser(out *MessageEnvelope, res *ContactUser) {
-	out.Constructor = C_ContactUser
+func ResultGroupParticipant(out *MessageEnvelope, res *GroupParticipant) {
+	out.Constructor = C_GroupParticipant
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -1126,142 +1262,6 @@ func ResultInputDocument(out *MessageEnvelope, res *InputDocument) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_GroupPhoto int64 = 3998516135
-
-type poolGroupPhoto struct {
-	pool sync.Pool
-}
-
-func (p *poolGroupPhoto) Get() *GroupPhoto {
-	x, ok := p.pool.Get().(*GroupPhoto)
-	if !ok {
-		return &GroupPhoto{}
-	}
-	x.PhotoID = 0
-	return x
-}
-
-func (p *poolGroupPhoto) Put(x *GroupPhoto) {
-	p.pool.Put(x)
-}
-
-var PoolGroupPhoto = poolGroupPhoto{}
-
-func ResultGroupPhoto(out *MessageEnvelope, res *GroupPhoto) {
-	out.Constructor = C_GroupPhoto
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_Group int64 = 2885774273
-
-type poolGroup struct {
-	pool sync.Pool
-}
-
-func (p *poolGroup) Get() *Group {
-	x, ok := p.pool.Get().(*Group)
-	if !ok {
-		return &Group{}
-	}
-	x.EditedOn = 0
-	x.Flags = x.Flags[:0]
-	x.Photo = nil
-	return x
-}
-
-func (p *poolGroup) Put(x *Group) {
-	p.pool.Put(x)
-}
-
-var PoolGroup = poolGroup{}
-
-func ResultGroup(out *MessageEnvelope, res *Group) {
-	out.Constructor = C_Group
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_GroupFull int64 = 205850814
-
-type poolGroupFull struct {
-	pool sync.Pool
-}
-
-func (p *poolGroupFull) Get() *GroupFull {
-	x, ok := p.pool.Get().(*GroupFull)
-	if !ok {
-		return &GroupFull{}
-	}
-	x.Users = x.Users[:0]
-	x.Participants = x.Participants[:0]
-	x.PhotoGallery = x.PhotoGallery[:0]
-	return x
-}
-
-func (p *poolGroupFull) Put(x *GroupFull) {
-	p.pool.Put(x)
-}
-
-var PoolGroupFull = poolGroupFull{}
-
-func ResultGroupFull(out *MessageEnvelope, res *GroupFull) {
-	out.Constructor = C_GroupFull
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_GroupParticipant int64 = 4072279665
-
-type poolGroupParticipant struct {
-	pool sync.Pool
-}
-
-func (p *poolGroupParticipant) Get() *GroupParticipant {
-	x, ok := p.pool.Get().(*GroupParticipant)
-	if !ok {
-		return &GroupParticipant{}
-	}
-	x.Photo = nil
-	return x
-}
-
-func (p *poolGroupParticipant) Put(x *GroupParticipant) {
-	p.pool.Put(x)
-}
-
-var PoolGroupParticipant = poolGroupParticipant{}
-
-func ResultGroupParticipant(out *MessageEnvelope, res *GroupParticipant) {
-	out.Constructor = C_GroupParticipant
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_PrivacyRule int64 = 3954700912
 
 type poolPrivacyRule struct {
@@ -1441,16 +1441,20 @@ func init() {
 	ConstructorNames[1120787796] = "Dialog"
 	ConstructorNames[3374092470] = "InputPeer"
 	ConstructorNames[47470215] = "Peer"
-	ConstructorNames[3865689926] = "InputUser"
 	ConstructorNames[513021899] = "InputPassword"
 	ConstructorNames[354669666] = "InputFileLocation"
 	ConstructorNames[2432133155] = "FileLocation"
 	ConstructorNames[1881347437] = "UserPhoto"
+	ConstructorNames[3865689926] = "InputUser"
 	ConstructorNames[765557111] = "User"
+	ConstructorNames[460099170] = "ContactUser"
 	ConstructorNames[961692401] = "Bot"
 	ConstructorNames[1852470005] = "BotCommands"
 	ConstructorNames[4059496923] = "BotInfo"
-	ConstructorNames[460099170] = "ContactUser"
+	ConstructorNames[3998516135] = "GroupPhoto"
+	ConstructorNames[2885774273] = "Group"
+	ConstructorNames[205850814] = "GroupFull"
+	ConstructorNames[4072279665] = "GroupParticipant"
 	ConstructorNames[1677556362] = "UserMessage"
 	ConstructorNames[869564229] = "DraftMessage"
 	ConstructorNames[3479443932] = "MessageEntity"
@@ -1460,10 +1464,6 @@ func init() {
 	ConstructorNames[3475030132] = "PeerNotifySettings"
 	ConstructorNames[3882180383] = "InputFile"
 	ConstructorNames[4081048424] = "InputDocument"
-	ConstructorNames[3998516135] = "GroupPhoto"
-	ConstructorNames[2885774273] = "Group"
-	ConstructorNames[205850814] = "GroupFull"
-	ConstructorNames[4072279665] = "GroupParticipant"
 	ConstructorNames[3954700912] = "PrivacyRule"
 	ConstructorNames[3479601132] = "Label"
 	ConstructorNames[1423713603] = "LabelsMany"

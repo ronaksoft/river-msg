@@ -28,6 +28,7 @@ func (p *poolPhoneAcceptCall) Get() *PhoneAcceptCall {
 	if !ok {
 		return &PhoneAcceptCall{}
 	}
+	x.AnswerSDP = x.AnswerSDP[:0]
 	return x
 }
 
@@ -60,6 +61,7 @@ func (p *poolPhoneRequestCall) Get() *PhoneRequestCall {
 	if !ok {
 		return &PhoneRequestCall{}
 	}
+	x.OfferSDP = x.OfferSDP[:0]
 	return x
 }
 

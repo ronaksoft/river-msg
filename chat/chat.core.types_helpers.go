@@ -92,6 +92,7 @@ func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 	if !ok {
 		return &MessageEnvelope{}
 	}
+	x.Message = x.Message[:0]
 	return x
 }
 
@@ -157,6 +158,7 @@ func (p *poolUpdateEnvelope) Get() *UpdateEnvelope {
 	if !ok {
 		return &UpdateEnvelope{}
 	}
+	x.Update = x.Update[:0]
 	return x
 }
 
@@ -226,6 +228,8 @@ func (p *poolProtoMessage) Get() *ProtoMessage {
 	}
 	x.AuthID = 0
 	x.MessageKey = nil
+	x.MessageKey = x.MessageKey[:0]
+	x.Payload = x.Payload[:0]
 	return x
 }
 
@@ -518,6 +522,8 @@ func (p *poolInputPassword) Get() *InputPassword {
 	if !ok {
 		return &InputPassword{}
 	}
+	x.A = x.A[:0]
+	x.M1 = x.M1[:0]
 	return x
 }
 
@@ -828,11 +834,14 @@ func (p *poolUserMessage) Get() *UserMessage {
 	}
 	x.MessageAction = 0
 	x.MessageActionData = nil
+	x.MessageActionData = x.MessageActionData[:0]
 	x.Entities = x.Entities[:0]
 	x.MediaType = 0
 	x.Media = nil
+	x.Media = x.Media[:0]
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	x.LabelIDs = x.LabelIDs[:0]
 	x.ViaBotID = 0
 	return x

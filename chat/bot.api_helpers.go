@@ -165,6 +165,7 @@ func (p *poolBotSendMessage) Get() *BotSendMessage {
 	x.Entities = x.Entities[:0]
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 
@@ -200,6 +201,7 @@ func (p *poolBotEditMessage) Get() *BotEditMessage {
 	x.Entities = x.Entities[:0]
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 
@@ -232,6 +234,7 @@ func (p *poolBotSendMedia) Get() *BotSendMedia {
 	if !ok {
 		return &BotSendMedia{}
 	}
+	x.MediaData = x.MediaData[:0]
 	x.ReplyTo = 0
 	return x
 }
@@ -265,6 +268,7 @@ func (p *poolBotSaveFilePart) Get() *BotSaveFilePart {
 	if !ok {
 		return &BotSaveFilePart{}
 	}
+	x.Bytes = x.Bytes[:0]
 	return x
 }
 
@@ -463,6 +467,7 @@ func (p *poolBotGetCallbackAnswer) Get() *BotGetCallbackAnswer {
 		return &BotGetCallbackAnswer{}
 	}
 	x.MessageID = 0
+	x.Data = x.Data[:0]
 	return x
 }
 
@@ -769,11 +774,13 @@ func (p *poolBotInlineMessage) Get() *BotInlineMessage {
 		return &BotInlineMessage{}
 	}
 	x.MediaData = nil
+	x.MediaData = x.MediaData[:0]
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	x.ReplyTo = 0
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 
@@ -807,12 +814,14 @@ func (p *poolInputBotInlineMessage) Get() *InputBotInlineMessage {
 		return &InputBotInlineMessage{}
 	}
 	x.InputMediaData = nil
+	x.InputMediaData = x.InputMediaData[:0]
 	x.NoWebPage = false
 	x.Body = ""
 	x.Entities = x.Entities[:0]
 	x.ReplyTo = 0
 	x.ReplyMarkup = 0
 	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 
@@ -845,6 +854,7 @@ func (p *poolBotToken) Get() *BotToken {
 	if !ok {
 		return &BotToken{}
 	}
+	x.Token = x.Token[:0]
 	return x
 }
 

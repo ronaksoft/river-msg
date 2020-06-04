@@ -61,6 +61,7 @@ func (p *poolPushProvider) Get() *PushProvider {
 		return &PushProvider{}
 	}
 	x.Credentials = nil
+	x.Credentials = x.Credentials[:0]
 	x.KeyID = ""
 	x.TeamID = ""
 	x.Topic = ""

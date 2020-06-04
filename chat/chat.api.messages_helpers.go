@@ -97,6 +97,7 @@ func (p *poolMessagesSendMedia) Get() *MessagesSendMedia {
 	if !ok {
 		return &MessagesSendMedia{}
 	}
+	x.MediaData = x.MediaData[:0]
 	x.ReplyTo = 0
 	x.ClearDraft = false
 	return x

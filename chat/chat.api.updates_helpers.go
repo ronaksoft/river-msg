@@ -1150,6 +1150,7 @@ func (p *poolUpdateBotCallbackQuery) Get() *UpdateBotCallbackQuery {
 	}
 	x.MessageID = 0
 	x.Data = nil
+	x.Data = x.Data[:0]
 	return x
 }
 

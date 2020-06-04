@@ -59,6 +59,8 @@ func (p *poolInitCompleteAuth) Get() *InitCompleteAuth {
 	if !ok {
 		return &InitCompleteAuth{}
 	}
+	x.ClientDHPubKey = x.ClientDHPubKey[:0]
+	x.EncryptedPayload = x.EncryptedPayload[:0]
 	return x
 }
 
@@ -123,6 +125,7 @@ func (p *poolInitTestAuth) Get() *InitTestAuth {
 	if !ok {
 		return &InitTestAuth{}
 	}
+	x.AuthKey = x.AuthKey[:0]
 	return x
 }
 
@@ -187,6 +190,7 @@ func (p *poolInitCompleteAuthInternal) Get() *InitCompleteAuthInternal {
 	if !ok {
 		return &InitCompleteAuthInternal{}
 	}
+	x.SecretNonce = x.SecretNonce[:0]
 	return x
 }
 
@@ -219,6 +223,7 @@ func (p *poolInitAuthCompleted) Get() *InitAuthCompleted {
 	if !ok {
 		return &InitAuthCompleted{}
 	}
+	x.ServerDHPubKey = x.ServerDHPubKey[:0]
 	return x
 }
 

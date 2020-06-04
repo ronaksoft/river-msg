@@ -520,6 +520,7 @@ func (p *poolAuthBotAuthorization) Get() *AuthBotAuthorization {
 	if !ok {
 		return &AuthBotAuthorization{}
 	}
+	x.AuthKey = x.AuthKey[:0]
 	return x
 }
 

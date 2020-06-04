@@ -126,6 +126,9 @@ func (m *WallPaperSave) GetSettings() *WallPaperSettings {
 	return nil
 }
 
+// WallPaperDelete
+// @Function
+// @Return: Bool
 type WallPaperDelete struct {
 	WallPaper *InputWallPaper `protobuf:"bytes,1,req,name=WallPaper" json:"WallPaper,omitempty"`
 }

@@ -73,6 +73,35 @@ message ClientGetMediaHistory {
     required ClientMediaType MediaType = 1;
 }
 
+// ClientGetRecentSearch
+// @Function
+// @Return: RecentSearchMany
+message ClientGetRecentSearch {
+    required int32 Limit = 1;
+}
+
+// PutRecentSearch
+// @Function
+// @Return: Bool
+message ClientPutRecentSearch {
+    required InputPeer Peer = 1;
+}
+
+// PutRecentSearch
+// @Function
+// @Return: Bool
+message ClientRemoveRecentSearch {
+    required InputPeer Peer = 1;
+}
+
+// ClientRemoveAllRecentSearches
+// @Function
+// @Return: Bool
+message ClientRemoveAllRecentSearches {
+    required bool extra = 1;
+}
+
+
 // ClientPendingMessage
 message ClientPendingMessage {
     required int64 ID = 1;
@@ -160,7 +189,6 @@ message ClientMediaSize {
     required int32 TotalSize = 2;
 }
 
-
 // ClientMediaType
 enum ClientMediaType {
     ClientMediaNone = 0;
@@ -171,3 +199,15 @@ enum ClientMediaType {
     ClientMediaLink = 5;
 }
 
+// RecentSearch
+message RecentSearch {
+    required Peer Peer = 1;
+    required int32 Date = 2;
+}
+
+// RecentSearchMany
+message RecentSearchMany {
+    repeated RecentSearch RecentSearches = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
+}

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 currentWorkingDir=$(pwd)
-rm ./chat/*.pb.go
 rm ./msg/*.pb.go
 rm ./msg/*_helpers.go
 

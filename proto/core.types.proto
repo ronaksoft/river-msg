@@ -127,26 +127,12 @@ message Peer {
     required fixed64 AccessHash = 3 [jstype = JS_STRING];
 }
 
-// InputUser
-message InputUser {
-    required int64 UserID = 1 [jstype = JS_STRING];
-    required fixed64 AccessHash = 2 [jstype = JS_STRING];
-}
 
 // InputPassword
 message InputPassword {
     required int64 SrpID = 1 [jstype = JS_STRING];
     required bytes A = 2;
     required bytes M1 = 3;
-}
-
-// UserStatus
-enum UserStatus {
-    UserStatusOffline = 0;
-    UserStatusOnline = 1;
-    UserStatusRecently = 2;
-    UserStatusLastWeek = 3;
-    UserStatusLastMonth = 4;
 }
 
 // InputFileLocation
@@ -164,11 +150,26 @@ message FileLocation {
     required fixed64 AccessHash = 3 [jstype = JS_STRING];
 }
 
+// UserStatus
+enum UserStatus {
+    UserStatusOffline = 0;
+    UserStatusOnline = 1;
+    UserStatusRecently = 2;
+    UserStatusLastWeek = 3;
+    UserStatusLastMonth = 4;
+}
+
 // UserPhoto
 message UserPhoto {
     required FileLocation PhotoBig = 1;
     required FileLocation PhotoSmall = 2;
     required int64 PhotoID = 3 [jstype = JS_STRING];
+}
+
+// InputUser
+message InputUser {
+    required int64 UserID = 1 [jstype = JS_STRING];
+    required fixed64 AccessHash = 2 [jstype = JS_STRING];
 }
 
 // User
@@ -191,6 +192,19 @@ message User {
     optional BotInfo BotInfo = 16;
     optional bool Official = 17;
 }
+
+// ContactUser
+message ContactUser {
+    required int64 ID = 1 [jstype = JS_STRING];
+    required string FirstName = 2;
+    required string LastName = 3;
+    required fixed64 AccessHash = 4 [jstype = JS_STRING];
+    required string Phone = 5;
+    required string Username = 6;
+    required int64 ClientID = 7 [jstype = JS_STRING];
+    optional UserPhoto Photo = 8;
+}
+
 
 // Bot
 message Bot {
@@ -217,15 +231,58 @@ message BotInfo {
     optional bool InlineQuery = 7;
 }
 
-// ContactUser
-message ContactUser {
+// GroupFlags
+enum GroupFlags {
+    GroupFlagsEmpty = 0;
+    GroupFlagsCreator = 1;
+    GroupFlagsNonParticipant = 2;
+    GroupFlagsAdmin = 3;
+    GroupFlagsAdminsEnabled = 4;
+    GroupFlagsDeactivated = 5;
+}
+
+// GroupPhoto
+message GroupPhoto {
+    required FileLocation PhotoBig = 1;
+    required FileLocation PhotoSmall = 2;
+    optional int64 PhotoID = 3 [jstype = JS_STRING];
+}
+
+// Group
+message Group {
     required int64 ID = 1 [jstype = JS_STRING];
+    required string Title = 2;
+    required int64 CreatedOn = 3;
+    required int32 Participants = 4;
+    optional int64 EditedOn = 5;
+    repeated GroupFlags Flags = 6;
+    optional GroupPhoto Photo = 7;
+}
+
+// GroupFull
+message GroupFull {
+    required Group Group = 1;
+    repeated User Users = 2;
+    repeated GroupParticipant Participants = 3;
+    required PeerNotifySettings NotifySettings = 4;
+    repeated GroupPhoto PhotoGallery = 5;
+}
+
+// ParticipantType
+enum ParticipantType {
+    ParticipantTypeMember = 0;
+    ParticipantTypeAdmin = 1;
+    ParticipantTypeCreator = 2;
+}
+
+// GroupParticipant
+message GroupParticipant {
+    required int64 UserID = 1 [jstype = JS_STRING];
     required string FirstName = 2;
     required string LastName = 3;
-    required fixed64 AccessHash = 4 [jstype = JS_STRING];
-    required string Phone = 5;
+    required ParticipantType Type = 4;
+    required uint64 AccessHash = 5 [jstype = JS_STRING];
     required string Username = 6;
-    required int64 ClientID = 7 [jstype = JS_STRING];
     optional UserPhoto Photo = 8;
 }
 
@@ -375,60 +432,6 @@ message InputDocument {
     required int32 ClusterID = 3;
 }
 
-// GroupFlags
-enum GroupFlags {
-    GroupFlagsEmpty = 0;
-    GroupFlagsCreator = 1;
-    GroupFlagsNonParticipant = 2;
-    GroupFlagsAdmin = 3;
-    GroupFlagsAdminsEnabled = 4;
-    GroupFlagsDeactivated = 5;
-}
-
-// GroupPhoto
-message GroupPhoto {
-    required FileLocation PhotoBig = 1;
-    required FileLocation PhotoSmall = 2;
-    optional int64 PhotoID = 3 [jstype = JS_STRING];
-}
-
-// Group
-message Group {
-    required int64 ID = 1 [jstype = JS_STRING];
-    required string Title = 2;
-    required int64 CreatedOn = 3;
-    required int32 Participants = 4;
-    optional int64 EditedOn = 5;
-    repeated GroupFlags Flags = 6;
-    optional GroupPhoto Photo = 7;
-}
-
-// GroupFull
-message GroupFull {
-    required Group Group = 1;
-    repeated User Users = 2;
-    repeated GroupParticipant Participants = 3;
-    required PeerNotifySettings NotifySettings = 4;
-    repeated GroupPhoto PhotoGallery = 5;
-}
-
-// ParticipantType
-enum ParticipantType {
-    ParticipantTypeMember = 0;
-    ParticipantTypeAdmin = 1;
-    ParticipantTypeCreator = 2;
-}
-
-// GroupParticipant
-message GroupParticipant {
-    required int64 UserID = 1 [jstype = JS_STRING];
-    required string FirstName = 2;
-    required string LastName = 3;
-    required ParticipantType Type = 4;
-    required uint64 AccessHash = 5 [jstype = JS_STRING];
-    required string Username = 6;
-    optional UserPhoto Photo = 8;
-}
 
 // NotificationType
 enum PushTokenProvider {

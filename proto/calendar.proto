@@ -1,0 +1,73 @@
+syntax = "proto2";
+package msg;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+// CalendarGetEvents
+// @Function
+// @Return: CalendarEvents
+message CalendarGetEvents {
+    required int64 From = 1;
+    required int64 To = 2;
+    optional int32 Filter = 3;
+}
+
+// RecurringPeriod
+enum RecurringPeriod {
+    RecurringNone = 0;
+    RecurringDaily = 1;
+    RecurringWeekly = 2;
+    RecurringMonthly = 3;
+    RecurringYearly = 4;
+}
+
+// CalendarSetEvent
+// @Function
+// @Return: CalendarEvent
+message CalendarSetEvent {
+    required string Name = 1;
+    required int64 Date = 2;
+    required int64 StartRange = 3;
+    required int64 Duration = 4;
+    required bool Recurring = 5;
+    optional RecurringPeriod Period = 6;
+    optional bool AllDay = 7;
+    optional bool Team = 8;
+    optional bool Global = 9;
+}
+
+// CalendarEditEvent
+// @Function
+// @Return: CalendarEvent
+message CalendarEditEvent {
+    required int64 EventID = 1;
+    required string Name = 2;
+    required int64 Date = 3;
+    required int64 StartRange = 4;
+    required int64 Duration = 5;
+    required bool Recurring = 6;
+    optional RecurringPeriod Period = 7;
+    optional bool AllDay = 8;
+}
+
+// CalendarRemoveEvent
+// @Function
+// @Return: Bool
+message CalendarRemoveEvent {
+    required int64 EventID = 1;
+}
+
+
+// CalendarEvent
+message CalendarEvent {
+    required int64 ID = 1;
+    required string Name = 2;
+    required int64 Date = 3;
+    required int64 StartRange = 4;
+    required int64 Duration = 5;
+    required bool Recurring = 6;
+    optional RecurringPeriod Period = 7;
+    optional bool AllDay = 8;
+}

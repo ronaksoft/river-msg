@@ -1,6 +1,7 @@
 syntax = "proto2";
 package msg;
 import "core.types.proto";
+import "calendar.proto";
 import "chat.messages.medias.proto";
 
 // UpdateGetState
@@ -319,7 +320,7 @@ message UpdateBotInlineSend {
 message UpdateTeamCreated {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
-    required int64 TeamID = 1 [jstype = JS_STRING];
+    required Team Team = 1;
 }
 
 // UpdateTeamMemberAdded
@@ -345,5 +346,27 @@ message UpdateTeamPhotoChanged {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
     required int64 TeamID = 1 [jstype = JS_STRING];
+    required FileLocation Photo = 2;
+}
+
+// UpdateCalendarEventAdded
+message UpdateCalendarEventAdded {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required CalendarEvent Event = 1;
+}
+
+// UpdateCalendarEventRemoved
+message UpdateCalendarEventRemoved {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 EventID = 102 [jstype = JS_STRING];
+}
+
+// UpdateCalendarEventEdited
+message UpdateCalendarEventEdited {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required CalendarEvent Event = 1;
 }
 

@@ -1367,6 +1367,102 @@ func ResultUpdateTeamPhotoChanged(out *MessageEnvelope, res *UpdateTeamPhotoChan
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_UpdateCalendarEventAdded int64 = 297964741
+
+type poolUpdateCalendarEventAdded struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCalendarEventAdded) Get() *UpdateCalendarEventAdded {
+	x, ok := p.pool.Get().(*UpdateCalendarEventAdded)
+	if !ok {
+		return &UpdateCalendarEventAdded{}
+	}
+	return x
+}
+
+func (p *poolUpdateCalendarEventAdded) Put(x *UpdateCalendarEventAdded) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCalendarEventAdded = poolUpdateCalendarEventAdded{}
+
+func ResultUpdateCalendarEventAdded(out *MessageEnvelope, res *UpdateCalendarEventAdded) {
+	out.Constructor = C_UpdateCalendarEventAdded
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateCalendarEventRemoved int64 = 2986798389
+
+type poolUpdateCalendarEventRemoved struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCalendarEventRemoved) Get() *UpdateCalendarEventRemoved {
+	x, ok := p.pool.Get().(*UpdateCalendarEventRemoved)
+	if !ok {
+		return &UpdateCalendarEventRemoved{}
+	}
+	return x
+}
+
+func (p *poolUpdateCalendarEventRemoved) Put(x *UpdateCalendarEventRemoved) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCalendarEventRemoved = poolUpdateCalendarEventRemoved{}
+
+func ResultUpdateCalendarEventRemoved(out *MessageEnvelope, res *UpdateCalendarEventRemoved) {
+	out.Constructor = C_UpdateCalendarEventRemoved
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateCalendarEventEdited int64 = 516349098
+
+type poolUpdateCalendarEventEdited struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCalendarEventEdited) Get() *UpdateCalendarEventEdited {
+	x, ok := p.pool.Get().(*UpdateCalendarEventEdited)
+	if !ok {
+		return &UpdateCalendarEventEdited{}
+	}
+	return x
+}
+
+func (p *poolUpdateCalendarEventEdited) Put(x *UpdateCalendarEventEdited) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCalendarEventEdited = poolUpdateCalendarEventEdited{}
+
+func ResultUpdateCalendarEventEdited(out *MessageEnvelope, res *UpdateCalendarEventEdited) {
+	out.Constructor = C_UpdateCalendarEventEdited
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -1409,4 +1505,7 @@ func init() {
 	ConstructorNames[1307755890] = "UpdateTeamMemberAdded"
 	ConstructorNames[99543064] = "UpdateTeamMemberRemoved"
 	ConstructorNames[2787282465] = "UpdateTeamPhotoChanged"
+	ConstructorNames[297964741] = "UpdateCalendarEventAdded"
+	ConstructorNames[2986798389] = "UpdateCalendarEventRemoved"
+	ConstructorNames[516349098] = "UpdateCalendarEventEdited"
 }

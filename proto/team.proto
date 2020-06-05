@@ -1,0 +1,62 @@
+syntax = "proto2";
+package msg;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+// TeamGet
+// @Function
+// @Return: Team
+message TeamGet {
+    required int64 ID = 1;
+}
+
+// TeamCreate
+// @Function
+// @Return: Team
+message TeamCreate {
+    required string Name = 1;
+    required int32 Capacity = 2;
+    required int64 ExpireDate = 3;
+}
+
+// TeamAddMember
+// @Function
+// @Return: Bool
+message TeamAddMember {
+    required int64 TeamID = 1;
+    required int64 UserID = 2;
+}
+
+// TeamRemoveMember
+// @Function
+// @Return: Bool
+message TeamRemoveMember {
+    required int64 TeamID = 1;
+    required int64 UserID = 2;
+}
+
+// TeamLeave
+// @Function
+// @Return: Bool
+message TeamLeave {
+    required int64 TeamID = 2;
+}
+
+// TeamJoin
+// @Function
+// @Return: Bool
+message TeamJoin {
+    required int64 TeamID = 1;
+    required bytes Token = 2;
+}
+
+// TeamListMembers
+// @Function
+// @Return: UsersMany
+message TeamListMembers {
+    required int64 TeamID = 1;
+}
+
+

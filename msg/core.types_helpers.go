@@ -1426,6 +1426,40 @@ func ResultGeoLocation(out *MessageEnvelope, res *GeoLocation) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_Team int64 = 1691486497
+
+type poolTeam struct {
+	pool sync.Pool
+}
+
+func (p *poolTeam) Get() *Team {
+	x, ok := p.pool.Get().(*Team)
+	if !ok {
+		return &Team{}
+	}
+	x.Managers = x.Managers[:0]
+	x.Members = x.Members[:0]
+	return x
+}
+
+func (p *poolTeam) Put(x *Team) {
+	p.pool.Put(x)
+}
+
+var PoolTeam = poolTeam{}
+
+func ResultTeam(out *MessageEnvelope, res *Team) {
+	out.Constructor = C_Team
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[2246546115] = "Ping"
 	ConstructorNames[2171268721] = "Pong"
@@ -1469,4 +1503,5 @@ func init() {
 	ConstructorNames[1423713603] = "LabelsMany"
 	ConstructorNames[1403425127] = "InputGeoLocation"
 	ConstructorNames[3794405429] = "GeoLocation"
+	ConstructorNames[1691486497] = "Team"
 }

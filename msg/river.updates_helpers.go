@@ -1239,6 +1239,134 @@ func ResultUpdateBotInlineSend(out *MessageEnvelope, res *UpdateBotInlineSend) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_UpdateTeamCreated int64 = 2762932529
+
+type poolUpdateTeamCreated struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateTeamCreated) Get() *UpdateTeamCreated {
+	x, ok := p.pool.Get().(*UpdateTeamCreated)
+	if !ok {
+		return &UpdateTeamCreated{}
+	}
+	return x
+}
+
+func (p *poolUpdateTeamCreated) Put(x *UpdateTeamCreated) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateTeamCreated = poolUpdateTeamCreated{}
+
+func ResultUpdateTeamCreated(out *MessageEnvelope, res *UpdateTeamCreated) {
+	out.Constructor = C_UpdateTeamCreated
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateTeamMemberAdded int64 = 1307755890
+
+type poolUpdateTeamMemberAdded struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateTeamMemberAdded) Get() *UpdateTeamMemberAdded {
+	x, ok := p.pool.Get().(*UpdateTeamMemberAdded)
+	if !ok {
+		return &UpdateTeamMemberAdded{}
+	}
+	return x
+}
+
+func (p *poolUpdateTeamMemberAdded) Put(x *UpdateTeamMemberAdded) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateTeamMemberAdded = poolUpdateTeamMemberAdded{}
+
+func ResultUpdateTeamMemberAdded(out *MessageEnvelope, res *UpdateTeamMemberAdded) {
+	out.Constructor = C_UpdateTeamMemberAdded
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateTeamMemberRemoved int64 = 99543064
+
+type poolUpdateTeamMemberRemoved struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateTeamMemberRemoved) Get() *UpdateTeamMemberRemoved {
+	x, ok := p.pool.Get().(*UpdateTeamMemberRemoved)
+	if !ok {
+		return &UpdateTeamMemberRemoved{}
+	}
+	return x
+}
+
+func (p *poolUpdateTeamMemberRemoved) Put(x *UpdateTeamMemberRemoved) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateTeamMemberRemoved = poolUpdateTeamMemberRemoved{}
+
+func ResultUpdateTeamMemberRemoved(out *MessageEnvelope, res *UpdateTeamMemberRemoved) {
+	out.Constructor = C_UpdateTeamMemberRemoved
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateTeamPhotoChanged int64 = 2787282465
+
+type poolUpdateTeamPhotoChanged struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateTeamPhotoChanged) Get() *UpdateTeamPhotoChanged {
+	x, ok := p.pool.Get().(*UpdateTeamPhotoChanged)
+	if !ok {
+		return &UpdateTeamPhotoChanged{}
+	}
+	return x
+}
+
+func (p *poolUpdateTeamPhotoChanged) Put(x *UpdateTeamPhotoChanged) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateTeamPhotoChanged = poolUpdateTeamPhotoChanged{}
+
+func ResultUpdateTeamPhotoChanged(out *MessageEnvelope, res *UpdateTeamPhotoChanged) {
+	out.Constructor = C_UpdateTeamPhotoChanged
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -1277,4 +1405,8 @@ func init() {
 	ConstructorNames[3408999713] = "UpdateBotCallbackQuery"
 	ConstructorNames[4065328876] = "UpdateBotInlineQuery"
 	ConstructorNames[2208028013] = "UpdateBotInlineSend"
+	ConstructorNames[2762932529] = "UpdateTeamCreated"
+	ConstructorNames[1307755890] = "UpdateTeamMemberAdded"
+	ConstructorNames[99543064] = "UpdateTeamMemberRemoved"
+	ConstructorNames[2787282465] = "UpdateTeamPhotoChanged"
 }

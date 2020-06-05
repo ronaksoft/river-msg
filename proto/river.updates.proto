@@ -314,3 +314,36 @@ message UpdateBotInlineSend {
     required string ResultID = 4;
     optional GeoLocation Geo = 5;
 }
+
+// UpdateTeamCreated
+message UpdateTeamCreated {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+}
+
+// UpdateTeamMemberAdded
+message UpdateTeamMemberAdded {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+    required int64 AdderID = 3 [jstype = JS_STRING];
+}
+
+// UpdateTeamMemberRemoved
+message UpdateTeamMemberRemoved {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+    required int64 RemoverID = 3 [jstype = JS_STRING];
+}
+
+// UpdateTeamPhotoChanged
+message UpdateTeamPhotoChanged {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+}
+

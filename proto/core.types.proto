@@ -127,7 +127,6 @@ message Peer {
     required fixed64 AccessHash = 3 [jstype = JS_STRING];
 }
 
-
 // InputPassword
 message InputPassword {
     required int64 SrpID = 1 [jstype = JS_STRING];
@@ -204,7 +203,6 @@ message ContactUser {
     required int64 ClientID = 7 [jstype = JS_STRING];
     optional UserPhoto Photo = 8;
 }
-
 
 // Bot
 message Bot {
@@ -432,7 +430,6 @@ message InputDocument {
     required int32 ClusterID = 3;
 }
 
-
 // NotificationType
 enum PushTokenProvider {
     PushTokenFirebase = 0;
@@ -499,6 +496,11 @@ message GeoLocation {
     required float Long = 2;
 }
 
+// InputTeam
+message InputTeam {
+    required int64 ID = 1 [jstype = JS_STRING];
+    required fixed64 AccessHash = 2 [jstype = JS_STRING];
+}
 
 // Team
 message Team {

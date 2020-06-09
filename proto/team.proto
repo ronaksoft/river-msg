@@ -1,6 +1,7 @@
 syntax = "proto2";
 package msg;
 
+import "core.types.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 
 option (gogoproto.goproto_enum_prefix_all) = false;
@@ -9,7 +10,7 @@ option (gogoproto.goproto_enum_prefix_all) = false;
 // @Function
 // @Return: Team
 message TeamGet {
-    required int64 ID = 1;
+    required int64 ID = 1 [jstype = JS_STRING];
 }
 
 // TeamCreate
@@ -19,44 +20,73 @@ message TeamCreate {
     required string Name = 1;
     required int32 Capacity = 2;
     required int64 ExpireDate = 3;
+    required bool Community = 4;
 }
 
 // TeamAddMember
 // @Function
 // @Return: Bool
 message TeamAddMember {
-    required int64 TeamID = 1;
-    required int64 UserID = 2;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+    required bool Manager = 3;
 }
 
 // TeamRemoveMember
 // @Function
 // @Return: Bool
 message TeamRemoveMember {
-    required int64 TeamID = 1;
-    required int64 UserID = 2;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+}
+
+// TeamPromote
+// @Function
+// @Return: Bool
+message TeamPromote {
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+}
+
+// TeamDemote
+// @Function
+// @Return: Bool
+message TeamDemote {
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
 }
 
 // TeamLeave
 // @Function
 // @Return: Bool
 message TeamLeave {
-    required int64 TeamID = 2;
+    required int64 TeamID = 2 [jstype = JS_STRING];
 }
 
 // TeamJoin
 // @Function
 // @Return: Bool
 message TeamJoin {
-    required int64 TeamID = 1;
+    required int64 TeamID = 1 [jstype = JS_STRING];
     required bytes Token = 2;
 }
 
 // TeamListMembers
 // @Function
-// @Return: UsersMany
+// @Return: TeamMembers
 message TeamListMembers {
-    required int64 TeamID = 1;
+    required int64 TeamID = 1 [jstype = JS_STRING];
 }
 
+// TeamMembers
+message TeamMembers {
+    repeated TeamMember Members = 1;
+}
+
+// TeamMember
+message TeamMember {
+    required int64 UserID = 1 [jstype = JS_STRING];
+    required bool Admin = 2;
+    required User User = 3;
+}
 

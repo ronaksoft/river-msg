@@ -19,7 +19,7 @@ message ContactsAdd {
     required string FirstName = 2;
     optional string LastName = 3;
     optional string Phone = 4;
-    optional InputTeam Team = 3;
+    optional InputTeam Team = 5;
 }
 
 // ContactsGet
@@ -82,7 +82,7 @@ message ContactsGetTopPeers {
     required int32 Offset = 1;
     required int32 Limit = 2;
     required TopPeerCategory Category = 3;
-    optional InputTeam Team = 3;
+    optional InputTeam Team = 4;
 }
 
 // ContactsResetTopPeer

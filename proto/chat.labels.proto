@@ -39,6 +39,7 @@ message LabelsAddToMessage {
     required InputPeer Peer = 1;
     repeated int32 LabelIDs = 3;
     repeated int64 MessageIDs = 4;
+    optional InputTeam Team = 5;
 }
 
 // LabelsRemoveFromMessage
@@ -48,6 +49,7 @@ message LabelsRemoveFromMessage {
     required InputPeer Peer = 1;
     repeated int32 LabelIDs = 3;
     repeated int64 MessageIDs = 4;
+    optional InputTeam Team = 5;
 }
 
 // LabelsListItems
@@ -58,6 +60,7 @@ message LabelsListItems {
     optional int64 MinID = 2;
     optional int64 MaxID = 3;
     optional int32 Limit = 4;
+    optional InputTeam Team = 5;
 }
 
 // LabelItems

@@ -69,7 +69,6 @@ message BotSendMessage {
     repeated MessageEntity Entities = 8;
     optional int64 ReplyMarkup = 9;
     optional bytes ReplyMarkupData = 10;
-
 }
 
 // BotEditMessage

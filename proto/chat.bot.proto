@@ -159,6 +159,7 @@ message BotGetCallbackAnswer {
     required InputPeer Peer = 1;
     optional int64 MessageID = 2; // ID of the Message if button is the inline keyboard
     required bytes Data = 3; // Callback data
+    optional InputTeam Team = 4;
 }
 
 // BotGetInlineResults

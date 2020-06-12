@@ -472,6 +472,7 @@ func (p *poolBotGetCallbackAnswer) Get() *BotGetCallbackAnswer {
 	}
 	x.MessageID = 0
 	x.Data = x.Data[:0]
+	x.Team = nil
 	return x
 }
 

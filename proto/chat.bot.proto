@@ -83,6 +83,7 @@ message BotEditMessage {
     repeated MessageEntity Entities = 5;
     optional int64 ReplyMarkup = 6;
     optional bytes ReplyMarkupData = 7;
+    optional InputTeam Team = 8;
 }
 
 // BotSendMedia
@@ -138,6 +139,7 @@ message BotRevokeToken {
 message BotDeleteMessage {
     required InputPeer Peer = 1;
     repeated int64 MessageIDs = 2;
+    optional InputTeam Team = 3;
 }
 
 // BotSetCallbackAnswer
@@ -168,6 +170,7 @@ message BotGetInlineResults {
     required string Query = 3; // The query
     required string Offset = 4; // The offset within the results, will be passed directly as-is to the bot.
     optional InputGeoLocation Location = 5; // The geolocation, if requested
+    optional InputTeam Team = 6;
 }
 
 // BotSetInlineResults
@@ -207,6 +210,7 @@ message BotSendInlineResults {
     required int64 ReplyTo = 6;
     optional bool Silent = 7; // Do not send notification
     optional bool HideVia = 8; // Hid via bot
+    optional InputTeam Team = 9;
 }
 
 // BotUploadWallPaper

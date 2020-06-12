@@ -160,6 +160,7 @@ func (p *poolBotSendMessage) Get() *BotSendMessage {
 	if !ok {
 		return &BotSendMessage{}
 	}
+	x.Team = nil
 	x.ReplyTo = 0
 	x.ClearDraft = false
 	x.Entities = x.Entities[:0]
@@ -236,6 +237,7 @@ func (p *poolBotSendMedia) Get() *BotSendMedia {
 	}
 	x.MediaData = x.MediaData[:0]
 	x.ReplyTo = 0
+	x.Team = nil
 	return x
 }
 

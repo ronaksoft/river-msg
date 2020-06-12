@@ -62,12 +62,14 @@ message BotGet {
 message BotSendMessage {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
+    optional InputTeam Team = 3;
     required string Body = 5;
     optional int64 ReplyTo = 6;
     optional bool ClearDraft = 7;
     repeated MessageEntity Entities = 8;
     optional int64 ReplyMarkup = 9;
     optional bytes ReplyMarkupData = 10;
+
 }
 
 // BotEditMessage
@@ -92,6 +94,7 @@ message BotSendMedia {
     required InputMediaType MediaType = 3;
     required bytes MediaData = 4;
     optional int64 ReplyTo = 5;
+    optional InputTeam Team = 6;
 }
 
 // BotSaveFilePart

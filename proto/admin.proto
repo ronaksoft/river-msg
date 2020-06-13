@@ -111,12 +111,12 @@ message AdminGetReservedUsernames {
 // @Function
 // @Return: Team
 message AdminTeamCreate {
-    required string Name = 1;
-    required int32 Capacity = 2;        // maximum number of team members
-    required int64 ExpireDate = 3;      // license expire time
-    required bool Community = 4;        // if team supports community users, send messages to team members
+    required string AccessToken = 1;
+    required int32 Capacity = 2; // maximum number of team members
+    required int64 ExpireDate = 3; // license expire time
+    required bool Community = 4; // if team supports community users, send messages to team members
+    required string Title = 5;
 }
-
 
 // AdminToken
 message AdminToken {

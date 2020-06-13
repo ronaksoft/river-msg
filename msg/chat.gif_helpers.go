@@ -80,6 +80,38 @@ func ResultGifSave(out *MessageEnvelope, res *GifSave) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_GifDelete int64 = 4148453437
+
+type poolGifDelete struct {
+	pool sync.Pool
+}
+
+func (p *poolGifDelete) Get() *GifDelete {
+	x, ok := p.pool.Get().(*GifDelete)
+	if !ok {
+		return &GifDelete{}
+	}
+	return x
+}
+
+func (p *poolGifDelete) Put(x *GifDelete) {
+	p.pool.Put(x)
+}
+
+var PoolGifDelete = poolGifDelete{}
+
+func ResultGifDelete(out *MessageEnvelope, res *GifDelete) {
+	out.Constructor = C_GifDelete
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_GifSearch int64 = 2040973085
 
 type poolGifSearch struct {
@@ -213,6 +245,7 @@ func ResultSavedGifs(out *MessageEnvelope, res *SavedGifs) {
 func init() {
 	ConstructorNames[35292745] = "GifGetSaved"
 	ConstructorNames[4049142282] = "GifSave"
+	ConstructorNames[4148453437] = "GifDelete"
 	ConstructorNames[2040973085] = "GifSearch"
 	ConstructorNames[423157907] = "FoundGifs"
 	ConstructorNames[1539084995] = "FoundGif"

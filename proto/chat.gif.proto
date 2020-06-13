@@ -19,6 +19,11 @@ message GifSave {
     required bool UnSave = 2;
 }
 
+// GifDelete
+message GifDelete {
+    required InputDocument Doc = 1;
+}
+
 // GifSearch
 // @Function
 // @Return: FoundGifs

@@ -49,38 +49,6 @@ func ResultTeamGet(out *MessageEnvelope, res *TeamGet) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_TeamCreate int64 = 2316911553
-
-type poolTeamCreate struct {
-	pool sync.Pool
-}
-
-func (p *poolTeamCreate) Get() *TeamCreate {
-	x, ok := p.pool.Get().(*TeamCreate)
-	if !ok {
-		return &TeamCreate{}
-	}
-	return x
-}
-
-func (p *poolTeamCreate) Put(x *TeamCreate) {
-	p.pool.Put(x)
-}
-
-var PoolTeamCreate = poolTeamCreate{}
-
-func ResultTeamCreate(out *MessageEnvelope, res *TeamCreate) {
-	out.Constructor = C_TeamCreate
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_TeamAddMember int64 = 3889056091
 
 type poolTeamAddMember struct {
@@ -373,7 +341,6 @@ func ResultTeamMember(out *MessageEnvelope, res *TeamMember) {
 
 func init() {
 	ConstructorNames[1172720786] = "TeamGet"
-	ConstructorNames[2316911553] = "TeamCreate"
 	ConstructorNames[3889056091] = "TeamAddMember"
 	ConstructorNames[4200364613] = "TeamRemoveMember"
 	ConstructorNames[382328820] = "TeamPromote"

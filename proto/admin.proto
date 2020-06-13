@@ -107,11 +107,23 @@ message AdminGetReservedUsernames {
     required string AccessToken = 1;
 }
 
+// AdminTeamCreate
+// @Function
+// @Return: Team
+message AdminTeamCreate {
+    required string Name = 1;
+    required int32 Capacity = 2;        // maximum number of team members
+    required int64 ExpireDate = 3;      // license expire time
+    required bool Community = 4;        // if team supports community users, send messages to team members
+}
+
+
 // AdminToken
 message AdminToken {
     required AdminPrivilege Privilege = 1;
     required string Token = 2;
 }
+
 // WelcomeMessagesMany
 message WelcomeMessagesMany {
     repeated WelcomeMessage Messages = 1;

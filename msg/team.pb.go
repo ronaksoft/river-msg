@@ -71,77 +71,6 @@ func (m *TeamGet) GetID() int64 {
 	return 0
 }
 
-// TeamCreate
-// @Function
-// @Return: Team
-type TeamCreate struct {
-	Name       string `protobuf:"bytes,1,req,name=Name" json:"Name"`
-	Capacity   int32  `protobuf:"varint,2,req,name=Capacity" json:"Capacity"`
-	ExpireDate int64  `protobuf:"varint,3,req,name=ExpireDate" json:"ExpireDate"`
-	Community  bool   `protobuf:"varint,4,req,name=Community" json:"Community"`
-}
-
-func (m *TeamCreate) Reset()         { *m = TeamCreate{} }
-func (m *TeamCreate) String() string { return proto.CompactTextString(m) }
-func (*TeamCreate) ProtoMessage()    {}
-func (*TeamCreate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{1}
-}
-func (m *TeamCreate) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TeamCreate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TeamCreate.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TeamCreate) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TeamCreate.Merge(m, src)
-}
-func (m *TeamCreate) XXX_Size() int {
-	return m.Size()
-}
-func (m *TeamCreate) XXX_DiscardUnknown() {
-	xxx_messageInfo_TeamCreate.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TeamCreate proto.InternalMessageInfo
-
-func (m *TeamCreate) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *TeamCreate) GetCapacity() int32 {
-	if m != nil {
-		return m.Capacity
-	}
-	return 0
-}
-
-func (m *TeamCreate) GetExpireDate() int64 {
-	if m != nil {
-		return m.ExpireDate
-	}
-	return 0
-}
-
-func (m *TeamCreate) GetCommunity() bool {
-	if m != nil {
-		return m.Community
-	}
-	return false
-}
-
 // TeamAddMember
 // @Function
 // @Return: Bool
@@ -155,7 +84,7 @@ func (m *TeamAddMember) Reset()         { *m = TeamAddMember{} }
 func (m *TeamAddMember) String() string { return proto.CompactTextString(m) }
 func (*TeamAddMember) ProtoMessage()    {}
 func (*TeamAddMember) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{2}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{1}
 }
 func (m *TeamAddMember) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -217,7 +146,7 @@ func (m *TeamRemoveMember) Reset()         { *m = TeamRemoveMember{} }
 func (m *TeamRemoveMember) String() string { return proto.CompactTextString(m) }
 func (*TeamRemoveMember) ProtoMessage()    {}
 func (*TeamRemoveMember) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{3}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{2}
 }
 func (m *TeamRemoveMember) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -272,7 +201,7 @@ func (m *TeamPromote) Reset()         { *m = TeamPromote{} }
 func (m *TeamPromote) String() string { return proto.CompactTextString(m) }
 func (*TeamPromote) ProtoMessage()    {}
 func (*TeamPromote) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{4}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{3}
 }
 func (m *TeamPromote) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -327,7 +256,7 @@ func (m *TeamDemote) Reset()         { *m = TeamDemote{} }
 func (m *TeamDemote) String() string { return proto.CompactTextString(m) }
 func (*TeamDemote) ProtoMessage()    {}
 func (*TeamDemote) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{5}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{4}
 }
 func (m *TeamDemote) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -381,7 +310,7 @@ func (m *TeamLeave) Reset()         { *m = TeamLeave{} }
 func (m *TeamLeave) String() string { return proto.CompactTextString(m) }
 func (*TeamLeave) ProtoMessage()    {}
 func (*TeamLeave) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{6}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{5}
 }
 func (m *TeamLeave) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -429,7 +358,7 @@ func (m *TeamJoin) Reset()         { *m = TeamJoin{} }
 func (m *TeamJoin) String() string { return proto.CompactTextString(m) }
 func (*TeamJoin) ProtoMessage()    {}
 func (*TeamJoin) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{7}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{6}
 }
 func (m *TeamJoin) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -483,7 +412,7 @@ func (m *TeamListMembers) Reset()         { *m = TeamListMembers{} }
 func (m *TeamListMembers) String() string { return proto.CompactTextString(m) }
 func (*TeamListMembers) ProtoMessage()    {}
 func (*TeamListMembers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{8}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{7}
 }
 func (m *TeamListMembers) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -528,7 +457,7 @@ func (m *TeamMembers) Reset()         { *m = TeamMembers{} }
 func (m *TeamMembers) String() string { return proto.CompactTextString(m) }
 func (*TeamMembers) ProtoMessage()    {}
 func (*TeamMembers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{9}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{8}
 }
 func (m *TeamMembers) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -575,7 +504,7 @@ func (m *TeamMember) Reset()         { *m = TeamMember{} }
 func (m *TeamMember) String() string { return proto.CompactTextString(m) }
 func (*TeamMember) ProtoMessage()    {}
 func (*TeamMember) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b4e9e93d7b2c6bb, []int{10}
+	return fileDescriptor_8b4e9e93d7b2c6bb, []int{9}
 }
 func (m *TeamMember) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -627,7 +556,6 @@ func (m *TeamMember) GetUser() *User {
 
 func init() {
 	proto.RegisterType((*TeamGet)(nil), "msg.TeamGet")
-	proto.RegisterType((*TeamCreate)(nil), "msg.TeamCreate")
 	proto.RegisterType((*TeamAddMember)(nil), "msg.TeamAddMember")
 	proto.RegisterType((*TeamRemoveMember)(nil), "msg.TeamRemoveMember")
 	proto.RegisterType((*TeamPromote)(nil), "msg.TeamPromote")
@@ -642,35 +570,31 @@ func init() {
 func init() { proto.RegisterFile("team.proto", fileDescriptor_8b4e9e93d7b2c6bb) }
 
 var fileDescriptor_8b4e9e93d7b2c6bb = []byte{
-	// 447 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0x86, 0xbd, 0x4e, 0xd2, 0x24, 0x13, 0x50, 0xab, 0x3d, 0x20, 0x2b, 0x82, 0xc5, 0xac, 0x38,
-	0x04, 0x21, 0x5c, 0xe8, 0x89, 0x6b, 0x13, 0x03, 0x0a, 0x6a, 0x10, 0xb2, 0xca, 0x03, 0x6c, 0x92,
-	0xc1, 0x58, 0x68, 0xb3, 0xd1, 0x7a, 0x53, 0xd1, 0xb7, 0x40, 0x3c, 0x55, 0x8f, 0x39, 0x72, 0x42,
-	0x90, 0xbc, 0x08, 0xda, 0x5d, 0x9b, 0x44, 0xa2, 0x52, 0x0f, 0xed, 0x6d, 0xfc, 0xcd, 0xaf, 0xff,
-	0x1f, 0xcf, 0x0e, 0x80, 0x41, 0x21, 0x93, 0xa5, 0x56, 0x46, 0xd1, 0x86, 0x2c, 0xf3, 0xfe, 0xd1,
-	0x4c, 0x69, 0x4c, 0xcc, 0xe5, 0x12, 0x4b, 0x8f, 0xfb, 0x2f, 0xf2, 0xc2, 0x7c, 0x59, 0x4d, 0x93,
-	0x99, 0x92, 0xc7, 0xb9, 0xca, 0xd5, 0xb1, 0xc3, 0xd3, 0xd5, 0x67, 0xf7, 0xe5, 0x3e, 0x5c, 0xe5,
-	0xe5, 0xfc, 0x09, 0xb4, 0xcf, 0x51, 0xc8, 0x77, 0x68, 0xe8, 0x03, 0x08, 0xc7, 0x69, 0x44, 0xe2,
-	0x70, 0xd0, 0x18, 0x1e, 0x5c, 0xfd, 0x7a, 0x1c, 0xbc, 0x24, 0x59, 0x38, 0x4e, 0xf9, 0x0f, 0x02,
-	0x60, 0x35, 0x23, 0x8d, 0xc2, 0x20, 0x8d, 0xa0, 0xf9, 0x41, 0x48, 0x74, 0xc2, 0xee, 0xb0, 0x69,
-	0x85, 0x99, 0x23, 0x34, 0x86, 0xce, 0x48, 0x2c, 0xc5, 0xac, 0x30, 0x97, 0x51, 0x18, 0x87, 0x83,
-	0x56, 0xd5, 0xfd, 0x47, 0xe9, 0x53, 0x80, 0x37, 0xdf, 0x96, 0x85, 0xc6, 0x54, 0x18, 0x8c, 0x1a,
-	0x2e, 0xca, 0x6b, 0xf6, 0x38, 0xe5, 0xd0, 0x1d, 0x29, 0x29, 0x57, 0x0b, 0x6b, 0xd4, 0x8c, 0xc3,
-	0x41, 0xa7, 0x12, 0xed, 0x30, 0x57, 0x70, 0xdf, 0xce, 0x74, 0x3a, 0x9f, 0x4f, 0x50, 0x4e, 0x51,
-	0x53, 0x06, 0x07, 0x16, 0xfc, 0xf7, 0x07, 0x15, 0xb5, 0xfd, 0x4f, 0x25, 0xea, 0x71, 0xea, 0x46,
-	0xdb, 0xeb, 0x7b, 0x4a, 0x19, 0xb4, 0x27, 0x62, 0x21, 0x72, 0xd4, 0x6e, 0xae, 0x3a, 0xb2, 0x86,
-	0x3c, 0x83, 0x23, 0xeb, 0x94, 0xa1, 0x54, 0x17, 0x78, 0x37, 0x99, 0x7c, 0x02, 0x3d, 0xab, 0xfc,
-	0xa8, 0x95, 0x54, 0x06, 0x6f, 0x6d, 0x77, 0xe6, 0xdf, 0x29, 0xc5, 0x3b, 0x71, 0x7b, 0x0e, 0x5d,
-	0xab, 0x3c, 0x43, 0x71, 0xb1, 0x6f, 0x16, 0x5e, 0x67, 0xc6, 0xdf, 0x42, 0xc7, 0x56, 0xef, 0x55,
-	0xb1, 0xb8, 0x31, 0xb8, 0x0f, 0xad, 0x73, 0xf5, 0x15, 0x17, 0xce, 0xea, 0x5e, 0xb5, 0x67, 0x8f,
-	0xf8, 0x2b, 0x38, 0x74, 0xa1, 0x45, 0x69, 0xfc, 0x8e, 0xcb, 0x9b, 0xec, 0xf8, 0x6b, 0xbf, 0xc4,
-	0x5a, 0xfe, 0x0c, 0xda, 0x55, 0x19, 0x91, 0xb8, 0x31, 0xe8, 0x9d, 0x1c, 0x26, 0xb2, 0xcc, 0x93,
-	0x9d, 0x24, 0xab, 0xfb, 0x3c, 0xf7, 0xfb, 0xda, 0x3d, 0x66, 0xb5, 0x0f, 0x72, 0xed, 0x81, 0xf4,
-	0xa1, 0x75, 0x3a, 0x97, 0x85, 0x1f, 0xbb, 0x3e, 0x0f, 0x8f, 0xe8, 0x23, 0x68, 0x5a, 0x95, 0xbb,
-	0x9c, 0xde, 0x49, 0xd7, 0x25, 0x5a, 0x90, 0x39, 0x3c, 0x7c, 0xb8, 0xfe, 0xc3, 0x82, 0xab, 0x0d,
-	0x23, 0xeb, 0x0d, 0x23, 0xbf, 0x37, 0x8c, 0x7c, 0xdf, 0xb2, 0x60, 0xbd, 0x65, 0xc1, 0xcf, 0x2d,
-	0x0b, 0xfe, 0x06, 0x00, 0x00, 0xff, 0xff, 0x71, 0x34, 0x41, 0x83, 0xd5, 0x03, 0x00, 0x00,
+	// 374 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0xcd, 0x6a, 0xe2, 0x50,
+	0x14, 0xc7, 0xf3, 0xe1, 0xe7, 0x71, 0x06, 0x25, 0x8b, 0x21, 0x84, 0x99, 0x3b, 0xce, 0x5d, 0x39,
+	0x94, 0xc6, 0xd6, 0x55, 0xb7, 0x4a, 0x68, 0xb1, 0x28, 0x94, 0x60, 0x1f, 0x20, 0xea, 0x69, 0x1a,
+	0xca, 0xf5, 0x4a, 0x12, 0x85, 0xbe, 0x45, 0x1f, 0xcb, 0xa5, 0xcb, 0xae, 0x4a, 0xab, 0x2f, 0x52,
+	0xee, 0xbd, 0x09, 0xb6, 0x54, 0x70, 0x51, 0x77, 0xe7, 0xfe, 0xce, 0x8f, 0xff, 0x09, 0x27, 0x07,
+	0x20, 0xc5, 0x80, 0xb9, 0xf3, 0x98, 0xa7, 0xdc, 0x32, 0x59, 0x12, 0x3a, 0x8d, 0x09, 0x8f, 0xd1,
+	0x4d, 0x1f, 0xe7, 0x98, 0x28, 0xec, 0x9c, 0x86, 0x51, 0x7a, 0xbf, 0x18, 0xbb, 0x13, 0xce, 0xda,
+	0x21, 0x0f, 0x79, 0x5b, 0xe2, 0xf1, 0xe2, 0x4e, 0xbe, 0xe4, 0x43, 0x56, 0x4a, 0xa7, 0xff, 0xa0,
+	0x3c, 0xc2, 0x80, 0x5d, 0x61, 0x6a, 0xfd, 0x02, 0xa3, 0xef, 0xd9, 0x7a, 0xd3, 0x68, 0x99, 0xbd,
+	0xd2, 0xea, 0xe5, 0xaf, 0x76, 0xa6, 0xfb, 0x46, 0xdf, 0xa3, 0x1c, 0x7e, 0x0a, 0xa5, 0x3b, 0x9d,
+	0x0e, 0x91, 0x8d, 0x31, 0xb6, 0x08, 0x94, 0x04, 0xf8, 0x22, 0x67, 0x54, 0xf4, 0x6f, 0x13, 0x8c,
+	0xfb, 0x9e, 0x6d, 0x7c, 0xee, 0x2b, 0x6a, 0x11, 0x28, 0x0f, 0x83, 0x59, 0x10, 0x62, 0x6c, 0x9b,
+	0x4d, 0xa3, 0x55, 0xe9, 0x15, 0x84, 0xe0, 0xe7, 0x90, 0xfa, 0xd0, 0x10, 0x49, 0x3e, 0x32, 0xbe,
+	0xc4, 0xe3, 0xcc, 0xa4, 0x43, 0xa8, 0x09, 0xf3, 0x26, 0xe6, 0x8c, 0xa7, 0xf8, 0xed, 0xb8, 0x01,
+	0x80, 0x30, 0x3d, 0x3c, 0x4a, 0xda, 0x09, 0x54, 0x85, 0x39, 0xc0, 0x60, 0xf9, 0x31, 0xcc, 0xd8,
+	0x17, 0x46, 0x2f, 0xa1, 0x22, 0xaa, 0x6b, 0x1e, 0xcd, 0x0e, 0x0e, 0x76, 0xa0, 0x38, 0xe2, 0x0f,
+	0x38, 0x93, 0x51, 0x3f, 0xb2, 0x3d, 0x2b, 0x44, 0xcf, 0xa1, 0x2e, 0x87, 0x46, 0x49, 0xaa, 0x76,
+	0x9c, 0x1c, 0x8a, 0xa3, 0x17, 0x6a, 0x89, 0xb9, 0xfe, 0x1f, 0xca, 0x59, 0x69, 0xeb, 0x4d, 0xb3,
+	0x55, 0xeb, 0xd4, 0x5d, 0x96, 0x84, 0xee, 0x4e, 0xf1, 0xf3, 0x3e, 0x0d, 0xd5, 0xbe, 0x76, 0x3f,
+	0x33, 0xdb, 0x87, 0xbe, 0xf7, 0x40, 0x1c, 0x28, 0x76, 0xa7, 0x2c, 0x52, 0x9f, 0x9d, 0x9f, 0x87,
+	0x42, 0xd6, 0x1f, 0x28, 0x08, 0x4b, 0x5e, 0x4e, 0xad, 0x53, 0x95, 0x13, 0x05, 0xf0, 0x25, 0xee,
+	0xfd, 0x5e, 0xbf, 0x11, 0x6d, 0xb5, 0x21, 0xfa, 0x7a, 0x43, 0xf4, 0xd7, 0x0d, 0xd1, 0x9f, 0xb6,
+	0x44, 0x5b, 0x6f, 0x89, 0xf6, 0xbc, 0x25, 0xda, 0x7b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x75, 0x09,
+	0x37, 0x88, 0x40, 0x03, 0x00, 0x00,
 }
 
 func (m *TeamGet) Marshal() (dAtA []byte, err error) {
@@ -696,48 +620,6 @@ func (m *TeamGet) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i = encodeVarintTeam(dAtA, i, uint64(m.ID))
 	i--
 	dAtA[i] = 0x8
-	return len(dAtA) - i, nil
-}
-
-func (m *TeamCreate) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TeamCreate) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TeamCreate) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	i--
-	if m.Community {
-		dAtA[i] = 1
-	} else {
-		dAtA[i] = 0
-	}
-	i--
-	dAtA[i] = 0x20
-	i = encodeVarintTeam(dAtA, i, uint64(m.ExpireDate))
-	i--
-	dAtA[i] = 0x18
-	i = encodeVarintTeam(dAtA, i, uint64(m.Capacity))
-	i--
-	dAtA[i] = 0x10
-	i -= len(m.Name)
-	copy(dAtA[i:], m.Name)
-	i = encodeVarintTeam(dAtA, i, uint64(len(m.Name)))
-	i--
-	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -1056,20 +938,6 @@ func (m *TeamGet) Size() (n int) {
 	return n
 }
 
-func (m *TeamCreate) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Name)
-	n += 1 + l + sovTeam(uint64(l))
-	n += 1 + sovTeam(uint64(m.Capacity))
-	n += 1 + sovTeam(uint64(m.ExpireDate))
-	n += 2
-	return n
-}
-
 func (m *TeamAddMember) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1255,166 +1123,6 @@ func (m *TeamGet) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ID")
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TeamCreate) Unmarshal(dAtA []byte) error {
-	var hasFields [1]uint64
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTeam
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TeamCreate: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TeamCreate: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTeam
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTeam
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTeam
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Name = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Capacity", wireType)
-			}
-			m.Capacity = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTeam
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Capacity |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ExpireDate", wireType)
-			}
-			m.ExpireDate = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTeam
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.ExpireDate |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Community", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTeam
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Community = bool(v != 0)
-			hasFields[0] |= uint64(0x00000008)
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTeam(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthTeam
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthTeam
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Name")
-	}
-	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Capacity")
-	}
-	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ExpireDate")
-	}
-	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Community")
 	}
 
 	if iNdEx > l {

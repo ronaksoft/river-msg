@@ -59,8 +59,6 @@ message ReplyKeyboardForceReply {
     optional bool Selective = 2;
 }
 
-
-
 // Keyboard Buttons
 
 // KeyboardButtonRow

@@ -13,16 +13,6 @@ message TeamGet {
     required int64 ID = 1 [jstype = JS_STRING];
 }
 
-// TeamCreate
-// @Function
-// @Return: Team
-message TeamCreate {
-    required string Name = 1;
-    required int32 Capacity = 2;
-    required int64 ExpireDate = 3;
-    required bool Community = 4;
-}
-
 // TeamAddMember
 // @Function
 // @Return: Bool

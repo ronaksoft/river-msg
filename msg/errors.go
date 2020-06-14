@@ -109,5 +109,6 @@ const (
 	ErrItemWallPaper        = "WALLPAPER"
 	ErrItemTeamID           = "TEAM_ID"
 	ErrItemTeamAccess       = "TEAM_ACCESS"
-	ErrITemTeamMember       = "TEAM_MEMBER"
+	ErrItemTeamMember       = "TEAM_MEMBER"
+	ErrItemTeamManager      = "TEAM_MANAGER"
 )

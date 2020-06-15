@@ -101,6 +101,11 @@ message ClientRemoveAllRecentSearches {
     required bool extra = 1;
 }
 
+// ClientGetSavedGifs
+// @Function
+// @Return: ClientFilesMany
+message ClientGetSavedGifs {
+}
 
 // ClientPendingMessage
 message ClientPendingMessage {
@@ -143,6 +148,13 @@ enum ClientFileType {
     Sticker = 4;
     Thumbnail = 5;
     Wallpaper = 6;
+    Gif = 7;
+}
+
+// ClientFilesMany
+message ClientFilesMany {
+    repeated ClientFile Gifs = 1;
+    required int32 Total = 2;
 }
 
 // ClientFile

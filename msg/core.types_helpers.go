@@ -94,6 +94,7 @@ func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 	}
 	x.Message = x.Message[:0]
 	x.TeamID = 0
+	x.TeamAccessHash = 0
 	return x
 }
 

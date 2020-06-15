@@ -20,6 +20,7 @@ message MessageEnvelope {
     required fixed64 RequestID = 2;
     required bytes Message = 4;
     optional int64 TeamID = 5;
+    optional fixed64 TeamAccessHash = 6;
 }
 
 // MessageContainer

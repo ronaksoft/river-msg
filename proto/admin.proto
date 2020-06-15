@@ -116,6 +116,7 @@ message AdminTeamCreate {
     required int64 ExpireDate = 3; // license expire time
     required bool Community = 4; // if team supports community users, send messages to team members
     required string Title = 5;
+    required int64 CreatorID = 6;
 }
 
 // AdminToken

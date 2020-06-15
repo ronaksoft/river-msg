@@ -19,6 +19,7 @@ message MessageEnvelope {
     required int64 Constructor = 1;
     required fixed64 RequestID = 2;
     required bytes Message = 4;
+    optional int64 TeamID = 5;
 }
 
 // MessageContainer

@@ -14,7 +14,6 @@ message MessagesSend {
     optional int64 ReplyTo = 6;
     optional bool ClearDraft = 7;
     repeated MessageEntity Entities = 8;
-    optional InputTeam Team = 9;
 }
 
 // MessageBroadcast
@@ -34,7 +33,6 @@ message MessagesSendMedia {
     required bytes MediaData = 4;
     optional int64 ReplyTo = 5;
     optional bool ClearDraft = 6;
-    optional InputTeam Team = 7;
 }
 
 // MessagesEdit
@@ -46,7 +44,6 @@ message MessagesEdit {
     required string Body = 3;
     required int64 MessageID = 4;
     repeated MessageEntity Entities = 5;
-    optional InputTeam Team = 6;
 }
 
 // MessageReadHistory
@@ -55,7 +52,6 @@ message MessagesEdit {
 message MessagesReadHistory {
     required InputPeer Peer = 2;
     required int64 MaxID = 3;
-    optional InputTeam Team = 4;
 }
 
 // MessagesGet
@@ -64,7 +60,6 @@ message MessagesReadHistory {
 message MessagesGet {
     required InputPeer Peer = 1;
     repeated int64 MessagesIDs = 2;
-    optional InputTeam Team = 3;
 }
 
 // MessagesGetHistory
@@ -75,7 +70,6 @@ message MessagesGetHistory {
     required int32 Limit = 3;
     required int64 MaxID = 4;
     required int64 MinID = 5;
-    optional InputTeam Team = 6;
 }
 
 // MessagesGetDialogs
@@ -85,14 +79,12 @@ message MessagesGetDialogs {
     required int32 Limit = 2;
     required int32 Offset = 3;
     optional bool ExcludePinned = 4;
-    optional InputTeam Team = 5;
 }
 
 // MessagesGetPinnedDialogs
 // @Function
 // @Returns: MessagesDialogs
 message MessagesGetPinnedDialogs {
-    optional InputTeam Team = 1;
 }
 
 // MessagesGetDialog
@@ -100,7 +92,6 @@ message MessagesGetPinnedDialogs {
 // Returns: Dialog
 message MessagesGetDialog {
     required InputPeer Peer = 1;
-    optional InputTeam Team = 2;
 }
 
 // MessagesSetTyping
@@ -109,7 +100,6 @@ message MessagesGetDialog {
 message MessagesSetTyping {
     required InputPeer Peer = 1;
     required TypingAction Action = 2;
-    optional InputTeam Team = 3;
 }
 
 // MessageClearHistory
@@ -119,7 +109,6 @@ message MessagesClearHistory {
     required InputPeer Peer = 1;
     required int64 MaxID = 2;
     required bool Delete = 3;
-    optional InputTeam Team = 4;
 }
 
 // MessagesDelete
@@ -129,7 +118,6 @@ message MessagesDelete {
     required InputPeer Peer = 1;
     repeated int64 MessageIDs = 2;
     required bool Revoke = 3;
-    optional InputTeam Team = 4;
 }
 
 // MessagesForward
@@ -141,7 +129,6 @@ message MessagesForward {
     required bool Silence = 3;
     repeated int64 MessageIDs = 4;
     required int64 RandomID = 5;
-    optional InputTeam Team = 6;
 }
 
 // MessagesReadContents
@@ -150,7 +137,6 @@ message MessagesForward {
 message MessagesReadContents {
     required InputPeer Peer = 1;
     repeated int64 MessageIDs = 2;
-    optional InputTeam Team = 3;
 }
 
 // MessagesSaveDraft
@@ -162,7 +148,6 @@ message MessagesSaveDraft {
     required string Body = 3;
     repeated MessageEntity Entities = 4;
     optional int64 EditedID = 5;
-    optional InputTeam Team = 6;
 }
 
 // MessagesClearDraft
@@ -170,7 +155,6 @@ message MessagesSaveDraft {
 // @Returns: Bool
 message MessagesClearDraft {
     required InputPeer Peer = 1;
-    optional InputTeam Team = 2;
 }
 
 // MessagesToggleDialogPin
@@ -179,7 +163,6 @@ message MessagesClearDraft {
 message MessagesToggleDialogPin {
     required InputPeer Peer = 1;
     required bool Pin = 2;
-    optional InputTeam Team = 3;
 }
 
 // MessagesReorderPinnedDialogs
@@ -187,7 +170,6 @@ message MessagesToggleDialogPin {
 // @Returns: Bool
 message MessagesReorderPinnedDialogs {
     repeated InputPeer Peers = 1;
-    optional InputTeam Team = 2;
 }
 
 // MessagesSendScreenShotNotification
@@ -199,7 +181,6 @@ message MessagesSendScreenShotNotification {
     optional int64 ReplyTo = 3;
     optional int64 MinID = 4;
     optional int64 MaxID = 5;
-    optional InputTeam Team = 6;
 }
 
 // MessagesDialogs

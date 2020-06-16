@@ -21,4 +21,5 @@ message ClientUpdateMessagesDeleted {
 message ClientUpdateSynced {
     required bool Dialogs = 1;
     required bool Contacts = 2;
+    required bool Gifs = 3;
 }

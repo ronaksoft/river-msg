@@ -83,5 +83,6 @@ message TeamMember {
 // TeamsMany
 message TeamsMany {
     repeated Team Teams = 1;
-    required bool Empty = 2;
+    repeated User Users = 2;
+    required bool Empty = 3;
 }

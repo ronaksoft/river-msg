@@ -351,6 +351,7 @@ func (p *poolTeamsMany) Get() *TeamsMany {
 		return &TeamsMany{}
 	}
 	x.Teams = x.Teams[:0]
+	x.Users = x.Users[:0]
 	return x
 }
 

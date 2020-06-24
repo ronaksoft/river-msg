@@ -512,3 +512,4 @@ message Team {
     repeated int64 Members = 5;
     required fixed64 AccessHash = 6 [jstype = JS_STRING];
 }
+

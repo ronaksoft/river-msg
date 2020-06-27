@@ -31,7 +31,6 @@ message MessageContainer {
 
 // UpdateEnvelope
 message UpdateEnvelope {
-    optional int64 TeamID = 100;
     required int64 Constructor = 1;
     required bytes Update = 2;
     required int32 UCount = 3;

@@ -159,7 +159,6 @@ func (p *poolUpdateEnvelope) Get() *UpdateEnvelope {
 	if !ok {
 		return &UpdateEnvelope{}
 	}
-	x.TeamID = 0
 	x.Update = x.Update[:0]
 	return x
 }

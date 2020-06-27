@@ -289,6 +289,7 @@ func (p *poolUpdateMessagesDeleted) Get() *UpdateMessagesDeleted {
 	if !ok {
 		return &UpdateMessagesDeleted{}
 	}
+	x.TeamID = 0
 	x.MessageIDs = x.MessageIDs[:0]
 	x.Peer = nil
 	return x
@@ -323,6 +324,7 @@ func (p *poolUpdateReadHistoryInbox) Get() *UpdateReadHistoryInbox {
 	if !ok {
 		return &UpdateReadHistoryInbox{}
 	}
+	x.TeamID = 0
 	return x
 }
 
@@ -355,6 +357,7 @@ func (p *poolUpdateReadHistoryOutbox) Get() *UpdateReadHistoryOutbox {
 	if !ok {
 		return &UpdateReadHistoryOutbox{}
 	}
+	x.TeamID = 0
 	return x
 }
 
@@ -387,6 +390,7 @@ func (p *poolUpdateUserTyping) Get() *UpdateUserTyping {
 	if !ok {
 		return &UpdateUserTyping{}
 	}
+	x.TeamID = 0
 	return x
 }
 

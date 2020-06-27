@@ -512,8 +512,6 @@ message Team {
     required int64 ID = 1;
     required string Name = 2;
     required int64 CreatorID = 3;
-    repeated int64 Managers = 4;
-    repeated int64 Members = 5;
     required fixed64 AccessHash = 6 [jstype = JS_STRING];
 }
 

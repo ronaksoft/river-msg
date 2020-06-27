@@ -1474,8 +1474,6 @@ func (p *poolTeam) Get() *Team {
 	if !ok {
 		return &Team{}
 	}
-	x.Managers = x.Managers[:0]
-	x.Members = x.Members[:0]
 	return x
 }
 

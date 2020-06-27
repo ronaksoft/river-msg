@@ -159,6 +159,7 @@ func (p *poolUpdateEnvelope) Get() *UpdateEnvelope {
 	if !ok {
 		return &UpdateEnvelope{}
 	}
+	x.TeamID = 0
 	x.Update = x.Update[:0]
 	return x
 }
@@ -392,6 +393,7 @@ func (p *poolDialog) Get() *Dialog {
 	if !ok {
 		return &Dialog{}
 	}
+	x.TeamID = 0
 	x.NotifySettings = nil
 	x.MentionedCount = 0
 	x.Draft = nil
@@ -969,6 +971,7 @@ func (p *poolUserMessage) Get() *UserMessage {
 	if !ok {
 		return &UserMessage{}
 	}
+	x.TeamID = 0
 	x.MessageAction = 0
 	x.MessageActionData = nil
 	x.MessageActionData = x.MessageActionData[:0]
@@ -1013,6 +1016,7 @@ func (p *poolDraftMessage) Get() *DraftMessage {
 	if !ok {
 		return &DraftMessage{}
 	}
+	x.TeamID = 0
 	x.Entities = x.Entities[:0]
 	x.EditedID = 0
 	return x

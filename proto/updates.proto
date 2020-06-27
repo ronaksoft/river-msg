@@ -185,6 +185,7 @@ message UpdateGroupPhoto {
 message UpdateReadMessagesContents {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
+    optional int64 TeamID = 102;
     repeated int64 MessageIDs = 1;
     required Peer Peer = 2;
 }
@@ -206,13 +207,16 @@ message UpdateDraftMessage {
 message UpdateDraftMessageCleared {
     required int32 UCount = 100;
     optional int64 UpdateID = 101;
+    optional int64 TeamID = 102;
     required Peer Peer = 1;
+
 }
 
 // UpdateDialogPinned
 message UpdateDialogPinned {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
+    optional int64 TeamID = 102;
     required Peer Peer = 1;
     required bool Pinned = 2;
 }
@@ -240,6 +244,7 @@ message UpdateAccountPrivacy {
 message UpdateLabelItemsAdded {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
+    optional int64 TeamID = 102;
     required Peer Peer = 1;
     repeated int64 MessageIDs = 3;
     repeated int32 LabelIDs = 4;
@@ -250,6 +255,7 @@ message UpdateLabelItemsAdded {
 message UpdateLabelItemsRemoved {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
+    optional int64 TeamID = 102;
     required Peer Peer = 1;
     repeated int64 MessageIDs = 3;
     repeated int32 LabelIDs = 4;

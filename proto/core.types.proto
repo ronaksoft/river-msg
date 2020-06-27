@@ -31,6 +31,7 @@ message MessageContainer {
 
 // UpdateEnvelope
 message UpdateEnvelope {
+    optional int64 TeamID = 100;
     required int64 Constructor = 1;
     required bytes Update = 2;
     required int32 UCount = 3;
@@ -92,6 +93,7 @@ enum TypingAction {
 
 // Dialog
 message Dialog {
+    optional int64 TeamID = 100;
     required int64 PeerID = 1 [jstype = JS_STRING];
     required int32 PeerType = 2;
     required int64 TopMessageID = 3;
@@ -324,6 +326,7 @@ enum MediaType {
 
 // UserMessage
 message UserMessage {
+    optional int64 TeamID = 100;
     required int64 ID = 1;
     required int64 PeerID = 2 [jstype = JS_STRING];
     required int32 PeerType = 3;
@@ -352,6 +355,7 @@ message UserMessage {
 
 // DraftMessage
 message DraftMessage {
+    optional int64 TeamID = 100;
     required int64 PeerID = 2 [jstype = JS_STRING];
     required int32 PeerType = 3;
     required int64 Date = 4;

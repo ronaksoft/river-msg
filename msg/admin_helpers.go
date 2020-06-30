@@ -30,6 +30,8 @@ func (p *poolAdminBroadcastMessage) Get() *AdminBroadcastMessage {
 	}
 	x.ReceiverIDs = x.ReceiverIDs[:0]
 	x.Entities = x.Entities[:0]
+	x.MediaType = 0
+	x.MediaData = nil
 	x.MediaData = x.MediaData[:0]
 	return x
 }

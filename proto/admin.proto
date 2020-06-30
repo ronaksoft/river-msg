@@ -11,8 +11,8 @@ message AdminBroadcastMessage {
     required string Body = 1;
     repeated int64 ReceiverIDs = 2;
     repeated MessageEntity Entities = 3;
-    required InputMediaType MediaType = 4;
-    required bytes MediaData = 5;
+    optional InputMediaType MediaType = 4;
+    optional bytes MediaData = 5;
 }
 
 // AdminSetWelcomeMessage

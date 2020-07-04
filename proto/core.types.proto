@@ -509,9 +509,9 @@ message InputTeam {
 
 // Team
 message Team {
-    required int64 ID = 1;
+    required int64 ID = 1 [jstype = JS_STRING];
     required string Name = 2;
-    required int64 CreatorID = 3;
+    required int64 CreatorID = 3 [jstype = JS_STRING];
     required fixed64 AccessHash = 6 [jstype = JS_STRING];
 }
 

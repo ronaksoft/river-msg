@@ -166,7 +166,7 @@ message PushProvider {
     required bool TestMode = 3;
     optional bytes Credentials = 4;
     optional string KeyID = 5;
-    optional string TeamID = 6;
+    optional string TeamID = 6 [jstype = JS_STRING];
     optional string Topic = 7;
 
 }

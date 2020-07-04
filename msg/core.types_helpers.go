@@ -867,6 +867,7 @@ func (p *poolGroup) Get() *Group {
 	if !ok {
 		return &Group{}
 	}
+	x.TeamID = 0
 	x.EditedOn = 0
 	x.Flags = x.Flags[:0]
 	x.Photo = nil

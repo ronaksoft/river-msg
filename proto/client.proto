@@ -199,7 +199,7 @@ message ClientPeerMediaInfo {
 // ClientMediaSize
 message ClientMediaSize {
     required ClientMediaType MediaType = 1;
-    required int32 TotalSize = 2;
+    required int64 TotalSize = 2;
 }
 
 // ClientMediaType

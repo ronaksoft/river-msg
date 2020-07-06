@@ -111,7 +111,7 @@ enum PeerType {
     PeerSelf = 0;
     PeerUser = 1;
     PeerGroup = 2;
-    PeerCommunityUser = 3;
+    PeerExternalUser = 3;
     PeerChannel = 4;
 }
 

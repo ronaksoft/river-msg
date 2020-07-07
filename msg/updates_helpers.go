@@ -523,6 +523,7 @@ func (p *poolUpdateNotifySettings) Get() *UpdateNotifySettings {
 	if !ok {
 		return &UpdateNotifySettings{}
 	}
+	x.TeamID = 0
 	return x
 }
 

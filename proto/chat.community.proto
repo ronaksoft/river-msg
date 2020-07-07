@@ -1,0 +1,30 @@
+syntax = "proto2";
+package msg;
+import "core.types.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+
+// MessageSend
+// @Function
+// @Return: UserMessage
+message CommunitySendMessage {
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required string Body = 5;
+    optional int64 ReplyTo = 6;
+    optional bool ClearDraft = 7;
+    repeated MessageEntity Entities = 8;
+}
+
+// MessageSendMedia
+// @Function
+// @Return: UserMessage
+message CommunitySendMedia {
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required InputMediaType MediaType = 3;
+    required bytes MediaData = 4;
+    optional int64 ReplyTo = 5;
+    optional bool ClearDraft = 6;
+}

@@ -32,10 +32,20 @@ message CommunitySendMedia {
 
 // CommunitySetTyping
 // @Function
-// Returns: Bool
+// @Return: Bool
 message CommunitySetTyping {
     required InputPeer Peer = 1;
     required TypingAction Action = 2;
     required int64 SenderID = 3;
+}
+
+// CommunityGetUpdates
+// @Function
+// @Return: UpdateContainer
+message CommunityGetUpdates {
+    required int32 WaitAfterInMS = 1;
+    required int32 WaitMaxInMS = 2;
+    required int32 SizeLimit = 3;
+    optional int64 OffsetID = 4;
 }
 

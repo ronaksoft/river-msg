@@ -120,8 +120,42 @@ func ResultCommunitySetTyping(out *MessageEnvelope, res *CommunitySetTyping) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_CommunityGetUpdates int64 = 2021391963
+
+type poolCommunityGetUpdates struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityGetUpdates) Get() *CommunityGetUpdates {
+	x, ok := p.pool.Get().(*CommunityGetUpdates)
+	if !ok {
+		return &CommunityGetUpdates{}
+	}
+	x.OffsetID = 0
+	return x
+}
+
+func (p *poolCommunityGetUpdates) Put(x *CommunityGetUpdates) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityGetUpdates = poolCommunityGetUpdates{}
+
+func ResultCommunityGetUpdates(out *MessageEnvelope, res *CommunityGetUpdates) {
+	out.Constructor = C_CommunityGetUpdates
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[3506778488] = "CommunitySendMessage"
 	ConstructorNames[2436824148] = "CommunitySendMedia"
 	ConstructorNames[3413516595] = "CommunitySetTyping"
+	ConstructorNames[2021391963] = "CommunityGetUpdates"
 }

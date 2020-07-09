@@ -24,7 +24,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// MessageSend
+// CommunitySendMedia
 // @Function
 // @Return: UserMessage
 type CommunitySendMessage struct {
@@ -119,7 +119,7 @@ func (m *CommunitySendMessage) GetSenderID() int64 {
 	return 0
 }
 
-// MessageSendMedia
+// CommunitySendMedia
 // @Function
 // @Return: UserMessage
 type CommunitySendMedia struct {

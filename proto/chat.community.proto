@@ -4,7 +4,7 @@ import "core.types.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 option (gogoproto.goproto_enum_prefix_all) = false;
 
-// MessageSend
+// CommunitySendMedia
 // @Function
 // @Return: UserMessage
 message CommunitySendMessage {
@@ -17,7 +17,7 @@ message CommunitySendMessage {
     required int64 SenderID = 9;
 }
 
-// MessageSendMedia
+// CommunitySendMedia
 // @Function
 // @Return: UserMessage
 message CommunitySendMedia {

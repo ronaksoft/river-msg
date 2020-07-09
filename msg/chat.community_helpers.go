@@ -28,9 +28,10 @@ func (p *poolCommunitySendMessage) Get() *CommunitySendMessage {
 	if !ok {
 		return &CommunitySendMessage{}
 	}
-	x.ReplyTo = 0
-	x.ClearDraft = false
 	x.Entities = x.Entities[:0]
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = nil
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 

@@ -10,11 +10,11 @@ option (gogoproto.goproto_enum_prefix_all) = false;
 message CommunitySendMessage {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
-    required string Body = 5;
-    optional int64 ReplyTo = 6;
-    optional bool ClearDraft = 7;
-    repeated MessageEntity Entities = 8;
-    required int64 SenderID = 9;
+    required string Body = 3;
+    repeated MessageEntity Entities = 5;
+    optional int64 ReplyMarkup = 6;
+    optional bytes ReplyMarkupData = 7;
+    required int64 SenderID = 8;
 }
 
 // CommunitySendMedia

@@ -216,6 +216,73 @@ func ResultUpdateContainer(out *MessageEnvelope, res *UpdateContainer) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_CommunityUpdateEnvelope int64 = 1076119993
+
+type poolCommunityUpdateEnvelope struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityUpdateEnvelope) Get() *CommunityUpdateEnvelope {
+	x, ok := p.pool.Get().(*CommunityUpdateEnvelope)
+	if !ok {
+		return &CommunityUpdateEnvelope{}
+	}
+	x.Update = nil
+	x.Update = x.Update[:0]
+	return x
+}
+
+func (p *poolCommunityUpdateEnvelope) Put(x *CommunityUpdateEnvelope) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityUpdateEnvelope = poolCommunityUpdateEnvelope{}
+
+func ResultCommunityUpdateEnvelope(out *MessageEnvelope, res *CommunityUpdateEnvelope) {
+	out.Constructor = C_CommunityUpdateEnvelope
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_CommunityUpdateContainer int64 = 918339432
+
+type poolCommunityUpdateContainer struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityUpdateContainer) Get() *CommunityUpdateContainer {
+	x, ok := p.pool.Get().(*CommunityUpdateContainer)
+	if !ok {
+		return &CommunityUpdateContainer{}
+	}
+	x.Envelopes = x.Envelopes[:0]
+	return x
+}
+
+func (p *poolCommunityUpdateContainer) Put(x *CommunityUpdateContainer) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityUpdateContainer = poolCommunityUpdateContainer{}
+
+func ResultCommunityUpdateContainer(out *MessageEnvelope, res *CommunityUpdateContainer) {
+	out.Constructor = C_CommunityUpdateContainer
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_ProtoMessage int64 = 2179260159
 
 type poolProtoMessage struct {
@@ -1502,6 +1569,8 @@ func init() {
 	ConstructorNames[1972016308] = "MessageContainer"
 	ConstructorNames[2373884514] = "UpdateEnvelope"
 	ConstructorNames[661712615] = "UpdateContainer"
+	ConstructorNames[1076119993] = "CommunityUpdateEnvelope"
+	ConstructorNames[918339432] = "CommunityUpdateContainer"
 	ConstructorNames[2179260159] = "ProtoMessage"
 	ConstructorNames[2668405547] = "ProtoEncryptedPayload"
 	ConstructorNames[2619118453] = "Error"

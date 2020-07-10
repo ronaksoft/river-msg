@@ -52,8 +52,9 @@ message UpdateContainer {
 // CommunityUpdateEnvelope
 message CommunityUpdateEnvelope {
     required int64 OffsetID = 1;
-    required int64 Constructor = 2;
-    optional bytes Update = 3;
+    required int32 PartitionID = 2;
+    required int64 Constructor = 3;
+    optional bytes Update = 4;
 }
 
 // CommunityUpdateContainer

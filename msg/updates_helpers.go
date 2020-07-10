@@ -391,6 +391,7 @@ func (p *poolUpdateUserTyping) Get() *UpdateUserTyping {
 		return &UpdateUserTyping{}
 	}
 	x.TeamID = 0
+	x.PeerType = 0
 	return x
 }
 

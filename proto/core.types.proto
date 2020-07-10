@@ -58,7 +58,7 @@ message CommunityUpdateEnvelope {
 
 // CommunityUpdateContainer
 message CommunityUpdateContainer {
-    repeated CommunityUpdateEnvelope Envelopes = 1;
+    repeated CommunityUpdateEnvelope Updates = 1;
 }
 
 // ProtoMessage

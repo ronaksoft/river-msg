@@ -261,7 +261,7 @@ func (p *poolCommunityUpdateContainer) Get() *CommunityUpdateContainer {
 	if !ok {
 		return &CommunityUpdateContainer{}
 	}
-	x.Envelopes = x.Envelopes[:0]
+	x.Updates = x.Updates[:0]
 	return x
 }
 

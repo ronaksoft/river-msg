@@ -41,11 +41,20 @@ message CommunitySetTyping {
 
 // CommunityGetUpdates
 // @Function
-// @Return: UpdateContainer
+// @Return: CommunityUpdateContainer
 message CommunityGetUpdates {
     required int32 WaitAfterInMS = 1;
     required int32 WaitMaxInMS = 2;
     required int32 SizeLimit = 3;
     optional int64 OffsetID = 4;
 }
+
+// CommunityRecall
+// @Function
+// @Return: Bool
+message CommunityRecall {
+    required int64 TeamID = 1;
+    required bytes AccessKey = 2;
+}
+
 

@@ -62,6 +62,7 @@ message CommunityUpdateContainer {
     repeated CommunityUpdateEnvelope Updates = 1;
 }
 
+
 // ProtoMessage
 // If AuthID == 0 then Payload is a MessageEnvelop otherwise Payload is a ProtoEncryptedPayload
 message ProtoMessage {

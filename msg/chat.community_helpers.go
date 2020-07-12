@@ -153,6 +153,40 @@ func ResultCommunityGetUpdates(out *MessageEnvelope, res *CommunityGetUpdates) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_CommunityGetMembers int64 = 2022915988
+
+type poolCommunityGetMembers struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityGetMembers) Get() *CommunityGetMembers {
+	x, ok := p.pool.Get().(*CommunityGetMembers)
+	if !ok {
+		return &CommunityGetMembers{}
+	}
+	x.Offset = 0
+	x.Limit = 0
+	return x
+}
+
+func (p *poolCommunityGetMembers) Put(x *CommunityGetMembers) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityGetMembers = poolCommunityGetMembers{}
+
+func ResultCommunityGetMembers(out *MessageEnvelope, res *CommunityGetMembers) {
+	out.Constructor = C_CommunityGetMembers
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_CommunityRecall int64 = 890349574
 
 type poolCommunityRecall struct {
@@ -191,5 +225,6 @@ func init() {
 	ConstructorNames[2436824148] = "CommunitySendMedia"
 	ConstructorNames[3413516595] = "CommunitySetTyping"
 	ConstructorNames[2021391963] = "CommunityGetUpdates"
+	ConstructorNames[2022915988] = "CommunityGetMembers"
 	ConstructorNames[890349574] = "CommunityRecall"
 }

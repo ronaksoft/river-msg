@@ -49,6 +49,14 @@ message CommunityGetUpdates {
     optional int64 OffsetID = 4;
 }
 
+// CommunityGetMembers
+// @Function
+// @Return: TeamMembers
+message CommunityGetMembers {
+    optional int32 Offset = 1;
+    optional int32 Limit = 2;
+}
+
 // CommunityRecall
 // @Function
 // @Return: Bool

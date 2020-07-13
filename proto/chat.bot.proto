@@ -223,8 +223,8 @@ message BotUploadGif {
     required string Token = 100;
     required InputFile File = 1;
     required InputFile Thumb = 2;
-    required int32 Width = 3;
-    required int32 Height = 4;
+    required uint32 Width = 3;
+    required uint32 Height = 4;
     required string MimeType = 5;
 }
 

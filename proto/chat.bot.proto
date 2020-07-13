@@ -220,8 +220,11 @@ message BotUploadWallPaper {
 // @Function (GifBot Only)
 // @Return: Bool
 message BotUploadGif {
-    required InputFileLocation File = 1;
-    required string Token = 2;
+    required string Token = 100;
+    required InputFile File = 1;
+    required InputFile Thumb = 2;
+    required int32 Width = 3;
+    required int32 Height = 4;
 }
 
 // BotResults

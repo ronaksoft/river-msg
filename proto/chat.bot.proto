@@ -225,6 +225,7 @@ message BotUploadGif {
     required InputFile Thumb = 2;
     required int32 Width = 3;
     required int32 Height = 4;
+    required string MimeType = 5;
 }
 
 // BotResults

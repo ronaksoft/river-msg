@@ -623,6 +623,38 @@ func ResultBotUploadWallPaper(out *MessageEnvelope, res *BotUploadWallPaper) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_BotUploadGif int64 = 3473872836
+
+type poolBotUploadGif struct {
+	pool sync.Pool
+}
+
+func (p *poolBotUploadGif) Get() *BotUploadGif {
+	x, ok := p.pool.Get().(*BotUploadGif)
+	if !ok {
+		return &BotUploadGif{}
+	}
+	return x
+}
+
+func (p *poolBotUploadGif) Put(x *BotUploadGif) {
+	p.pool.Put(x)
+}
+
+var PoolBotUploadGif = poolBotUploadGif{}
+
+func ResultBotUploadGif(out *MessageEnvelope, res *BotUploadGif) {
+	out.Constructor = C_BotUploadGif
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_BotResults int64 = 527920130
 
 type poolBotResults struct {
@@ -1059,6 +1091,7 @@ func init() {
 	ConstructorNames[3418940573] = "BotSetInlineResults"
 	ConstructorNames[923160988] = "BotSendInlineResults"
 	ConstructorNames[3329295900] = "BotUploadWallPaper"
+	ConstructorNames[3473872836] = "BotUploadGif"
 	ConstructorNames[527920130] = "BotResults"
 	ConstructorNames[3014743726] = "BotInlineSwitchPM"
 	ConstructorNames[942846933] = "BotInlineResult"

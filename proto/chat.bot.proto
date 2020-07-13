@@ -216,6 +216,14 @@ message BotUploadWallPaper {
     required WallPaperSettings Settings = 4;
 }
 
+// BotUploadGif
+// @Function (GifBot Only)
+// @Return: Bool
+message BotUploadGif {
+    required InputFileLocation File = 1;
+    required string Token = 2;
+}
+
 // BotResults
 message BotResults {
     required bool Gallery = 1;

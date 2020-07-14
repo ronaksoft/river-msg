@@ -218,7 +218,7 @@ message BotUploadWallPaper {
 
 // BotUploadGif
 // @Function (GifBot Only)
-// @Return: Bool
+// @Return: FileLocation
 message BotUploadGif {
     required string Token = 100;
     required InputFile File = 1;

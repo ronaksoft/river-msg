@@ -65,4 +65,17 @@ message CommunityRecall {
     required bytes AccessKey = 2;
 }
 
+// CommunityUpdateEnvelope
+message CommunityUpdateEnvelope {
+    required int64 OffsetID = 1;
+    required int32 PartitionID = 2;
+    required int64 Constructor = 3;
+    optional bytes Update = 4;
+}
+
+// CommunityUpdateContainer
+message CommunityUpdateContainer {
+    repeated CommunityUpdateEnvelope Updates = 1;
+    optional bool Empty = 2;
+}
 

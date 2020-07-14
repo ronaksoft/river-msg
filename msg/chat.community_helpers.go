@@ -220,6 +220,74 @@ func ResultCommunityRecall(out *MessageEnvelope, res *CommunityRecall) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_CommunityUpdateEnvelope int64 = 1076119993
+
+type poolCommunityUpdateEnvelope struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityUpdateEnvelope) Get() *CommunityUpdateEnvelope {
+	x, ok := p.pool.Get().(*CommunityUpdateEnvelope)
+	if !ok {
+		return &CommunityUpdateEnvelope{}
+	}
+	x.Update = nil
+	x.Update = x.Update[:0]
+	return x
+}
+
+func (p *poolCommunityUpdateEnvelope) Put(x *CommunityUpdateEnvelope) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityUpdateEnvelope = poolCommunityUpdateEnvelope{}
+
+func ResultCommunityUpdateEnvelope(out *MessageEnvelope, res *CommunityUpdateEnvelope) {
+	out.Constructor = C_CommunityUpdateEnvelope
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_CommunityUpdateContainer int64 = 918339432
+
+type poolCommunityUpdateContainer struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityUpdateContainer) Get() *CommunityUpdateContainer {
+	x, ok := p.pool.Get().(*CommunityUpdateContainer)
+	if !ok {
+		return &CommunityUpdateContainer{}
+	}
+	x.Updates = x.Updates[:0]
+	x.Empty = false
+	return x
+}
+
+func (p *poolCommunityUpdateContainer) Put(x *CommunityUpdateContainer) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityUpdateContainer = poolCommunityUpdateContainer{}
+
+func ResultCommunityUpdateContainer(out *MessageEnvelope, res *CommunityUpdateContainer) {
+	out.Constructor = C_CommunityUpdateContainer
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[3506778488] = "CommunitySendMessage"
 	ConstructorNames[2436824148] = "CommunitySendMedia"
@@ -227,4 +295,6 @@ func init() {
 	ConstructorNames[2021391963] = "CommunityGetUpdates"
 	ConstructorNames[2022915988] = "CommunityGetMembers"
 	ConstructorNames[890349574] = "CommunityRecall"
+	ConstructorNames[1076119993] = "CommunityUpdateEnvelope"
+	ConstructorNames[918339432] = "CommunityUpdateContainer"
 }

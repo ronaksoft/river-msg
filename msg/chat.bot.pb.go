@@ -1360,7 +1360,7 @@ func (m *BotUploadWallPaper) GetSettings() *WallPaperSettings {
 
 // BotUploadGif
 // @Function (GifBot Only)
-// @Return: Bool
+// @Return: FileLocation
 type BotUploadGif struct {
 	Token    string     `protobuf:"bytes,100,req,name=Token" json:"Token"`
 	File     *InputFile `protobuf:"bytes,1,req,name=File" json:"File,omitempty"`

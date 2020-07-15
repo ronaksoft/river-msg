@@ -568,6 +568,8 @@ func (p *poolBotSendInlineResults) Get() *BotSendInlineResults {
 	if !ok {
 		return &BotSendInlineResults{}
 	}
+	x.ClearDraft = false
+	x.ReplyTo = 0
 	x.Silent = false
 	x.HideVia = false
 	return x

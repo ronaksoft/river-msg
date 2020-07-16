@@ -15,6 +15,7 @@ message CommunitySendMessage {
     optional int64 ReplyMarkup = 6;
     optional bytes ReplyMarkupData = 7;
     required int64 SenderID = 8;
+    required int64 SenderMsgID = 9;
 }
 
 // CommunitySendMedia
@@ -28,6 +29,7 @@ message CommunitySendMedia {
     optional int64 ReplyTo = 5;
     optional bool ClearDraft = 6;
     required int64 SenderID = 9;
+    required int64 SenderMsgID = 10;
 }
 
 // CommunitySetTyping
@@ -78,4 +80,3 @@ message CommunityUpdateContainer {
     repeated CommunityUpdateEnvelope Updates = 1;
     optional bool Empty = 2;
 }
-

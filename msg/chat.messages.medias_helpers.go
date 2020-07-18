@@ -547,6 +547,74 @@ func ResultInputMediaDocument(out *MessageEnvelope, res *InputMediaDocument) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_InputMediaUploadedSealedDocument int64 = 1891413833
+
+type poolInputMediaUploadedSealedDocument struct {
+	pool sync.Pool
+}
+
+func (p *poolInputMediaUploadedSealedDocument) Get() *InputMediaUploadedSealedDocument {
+	x, ok := p.pool.Get().(*InputMediaUploadedSealedDocument)
+	if !ok {
+		return &InputMediaUploadedSealedDocument{}
+	}
+	x.SealedThumbnail = nil
+	x.Attributes = x.Attributes[:0]
+	x.Entities = x.Entities[:0]
+	return x
+}
+
+func (p *poolInputMediaUploadedSealedDocument) Put(x *InputMediaUploadedSealedDocument) {
+	p.pool.Put(x)
+}
+
+var PoolInputMediaUploadedSealedDocument = poolInputMediaUploadedSealedDocument{}
+
+func ResultInputMediaUploadedSealedDocument(out *MessageEnvelope, res *InputMediaUploadedSealedDocument) {
+	out.Constructor = C_InputMediaUploadedSealedDocument
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_MediaSealedDocument int64 = 1878784538
+
+type poolMediaSealedDocument struct {
+	pool sync.Pool
+}
+
+func (p *poolMediaSealedDocument) Get() *MediaSealedDocument {
+	x, ok := p.pool.Get().(*MediaSealedDocument)
+	if !ok {
+		return &MediaSealedDocument{}
+	}
+	x.EncryptedMediaDocument = x.EncryptedMediaDocument[:0]
+	return x
+}
+
+func (p *poolMediaSealedDocument) Put(x *MediaSealedDocument) {
+	p.pool.Put(x)
+}
+
+var PoolMediaSealedDocument = poolMediaSealedDocument{}
+
+func ResultMediaSealedDocument(out *MessageEnvelope, res *MediaSealedDocument) {
+	out.Constructor = C_MediaSealedDocument
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_InputMediaMessageDocument int64 = 3638653559
 
 type poolInputMediaMessageDocument struct {
@@ -591,6 +659,8 @@ func (p *poolMediaDocument) Get() *MediaDocument {
 	if !ok {
 		return &MediaDocument{}
 	}
+	x.Caption = ""
+	x.TTLinSeconds = 0
 	x.Entities = x.Entities[:0]
 	return x
 }
@@ -860,9 +930,9 @@ func (p *poolInputMediaSealed) Get() *InputMediaSealed {
 	if !ok {
 		return &InputMediaSealed{}
 	}
-	x.Media = nil
-	x.Media = x.Media[:0]
-	x.Body = ""
+	x.EncryptedMedia = nil
+	x.EncryptedMedia = x.EncryptedMedia[:0]
+	x.EncryptedBody = ""
 	x.Entities = x.Entities[:0]
 	return x
 }
@@ -938,6 +1008,8 @@ func init() {
 	ConstructorNames[3735320833] = "MediaContact"
 	ConstructorNames[870692909] = "InputMediaUploadedDocument"
 	ConstructorNames[2258657627] = "InputMediaDocument"
+	ConstructorNames[1891413833] = "InputMediaUploadedSealedDocument"
+	ConstructorNames[1878784538] = "MediaSealedDocument"
 	ConstructorNames[3638653559] = "InputMediaMessageDocument"
 	ConstructorNames[2281620705] = "MediaDocument"
 	ConstructorNames[185664060] = "InputMediaGeoLocation"

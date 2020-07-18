@@ -1378,6 +1378,103 @@ func ResultUpdateTeamPhotoChanged(out *MessageEnvelope, res *UpdateTeamPhotoChan
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_UpdateCommunityMessage int64 = 983926580
+
+type poolUpdateCommunityMessage struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCommunityMessage) Get() *UpdateCommunityMessage {
+	x, ok := p.pool.Get().(*UpdateCommunityMessage)
+	if !ok {
+		return &UpdateCommunityMessage{}
+	}
+	x.Entities = x.Entities[:0]
+	return x
+}
+
+func (p *poolUpdateCommunityMessage) Put(x *UpdateCommunityMessage) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCommunityMessage = poolUpdateCommunityMessage{}
+
+func ResultUpdateCommunityMessage(out *MessageEnvelope, res *UpdateCommunityMessage) {
+	out.Constructor = C_UpdateCommunityMessage
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateCommunityReadOutbox int64 = 2094301834
+
+type poolUpdateCommunityReadOutbox struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCommunityReadOutbox) Get() *UpdateCommunityReadOutbox {
+	x, ok := p.pool.Get().(*UpdateCommunityReadOutbox)
+	if !ok {
+		return &UpdateCommunityReadOutbox{}
+	}
+	return x
+}
+
+func (p *poolUpdateCommunityReadOutbox) Put(x *UpdateCommunityReadOutbox) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCommunityReadOutbox = poolUpdateCommunityReadOutbox{}
+
+func ResultUpdateCommunityReadOutbox(out *MessageEnvelope, res *UpdateCommunityReadOutbox) {
+	out.Constructor = C_UpdateCommunityReadOutbox
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_UpdateCommunityTyping int64 = 451491445
+
+type poolUpdateCommunityTyping struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateCommunityTyping) Get() *UpdateCommunityTyping {
+	x, ok := p.pool.Get().(*UpdateCommunityTyping)
+	if !ok {
+		return &UpdateCommunityTyping{}
+	}
+	return x
+}
+
+func (p *poolUpdateCommunityTyping) Put(x *UpdateCommunityTyping) {
+	p.pool.Put(x)
+}
+
+var PoolUpdateCommunityTyping = poolUpdateCommunityTyping{}
+
+func ResultUpdateCommunityTyping(out *MessageEnvelope, res *UpdateCommunityTyping) {
+	out.Constructor = C_UpdateCommunityTyping
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_UpdateCalendarEventAdded int64 = 297964741
 
 type poolUpdateCalendarEventAdded struct {
@@ -1516,6 +1613,9 @@ func init() {
 	ConstructorNames[1307755890] = "UpdateTeamMemberAdded"
 	ConstructorNames[99543064] = "UpdateTeamMemberRemoved"
 	ConstructorNames[2787282465] = "UpdateTeamPhotoChanged"
+	ConstructorNames[983926580] = "UpdateCommunityMessage"
+	ConstructorNames[2094301834] = "UpdateCommunityReadOutbox"
+	ConstructorNames[451491445] = "UpdateCommunityTyping"
 	ConstructorNames[297964741] = "UpdateCalendarEventAdded"
 	ConstructorNames[2986798389] = "UpdateCalendarEventRemoved"
 	ConstructorNames[516349098] = "UpdateCalendarEventEdited"

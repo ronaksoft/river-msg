@@ -67,6 +67,14 @@ message CommunityRecall {
     required bytes AccessKey = 2;
 }
 
+// CommunityAuthorizeUser
+message CommunityAuthorizeUser {
+    required string Phone = 1;
+    required string FirstName = 2;
+    optional string LastName = 3;
+    optional string Provider = 4;
+}
+
 // CommunityUpdateEnvelope
 message CommunityUpdateEnvelope {
     required int64 OffsetID = 1;

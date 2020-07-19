@@ -6,7 +6,7 @@ option (gogoproto.goproto_enum_prefix_all) = false;
 
 // CommunitySendMedia
 // @Function
-// @Return: UserMessage
+// @Return: CommunityMessage
 message CommunitySendMessage {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
@@ -20,7 +20,7 @@ message CommunitySendMessage {
 
 // CommunitySendMedia
 // @Function
-// @Return: UserMessage
+// @Return: CommunityMessage
 message CommunitySendMedia {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
@@ -68,6 +68,8 @@ message CommunityRecall {
 }
 
 // CommunityAuthorizeUser
+// @Function
+// @Return: CommunityUser
 message CommunityAuthorizeUser {
     required string Phone = 1;
     required string FirstName = 2;
@@ -75,6 +77,13 @@ message CommunityAuthorizeUser {
     optional string Provider = 4;
 }
 
+// CommunityUser
+message CommunityUser {
+    required int64 UserID = 1;
+    required string FirstName = 2;
+    required string LastName = 3;
+    required string Phone = 4;
+}
 // CommunityUpdateEnvelope
 message CommunityUpdateEnvelope {
     required int64 OffsetID = 1;

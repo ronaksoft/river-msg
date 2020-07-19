@@ -254,6 +254,38 @@ func ResultCommunityAuthorizeUser(out *MessageEnvelope, res *CommunityAuthorizeU
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_CommunityUser int64 = 3812837958
+
+type poolCommunityUser struct {
+	pool sync.Pool
+}
+
+func (p *poolCommunityUser) Get() *CommunityUser {
+	x, ok := p.pool.Get().(*CommunityUser)
+	if !ok {
+		return &CommunityUser{}
+	}
+	return x
+}
+
+func (p *poolCommunityUser) Put(x *CommunityUser) {
+	p.pool.Put(x)
+}
+
+var PoolCommunityUser = poolCommunityUser{}
+
+func ResultCommunityUser(out *MessageEnvelope, res *CommunityUser) {
+	out.Constructor = C_CommunityUser
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_CommunityUpdateEnvelope int64 = 1076119993
 
 type poolCommunityUpdateEnvelope struct {
@@ -330,6 +362,7 @@ func init() {
 	ConstructorNames[2022915988] = "CommunityGetMembers"
 	ConstructorNames[890349574] = "CommunityRecall"
 	ConstructorNames[1452766231] = "CommunityAuthorizeUser"
+	ConstructorNames[3812837958] = "CommunityUser"
 	ConstructorNames[1076119993] = "CommunityUpdateEnvelope"
 	ConstructorNames[918339432] = "CommunityUpdateContainer"
 }

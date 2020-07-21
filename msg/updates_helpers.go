@@ -497,7 +497,7 @@ func (p *poolUpdateUserPhoto) Get() *UpdateUserPhoto {
 
 func (p *poolUpdateUserPhoto) Put(x *UpdateUserPhoto) {
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = UserPhoto{}
 	}
 
 	x.PhotoID = 0
@@ -696,7 +696,7 @@ func (p *poolUpdateGroupPhoto) Get() *UpdateGroupPhoto {
 
 func (p *poolUpdateGroupPhoto) Put(x *UpdateGroupPhoto) {
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = GroupPhoto{}
 	}
 
 	x.PhotoID = 0
@@ -1140,7 +1140,7 @@ func (p *poolUpdateMessagePoll) Get() *UpdateMessagePoll {
 
 func (p *poolUpdateMessagePoll) Put(x *UpdateMessagePoll) {
 	if x.Poll != nil {
-		*x.Poll = Poll{}
+		*x.Poll = MediaPoll{}
 	}
 
 	p.pool.Put(x)
@@ -1211,7 +1211,7 @@ func (p *poolUpdateBotInlineQuery) Get() *UpdateBotInlineQuery {
 func (p *poolUpdateBotInlineQuery) Put(x *UpdateBotInlineQuery) {
 	x.Offset = ""
 	if x.Geo != nil {
-		*x.Geo = Geo{}
+		*x.Geo = GeoLocation{}
 	}
 
 	p.pool.Put(x)
@@ -1247,7 +1247,7 @@ func (p *poolUpdateBotInlineSend) Get() *UpdateBotInlineSend {
 
 func (p *poolUpdateBotInlineSend) Put(x *UpdateBotInlineSend) {
 	if x.Geo != nil {
-		*x.Geo = Geo{}
+		*x.Geo = GeoLocation{}
 	}
 
 	p.pool.Put(x)

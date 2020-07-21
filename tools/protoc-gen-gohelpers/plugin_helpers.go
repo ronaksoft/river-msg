@@ -41,7 +41,6 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 	initFunc.WriteString("func init() {\n")
 	for _, mt := range file.MessageType {
 		constructor := crc32.ChecksumIEEE([]byte(*mt.Name))
-
 		g.g.P(fmt.Sprintf("const C_%s int64 = %d", *mt.Name, constructor))
 		initFunc.WriteString(fmt.Sprintf("ConstructorNames[%d] = \"%s\"\n", constructor, *mt.Name))
 		g.g.P(fmt.Sprintf("type pool%s struct{", *mt.Name))
@@ -66,7 +65,7 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		g.g.In()
 		for _, ft := range mt.Field {
 			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
-				g.g.P(zeroValue(ft.Name, ft.Type))
+				g.g.P(zeroValue(file.GoPackageName(), ft.GetName(), ft.GetType(), ft.GetTypeName()))
 			} else if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED {
 				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
 			} else if *ft.Type == descriptor.FieldDescriptorProto_TYPE_BYTES {
@@ -103,22 +102,29 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 
 }
 
-func zeroValue(n *string,t *descriptor.FieldDescriptorProto_Type) string {
-	switch *t {
+func zeroValue(gopkg string, n string,t descriptor.FieldDescriptorProto_Type, tn string) string {
+	switch t {
 	case descriptor.FieldDescriptorProto_TYPE_BOOL:
-		return fmt.Sprintf("x.%s = false", *n)
+		return fmt.Sprintf("x.%s = false", n)
 	case descriptor.FieldDescriptorProto_TYPE_STRING:
-		return fmt.Sprintf("x.%s = \"\"", *n)
+		return fmt.Sprintf("x.%s = \"\"", n)
 	case descriptor.FieldDescriptorProto_TYPE_MESSAGE:
+		var ttn string
+		tnp := strings.SplitN(tn[1:], ".", 2)
+		if tnp[0] == gopkg {
+			ttn = tnp[1]
+		} else {
+			ttn = tn[1:]
+		}
 		sb := strings.Builder{}
-		sb.WriteString(fmt.Sprintf("if x.%s != nil {\n", *n))
-		sb.WriteString(fmt.Sprintf("*x.%s = %s{}", *n, *n))
+		sb.WriteString(fmt.Sprintf("if x.%s != nil {\n", n))
+		sb.WriteString(fmt.Sprintf("*x.%s = %s{}", n, ttn))
 		sb.WriteString("}\n")
 		return sb.String()
 	case descriptor.FieldDescriptorProto_TYPE_BYTES:
-		return fmt.Sprintf("x.%s = x.%s[:0]", *n, *n)
+		return fmt.Sprintf("x.%s = x.%s[:0]", n, n)
 	default:
-		return fmt.Sprintf("x.%s = 0", *n)
+		return fmt.Sprintf("x.%s = 0", n)
 	}
 }
 

@@ -98,7 +98,7 @@ func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
 	x.Message = x.Message[:0]
 	if x.Team != nil {
-		*x.Team = Team{}
+		*x.Team = InputTeam{}
 	}
 
 	p.pool.Put(x)
@@ -400,12 +400,12 @@ func (p *poolDialog) Get() *Dialog {
 func (p *poolDialog) Put(x *Dialog) {
 	x.TeamID = 0
 	if x.NotifySettings != nil {
-		*x.NotifySettings = NotifySettings{}
+		*x.NotifySettings = PeerNotifySettings{}
 	}
 
 	x.MentionedCount = 0
 	if x.Draft != nil {
-		*x.Draft = Draft{}
+		*x.Draft = DraftMessage{}
 	}
 
 	p.pool.Put(x)
@@ -669,7 +669,7 @@ func (p *poolUser) Get() *User {
 func (p *poolUser) Put(x *User) {
 	x.Username = ""
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = UserPhoto{}
 	}
 
 	x.Bio = ""
@@ -717,7 +717,7 @@ func (p *poolContactUser) Get() *ContactUser {
 
 func (p *poolContactUser) Put(x *ContactUser) {
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = UserPhoto{}
 	}
 
 	p.pool.Put(x)
@@ -892,7 +892,7 @@ func (p *poolGroup) Put(x *Group) {
 	x.EditedOn = 0
 	x.Flags = x.Flags[:0]
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = GroupPhoto{}
 	}
 
 	p.pool.Put(x)
@@ -963,7 +963,7 @@ func (p *poolGroupParticipant) Get() *GroupParticipant {
 
 func (p *poolGroupParticipant) Put(x *GroupParticipant) {
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = UserPhoto{}
 	}
 
 	p.pool.Put(x)

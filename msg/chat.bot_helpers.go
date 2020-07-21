@@ -337,7 +337,7 @@ func (p *poolBotUpdatePhoto) Get() *BotUpdatePhoto {
 
 func (p *poolBotUpdatePhoto) Put(x *BotUpdatePhoto) {
 	if x.File != nil {
-		*x.File = File{}
+		*x.File = InputFileLocation{}
 	}
 
 	p.pool.Put(x)
@@ -506,7 +506,7 @@ func (p *poolBotGetInlineResults) Get() *BotGetInlineResults {
 
 func (p *poolBotGetInlineResults) Put(x *BotGetInlineResults) {
 	if x.Location != nil {
-		*x.Location = Location{}
+		*x.Location = InputGeoLocation{}
 	}
 
 	p.pool.Put(x)
@@ -544,7 +544,7 @@ func (p *poolBotSetInlineResults) Put(x *BotSetInlineResults) {
 	x.NextOffset = ""
 	x.Results = x.Results[:0]
 	if x.SwitchPM != nil {
-		*x.SwitchPM = SwitchPM{}
+		*x.SwitchPM = BotInlineSwitchPM{}
 	}
 
 	p.pool.Put(x)
@@ -681,7 +681,7 @@ func (p *poolBotResults) Get() *BotResults {
 func (p *poolBotResults) Put(x *BotResults) {
 	x.NextOffset = ""
 	if x.SwitchPM != nil {
-		*x.SwitchPM = SwitchPM{}
+		*x.SwitchPM = BotInlineSwitchPM{}
 	}
 
 	x.Results = x.Results[:0]
@@ -753,7 +753,7 @@ func (p *poolBotInlineResult) Put(x *BotInlineResult) {
 	x.Description = ""
 	x.Url = ""
 	if x.Thumb != nil {
-		*x.Thumb = Thumb{}
+		*x.Thumb = MediaWebDocument{}
 	}
 
 	p.pool.Put(x)
@@ -792,7 +792,7 @@ func (p *poolInputBotInlineResult) Put(x *InputBotInlineResult) {
 	x.Description = ""
 	x.Url = ""
 	if x.Thumb != nil {
-		*x.Thumb = Thumb{}
+		*x.Thumb = InputMediaWebDocument{}
 	}
 
 	p.pool.Put(x)

@@ -128,11 +128,11 @@ func (p *poolWallPaperUpload) Get() *WallPaperUpload {
 
 func (p *poolWallPaperUpload) Put(x *WallPaperUpload) {
 	if x.UploadedFile != nil {
-		*x.UploadedFile = UploadedFile{}
+		*x.UploadedFile = InputFile{}
 	}
 
 	if x.File != nil {
-		*x.File = File{}
+		*x.File = InputDocument{}
 	}
 
 	p.pool.Put(x)
@@ -278,7 +278,7 @@ func (p *poolWallPaper) Put(x *WallPaper) {
 	}
 
 	if x.Settings != nil {
-		*x.Settings = Settings{}
+		*x.Settings = WallPaperSettings{}
 	}
 
 	p.pool.Put(x)

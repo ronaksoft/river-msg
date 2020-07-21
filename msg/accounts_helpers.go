@@ -420,7 +420,7 @@ func (p *poolAccountChangePhone) Get() *AccountChangePhone {
 
 func (p *poolAccountChangePhone) Put(x *AccountChangePhone) {
 	if x.Password != nil {
-		*x.Password = Password{}
+		*x.Password = InputPassword{}
 	}
 
 	p.pool.Put(x)
@@ -686,7 +686,7 @@ func (p *poolAccountGetPasswordSettings) Get() *AccountGetPasswordSettings {
 
 func (p *poolAccountGetPasswordSettings) Put(x *AccountGetPasswordSettings) {
 	if x.Password != nil {
-		*x.Password = Password{}
+		*x.Password = InputPassword{}
 	}
 
 	p.pool.Put(x)
@@ -722,7 +722,7 @@ func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings
 
 func (p *poolAccountUpdatePasswordSettings) Put(x *AccountUpdatePasswordSettings) {
 	if x.Password != nil {
-		*x.Password = Password{}
+		*x.Password = InputPassword{}
 	}
 
 	x.PasswordHash = x.PasswordHash[:0]

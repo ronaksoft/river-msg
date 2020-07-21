@@ -82,7 +82,7 @@ func (p *poolClientGlobalSearch) Put(x *ClientGlobalSearch) {
 	x.Text = ""
 	x.LabelIDs = x.LabelIDs[:0]
 	if x.Peer != nil {
-		*x.Peer = Peer{}
+		*x.Peer = InputPeer{}
 	}
 
 	x.SenderID = 0
@@ -183,7 +183,7 @@ func (p *poolClientClearCachedMedia) Get() *ClientClearCachedMedia {
 
 func (p *poolClientClearCachedMedia) Put(x *ClientClearCachedMedia) {
 	if x.Peer != nil {
-		*x.Peer = Peer{}
+		*x.Peer = InputPeer{}
 	}
 
 	x.MediaTypes = x.MediaTypes[:0]
@@ -453,7 +453,7 @@ func (p *poolClientPendingMessage) Put(x *ClientPendingMessage) {
 	x.ThumbID = 0
 	x.Sha256 = x.Sha256[:0]
 	if x.ServerFile != nil {
-		*x.ServerFile = ServerFile{}
+		*x.ServerFile = FileLocation{}
 	}
 
 	p.pool.Put(x)

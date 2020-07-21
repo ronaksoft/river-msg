@@ -228,7 +228,7 @@ func (p *poolDocument) Get() *Document {
 func (p *poolDocument) Put(x *Document) {
 	x.Attributes = x.Attributes[:0]
 	if x.Thumbnail != nil {
-		*x.Thumbnail = Thumbnail{}
+		*x.Thumbnail = FileLocation{}
 	}
 
 	x.MD5Checksum = ""
@@ -493,7 +493,7 @@ func (p *poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
 
 func (p *poolInputMediaUploadedDocument) Put(x *InputMediaUploadedDocument) {
 	if x.Thumbnail != nil {
-		*x.Thumbnail = Thumbnail{}
+		*x.Thumbnail = InputFile{}
 	}
 
 	x.Stickers = x.Stickers[:0]
@@ -533,7 +533,7 @@ func (p *poolInputMediaDocument) Get() *InputMediaDocument {
 func (p *poolInputMediaDocument) Put(x *InputMediaDocument) {
 	x.Entities = x.Entities[:0]
 	if x.Thumbnail != nil {
-		*x.Thumbnail = Thumbnail{}
+		*x.Thumbnail = InputFile{}
 	}
 
 	x.Attributes = x.Attributes[:0]
@@ -570,7 +570,7 @@ func (p *poolInputMediaUploadedSealedDocument) Get() *InputMediaUploadedSealedDo
 
 func (p *poolInputMediaUploadedSealedDocument) Put(x *InputMediaUploadedSealedDocument) {
 	if x.SealedThumbnail != nil {
-		*x.SealedThumbnail = SealedThumbnail{}
+		*x.SealedThumbnail = InputFile{}
 	}
 
 	x.Attributes = x.Attributes[:0]

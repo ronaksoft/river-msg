@@ -163,7 +163,7 @@ func (p *poolMessageActionGroupPhotoChanged) Get() *MessageActionGroupPhotoChang
 
 func (p *poolMessageActionGroupPhotoChanged) Put(x *MessageActionGroupPhotoChanged) {
 	if x.Photo != nil {
-		*x.Photo = Photo{}
+		*x.Photo = GroupPhoto{}
 	}
 
 	p.pool.Put(x)

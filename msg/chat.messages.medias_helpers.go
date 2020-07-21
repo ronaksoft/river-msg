@@ -28,12 +28,11 @@ func (p *poolDocumentAttributeAudio) Get() *DocumentAttributeAudio {
 	if !ok {
 		return &DocumentAttributeAudio{}
 	}
-	x.Waveform = nil
-	x.Waveform = x.Waveform[:0]
 	return x
 }
 
 func (p *poolDocumentAttributeAudio) Put(x *DocumentAttributeAudio) {
+	x.Waveform = x.Waveform[:0]
 	p.pool.Put(x)
 }
 
@@ -190,12 +189,11 @@ func (p *poolDocumentAttribute) Get() *DocumentAttribute {
 	if !ok {
 		return &DocumentAttribute{}
 	}
-	x.Data = nil
-	x.Data = x.Data[:0]
 	return x
 }
 
 func (p *poolDocumentAttribute) Put(x *DocumentAttribute) {
+	x.Data = x.Data[:0]
 	p.pool.Put(x)
 }
 
@@ -224,13 +222,16 @@ func (p *poolDocument) Get() *Document {
 	if !ok {
 		return &Document{}
 	}
-	x.Attributes = x.Attributes[:0]
-	x.Thumbnail = nil
-	x.MD5Checksum = ""
 	return x
 }
 
 func (p *poolDocument) Put(x *Document) {
+	x.Attributes = x.Attributes[:0]
+	if x.Thumbnail != nil {
+		*x.Thumbnail = Thumbnail{}
+	}
+
+	x.MD5Checksum = ""
 	p.pool.Put(x)
 }
 
@@ -323,11 +324,11 @@ func (p *poolInputMediaWebDocument) Get() *InputMediaWebDocument {
 	if !ok {
 		return &InputMediaWebDocument{}
 	}
-	x.Attributes = x.Attributes[:0]
 	return x
 }
 
 func (p *poolInputMediaWebDocument) Put(x *InputMediaWebDocument) {
+	x.Attributes = x.Attributes[:0]
 	p.pool.Put(x)
 }
 
@@ -356,11 +357,11 @@ func (p *poolMediaWebDocument) Get() *MediaWebDocument {
 	if !ok {
 		return &MediaWebDocument{}
 	}
-	x.Attributes = x.Attributes[:0]
 	return x
 }
 
 func (p *poolMediaWebDocument) Put(x *MediaWebDocument) {
+	x.Attributes = x.Attributes[:0]
 	p.pool.Put(x)
 }
 
@@ -421,11 +422,11 @@ func (p *poolInputMediaContact) Get() *InputMediaContact {
 	if !ok {
 		return &InputMediaContact{}
 	}
-	x.VCard = ""
 	return x
 }
 
 func (p *poolInputMediaContact) Put(x *InputMediaContact) {
+	x.VCard = ""
 	p.pool.Put(x)
 }
 
@@ -454,11 +455,11 @@ func (p *poolMediaContact) Get() *MediaContact {
 	if !ok {
 		return &MediaContact{}
 	}
-	x.VCard = ""
 	return x
 }
 
 func (p *poolMediaContact) Put(x *MediaContact) {
+	x.VCard = ""
 	p.pool.Put(x)
 }
 
@@ -487,14 +488,17 @@ func (p *poolInputMediaUploadedDocument) Get() *InputMediaUploadedDocument {
 	if !ok {
 		return &InputMediaUploadedDocument{}
 	}
-	x.Thumbnail = nil
-	x.Stickers = x.Stickers[:0]
-	x.Attributes = x.Attributes[:0]
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolInputMediaUploadedDocument) Put(x *InputMediaUploadedDocument) {
+	if x.Thumbnail != nil {
+		*x.Thumbnail = Thumbnail{}
+	}
+
+	x.Stickers = x.Stickers[:0]
+	x.Attributes = x.Attributes[:0]
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -523,13 +527,16 @@ func (p *poolInputMediaDocument) Get() *InputMediaDocument {
 	if !ok {
 		return &InputMediaDocument{}
 	}
-	x.Entities = x.Entities[:0]
-	x.Thumbnail = nil
-	x.Attributes = x.Attributes[:0]
 	return x
 }
 
 func (p *poolInputMediaDocument) Put(x *InputMediaDocument) {
+	x.Entities = x.Entities[:0]
+	if x.Thumbnail != nil {
+		*x.Thumbnail = Thumbnail{}
+	}
+
+	x.Attributes = x.Attributes[:0]
 	p.pool.Put(x)
 }
 
@@ -558,13 +565,16 @@ func (p *poolInputMediaUploadedSealedDocument) Get() *InputMediaUploadedSealedDo
 	if !ok {
 		return &InputMediaUploadedSealedDocument{}
 	}
-	x.SealedThumbnail = nil
-	x.Attributes = x.Attributes[:0]
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolInputMediaUploadedSealedDocument) Put(x *InputMediaUploadedSealedDocument) {
+	if x.SealedThumbnail != nil {
+		*x.SealedThumbnail = SealedThumbnail{}
+	}
+
+	x.Attributes = x.Attributes[:0]
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -593,11 +603,11 @@ func (p *poolMediaSealedDocument) Get() *MediaSealedDocument {
 	if !ok {
 		return &MediaSealedDocument{}
 	}
-	x.EncryptedMediaDocument = x.EncryptedMediaDocument[:0]
 	return x
 }
 
 func (p *poolMediaSealedDocument) Put(x *MediaSealedDocument) {
+	x.EncryptedMediaDocument = x.EncryptedMediaDocument[:0]
 	p.pool.Put(x)
 }
 
@@ -626,11 +636,11 @@ func (p *poolInputMediaMessageDocument) Get() *InputMediaMessageDocument {
 	if !ok {
 		return &InputMediaMessageDocument{}
 	}
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolInputMediaMessageDocument) Put(x *InputMediaMessageDocument) {
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -659,13 +669,13 @@ func (p *poolMediaDocument) Get() *MediaDocument {
 	if !ok {
 		return &MediaDocument{}
 	}
-	x.Caption = ""
-	x.TTLinSeconds = 0
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolMediaDocument) Put(x *MediaDocument) {
+	x.Caption = ""
+	x.TTLinSeconds = 0
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -694,12 +704,12 @@ func (p *poolInputMediaGeoLocation) Get() *InputMediaGeoLocation {
 	if !ok {
 		return &InputMediaGeoLocation{}
 	}
-	x.Caption = ""
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolInputMediaGeoLocation) Put(x *InputMediaGeoLocation) {
+	x.Caption = ""
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -728,12 +738,12 @@ func (p *poolMediaGeoLocation) Get() *MediaGeoLocation {
 	if !ok {
 		return &MediaGeoLocation{}
 	}
-	x.Caption = ""
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolMediaGeoLocation) Put(x *MediaGeoLocation) {
+	x.Caption = ""
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -794,15 +804,15 @@ func (p *poolMediaPoll) Get() *MediaPoll {
 	if !ok {
 		return &MediaPoll{}
 	}
+	return x
+}
+
+func (p *poolMediaPoll) Put(x *MediaPoll) {
 	x.Closed = false
 	x.PublicVoters = false
 	x.MultiChoice = false
 	x.Quiz = false
 	x.Answers = x.Answers[:0]
-	return x
-}
-
-func (p *poolMediaPoll) Put(x *MediaPoll) {
 	p.pool.Put(x)
 }
 
@@ -831,11 +841,11 @@ func (p *poolPollAnswer) Get() *PollAnswer {
 	if !ok {
 		return &PollAnswer{}
 	}
-	x.Option = x.Option[:0]
 	return x
 }
 
 func (p *poolPollAnswer) Put(x *PollAnswer) {
+	x.Option = x.Option[:0]
 	p.pool.Put(x)
 }
 
@@ -864,11 +874,11 @@ func (p *poolPollResults) Get() *PollResults {
 	if !ok {
 		return &PollResults{}
 	}
-	x.Results = x.Results[:0]
 	return x
 }
 
 func (p *poolPollResults) Put(x *PollResults) {
+	x.Results = x.Results[:0]
 	p.pool.Put(x)
 }
 
@@ -897,11 +907,11 @@ func (p *poolPollAnswerVoters) Get() *PollAnswerVoters {
 	if !ok {
 		return &PollAnswerVoters{}
 	}
-	x.Option = x.Option[:0]
 	return x
 }
 
 func (p *poolPollAnswerVoters) Put(x *PollAnswerVoters) {
+	x.Option = x.Option[:0]
 	p.pool.Put(x)
 }
 
@@ -930,14 +940,13 @@ func (p *poolInputMediaSealed) Get() *InputMediaSealed {
 	if !ok {
 		return &InputMediaSealed{}
 	}
-	x.EncryptedMedia = nil
-	x.EncryptedMedia = x.EncryptedMedia[:0]
-	x.EncryptedBody = ""
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolInputMediaSealed) Put(x *InputMediaSealed) {
+	x.EncryptedMedia = x.EncryptedMedia[:0]
+	x.EncryptedBody = ""
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 
@@ -966,14 +975,13 @@ func (p *poolMediaSealed) Get() *MediaSealed {
 	if !ok {
 		return &MediaSealed{}
 	}
-	x.Media = nil
-	x.Media = x.Media[:0]
-	x.Body = ""
-	x.Entities = x.Entities[:0]
 	return x
 }
 
 func (p *poolMediaSealed) Put(x *MediaSealed) {
+	x.Media = x.Media[:0]
+	x.Body = ""
+	x.Entities = x.Entities[:0]
 	p.pool.Put(x)
 }
 

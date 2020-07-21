@@ -45,6 +45,13 @@ message SystemUploadUsage {
     repeated ClientUsage Usage = 1;
 }
 
+// SystemGetResponse
+// @Function
+// @Return: MessageEnvelope / MessageContainer
+message SystemGetResponse {
+    repeated fixed64 RequestIDs = 1;
+}
+
 // ClientUsage
 message ClientUsage {
     required int32 Year = 1;

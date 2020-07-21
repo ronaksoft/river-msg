@@ -241,6 +241,39 @@ func ResultSystemUploadUsage(out *MessageEnvelope, res *SystemUploadUsage) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_SystemGetResponse int64 = 1415676946
+
+type poolSystemGetResponse struct {
+	pool sync.Pool
+}
+
+func (p *poolSystemGetResponse) Get() *SystemGetResponse {
+	x, ok := p.pool.Get().(*SystemGetResponse)
+	if !ok {
+		return &SystemGetResponse{}
+	}
+	x.RequestIDs = x.RequestIDs[:0]
+	return x
+}
+
+func (p *poolSystemGetResponse) Put(x *SystemGetResponse) {
+	p.pool.Put(x)
+}
+
+var PoolSystemGetResponse = poolSystemGetResponse{}
+
+func ResultSystemGetResponse(out *MessageEnvelope, res *SystemGetResponse) {
+	out.Constructor = C_SystemGetResponse
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_ClientUsage int64 = 453987802
 
 type poolClientUsage struct {
@@ -550,6 +583,7 @@ func init() {
 	ConstructorNames[1705203315] = "SystemGetSalts"
 	ConstructorNames[1910333714] = "SystemGetConfig"
 	ConstructorNames[3056393082] = "SystemUploadUsage"
+	ConstructorNames[1415676946] = "SystemGetResponse"
 	ConstructorNames[453987802] = "ClientUsage"
 	ConstructorNames[367036084] = "SystemConfig"
 	ConstructorNames[3431386561] = "DataCenter"

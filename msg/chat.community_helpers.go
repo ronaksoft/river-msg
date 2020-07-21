@@ -28,14 +28,13 @@ func (p *poolCommunitySendMessage) Get() *CommunitySendMessage {
 	if !ok {
 		return &CommunitySendMessage{}
 	}
-	x.Entities = x.Entities[:0]
-	x.ReplyMarkup = 0
-	x.ReplyMarkupData = nil
-	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	return x
 }
 
 func (p *poolCommunitySendMessage) Put(x *CommunitySendMessage) {
+	x.Entities = x.Entities[:0]
+	x.ReplyMarkup = 0
+	x.ReplyMarkupData = x.ReplyMarkupData[:0]
 	p.pool.Put(x)
 }
 
@@ -64,13 +63,13 @@ func (p *poolCommunitySendMedia) Get() *CommunitySendMedia {
 	if !ok {
 		return &CommunitySendMedia{}
 	}
-	x.MediaData = x.MediaData[:0]
-	x.ReplyTo = 0
-	x.ClearDraft = false
 	return x
 }
 
 func (p *poolCommunitySendMedia) Put(x *CommunitySendMedia) {
+	x.MediaData = x.MediaData[:0]
+	x.ReplyTo = 0
+	x.ClearDraft = false
 	p.pool.Put(x)
 }
 
@@ -131,11 +130,11 @@ func (p *poolCommunityGetUpdates) Get() *CommunityGetUpdates {
 	if !ok {
 		return &CommunityGetUpdates{}
 	}
-	x.OffsetID = 0
 	return x
 }
 
 func (p *poolCommunityGetUpdates) Put(x *CommunityGetUpdates) {
+	x.OffsetID = 0
 	p.pool.Put(x)
 }
 
@@ -164,12 +163,12 @@ func (p *poolCommunityGetMembers) Get() *CommunityGetMembers {
 	if !ok {
 		return &CommunityGetMembers{}
 	}
-	x.Offset = 0
-	x.Limit = 0
 	return x
 }
 
 func (p *poolCommunityGetMembers) Put(x *CommunityGetMembers) {
+	x.Offset = 0
+	x.Limit = 0
 	p.pool.Put(x)
 }
 
@@ -198,11 +197,11 @@ func (p *poolCommunityRecall) Get() *CommunityRecall {
 	if !ok {
 		return &CommunityRecall{}
 	}
-	x.AccessKey = x.AccessKey[:0]
 	return x
 }
 
 func (p *poolCommunityRecall) Put(x *CommunityRecall) {
+	x.AccessKey = x.AccessKey[:0]
 	p.pool.Put(x)
 }
 
@@ -231,12 +230,12 @@ func (p *poolCommunityAuthorizeUser) Get() *CommunityAuthorizeUser {
 	if !ok {
 		return &CommunityAuthorizeUser{}
 	}
-	x.LastName = ""
-	x.Provider = ""
 	return x
 }
 
 func (p *poolCommunityAuthorizeUser) Put(x *CommunityAuthorizeUser) {
+	x.LastName = ""
+	x.Provider = ""
 	p.pool.Put(x)
 }
 
@@ -297,12 +296,11 @@ func (p *poolCommunityUpdateEnvelope) Get() *CommunityUpdateEnvelope {
 	if !ok {
 		return &CommunityUpdateEnvelope{}
 	}
-	x.Update = nil
-	x.Update = x.Update[:0]
 	return x
 }
 
 func (p *poolCommunityUpdateEnvelope) Put(x *CommunityUpdateEnvelope) {
+	x.Update = x.Update[:0]
 	p.pool.Put(x)
 }
 
@@ -331,12 +329,12 @@ func (p *poolCommunityUpdateContainer) Get() *CommunityUpdateContainer {
 	if !ok {
 		return &CommunityUpdateContainer{}
 	}
-	x.Updates = x.Updates[:0]
-	x.Empty = false
 	return x
 }
 
 func (p *poolCommunityUpdateContainer) Put(x *CommunityUpdateContainer) {
+	x.Updates = x.Updates[:0]
+	x.Empty = false
 	p.pool.Put(x)
 }
 

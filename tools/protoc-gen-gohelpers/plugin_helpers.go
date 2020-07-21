@@ -57,15 +57,6 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 		g.g.P(fmt.Sprintf("return &%s{}", *mt.Name))
 		g.g.Out()
 		g.g.P("}")
-
-		for _, ft := range mt.Field {
-			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
-				g.g.P(fmt.Sprintf("x.%s = %s", *ft.Name, zeroValue(ft.Type)))
-			}
-			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED || *ft.Type == descriptor.FieldDescriptorProto_TYPE_BYTES {
-				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
-			}
-		}
 		g.g.P("return x")
 		g.g.Out()
 		g.g.P("}")
@@ -73,6 +64,15 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 
 		g.g.P(fmt.Sprintf("func (p *pool%s) Put(x *%s) {", *mt.Name, *mt.Name))
 		g.g.In()
+		for _, ft := range mt.Field {
+			if *ft.Label == descriptor.FieldDescriptorProto_LABEL_OPTIONAL {
+				g.g.P(zeroValue(ft.Name, ft.Type))
+			} else if *ft.Label == descriptor.FieldDescriptorProto_LABEL_REPEATED {
+				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
+			} else if *ft.Type == descriptor.FieldDescriptorProto_TYPE_BYTES {
+				g.g.P(fmt.Sprintf("x.%s = x.%s[:0]", *ft.Name, *ft.Name))
+			}
+		}
 		g.g.P("p.pool.Put(x)")
 		g.g.Out()
 		g.g.P("}")
@@ -103,18 +103,22 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 
 }
 
-func zeroValue(t *descriptor.FieldDescriptorProto_Type) string {
+func zeroValue(n *string,t *descriptor.FieldDescriptorProto_Type) string {
 	switch *t {
 	case descriptor.FieldDescriptorProto_TYPE_BOOL:
-		return "false"
+		return fmt.Sprintf("x.%s = false", *n)
 	case descriptor.FieldDescriptorProto_TYPE_STRING:
-		return "\"\""
+		return fmt.Sprintf("x.%s = \"\"", *n)
 	case descriptor.FieldDescriptorProto_TYPE_MESSAGE:
-		return "nil"
+		sb := strings.Builder{}
+		sb.WriteString(fmt.Sprintf("if x.%s != nil {\n", *n))
+		sb.WriteString(fmt.Sprintf("*x.%s = %s{}", *n, *n))
+		sb.WriteString("}\n")
+		return sb.String()
 	case descriptor.FieldDescriptorProto_TYPE_BYTES:
-		return "nil"
+		return fmt.Sprintf("x.%s = x.%s[:0]", *n, *n)
 	default:
-		return "0"
+		return fmt.Sprintf("x.%s = 0", *n)
 	}
 }
 

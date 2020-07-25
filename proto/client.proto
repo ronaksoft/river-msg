@@ -109,6 +109,7 @@ message ClientGetSavedGifs {
 
 // ClientPendingMessage
 message ClientPendingMessage {
+    optional int64 TeamID = 100;
     required int64 ID = 1;
     required int64 RequestID = 2;
     required int64 PeerID = 3;

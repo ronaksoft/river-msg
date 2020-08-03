@@ -1060,6 +1060,7 @@ func (p *poolAccountAuthorization) Get() *AccountAuthorization {
 }
 
 func (p *poolAccountAuthorization) Put(x *AccountAuthorization) {
+	x.ActiveAt = 0
 	p.pool.Put(x)
 }
 

@@ -32,6 +32,7 @@ func (p *poolPhoneAcceptCall) Get() *PhoneAcceptCall {
 }
 
 func (p *poolPhoneAcceptCall) Put(x *PhoneAcceptCall) {
+	x.AnswerSDP = x.AnswerSDP[:0]
 	p.pool.Put(x)
 }
 
@@ -64,6 +65,7 @@ func (p *poolPhoneRequestCall) Get() *PhoneRequestCall {
 }
 
 func (p *poolPhoneRequestCall) Put(x *PhoneRequestCall) {
+	x.OfferSDP = x.OfferSDP[:0]
 	p.pool.Put(x)
 }
 
@@ -156,11 +158,11 @@ func (p *poolPhoneSetCallRating) Get() *PhoneSetCallRating {
 	if !ok {
 		return &PhoneSetCallRating{}
 	}
-	x.Comment = ""
 	return x
 }
 
 func (p *poolPhoneSetCallRating) Put(x *PhoneSetCallRating) {
+	x.Comment = ""
 	p.pool.Put(x)
 }
 
@@ -189,11 +191,11 @@ func (p *poolPhoneCall) Get() *PhoneCall {
 	if !ok {
 		return &PhoneCall{}
 	}
-	x.StunServers = x.StunServers[:0]
 	return x
 }
 
 func (p *poolPhoneCall) Put(x *PhoneCall) {
+	x.StunServers = x.StunServers[:0]
 	p.pool.Put(x)
 }
 

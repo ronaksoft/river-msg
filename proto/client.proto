@@ -212,6 +212,7 @@ enum ClientMediaType {
     ClientMediaAudio = 4;
     ClientMediaLink = 5;
     ClientMediaGif = 6;
+    ClientMediaWebDocument = 7;
 }
 
 // RecentSearch

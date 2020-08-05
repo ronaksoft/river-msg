@@ -161,6 +161,7 @@ func (p *poolDocumentAttributeAnimated) Get() *DocumentAttributeAnimated {
 }
 
 func (p *poolDocumentAttributeAnimated) Put(x *DocumentAttributeAnimated) {
+	x.Sound = false
 	p.pool.Put(x)
 }
 
@@ -239,70 +240,6 @@ var PoolDocument = poolDocument{}
 
 func ResultDocument(out *MessageEnvelope, res *Document) {
 	out.Constructor = C_Document
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_InputMediaInvoice int64 = 2272736316
-
-type poolInputMediaInvoice struct {
-	pool sync.Pool
-}
-
-func (p *poolInputMediaInvoice) Get() *InputMediaInvoice {
-	x, ok := p.pool.Get().(*InputMediaInvoice)
-	if !ok {
-		return &InputMediaInvoice{}
-	}
-	return x
-}
-
-func (p *poolInputMediaInvoice) Put(x *InputMediaInvoice) {
-	p.pool.Put(x)
-}
-
-var PoolInputMediaInvoice = poolInputMediaInvoice{}
-
-func ResultInputMediaInvoice(out *MessageEnvelope, res *InputMediaInvoice) {
-	out.Constructor = C_InputMediaInvoice
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_MediaInvoice int64 = 44271741
-
-type poolMediaInvoice struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaInvoice) Get() *MediaInvoice {
-	x, ok := p.pool.Get().(*MediaInvoice)
-	if !ok {
-		return &MediaInvoice{}
-	}
-	return x
-}
-
-func (p *poolMediaInvoice) Put(x *MediaInvoice) {
-	p.pool.Put(x)
-}
-
-var PoolMediaInvoice = poolMediaInvoice{}
-
-func ResultMediaInvoice(out *MessageEnvelope, res *MediaInvoice) {
-	out.Constructor = C_MediaInvoice
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -582,39 +519,6 @@ var PoolInputMediaUploadedSealedDocument = poolInputMediaUploadedSealedDocument{
 
 func ResultInputMediaUploadedSealedDocument(out *MessageEnvelope, res *InputMediaUploadedSealedDocument) {
 	out.Constructor = C_InputMediaUploadedSealedDocument
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_MediaSealedDocument int64 = 1878784538
-
-type poolMediaSealedDocument struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaSealedDocument) Get() *MediaSealedDocument {
-	x, ok := p.pool.Get().(*MediaSealedDocument)
-	if !ok {
-		return &MediaSealedDocument{}
-	}
-	return x
-}
-
-func (p *poolMediaSealedDocument) Put(x *MediaSealedDocument) {
-	x.EncryptedMediaDocument = x.EncryptedMediaDocument[:0]
-	p.pool.Put(x)
-}
-
-var PoolMediaSealedDocument = poolMediaSealedDocument{}
-
-func ResultMediaSealedDocument(out *MessageEnvelope, res *MediaSealedDocument) {
-	out.Constructor = C_MediaSealedDocument
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -929,76 +833,6 @@ func ResultPollAnswerVoters(out *MessageEnvelope, res *PollAnswerVoters) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_InputMediaSealed int64 = 1480164846
-
-type poolInputMediaSealed struct {
-	pool sync.Pool
-}
-
-func (p *poolInputMediaSealed) Get() *InputMediaSealed {
-	x, ok := p.pool.Get().(*InputMediaSealed)
-	if !ok {
-		return &InputMediaSealed{}
-	}
-	return x
-}
-
-func (p *poolInputMediaSealed) Put(x *InputMediaSealed) {
-	x.EncryptedMedia = x.EncryptedMedia[:0]
-	x.EncryptedBody = ""
-	x.Entities = x.Entities[:0]
-	p.pool.Put(x)
-}
-
-var PoolInputMediaSealed = poolInputMediaSealed{}
-
-func ResultInputMediaSealed(out *MessageEnvelope, res *InputMediaSealed) {
-	out.Constructor = C_InputMediaSealed
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_MediaSealed int64 = 3920960700
-
-type poolMediaSealed struct {
-	pool sync.Pool
-}
-
-func (p *poolMediaSealed) Get() *MediaSealed {
-	x, ok := p.pool.Get().(*MediaSealed)
-	if !ok {
-		return &MediaSealed{}
-	}
-	return x
-}
-
-func (p *poolMediaSealed) Put(x *MediaSealed) {
-	x.Media = x.Media[:0]
-	x.Body = ""
-	x.Entities = x.Entities[:0]
-	p.pool.Put(x)
-}
-
-var PoolMediaSealed = poolMediaSealed{}
-
-func ResultMediaSealed(out *MessageEnvelope, res *MediaSealed) {
-	out.Constructor = C_MediaSealed
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 func init() {
 	ConstructorNames[309707708] = "DocumentAttributeAudio"
 	ConstructorNames[1993289477] = "DocumentAttributeVideo"
@@ -1007,8 +841,6 @@ func init() {
 	ConstructorNames[1040723836] = "DocumentAttributeAnimated"
 	ConstructorNames[4146719643] = "DocumentAttribute"
 	ConstructorNames[555739168] = "Document"
-	ConstructorNames[2272736316] = "InputMediaInvoice"
-	ConstructorNames[44271741] = "MediaInvoice"
 	ConstructorNames[3529450013] = "InputMediaWebDocument"
 	ConstructorNames[1161129349] = "MediaWebDocument"
 	ConstructorNames[148034084] = "MediaWebPage"
@@ -1017,7 +849,6 @@ func init() {
 	ConstructorNames[870692909] = "InputMediaUploadedDocument"
 	ConstructorNames[2258657627] = "InputMediaDocument"
 	ConstructorNames[1891413833] = "InputMediaUploadedSealedDocument"
-	ConstructorNames[1878784538] = "MediaSealedDocument"
 	ConstructorNames[3638653559] = "InputMediaMessageDocument"
 	ConstructorNames[2281620705] = "MediaDocument"
 	ConstructorNames[185664060] = "InputMediaGeoLocation"
@@ -1027,6 +858,4 @@ func init() {
 	ConstructorNames[2124799390] = "PollAnswer"
 	ConstructorNames[3283416711] = "PollResults"
 	ConstructorNames[2095107985] = "PollAnswerVoters"
-	ConstructorNames[1480164846] = "InputMediaSealed"
-	ConstructorNames[3920960700] = "MediaSealed"
 }

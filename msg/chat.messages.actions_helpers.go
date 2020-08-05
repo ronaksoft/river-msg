@@ -281,6 +281,39 @@ func ResultMessageActionScreenShotTaken(out *MessageEnvelope, res *MessageAction
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_MessageActionThreadClosed int64 = 1366382890
+
+type poolMessageActionThreadClosed struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionThreadClosed) Get() *MessageActionThreadClosed {
+	x, ok := p.pool.Get().(*MessageActionThreadClosed)
+	if !ok {
+		return &MessageActionThreadClosed{}
+	}
+	return x
+}
+
+func (p *poolMessageActionThreadClosed) Put(x *MessageActionThreadClosed) {
+	x.ThreadID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessageActionThreadClosed = poolMessageActionThreadClosed{}
+
+func ResultMessageActionThreadClosed(out *MessageEnvelope, res *MessageActionThreadClosed) {
+	out.Constructor = C_MessageActionThreadClosed
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1949386261] = "MessageActionGroupAddUser"
 	ConstructorNames[1213452128] = "MessageActionGroupDeleteUser"
@@ -290,4 +323,5 @@ func init() {
 	ConstructorNames[1270465696] = "MessageActionClearHistory"
 	ConstructorNames[2399156016] = "MessageActionContactRegistered"
 	ConstructorNames[2637201461] = "MessageActionScreenShotTaken"
+	ConstructorNames[1366382890] = "MessageActionThreadClosed"
 }

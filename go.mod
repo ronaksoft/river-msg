@@ -1,4 +1,4 @@
-module git.ronaksoftware.com/river/msg
+module git.ronaksoft.com/river/msg
 
 go 1.14
 

@@ -65,5 +65,5 @@ func (g *GenPools) Generate(file *generator.FileDescriptor) {
 func (g *GenPools) GenerateImports(file *generator.FileDescriptor) {
 	//
 	// g.g.AddImport("sync")
-	// g.g.AddImport("git.ronaksoftware.com/river")
+	// g.g.AddImport("git.ronaksoft.com/river")
 }

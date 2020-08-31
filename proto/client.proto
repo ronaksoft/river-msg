@@ -226,3 +226,17 @@ message RecentSearchMany {
     repeated User Users = 2;
     repeated Group Groups = 3;
 }
+
+message GetUnreadCount {
+    required InputTeam Team = 1;
+    required bool withMutes = 2;
+}
+
+message GetMentionCount {
+    required InputTeam Team = 1;
+    required bool withMutes = 2;
+}
+
+message Int64Res {
+    required int64 num = 1;
+}

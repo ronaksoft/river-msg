@@ -80,14 +80,14 @@ message ClientGetRecentSearch {
     required int32 Limit = 1;
 }
 
-// PutRecentSearch
+// ClientPutRecentSearch
 // @Function
 // @Return: Bool
 message ClientPutRecentSearch {
     required InputPeer Peer = 1;
 }
 
-// PutRecentSearch
+// ClientPutRecentSearch
 // @Function
 // @Return: Bool
 message ClientRemoveRecentSearch {
@@ -105,6 +105,14 @@ message ClientRemoveAllRecentSearches {
 // @Function
 // @Return: ClientFilesMany
 message ClientGetSavedGifs {
+}
+
+// ClientGetTeamCounters
+// @Function
+// @Return: ClientTeamCounters
+message ClientGetTeamCounters {
+    required InputTeam Team = 1;
+    required bool withMutes = 2;
 }
 
 // ClientPendingMessage
@@ -215,28 +223,21 @@ enum ClientMediaType {
     ClientMediaGif = 6;
 }
 
-// RecentSearch
-message RecentSearch {
+// ClientRecentSearch
+message ClientRecentSearch {
     required Peer Peer = 1;
     required int32 Date = 2;
 }
 
 // RecentSearchMany
-message RecentSearchMany {
-    repeated RecentSearch RecentSearches = 1;
+message ClientRecentSearchMany {
+    repeated ClientRecentSearch RecentSearches = 1;
     repeated User Users = 2;
     repeated Group Groups = 3;
 }
 
-// GetTeamCounters
-// @Function
-// @Return: TeamCounters
-message GetTeamCounters {
-    required InputTeam Team = 1;
-    required bool withMutes = 2;
-}
-
-message TeamCounters {
+// ClientTeamCounters
+message ClientTeamCounters {
     required int64 UnreadCount = 1;
     required int64 MentionCount = 2;
 }

@@ -520,6 +520,13 @@ message InputTeam {
     required fixed64 AccessHash = 2 [jstype = JS_STRING];
 }
 
+// TeamPhoto
+message TeamPhoto {
+    required FileLocation PhotoBig = 1;
+    required FileLocation PhotoSmall = 2;
+    optional int64 PhotoID = 3 [jstype = JS_STRING];
+}
+
 // Team
 message Team {
     required int64 ID = 1 [jstype = JS_STRING];
@@ -527,5 +534,8 @@ message Team {
     required int64 CreatorID = 3 [jstype = JS_STRING];
     required fixed64 AccessHash = 6 [jstype = JS_STRING];
     repeated TeamFlags Flags = 7;
+    optional int32 Capacity = 8;
+    optional bool Community = 9;
+    optional TeamPhoto Photo = 10;
 }
 

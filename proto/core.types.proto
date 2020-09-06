@@ -522,5 +522,6 @@ message Team {
     required string Name = 2;
     required int64 CreatorID = 3 [jstype = JS_STRING];
     required fixed64 AccessHash = 6 [jstype = JS_STRING];
+    repeated TeamFlags Flags = 7;
 }
 

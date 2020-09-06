@@ -373,6 +373,15 @@ message UpdateTeamPhotoChanged {
     required FileLocation Photo = 2;
 }
 
+// UpdateTeam
+message UpdateTeam {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required string Name = 2;
+}
+
+
 // UpdateCommunityMessage
 message UpdateCommunityMessage {
     required int64 TeamID = 100;

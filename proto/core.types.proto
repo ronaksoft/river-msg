@@ -376,7 +376,7 @@ enum MessageEntityType {
     MessageEntityTypeHashTag = 5;
     MessageEntityTypeCode = 6;
     MessageEntityTypeBotCommand = 7;
-    MessageEntityTypeReserved3 = 8;
+    MessageEntityTypeMentionAll = 8;
     MessageEntityTypeReserved4 = 9;
     MessageEntityTypeReserved5 = 10;
     MessageEntityTypeReserved6 = 11;

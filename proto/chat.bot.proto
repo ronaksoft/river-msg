@@ -141,7 +141,7 @@ message BotDeleteMessage {
 // @Function (BotOnly)
 // @Returns: Bool
 message BotSetCallbackAnswer {
-    required int64 QueryID = 1;
+    required int64 QueryID = 1 [jstype = JS_STRING];
     optional string Url = 2; // URL to open
     optional string Message = 3; // Alert to show
     required int32 CacheTime = 4; // For how long should this answer be cached (in seconds) [Default is  300]
@@ -189,7 +189,7 @@ message BotSetInlineResults {
     // the bot and sends the bot a start message with a certain parameter.
     optional BotInlineSwitchPM SwitchPM = 6;
     // Unique identifier for the answered query
-    required int64 QueryID = 7;
+    required int64 QueryID = 7 [jstype = JS_STRING];
 }
 
 // BotSendInlineResults
@@ -197,7 +197,7 @@ message BotSetInlineResults {
 // @Returns: Bool + Updates
 message BotSendInlineResults {
     required int64 RandomID = 1;
-    required int64 QueryID = 2; // Query ID from BotResults response of BotGetInlineResults
+    required int64 QueryID = 2 [jstype = JS_STRING]; // Query ID from BotResults response of BotGetInlineResults
     required string ResultID = 3; // Result ID from BotResults response of BotGetInlineResults
     optional bool ClearDraft = 4;
     required InputPeer Peer = 5; // Destination
@@ -231,7 +231,7 @@ message BotUploadGif {
 // BotResults
 message BotResults {
     required bool Gallery = 1;
-    required int64 QueryID = 2;
+    required int64 QueryID = 2 [jstype = JS_STRING];
     optional string NextOffset = 3; // The next offset to use when navigating through results
     optional BotInlineSwitchPM SwitchPM = 4; // Whether the bot requested the user to message him in private
     repeated BotInlineResult Results = 5; // The results

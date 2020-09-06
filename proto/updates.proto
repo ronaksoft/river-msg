@@ -342,6 +342,7 @@ message UpdateTeamMemberAdded {
     required int64 TeamID = 1 [jstype = JS_STRING];
     required int64 UserID = 2 [jstype = JS_STRING];
     required int64 AdderID = 3 [jstype = JS_STRING];
+    required fixed32 Hash = 4;
 }
 
 // UpdateTeamMemberRemoved
@@ -351,6 +352,16 @@ message UpdateTeamMemberRemoved {
     required int64 TeamID = 1 [jstype = JS_STRING];
     required int64 UserID = 2 [jstype = JS_STRING];
     required int64 RemoverID = 3 [jstype = JS_STRING];
+    required fixed32 Hash = 4;
+}
+
+// UpdateTeamMemberStatus
+message UpdateTeamMemberStatus {
+    required int32 UCount = 100;
+    required int64 UpdateID = 101;
+    required int64 TeamID = 1 [jstype = JS_STRING];
+    required int64 UserID = 2 [jstype = JS_STRING];
+    required bool Admin = 3;
 }
 
 // UpdateTeamPhotoChanged

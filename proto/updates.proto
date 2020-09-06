@@ -361,7 +361,8 @@ message UpdateTeamMemberStatus {
     required int64 UpdateID = 101;
     required int64 TeamID = 1 [jstype = JS_STRING];
     required int64 UserID = 2 [jstype = JS_STRING];
-    required bool Admin = 3;
+    required int64 ChangerID = 3 [jstype = JS_STRING];
+    required bool Admin = 4;
 }
 
 // UpdateTeamPhotoChanged

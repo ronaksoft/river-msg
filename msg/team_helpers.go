@@ -338,38 +338,6 @@ func ResultTeamUploadPhoto(out *MessageEnvelope, res *TeamUploadPhoto) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_TeamUpdatePhoto int64 = 267698028
-
-type poolTeamUpdatePhoto struct {
-	pool sync.Pool
-}
-
-func (p *poolTeamUpdatePhoto) Get() *TeamUpdatePhoto {
-	x, ok := p.pool.Get().(*TeamUpdatePhoto)
-	if !ok {
-		return &TeamUpdatePhoto{}
-	}
-	return x
-}
-
-func (p *poolTeamUpdatePhoto) Put(x *TeamUpdatePhoto) {
-	p.pool.Put(x)
-}
-
-var PoolTeamUpdatePhoto = poolTeamUpdatePhoto{}
-
-func ResultTeamUpdatePhoto(out *MessageEnvelope, res *TeamUpdatePhoto) {
-	out.Constructor = C_TeamUpdatePhoto
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_TeamRemovePhoto int64 = 3388888323
 
 type poolTeamRemovePhoto struct {
@@ -512,7 +480,6 @@ func init() {
 	ConstructorNames[3107323194] = "TeamListMembers"
 	ConstructorNames[3481894956] = "TeamEdit"
 	ConstructorNames[1595699082] = "TeamUploadPhoto"
-	ConstructorNames[267698028] = "TeamUpdatePhoto"
 	ConstructorNames[3388888323] = "TeamRemovePhoto"
 	ConstructorNames[2208941294] = "TeamMembers"
 	ConstructorNames[1965775170] = "TeamMember"

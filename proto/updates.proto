@@ -365,12 +365,12 @@ message UpdateTeamMemberStatus {
     required bool Admin = 4;
 }
 
-// UpdateTeamPhotoChanged
-message UpdateTeamPhotoChanged {
+// UpdateTeamPhoto
+message UpdateTeamPhoto {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
     required int64 TeamID = 1 [jstype = JS_STRING];
-    required FileLocation Photo = 2;
+    required TeamPhoto Photo = 2;
 }
 
 // UpdateTeam

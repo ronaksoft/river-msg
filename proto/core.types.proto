@@ -49,8 +49,6 @@ message UpdateContainer {
     repeated Group Groups = 6;
 }
 
-
-
 // ProtoMessage
 // If AuthID == 0 then Payload is a MessageEnvelop otherwise Payload is a ProtoEncryptedPayload
 message ProtoMessage {
@@ -508,6 +506,11 @@ enum TeamFlags {
     TeamFlagsEmpty = 0;
     TeamFlagsCreator = 1;
     TeamFlagsAdmin = 2;
+    TeamFlagsReserved1 = 3;
+    TeamFlagsReserved2 = 4;
+    TeamFlagsReserved3 = 5;
+    TeamFlagsReserved4 = 6;
+    TeamFlagsReserved5 = 7;
 }
 
 // InputTeam

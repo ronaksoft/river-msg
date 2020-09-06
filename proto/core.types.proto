@@ -503,6 +503,13 @@ message GeoLocation {
     required float Long = 2;
 }
 
+// TeamFlags
+enum TeamFlags {
+    TeamFlagsEmpty = 0;
+    TeamFlagsCreator = 1;
+    TeamFlagsAdmin = 2;
+}
+
 // InputTeam
 message InputTeam {
     required int64 ID = 1 [jstype = JS_STRING];

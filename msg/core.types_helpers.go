@@ -1499,7 +1499,6 @@ func (p *poolTeamPhoto) Get() *TeamPhoto {
 }
 
 func (p *poolTeamPhoto) Put(x *TeamPhoto) {
-	x.PhotoID = 0
 	p.pool.Put(x)
 }
 

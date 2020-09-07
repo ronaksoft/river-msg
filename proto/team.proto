@@ -94,6 +94,7 @@ message TeamRemovePhoto {
 // TeamMembers
 message TeamMembers {
     repeated TeamMember Members = 1;
+    repeated User Users = 2;
 }
 
 // TeamMember

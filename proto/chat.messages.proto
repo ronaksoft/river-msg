@@ -191,7 +191,7 @@ message MessagesSendReaction {
 message MessagesGetReactionList {
     required InputPeer Peer = 1;
     required int64 MessageID = 2;
-    required string reaction = 3;
+    required string Reaction = 3;
     required int32 Offset = 4;
     required int32 Limit = 5;
 }
@@ -224,6 +224,6 @@ message MessagesMany {
 
 // MessagesReactionList
 message MessagesReactionList {
-
+    repeated User Users = 1;
 }
 

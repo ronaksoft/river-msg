@@ -355,10 +355,10 @@ message UserMessage {
     repeated ReactionCounter Reactions = 25;
 }
 
-// Reaction
+// ReactionCounter
 message ReactionCounter {
-    required string emoji = 1;
-    required int32 total = 2;
+    required string Reaction = 1;
+    required int32 Total = 2;
 }
 
 // DraftMessage

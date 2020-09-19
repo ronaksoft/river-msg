@@ -26,6 +26,7 @@ message ClientSendMessageMedia {
     optional int64 ThumbID = 15;
     optional int32 FileTotalParts = 16;
     repeated MessageEntity Entities = 17;
+    optional bytes TinyThumb = 18;
 }
 
 // ClientGlobalSearch

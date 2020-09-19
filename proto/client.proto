@@ -139,6 +139,7 @@ message ClientPendingMessage {
     optional FileLocation ServerFile = 19;
     optional int64 TeamID = 20;
     optional uint64 TeamAccessHash = 21;
+    optional bytes TinyThumb = 22;
 }
 
 // ClientSearchResult

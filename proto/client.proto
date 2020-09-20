@@ -189,6 +189,32 @@ message ClientFile {
     repeated DocumentAttribute Attributes = 16;
 }
 
+// ClientFileRequest
+message ClientFileRequest {
+    // Logical Location
+    optional int64 PeerID = 1;
+    optional int32 PeerType = 2;
+    optional int64 MessageID = 3;
+    // Storage Location
+    optional int32 ClusterID = 4;
+    optional int64 FileID = 5;
+    optional fixed64 AccessHash = 6;
+    optional int32 Version = 7;
+    optional int64 FileSize = 8; // FileSize (Optional) if is set then progress will be calculated
+    optional int32 ChunkSize = 9; // ChunkSize identifies how many request we need to send to server to Download a file.
+    repeated int32 FinishedParts = 10;
+    optional int32 TotalParts = 11;
+    optional bool SkipDelegateCall = 12;
+    optional string FilePath = 13;
+    optional string TempPath = 14;
+    optional bool CheckSha256 = 15;
+    optional bytes FileSha256 = 16;
+    optional bool IsProfilePhoto = 17;
+    optional int64 GroupID = 18;
+    optional int64 ThumbID = 19;
+    optional string ThumbPath = 20;
+}
+
 // ClientFileStatus
 message ClientFileStatus {
     required int32 Status = 1;

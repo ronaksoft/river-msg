@@ -191,6 +191,7 @@ message ClientFile {
 
 // ClientFileRequest
 message ClientFileRequest {
+    optional ClientFileRequest Next = 100;
     // Logical Location
     optional int64 PeerID = 1;
     optional int32 PeerType = 2;

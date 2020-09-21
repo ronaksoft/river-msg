@@ -1577,6 +1577,10 @@ func (p *poolUpdateReaction) Put(x *UpdateReaction) {
 		*x.Peer = Peer{}
 	}
 
+	if x.Sender != nil {
+		*x.Sender = User{}
+	}
+
 	p.pool.Put(x)
 }
 

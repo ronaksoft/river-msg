@@ -417,8 +417,8 @@ message UpdateReaction {
     repeated ReactionCounter Counter = 2;
     optional int64 TeamID = 3 [jstype = JS_STRING];
     optional Peer Peer = 4;
+    optional User Sender = 5;
 }
-
 
 // UpdateCalendarEventAdded
 message UpdateCalendarEventAdded {

@@ -1573,6 +1573,10 @@ func (p *poolUpdateReaction) Get() *UpdateReaction {
 func (p *poolUpdateReaction) Put(x *UpdateReaction) {
 	x.Counter = x.Counter[:0]
 	x.TeamID = 0
+	if x.Peer != nil {
+		*x.Peer = Peer{}
+	}
+
 	p.pool.Put(x)
 }
 

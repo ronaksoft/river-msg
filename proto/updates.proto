@@ -416,6 +416,7 @@ message UpdateReaction {
     required int64 MessageID = 1;
     repeated ReactionCounter Counter = 2;
     optional int64 TeamID = 3;
+    optional Peer Peer = 4;
 }
 
 

@@ -200,9 +200,7 @@ message MessagesDeleteReaction {
 message MessagesGetReactionList {
     required InputPeer Peer = 1;
     required int64 MessageID = 2;
-    required string Reaction = 3;
-    required int32 Offset = 4;
-    required int32 Limit = 5;
+    required int32 Hash = 3;
 }
 
 // MessagesDialogs
@@ -235,6 +233,8 @@ message MessagesMany {
 message MessagesReactionList {
     repeated ReactionList List = 1;
     repeated User Users = 2;
+    required int32 Hash = 3;
+    required bool Modified = 4;
 }
 
 // ReactionList

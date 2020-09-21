@@ -240,5 +240,5 @@ message MessagesReactionList {
 // ReactionList
 message ReactionList {
     required string Reaction = 1;
-    repeated int64 UserIDs = 2;
+    repeated int64 UserIDs = 2 [jstype = JS_STRING];
 }

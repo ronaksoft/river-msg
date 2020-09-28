@@ -209,7 +209,7 @@ message MessagesGetReactionList {
 message MessagesTogglePin {
     required InputPeer Peer = 1;
     required int64 MessageID = 2;
-    required bool Pin = 3;
+    required bool Silent = 3;
 }
 
 // MessagesDialogs

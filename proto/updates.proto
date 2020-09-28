@@ -99,7 +99,6 @@ message UpdateMessagePinned {
     required Peer Peer = 1;
     required int64 UserID = 2;
     required int64 MsgID = 3;
-    required bool Pinned = 4;
     required int64 Version = 5;
 }
 

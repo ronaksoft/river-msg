@@ -740,6 +740,38 @@ func ResultMessagesGetReactionList(out *MessageEnvelope, res *MessagesGetReactio
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_MessagesPin int64 = 3364191918
+
+type poolMessagesPin struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesPin) Get() *MessagesPin {
+	x, ok := p.pool.Get().(*MessagesPin)
+	if !ok {
+		return &MessagesPin{}
+	}
+	return x
+}
+
+func (p *poolMessagesPin) Put(x *MessagesPin) {
+	p.pool.Put(x)
+}
+
+var PoolMessagesPin = poolMessagesPin{}
+
+func ResultMessagesPin(out *MessageEnvelope, res *MessagesPin) {
+	out.Constructor = C_MessagesPin
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_MessagesDialogs int64 = 3252610224
 
 type poolMessagesDialogs struct {
@@ -935,6 +967,7 @@ func init() {
 	ConstructorNames[279494057] = "MessagesSendReaction"
 	ConstructorNames[1547991459] = "MessagesDeleteReaction"
 	ConstructorNames[3097050126] = "MessagesGetReactionList"
+	ConstructorNames[3364191918] = "MessagesPin"
 	ConstructorNames[3252610224] = "MessagesDialogs"
 	ConstructorNames[2942502835] = "MessagesSent"
 	ConstructorNames[1713238910] = "MessagesMany"

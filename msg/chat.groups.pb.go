@@ -597,6 +597,159 @@ func (m *GroupsUpdatePhoto) GetGroupID() int64 {
 	return 0
 }
 
+// GroupsGetHistoryStats
+// @Function
+// @Return: GroupsHistoryStats
+type GroupsGetReadHistoryStats struct {
+	GroupID int64 `protobuf:"varint,1,req,name=GroupID" json:"GroupID"`
+}
+
+func (m *GroupsGetReadHistoryStats) Reset()         { *m = GroupsGetReadHistoryStats{} }
+func (m *GroupsGetReadHistoryStats) String() string { return proto.CompactTextString(m) }
+func (*GroupsGetReadHistoryStats) ProtoMessage()    {}
+func (*GroupsGetReadHistoryStats) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c424a93c3dc008e, []int{10}
+}
+func (m *GroupsGetReadHistoryStats) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GroupsGetReadHistoryStats) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GroupsGetReadHistoryStats.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GroupsGetReadHistoryStats) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GroupsGetReadHistoryStats.Merge(m, src)
+}
+func (m *GroupsGetReadHistoryStats) XXX_Size() int {
+	return m.Size()
+}
+func (m *GroupsGetReadHistoryStats) XXX_DiscardUnknown() {
+	xxx_messageInfo_GroupsGetReadHistoryStats.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GroupsGetReadHistoryStats proto.InternalMessageInfo
+
+func (m *GroupsGetReadHistoryStats) GetGroupID() int64 {
+	if m != nil {
+		return m.GroupID
+	}
+	return 0
+}
+
+// GroupsHistoryStats
+type GroupsHistoryStats struct {
+	Stats []*ReadHistoryStat `protobuf:"bytes,1,rep,name=Stats" json:"Stats,omitempty"`
+	Users []*User            `protobuf:"bytes,2,rep,name=Users" json:"Users,omitempty"`
+}
+
+func (m *GroupsHistoryStats) Reset()         { *m = GroupsHistoryStats{} }
+func (m *GroupsHistoryStats) String() string { return proto.CompactTextString(m) }
+func (*GroupsHistoryStats) ProtoMessage()    {}
+func (*GroupsHistoryStats) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c424a93c3dc008e, []int{11}
+}
+func (m *GroupsHistoryStats) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GroupsHistoryStats) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GroupsHistoryStats.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GroupsHistoryStats) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GroupsHistoryStats.Merge(m, src)
+}
+func (m *GroupsHistoryStats) XXX_Size() int {
+	return m.Size()
+}
+func (m *GroupsHistoryStats) XXX_DiscardUnknown() {
+	xxx_messageInfo_GroupsHistoryStats.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GroupsHistoryStats proto.InternalMessageInfo
+
+func (m *GroupsHistoryStats) GetStats() []*ReadHistoryStat {
+	if m != nil {
+		return m.Stats
+	}
+	return nil
+}
+
+func (m *GroupsHistoryStats) GetUsers() []*User {
+	if m != nil {
+		return m.Users
+	}
+	return nil
+}
+
+// ReadHistoryStat
+type ReadHistoryStat struct {
+	UserID    int64 `protobuf:"varint,1,req,name=UserID" json:"UserID"`
+	MessageID int64 `protobuf:"varint,2,req,name=MessageID" json:"MessageID"`
+}
+
+func (m *ReadHistoryStat) Reset()         { *m = ReadHistoryStat{} }
+func (m *ReadHistoryStat) String() string { return proto.CompactTextString(m) }
+func (*ReadHistoryStat) ProtoMessage()    {}
+func (*ReadHistoryStat) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c424a93c3dc008e, []int{12}
+}
+func (m *ReadHistoryStat) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ReadHistoryStat) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ReadHistoryStat.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ReadHistoryStat) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReadHistoryStat.Merge(m, src)
+}
+func (m *ReadHistoryStat) XXX_Size() int {
+	return m.Size()
+}
+func (m *ReadHistoryStat) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReadHistoryStat.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReadHistoryStat proto.InternalMessageInfo
+
+func (m *ReadHistoryStat) GetUserID() int64 {
+	if m != nil {
+		return m.UserID
+	}
+	return 0
+}
+
+func (m *ReadHistoryStat) GetMessageID() int64 {
+	if m != nil {
+		return m.MessageID
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*GroupsCreate)(nil), "msg.GroupsCreate")
 	proto.RegisterType((*GroupsAddUser)(nil), "msg.GroupsAddUser")
@@ -608,40 +761,48 @@ func init() {
 	proto.RegisterType((*GroupsUploadPhoto)(nil), "msg.GroupsUploadPhoto")
 	proto.RegisterType((*GroupsRemovePhoto)(nil), "msg.GroupsRemovePhoto")
 	proto.RegisterType((*GroupsUpdatePhoto)(nil), "msg.GroupsUpdatePhoto")
+	proto.RegisterType((*GroupsGetReadHistoryStats)(nil), "msg.GroupsGetReadHistoryStats")
+	proto.RegisterType((*GroupsHistoryStats)(nil), "msg.GroupsHistoryStats")
+	proto.RegisterType((*ReadHistoryStat)(nil), "msg.ReadHistoryStat")
 }
 
 func init() { proto.RegisterFile("chat.groups.proto", fileDescriptor_3c424a93c3dc008e) }
 
 var fileDescriptor_3c424a93c3dc008e = []byte{
-	// 441 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x53, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0xcd, 0xda, 0x0d, 0x2d, 0x43, 0x80, 0x76, 0x4f, 0x56, 0x0e, 0x66, 0xb5, 0xe2, 0xe0, 0x93,
-	0x05, 0xfc, 0x41, 0x43, 0x9a, 0xca, 0x12, 0x52, 0x91, 0xd5, 0x0a, 0x8e, 0xb8, 0xd9, 0x91, 0x6b,
-	0x64, 0x7b, 0xad, 0xf5, 0x1a, 0xc4, 0x89, 0x03, 0x3f, 0xc0, 0x67, 0xf5, 0xd8, 0x23, 0x27, 0x84,
-	0x92, 0x1f, 0x41, 0xde, 0xb5, 0xdd, 0x14, 0x10, 0xcd, 0x21, 0xd7, 0xf7, 0x66, 0xde, 0x7b, 0x33,
-	0xb3, 0x0b, 0x47, 0xcb, 0xab, 0x44, 0x87, 0xa9, 0x92, 0x4d, 0x55, 0x87, 0x95, 0x92, 0x5a, 0x52,
-	0xb7, 0xa8, 0xd3, 0xe9, 0xe1, 0x52, 0x2a, 0x0c, 0xf5, 0x97, 0x0a, 0x3b, 0x98, 0x2b, 0x98, 0x9c,
-	0x9a, 0xb2, 0xd7, 0x0a, 0x13, 0x8d, 0xf4, 0x39, 0x8c, 0x2f, 0x6a, 0x54, 0xb5, 0x47, 0x98, 0x1b,
-	0x3c, 0x7a, 0xf5, 0x24, 0x2c, 0xea, 0x34, 0x8c, 0xca, 0xaa, 0xd1, 0x2d, 0x1c, 0x5b, 0x92, 0x4e,
-	0x61, 0x7c, 0x9e, 0xe9, 0x1c, 0x3d, 0x87, 0x39, 0xc1, 0xc3, 0xd9, 0xde, 0xf5, 0xcf, 0x67, 0xa3,
-	0xd8, 0x42, 0x94, 0xc1, 0x41, 0x9c, 0x94, 0x42, 0x16, 0xd1, 0xdc, 0x73, 0x19, 0x09, 0xdc, 0x8e,
-	0x1e, 0x50, 0xfe, 0x15, 0x1e, 0x5b, 0xcf, 0x63, 0x21, 0x5a, 0x3d, 0xca, 0x60, 0xdf, 0x00, 0xd1,
-	0xdc, 0x23, 0xcc, 0x09, 0xdc, 0xd9, 0x83, 0xb6, 0xe3, 0x05, 0x89, 0x7b, 0x98, 0x72, 0xd8, 0x6b,
-	0x2b, 0x8d, 0xdf, 0xdf, 0xa9, 0x0c, 0x47, 0x03, 0x98, 0x2c, 0xa4, 0xfa, 0x9c, 0x28, 0xf1, 0x26,
-	0x2b, 0x32, 0xed, 0xb9, 0xcc, 0x09, 0xc6, 0x9d, 0xf9, 0x1d, 0x86, 0x9f, 0xc1, 0x53, 0x1b, 0xe0,
-	0x44, 0x64, 0xba, 0x4f, 0x7d, 0x5f, 0x84, 0xff, 0xcc, 0xcc, 0xdf, 0xc3, 0xa1, 0x15, 0x9c, 0x63,
-	0x8e, 0x1a, 0x77, 0x37, 0x14, 0x7f, 0xd9, 0xef, 0xea, 0x14, 0xf5, 0xa2, 0xc9, 0xf3, 0xfb, 0x65,
-	0xf9, 0x07, 0xa0, 0xb6, 0xe5, 0x5c, 0xa6, 0x69, 0x8e, 0xc7, 0xa2, 0xc8, 0xca, 0x7a, 0x8b, 0x38,
-	0x01, 0x4c, 0x4c, 0xed, 0x49, 0x99, 0x5c, 0xe6, 0x28, 0x4c, 0xac, 0x83, 0x7e, 0x7f, 0x9b, 0x0c,
-	0x6f, 0xe0, 0xc8, 0x3a, 0x5c, 0x54, 0x22, 0xd1, 0xd6, 0x61, 0x47, 0x47, 0x9c, 0xc2, 0xd8, 0xc8,
-	0x99, 0xeb, 0xf5, 0xee, 0x16, 0xe2, 0xdf, 0xc8, 0xad, 0x6f, 0x2e, 0x13, 0xf1, 0xf6, 0xaa, 0x7d,
-	0xd8, 0x5b, 0xf9, 0x2e, 0xb2, 0xee, 0x70, 0x77, 0x7c, 0x5b, 0x34, 0x36, 0x5c, 0x3b, 0x7c, 0x8c,
-	0xba, 0x51, 0xe5, 0xd9, 0xe5, 0x47, 0x5c, 0x6a, 0xf3, 0x72, 0x87, 0xe1, 0x37, 0x19, 0xfe, 0xae,
-	0x0f, 0x11, 0x63, 0x21, 0x3f, 0xe1, 0xb6, 0x21, 0x18, 0xec, 0x9b, 0xd2, 0x68, 0xee, 0x39, 0xe6,
-	0x57, 0x0c, 0x15, 0x1d, 0x7c, 0x2b, 0x6c, 0xb7, 0x3a, 0x08, 0xf7, 0x6d, 0x7f, 0x08, 0x77, 0xf0,
-	0xa6, 0xb5, 0xf3, 0x4f, 0xeb, 0x99, 0x77, 0xbd, 0xf2, 0xc9, 0xcd, 0xca, 0x27, 0xbf, 0x56, 0x3e,
-	0xf9, 0xbe, 0xf6, 0x47, 0x37, 0x6b, 0x7f, 0xf4, 0x63, 0xed, 0x8f, 0x7e, 0x07, 0x00, 0x00, 0xff,
-	0xff, 0x5c, 0xd8, 0x12, 0x51, 0x28, 0x04, 0x00, 0x00,
+	// 524 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xbf, 0x6f, 0xd3, 0x40,
+	0x14, 0x8e, 0xed, 0xba, 0x6d, 0x1e, 0x81, 0xb6, 0x27, 0x06, 0x93, 0xc1, 0xb5, 0x4e, 0x0c, 0x16,
+	0x83, 0x05, 0xec, 0x0c, 0x0d, 0x69, 0x4a, 0x24, 0x50, 0x91, 0x69, 0x04, 0x23, 0xd7, 0xdc, 0xc9,
+	0x35, 0xb2, 0x7d, 0xd6, 0xf9, 0x0c, 0xea, 0xc4, 0xc0, 0x3f, 0xc0, 0x9f, 0xd5, 0xb1, 0x23, 0x13,
+	0x42, 0xc9, 0x3f, 0x82, 0x7c, 0x67, 0x3b, 0x3f, 0x8a, 0x68, 0x86, 0x6c, 0xd6, 0xf7, 0xbe, 0xf7,
+	0x7d, 0xdf, 0xbb, 0x7b, 0x3e, 0x38, 0x9a, 0x5e, 0x11, 0x19, 0x44, 0x82, 0x97, 0x79, 0x11, 0xe4,
+	0x82, 0x4b, 0x8e, 0xac, 0xb4, 0x88, 0xfa, 0x87, 0x53, 0x2e, 0x58, 0x20, 0xaf, 0x73, 0x56, 0xc3,
+	0x58, 0x40, 0xef, 0x4c, 0xd1, 0x5e, 0x0b, 0x46, 0x24, 0x43, 0x4f, 0xc1, 0x9e, 0x14, 0x4c, 0x14,
+	0x8e, 0xe1, 0x59, 0xfe, 0x83, 0x97, 0x8f, 0x82, 0xb4, 0x88, 0x82, 0x71, 0x96, 0x97, 0xb2, 0x82,
+	0x43, 0x5d, 0x44, 0x7d, 0xb0, 0x2f, 0x62, 0x99, 0x30, 0xc7, 0xf4, 0x4c, 0xbf, 0x3b, 0xd8, 0xb9,
+	0xf9, 0x7d, 0xdc, 0x09, 0x35, 0x84, 0x3c, 0xd8, 0x0f, 0x49, 0x46, 0x79, 0x3a, 0x1e, 0x3a, 0x96,
+	0x67, 0xf8, 0x56, 0x5d, 0x6e, 0x51, 0xfc, 0x1d, 0x1e, 0x6a, 0xcf, 0x13, 0x4a, 0x2b, 0x3d, 0xe4,
+	0xc1, 0x9e, 0x02, 0xc6, 0x43, 0xc7, 0xf0, 0x4c, 0xdf, 0x1a, 0xec, 0x56, 0x1d, 0xcf, 0x8d, 0xb0,
+	0x81, 0x11, 0x86, 0x9d, 0x8a, 0xa9, 0xfc, 0xee, 0xa6, 0x52, 0x35, 0xe4, 0x43, 0x6f, 0xc4, 0xc5,
+	0x37, 0x22, 0xe8, 0xdb, 0x38, 0x8d, 0xa5, 0x63, 0x79, 0xa6, 0x6f, 0xd7, 0xe6, 0x2b, 0x15, 0x7c,
+	0x0e, 0x07, 0x3a, 0xc0, 0x29, 0x8d, 0x65, 0x93, 0xfa, 0xbe, 0x08, 0xff, 0x99, 0x19, 0x7f, 0x82,
+	0x43, 0x2d, 0x38, 0x64, 0x09, 0x93, 0x6c, 0x7b, 0x43, 0xe1, 0x17, 0xcd, 0x59, 0x9d, 0x31, 0x39,
+	0x2a, 0x93, 0xe4, 0x7e, 0x59, 0xfc, 0x19, 0x90, 0x6e, 0xb9, 0xe0, 0x51, 0x94, 0xb0, 0x13, 0x9a,
+	0xc6, 0x59, 0xb1, 0x41, 0x1c, 0x1f, 0x7a, 0x8a, 0x7b, 0x9a, 0x91, 0xcb, 0x84, 0x51, 0x15, 0x6b,
+	0xbf, 0x39, 0xbf, 0xe5, 0x0a, 0x2e, 0xe1, 0x48, 0x3b, 0x4c, 0x72, 0x4a, 0xa4, 0x76, 0xd8, 0xd2,
+	0x25, 0xf6, 0xc1, 0x56, 0x72, 0xea, 0xf6, 0x1a, 0x77, 0x0d, 0xe1, 0x1f, 0xc6, 0xc2, 0x37, 0xe1,
+	0x84, 0xbe, 0xbf, 0xaa, 0x16, 0x7b, 0x23, 0xdf, 0x51, 0x5c, 0x5f, 0xdc, 0x8a, 0x6f, 0x85, 0x86,
+	0xaa, 0x56, 0x0d, 0x1f, 0x32, 0x59, 0x8a, 0xec, 0xfc, 0xf2, 0x0b, 0x9b, 0x4a, 0xb5, 0xb9, 0xed,
+	0xf0, 0xcb, 0x15, 0xfc, 0xb1, 0x09, 0x11, 0xb2, 0x94, 0x7f, 0x65, 0x9b, 0x86, 0xf0, 0x60, 0x4f,
+	0x51, 0xc7, 0x43, 0xc7, 0x54, 0x7f, 0x45, 0xcb, 0xa8, 0xe1, 0x85, 0xb0, 0x3e, 0xd5, 0x56, 0xb8,
+	0x69, 0x5b, 0x13, 0xae, 0xe1, 0x65, 0x6b, 0xf3, 0xdf, 0x0b, 0xf1, 0x0a, 0x9e, 0xb4, 0x3b, 0x14,
+	0x32, 0x42, 0xdf, 0xc4, 0x85, 0xe4, 0xe2, 0xfa, 0x83, 0x24, 0x72, 0x83, 0xbd, 0xc0, 0xa4, 0xd9,
+	0xa7, 0x95, 0xbe, 0x67, 0x60, 0xab, 0x8f, 0xfa, 0xa1, 0x78, 0xac, 0x4e, 0x75, 0x4d, 0x3d, 0xd4,
+	0x14, 0x74, 0xdc, 0x3c, 0x2a, 0xa6, 0xe2, 0x76, 0x15, 0x77, 0xe9, 0x3d, 0xc1, 0x13, 0x38, 0x58,
+	0x6b, 0x45, 0x2e, 0xec, 0x56, 0xb5, 0x3b, 0xb1, 0x6a, 0x14, 0x61, 0xe8, 0xbe, 0x63, 0x45, 0x41,
+	0x22, 0xd6, 0x0e, 0xae, 0x6f, 0x6b, 0x01, 0x0f, 0x9c, 0x9b, 0x99, 0x6b, 0xdc, 0xce, 0x5c, 0xe3,
+	0xcf, 0xcc, 0x35, 0x7e, 0xce, 0xdd, 0xce, 0xed, 0xdc, 0xed, 0xfc, 0x9a, 0xbb, 0x9d, 0xbf, 0x01,
+	0x00, 0x00, 0xff, 0xff, 0xb9, 0x76, 0xcc, 0xdd, 0x21, 0x05, 0x00, 0x00,
 }
 
 func (m *GroupsCreate) Marshal() (dAtA []byte, err error) {
@@ -1017,6 +1178,112 @@ func (m *GroupsUpdatePhoto) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *GroupsGetReadHistoryStats) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GroupsGetReadHistoryStats) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GroupsGetReadHistoryStats) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatGroups(dAtA, i, uint64(m.GroupID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *GroupsHistoryStats) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GroupsHistoryStats) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GroupsHistoryStats) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Users) > 0 {
+		for iNdEx := len(m.Users) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Users[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatGroups(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
+	}
+	if len(m.Stats) > 0 {
+		for iNdEx := len(m.Stats) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Stats[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintChatGroups(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ReadHistoryStat) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ReadHistoryStat) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ReadHistoryStat) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatGroups(dAtA, i, uint64(m.MessageID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatGroups(dAtA, i, uint64(m.UserID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintChatGroups(dAtA []byte, offset int, v uint64) int {
 	offset -= sovChatGroups(v)
 	base := offset
@@ -1157,6 +1424,48 @@ func (m *GroupsUpdatePhoto) Size() (n int) {
 	_ = l
 	n += 1 + sovChatGroups(uint64(m.PhotoID))
 	n += 1 + sovChatGroups(uint64(m.GroupID))
+	return n
+}
+
+func (m *GroupsGetReadHistoryStats) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatGroups(uint64(m.GroupID))
+	return n
+}
+
+func (m *GroupsHistoryStats) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Stats) > 0 {
+		for _, e := range m.Stats {
+			l = e.Size()
+			n += 1 + l + sovChatGroups(uint64(l))
+		}
+	}
+	if len(m.Users) > 0 {
+		for _, e := range m.Users {
+			l = e.Size()
+			n += 1 + l + sovChatGroups(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *ReadHistoryStat) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 1 + sovChatGroups(uint64(m.UserID))
+	n += 1 + sovChatGroups(uint64(m.MessageID))
 	return n
 }
 
@@ -2324,6 +2633,304 @@ func (m *GroupsUpdatePhoto) Unmarshal(dAtA []byte) error {
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("GroupID")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GroupsGetReadHistoryStats) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatGroups
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GroupsGetReadHistoryStats: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GroupsGetReadHistoryStats: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GroupID", wireType)
+			}
+			m.GroupID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatGroups
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.GroupID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatGroups(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("GroupID")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GroupsHistoryStats) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatGroups
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GroupsHistoryStats: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GroupsHistoryStats: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Stats", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatGroups
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Stats = append(m.Stats, &ReadHistoryStat{})
+			if err := m.Stats[len(m.Stats)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Users", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatGroups
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Users = append(m.Users, &User{})
+			if err := m.Users[len(m.Users)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatGroups(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ReadHistoryStat) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatGroups
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ReadHistoryStat: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ReadHistoryStat: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field UserID", wireType)
+			}
+			m.UserID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatGroups
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.UserID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MessageID", wireType)
+			}
+			m.MessageID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatGroups
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.MessageID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatGroups(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatGroups
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("MessageID")
 	}
 
 	if iNdEx > l {

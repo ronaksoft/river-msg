@@ -206,9 +206,10 @@ message MessagesGetReactionList {
 // MessagesPin
 // @Function
 // @Return: Bool
-message MessagesPin {
+message MessagesTogglePin {
     required InputPeer Peer = 1;
     required int64 MessageID = 2;
+    required bool Pin = 3;
 }
 
 // MessagesDialogs

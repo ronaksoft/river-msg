@@ -270,3 +270,13 @@ message ClientTeamCounters {
     required int64 UnreadCount = 1;
     required int64 MentionCount = 2;
 }
+
+// RecentSearchMany
+// return ClientFrequentlyReactions
+message ClientGetFrequentlyReactions {
+
+}
+
+message ClientFrequentlyReactions {
+    repeated string Reactions = 1;
+}

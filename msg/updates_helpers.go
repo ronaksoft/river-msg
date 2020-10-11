@@ -6,6 +6,7 @@ package msg
 import (
 	fmt "fmt"
 	pbytes "github.com/gobwas/pool/pbytes"
+	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	math "math"
 	sync "sync"
@@ -1729,6 +1730,39 @@ func ResultUpdateCalendarEventEdited(out *MessageEnvelope, res *UpdateCalendarEv
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_UpdateRedirect int64 = 3303504929
+
+type poolUpdateRedirect struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdateRedirect) Get() *UpdateRedirect {
+	x, ok := p.pool.Get().(*UpdateRedirect)
+	if !ok {
+		return &UpdateRedirect{}
+	}
+	return x
+}
+
+func (p *poolUpdateRedirect) Put(x *UpdateRedirect) {
+	x.Alternatives = x.Alternatives[:0]
+	p.pool.Put(x)
+}
+
+var PoolUpdateRedirect = poolUpdateRedirect{}
+
+func ResultUpdateRedirect(out *MessageEnvelope, res *UpdateRedirect) {
+	out.Constructor = C_UpdateRedirect
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -1781,4 +1815,5 @@ func init() {
 	ConstructorNames[297964741] = "UpdateCalendarEventAdded"
 	ConstructorNames[2986798389] = "UpdateCalendarEventRemoved"
 	ConstructorNames[516349098] = "UpdateCalendarEventEdited"
+	ConstructorNames[3303504929] = "UpdateRedirect"
 }

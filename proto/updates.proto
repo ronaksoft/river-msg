@@ -472,9 +472,14 @@ enum RedirectTarget {
 message UpdateRedirect {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
+    repeated ClientRedirect Redirects = 1;
+    required bool Empty = 2;
+}
+
+// ClientRedirect
+message ClientRedirect {
     required string HostPort = 1;
     required bool Permanent = 2;
     required RedirectTarget Target = 3;
     repeated string Alternatives = 4;
 }
-

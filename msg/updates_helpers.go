@@ -1745,7 +1745,7 @@ func (p *poolUpdateRedirect) Get() *UpdateRedirect {
 }
 
 func (p *poolUpdateRedirect) Put(x *UpdateRedirect) {
-	x.Alternatives = x.Alternatives[:0]
+	x.Redirects = x.Redirects[:0]
 	p.pool.Put(x)
 }
 
@@ -1753,6 +1753,39 @@ var PoolUpdateRedirect = poolUpdateRedirect{}
 
 func ResultUpdateRedirect(out *MessageEnvelope, res *UpdateRedirect) {
 	out.Constructor = C_UpdateRedirect
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_ClientRedirect int64 = 3513459109
+
+type poolClientRedirect struct {
+	pool sync.Pool
+}
+
+func (p *poolClientRedirect) Get() *ClientRedirect {
+	x, ok := p.pool.Get().(*ClientRedirect)
+	if !ok {
+		return &ClientRedirect{}
+	}
+	return x
+}
+
+func (p *poolClientRedirect) Put(x *ClientRedirect) {
+	x.Alternatives = x.Alternatives[:0]
+	p.pool.Put(x)
+}
+
+var PoolClientRedirect = poolClientRedirect{}
+
+func ResultClientRedirect(out *MessageEnvelope, res *ClientRedirect) {
+	out.Constructor = C_ClientRedirect
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -1816,4 +1849,5 @@ func init() {
 	ConstructorNames[2986798389] = "UpdateCalendarEventRemoved"
 	ConstructorNames[516349098] = "UpdateCalendarEventEdited"
 	ConstructorNames[3303504929] = "UpdateRedirect"
+	ConstructorNames[3513459109] = "ClientRedirect"
 }

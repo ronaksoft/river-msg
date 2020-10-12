@@ -1616,6 +1616,7 @@ func (p *poolUpdateReaction) Put(x *UpdateReaction) {
 	}
 
 	x.YourReactions = x.YourReactions[:0]
+	x.Reaction = ""
 	p.pool.Put(x)
 }
 

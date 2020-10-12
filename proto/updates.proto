@@ -434,6 +434,7 @@ message UpdateReaction {
     optional Peer Peer = 4;
     optional User Sender = 5;
     repeated string YourReactions = 6;
+    optional string Reaction = 7;
 }
 
 // UpdateCalendarEventAdded

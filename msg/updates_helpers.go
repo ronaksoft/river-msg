@@ -1797,6 +1797,39 @@ func ResultClientRedirect(out *MessageEnvelope, res *ClientRedirect) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_UpdatePhoneCall int64 = 2791086990
+
+type poolUpdatePhoneCall struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdatePhoneCall) Get() *UpdatePhoneCall {
+	x, ok := p.pool.Get().(*UpdatePhoneCall)
+	if !ok {
+		return &UpdatePhoneCall{}
+	}
+	return x
+}
+
+func (p *poolUpdatePhoneCall) Put(x *UpdatePhoneCall) {
+	x.ActionData = x.ActionData[:0]
+	p.pool.Put(x)
+}
+
+var PoolUpdatePhoneCall = poolUpdatePhoneCall{}
+
+func ResultUpdatePhoneCall(out *MessageEnvelope, res *UpdatePhoneCall) {
+	out.Constructor = C_UpdatePhoneCall
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1437250230] = "UpdateGetState"
 	ConstructorNames[556775761] = "UpdateGetDifference"
@@ -1851,4 +1884,5 @@ func init() {
 	ConstructorNames[516349098] = "UpdateCalendarEventEdited"
 	ConstructorNames[3303504929] = "UpdateRedirect"
 	ConstructorNames[3513459109] = "ClientRedirect"
+	ConstructorNames[2791086990] = "UpdatePhoneCall"
 }

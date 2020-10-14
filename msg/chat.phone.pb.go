@@ -32,14 +32,32 @@ const (
 	DiscardReasonBusy       DiscardReason = 2
 	DiscardReasonHangup     DiscardReason = 3
 	DiscardReasonDisconnect DiscardReason = 4
+	DiscardReasonReserved1  DiscardReason = 5
+	DiscardReasonReserved2  DiscardReason = 6
+	DiscardReasonReserved3  DiscardReason = 7
+	DiscardReasonReserved4  DiscardReason = 8
+	DiscardReasonReserved5  DiscardReason = 9
+	DiscardReasonReserved6  DiscardReason = 10
+	DiscardReasonReserved7  DiscardReason = 11
+	DiscardReasonReserved8  DiscardReason = 12
+	DiscardReasonReserved9  DiscardReason = 13
 )
 
 var DiscardReason_name = map[int32]string{
-	0: "DiscardReasonUnknown",
-	1: "DiscardReasonMissed",
-	2: "DiscardReasonBusy",
-	3: "DiscardReasonHangup",
-	4: "DiscardReasonDisconnect",
+	0:  "DiscardReasonUnknown",
+	1:  "DiscardReasonMissed",
+	2:  "DiscardReasonBusy",
+	3:  "DiscardReasonHangup",
+	4:  "DiscardReasonDisconnect",
+	5:  "DiscardReasonReserved1",
+	6:  "DiscardReasonReserved2",
+	7:  "DiscardReasonReserved3",
+	8:  "DiscardReasonReserved4",
+	9:  "DiscardReasonReserved5",
+	10: "DiscardReasonReserved6",
+	11: "DiscardReasonReserved7",
+	12: "DiscardReasonReserved8",
+	13: "DiscardReasonReserved9",
 }
 
 var DiscardReason_value = map[string]int32{
@@ -48,6 +66,15 @@ var DiscardReason_value = map[string]int32{
 	"DiscardReasonBusy":       2,
 	"DiscardReasonHangup":     3,
 	"DiscardReasonDisconnect": 4,
+	"DiscardReasonReserved1":  5,
+	"DiscardReasonReserved2":  6,
+	"DiscardReasonReserved3":  7,
+	"DiscardReasonReserved4":  8,
+	"DiscardReasonReserved5":  9,
+	"DiscardReasonReserved6":  10,
+	"DiscardReasonReserved7":  11,
+	"DiscardReasonReserved8":  12,
+	"DiscardReasonReserved9":  13,
 }
 
 func (x DiscardReason) Enum() *DiscardReason {
@@ -81,14 +108,32 @@ const (
 	PhoneCallRequested   PhoneCallAction = 2
 	PhoneCallCallWaiting PhoneCallAction = 3
 	PhoneCallDiscarded   PhoneCallAction = 4
+	PhoneCallReserved1   PhoneCallAction = 5
+	PhoneCallReserved2   PhoneCallAction = 6
+	PhoneCallReserved3   PhoneCallAction = 7
+	PhoneCallReserved4   PhoneCallAction = 8
+	PhoneCallReserved5   PhoneCallAction = 9
+	PhoneCallReserved6   PhoneCallAction = 10
+	PhoneCallReserved7   PhoneCallAction = 11
+	PhoneCallReserved8   PhoneCallAction = 12
+	PhoneCallReserved9   PhoneCallAction = 13
 )
 
 var PhoneCallAction_name = map[int32]string{
-	0: "PhoneCallEmpty",
-	1: "PhoneCallAccepted",
-	2: "PhoneCallRequested",
-	3: "PhoneCallCallWaiting",
-	4: "PhoneCallDiscarded",
+	0:  "PhoneCallEmpty",
+	1:  "PhoneCallAccepted",
+	2:  "PhoneCallRequested",
+	3:  "PhoneCallCallWaiting",
+	4:  "PhoneCallDiscarded",
+	5:  "PhoneCallReserved1",
+	6:  "PhoneCallReserved2",
+	7:  "PhoneCallReserved3",
+	8:  "PhoneCallReserved4",
+	9:  "PhoneCallReserved5",
+	10: "PhoneCallReserved6",
+	11: "PhoneCallReserved7",
+	12: "PhoneCallReserved8",
+	13: "PhoneCallReserved9",
 }
 
 var PhoneCallAction_value = map[string]int32{
@@ -97,6 +142,15 @@ var PhoneCallAction_value = map[string]int32{
 	"PhoneCallRequested":   2,
 	"PhoneCallCallWaiting": 3,
 	"PhoneCallDiscarded":   4,
+	"PhoneCallReserved1":   5,
+	"PhoneCallReserved2":   6,
+	"PhoneCallReserved3":   7,
+	"PhoneCallReserved4":   8,
+	"PhoneCallReserved5":   9,
+	"PhoneCallReserved6":   10,
+	"PhoneCallReserved7":   11,
+	"PhoneCallReserved8":   12,
+	"PhoneCallReserved9":   13,
 }
 
 func (x PhoneCallAction) Enum() *PhoneCallAction {
@@ -126,8 +180,9 @@ func (PhoneCallAction) EnumDescriptor() ([]byte, []int) {
 // @Function
 // @Return: PhoneCall
 type PhoneAcceptCall struct {
-	Peer      *InputUser `protobuf:"bytes,1,req,name=Peer" json:"Peer,omitempty"`
-	AnswerSDP []byte     `protobuf:"bytes,2,req,name=AnswerSDP" json:"AnswerSDP"`
+	CallID    int64      `protobuf:"varint,1,req,name=CallID" json:"CallID"`
+	Peer      *InputUser `protobuf:"bytes,2,req,name=Peer" json:"Peer,omitempty"`
+	AnswerSDP string     `protobuf:"bytes,3,req,name=AnswerSDP" json:"AnswerSDP"`
 }
 
 func (m *PhoneAcceptCall) Reset()         { *m = PhoneAcceptCall{} }
@@ -163,6 +218,13 @@ func (m *PhoneAcceptCall) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PhoneAcceptCall proto.InternalMessageInfo
 
+func (m *PhoneAcceptCall) GetCallID() int64 {
+	if m != nil {
+		return m.CallID
+	}
+	return 0
+}
+
 func (m *PhoneAcceptCall) GetPeer() *InputUser {
 	if m != nil {
 		return m.Peer
@@ -170,11 +232,11 @@ func (m *PhoneAcceptCall) GetPeer() *InputUser {
 	return nil
 }
 
-func (m *PhoneAcceptCall) GetAnswerSDP() []byte {
+func (m *PhoneAcceptCall) GetAnswerSDP() string {
 	if m != nil {
 		return m.AnswerSDP
 	}
-	return nil
+	return ""
 }
 
 // PhoneRequestCall
@@ -182,7 +244,7 @@ func (m *PhoneAcceptCall) GetAnswerSDP() []byte {
 // @Return: PhoneCall
 type PhoneRequestCall struct {
 	Peer     *InputUser `protobuf:"bytes,1,req,name=Peer" json:"Peer,omitempty"`
-	OfferSDP []byte     `protobuf:"bytes,2,req,name=OfferSDP" json:"OfferSDP"`
+	OfferSDP string     `protobuf:"bytes,2,req,name=OfferSDP" json:"OfferSDP"`
 	Video    bool       `protobuf:"varint,3,req,name=Video" json:"Video"`
 	RandomID int64      `protobuf:"varint,4,req,name=RandomID" json:"RandomID"`
 }
@@ -227,11 +289,11 @@ func (m *PhoneRequestCall) GetPeer() *InputUser {
 	return nil
 }
 
-func (m *PhoneRequestCall) GetOfferSDP() []byte {
+func (m *PhoneRequestCall) GetOfferSDP() string {
 	if m != nil {
 		return m.OfferSDP
 	}
-	return nil
+	return ""
 }
 
 func (m *PhoneRequestCall) GetVideo() bool {
@@ -436,11 +498,12 @@ func (m *PhoneSetCallRating) GetComment() string {
 
 // PhoneCall
 type PhoneCall struct {
-	UserID      int64    `protobuf:"varint,1,req,name=UserID" json:"UserID"`
-	AccessHash  int64    `protobuf:"varint,2,req,name=AccessHash" json:"AccessHash"`
-	Video       bool     `protobuf:"varint,3,req,name=Video" json:"Video"`
-	Date        int64    `protobuf:"varint,4,req,name=Date" json:"Date"`
-	StunServers []string `protobuf:"bytes,5,rep,name=StunServers" json:"StunServers,omitempty"`
+	ID          int64    `protobuf:"varint,1,req,name=ID" json:"ID"`
+	UserID      int64    `protobuf:"varint,2,req,name=UserID" json:"UserID"`
+	AccessHash  int64    `protobuf:"varint,3,req,name=AccessHash" json:"AccessHash"`
+	Video       bool     `protobuf:"varint,4,req,name=Video" json:"Video"`
+	Date        int64    `protobuf:"varint,5,req,name=Date" json:"Date"`
+	StunServers []string `protobuf:"bytes,6,rep,name=StunServers" json:"StunServers,omitempty"`
 }
 
 func (m *PhoneCall) Reset()         { *m = PhoneCall{} }
@@ -475,6 +538,13 @@ func (m *PhoneCall) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_PhoneCall proto.InternalMessageInfo
+
+func (m *PhoneCall) GetID() int64 {
+	if m != nil {
+		return m.ID
+	}
+	return 0
+}
 
 func (m *PhoneCall) GetUserID() int64 {
 	if m != nil {
@@ -511,6 +581,255 @@ func (m *PhoneCall) GetStunServers() []string {
 	return nil
 }
 
+// PhoneActionCallEmpty
+type PhoneActionCallEmpty struct {
+	Empty bool `protobuf:"varint,1,opt,name=Empty" json:"Empty"`
+}
+
+func (m *PhoneActionCallEmpty) Reset()         { *m = PhoneActionCallEmpty{} }
+func (m *PhoneActionCallEmpty) String() string { return proto.CompactTextString(m) }
+func (*PhoneActionCallEmpty) ProtoMessage()    {}
+func (*PhoneActionCallEmpty) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d8b8a723e6958ad9, []int{6}
+}
+func (m *PhoneActionCallEmpty) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PhoneActionCallEmpty) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PhoneActionCallEmpty.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PhoneActionCallEmpty) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PhoneActionCallEmpty.Merge(m, src)
+}
+func (m *PhoneActionCallEmpty) XXX_Size() int {
+	return m.Size()
+}
+func (m *PhoneActionCallEmpty) XXX_DiscardUnknown() {
+	xxx_messageInfo_PhoneActionCallEmpty.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PhoneActionCallEmpty proto.InternalMessageInfo
+
+func (m *PhoneActionCallEmpty) GetEmpty() bool {
+	if m != nil {
+		return m.Empty
+	}
+	return false
+}
+
+// PhoneActionAccepted
+type PhoneActionAccepted struct {
+	SDP string `protobuf:"bytes,1,req,name=SDP" json:"SDP"`
+}
+
+func (m *PhoneActionAccepted) Reset()         { *m = PhoneActionAccepted{} }
+func (m *PhoneActionAccepted) String() string { return proto.CompactTextString(m) }
+func (*PhoneActionAccepted) ProtoMessage()    {}
+func (*PhoneActionAccepted) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d8b8a723e6958ad9, []int{7}
+}
+func (m *PhoneActionAccepted) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PhoneActionAccepted) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PhoneActionAccepted.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PhoneActionAccepted) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PhoneActionAccepted.Merge(m, src)
+}
+func (m *PhoneActionAccepted) XXX_Size() int {
+	return m.Size()
+}
+func (m *PhoneActionAccepted) XXX_DiscardUnknown() {
+	xxx_messageInfo_PhoneActionAccepted.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PhoneActionAccepted proto.InternalMessageInfo
+
+func (m *PhoneActionAccepted) GetSDP() string {
+	if m != nil {
+		return m.SDP
+	}
+	return ""
+}
+
+// PhoneActionRequested
+type PhoneActionRequested struct {
+	SDP string `protobuf:"bytes,1,req,name=SDP" json:"SDP"`
+}
+
+func (m *PhoneActionRequested) Reset()         { *m = PhoneActionRequested{} }
+func (m *PhoneActionRequested) String() string { return proto.CompactTextString(m) }
+func (*PhoneActionRequested) ProtoMessage()    {}
+func (*PhoneActionRequested) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d8b8a723e6958ad9, []int{8}
+}
+func (m *PhoneActionRequested) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PhoneActionRequested) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PhoneActionRequested.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PhoneActionRequested) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PhoneActionRequested.Merge(m, src)
+}
+func (m *PhoneActionRequested) XXX_Size() int {
+	return m.Size()
+}
+func (m *PhoneActionRequested) XXX_DiscardUnknown() {
+	xxx_messageInfo_PhoneActionRequested.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PhoneActionRequested proto.InternalMessageInfo
+
+func (m *PhoneActionRequested) GetSDP() string {
+	if m != nil {
+		return m.SDP
+	}
+	return ""
+}
+
+// PhoneActionCallWaiting
+type PhoneActionCallWaiting struct {
+	Empty bool `protobuf:"varint,1,opt,name=Empty" json:"Empty"`
+}
+
+func (m *PhoneActionCallWaiting) Reset()         { *m = PhoneActionCallWaiting{} }
+func (m *PhoneActionCallWaiting) String() string { return proto.CompactTextString(m) }
+func (*PhoneActionCallWaiting) ProtoMessage()    {}
+func (*PhoneActionCallWaiting) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d8b8a723e6958ad9, []int{9}
+}
+func (m *PhoneActionCallWaiting) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PhoneActionCallWaiting) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PhoneActionCallWaiting.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PhoneActionCallWaiting) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PhoneActionCallWaiting.Merge(m, src)
+}
+func (m *PhoneActionCallWaiting) XXX_Size() int {
+	return m.Size()
+}
+func (m *PhoneActionCallWaiting) XXX_DiscardUnknown() {
+	xxx_messageInfo_PhoneActionCallWaiting.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PhoneActionCallWaiting proto.InternalMessageInfo
+
+func (m *PhoneActionCallWaiting) GetEmpty() bool {
+	if m != nil {
+		return m.Empty
+	}
+	return false
+}
+
+// PhoneActionDiscarded
+type PhoneActionDiscarded struct {
+	SDP      string        `protobuf:"bytes,1,req,name=SDP" json:"SDP"`
+	Duration int32         `protobuf:"varint,2,req,name=Duration" json:"Duration"`
+	Video    bool          `protobuf:"varint,3,req,name=Video" json:"Video"`
+	Reason   DiscardReason `protobuf:"varint,4,req,name=Reason,enum=msg.DiscardReason" json:"Reason"`
+}
+
+func (m *PhoneActionDiscarded) Reset()         { *m = PhoneActionDiscarded{} }
+func (m *PhoneActionDiscarded) String() string { return proto.CompactTextString(m) }
+func (*PhoneActionDiscarded) ProtoMessage()    {}
+func (*PhoneActionDiscarded) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d8b8a723e6958ad9, []int{10}
+}
+func (m *PhoneActionDiscarded) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PhoneActionDiscarded) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PhoneActionDiscarded.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PhoneActionDiscarded) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PhoneActionDiscarded.Merge(m, src)
+}
+func (m *PhoneActionDiscarded) XXX_Size() int {
+	return m.Size()
+}
+func (m *PhoneActionDiscarded) XXX_DiscardUnknown() {
+	xxx_messageInfo_PhoneActionDiscarded.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PhoneActionDiscarded proto.InternalMessageInfo
+
+func (m *PhoneActionDiscarded) GetSDP() string {
+	if m != nil {
+		return m.SDP
+	}
+	return ""
+}
+
+func (m *PhoneActionDiscarded) GetDuration() int32 {
+	if m != nil {
+		return m.Duration
+	}
+	return 0
+}
+
+func (m *PhoneActionDiscarded) GetVideo() bool {
+	if m != nil {
+		return m.Video
+	}
+	return false
+}
+
+func (m *PhoneActionDiscarded) GetReason() DiscardReason {
+	if m != nil {
+		return m.Reason
+	}
+	return DiscardReasonUnknown
+}
+
 func init() {
 	proto.RegisterEnum("msg.DiscardReason", DiscardReason_name, DiscardReason_value)
 	proto.RegisterEnum("msg.PhoneCallAction", PhoneCallAction_name, PhoneCallAction_value)
@@ -520,49 +839,66 @@ func init() {
 	proto.RegisterType((*PhoneReceivedCall)(nil), "msg.PhoneReceivedCall")
 	proto.RegisterType((*PhoneSetCallRating)(nil), "msg.PhoneSetCallRating")
 	proto.RegisterType((*PhoneCall)(nil), "msg.PhoneCall")
+	proto.RegisterType((*PhoneActionCallEmpty)(nil), "msg.PhoneActionCallEmpty")
+	proto.RegisterType((*PhoneActionAccepted)(nil), "msg.PhoneActionAccepted")
+	proto.RegisterType((*PhoneActionRequested)(nil), "msg.PhoneActionRequested")
+	proto.RegisterType((*PhoneActionCallWaiting)(nil), "msg.PhoneActionCallWaiting")
+	proto.RegisterType((*PhoneActionDiscarded)(nil), "msg.PhoneActionDiscarded")
 }
 
 func init() { proto.RegisterFile("chat.phone.proto", fileDescriptor_d8b8a723e6958ad9) }
 
 var fileDescriptor_d8b8a723e6958ad9 = []byte{
-	// 578 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0x4d, 0x6f, 0xd3, 0x30,
-	0x18, 0xc7, 0xf3, 0xb6, 0xb1, 0x7a, 0x30, 0x3c, 0xf3, 0xb2, 0xa8, 0x4c, 0x21, 0x8a, 0x38, 0x44,
-	0x93, 0xc8, 0xd0, 0x2e, 0x9c, 0xbb, 0x05, 0x69, 0x3d, 0x20, 0xaa, 0x54, 0x03, 0x71, 0xf4, 0x12,
-	0x37, 0x8d, 0x58, 0xec, 0x10, 0x3b, 0x9b, 0xfa, 0x05, 0xb8, 0xc2, 0x89, 0x8f, 0x00, 0x5f, 0x65,
-	0xc7, 0x1e, 0x39, 0x21, 0x68, 0xbf, 0x08, 0xb2, 0x9b, 0x74, 0x8d, 0x26, 0x4d, 0xe5, 0x10, 0x29,
-	0xfe, 0x3d, 0x2f, 0xfe, 0x3f, 0x2f, 0x06, 0x30, 0x1e, 0x63, 0x11, 0x14, 0x63, 0x46, 0x49, 0x50,
-	0x94, 0x4c, 0x30, 0x64, 0xe6, 0x3c, 0xed, 0xc2, 0x98, 0x95, 0x24, 0x10, 0x93, 0x82, 0xf0, 0x05,
-	0xee, 0xbe, 0x4c, 0x33, 0x31, 0xae, 0xce, 0x83, 0x98, 0xe5, 0x87, 0x29, 0x4b, 0xd9, 0xa1, 0xc2,
-	0xe7, 0xd5, 0x48, 0x9d, 0xd4, 0x41, 0xfd, 0x2d, 0xdc, 0xbd, 0x8f, 0xe0, 0xe1, 0x40, 0x26, 0xed,
-	0xc5, 0x31, 0x29, 0xc4, 0x09, 0xbe, 0xb8, 0x40, 0x1e, 0xb0, 0x06, 0x84, 0x94, 0xb6, 0xee, 0x1a,
-	0xfe, 0xf6, 0xd1, 0x4e, 0x90, 0xf3, 0x34, 0xe8, 0xd3, 0xa2, 0x12, 0x67, 0x9c, 0x94, 0x91, 0xb2,
-	0x21, 0x0f, 0x74, 0x7a, 0x94, 0x5f, 0x91, 0x72, 0x18, 0x0e, 0x6c, 0xc3, 0x35, 0xfc, 0xfb, 0xc7,
-	0xd6, 0xf5, 0xef, 0xe7, 0x5a, 0x74, 0x83, 0xbd, 0xef, 0x3a, 0x80, 0x2a, 0x77, 0x44, 0x3e, 0x57,
-	0x84, 0xaf, 0x9f, 0xdc, 0x05, 0x5b, 0xef, 0x46, 0xa3, 0xdb, 0xb9, 0x97, 0x14, 0x75, 0xc1, 0xc6,
-	0xfb, 0x2c, 0x21, 0xcc, 0x36, 0x5d, 0xc3, 0xdf, 0xaa, 0xcd, 0x0b, 0x24, 0xa3, 0x23, 0x4c, 0x13,
-	0x96, 0xf7, 0x43, 0xdb, 0x72, 0x0d, 0xdf, 0x6c, 0xa2, 0x1b, 0xea, 0xfd, 0x68, 0x84, 0x85, 0x19,
-	0x8f, 0x71, 0x99, 0xfc, 0x8f, 0xb0, 0xb0, 0x2a, 0xb1, 0xc8, 0x18, 0x55, 0xc2, 0x36, 0x9a, 0xd4,
-	0x0d, 0xbd, 0x53, 0xd8, 0x2b, 0xb0, 0x19, 0x11, 0xcc, 0x19, 0x55, 0xb2, 0x76, 0x8e, 0x90, 0xba,
-	0xa3, 0xd6, 0xb0, 0xb0, 0xd4, 0x01, 0xb5, 0x9f, 0xf7, 0x1a, 0xec, 0xd6, 0x0d, 0x8c, 0x49, 0x76,
-	0x49, 0xd6, 0x16, 0x2a, 0x5b, 0x8f, 0x54, 0xe4, 0x90, 0xa8, 0xb6, 0x47, 0x58, 0x64, 0x34, 0x5d,
-	0x77, 0xb2, 0x7d, 0x9a, 0x89, 0x0c, 0x0b, 0x56, 0xaa, 0x22, 0x9b, 0x2a, 0x6e, 0x30, 0xb2, 0x81,
-	0x15, 0x61, 0x41, 0x54, 0x91, 0x4d, 0x0f, 0x14, 0x41, 0x0e, 0xb8, 0x77, 0xc2, 0xf2, 0x9c, 0x50,
-	0x61, 0x5b, 0xae, 0xee, 0x77, 0x6a, 0x63, 0x03, 0xbd, 0x9f, 0x3a, 0xe8, 0x28, 0x61, 0xaa, 0x94,
-	0x7d, 0xb0, 0x29, 0x6f, 0xee, 0x87, 0x4a, 0x51, 0x33, 0xa8, 0x9a, 0xa1, 0x17, 0x00, 0xc8, 0xad,
-	0xe4, 0xfc, 0x14, 0xf3, 0xb1, 0x92, 0xd2, 0x78, 0xac, 0xf0, 0x3b, 0x3b, 0x6e, 0x03, 0x2b, 0x94,
-	0x3a, 0x57, 0xd7, 0x40, 0x11, 0xe4, 0x82, 0xed, 0xa1, 0xa8, 0xe8, 0x90, 0x94, 0x97, 0xa4, 0xe4,
-	0xf6, 0x86, 0x6b, 0xfa, 0x9d, 0x68, 0x15, 0x1d, 0x7c, 0xd5, 0xc1, 0x83, 0xd6, 0x6c, 0x90, 0x0d,
-	0x1e, 0xb7, 0xc0, 0x19, 0xfd, 0x44, 0xd9, 0x15, 0x85, 0x1a, 0xda, 0x03, 0x8f, 0x5a, 0x96, 0xb7,
-	0x19, 0xe7, 0x24, 0x81, 0x3a, 0x7a, 0x02, 0x76, 0xdb, 0xf3, 0xad, 0xf8, 0x04, 0x1a, 0xb7, 0xfc,
-	0x4f, 0x31, 0x4d, 0xab, 0x02, 0x9a, 0xe8, 0x19, 0xd8, 0x6b, 0x19, 0xe4, 0x81, 0x51, 0x4a, 0x62,
-	0x01, 0xad, 0x83, 0x2f, 0x7a, 0xfd, 0x56, 0x65, 0xef, 0x7a, 0xb1, 0xda, 0x37, 0x04, 0x76, 0x96,
-	0xe8, 0x4d, 0x5e, 0x88, 0x09, 0xd4, 0xe4, 0xa5, 0x2b, 0x6e, 0xf2, 0x59, 0x2b, 0x2d, 0x4f, 0xeb,
-	0x95, 0x50, 0xfb, 0xb0, 0x78, 0x91, 0x24, 0x81, 0x86, 0x2c, 0x6b, 0xc9, 0xe5, 0xf7, 0x01, 0x67,
-	0x72, 0x59, 0xa0, 0xd9, 0x8a, 0xa8, 0x65, 0x91, 0x04, 0x5a, 0xc7, 0xfb, 0xd3, 0xbf, 0x8e, 0x76,
-	0x3d, 0x73, 0xf4, 0xe9, 0xcc, 0xd1, 0xff, 0xcc, 0x1c, 0xfd, 0xdb, 0xdc, 0xd1, 0xa6, 0x73, 0x47,
-	0xfb, 0x35, 0x77, 0xb4, 0x7f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x7c, 0xf3, 0x7b, 0x77, 0xaa, 0x04,
-	0x00, 0x00,
+	// 773 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x95, 0xcf, 0x4f, 0xdb, 0x48,
+	0x14, 0xc7, 0xe3, 0x1f, 0x09, 0xe4, 0xb1, 0xb0, 0xc3, 0xc0, 0x06, 0x2b, 0xbb, 0xf2, 0x5a, 0x3e,
+	0xac, 0x22, 0x24, 0x02, 0x9b, 0x65, 0x4b, 0x39, 0x02, 0xae, 0x44, 0x0e, 0x55, 0x91, 0x23, 0xda,
+	0xb3, 0x71, 0x86, 0xc4, 0x2a, 0x19, 0xa7, 0x1e, 0x1b, 0x94, 0xbf, 0xa1, 0x97, 0x9e, 0x7a, 0xec,
+	0xb1, 0xff, 0x48, 0x2f, 0x1c, 0x39, 0xf6, 0x84, 0x5a, 0xf8, 0x47, 0xaa, 0x19, 0xdb, 0x89, 0x0d,
+	0x76, 0x44, 0x2f, 0x3d, 0xc5, 0xfe, 0x7c, 0x67, 0xde, 0x7b, 0xf3, 0xde, 0x77, 0x1c, 0x40, 0xee,
+	0xd0, 0x09, 0xdb, 0xe3, 0xa1, 0x4f, 0x49, 0x7b, 0x1c, 0xf8, 0xa1, 0x8f, 0x95, 0x11, 0x1b, 0x34,
+	0x91, 0xeb, 0x07, 0xa4, 0x1d, 0x4e, 0xc6, 0x84, 0xc5, 0xb8, 0xb9, 0x35, 0xf0, 0xc2, 0x61, 0x74,
+	0xd6, 0x76, 0xfd, 0xd1, 0xf6, 0xc0, 0x1f, 0xf8, 0xdb, 0x02, 0x9f, 0x45, 0xe7, 0xe2, 0x4d, 0xbc,
+	0x88, 0xa7, 0x78, 0xb9, 0x39, 0x81, 0xdf, 0x4f, 0x78, 0xd0, 0x03, 0xd7, 0x25, 0xe3, 0xf0, 0xc8,
+	0xb9, 0xb8, 0xc0, 0x3a, 0xd4, 0xf8, 0x6f, 0xd7, 0xd2, 0x24, 0x43, 0x6e, 0x29, 0x87, 0xb5, 0xeb,
+	0xdb, 0xbf, 0x2b, 0x3b, 0x92, 0x9d, 0x50, 0x6c, 0x82, 0x7a, 0x42, 0x48, 0xa0, 0xc9, 0x86, 0xdc,
+	0x5a, 0xea, 0xac, 0xb4, 0x47, 0x6c, 0xd0, 0xee, 0xd2, 0x71, 0x14, 0x9e, 0x32, 0x12, 0xd8, 0x42,
+	0xc3, 0x26, 0xd4, 0x0f, 0x28, 0xbb, 0x22, 0x41, 0xcf, 0x3a, 0xd1, 0x14, 0x43, 0x6e, 0xd5, 0x0f,
+	0x55, 0x1e, 0xc6, 0x9e, 0x61, 0xf3, 0xa3, 0x04, 0x48, 0xe4, 0xb6, 0xc9, 0xbb, 0x88, 0xb0, 0x38,
+	0x79, 0x1a, 0x5c, 0x9a, 0x13, 0xdc, 0x80, 0xc5, 0x57, 0xe7, 0xe7, 0x71, 0x6c, 0x39, 0x13, 0x7b,
+	0x4a, 0x71, 0x13, 0xaa, 0xaf, 0xbd, 0x3e, 0xf1, 0x45, 0xea, 0xc5, 0x44, 0x8e, 0x11, 0xdf, 0x6d,
+	0x3b, 0xb4, 0xef, 0x8f, 0xba, 0x96, 0xa6, 0x8a, 0x03, 0x26, 0xbb, 0x53, 0x6a, 0x7e, 0x4e, 0x0b,
+	0xb3, 0x3c, 0xe6, 0x3a, 0x41, 0xff, 0x67, 0x0a, 0xb3, 0xa2, 0xc0, 0x09, 0x3d, 0x9f, 0x8a, 0xc2,
+	0xaa, 0x69, 0xe8, 0x94, 0xce, 0x2d, 0x6c, 0x07, 0x6a, 0x36, 0x71, 0x98, 0x4f, 0x45, 0x59, 0x2b,
+	0x1d, 0x2c, 0x72, 0x24, 0x35, 0xc4, 0x4a, 0xb2, 0x21, 0x59, 0x67, 0xee, 0xc1, 0x6a, 0xd2, 0x40,
+	0x97, 0x78, 0x97, 0xe4, 0xc9, 0x85, 0xf2, 0xd6, 0x63, 0xb1, 0xb3, 0x47, 0x44, 0xdb, 0x6d, 0x27,
+	0xf4, 0xe8, 0xe0, 0x49, 0x67, 0x34, 0xa1, 0xde, 0xa5, 0x5e, 0xe8, 0x39, 0xa1, 0x1f, 0x5b, 0x20,
+	0x3d, 0xc5, 0x0c, 0x63, 0x0d, 0x54, 0xdb, 0x09, 0x89, 0x38, 0x64, 0xda, 0x03, 0x41, 0xb0, 0x0e,
+	0x0b, 0x47, 0xfe, 0x68, 0x44, 0x68, 0xa8, 0xa9, 0x86, 0x34, 0x9d, 0x5c, 0x0a, 0xcd, 0x2f, 0x12,
+	0xd4, 0x45, 0x61, 0xe2, 0x28, 0x0d, 0x90, 0x1f, 0xb9, 0x50, 0xee, 0x5a, 0xdc, 0xa1, 0xbc, 0xa2,
+	0xae, 0x25, 0x0a, 0xc8, 0x38, 0x34, 0xa6, 0xf8, 0x1f, 0x00, 0xee, 0x67, 0xc6, 0x8e, 0x1d, 0x36,
+	0x14, 0x55, 0xcc, 0xd6, 0x64, 0x94, 0xd9, 0x34, 0xd4, 0xc7, 0xd3, 0xd0, 0x40, 0xb5, 0xf8, 0x19,
+	0xaa, 0x19, 0x8b, 0x08, 0x82, 0x0d, 0x58, 0xea, 0x85, 0x11, 0xed, 0x91, 0xe0, 0x92, 0x04, 0x4c,
+	0xab, 0x19, 0x4a, 0xab, 0x6e, 0x67, 0x91, 0xd9, 0x81, 0xf5, 0xe4, 0x52, 0xf1, 0xa1, 0xf3, 0xa3,
+	0xbc, 0x18, 0x8d, 0xc3, 0x09, 0xcf, 0x27, 0x1e, 0x34, 0xc9, 0x90, 0x66, 0xf9, 0x04, 0x32, 0xb7,
+	0x60, 0x2d, 0xb3, 0x27, 0xbe, 0x8e, 0xa4, 0x8f, 0x1b, 0xa0, 0x70, 0x9b, 0x4b, 0x19, 0x9b, 0x73,
+	0x60, 0xb6, 0x73, 0x29, 0x92, 0x1b, 0x34, 0x67, 0xfd, 0x2e, 0x34, 0x1e, 0x94, 0xf4, 0xc6, 0xf1,
+	0xc4, 0xd0, 0xe7, 0x15, 0xf5, 0x49, 0xca, 0xa5, 0x49, 0xbc, 0x58, 0x9e, 0xe6, 0x57, 0xdf, 0x80,
+	0xcd, 0xf7, 0x0a, 0x2c, 0xe7, 0x74, 0xac, 0xc1, 0x7a, 0x0e, 0x9c, 0xd2, 0xb7, 0xd4, 0xbf, 0xa2,
+	0xa8, 0x82, 0x37, 0x60, 0x2d, 0xa7, 0xbc, 0xf4, 0x18, 0x23, 0x7d, 0x24, 0xe1, 0x3f, 0x60, 0x35,
+	0x9f, 0x23, 0x62, 0x13, 0x24, 0x3f, 0x5a, 0x7f, 0xec, 0xd0, 0x41, 0x34, 0x46, 0x0a, 0xfe, 0x13,
+	0x36, 0x72, 0x02, 0x7f, 0xf1, 0x29, 0x25, 0x6e, 0x88, 0x54, 0xdc, 0x84, 0x46, 0x4e, 0xb4, 0x09,
+	0xe3, 0xae, 0xe8, 0xff, 0x8b, 0xaa, 0xa5, 0x5a, 0x07, 0xd5, 0x4a, 0xb5, 0xff, 0xd0, 0x42, 0xa9,
+	0xb6, 0x8b, 0x16, 0x4b, 0xb5, 0xff, 0x51, 0xbd, 0x54, 0x7b, 0x86, 0xa0, 0x54, 0xdb, 0x43, 0x4b,
+	0xa5, 0xda, 0x73, 0xf4, 0x5b, 0xa9, 0xb6, 0x8f, 0x96, 0x37, 0x6f, 0xe5, 0xe4, 0xdf, 0x84, 0xfb,
+	0x2b, 0xb6, 0x0c, 0xc6, 0xb0, 0x32, 0x45, 0xc2, 0x54, 0xa8, 0xc2, 0x1b, 0x9e, 0x59, 0x16, 0x3b,
+	0x1d, 0x49, 0xb8, 0x91, 0x7c, 0x94, 0xc4, 0x17, 0x29, 0x75, 0x34, 0x92, 0xf9, 0x48, 0xa7, 0x3c,
+	0xe3, 0x5c, 0xa4, 0xe4, 0x76, 0x4c, 0xcd, 0x89, 0xd4, 0x07, 0x91, 0x66, 0x03, 0x28, 0xe2, 0xbc,
+	0xf9, 0x45, 0x9c, 0x37, 0xbe, 0x88, 0xf3, 0xa6, 0x17, 0x71, 0xde, 0xf0, 0x22, 0xce, 0x9b, 0x5d,
+	0xc4, 0x79, 0xa3, 0x8b, 0x38, 0x6f, 0x72, 0x11, 0xdf, 0x47, 0xcb, 0x87, 0x7f, 0xdd, 0x7c, 0xd7,
+	0x2b, 0xd7, 0x77, 0xba, 0x74, 0x73, 0xa7, 0x4b, 0xdf, 0xee, 0x74, 0xe9, 0xc3, 0xbd, 0x5e, 0xb9,
+	0xb9, 0xd7, 0x2b, 0x5f, 0xef, 0xf5, 0xca, 0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xac, 0xee, 0x11,
+	0x8a, 0x24, 0x08, 0x00, 0x00,
 }
 
 func (m *PhoneAcceptCall) Marshal() (dAtA []byte, err error) {
@@ -585,13 +921,11 @@ func (m *PhoneAcceptCall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	if m.AnswerSDP != nil {
-		i -= len(m.AnswerSDP)
-		copy(dAtA[i:], m.AnswerSDP)
-		i = encodeVarintChatPhone(dAtA, i, uint64(len(m.AnswerSDP)))
-		i--
-		dAtA[i] = 0x12
-	}
+	i -= len(m.AnswerSDP)
+	copy(dAtA[i:], m.AnswerSDP)
+	i = encodeVarintChatPhone(dAtA, i, uint64(len(m.AnswerSDP)))
+	i--
+	dAtA[i] = 0x1a
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
@@ -604,8 +938,11 @@ func (m *PhoneAcceptCall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			i = encodeVarintChatPhone(dAtA, i, uint64(size))
 		}
 		i--
-		dAtA[i] = 0xa
+		dAtA[i] = 0x12
 	}
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.CallID))
+	i--
+	dAtA[i] = 0x8
 	return len(dAtA) - i, nil
 }
 
@@ -640,13 +977,11 @@ func (m *PhoneRequestCall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x18
-	if m.OfferSDP != nil {
-		i -= len(m.OfferSDP)
-		copy(dAtA[i:], m.OfferSDP)
-		i = encodeVarintChatPhone(dAtA, i, uint64(len(m.OfferSDP)))
-		i--
-		dAtA[i] = 0x12
-	}
+	i -= len(m.OfferSDP)
+	copy(dAtA[i:], m.OfferSDP)
+	i = encodeVarintChatPhone(dAtA, i, uint64(len(m.OfferSDP)))
+	i--
+	dAtA[i] = 0x12
 	if m.Peer == nil {
 		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
 	} else {
@@ -831,10 +1166,171 @@ func (m *PhoneCall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			copy(dAtA[i:], m.StunServers[iNdEx])
 			i = encodeVarintChatPhone(dAtA, i, uint64(len(m.StunServers[iNdEx])))
 			i--
-			dAtA[i] = 0x2a
+			dAtA[i] = 0x32
 		}
 	}
 	i = encodeVarintChatPhone(dAtA, i, uint64(m.Date))
+	i--
+	dAtA[i] = 0x28
+	i--
+	if m.Video {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x20
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.AccessHash))
+	i--
+	dAtA[i] = 0x18
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.UserID))
+	i--
+	dAtA[i] = 0x10
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.ID))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *PhoneActionCallEmpty) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PhoneActionCallEmpty) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PhoneActionCallEmpty) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i--
+	if m.Empty {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *PhoneActionAccepted) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PhoneActionAccepted) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PhoneActionAccepted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.SDP)
+	copy(dAtA[i:], m.SDP)
+	i = encodeVarintChatPhone(dAtA, i, uint64(len(m.SDP)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *PhoneActionRequested) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PhoneActionRequested) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PhoneActionRequested) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i -= len(m.SDP)
+	copy(dAtA[i:], m.SDP)
+	i = encodeVarintChatPhone(dAtA, i, uint64(len(m.SDP)))
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *PhoneActionCallWaiting) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PhoneActionCallWaiting) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PhoneActionCallWaiting) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i--
+	if m.Empty {
+		dAtA[i] = 1
+	} else {
+		dAtA[i] = 0
+	}
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
+}
+
+func (m *PhoneActionDiscarded) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PhoneActionDiscarded) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PhoneActionDiscarded) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.Reason))
 	i--
 	dAtA[i] = 0x20
 	i--
@@ -845,12 +1341,14 @@ func (m *PhoneCall) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	}
 	i--
 	dAtA[i] = 0x18
-	i = encodeVarintChatPhone(dAtA, i, uint64(m.AccessHash))
+	i = encodeVarintChatPhone(dAtA, i, uint64(m.Duration))
 	i--
 	dAtA[i] = 0x10
-	i = encodeVarintChatPhone(dAtA, i, uint64(m.UserID))
+	i -= len(m.SDP)
+	copy(dAtA[i:], m.SDP)
+	i = encodeVarintChatPhone(dAtA, i, uint64(len(m.SDP)))
 	i--
-	dAtA[i] = 0x8
+	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -871,14 +1369,13 @@ func (m *PhoneAcceptCall) Size() (n int) {
 	}
 	var l int
 	_ = l
+	n += 1 + sovChatPhone(uint64(m.CallID))
 	if m.Peer != nil {
 		l = m.Peer.Size()
 		n += 1 + l + sovChatPhone(uint64(l))
 	}
-	if m.AnswerSDP != nil {
-		l = len(m.AnswerSDP)
-		n += 1 + l + sovChatPhone(uint64(l))
-	}
+	l = len(m.AnswerSDP)
+	n += 1 + l + sovChatPhone(uint64(l))
 	return n
 }
 
@@ -892,10 +1389,8 @@ func (m *PhoneRequestCall) Size() (n int) {
 		l = m.Peer.Size()
 		n += 1 + l + sovChatPhone(uint64(l))
 	}
-	if m.OfferSDP != nil {
-		l = len(m.OfferSDP)
-		n += 1 + l + sovChatPhone(uint64(l))
-	}
+	l = len(m.OfferSDP)
+	n += 1 + l + sovChatPhone(uint64(l))
 	n += 2
 	n += 1 + sovChatPhone(uint64(m.RandomID))
 	return n
@@ -953,6 +1448,7 @@ func (m *PhoneCall) Size() (n int) {
 	}
 	var l int
 	_ = l
+	n += 1 + sovChatPhone(uint64(m.ID))
 	n += 1 + sovChatPhone(uint64(m.UserID))
 	n += 1 + sovChatPhone(uint64(m.AccessHash))
 	n += 2
@@ -963,6 +1459,62 @@ func (m *PhoneCall) Size() (n int) {
 			n += 1 + l + sovChatPhone(uint64(l))
 		}
 	}
+	return n
+}
+
+func (m *PhoneActionCallEmpty) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	return n
+}
+
+func (m *PhoneActionAccepted) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.SDP)
+	n += 1 + l + sovChatPhone(uint64(l))
+	return n
+}
+
+func (m *PhoneActionRequested) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.SDP)
+	n += 1 + l + sovChatPhone(uint64(l))
+	return n
+}
+
+func (m *PhoneActionCallWaiting) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += 2
+	return n
+}
+
+func (m *PhoneActionDiscarded) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.SDP)
+	n += 1 + l + sovChatPhone(uint64(l))
+	n += 1 + sovChatPhone(uint64(m.Duration))
+	n += 2
+	n += 1 + sovChatPhone(uint64(m.Reason))
 	return n
 }
 
@@ -1003,6 +1555,26 @@ func (m *PhoneAcceptCall) Unmarshal(dAtA []byte) error {
 		}
 		switch fieldNum {
 		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CallID", wireType)
+			}
+			m.CallID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.CallID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Peer", wireType)
 			}
@@ -1038,12 +1610,12 @@ func (m *PhoneAcceptCall) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field AnswerSDP", wireType)
 			}
-			var byteLen int
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowChatPhone
@@ -1053,27 +1625,25 @@ func (m *PhoneAcceptCall) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= int(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			if byteLen < 0 {
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
 				return ErrInvalidLengthChatPhone
 			}
-			postIndex := iNdEx + byteLen
+			postIndex := iNdEx + intStringLen
 			if postIndex < 0 {
 				return ErrInvalidLengthChatPhone
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.AnswerSDP = append(m.AnswerSDP[:0], dAtA[iNdEx:postIndex]...)
-			if m.AnswerSDP == nil {
-				m.AnswerSDP = []byte{}
-			}
+			m.AnswerSDP = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-			hasFields[0] |= uint64(0x00000002)
+			hasFields[0] |= uint64(0x00000004)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipChatPhone(dAtA[iNdEx:])
@@ -1093,9 +1663,12 @@ func (m *PhoneAcceptCall) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("CallID")
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Peer")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AnswerSDP")
 	}
 
@@ -1175,7 +1748,7 @@ func (m *PhoneRequestCall) Unmarshal(dAtA []byte) error {
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field OfferSDP", wireType)
 			}
-			var byteLen int
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowChatPhone
@@ -1185,25 +1758,23 @@ func (m *PhoneRequestCall) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				byteLen |= int(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			if byteLen < 0 {
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
 				return ErrInvalidLengthChatPhone
 			}
-			postIndex := iNdEx + byteLen
+			postIndex := iNdEx + intStringLen
 			if postIndex < 0 {
 				return ErrInvalidLengthChatPhone
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.OfferSDP = append(m.OfferSDP[:0], dAtA[iNdEx:postIndex]...)
-			if m.OfferSDP == nil {
-				m.OfferSDP = []byte{}
-			}
+			m.OfferSDP = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 			hasFields[0] |= uint64(0x00000002)
 		case 3:
@@ -1746,6 +2317,26 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ID", wireType)
+			}
+			m.ID = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ID |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field UserID", wireType)
 			}
 			m.UserID = 0
@@ -1763,8 +2354,8 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			hasFields[0] |= uint64(0x00000001)
-		case 2:
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field AccessHash", wireType)
 			}
@@ -1783,8 +2374,8 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			hasFields[0] |= uint64(0x00000002)
-		case 3:
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Video", wireType)
 			}
@@ -1804,8 +2395,8 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 				}
 			}
 			m.Video = bool(v != 0)
-			hasFields[0] |= uint64(0x00000004)
-		case 4:
+			hasFields[0] |= uint64(0x00000008)
+		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Date", wireType)
 			}
@@ -1824,8 +2415,8 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			hasFields[0] |= uint64(0x00000008)
-		case 5:
+			hasFields[0] |= uint64(0x00000010)
+		case 6:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field StunServers", wireType)
 			}
@@ -1876,16 +2467,505 @@ func (m *PhoneCall) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("ID")
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("UserID")
+	}
+	if hasFields[0]&uint64(0x00000004) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("AccessHash")
+	}
+	if hasFields[0]&uint64(0x00000008) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Video")
+	}
+	if hasFields[0]&uint64(0x00000010) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Date")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PhoneActionCallEmpty) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatPhone
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PhoneActionCallEmpty: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PhoneActionCallEmpty: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Empty", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Empty = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatPhone(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PhoneActionAccepted) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatPhone
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PhoneActionAccepted: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PhoneActionAccepted: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SDP", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SDP = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatPhone(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("SDP")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PhoneActionRequested) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatPhone
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PhoneActionRequested: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PhoneActionRequested: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SDP", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SDP = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatPhone(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("SDP")
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PhoneActionCallWaiting) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatPhone
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PhoneActionCallWaiting: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PhoneActionCallWaiting: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Empty", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Empty = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatPhone(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PhoneActionDiscarded) Unmarshal(dAtA []byte) error {
+	var hasFields [1]uint64
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowChatPhone
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PhoneActionDiscarded: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PhoneActionDiscarded: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field SDP", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.SDP = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+			hasFields[0] |= uint64(0x00000001)
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Duration", wireType)
+			}
+			m.Duration = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Duration |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000002)
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Video", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Video = bool(v != 0)
+			hasFields[0] |= uint64(0x00000004)
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Reason", wireType)
+			}
+			m.Reason = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowChatPhone
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Reason |= DiscardReason(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			hasFields[0] |= uint64(0x00000008)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipChatPhone(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthChatPhone
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+	if hasFields[0]&uint64(0x00000001) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("SDP")
+	}
+	if hasFields[0]&uint64(0x00000002) == 0 {
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Duration")
 	}
 	if hasFields[0]&uint64(0x00000004) == 0 {
 		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Video")
 	}
 	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Date")
+		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Reason")
 	}
 
 	if iNdEx > l {

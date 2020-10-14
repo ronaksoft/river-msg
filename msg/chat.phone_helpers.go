@@ -32,7 +32,6 @@ func (p *poolPhoneAcceptCall) Get() *PhoneAcceptCall {
 }
 
 func (p *poolPhoneAcceptCall) Put(x *PhoneAcceptCall) {
-	x.AnswerSDP = x.AnswerSDP[:0]
 	p.pool.Put(x)
 }
 
@@ -65,7 +64,6 @@ func (p *poolPhoneRequestCall) Get() *PhoneRequestCall {
 }
 
 func (p *poolPhoneRequestCall) Put(x *PhoneRequestCall) {
-	x.OfferSDP = x.OfferSDP[:0]
 	p.pool.Put(x)
 }
 
@@ -213,6 +211,168 @@ func ResultPhoneCall(out *MessageEnvelope, res *PhoneCall) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneActionCallEmpty int64 = 1073285997
+
+type poolPhoneActionCallEmpty struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionCallEmpty) Get() *PhoneActionCallEmpty {
+	x, ok := p.pool.Get().(*PhoneActionCallEmpty)
+	if !ok {
+		return &PhoneActionCallEmpty{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionCallEmpty) Put(x *PhoneActionCallEmpty) {
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionCallEmpty = poolPhoneActionCallEmpty{}
+
+func ResultPhoneActionCallEmpty(out *MessageEnvelope, res *PhoneActionCallEmpty) {
+	out.Constructor = C_PhoneActionCallEmpty
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneActionAccepted int64 = 2493210645
+
+type poolPhoneActionAccepted struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionAccepted) Get() *PhoneActionAccepted {
+	x, ok := p.pool.Get().(*PhoneActionAccepted)
+	if !ok {
+		return &PhoneActionAccepted{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionAccepted) Put(x *PhoneActionAccepted) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionAccepted = poolPhoneActionAccepted{}
+
+func ResultPhoneActionAccepted(out *MessageEnvelope, res *PhoneActionAccepted) {
+	out.Constructor = C_PhoneActionAccepted
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneActionRequested int64 = 1678316869
+
+type poolPhoneActionRequested struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionRequested) Get() *PhoneActionRequested {
+	x, ok := p.pool.Get().(*PhoneActionRequested)
+	if !ok {
+		return &PhoneActionRequested{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionRequested) Put(x *PhoneActionRequested) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionRequested = poolPhoneActionRequested{}
+
+func ResultPhoneActionRequested(out *MessageEnvelope, res *PhoneActionRequested) {
+	out.Constructor = C_PhoneActionRequested
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneActionCallWaiting int64 = 3634710697
+
+type poolPhoneActionCallWaiting struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionCallWaiting) Get() *PhoneActionCallWaiting {
+	x, ok := p.pool.Get().(*PhoneActionCallWaiting)
+	if !ok {
+		return &PhoneActionCallWaiting{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionCallWaiting) Put(x *PhoneActionCallWaiting) {
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionCallWaiting = poolPhoneActionCallWaiting{}
+
+func ResultPhoneActionCallWaiting(out *MessageEnvelope, res *PhoneActionCallWaiting) {
+	out.Constructor = C_PhoneActionCallWaiting
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneActionDiscarded int64 = 4285966731
+
+type poolPhoneActionDiscarded struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionDiscarded) Get() *PhoneActionDiscarded {
+	x, ok := p.pool.Get().(*PhoneActionDiscarded)
+	if !ok {
+		return &PhoneActionDiscarded{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionDiscarded) Put(x *PhoneActionDiscarded) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionDiscarded = poolPhoneActionDiscarded{}
+
+func ResultPhoneActionDiscarded(out *MessageEnvelope, res *PhoneActionDiscarded) {
+	out.Constructor = C_PhoneActionDiscarded
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[4133092858] = "PhoneAcceptCall"
 	ConstructorNames[907942641] = "PhoneRequestCall"
@@ -220,4 +380,9 @@ func init() {
 	ConstructorNames[1863246318] = "PhoneReceivedCall"
 	ConstructorNames[2805134474] = "PhoneSetCallRating"
 	ConstructorNames[3296664529] = "PhoneCall"
+	ConstructorNames[1073285997] = "PhoneActionCallEmpty"
+	ConstructorNames[2493210645] = "PhoneActionAccepted"
+	ConstructorNames[1678316869] = "PhoneActionRequested"
+	ConstructorNames[3634710697] = "PhoneActionCallWaiting"
+	ConstructorNames[4285966731] = "PhoneActionDiscarded"
 }

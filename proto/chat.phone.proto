@@ -85,7 +85,7 @@ enum PhoneCallAction {
 message PhoneCall {
     required int64 ID = 1 [jstype = JS_STRING];
     required int64 UserID = 2 [jstype = JS_STRING];
-    required int64 AccessHash = 3 [jstype = JS_STRING];
+    required fixed64 AccessHash = 3 [jstype = JS_STRING];
     required bool Video = 4;
     required int64 Date = 5;
     repeated string StunServers = 6;

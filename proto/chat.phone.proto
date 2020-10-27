@@ -43,10 +43,11 @@ enum DiscardReason {
 // PhoneDiscardCall
 // @Function
 message PhoneDiscardCall {
-    required InputUser Peer = 1;
-    required int32 Duration = 2;
-    required bool Video = 3;
-    required DiscardReason Reason = 4;
+    required int64 CallID = 1 [jstype = JS_STRING];
+    required InputUser Peer = 2;
+    required int32 Duration = 3;
+    required bool Video = 4;
+    required DiscardReason Reason = 5;
 }
 
 // PhoneReceivedCall
@@ -113,8 +114,7 @@ message PhoneActionCallWaiting {
 
 // PhoneActionDiscarded
 message PhoneActionDiscarded {
-    required string SDP = 1;
-    required int32 Duration = 2;
-    required bool Video = 3;
-    required DiscardReason Reason = 4;
+    required int32 Duration = 1;
+    required bool Video = 2;
+    required DiscardReason Reason = 3;
 }

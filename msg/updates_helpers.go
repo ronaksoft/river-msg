@@ -1445,6 +1445,10 @@ func (p *poolUpdateTeamPhoto) Get() *UpdateTeamPhoto {
 }
 
 func (p *poolUpdateTeamPhoto) Put(x *UpdateTeamPhoto) {
+	if x.Photo != nil {
+		*x.Photo = TeamPhoto{}
+	}
+
 	p.pool.Put(x)
 }
 

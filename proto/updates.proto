@@ -386,7 +386,7 @@ message UpdateTeamPhoto {
     required int32 UCount = 100;
     required int64 UpdateID = 101;
     required int64 TeamID = 1 [jstype = JS_STRING];
-    required TeamPhoto Photo = 2;
+    optional TeamPhoto Photo = 2;
 }
 
 // UpdateTeam

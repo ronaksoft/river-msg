@@ -12,7 +12,3 @@ protoc  -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gohelpers_ou
 protoc  -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gokk_out=../msg ./*.proto
 cd ../msg
 go fmt
-
-# Create Notification gRPC Stubs
-cd "${currentWorkingDir}"/notif/proto/ || exit
-protoc -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../ ./*.proto

@@ -113,6 +113,39 @@ func ResultPhoneDiscardCall(out *MessageEnvelope, res *PhoneDiscardCall) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneUpdateCall int64 = 1976202226
+
+type poolPhoneUpdateCall struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneUpdateCall) Get() *PhoneUpdateCall {
+	x, ok := p.pool.Get().(*PhoneUpdateCall)
+	if !ok {
+		return &PhoneUpdateCall{}
+	}
+	return x
+}
+
+func (p *poolPhoneUpdateCall) Put(x *PhoneUpdateCall) {
+	x.ActionData = x.ActionData[:0]
+	p.pool.Put(x)
+}
+
+var PoolPhoneUpdateCall = poolPhoneUpdateCall{}
+
+func ResultPhoneUpdateCall(out *MessageEnvelope, res *PhoneUpdateCall) {
+	out.Constructor = C_PhoneUpdateCall
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_PhoneReceivedCall int64 = 1863246318
 
 type poolPhoneReceivedCall struct {
@@ -373,10 +406,43 @@ func ResultPhoneActionDiscarded(out *MessageEnvelope, res *PhoneActionDiscarded)
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneActionIceExchange int64 = 1618781621
+
+type poolPhoneActionIceExchange struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionIceExchange) Get() *PhoneActionIceExchange {
+	x, ok := p.pool.Get().(*PhoneActionIceExchange)
+	if !ok {
+		return &PhoneActionIceExchange{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionIceExchange) Put(x *PhoneActionIceExchange) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionIceExchange = poolPhoneActionIceExchange{}
+
+func ResultPhoneActionIceExchange(out *MessageEnvelope, res *PhoneActionIceExchange) {
+	out.Constructor = C_PhoneActionIceExchange
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[4133092858] = "PhoneAcceptCall"
 	ConstructorNames[907942641] = "PhoneRequestCall"
 	ConstructorNames[2712700137] = "PhoneDiscardCall"
+	ConstructorNames[1976202226] = "PhoneUpdateCall"
 	ConstructorNames[1863246318] = "PhoneReceivedCall"
 	ConstructorNames[2805134474] = "PhoneSetCallRating"
 	ConstructorNames[3296664529] = "PhoneCall"
@@ -385,4 +451,5 @@ func init() {
 	ConstructorNames[1678316869] = "PhoneActionRequested"
 	ConstructorNames[3634710697] = "PhoneActionCallWaiting"
 	ConstructorNames[4285966731] = "PhoneActionDiscarded"
+	ConstructorNames[1618781621] = "PhoneActionIceExchange"
 }

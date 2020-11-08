@@ -110,11 +110,13 @@ message PhoneActionCallEmpty {
 // PhoneActionAccepted
 message PhoneActionAccepted {
     required string SDP = 1;
+    required string Type = 2;
 }
 
 // PhoneActionRequested
 message PhoneActionRequested {
     required string SDP = 1;
+    required string Type = 2;
 }
 
 // PhoneActionCallWaiting
@@ -131,5 +133,8 @@ message PhoneActionDiscarded {
 
 // PhoneActionIceExchange
 message PhoneActionIceExchange {
-    required string ICE = 1;
+    required string Candidate = 1;
+    optional int64 SdpMLineIndex = 2;
+    optional string SdpMid = 3;
+    optional string UsernameFragment = 4;
 }

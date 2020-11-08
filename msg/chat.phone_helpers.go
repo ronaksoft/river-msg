@@ -421,6 +421,9 @@ func (p *poolPhoneActionIceExchange) Get() *PhoneActionIceExchange {
 }
 
 func (p *poolPhoneActionIceExchange) Put(x *PhoneActionIceExchange) {
+	x.SdpMLineIndex = 0
+	x.SdpMid = ""
+	x.UsernameFragment = ""
 	p.pool.Put(x)
 }
 

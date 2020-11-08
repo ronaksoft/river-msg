@@ -11,6 +11,7 @@ message PhoneAcceptCall {
     required int64 CallID = 1 [jstype = JS_STRING];
     required InputUser Peer = 2;
     required string AnswerSDP = 3;
+    required string Type = 4;
 }
 
 // PhoneRequestCall
@@ -19,8 +20,9 @@ message PhoneAcceptCall {
 message PhoneRequestCall {
     required InputUser Peer = 1;
     required string OfferSDP = 2;
-    required bool Video = 3;
-    required int64 RandomID = 4;
+    required string Type = 3;
+    required bool Video = 4;
+    required int64 RandomID = 5;
 }
 
 enum DiscardReason {

@@ -65,6 +65,7 @@ func (p *poolPhoneRequestCall) Get() *PhoneRequestCall {
 
 func (p *poolPhoneRequestCall) Put(x *PhoneRequestCall) {
 	x.Recipients = x.Recipients[:0]
+	x.CallID = 0
 	p.pool.Put(x)
 }
 

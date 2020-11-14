@@ -18,6 +18,7 @@ message PhoneRequestCall {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
     repeated PhoneRecipient Recipients = 3;
+    optional int64 CallID = 4 [jstype = JS_STRING];
 }
 
 // PhoneAcceptCall

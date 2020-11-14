@@ -9,16 +9,16 @@ option (gogoproto.goproto_enum_prefix_all) = false;
 // @Return: PhoneInit
 message PhoneInitCall {
     required InputPeer Peer = 1;
-    required int64 RandomID = 2;
 }
 
 // PhoneRequestCall
 // @Function
 // @Return: PhoneCall
 message PhoneRequestCall {
-    required InputPeer Peer = 1;
-    required int64 CallID = 2 [jstype = JS_STRING];
-    repeated PhoneRecipient Recipients = 3;
+    required int64 RandomID = 1;
+    required InputPeer Peer = 2;
+    required int64 CallID = 3 [jstype = JS_STRING];
+    repeated PhoneRecipient Recipients = 4;
 }
 
 // PhoneAcceptCall
@@ -103,8 +103,7 @@ message PhoneCall {
 
 // PhoneInit
 message PhoneInit {
-    required int64 CallID = 1 [jstype = JS_STRING];
-    repeated IceServer IceServers = 2;
+    repeated IceServer IceServers = 1;
 }
 
 // IceServer

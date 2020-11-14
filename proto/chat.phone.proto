@@ -104,15 +104,13 @@ message PhoneCall {
 // PhoneInit
 message PhoneInit {
     repeated IceServer IceServers = 1;
-    required bool Empty = 2;
 }
 
 // IceServer
 message IceServer {
-    required bool Empty = 1;
-    repeated string urls = 2;
-    optional string username = 3;
-    optional string credential = 4;
+    repeated string urls = 1;
+    required string username = 2;
+    required string credential = 3;
 }
 
 // PhoneRecipient

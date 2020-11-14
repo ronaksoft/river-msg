@@ -104,6 +104,7 @@ message PhoneCall {
 // PhoneInit
 message PhoneInit {
     repeated IceServer IceServers = 1;
+    required bool Empty = 2;
 }
 
 // IceServer

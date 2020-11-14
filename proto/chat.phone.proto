@@ -108,9 +108,9 @@ message PhoneInit {
 
 // IceServer
 message IceServer {
-    repeated string urls = 1;
-    required string username = 2;
-    required string credential = 3;
+    required string username = 1;
+    required string credential = 2;
+    repeated string urls = 3;
 }
 
 // PhoneRecipient

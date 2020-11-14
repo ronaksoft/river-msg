@@ -296,7 +296,9 @@ func (p *poolIceServer) Get() *IceServer {
 }
 
 func (p *poolIceServer) Put(x *IceServer) {
-	x.urls = x.urls[:0]
+	x.Urls = x.Urls[:0]
+	x.Username = ""
+	x.Credential = ""
 	p.pool.Put(x)
 }
 

@@ -348,6 +348,38 @@ func ResultPhoneRecipient(out *MessageEnvelope, res *PhoneRecipient) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneRecipientSDP int64 = 164229047
+
+type poolPhoneRecipientSDP struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneRecipientSDP) Get() *PhoneRecipientSDP {
+	x, ok := p.pool.Get().(*PhoneRecipientSDP)
+	if !ok {
+		return &PhoneRecipientSDP{}
+	}
+	return x
+}
+
+func (p *poolPhoneRecipientSDP) Put(x *PhoneRecipientSDP) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneRecipientSDP = poolPhoneRecipientSDP{}
+
+func ResultPhoneRecipientSDP(out *MessageEnvelope, res *PhoneRecipientSDP) {
+	out.Constructor = C_PhoneRecipientSDP
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 const C_PhoneActionCallEmpty int64 = 1073285997
 
 type poolPhoneActionCallEmpty struct {
@@ -556,6 +588,7 @@ func init() {
 	ConstructorNames[3464876187] = "PhoneInit"
 	ConstructorNames[4291892363] = "IceServer"
 	ConstructorNames[3239466846] = "PhoneRecipient"
+	ConstructorNames[164229047] = "PhoneRecipientSDP"
 	ConstructorNames[1073285997] = "PhoneActionCallEmpty"
 	ConstructorNames[2493210645] = "PhoneActionAccepted"
 	ConstructorNames[1678316869] = "PhoneActionRequested"

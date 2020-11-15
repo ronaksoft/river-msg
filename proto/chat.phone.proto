@@ -17,7 +17,7 @@ message PhoneInitCall {
 message PhoneRequestCall {
     required int64 RandomID = 1;
     required InputPeer Peer = 2;
-    repeated PhoneRecipient Recipients = 3;
+    repeated PhoneRecipientSDP Recipients = 3;
     optional int64 CallID = 4 [jstype = JS_STRING];
 }
 
@@ -115,6 +115,12 @@ message IceServer {
 
 // PhoneRecipient
 message PhoneRecipient {
+    required int32 ConnectionId = 1;
+    required InputUser Peer = 2;
+}
+
+// PhoneRecipientSDP
+message PhoneRecipientSDP {
     required int32 ConnectionId = 1;
     required InputUser Peer = 2;
     required string SDP = 3;

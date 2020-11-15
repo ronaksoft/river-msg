@@ -460,6 +460,7 @@ func (p *poolPhoneActionRequested) Get() *PhoneActionRequested {
 }
 
 func (p *poolPhoneActionRequested) Put(x *PhoneActionRequested) {
+	x.Recipients = x.Recipients[:0]
 	p.pool.Put(x)
 }
 

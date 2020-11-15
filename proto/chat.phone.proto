@@ -142,6 +142,7 @@ message PhoneActionAccepted {
 message PhoneActionRequested {
     required string SDP = 1;
     required string Type = 2;
+    repeated PhoneRecipient Recipients = 3;
 }
 
 // PhoneActionCallWaiting

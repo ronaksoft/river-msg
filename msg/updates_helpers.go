@@ -1816,6 +1816,7 @@ func (p *poolUpdatePhoneCall) Get() *UpdatePhoneCall {
 }
 
 func (p *poolUpdatePhoneCall) Put(x *UpdatePhoneCall) {
+	x.Recipients = x.Recipients[:0]
 	x.ActionData = x.ActionData[:0]
 	p.pool.Put(x)
 }

@@ -27,7 +27,7 @@ message PhoneRequestCall {
 message PhoneAcceptCall {
     required InputPeer Peer = 1;
     required int64 CallID = 2 [jstype = JS_STRING];
-    repeated PhoneRecipient Recipients = 3;
+    repeated PhoneRecipientSDP Recipients = 3;
 }
 
 enum DiscardReason {

@@ -64,7 +64,7 @@ func (p *poolPhoneRequestCall) Get() *PhoneRequestCall {
 }
 
 func (p *poolPhoneRequestCall) Put(x *PhoneRequestCall) {
-	x.Recipients = x.Recipients[:0]
+	x.Participants = x.Participants[:0]
 	x.CallID = 0
 	p.pool.Put(x)
 }
@@ -98,7 +98,7 @@ func (p *poolPhoneAcceptCall) Get() *PhoneAcceptCall {
 }
 
 func (p *poolPhoneAcceptCall) Put(x *PhoneAcceptCall) {
-	x.Recipients = x.Recipients[:0]
+	x.Participants = x.Participants[:0]
 	p.pool.Put(x)
 }
 
@@ -131,7 +131,7 @@ func (p *poolPhoneDiscardCall) Get() *PhoneDiscardCall {
 }
 
 func (p *poolPhoneDiscardCall) Put(x *PhoneDiscardCall) {
-	x.Recipients = x.Recipients[:0]
+	x.Participants = x.Participants[:0]
 	p.pool.Put(x)
 }
 
@@ -164,7 +164,7 @@ func (p *poolPhoneUpdateCall) Get() *PhoneUpdateCall {
 }
 
 func (p *poolPhoneUpdateCall) Put(x *PhoneUpdateCall) {
-	x.Recipients = x.Recipients[:0]
+	x.Participants = x.Participants[:0]
 	x.ActionData = x.ActionData[:0]
 	p.pool.Put(x)
 }
@@ -316,28 +316,28 @@ func ResultIceServer(out *MessageEnvelope, res *IceServer) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_PhoneRecipient int64 = 3239466846
+const C_PhoneParticipant int64 = 226273622
 
-type poolPhoneRecipient struct {
+type poolPhoneParticipant struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneRecipient) Get() *PhoneRecipient {
-	x, ok := p.pool.Get().(*PhoneRecipient)
+func (p *poolPhoneParticipant) Get() *PhoneParticipant {
+	x, ok := p.pool.Get().(*PhoneParticipant)
 	if !ok {
-		return &PhoneRecipient{}
+		return &PhoneParticipant{}
 	}
 	return x
 }
 
-func (p *poolPhoneRecipient) Put(x *PhoneRecipient) {
+func (p *poolPhoneParticipant) Put(x *PhoneParticipant) {
 	p.pool.Put(x)
 }
 
-var PoolPhoneRecipient = poolPhoneRecipient{}
+var PoolPhoneParticipant = poolPhoneParticipant{}
 
-func ResultPhoneRecipient(out *MessageEnvelope, res *PhoneRecipient) {
-	out.Constructor = C_PhoneRecipient
+func ResultPhoneParticipant(out *MessageEnvelope, res *PhoneParticipant) {
+	out.Constructor = C_PhoneParticipant
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -348,28 +348,28 @@ func ResultPhoneRecipient(out *MessageEnvelope, res *PhoneRecipient) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_PhoneRecipientSDP int64 = 164229047
+const C_PhoneParticipantSDP int64 = 545454774
 
-type poolPhoneRecipientSDP struct {
+type poolPhoneParticipantSDP struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneRecipientSDP) Get() *PhoneRecipientSDP {
-	x, ok := p.pool.Get().(*PhoneRecipientSDP)
+func (p *poolPhoneParticipantSDP) Get() *PhoneParticipantSDP {
+	x, ok := p.pool.Get().(*PhoneParticipantSDP)
 	if !ok {
-		return &PhoneRecipientSDP{}
+		return &PhoneParticipantSDP{}
 	}
 	return x
 }
 
-func (p *poolPhoneRecipientSDP) Put(x *PhoneRecipientSDP) {
+func (p *poolPhoneParticipantSDP) Put(x *PhoneParticipantSDP) {
 	p.pool.Put(x)
 }
 
-var PoolPhoneRecipientSDP = poolPhoneRecipientSDP{}
+var PoolPhoneParticipantSDP = poolPhoneParticipantSDP{}
 
-func ResultPhoneRecipientSDP(out *MessageEnvelope, res *PhoneRecipientSDP) {
-	out.Constructor = C_PhoneRecipientSDP
+func ResultPhoneParticipantSDP(out *MessageEnvelope, res *PhoneParticipantSDP) {
+	out.Constructor = C_PhoneParticipantSDP
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -460,7 +460,7 @@ func (p *poolPhoneActionRequested) Get() *PhoneActionRequested {
 }
 
 func (p *poolPhoneActionRequested) Put(x *PhoneActionRequested) {
-	x.Recipients = x.Recipients[:0]
+	x.Participants = x.Participants[:0]
 	p.pool.Put(x)
 }
 
@@ -588,8 +588,8 @@ func init() {
 	ConstructorNames[3296664529] = "PhoneCall"
 	ConstructorNames[3464876187] = "PhoneInit"
 	ConstructorNames[4291892363] = "IceServer"
-	ConstructorNames[3239466846] = "PhoneRecipient"
-	ConstructorNames[164229047] = "PhoneRecipientSDP"
+	ConstructorNames[226273622] = "PhoneParticipant"
+	ConstructorNames[545454774] = "PhoneParticipantSDP"
 	ConstructorNames[1073285997] = "PhoneActionCallEmpty"
 	ConstructorNames[2493210645] = "PhoneActionAccepted"
 	ConstructorNames[1678316869] = "PhoneActionRequested"

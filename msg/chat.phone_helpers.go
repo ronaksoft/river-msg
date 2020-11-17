@@ -578,6 +578,70 @@ func ResultPhoneActionIceExchange(out *MessageEnvelope, res *PhoneActionIceExcha
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneMediaSettingsUpdated int64 = 163140236
+
+type poolPhoneMediaSettingsUpdated struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneMediaSettingsUpdated) Get() *PhoneMediaSettingsUpdated {
+	x, ok := p.pool.Get().(*PhoneMediaSettingsUpdated)
+	if !ok {
+		return &PhoneMediaSettingsUpdated{}
+	}
+	return x
+}
+
+func (p *poolPhoneMediaSettingsUpdated) Put(x *PhoneMediaSettingsUpdated) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneMediaSettingsUpdated = poolPhoneMediaSettingsUpdated{}
+
+func ResultPhoneMediaSettingsUpdated(out *MessageEnvelope, res *PhoneMediaSettingsUpdated) {
+	out.Constructor = C_PhoneMediaSettingsUpdated
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneReactionSet int64 = 3821475130
+
+type poolPhoneReactionSet struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneReactionSet) Get() *PhoneReactionSet {
+	x, ok := p.pool.Get().(*PhoneReactionSet)
+	if !ok {
+		return &PhoneReactionSet{}
+	}
+	return x
+}
+
+func (p *poolPhoneReactionSet) Put(x *PhoneReactionSet) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneReactionSet = poolPhoneReactionSet{}
+
+func ResultPhoneReactionSet(out *MessageEnvelope, res *PhoneReactionSet) {
+	out.Constructor = C_PhoneReactionSet
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[2975617068] = "PhoneInitCall"
 	ConstructorNames[907942641] = "PhoneRequestCall"
@@ -596,4 +660,6 @@ func init() {
 	ConstructorNames[3634710697] = "PhoneActionCallWaiting"
 	ConstructorNames[4285966731] = "PhoneActionDiscarded"
 	ConstructorNames[1618781621] = "PhoneActionIceExchange"
+	ConstructorNames[163140236] = "PhoneMediaSettingsUpdated"
+	ConstructorNames[3821475130] = "PhoneReactionSet"
 }

@@ -280,3 +280,16 @@ message ClientGetFrequentlyReactions {
 message ClientFrequentlyReactions {
     repeated string Reactions = 1;
 }
+
+message ClientDismissNotification {
+    required InputPeer Peer = 1;
+    required int64 ts = 2;
+}
+
+message ClientGetNotificationDismissTime {
+    required InputPeer Peer = 1;
+}
+
+message ClientNotificationDismissTime {
+    required int64 ts = 1;
+}

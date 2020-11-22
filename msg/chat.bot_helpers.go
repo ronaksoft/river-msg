@@ -1069,6 +1069,7 @@ func (p *poolBotCommandsMany) Get() *BotCommandsMany {
 
 func (p *poolBotCommandsMany) Put(x *BotCommandsMany) {
 	x.Commands = x.Commands[:0]
+	x.Empty = false
 	p.pool.Put(x)
 }
 

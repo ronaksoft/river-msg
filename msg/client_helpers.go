@@ -972,6 +972,102 @@ func ResultClientFrequentlyReactions(out *MessageEnvelope, res *ClientFrequently
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_ClientDismissNotification int64 = 1698398006
+
+type poolClientDismissNotification struct {
+	pool sync.Pool
+}
+
+func (p *poolClientDismissNotification) Get() *ClientDismissNotification {
+	x, ok := p.pool.Get().(*ClientDismissNotification)
+	if !ok {
+		return &ClientDismissNotification{}
+	}
+	return x
+}
+
+func (p *poolClientDismissNotification) Put(x *ClientDismissNotification) {
+	p.pool.Put(x)
+}
+
+var PoolClientDismissNotification = poolClientDismissNotification{}
+
+func ResultClientDismissNotification(out *MessageEnvelope, res *ClientDismissNotification) {
+	out.Constructor = C_ClientDismissNotification
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_ClientGetNotificationDismissTime int64 = 4106535811
+
+type poolClientGetNotificationDismissTime struct {
+	pool sync.Pool
+}
+
+func (p *poolClientGetNotificationDismissTime) Get() *ClientGetNotificationDismissTime {
+	x, ok := p.pool.Get().(*ClientGetNotificationDismissTime)
+	if !ok {
+		return &ClientGetNotificationDismissTime{}
+	}
+	return x
+}
+
+func (p *poolClientGetNotificationDismissTime) Put(x *ClientGetNotificationDismissTime) {
+	p.pool.Put(x)
+}
+
+var PoolClientGetNotificationDismissTime = poolClientGetNotificationDismissTime{}
+
+func ResultClientGetNotificationDismissTime(out *MessageEnvelope, res *ClientGetNotificationDismissTime) {
+	out.Constructor = C_ClientGetNotificationDismissTime
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_ClientNotificationDismissTime int64 = 3077814065
+
+type poolClientNotificationDismissTime struct {
+	pool sync.Pool
+}
+
+func (p *poolClientNotificationDismissTime) Get() *ClientNotificationDismissTime {
+	x, ok := p.pool.Get().(*ClientNotificationDismissTime)
+	if !ok {
+		return &ClientNotificationDismissTime{}
+	}
+	return x
+}
+
+func (p *poolClientNotificationDismissTime) Put(x *ClientNotificationDismissTime) {
+	p.pool.Put(x)
+}
+
+var PoolClientNotificationDismissTime = poolClientNotificationDismissTime{}
+
+func ResultClientNotificationDismissTime(out *MessageEnvelope, res *ClientNotificationDismissTime) {
+	out.Constructor = C_ClientNotificationDismissTime
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[1095038539] = "ClientSendMessageMedia"
 	ConstructorNames[1742781507] = "ClientGlobalSearch"
@@ -1000,4 +1096,7 @@ func init() {
 	ConstructorNames[769069696] = "ClientTeamCounters"
 	ConstructorNames[2316768708] = "ClientGetFrequentlyReactions"
 	ConstructorNames[2830270594] = "ClientFrequentlyReactions"
+	ConstructorNames[1698398006] = "ClientDismissNotification"
+	ConstructorNames[4106535811] = "ClientGetNotificationDismissTime"
+	ConstructorNames[3077814065] = "ClientNotificationDismissTime"
 }

@@ -642,6 +642,70 @@ func ResultPhoneReactionSet(out *MessageEnvelope, res *PhoneReactionSet) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
+const C_PhoneSDPOffer int64 = 2063600460
+
+type poolPhoneSDPOffer struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneSDPOffer) Get() *PhoneSDPOffer {
+	x, ok := p.pool.Get().(*PhoneSDPOffer)
+	if !ok {
+		return &PhoneSDPOffer{}
+	}
+	return x
+}
+
+func (p *poolPhoneSDPOffer) Put(x *PhoneSDPOffer) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneSDPOffer = poolPhoneSDPOffer{}
+
+func ResultPhoneSDPOffer(out *MessageEnvelope, res *PhoneSDPOffer) {
+	out.Constructor = C_PhoneSDPOffer
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_PhoneSDPAnswer int64 = 1686408377
+
+type poolPhoneSDPAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneSDPAnswer) Get() *PhoneSDPAnswer {
+	x, ok := p.pool.Get().(*PhoneSDPAnswer)
+	if !ok {
+		return &PhoneSDPAnswer{}
+	}
+	return x
+}
+
+func (p *poolPhoneSDPAnswer) Put(x *PhoneSDPAnswer) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneSDPAnswer = poolPhoneSDPAnswer{}
+
+func ResultPhoneSDPAnswer(out *MessageEnvelope, res *PhoneSDPAnswer) {
+	out.Constructor = C_PhoneSDPAnswer
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
 func init() {
 	ConstructorNames[2975617068] = "PhoneInitCall"
 	ConstructorNames[907942641] = "PhoneRequestCall"
@@ -662,4 +726,6 @@ func init() {
 	ConstructorNames[1618781621] = "PhoneActionIceExchange"
 	ConstructorNames[163140236] = "PhoneMediaSettingsUpdated"
 	ConstructorNames[3821475130] = "PhoneReactionSet"
+	ConstructorNames[2063600460] = "PhoneSDPOffer"
+	ConstructorNames[1686408377] = "PhoneSDPAnswer"
 }

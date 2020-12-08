@@ -332,6 +332,9 @@ func (p *poolSystemConfig) Put(x *SystemConfig) {
 	x.DCs = x.DCs[:0]
 	x.MaxActiveSessions = 0
 	x.Reactions = x.Reactions[:0]
+	x.MaxUploadSize = 0
+	x.MaxUploadPartSize = 0
+	x.MaxUploadParts = 0
 	p.pool.Put(x)
 }
 

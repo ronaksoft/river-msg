@@ -91,6 +91,9 @@ message SystemConfig {
     required float TopPeerMaxStep = 16;
     optional uint32 MaxActiveSessions = 17;
     repeated string Reactions = 18;
+    optional int64 MaxUploadSize = 19;
+    optional int64 MaxUploadPartSize = 20;
+    optional int64 MaxUploadParts = 21;
 }
 
 // DataCenter

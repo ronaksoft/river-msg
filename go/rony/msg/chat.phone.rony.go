@@ -711,3 +711,87 @@ func (x *PhoneSDPAnswer) DeepCopy(z *PhoneSDPAnswer) {
 	z.SDP = x.SDP
 	z.Type = x.Type
 }
+
+func (x *PhoneInitCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneInitCall, x)
+}
+
+func (x *PhoneRequestCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneRequestCall, x)
+}
+
+func (x *PhoneAcceptCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneAcceptCall, x)
+}
+
+func (x *PhoneDiscardCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneDiscardCall, x)
+}
+
+func (x *PhoneUpdateCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneUpdateCall, x)
+}
+
+func (x *PhoneRateCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneRateCall, x)
+}
+
+func (x *PhoneCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneCall, x)
+}
+
+func (x *PhoneInit) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneInit, x)
+}
+
+func (x *IceServer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_IceServer, x)
+}
+
+func (x *PhoneParticipant) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneParticipant, x)
+}
+
+func (x *PhoneParticipantSDP) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneParticipantSDP, x)
+}
+
+func (x *PhoneActionCallEmpty) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionCallEmpty, x)
+}
+
+func (x *PhoneActionAccepted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionAccepted, x)
+}
+
+func (x *PhoneActionRequested) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionRequested, x)
+}
+
+func (x *PhoneActionCallWaiting) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionCallWaiting, x)
+}
+
+func (x *PhoneActionDiscarded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionDiscarded, x)
+}
+
+func (x *PhoneActionIceExchange) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionIceExchange, x)
+}
+
+func (x *PhoneMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneMediaSettingsUpdated, x)
+}
+
+func (x *PhoneReactionSet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneReactionSet, x)
+}
+
+func (x *PhoneSDPOffer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneSDPOffer, x)
+}
+
+func (x *PhoneSDPAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneSDPAnswer, x)
+}

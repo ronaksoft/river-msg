@@ -1197,6 +1197,130 @@ func (x *BotCommandsMany) DeepCopy(z *BotCommandsMany) {
 	z.Empty = x.Empty
 }
 
+func (x *BotStart) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotStart, x)
+}
+
+func (x *BotRecall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotRecall, x)
+}
+
+func (x *BotSetInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSetInfo, x)
+}
+
+func (x *BotGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotGet, x)
+}
+
+func (x *BotSendMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSendMessage, x)
+}
+
+func (x *BotEditMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotEditMessage, x)
+}
+
+func (x *BotSendMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSendMedia, x)
+}
+
+func (x *BotSaveFilePart) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSaveFilePart, x)
+}
+
+func (x *BotUpdateProfile) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotUpdateProfile, x)
+}
+
+func (x *BotUpdatePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotUpdatePhoto, x)
+}
+
+func (x *BotRevokeToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotRevokeToken, x)
+}
+
+func (x *BotDeleteMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotDeleteMessage, x)
+}
+
+func (x *BotSetCallbackAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSetCallbackAnswer, x)
+}
+
+func (x *BotGetCallbackAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotGetCallbackAnswer, x)
+}
+
+func (x *BotGetInlineResults) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotGetInlineResults, x)
+}
+
+func (x *BotSetInlineResults) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSetInlineResults, x)
+}
+
+func (x *BotSendInlineResults) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotSendInlineResults, x)
+}
+
+func (x *BotUploadWallPaper) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotUploadWallPaper, x)
+}
+
+func (x *BotUploadGif) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotUploadGif, x)
+}
+
+func (x *BotResults) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotResults, x)
+}
+
+func (x *BotInlineSwitchPM) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotInlineSwitchPM, x)
+}
+
+func (x *BotInlineResult) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotInlineResult, x)
+}
+
+func (x *InputBotInlineResult) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputBotInlineResult, x)
+}
+
+func (x *BotInlineMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotInlineMessage, x)
+}
+
+func (x *InputBotInlineMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputBotInlineMessage, x)
+}
+
+func (x *BotToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotToken, x)
+}
+
+func (x *BotRecalled) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotRecalled, x)
+}
+
+func (x *BotCallbackAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotCallbackAnswer, x)
+}
+
+func (x *BotsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotsMany, x)
+}
+
+func (x *BotGetCommands) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotGetCommands, x)
+}
+
+func (x *BotCommandsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotCommandsMany, x)
+}
+
 const C_ServeBotRequest int64 = 685561014
 
 type IBotProxy interface {

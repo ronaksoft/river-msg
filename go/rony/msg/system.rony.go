@@ -559,3 +559,71 @@ func (x *SystemDHGroups) DeepCopy(z *SystemDHGroups) {
 		}
 	}
 }
+
+func (x *SystemGetPublicKeys) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetPublicKeys, x)
+}
+
+func (x *SystemGetDHGroups) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetDHGroups, x)
+}
+
+func (x *SystemGetServerTime) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetServerTime, x)
+}
+
+func (x *SystemGetInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetInfo, x)
+}
+
+func (x *SystemGetSalts) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetSalts, x)
+}
+
+func (x *SystemGetConfig) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetConfig, x)
+}
+
+func (x *SystemUploadUsage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemUploadUsage, x)
+}
+
+func (x *SystemGetResponse) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemGetResponse, x)
+}
+
+func (x *ClientUsage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientUsage, x)
+}
+
+func (x *SystemConfig) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemConfig, x)
+}
+
+func (x *DataCenter) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DataCenter, x)
+}
+
+func (x *SystemSalts) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemSalts, x)
+}
+
+func (x *AppUpdate) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AppUpdate, x)
+}
+
+func (x *SystemInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemInfo, x)
+}
+
+func (x *SystemServerTime) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemServerTime, x)
+}
+
+func (x *SystemPublicKeys) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemPublicKeys, x)
+}
+
+func (x *SystemDHGroups) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SystemDHGroups, x)
+}

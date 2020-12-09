@@ -2101,3 +2101,219 @@ func (x *UpdatePhoneCall) DeepCopy(z *UpdatePhoneCall) {
 	z.Action = x.Action
 	z.ActionData = append(z.ActionData[:0], x.ActionData...)
 }
+
+func (x *UpdateGetState) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGetState, x)
+}
+
+func (x *UpdateGetDifference) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGetDifference, x)
+}
+
+func (x *UpdateDifference) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateDifference, x)
+}
+
+func (x *UpdateTooLong) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTooLong, x)
+}
+
+func (x *UpdateState) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateState, x)
+}
+
+func (x *UpdateMessageID) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateMessageID, x)
+}
+
+func (x *UpdateNewMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateNewMessage, x)
+}
+
+func (x *UpdateMessageEdited) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateMessageEdited, x)
+}
+
+func (x *UpdateMessagesDeleted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateMessagesDeleted, x)
+}
+
+func (x *UpdateReadHistoryInbox) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateReadHistoryInbox, x)
+}
+
+func (x *UpdateReadHistoryOutbox) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateReadHistoryOutbox, x)
+}
+
+func (x *UpdateMessagePinned) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateMessagePinned, x)
+}
+
+func (x *UpdateUserTyping) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateUserTyping, x)
+}
+
+func (x *UpdateUserStatus) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateUserStatus, x)
+}
+
+func (x *UpdateUsername) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateUsername, x)
+}
+
+func (x *UpdateUserPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateUserPhoto, x)
+}
+
+func (x *UpdateNotifySettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateNotifySettings, x)
+}
+
+func (x *UpdateGroupParticipantAdd) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGroupParticipantAdd, x)
+}
+
+func (x *UpdateGroupParticipantDeleted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGroupParticipantDeleted, x)
+}
+
+func (x *UpdateGroupParticipantAdmin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGroupParticipantAdmin, x)
+}
+
+func (x *UpdateGroupAdmins) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGroupAdmins, x)
+}
+
+func (x *UpdateGroupPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateGroupPhoto, x)
+}
+
+func (x *UpdateReadMessagesContents) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateReadMessagesContents, x)
+}
+
+func (x *UpdateAuthorizationReset) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateAuthorizationReset, x)
+}
+
+func (x *UpdateDraftMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateDraftMessage, x)
+}
+
+func (x *UpdateDraftMessageCleared) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateDraftMessageCleared, x)
+}
+
+func (x *UpdateDialogPinned) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateDialogPinned, x)
+}
+
+func (x *UpdateDialogPinnedReorder) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateDialogPinnedReorder, x)
+}
+
+func (x *UpdateAccountPrivacy) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateAccountPrivacy, x)
+}
+
+func (x *UpdateLabelItemsAdded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateLabelItemsAdded, x)
+}
+
+func (x *UpdateLabelItemsRemoved) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateLabelItemsRemoved, x)
+}
+
+func (x *UpdateLabelSet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateLabelSet, x)
+}
+
+func (x *UpdateLabelDeleted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateLabelDeleted, x)
+}
+
+func (x *UpdateUserBlocked) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateUserBlocked, x)
+}
+
+func (x *UpdateMessagePoll) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateMessagePoll, x)
+}
+
+func (x *UpdateBotCallbackQuery) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateBotCallbackQuery, x)
+}
+
+func (x *UpdateBotInlineQuery) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateBotInlineQuery, x)
+}
+
+func (x *UpdateBotInlineSend) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateBotInlineSend, x)
+}
+
+func (x *UpdateTeamCreated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeamCreated, x)
+}
+
+func (x *UpdateTeamMemberAdded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeamMemberAdded, x)
+}
+
+func (x *UpdateTeamMemberRemoved) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeamMemberRemoved, x)
+}
+
+func (x *UpdateTeamMemberStatus) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeamMemberStatus, x)
+}
+
+func (x *UpdateTeamPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeamPhoto, x)
+}
+
+func (x *UpdateTeam) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateTeam, x)
+}
+
+func (x *UpdateCommunityMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCommunityMessage, x)
+}
+
+func (x *UpdateCommunityReadOutbox) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCommunityReadOutbox, x)
+}
+
+func (x *UpdateCommunityTyping) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCommunityTyping, x)
+}
+
+func (x *UpdateReaction) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateReaction, x)
+}
+
+func (x *UpdateCalendarEventAdded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCalendarEventAdded, x)
+}
+
+func (x *UpdateCalendarEventRemoved) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCalendarEventRemoved, x)
+}
+
+func (x *UpdateCalendarEventEdited) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateCalendarEventEdited, x)
+}
+
+func (x *UpdateRedirect) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateRedirect, x)
+}
+
+func (x *ClientRedirect) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientRedirect, x)
+}
+
+func (x *UpdatePhoneCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdatePhoneCall, x)
+}

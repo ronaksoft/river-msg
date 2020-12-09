@@ -105,3 +105,15 @@ func (x *UsersMany) DeepCopy(z *UsersMany) {
 	}
 	z.Empty = x.Empty
 }
+
+func (x *UsersGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UsersGet, x)
+}
+
+func (x *UsersGetFull) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UsersGetFull, x)
+}
+
+func (x *UsersMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UsersMany, x)
+}

@@ -381,3 +381,55 @@ func (x *ButtonSwitchInline) DeepCopy(z *ButtonSwitchInline) {
 func (x *ButtonBuy) DeepCopy(z *ButtonBuy) {
 	z.Text = x.Text
 }
+
+func (x *ReplyKeyboardMarkup) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReplyKeyboardMarkup, x)
+}
+
+func (x *ReplyInlineMarkup) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReplyInlineMarkup, x)
+}
+
+func (x *ReplyKeyboardHide) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReplyKeyboardHide, x)
+}
+
+func (x *ReplyKeyboardForceReply) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReplyKeyboardForceReply, x)
+}
+
+func (x *KeyboardButtonRow) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_KeyboardButtonRow, x)
+}
+
+func (x *KeyboardButtonEnvelope) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_KeyboardButtonEnvelope, x)
+}
+
+func (x *Button) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Button, x)
+}
+
+func (x *ButtonUrl) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonUrl, x)
+}
+
+func (x *ButtonCallback) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonCallback, x)
+}
+
+func (x *ButtonRequestPhone) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonRequestPhone, x)
+}
+
+func (x *ButtonRequestGeoLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonRequestGeoLocation, x)
+}
+
+func (x *ButtonSwitchInline) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonSwitchInline, x)
+}
+
+func (x *ButtonBuy) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ButtonBuy, x)
+}

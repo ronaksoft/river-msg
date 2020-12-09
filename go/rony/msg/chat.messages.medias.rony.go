@@ -871,3 +871,95 @@ func (x *PollAnswerVoters) DeepCopy(z *PollAnswerVoters) {
 	z.Option = append(z.Option[:0], x.Option...)
 	z.Voters = x.Voters
 }
+
+func (x *DocumentAttributeAudio) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttributeAudio, x)
+}
+
+func (x *DocumentAttributeVideo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttributeVideo, x)
+}
+
+func (x *DocumentAttributePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttributePhoto, x)
+}
+
+func (x *DocumentAttributeFile) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttributeFile, x)
+}
+
+func (x *DocumentAttributeAnimated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttributeAnimated, x)
+}
+
+func (x *DocumentAttribute) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DocumentAttribute, x)
+}
+
+func (x *Document) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Document, x)
+}
+
+func (x *InputMediaWebDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaWebDocument, x)
+}
+
+func (x *MediaWebDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaWebDocument, x)
+}
+
+func (x *MediaWebPage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaWebPage, x)
+}
+
+func (x *InputMediaContact) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaContact, x)
+}
+
+func (x *MediaContact) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaContact, x)
+}
+
+func (x *InputMediaUploadedDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaUploadedDocument, x)
+}
+
+func (x *InputMediaDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaDocument, x)
+}
+
+func (x *InputMediaMessageDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaMessageDocument, x)
+}
+
+func (x *MediaDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaDocument, x)
+}
+
+func (x *InputMediaGeoLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaGeoLocation, x)
+}
+
+func (x *MediaGeoLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaGeoLocation, x)
+}
+
+func (x *InputMediaPoll) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputMediaPoll, x)
+}
+
+func (x *MediaPoll) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MediaPoll, x)
+}
+
+func (x *PollAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PollAnswer, x)
+}
+
+func (x *PollResults) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PollResults, x)
+}
+
+func (x *PollAnswerVoters) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PollAnswerVoters, x)
+}

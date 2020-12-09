@@ -1063,3 +1063,115 @@ func (x *ReactionList) DeepCopy(z *ReactionList) {
 	z.Reaction = x.Reaction
 	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
 }
+
+func (x *MessagesSend) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSend, x)
+}
+
+func (x *MessagesSendMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSendMedia, x)
+}
+
+func (x *MessagesEdit) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesEdit, x)
+}
+
+func (x *MessagesReadHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesReadHistory, x)
+}
+
+func (x *MessagesGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGet, x)
+}
+
+func (x *MessagesGetHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetHistory, x)
+}
+
+func (x *MessagesGetDialogs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetDialogs, x)
+}
+
+func (x *MessagesGetPinnedDialogs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetPinnedDialogs, x)
+}
+
+func (x *MessagesGetDialog) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetDialog, x)
+}
+
+func (x *MessagesSetTyping) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSetTyping, x)
+}
+
+func (x *MessagesClearHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesClearHistory, x)
+}
+
+func (x *MessagesDelete) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesDelete, x)
+}
+
+func (x *MessagesForward) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesForward, x)
+}
+
+func (x *MessagesReadContents) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesReadContents, x)
+}
+
+func (x *MessagesSaveDraft) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSaveDraft, x)
+}
+
+func (x *MessagesClearDraft) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesClearDraft, x)
+}
+
+func (x *MessagesToggleDialogPin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesToggleDialogPin, x)
+}
+
+func (x *MessagesReorderPinnedDialogs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesReorderPinnedDialogs, x)
+}
+
+func (x *MessagesSendScreenShotNotification) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSendScreenShotNotification, x)
+}
+
+func (x *MessagesSendReaction) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSendReaction, x)
+}
+
+func (x *MessagesDeleteReaction) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesDeleteReaction, x)
+}
+
+func (x *MessagesGetReactionList) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetReactionList, x)
+}
+
+func (x *MessagesTogglePin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesTogglePin, x)
+}
+
+func (x *MessagesDialogs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesDialogs, x)
+}
+
+func (x *MessagesSent) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesSent, x)
+}
+
+func (x *MessagesMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesMany, x)
+}
+
+func (x *MessagesReactionList) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesReactionList, x)
+}
+
+func (x *ReactionList) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReactionList, x)
+}

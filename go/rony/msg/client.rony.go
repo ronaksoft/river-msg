@@ -1131,3 +1131,123 @@ func (x *ClientGetNotificationDismissTime) DeepCopy(z *ClientGetNotificationDism
 func (x *ClientNotificationDismissTime) DeepCopy(z *ClientNotificationDismissTime) {
 	z.Ts = x.Ts
 }
+
+func (x *ClientSendMessageMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientSendMessageMedia, x)
+}
+
+func (x *ClientGlobalSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGlobalSearch, x)
+}
+
+func (x *ClientContactSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientContactSearch, x)
+}
+
+func (x *ClientGetCachedMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetCachedMedia, x)
+}
+
+func (x *ClientClearCachedMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientClearCachedMedia, x)
+}
+
+func (x *ClientGetLastBotKeyboard) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetLastBotKeyboard, x)
+}
+
+func (x *ClientGetMediaHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetMediaHistory, x)
+}
+
+func (x *ClientGetRecentSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetRecentSearch, x)
+}
+
+func (x *ClientPutRecentSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientPutRecentSearch, x)
+}
+
+func (x *ClientRemoveRecentSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientRemoveRecentSearch, x)
+}
+
+func (x *ClientRemoveAllRecentSearches) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientRemoveAllRecentSearches, x)
+}
+
+func (x *ClientGetSavedGifs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetSavedGifs, x)
+}
+
+func (x *ClientGetTeamCounters) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetTeamCounters, x)
+}
+
+func (x *ClientPendingMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientPendingMessage, x)
+}
+
+func (x *ClientSearchResult) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientSearchResult, x)
+}
+
+func (x *ClientFilesMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientFilesMany, x)
+}
+
+func (x *ClientFile) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientFile, x)
+}
+
+func (x *ClientFileRequest) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientFileRequest, x)
+}
+
+func (x *ClientFileStatus) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientFileStatus, x)
+}
+
+func (x *ClientCachedMediaInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientCachedMediaInfo, x)
+}
+
+func (x *ClientPeerMediaInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientPeerMediaInfo, x)
+}
+
+func (x *ClientMediaSize) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientMediaSize, x)
+}
+
+func (x *ClientRecentSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientRecentSearch, x)
+}
+
+func (x *ClientRecentSearchMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientRecentSearchMany, x)
+}
+
+func (x *ClientTeamCounters) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientTeamCounters, x)
+}
+
+func (x *ClientGetFrequentlyReactions) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetFrequentlyReactions, x)
+}
+
+func (x *ClientFrequentlyReactions) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientFrequentlyReactions, x)
+}
+
+func (x *ClientDismissNotification) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientDismissNotification, x)
+}
+
+func (x *ClientGetNotificationDismissTime) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientGetNotificationDismissTime, x)
+}
+
+func (x *ClientNotificationDismissTime) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientNotificationDismissTime, x)
+}

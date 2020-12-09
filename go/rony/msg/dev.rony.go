@@ -141,3 +141,23 @@ func (x *TestRequestWithString) DeepCopy(z *TestRequestWithString) {
 func (x *TestResponseWithString) DeepCopy(z *TestResponseWithString) {
 	z.Hash = append(z.Hash[:0], x.Hash...)
 }
+
+func (x *EchoWithDelay) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_EchoWithDelay, x)
+}
+
+func (x *TestRequest) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TestRequest, x)
+}
+
+func (x *TestResponse) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TestResponse, x)
+}
+
+func (x *TestRequestWithString) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TestRequestWithString, x)
+}
+
+func (x *TestResponseWithString) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TestResponseWithString, x)
+}

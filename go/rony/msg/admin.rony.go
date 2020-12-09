@@ -689,3 +689,91 @@ func (x *ReservedUsernames) DeepCopy(z *ReservedUsernames) {
 	z.Usernames = append(z.Usernames[:0], x.Usernames...)
 	z.Count = x.Count
 }
+
+func (x *AdminBroadcastMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminBroadcastMessage, x)
+}
+
+func (x *AdminSetWelcomeMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminSetWelcomeMessage, x)
+}
+
+func (x *AdminGetWelcomeMessages) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetWelcomeMessages, x)
+}
+
+func (x *AdminDeleteWelcomeMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminDeleteWelcomeMessage, x)
+}
+
+func (x *AdminSetPushProvider) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminSetPushProvider, x)
+}
+
+func (x *AdminGetPushProviders) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetPushProviders, x)
+}
+
+func (x *AdminDeletePushProvider) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminDeletePushProvider, x)
+}
+
+func (x *AdminSetVersion) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminSetVersion, x)
+}
+
+func (x *AdminGetVersions) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetVersions, x)
+}
+
+func (x *AdminSetToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminSetToken, x)
+}
+
+func (x *AdminDeleteToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminDeleteToken, x)
+}
+
+func (x *AdminReserveUsername) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminReserveUsername, x)
+}
+
+func (x *AdminGetReservedUsernames) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetReservedUsernames, x)
+}
+
+func (x *AdminTeamCreate) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminTeamCreate, x)
+}
+
+func (x *AdminToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminToken, x)
+}
+
+func (x *WelcomeMessagesMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WelcomeMessagesMany, x)
+}
+
+func (x *VersionsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_VersionsMany, x)
+}
+
+func (x *PushProvidersMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PushProvidersMany, x)
+}
+
+func (x *WelcomeMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WelcomeMessage, x)
+}
+
+func (x *PushProvider) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PushProvider, x)
+}
+
+func (x *Version) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Version, x)
+}
+
+func (x *ReservedUsernames) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReservedUsernames, x)
+}

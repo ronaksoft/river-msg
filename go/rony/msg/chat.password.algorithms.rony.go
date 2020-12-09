@@ -39,3 +39,7 @@ func (x *PasswordAlgorithmVer6A) DeepCopy(z *PasswordAlgorithmVer6A) {
 	z.G = x.G
 	z.P = append(z.P[:0], x.P...)
 }
+
+func (x *PasswordAlgorithmVer6A) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PasswordAlgorithmVer6A, x)
+}

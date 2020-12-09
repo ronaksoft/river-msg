@@ -821,3 +821,111 @@ func (x *AuthSentCode) DeepCopy(z *AuthSentCode) {
 	z.PhoneCodeHash = x.PhoneCodeHash
 	z.SendToPhone = x.SendToPhone
 }
+
+func (x *InitConnect) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitConnect, x)
+}
+
+func (x *InitCompleteAuth) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitCompleteAuth, x)
+}
+
+func (x *InitConnectTest) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitConnectTest, x)
+}
+
+func (x *InitBindUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitBindUser, x)
+}
+
+func (x *AuthRegister) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthRegister, x)
+}
+
+func (x *AuthBotRegister) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthBotRegister, x)
+}
+
+func (x *AuthLogin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthLogin, x)
+}
+
+func (x *AuthCheckPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthCheckPassword, x)
+}
+
+func (x *AuthRecoverPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthRecoverPassword, x)
+}
+
+func (x *AuthLogout) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthLogout, x)
+}
+
+func (x *AuthLoginByToken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthLoginByToken, x)
+}
+
+func (x *AuthCheckPhone) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthCheckPhone, x)
+}
+
+func (x *AuthSendCode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthSendCode, x)
+}
+
+func (x *AuthResendCode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthResendCode, x)
+}
+
+func (x *AuthRecall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthRecall, x)
+}
+
+func (x *AuthDestroyKey) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthDestroyKey, x)
+}
+
+func (x *InitTestAuth) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitTestAuth, x)
+}
+
+func (x *InitResponse) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitResponse, x)
+}
+
+func (x *InitCompleteAuthInternal) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitCompleteAuthInternal, x)
+}
+
+func (x *InitAuthCompleted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitAuthCompleted, x)
+}
+
+func (x *InitUserBound) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InitUserBound, x)
+}
+
+func (x *AuthPasswordRecovery) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthPasswordRecovery, x)
+}
+
+func (x *AuthRecalled) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthRecalled, x)
+}
+
+func (x *AuthAuthorization) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthAuthorization, x)
+}
+
+func (x *AuthBotAuthorization) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthBotAuthorization, x)
+}
+
+func (x *AuthCheckedPhone) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthCheckedPhone, x)
+}
+
+func (x *AuthSentCode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AuthSentCode, x)
+}

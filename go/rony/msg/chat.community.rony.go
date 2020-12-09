@@ -359,3 +359,43 @@ func (x *CommunityUpdateContainer) DeepCopy(z *CommunityUpdateContainer) {
 	}
 	z.Empty = x.Empty
 }
+
+func (x *CommunitySendMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunitySendMessage, x)
+}
+
+func (x *CommunitySendMedia) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunitySendMedia, x)
+}
+
+func (x *CommunitySetTyping) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunitySetTyping, x)
+}
+
+func (x *CommunityGetUpdates) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityGetUpdates, x)
+}
+
+func (x *CommunityGetMembers) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityGetMembers, x)
+}
+
+func (x *CommunityRecall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityRecall, x)
+}
+
+func (x *CommunityAuthorizeUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityAuthorizeUser, x)
+}
+
+func (x *CommunityUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityUser, x)
+}
+
+func (x *CommunityUpdateEnvelope) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityUpdateEnvelope, x)
+}
+
+func (x *CommunityUpdateContainer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CommunityUpdateContainer, x)
+}

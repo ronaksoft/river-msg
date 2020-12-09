@@ -419,3 +419,55 @@ func (x *ReadHistoryStat) DeepCopy(z *ReadHistoryStat) {
 	z.UserID = x.UserID
 	z.MessageID = x.MessageID
 }
+
+func (x *GroupsCreate) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsCreate, x)
+}
+
+func (x *GroupsAddUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsAddUser, x)
+}
+
+func (x *GroupsEditTitle) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsEditTitle, x)
+}
+
+func (x *GroupsDeleteUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsDeleteUser, x)
+}
+
+func (x *GroupsGetFull) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsGetFull, x)
+}
+
+func (x *GroupsToggleAdmins) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsToggleAdmins, x)
+}
+
+func (x *GroupsUpdateAdmin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsUpdateAdmin, x)
+}
+
+func (x *GroupsUploadPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsUploadPhoto, x)
+}
+
+func (x *GroupsRemovePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsRemovePhoto, x)
+}
+
+func (x *GroupsUpdatePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsUpdatePhoto, x)
+}
+
+func (x *GroupsGetReadHistoryStats) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsGetReadHistoryStats, x)
+}
+
+func (x *GroupsHistoryStats) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupsHistoryStats, x)
+}
+
+func (x *ReadHistoryStat) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReadHistoryStat, x)
+}

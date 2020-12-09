@@ -433,3 +433,59 @@ func (x *TeamsMany) DeepCopy(z *TeamsMany) {
 	}
 	z.Empty = x.Empty
 }
+
+func (x *TeamGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamGet, x)
+}
+
+func (x *TeamAddMember) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamAddMember, x)
+}
+
+func (x *TeamRemoveMember) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamRemoveMember, x)
+}
+
+func (x *TeamPromote) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamPromote, x)
+}
+
+func (x *TeamDemote) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamDemote, x)
+}
+
+func (x *TeamLeave) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamLeave, x)
+}
+
+func (x *TeamJoin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamJoin, x)
+}
+
+func (x *TeamListMembers) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamListMembers, x)
+}
+
+func (x *TeamEdit) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamEdit, x)
+}
+
+func (x *TeamUploadPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamUploadPhoto, x)
+}
+
+func (x *TeamRemovePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamRemovePhoto, x)
+}
+
+func (x *TeamMembers) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamMembers, x)
+}
+
+func (x *TeamMember) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamMember, x)
+}
+
+func (x *TeamsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamsMany, x)
+}

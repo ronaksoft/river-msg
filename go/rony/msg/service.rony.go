@@ -57,3 +57,7 @@ func (x *ServiceSendMessage) DeepCopy(z *ServiceSendMessage) {
 		}
 	}
 }
+
+func (x *ServiceSendMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ServiceSendMessage, x)
+}

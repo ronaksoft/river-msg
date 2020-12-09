@@ -279,3 +279,35 @@ func (x *LabelItems) DeepCopy(z *LabelItems) {
 		}
 	}
 }
+
+func (x *LabelsCreate) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsCreate, x)
+}
+
+func (x *LabelsEdit) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsEdit, x)
+}
+
+func (x *LabelsDelete) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsDelete, x)
+}
+
+func (x *LabelsGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsGet, x)
+}
+
+func (x *LabelsAddToMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsAddToMessage, x)
+}
+
+func (x *LabelsRemoveFromMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsRemoveFromMessage, x)
+}
+
+func (x *LabelsListItems) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsListItems, x)
+}
+
+func (x *LabelItems) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelItems, x)
+}

@@ -593,3 +593,71 @@ func (x *ContactsMany) DeepCopy(z *ContactsMany) {
 	z.Empty = x.Empty
 	z.Hash = x.Hash
 }
+
+func (x *ContactsImport) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsImport, x)
+}
+
+func (x *ContactsAdd) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsAdd, x)
+}
+
+func (x *ContactsGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsGet, x)
+}
+
+func (x *ContactsDelete) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsDelete, x)
+}
+
+func (x *ContactsDeleteAll) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsDeleteAll, x)
+}
+
+func (x *ContactsBlock) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsBlock, x)
+}
+
+func (x *ContactsUnblock) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsUnblock, x)
+}
+
+func (x *ContactsGetBlocked) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsGetBlocked, x)
+}
+
+func (x *ContactsSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsSearch, x)
+}
+
+func (x *ContactsGetTopPeers) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsGetTopPeers, x)
+}
+
+func (x *ContactsResetTopPeer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsResetTopPeer, x)
+}
+
+func (x *ContactsTopPeers) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsTopPeers, x)
+}
+
+func (x *TopPeer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TopPeer, x)
+}
+
+func (x *BlockedContactsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BlockedContactsMany, x)
+}
+
+func (x *BlockedContact) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BlockedContact, x)
+}
+
+func (x *ContactsImported) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsImported, x)
+}
+
+func (x *ContactsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactsMany, x)
+}

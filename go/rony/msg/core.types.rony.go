@@ -1725,3 +1725,187 @@ func (x *Team) DeepCopy(z *Team) {
 		x.Photo.DeepCopy(z.Photo)
 	}
 }
+
+func (x *Ping) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Ping, x)
+}
+
+func (x *Pong) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Pong, x)
+}
+
+func (x *MessageEnvelope) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageEnvelope, x)
+}
+
+func (x *MessageContainer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageContainer, x)
+}
+
+func (x *UpdateEnvelope) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateEnvelope, x)
+}
+
+func (x *UpdateContainer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdateContainer, x)
+}
+
+func (x *ProtoMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ProtoMessage, x)
+}
+
+func (x *ProtoEncryptedPayload) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ProtoEncryptedPayload, x)
+}
+
+func (x *Error) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Error, x)
+}
+
+func (x *Ack) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Ack, x)
+}
+
+func (x *Bool) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Bool, x)
+}
+
+func (x *Dialog) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Dialog, x)
+}
+
+func (x *InputPeer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputPeer, x)
+}
+
+func (x *Peer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Peer, x)
+}
+
+func (x *InputPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputPassword, x)
+}
+
+func (x *InputFileLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputFileLocation, x)
+}
+
+func (x *FileLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FileLocation, x)
+}
+
+func (x *UserPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UserPhoto, x)
+}
+
+func (x *InputUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputUser, x)
+}
+
+func (x *User) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_User, x)
+}
+
+func (x *ContactUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ContactUser, x)
+}
+
+func (x *Bot) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Bot, x)
+}
+
+func (x *BotCommands) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotCommands, x)
+}
+
+func (x *BotInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BotInfo, x)
+}
+
+func (x *GroupPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupPhoto, x)
+}
+
+func (x *Group) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Group, x)
+}
+
+func (x *GroupFull) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupFull, x)
+}
+
+func (x *GroupParticipant) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GroupParticipant, x)
+}
+
+func (x *UserMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UserMessage, x)
+}
+
+func (x *ReactionCounter) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ReactionCounter, x)
+}
+
+func (x *DraftMessage) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DraftMessage, x)
+}
+
+func (x *MessageEntity) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageEntity, x)
+}
+
+func (x *RSAPublicKey) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_RSAPublicKey, x)
+}
+
+func (x *DHGroup) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_DHGroup, x)
+}
+
+func (x *PhoneContact) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneContact, x)
+}
+
+func (x *PeerNotifySettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PeerNotifySettings, x)
+}
+
+func (x *InputFile) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputFile, x)
+}
+
+func (x *InputDocument) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputDocument, x)
+}
+
+func (x *PrivacyRule) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PrivacyRule, x)
+}
+
+func (x *Label) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Label, x)
+}
+
+func (x *LabelsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_LabelsMany, x)
+}
+
+func (x *InputGeoLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputGeoLocation, x)
+}
+
+func (x *GeoLocation) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GeoLocation, x)
+}
+
+func (x *InputTeam) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputTeam, x)
+}
+
+func (x *TeamPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_TeamPhoto, x)
+}
+
+func (x *Team) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_Team, x)
+}

@@ -215,3 +215,27 @@ func (x *CalendarEventInstance) DeepCopy(z *CalendarEventInstance) {
 	z.End = x.End
 	z.Colour = x.Colour
 }
+
+func (x *CalendarGetEvents) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarGetEvents, x)
+}
+
+func (x *CalendarSetEvent) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarSetEvent, x)
+}
+
+func (x *CalendarEditEvent) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarEditEvent, x)
+}
+
+func (x *CalendarRemoveEvent) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarRemoveEvent, x)
+}
+
+func (x *CalendarEvent) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarEvent, x)
+}
+
+func (x *CalendarEventInstance) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_CalendarEventInstance, x)
+}

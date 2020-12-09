@@ -1077,3 +1077,135 @@ func (x *AccountPrivacyRules) DeepCopy(z *AccountPrivacyRules) {
 		}
 	}
 }
+
+func (x *AccountSetNotifySettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountSetNotifySettings, x)
+}
+
+func (x *AccountGetNotifySettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetNotifySettings, x)
+}
+
+func (x *AccountRegisterDevice) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountRegisterDevice, x)
+}
+
+func (x *AccountUnregisterDevice) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUnregisterDevice, x)
+}
+
+func (x *AccountUpdateProfile) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUpdateProfile, x)
+}
+
+func (x *AccountCheckUsername) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountCheckUsername, x)
+}
+
+func (x *AccountUpdateUsername) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUpdateUsername, x)
+}
+
+func (x *AccountUploadPhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUploadPhoto, x)
+}
+
+func (x *AccountUpdatePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUpdatePhoto, x)
+}
+
+func (x *AccountRemovePhoto) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountRemovePhoto, x)
+}
+
+func (x *AccountSendChangePhoneCode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountSendChangePhoneCode, x)
+}
+
+func (x *AccountResendChangePhoneCode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountResendChangePhoneCode, x)
+}
+
+func (x *AccountChangePhone) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountChangePhone, x)
+}
+
+func (x *AccountSetPrivacy) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountSetPrivacy, x)
+}
+
+func (x *AccountGetPrivacy) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetPrivacy, x)
+}
+
+func (x *AccountGetAuthorizations) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetAuthorizations, x)
+}
+
+func (x *AccountResetAuthorization) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountResetAuthorization, x)
+}
+
+func (x *AccountUpdateStatus) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUpdateStatus, x)
+}
+
+func (x *AccountSetLang) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountSetLang, x)
+}
+
+func (x *AccountGetPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetPassword, x)
+}
+
+func (x *AccountGetPasswordSettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetPasswordSettings, x)
+}
+
+func (x *AccountUpdatePasswordSettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountUpdatePasswordSettings, x)
+}
+
+func (x *AccountRecoverPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountRecoverPassword, x)
+}
+
+func (x *AccountGetTeams) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountGetTeams, x)
+}
+
+func (x *AccountPasswordSettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountPasswordSettings, x)
+}
+
+func (x *SecurityQuestions) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SecurityQuestions, x)
+}
+
+func (x *RecoveryQuestion) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_RecoveryQuestion, x)
+}
+
+func (x *SecurityQuestion) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SecurityQuestion, x)
+}
+
+func (x *SecurityAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SecurityAnswer, x)
+}
+
+func (x *AccountPassword) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountPassword, x)
+}
+
+func (x *AccountAuthorizations) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountAuthorizations, x)
+}
+
+func (x *AccountAuthorization) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountAuthorization, x)
+}
+
+func (x *AccountPrivacyRules) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AccountPrivacyRules, x)
+}

@@ -333,3 +333,39 @@ func (x *WallPapersMany) DeepCopy(z *WallPapersMany) {
 	z.Crc32Hash = x.Crc32Hash
 	z.Empty = x.Empty
 }
+
+func (x *WallPaperGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperGet, x)
+}
+
+func (x *WallPaperSave) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperSave, x)
+}
+
+func (x *WallPaperDelete) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperDelete, x)
+}
+
+func (x *WallPaperUpload) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperUpload, x)
+}
+
+func (x *WallPaperReset) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperReset, x)
+}
+
+func (x *InputWallPaper) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_InputWallPaper, x)
+}
+
+func (x *WallPaperSettings) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaperSettings, x)
+}
+
+func (x *WallPaper) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPaper, x)
+}
+
+func (x *WallPapersMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_WallPapersMany, x)
+}

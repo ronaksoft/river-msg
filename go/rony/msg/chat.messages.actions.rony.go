@@ -251,3 +251,39 @@ func (x *MessageActionScreenShotTaken) DeepCopy(z *MessageActionScreenShotTaken)
 func (x *MessageActionThreadClosed) DeepCopy(z *MessageActionThreadClosed) {
 	z.ThreadID = x.ThreadID
 }
+
+func (x *MessageActionGroupAddUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionGroupAddUser, x)
+}
+
+func (x *MessageActionGroupDeleteUser) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionGroupDeleteUser, x)
+}
+
+func (x *MessageActionGroupCreated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionGroupCreated, x)
+}
+
+func (x *MessageActionGroupTitleChanged) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionGroupTitleChanged, x)
+}
+
+func (x *MessageActionGroupPhotoChanged) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionGroupPhotoChanged, x)
+}
+
+func (x *MessageActionClearHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionClearHistory, x)
+}
+
+func (x *MessageActionContactRegistered) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionContactRegistered, x)
+}
+
+func (x *MessageActionScreenShotTaken) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionScreenShotTaken, x)
+}
+
+func (x *MessageActionThreadClosed) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionThreadClosed, x)
+}

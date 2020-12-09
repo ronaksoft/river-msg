@@ -245,3 +245,31 @@ func (x *SavedGifs) DeepCopy(z *SavedGifs) {
 	}
 	z.NotModified = x.NotModified
 }
+
+func (x *GifGetSaved) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GifGetSaved, x)
+}
+
+func (x *GifSave) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GifSave, x)
+}
+
+func (x *GifDelete) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GifDelete, x)
+}
+
+func (x *GifSearch) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_GifSearch, x)
+}
+
+func (x *FoundGifs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FoundGifs, x)
+}
+
+func (x *FoundGif) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FoundGif, x)
+}
+
+func (x *SavedGifs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_SavedGifs, x)
+}

@@ -135,3 +135,19 @@ func (x *File) DeepCopy(z *File) {
 	z.Bytes = append(z.Bytes[:0], x.Bytes...)
 	z.MD5Hash = x.MD5Hash
 }
+
+func (x *FileSavePart) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FileSavePart, x)
+}
+
+func (x *FileGet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FileGet, x)
+}
+
+func (x *FileGetBySha256) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_FileGetBySha256, x)
+}
+
+func (x *File) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_File, x)
+}

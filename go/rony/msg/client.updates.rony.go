@@ -109,3 +109,15 @@ func (x *ClientUpdateSynced) DeepCopy(z *ClientUpdateSynced) {
 	z.Contacts = x.Contacts
 	z.Gifs = x.Gifs
 }
+
+func (x *ClientUpdatePendingMessageDelivery) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientUpdatePendingMessageDelivery, x)
+}
+
+func (x *ClientUpdateMessagesDeleted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientUpdateMessagesDeleted, x)
+}
+
+func (x *ClientUpdateSynced) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientUpdateSynced, x)
+}

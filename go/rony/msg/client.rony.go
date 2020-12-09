@@ -155,9 +155,9 @@ func (p *poolClientGetLastBotKeyboard) Get() *ClientGetLastBotKeyboard {
 }
 
 func (p *poolClientGetLastBotKeyboard) Put(x *ClientGetLastBotKeyboard) {
-	if x.peer != nil {
-		PoolInputPeer.Put(x.peer)
-		x.peer = nil
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
 	}
 	p.pool.Put(x)
 }
@@ -858,9 +858,9 @@ func (x *ClientClearCachedMedia) DeepCopy(z *ClientClearCachedMedia) {
 }
 
 func (x *ClientGetLastBotKeyboard) DeepCopy(z *ClientGetLastBotKeyboard) {
-	if x.peer != nil {
-		z.peer = PoolInputPeer.Get()
-		x.peer.DeepCopy(z.peer)
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
 	}
 }
 

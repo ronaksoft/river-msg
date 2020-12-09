@@ -227,8 +227,8 @@ func (p *poolClientGetLastBotKeyboard) Get() *ClientGetLastBotKeyboard {
 }
 
 func (p *poolClientGetLastBotKeyboard) Put(x *ClientGetLastBotKeyboard) {
-	if x.peer != nil {
-		*x.peer = InputPeer{}
+	if x.Peer != nil {
+		*x.Peer = InputPeer{}
 	}
 
 	p.pool.Put(x)

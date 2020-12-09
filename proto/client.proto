@@ -99,7 +99,7 @@ message ClientRemoveRecentSearch {
 // @Function
 // @Return: Bool
 message ClientRemoveAllRecentSearches {
-    bool extra = 1;
+    bool Extra = 1;
 }
 
 // ClientGetSavedGifs
@@ -113,7 +113,7 @@ message ClientGetSavedGifs {
 // @Return: ClientTeamCounters
 message ClientGetTeamCounters {
     InputTeam Team = 1;
-    bool withMutes = 2;
+    bool WithMutes = 2;
 }
 
 // ClientPendingMessage
@@ -283,7 +283,7 @@ message ClientFrequentlyReactions {
 
 message ClientDismissNotification {
     InputPeer Peer = 1;
-    int64 ts = 2;
+    int64 Ts = 2;
 }
 
 message ClientGetNotificationDismissTime {
@@ -291,5 +291,5 @@ message ClientGetNotificationDismissTime {
 }
 
 message ClientNotificationDismissTime {
-    int64 ts = 1;
+    int64 Ts = 1;
 }

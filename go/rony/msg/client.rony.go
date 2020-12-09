@@ -269,7 +269,7 @@ func (p *poolClientRemoveAllRecentSearches) Get() *ClientRemoveAllRecentSearches
 }
 
 func (p *poolClientRemoveAllRecentSearches) Put(x *ClientRemoveAllRecentSearches) {
-	x.extra = false
+	x.Extra = false
 	p.pool.Put(x)
 }
 
@@ -314,7 +314,7 @@ func (p *poolClientGetTeamCounters) Put(x *ClientGetTeamCounters) {
 		PoolInputTeam.Put(x.Team)
 		x.Team = nil
 	}
-	x.withMutes = false
+	x.WithMutes = false
 	p.pool.Put(x)
 }
 
@@ -711,7 +711,7 @@ func (p *poolClientDismissNotification) Put(x *ClientDismissNotification) {
 		PoolInputPeer.Put(x.Peer)
 		x.Peer = nil
 	}
-	x.ts = 0
+	x.Ts = 0
 	p.pool.Put(x)
 }
 
@@ -756,7 +756,7 @@ func (p *poolClientNotificationDismissTime) Get() *ClientNotificationDismissTime
 }
 
 func (p *poolClientNotificationDismissTime) Put(x *ClientNotificationDismissTime) {
-	x.ts = 0
+	x.Ts = 0
 	p.pool.Put(x)
 }
 
@@ -887,7 +887,7 @@ func (x *ClientRemoveRecentSearch) DeepCopy(z *ClientRemoveRecentSearch) {
 }
 
 func (x *ClientRemoveAllRecentSearches) DeepCopy(z *ClientRemoveAllRecentSearches) {
-	z.extra = x.extra
+	z.Extra = x.Extra
 }
 
 func (x *ClientGetSavedGifs) DeepCopy(z *ClientGetSavedGifs) {
@@ -898,7 +898,7 @@ func (x *ClientGetTeamCounters) DeepCopy(z *ClientGetTeamCounters) {
 		z.Team = PoolInputTeam.Get()
 		x.Team.DeepCopy(z.Team)
 	}
-	z.withMutes = x.withMutes
+	z.WithMutes = x.WithMutes
 }
 
 func (x *ClientPendingMessage) DeepCopy(z *ClientPendingMessage) {
@@ -1118,7 +1118,7 @@ func (x *ClientDismissNotification) DeepCopy(z *ClientDismissNotification) {
 		z.Peer = PoolInputPeer.Get()
 		x.Peer.DeepCopy(z.Peer)
 	}
-	z.ts = x.ts
+	z.Ts = x.Ts
 }
 
 func (x *ClientGetNotificationDismissTime) DeepCopy(z *ClientGetNotificationDismissTime) {
@@ -1129,5 +1129,5 @@ func (x *ClientGetNotificationDismissTime) DeepCopy(z *ClientGetNotificationDism
 }
 
 func (x *ClientNotificationDismissTime) DeepCopy(z *ClientNotificationDismissTime) {
-	z.ts = x.ts
+	z.Ts = x.Ts
 }

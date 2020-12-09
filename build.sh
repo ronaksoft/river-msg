@@ -2,9 +2,9 @@
 
 currentWorkingDir=$(pwd)
 rm ./go/msg/*.pb.go
-rm ./go/msg/*.rony.go
 rm ./go/msg/*_helpers.go
 rm ./go/rony/msg/*.pb.go
+rm ./go/rony/msg/*.rony.go
 
 # Create 'msg' package
 cd ./proto/ || exit

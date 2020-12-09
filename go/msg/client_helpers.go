@@ -401,7 +401,7 @@ func (p *poolClientRemoveAllRecentSearches) Get() *ClientRemoveAllRecentSearches
 }
 
 func (p *poolClientRemoveAllRecentSearches) Put(x *ClientRemoveAllRecentSearches) {
-	x.extra = false
+	x.Extra = false
 	p.pool.Put(x)
 }
 
@@ -470,7 +470,7 @@ func (p *poolClientGetTeamCounters) Put(x *ClientGetTeamCounters) {
 		*x.Team = InputTeam{}
 	}
 
-	x.withMutes = false
+	x.WithMutes = false
 	p.pool.Put(x)
 }
 
@@ -1047,7 +1047,7 @@ func (p *poolClientDismissNotification) Put(x *ClientDismissNotification) {
 		*x.Peer = InputPeer{}
 	}
 
-	x.ts = 0
+	x.Ts = 0
 	p.pool.Put(x)
 }
 
@@ -1116,7 +1116,7 @@ func (p *poolClientNotificationDismissTime) Get() *ClientNotificationDismissTime
 }
 
 func (p *poolClientNotificationDismissTime) Put(x *ClientNotificationDismissTime) {
-	x.ts = 0
+	x.Ts = 0
 	p.pool.Put(x)
 }
 

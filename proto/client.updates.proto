@@ -1,25 +1,26 @@
-syntax = "proto2";
+syntax = "proto3";
 package msg;
 import "core.types.proto";
 import "client.proto";
+option go_package = '.;msg';
 
 // ClientPendingMessageDelivery
 message ClientUpdatePendingMessageDelivery {
-    required UserMessage Messages = 1;
-    required ClientPendingMessage PendingMessage = 2;
-    required bool Success = 3;
+    UserMessage Messages = 1;
+    ClientPendingMessage PendingMessage = 2;
+    bool Success = 3;
 }
 
 // ClientUpdateMessageDeleted
 message ClientUpdateMessagesDeleted {
-    required int64 PeerID = 1;
-    required int32 PeerType = 2;
+    int64 PeerID = 1;
+    int32 PeerType = 2;
     repeated int64 MessageIDs = 3;
 }
 
 // ClientUpdateDialogsSynced
 message ClientUpdateSynced {
-    required bool Dialogs = 1;
-    required bool Contacts = 2;
-    required bool Gifs = 3;
+    bool Dialogs = 1;
+    bool Contacts = 2;
+    bool Gifs = 3;
 }

@@ -1,0 +1,1065 @@
+package msg
+
+import (
+	registry "github.com/ronaksoft/rony/registry"
+	sync "sync"
+)
+
+const C_MessagesSend int64 = 3000244183
+
+type poolMessagesSend struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSend) Get() *MessagesSend {
+	x, ok := p.pool.Get().(*MessagesSend)
+	if !ok {
+		return &MessagesSend{}
+	}
+	return x
+}
+
+func (p *poolMessagesSend) Put(x *MessagesSend) {
+	x.RandomID = 0
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Body = ""
+	x.ReplyTo = 0
+	x.ClearDraft = false
+	x.Entities = x.Entities[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesSend = poolMessagesSend{}
+
+const C_MessagesSendMedia int64 = 25498545
+
+type poolMessagesSendMedia struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSendMedia) Get() *MessagesSendMedia {
+	x, ok := p.pool.Get().(*MessagesSendMedia)
+	if !ok {
+		return &MessagesSendMedia{}
+	}
+	return x
+}
+
+func (p *poolMessagesSendMedia) Put(x *MessagesSendMedia) {
+	x.RandomID = 0
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MediaType = 0
+	x.MediaData = x.MediaData[:0]
+	x.ReplyTo = 0
+	x.ClearDraft = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesSendMedia = poolMessagesSendMedia{}
+
+const C_MessagesEdit int64 = 2492658432
+
+type poolMessagesEdit struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesEdit) Get() *MessagesEdit {
+	x, ok := p.pool.Get().(*MessagesEdit)
+	if !ok {
+		return &MessagesEdit{}
+	}
+	return x
+}
+
+func (p *poolMessagesEdit) Put(x *MessagesEdit) {
+	x.RandomID = 0
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Body = ""
+	x.MessageID = 0
+	x.Entities = x.Entities[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesEdit = poolMessagesEdit{}
+
+const C_MessagesReadHistory int64 = 1300826534
+
+type poolMessagesReadHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesReadHistory) Get() *MessagesReadHistory {
+	x, ok := p.pool.Get().(*MessagesReadHistory)
+	if !ok {
+		return &MessagesReadHistory{}
+	}
+	return x
+}
+
+func (p *poolMessagesReadHistory) Put(x *MessagesReadHistory) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MaxID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesReadHistory = poolMessagesReadHistory{}
+
+const C_MessagesGet int64 = 2151382317
+
+type poolMessagesGet struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGet) Get() *MessagesGet {
+	x, ok := p.pool.Get().(*MessagesGet)
+	if !ok {
+		return &MessagesGet{}
+	}
+	return x
+}
+
+func (p *poolMessagesGet) Put(x *MessagesGet) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessagesIDs = x.MessagesIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesGet = poolMessagesGet{}
+
+const C_MessagesGetHistory int64 = 3396939832
+
+type poolMessagesGetHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetHistory) Get() *MessagesGetHistory {
+	x, ok := p.pool.Get().(*MessagesGetHistory)
+	if !ok {
+		return &MessagesGetHistory{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetHistory) Put(x *MessagesGetHistory) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Limit = 0
+	x.MaxID = 0
+	x.MinID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetHistory = poolMessagesGetHistory{}
+
+const C_MessagesGetDialogs int64 = 1429532372
+
+type poolMessagesGetDialogs struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetDialogs) Get() *MessagesGetDialogs {
+	x, ok := p.pool.Get().(*MessagesGetDialogs)
+	if !ok {
+		return &MessagesGetDialogs{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetDialogs) Put(x *MessagesGetDialogs) {
+	x.Limit = 0
+	x.Offset = 0
+	x.ExcludePinned = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetDialogs = poolMessagesGetDialogs{}
+
+const C_MessagesGetPinnedDialogs int64 = 1963188912
+
+type poolMessagesGetPinnedDialogs struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetPinnedDialogs) Get() *MessagesGetPinnedDialogs {
+	x, ok := p.pool.Get().(*MessagesGetPinnedDialogs)
+	if !ok {
+		return &MessagesGetPinnedDialogs{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetPinnedDialogs) Put(x *MessagesGetPinnedDialogs) {
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetPinnedDialogs = poolMessagesGetPinnedDialogs{}
+
+const C_MessagesGetDialog int64 = 1050840034
+
+type poolMessagesGetDialog struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetDialog) Get() *MessagesGetDialog {
+	x, ok := p.pool.Get().(*MessagesGetDialog)
+	if !ok {
+		return &MessagesGetDialog{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetDialog) Put(x *MessagesGetDialog) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetDialog = poolMessagesGetDialog{}
+
+const C_MessagesSetTyping int64 = 1540214486
+
+type poolMessagesSetTyping struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSetTyping) Get() *MessagesSetTyping {
+	x, ok := p.pool.Get().(*MessagesSetTyping)
+	if !ok {
+		return &MessagesSetTyping{}
+	}
+	return x
+}
+
+func (p *poolMessagesSetTyping) Put(x *MessagesSetTyping) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Action = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesSetTyping = poolMessagesSetTyping{}
+
+const C_MessagesClearHistory int64 = 1981246180
+
+type poolMessagesClearHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesClearHistory) Get() *MessagesClearHistory {
+	x, ok := p.pool.Get().(*MessagesClearHistory)
+	if !ok {
+		return &MessagesClearHistory{}
+	}
+	return x
+}
+
+func (p *poolMessagesClearHistory) Put(x *MessagesClearHistory) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MaxID = 0
+	x.Delete = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesClearHistory = poolMessagesClearHistory{}
+
+const C_MessagesDelete int64 = 3487616910
+
+type poolMessagesDelete struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesDelete) Get() *MessagesDelete {
+	x, ok := p.pool.Get().(*MessagesDelete)
+	if !ok {
+		return &MessagesDelete{}
+	}
+	return x
+}
+
+func (p *poolMessagesDelete) Put(x *MessagesDelete) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageIDs = x.MessageIDs[:0]
+	x.Revoke = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesDelete = poolMessagesDelete{}
+
+const C_MessagesForward int64 = 2662884753
+
+type poolMessagesForward struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesForward) Get() *MessagesForward {
+	x, ok := p.pool.Get().(*MessagesForward)
+	if !ok {
+		return &MessagesForward{}
+	}
+	return x
+}
+
+func (p *poolMessagesForward) Put(x *MessagesForward) {
+	if x.FromPeer != nil {
+		PoolInputPeer.Put(x.FromPeer)
+		x.FromPeer = nil
+	}
+	if x.ToPeer != nil {
+		PoolInputPeer.Put(x.ToPeer)
+		x.ToPeer = nil
+	}
+	x.Silence = false
+	x.MessageIDs = x.MessageIDs[:0]
+	x.RandomID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesForward = poolMessagesForward{}
+
+const C_MessagesReadContents int64 = 1781251275
+
+type poolMessagesReadContents struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesReadContents) Get() *MessagesReadContents {
+	x, ok := p.pool.Get().(*MessagesReadContents)
+	if !ok {
+		return &MessagesReadContents{}
+	}
+	return x
+}
+
+func (p *poolMessagesReadContents) Put(x *MessagesReadContents) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageIDs = x.MessageIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesReadContents = poolMessagesReadContents{}
+
+const C_MessagesSaveDraft int64 = 921840607
+
+type poolMessagesSaveDraft struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSaveDraft) Get() *MessagesSaveDraft {
+	x, ok := p.pool.Get().(*MessagesSaveDraft)
+	if !ok {
+		return &MessagesSaveDraft{}
+	}
+	return x
+}
+
+func (p *poolMessagesSaveDraft) Put(x *MessagesSaveDraft) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.ReplyTo = 0
+	x.Body = ""
+	x.Entities = x.Entities[:0]
+	x.EditedID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesSaveDraft = poolMessagesSaveDraft{}
+
+const C_MessagesClearDraft int64 = 2164204563
+
+type poolMessagesClearDraft struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesClearDraft) Get() *MessagesClearDraft {
+	x, ok := p.pool.Get().(*MessagesClearDraft)
+	if !ok {
+		return &MessagesClearDraft{}
+	}
+	return x
+}
+
+func (p *poolMessagesClearDraft) Put(x *MessagesClearDraft) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolMessagesClearDraft = poolMessagesClearDraft{}
+
+const C_MessagesToggleDialogPin int64 = 1352871220
+
+type poolMessagesToggleDialogPin struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesToggleDialogPin) Get() *MessagesToggleDialogPin {
+	x, ok := p.pool.Get().(*MessagesToggleDialogPin)
+	if !ok {
+		return &MessagesToggleDialogPin{}
+	}
+	return x
+}
+
+func (p *poolMessagesToggleDialogPin) Put(x *MessagesToggleDialogPin) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Pin = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesToggleDialogPin = poolMessagesToggleDialogPin{}
+
+const C_MessagesReorderPinnedDialogs int64 = 1409872986
+
+type poolMessagesReorderPinnedDialogs struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesReorderPinnedDialogs) Get() *MessagesReorderPinnedDialogs {
+	x, ok := p.pool.Get().(*MessagesReorderPinnedDialogs)
+	if !ok {
+		return &MessagesReorderPinnedDialogs{}
+	}
+	return x
+}
+
+func (p *poolMessagesReorderPinnedDialogs) Put(x *MessagesReorderPinnedDialogs) {
+	x.Peers = x.Peers[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesReorderPinnedDialogs = poolMessagesReorderPinnedDialogs{}
+
+const C_MessagesSendScreenShotNotification int64 = 3682116055
+
+type poolMessagesSendScreenShotNotification struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSendScreenShotNotification) Get() *MessagesSendScreenShotNotification {
+	x, ok := p.pool.Get().(*MessagesSendScreenShotNotification)
+	if !ok {
+		return &MessagesSendScreenShotNotification{}
+	}
+	return x
+}
+
+func (p *poolMessagesSendScreenShotNotification) Put(x *MessagesSendScreenShotNotification) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.RandomID = 0
+	x.ReplyTo = 0
+	x.MinID = 0
+	x.MaxID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesSendScreenShotNotification = poolMessagesSendScreenShotNotification{}
+
+const C_MessagesSendReaction int64 = 279494057
+
+type poolMessagesSendReaction struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSendReaction) Get() *MessagesSendReaction {
+	x, ok := p.pool.Get().(*MessagesSendReaction)
+	if !ok {
+		return &MessagesSendReaction{}
+	}
+	return x
+}
+
+func (p *poolMessagesSendReaction) Put(x *MessagesSendReaction) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageID = 0
+	x.Reaction = ""
+	p.pool.Put(x)
+}
+
+var PoolMessagesSendReaction = poolMessagesSendReaction{}
+
+const C_MessagesDeleteReaction int64 = 1547991459
+
+type poolMessagesDeleteReaction struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesDeleteReaction) Get() *MessagesDeleteReaction {
+	x, ok := p.pool.Get().(*MessagesDeleteReaction)
+	if !ok {
+		return &MessagesDeleteReaction{}
+	}
+	return x
+}
+
+func (p *poolMessagesDeleteReaction) Put(x *MessagesDeleteReaction) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageID = 0
+	x.Reactions = x.Reactions[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesDeleteReaction = poolMessagesDeleteReaction{}
+
+const C_MessagesGetReactionList int64 = 3097050126
+
+type poolMessagesGetReactionList struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetReactionList) Get() *MessagesGetReactionList {
+	x, ok := p.pool.Get().(*MessagesGetReactionList)
+	if !ok {
+		return &MessagesGetReactionList{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetReactionList) Put(x *MessagesGetReactionList) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageID = 0
+	x.Hash = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetReactionList = poolMessagesGetReactionList{}
+
+const C_MessagesTogglePin int64 = 2824078244
+
+type poolMessagesTogglePin struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesTogglePin) Get() *MessagesTogglePin {
+	x, ok := p.pool.Get().(*MessagesTogglePin)
+	if !ok {
+		return &MessagesTogglePin{}
+	}
+	return x
+}
+
+func (p *poolMessagesTogglePin) Put(x *MessagesTogglePin) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.MessageID = 0
+	x.Silent = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesTogglePin = poolMessagesTogglePin{}
+
+const C_MessagesDialogs int64 = 3252610224
+
+type poolMessagesDialogs struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesDialogs) Get() *MessagesDialogs {
+	x, ok := p.pool.Get().(*MessagesDialogs)
+	if !ok {
+		return &MessagesDialogs{}
+	}
+	return x
+}
+
+func (p *poolMessagesDialogs) Put(x *MessagesDialogs) {
+	x.Dialogs = x.Dialogs[:0]
+	x.Users = x.Users[:0]
+	x.Messages = x.Messages[:0]
+	x.Count = 0
+	x.UpdateID = 0
+	x.Groups = x.Groups[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessagesDialogs = poolMessagesDialogs{}
+
+const C_MessagesSent int64 = 2942502835
+
+type poolMessagesSent struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesSent) Get() *MessagesSent {
+	x, ok := p.pool.Get().(*MessagesSent)
+	if !ok {
+		return &MessagesSent{}
+	}
+	return x
+}
+
+func (p *poolMessagesSent) Put(x *MessagesSent) {
+	x.MessageID = 0
+	x.RandomID = 0
+	x.CreatedOn = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesSent = poolMessagesSent{}
+
+const C_MessagesMany int64 = 1713238910
+
+type poolMessagesMany struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesMany) Get() *MessagesMany {
+	x, ok := p.pool.Get().(*MessagesMany)
+	if !ok {
+		return &MessagesMany{}
+	}
+	return x
+}
+
+func (p *poolMessagesMany) Put(x *MessagesMany) {
+	x.Messages = x.Messages[:0]
+	x.Users = x.Users[:0]
+	x.Groups = x.Groups[:0]
+	x.Continuous = false
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesMany = poolMessagesMany{}
+
+const C_MessagesReactionList int64 = 181278607
+
+type poolMessagesReactionList struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesReactionList) Get() *MessagesReactionList {
+	x, ok := p.pool.Get().(*MessagesReactionList)
+	if !ok {
+		return &MessagesReactionList{}
+	}
+	return x
+}
+
+func (p *poolMessagesReactionList) Put(x *MessagesReactionList) {
+	x.List = x.List[:0]
+	x.Users = x.Users[:0]
+	x.Hash = 0
+	x.Modified = false
+	p.pool.Put(x)
+}
+
+var PoolMessagesReactionList = poolMessagesReactionList{}
+
+const C_ReactionList int64 = 4260855916
+
+type poolReactionList struct {
+	pool sync.Pool
+}
+
+func (p *poolReactionList) Get() *ReactionList {
+	x, ok := p.pool.Get().(*ReactionList)
+	if !ok {
+		return &ReactionList{}
+	}
+	return x
+}
+
+func (p *poolReactionList) Put(x *ReactionList) {
+	x.Reaction = ""
+	x.UserIDs = x.UserIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolReactionList = poolReactionList{}
+
+func init() {
+	registry.RegisterConstructor(3000244183, "MessagesSend")
+	registry.RegisterConstructor(25498545, "MessagesSendMedia")
+	registry.RegisterConstructor(2492658432, "MessagesEdit")
+	registry.RegisterConstructor(1300826534, "MessagesReadHistory")
+	registry.RegisterConstructor(2151382317, "MessagesGet")
+	registry.RegisterConstructor(3396939832, "MessagesGetHistory")
+	registry.RegisterConstructor(1429532372, "MessagesGetDialogs")
+	registry.RegisterConstructor(1963188912, "MessagesGetPinnedDialogs")
+	registry.RegisterConstructor(1050840034, "MessagesGetDialog")
+	registry.RegisterConstructor(1540214486, "MessagesSetTyping")
+	registry.RegisterConstructor(1981246180, "MessagesClearHistory")
+	registry.RegisterConstructor(3487616910, "MessagesDelete")
+	registry.RegisterConstructor(2662884753, "MessagesForward")
+	registry.RegisterConstructor(1781251275, "MessagesReadContents")
+	registry.RegisterConstructor(921840607, "MessagesSaveDraft")
+	registry.RegisterConstructor(2164204563, "MessagesClearDraft")
+	registry.RegisterConstructor(1352871220, "MessagesToggleDialogPin")
+	registry.RegisterConstructor(1409872986, "MessagesReorderPinnedDialogs")
+	registry.RegisterConstructor(3682116055, "MessagesSendScreenShotNotification")
+	registry.RegisterConstructor(279494057, "MessagesSendReaction")
+	registry.RegisterConstructor(1547991459, "MessagesDeleteReaction")
+	registry.RegisterConstructor(3097050126, "MessagesGetReactionList")
+	registry.RegisterConstructor(2824078244, "MessagesTogglePin")
+	registry.RegisterConstructor(3252610224, "MessagesDialogs")
+	registry.RegisterConstructor(2942502835, "MessagesSent")
+	registry.RegisterConstructor(1713238910, "MessagesMany")
+	registry.RegisterConstructor(181278607, "MessagesReactionList")
+	registry.RegisterConstructor(4260855916, "ReactionList")
+}
+
+func (x *MessagesSend) DeepCopy(z *MessagesSend) {
+	z.RandomID = x.RandomID
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Body = x.Body
+	z.ReplyTo = x.ReplyTo
+	z.ClearDraft = x.ClearDraft
+	for idx := range x.Entities {
+		if x.Entities[idx] != nil {
+			xx := PoolMessageEntity.Get()
+			x.Entities[idx].DeepCopy(xx)
+			z.Entities = append(z.Entities, xx)
+		}
+	}
+}
+
+func (x *MessagesSendMedia) DeepCopy(z *MessagesSendMedia) {
+	z.RandomID = x.RandomID
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MediaType = x.MediaType
+	z.MediaData = append(z.MediaData[:0], x.MediaData...)
+	z.ReplyTo = x.ReplyTo
+	z.ClearDraft = x.ClearDraft
+}
+
+func (x *MessagesEdit) DeepCopy(z *MessagesEdit) {
+	z.RandomID = x.RandomID
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Body = x.Body
+	z.MessageID = x.MessageID
+	for idx := range x.Entities {
+		if x.Entities[idx] != nil {
+			xx := PoolMessageEntity.Get()
+			x.Entities[idx].DeepCopy(xx)
+			z.Entities = append(z.Entities, xx)
+		}
+	}
+}
+
+func (x *MessagesReadHistory) DeepCopy(z *MessagesReadHistory) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MaxID = x.MaxID
+}
+
+func (x *MessagesGet) DeepCopy(z *MessagesGet) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessagesIDs = append(z.MessagesIDs[:0], x.MessagesIDs...)
+}
+
+func (x *MessagesGetHistory) DeepCopy(z *MessagesGetHistory) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Limit = x.Limit
+	z.MaxID = x.MaxID
+	z.MinID = x.MinID
+}
+
+func (x *MessagesGetDialogs) DeepCopy(z *MessagesGetDialogs) {
+	z.Limit = x.Limit
+	z.Offset = x.Offset
+	z.ExcludePinned = x.ExcludePinned
+}
+
+func (x *MessagesGetPinnedDialogs) DeepCopy(z *MessagesGetPinnedDialogs) {
+}
+
+func (x *MessagesGetDialog) DeepCopy(z *MessagesGetDialog) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+}
+
+func (x *MessagesSetTyping) DeepCopy(z *MessagesSetTyping) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Action = x.Action
+}
+
+func (x *MessagesClearHistory) DeepCopy(z *MessagesClearHistory) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MaxID = x.MaxID
+	z.Delete = x.Delete
+}
+
+func (x *MessagesDelete) DeepCopy(z *MessagesDelete) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageIDs = append(z.MessageIDs[:0], x.MessageIDs...)
+	z.Revoke = x.Revoke
+}
+
+func (x *MessagesForward) DeepCopy(z *MessagesForward) {
+	if x.FromPeer != nil {
+		z.FromPeer = PoolInputPeer.Get()
+		x.FromPeer.DeepCopy(z.FromPeer)
+	}
+	if x.ToPeer != nil {
+		z.ToPeer = PoolInputPeer.Get()
+		x.ToPeer.DeepCopy(z.ToPeer)
+	}
+	z.Silence = x.Silence
+	z.MessageIDs = append(z.MessageIDs[:0], x.MessageIDs...)
+	z.RandomID = x.RandomID
+}
+
+func (x *MessagesReadContents) DeepCopy(z *MessagesReadContents) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageIDs = append(z.MessageIDs[:0], x.MessageIDs...)
+}
+
+func (x *MessagesSaveDraft) DeepCopy(z *MessagesSaveDraft) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.ReplyTo = x.ReplyTo
+	z.Body = x.Body
+	for idx := range x.Entities {
+		if x.Entities[idx] != nil {
+			xx := PoolMessageEntity.Get()
+			x.Entities[idx].DeepCopy(xx)
+			z.Entities = append(z.Entities, xx)
+		}
+	}
+	z.EditedID = x.EditedID
+}
+
+func (x *MessagesClearDraft) DeepCopy(z *MessagesClearDraft) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+}
+
+func (x *MessagesToggleDialogPin) DeepCopy(z *MessagesToggleDialogPin) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Pin = x.Pin
+}
+
+func (x *MessagesReorderPinnedDialogs) DeepCopy(z *MessagesReorderPinnedDialogs) {
+	for idx := range x.Peers {
+		if x.Peers[idx] != nil {
+			xx := PoolInputPeer.Get()
+			x.Peers[idx].DeepCopy(xx)
+			z.Peers = append(z.Peers, xx)
+		}
+	}
+}
+
+func (x *MessagesSendScreenShotNotification) DeepCopy(z *MessagesSendScreenShotNotification) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.RandomID = x.RandomID
+	z.ReplyTo = x.ReplyTo
+	z.MinID = x.MinID
+	z.MaxID = x.MaxID
+}
+
+func (x *MessagesSendReaction) DeepCopy(z *MessagesSendReaction) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageID = x.MessageID
+	z.Reaction = x.Reaction
+}
+
+func (x *MessagesDeleteReaction) DeepCopy(z *MessagesDeleteReaction) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageID = x.MessageID
+	z.Reactions = append(z.Reactions[:0], x.Reactions...)
+}
+
+func (x *MessagesGetReactionList) DeepCopy(z *MessagesGetReactionList) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageID = x.MessageID
+	z.Hash = x.Hash
+}
+
+func (x *MessagesTogglePin) DeepCopy(z *MessagesTogglePin) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.MessageID = x.MessageID
+	z.Silent = x.Silent
+}
+
+func (x *MessagesDialogs) DeepCopy(z *MessagesDialogs) {
+	for idx := range x.Dialogs {
+		if x.Dialogs[idx] != nil {
+			xx := PoolDialog.Get()
+			x.Dialogs[idx].DeepCopy(xx)
+			z.Dialogs = append(z.Dialogs, xx)
+		}
+	}
+	for idx := range x.Users {
+		if x.Users[idx] != nil {
+			xx := PoolUser.Get()
+			x.Users[idx].DeepCopy(xx)
+			z.Users = append(z.Users, xx)
+		}
+	}
+	for idx := range x.Messages {
+		if x.Messages[idx] != nil {
+			xx := PoolUserMessage.Get()
+			x.Messages[idx].DeepCopy(xx)
+			z.Messages = append(z.Messages, xx)
+		}
+	}
+	z.Count = x.Count
+	z.UpdateID = x.UpdateID
+	for idx := range x.Groups {
+		if x.Groups[idx] != nil {
+			xx := PoolGroup.Get()
+			x.Groups[idx].DeepCopy(xx)
+			z.Groups = append(z.Groups, xx)
+		}
+	}
+}
+
+func (x *MessagesSent) DeepCopy(z *MessagesSent) {
+	z.MessageID = x.MessageID
+	z.RandomID = x.RandomID
+	z.CreatedOn = x.CreatedOn
+}
+
+func (x *MessagesMany) DeepCopy(z *MessagesMany) {
+	for idx := range x.Messages {
+		if x.Messages[idx] != nil {
+			xx := PoolUserMessage.Get()
+			x.Messages[idx].DeepCopy(xx)
+			z.Messages = append(z.Messages, xx)
+		}
+	}
+	for idx := range x.Users {
+		if x.Users[idx] != nil {
+			xx := PoolUser.Get()
+			x.Users[idx].DeepCopy(xx)
+			z.Users = append(z.Users, xx)
+		}
+	}
+	for idx := range x.Groups {
+		if x.Groups[idx] != nil {
+			xx := PoolGroup.Get()
+			x.Groups[idx].DeepCopy(xx)
+			z.Groups = append(z.Groups, xx)
+		}
+	}
+	z.Continuous = x.Continuous
+	z.Empty = x.Empty
+}
+
+func (x *MessagesReactionList) DeepCopy(z *MessagesReactionList) {
+	for idx := range x.List {
+		if x.List[idx] != nil {
+			xx := PoolReactionList.Get()
+			x.List[idx].DeepCopy(xx)
+			z.List = append(z.List, xx)
+		}
+	}
+	for idx := range x.Users {
+		if x.Users[idx] != nil {
+			xx := PoolUser.Get()
+			x.Users[idx].DeepCopy(xx)
+			z.Users = append(z.Users, xx)
+		}
+	}
+	z.Hash = x.Hash
+	z.Modified = x.Modified
+}
+
+func (x *ReactionList) DeepCopy(z *ReactionList) {
+	z.Reaction = x.Reaction
+	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+}

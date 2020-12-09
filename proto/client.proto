@@ -1,50 +1,50 @@
-syntax = "proto2";
+syntax = "proto3";
 package msg;
 import "core.types.proto";
 import "chat.messages.medias.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
+option go_package = '.;msg';
 option (gogoproto.goproto_enum_prefix_all) = false;
 
 // ClientSendMessageMedia
 // @Function
 message ClientSendMessageMedia {
-    required InputPeer Peer = 1;
-    required InputMediaType MediaType = 2;
-    optional string Caption = 3;
-    optional string FileName = 4;
-    optional string FilePath = 5;
-    optional string ThumbFilePath = 6;
-    optional string FileMIME = 7;
-    optional string ThumbMIME = 8;
-    optional int64 ReplyTo = 9;
-    optional bool ClearDraft = 10;
+    InputPeer Peer = 1;
+    InputMediaType MediaType = 2;
+    string Caption = 3;
+    string FileName = 4;
+    string FilePath = 5;
+    string ThumbFilePath = 6;
+    string FileMIME = 7;
+    string ThumbMIME = 8;
+    int64 ReplyTo = 9;
+    bool ClearDraft = 10;
     repeated DocumentAttribute Attributes = 11;
-    optional string FileUploadID = 12;
-    optional string ThumbUploadID = 13;
-    optional int64 FileID = 14;
-    optional int64 ThumbID = 15;
-    optional int32 FileTotalParts = 16;
+    string FileUploadID = 12;
+    string ThumbUploadID = 13;
+    int64 FileID = 14;
+    int64 ThumbID = 15;
+    int32 FileTotalParts = 16;
     repeated MessageEntity Entities = 17;
-    optional bytes TinyThumb = 18;
+    bytes TinyThumb = 18;
 }
 
 // ClientGlobalSearch
 // @Function
 // @Return: ClientSearchResult
 message ClientGlobalSearch {
-    optional string Text = 1;
+    string Text = 1;
     repeated int32 LabelIDs = 2;
-    optional InputPeer Peer = 3;
-    required int32 Limit = 4;
-    optional int64 SenderID = 5;
+    InputPeer Peer = 3;
+    int32 Limit = 4;
+    int64 SenderID = 5;
 }
 
 // ClientContactSearch
 // @Function
 // @Return: ClientSearchResult
 message ClientContactSearch {
-    required string Text = 1;
+    string Text = 1;
 }
 
 // ClientGetCachedMedia
@@ -57,49 +57,49 @@ message ClientGetCachedMedia {
 // @Function
 // @Return: Bool
 message ClientClearCachedMedia {
-    optional InputPeer Peer = 1;
+    InputPeer Peer = 1;
     repeated ClientMediaType MediaTypes = 2;
 }
 
 // ClientGetLastBotKeyboard
 // @Return: UserMessage
 message ClientGetLastBotKeyboard {
-    required InputPeer peer = 1;
+    InputPeer peer = 1;
 }
 
 // ClientGetMediaHistory
 // @Function
 // @Return: MessagesMany
 message ClientGetMediaHistory {
-    required ClientMediaType MediaType = 1;
+    ClientMediaType MediaType = 1;
 }
 
 // ClientGetRecentSearch
 // @Function
 // @Return: RecentSearchMany
 message ClientGetRecentSearch {
-    required int32 Limit = 1;
+    int32 Limit = 1;
 }
 
 // ClientPutRecentSearch
 // @Function
 // @Return: Bool
 message ClientPutRecentSearch {
-    required InputPeer Peer = 1;
+    InputPeer Peer = 1;
 }
 
 // ClientPutRecentSearch
 // @Function
 // @Return: Bool
 message ClientRemoveRecentSearch {
-    required InputPeer Peer = 1;
+    InputPeer Peer = 1;
 }
 
 // ClientRemoveAllRecentSearches
 // @Function
 // @Return: Bool
 message ClientRemoveAllRecentSearches {
-    required bool extra = 1;
+    bool extra = 1;
 }
 
 // ClientGetSavedGifs
@@ -112,34 +112,34 @@ message ClientGetSavedGifs {
 // @Function
 // @Return: ClientTeamCounters
 message ClientGetTeamCounters {
-    required InputTeam Team = 1;
-    required bool withMutes = 2;
+    InputTeam Team = 1;
+    bool withMutes = 2;
 }
 
 // ClientPendingMessage
 message ClientPendingMessage {
-    required int64 ID = 1;
-    required int64 RequestID = 2;
-    required int64 PeerID = 3;
-    required int32 PeerType = 4;
-    required fixed64 AccessHash = 5;
-    required int64 CreatedOn = 6;
-    required int64 ReplyTo = 7;
-    required string Body = 8;
-    required int64 SenderID = 9;
+    int64 ID = 1;
+    int64 RequestID = 2;
+    int64 PeerID = 3;
+    int32 PeerType = 4;
+    fixed64 AccessHash = 5;
+    int64 CreatedOn = 6;
+    int64 ReplyTo = 7;
+    string Body = 8;
+    int64 SenderID = 9;
     repeated MessageEntity Entities = 10;
-    optional InputMediaType MediaType = 11;
-    optional bytes Media = 12;
-    optional bool ClearDraft = 13;
-    optional string FileUploadID = 14;
-    optional string ThumbUploadID = 15;
-    optional int64 FileID = 16;
-    optional int64 ThumbID = 17;
-    optional bytes Sha256 = 18;
-    optional FileLocation ServerFile = 19;
-    optional int64 TeamID = 20;
-    optional uint64 TeamAccessHash = 21;
-    optional bytes TinyThumb = 22;
+    InputMediaType MediaType = 11;
+    bytes Media = 12;
+    bool ClearDraft = 13;
+    string FileUploadID = 14;
+    string ThumbUploadID = 15;
+    int64 FileID = 16;
+    int64 ThumbID = 17;
+    bytes Sha256 = 18;
+    FileLocation ServerFile = 19;
+    int64 TeamID = 20;
+    uint64 TeamAccessHash = 21;
+    bytes TinyThumb = 22;
 }
 
 // ClientSearchResult
@@ -166,61 +166,61 @@ enum ClientFileType {
 // ClientFilesMany
 message ClientFilesMany {
     repeated ClientFile Gifs = 1;
-    required int32 Total = 2;
+    int32 Total = 2;
 }
 
 // ClientFile
 message ClientFile {
-    required int32 ClusterID = 1;
-    required int64 FileID = 2;
-    required uint64 AccessHash = 3;
-    required ClientFileType Type = 4;
-    optional string MimeType = 5;
-    optional int64 UserID = 6;
-    optional int64 GroupID = 7;
-    required int64 FileSize = 8;
-    optional int64 MessageID = 9;
-    optional int64 PeerID = 10;
-    optional int32 PeerType = 11;
-    optional int32 Version = 12;
-    optional string Extension = 13;
-    optional string MD5Checksum = 14;
-    optional int64 WallpaperID = 15;
+    int32 ClusterID = 1;
+    int64 FileID = 2;
+    uint64 AccessHash = 3;
+    ClientFileType Type = 4;
+    string MimeType = 5;
+    int64 UserID = 6;
+    int64 GroupID = 7;
+    int64 FileSize = 8;
+    int64 MessageID = 9;
+    int64 PeerID = 10;
+    int32 PeerType = 11;
+    int32 Version = 12;
+    string Extension = 13;
+    string MD5Checksum = 14;
+    int64 WallpaperID = 15;
     repeated DocumentAttribute Attributes = 16;
 }
 
 // ClientFileRequest
 message ClientFileRequest {
-    optional ClientFileRequest Next = 100;
+    ClientFileRequest Next = 100;
     // Logical Location
-    optional int64 PeerID = 1;
-    optional int32 PeerType = 2;
-    optional int64 MessageID = 3;
+    int64 PeerID = 1;
+    int32 PeerType = 2;
+    int64 MessageID = 3;
     // Storage Location
-    optional int32 ClusterID = 4;
-    optional int64 FileID = 5;
-    optional fixed64 AccessHash = 6;
-    optional int32 Version = 7;
-    optional int64 FileSize = 8; // FileSize (Optional) if is set then progress will be calculated
-    optional int32 ChunkSize = 9; // ChunkSize identifies how many request we need to send to server to Download a file.
+    int32 ClusterID = 4;
+    int64 FileID = 5;
+    fixed64 AccessHash = 6;
+    int32 Version = 7;
+    int64 FileSize = 8; // FileSize (Optional) if is set then progress will be calculated
+    int32 ChunkSize = 9; // ChunkSize identifies how many request we need to send to server to Download a file.
     repeated int32 FinishedParts = 10;
-    optional int32 TotalParts = 11;
-    optional bool SkipDelegateCall = 12;
-    optional string FilePath = 13;
-    optional string TempPath = 14;
-    optional bool CheckSha256 = 15;
-    optional bytes FileSha256 = 16;
-    optional bool IsProfilePhoto = 17;
-    optional int64 GroupID = 18;
-    optional int64 ThumbID = 19;
-    optional string ThumbPath = 20;
+    int32 TotalParts = 11;
+    bool SkipDelegateCall = 12;
+    string FilePath = 13;
+    string TempPath = 14;
+    bool CheckSha256 = 15;
+    bytes FileSha256 = 16;
+    bool IsProfilePhoto = 17;
+    int64 GroupID = 18;
+    int64 ThumbID = 19;
+    string ThumbPath = 20;
 }
 
 // ClientFileStatus
 message ClientFileStatus {
-    required int32 Status = 1;
-    required int64 Progress = 2;
-    required string FilePath = 3;
+    int32 Status = 1;
+    int64 Progress = 2;
+    string FilePath = 3;
 }
 
 // CachedMediaInfo
@@ -230,15 +230,15 @@ message ClientCachedMediaInfo {
 
 // PeerMediaInfo
 message ClientPeerMediaInfo {
-    required int64 PeerID = 1;
-    required PeerType PeerType = 2;
+    int64 PeerID = 1;
+    PeerType PeerType = 2;
     repeated ClientMediaSize Media = 3;
 }
 
 // ClientMediaSize
 message ClientMediaSize {
-    required ClientMediaType MediaType = 1;
-    required int64 TotalSize = 2;
+    ClientMediaType MediaType = 1;
+    int64 TotalSize = 2;
 }
 
 // ClientMediaType
@@ -254,8 +254,8 @@ enum ClientMediaType {
 
 // ClientRecentSearch
 message ClientRecentSearch {
-    required Peer Peer = 1;
-    required int32 Date = 2;
+    Peer Peer = 1;
+    int32 Date = 2;
 }
 
 // RecentSearchMany
@@ -267,8 +267,8 @@ message ClientRecentSearchMany {
 
 // ClientTeamCounters
 message ClientTeamCounters {
-    required int64 UnreadCount = 1;
-    required int64 MentionCount = 2;
+    int64 UnreadCount = 1;
+    int64 MentionCount = 2;
 }
 
 // RecentSearchMany
@@ -282,14 +282,14 @@ message ClientFrequentlyReactions {
 }
 
 message ClientDismissNotification {
-    required InputPeer Peer = 1;
-    required int64 ts = 2;
+    InputPeer Peer = 1;
+    int64 ts = 2;
 }
 
 message ClientGetNotificationDismissTime {
-    required InputPeer Peer = 1;
+    InputPeer Peer = 1;
 }
 
 message ClientNotificationDismissTime {
-    required int64 ts = 1;
+    int64 ts = 1;
 }

@@ -1,0 +1,8 @@
+_*
+.idea*
+*.log
+*.pprof
+*.out
+*.test
+*.trace
+vendor

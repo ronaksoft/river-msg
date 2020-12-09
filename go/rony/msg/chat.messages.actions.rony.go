@@ -1,0 +1,253 @@
+package msg
+
+import (
+	registry "github.com/ronaksoft/rony/registry"
+	sync "sync"
+)
+
+const C_MessageActionGroupAddUser int64 = 1949386261
+
+type poolMessageActionGroupAddUser struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionGroupAddUser) Get() *MessageActionGroupAddUser {
+	x, ok := p.pool.Get().(*MessageActionGroupAddUser)
+	if !ok {
+		return &MessageActionGroupAddUser{}
+	}
+	return x
+}
+
+func (p *poolMessageActionGroupAddUser) Put(x *MessageActionGroupAddUser) {
+	x.UserIDs = x.UserIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessageActionGroupAddUser = poolMessageActionGroupAddUser{}
+
+const C_MessageActionGroupDeleteUser int64 = 1213452128
+
+type poolMessageActionGroupDeleteUser struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionGroupDeleteUser) Get() *MessageActionGroupDeleteUser {
+	x, ok := p.pool.Get().(*MessageActionGroupDeleteUser)
+	if !ok {
+		return &MessageActionGroupDeleteUser{}
+	}
+	return x
+}
+
+func (p *poolMessageActionGroupDeleteUser) Put(x *MessageActionGroupDeleteUser) {
+	x.UserIDs = x.UserIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessageActionGroupDeleteUser = poolMessageActionGroupDeleteUser{}
+
+const C_MessageActionGroupCreated int64 = 2241024808
+
+type poolMessageActionGroupCreated struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionGroupCreated) Get() *MessageActionGroupCreated {
+	x, ok := p.pool.Get().(*MessageActionGroupCreated)
+	if !ok {
+		return &MessageActionGroupCreated{}
+	}
+	return x
+}
+
+func (p *poolMessageActionGroupCreated) Put(x *MessageActionGroupCreated) {
+	x.GroupTitle = ""
+	x.UserIDs = x.UserIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolMessageActionGroupCreated = poolMessageActionGroupCreated{}
+
+const C_MessageActionGroupTitleChanged int64 = 2418464749
+
+type poolMessageActionGroupTitleChanged struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionGroupTitleChanged) Get() *MessageActionGroupTitleChanged {
+	x, ok := p.pool.Get().(*MessageActionGroupTitleChanged)
+	if !ok {
+		return &MessageActionGroupTitleChanged{}
+	}
+	return x
+}
+
+func (p *poolMessageActionGroupTitleChanged) Put(x *MessageActionGroupTitleChanged) {
+	x.GroupTitle = ""
+	p.pool.Put(x)
+}
+
+var PoolMessageActionGroupTitleChanged = poolMessageActionGroupTitleChanged{}
+
+const C_MessageActionGroupPhotoChanged int64 = 188265964
+
+type poolMessageActionGroupPhotoChanged struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionGroupPhotoChanged) Get() *MessageActionGroupPhotoChanged {
+	x, ok := p.pool.Get().(*MessageActionGroupPhotoChanged)
+	if !ok {
+		return &MessageActionGroupPhotoChanged{}
+	}
+	return x
+}
+
+func (p *poolMessageActionGroupPhotoChanged) Put(x *MessageActionGroupPhotoChanged) {
+	if x.Photo != nil {
+		PoolGroupPhoto.Put(x.Photo)
+		x.Photo = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolMessageActionGroupPhotoChanged = poolMessageActionGroupPhotoChanged{}
+
+const C_MessageActionClearHistory int64 = 1270465696
+
+type poolMessageActionClearHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionClearHistory) Get() *MessageActionClearHistory {
+	x, ok := p.pool.Get().(*MessageActionClearHistory)
+	if !ok {
+		return &MessageActionClearHistory{}
+	}
+	return x
+}
+
+func (p *poolMessageActionClearHistory) Put(x *MessageActionClearHistory) {
+	x.MaxID = 0
+	x.Delete = false
+	p.pool.Put(x)
+}
+
+var PoolMessageActionClearHistory = poolMessageActionClearHistory{}
+
+const C_MessageActionContactRegistered int64 = 2399156016
+
+type poolMessageActionContactRegistered struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionContactRegistered) Get() *MessageActionContactRegistered {
+	x, ok := p.pool.Get().(*MessageActionContactRegistered)
+	if !ok {
+		return &MessageActionContactRegistered{}
+	}
+	return x
+}
+
+func (p *poolMessageActionContactRegistered) Put(x *MessageActionContactRegistered) {
+	p.pool.Put(x)
+}
+
+var PoolMessageActionContactRegistered = poolMessageActionContactRegistered{}
+
+const C_MessageActionScreenShotTaken int64 = 2637201461
+
+type poolMessageActionScreenShotTaken struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionScreenShotTaken) Get() *MessageActionScreenShotTaken {
+	x, ok := p.pool.Get().(*MessageActionScreenShotTaken)
+	if !ok {
+		return &MessageActionScreenShotTaken{}
+	}
+	return x
+}
+
+func (p *poolMessageActionScreenShotTaken) Put(x *MessageActionScreenShotTaken) {
+	x.MinID = 0
+	x.MaxID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessageActionScreenShotTaken = poolMessageActionScreenShotTaken{}
+
+const C_MessageActionThreadClosed int64 = 1366382890
+
+type poolMessageActionThreadClosed struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionThreadClosed) Get() *MessageActionThreadClosed {
+	x, ok := p.pool.Get().(*MessageActionThreadClosed)
+	if !ok {
+		return &MessageActionThreadClosed{}
+	}
+	return x
+}
+
+func (p *poolMessageActionThreadClosed) Put(x *MessageActionThreadClosed) {
+	x.ThreadID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessageActionThreadClosed = poolMessageActionThreadClosed{}
+
+func init() {
+	registry.RegisterConstructor(1949386261, "MessageActionGroupAddUser")
+	registry.RegisterConstructor(1213452128, "MessageActionGroupDeleteUser")
+	registry.RegisterConstructor(2241024808, "MessageActionGroupCreated")
+	registry.RegisterConstructor(2418464749, "MessageActionGroupTitleChanged")
+	registry.RegisterConstructor(188265964, "MessageActionGroupPhotoChanged")
+	registry.RegisterConstructor(1270465696, "MessageActionClearHistory")
+	registry.RegisterConstructor(2399156016, "MessageActionContactRegistered")
+	registry.RegisterConstructor(2637201461, "MessageActionScreenShotTaken")
+	registry.RegisterConstructor(1366382890, "MessageActionThreadClosed")
+}
+
+func (x *MessageActionGroupAddUser) DeepCopy(z *MessageActionGroupAddUser) {
+	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+}
+
+func (x *MessageActionGroupDeleteUser) DeepCopy(z *MessageActionGroupDeleteUser) {
+	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+}
+
+func (x *MessageActionGroupCreated) DeepCopy(z *MessageActionGroupCreated) {
+	z.GroupTitle = x.GroupTitle
+	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+}
+
+func (x *MessageActionGroupTitleChanged) DeepCopy(z *MessageActionGroupTitleChanged) {
+	z.GroupTitle = x.GroupTitle
+}
+
+func (x *MessageActionGroupPhotoChanged) DeepCopy(z *MessageActionGroupPhotoChanged) {
+	if x.Photo != nil {
+		z.Photo = PoolGroupPhoto.Get()
+		x.Photo.DeepCopy(z.Photo)
+	}
+}
+
+func (x *MessageActionClearHistory) DeepCopy(z *MessageActionClearHistory) {
+	z.MaxID = x.MaxID
+	z.Delete = x.Delete
+}
+
+func (x *MessageActionContactRegistered) DeepCopy(z *MessageActionContactRegistered) {
+}
+
+func (x *MessageActionScreenShotTaken) DeepCopy(z *MessageActionScreenShotTaken) {
+	z.MinID = x.MinID
+	z.MaxID = x.MaxID
+}
+
+func (x *MessageActionThreadClosed) DeepCopy(z *MessageActionThreadClosed) {
+	z.ThreadID = x.ThreadID
+}

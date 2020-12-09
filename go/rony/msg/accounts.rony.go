@@ -1,0 +1,1079 @@
+package msg
+
+import (
+	registry "github.com/ronaksoft/rony/registry"
+	sync "sync"
+)
+
+const C_AccountSetNotifySettings int64 = 2016882075
+
+type poolAccountSetNotifySettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSetNotifySettings) Get() *AccountSetNotifySettings {
+	x, ok := p.pool.Get().(*AccountSetNotifySettings)
+	if !ok {
+		return &AccountSetNotifySettings{}
+	}
+	return x
+}
+
+func (p *poolAccountSetNotifySettings) Put(x *AccountSetNotifySettings) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	if x.Settings != nil {
+		PoolPeerNotifySettings.Put(x.Settings)
+		x.Settings = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolAccountSetNotifySettings = poolAccountSetNotifySettings{}
+
+const C_AccountGetNotifySettings int64 = 477008681
+
+type poolAccountGetNotifySettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetNotifySettings) Get() *AccountGetNotifySettings {
+	x, ok := p.pool.Get().(*AccountGetNotifySettings)
+	if !ok {
+		return &AccountGetNotifySettings{}
+	}
+	return x
+}
+
+func (p *poolAccountGetNotifySettings) Put(x *AccountGetNotifySettings) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolAccountGetNotifySettings = poolAccountGetNotifySettings{}
+
+const C_AccountRegisterDevice int64 = 946059841
+
+type poolAccountRegisterDevice struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountRegisterDevice) Get() *AccountRegisterDevice {
+	x, ok := p.pool.Get().(*AccountRegisterDevice)
+	if !ok {
+		return &AccountRegisterDevice{}
+	}
+	return x
+}
+
+func (p *poolAccountRegisterDevice) Put(x *AccountRegisterDevice) {
+	x.Token = ""
+	x.DeviceModel = ""
+	x.SystemVersion = ""
+	x.AppVersion = ""
+	x.LangCode = ""
+	x.TokenType = 0
+	x.ClientID = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountRegisterDevice = poolAccountRegisterDevice{}
+
+const C_AccountUnregisterDevice int64 = 3981251588
+
+type poolAccountUnregisterDevice struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUnregisterDevice) Get() *AccountUnregisterDevice {
+	x, ok := p.pool.Get().(*AccountUnregisterDevice)
+	if !ok {
+		return &AccountUnregisterDevice{}
+	}
+	return x
+}
+
+func (p *poolAccountUnregisterDevice) Put(x *AccountUnregisterDevice) {
+	x.TokenType = 0
+	x.Token = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountUnregisterDevice = poolAccountUnregisterDevice{}
+
+const C_AccountUpdateProfile int64 = 3725499887
+
+type poolAccountUpdateProfile struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdateProfile) Get() *AccountUpdateProfile {
+	x, ok := p.pool.Get().(*AccountUpdateProfile)
+	if !ok {
+		return &AccountUpdateProfile{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdateProfile) Put(x *AccountUpdateProfile) {
+	x.FirstName = ""
+	x.LastName = ""
+	x.Bio = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdateProfile = poolAccountUpdateProfile{}
+
+const C_AccountCheckUsername int64 = 1501406413
+
+type poolAccountCheckUsername struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountCheckUsername) Get() *AccountCheckUsername {
+	x, ok := p.pool.Get().(*AccountCheckUsername)
+	if !ok {
+		return &AccountCheckUsername{}
+	}
+	return x
+}
+
+func (p *poolAccountCheckUsername) Put(x *AccountCheckUsername) {
+	x.Username = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountCheckUsername = poolAccountCheckUsername{}
+
+const C_AccountUpdateUsername int64 = 1477164344
+
+type poolAccountUpdateUsername struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdateUsername) Get() *AccountUpdateUsername {
+	x, ok := p.pool.Get().(*AccountUpdateUsername)
+	if !ok {
+		return &AccountUpdateUsername{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdateUsername) Put(x *AccountUpdateUsername) {
+	x.Username = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdateUsername = poolAccountUpdateUsername{}
+
+const C_AccountUploadPhoto int64 = 1222469957
+
+type poolAccountUploadPhoto struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUploadPhoto) Get() *AccountUploadPhoto {
+	x, ok := p.pool.Get().(*AccountUploadPhoto)
+	if !ok {
+		return &AccountUploadPhoto{}
+	}
+	return x
+}
+
+func (p *poolAccountUploadPhoto) Put(x *AccountUploadPhoto) {
+	if x.File != nil {
+		PoolInputFile.Put(x.File)
+		x.File = nil
+	}
+	x.ReturnObject = false
+	p.pool.Put(x)
+}
+
+var PoolAccountUploadPhoto = poolAccountUploadPhoto{}
+
+const C_AccountUpdatePhoto int64 = 406174115
+
+type poolAccountUpdatePhoto struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdatePhoto) Get() *AccountUpdatePhoto {
+	x, ok := p.pool.Get().(*AccountUpdatePhoto)
+	if !ok {
+		return &AccountUpdatePhoto{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdatePhoto) Put(x *AccountUpdatePhoto) {
+	x.PhotoID = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdatePhoto = poolAccountUpdatePhoto{}
+
+const C_AccountRemovePhoto int64 = 3728692172
+
+type poolAccountRemovePhoto struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountRemovePhoto) Get() *AccountRemovePhoto {
+	x, ok := p.pool.Get().(*AccountRemovePhoto)
+	if !ok {
+		return &AccountRemovePhoto{}
+	}
+	return x
+}
+
+func (p *poolAccountRemovePhoto) Put(x *AccountRemovePhoto) {
+	x.PhotoID = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountRemovePhoto = poolAccountRemovePhoto{}
+
+const C_AccountSendChangePhoneCode int64 = 1389121902
+
+type poolAccountSendChangePhoneCode struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSendChangePhoneCode) Get() *AccountSendChangePhoneCode {
+	x, ok := p.pool.Get().(*AccountSendChangePhoneCode)
+	if !ok {
+		return &AccountSendChangePhoneCode{}
+	}
+	return x
+}
+
+func (p *poolAccountSendChangePhoneCode) Put(x *AccountSendChangePhoneCode) {
+	x.Phone = ""
+	x.AppHash = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountSendChangePhoneCode = poolAccountSendChangePhoneCode{}
+
+const C_AccountResendChangePhoneCode int64 = 4200771569
+
+type poolAccountResendChangePhoneCode struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountResendChangePhoneCode) Get() *AccountResendChangePhoneCode {
+	x, ok := p.pool.Get().(*AccountResendChangePhoneCode)
+	if !ok {
+		return &AccountResendChangePhoneCode{}
+	}
+	return x
+}
+
+func (p *poolAccountResendChangePhoneCode) Put(x *AccountResendChangePhoneCode) {
+	x.Phone = ""
+	x.PhoneCodeHash = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountResendChangePhoneCode = poolAccountResendChangePhoneCode{}
+
+const C_AccountChangePhone int64 = 4285969474
+
+type poolAccountChangePhone struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountChangePhone) Get() *AccountChangePhone {
+	x, ok := p.pool.Get().(*AccountChangePhone)
+	if !ok {
+		return &AccountChangePhone{}
+	}
+	return x
+}
+
+func (p *poolAccountChangePhone) Put(x *AccountChangePhone) {
+	x.Phone = ""
+	x.PhoneCodeHash = ""
+	x.PhoneCode = ""
+	if x.Password != nil {
+		PoolInputPassword.Put(x.Password)
+		x.Password = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolAccountChangePhone = poolAccountChangePhone{}
+
+const C_AccountSetPrivacy int64 = 1599585002
+
+type poolAccountSetPrivacy struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSetPrivacy) Get() *AccountSetPrivacy {
+	x, ok := p.pool.Get().(*AccountSetPrivacy)
+	if !ok {
+		return &AccountSetPrivacy{}
+	}
+	return x
+}
+
+func (p *poolAccountSetPrivacy) Put(x *AccountSetPrivacy) {
+	x.ChatInvite = x.ChatInvite[:0]
+	x.LastSeen = x.LastSeen[:0]
+	x.PhoneNumber = x.PhoneNumber[:0]
+	x.ProfilePhoto = x.ProfilePhoto[:0]
+	x.ForwardedMessage = x.ForwardedMessage[:0]
+	x.Call = x.Call[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountSetPrivacy = poolAccountSetPrivacy{}
+
+const C_AccountGetPrivacy int64 = 1897044856
+
+type poolAccountGetPrivacy struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetPrivacy) Get() *AccountGetPrivacy {
+	x, ok := p.pool.Get().(*AccountGetPrivacy)
+	if !ok {
+		return &AccountGetPrivacy{}
+	}
+	return x
+}
+
+func (p *poolAccountGetPrivacy) Put(x *AccountGetPrivacy) {
+	x.Key = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountGetPrivacy = poolAccountGetPrivacy{}
+
+const C_AccountGetAuthorizations int64 = 2112646192
+
+type poolAccountGetAuthorizations struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetAuthorizations) Get() *AccountGetAuthorizations {
+	x, ok := p.pool.Get().(*AccountGetAuthorizations)
+	if !ok {
+		return &AccountGetAuthorizations{}
+	}
+	return x
+}
+
+func (p *poolAccountGetAuthorizations) Put(x *AccountGetAuthorizations) {
+	p.pool.Put(x)
+}
+
+var PoolAccountGetAuthorizations = poolAccountGetAuthorizations{}
+
+const C_AccountResetAuthorization int64 = 1045069116
+
+type poolAccountResetAuthorization struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountResetAuthorization) Get() *AccountResetAuthorization {
+	x, ok := p.pool.Get().(*AccountResetAuthorization)
+	if !ok {
+		return &AccountResetAuthorization{}
+	}
+	return x
+}
+
+func (p *poolAccountResetAuthorization) Put(x *AccountResetAuthorization) {
+	x.AuthID = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountResetAuthorization = poolAccountResetAuthorization{}
+
+const C_AccountUpdateStatus int64 = 666864933
+
+type poolAccountUpdateStatus struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdateStatus) Get() *AccountUpdateStatus {
+	x, ok := p.pool.Get().(*AccountUpdateStatus)
+	if !ok {
+		return &AccountUpdateStatus{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdateStatus) Put(x *AccountUpdateStatus) {
+	x.Online = false
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdateStatus = poolAccountUpdateStatus{}
+
+const C_AccountSetLang int64 = 2015777242
+
+type poolAccountSetLang struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountSetLang) Get() *AccountSetLang {
+	x, ok := p.pool.Get().(*AccountSetLang)
+	if !ok {
+		return &AccountSetLang{}
+	}
+	return x
+}
+
+func (p *poolAccountSetLang) Put(x *AccountSetLang) {
+	x.LangCode = ""
+	p.pool.Put(x)
+}
+
+var PoolAccountSetLang = poolAccountSetLang{}
+
+const C_AccountGetPassword int64 = 1702207851
+
+type poolAccountGetPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetPassword) Get() *AccountGetPassword {
+	x, ok := p.pool.Get().(*AccountGetPassword)
+	if !ok {
+		return &AccountGetPassword{}
+	}
+	return x
+}
+
+func (p *poolAccountGetPassword) Put(x *AccountGetPassword) {
+	p.pool.Put(x)
+}
+
+var PoolAccountGetPassword = poolAccountGetPassword{}
+
+const C_AccountGetPasswordSettings int64 = 2052309739
+
+type poolAccountGetPasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetPasswordSettings) Get() *AccountGetPasswordSettings {
+	x, ok := p.pool.Get().(*AccountGetPasswordSettings)
+	if !ok {
+		return &AccountGetPasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountGetPasswordSettings) Put(x *AccountGetPasswordSettings) {
+	if x.Password != nil {
+		PoolInputPassword.Put(x.Password)
+		x.Password = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolAccountGetPasswordSettings = poolAccountGetPasswordSettings{}
+
+const C_AccountUpdatePasswordSettings int64 = 3193945896
+
+type poolAccountUpdatePasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountUpdatePasswordSettings) Get() *AccountUpdatePasswordSettings {
+	x, ok := p.pool.Get().(*AccountUpdatePasswordSettings)
+	if !ok {
+		return &AccountUpdatePasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountUpdatePasswordSettings) Put(x *AccountUpdatePasswordSettings) {
+	if x.Password != nil {
+		PoolInputPassword.Put(x.Password)
+		x.Password = nil
+	}
+	x.PasswordHash = x.PasswordHash[:0]
+	x.Algorithm = 0
+	x.AlgorithmData = x.AlgorithmData[:0]
+	x.Hint = ""
+	x.Questions = x.Questions[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountUpdatePasswordSettings = poolAccountUpdatePasswordSettings{}
+
+const C_AccountRecoverPassword int64 = 1086766738
+
+type poolAccountRecoverPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountRecoverPassword) Get() *AccountRecoverPassword {
+	x, ok := p.pool.Get().(*AccountRecoverPassword)
+	if !ok {
+		return &AccountRecoverPassword{}
+	}
+	return x
+}
+
+func (p *poolAccountRecoverPassword) Put(x *AccountRecoverPassword) {
+	x.Answers = x.Answers[:0]
+	x.Algorithm = 0
+	x.AlgorithmData = x.AlgorithmData[:0]
+	x.SrpID = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountRecoverPassword = poolAccountRecoverPassword{}
+
+const C_AccountGetTeams int64 = 2881489378
+
+type poolAccountGetTeams struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountGetTeams) Get() *AccountGetTeams {
+	x, ok := p.pool.Get().(*AccountGetTeams)
+	if !ok {
+		return &AccountGetTeams{}
+	}
+	return x
+}
+
+func (p *poolAccountGetTeams) Put(x *AccountGetTeams) {
+	p.pool.Put(x)
+}
+
+var PoolAccountGetTeams = poolAccountGetTeams{}
+
+const C_AccountPasswordSettings int64 = 3362978866
+
+type poolAccountPasswordSettings struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountPasswordSettings) Get() *AccountPasswordSettings {
+	x, ok := p.pool.Get().(*AccountPasswordSettings)
+	if !ok {
+		return &AccountPasswordSettings{}
+	}
+	return x
+}
+
+func (p *poolAccountPasswordSettings) Put(x *AccountPasswordSettings) {
+	x.Hint = ""
+	x.Questions = x.Questions[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountPasswordSettings = poolAccountPasswordSettings{}
+
+const C_SecurityQuestions int64 = 1797596734
+
+type poolSecurityQuestions struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityQuestions) Get() *SecurityQuestions {
+	x, ok := p.pool.Get().(*SecurityQuestions)
+	if !ok {
+		return &SecurityQuestions{}
+	}
+	return x
+}
+
+func (p *poolSecurityQuestions) Put(x *SecurityQuestions) {
+	x.Questions = x.Questions[:0]
+	p.pool.Put(x)
+}
+
+var PoolSecurityQuestions = poolSecurityQuestions{}
+
+const C_RecoveryQuestion int64 = 1697591959
+
+type poolRecoveryQuestion struct {
+	pool sync.Pool
+}
+
+func (p *poolRecoveryQuestion) Get() *RecoveryQuestion {
+	x, ok := p.pool.Get().(*RecoveryQuestion)
+	if !ok {
+		return &RecoveryQuestion{}
+	}
+	return x
+}
+
+func (p *poolRecoveryQuestion) Put(x *RecoveryQuestion) {
+	x.ID = 0
+	x.Text = ""
+	p.pool.Put(x)
+}
+
+var PoolRecoveryQuestion = poolRecoveryQuestion{}
+
+const C_SecurityQuestion int64 = 1092467205
+
+type poolSecurityQuestion struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityQuestion) Get() *SecurityQuestion {
+	x, ok := p.pool.Get().(*SecurityQuestion)
+	if !ok {
+		return &SecurityQuestion{}
+	}
+	return x
+}
+
+func (p *poolSecurityQuestion) Put(x *SecurityQuestion) {
+	x.ID = 0
+	x.Text = ""
+	x.Answer = ""
+	p.pool.Put(x)
+}
+
+var PoolSecurityQuestion = poolSecurityQuestion{}
+
+const C_SecurityAnswer int64 = 1989228797
+
+type poolSecurityAnswer struct {
+	pool sync.Pool
+}
+
+func (p *poolSecurityAnswer) Get() *SecurityAnswer {
+	x, ok := p.pool.Get().(*SecurityAnswer)
+	if !ok {
+		return &SecurityAnswer{}
+	}
+	return x
+}
+
+func (p *poolSecurityAnswer) Put(x *SecurityAnswer) {
+	x.QuestionID = 0
+	x.Answer = ""
+	p.pool.Put(x)
+}
+
+var PoolSecurityAnswer = poolSecurityAnswer{}
+
+const C_AccountPassword int64 = 4178767656
+
+type poolAccountPassword struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountPassword) Get() *AccountPassword {
+	x, ok := p.pool.Get().(*AccountPassword)
+	if !ok {
+		return &AccountPassword{}
+	}
+	return x
+}
+
+func (p *poolAccountPassword) Put(x *AccountPassword) {
+	x.HasPassword = false
+	x.Hint = ""
+	x.Algorithm = 0
+	x.AlgorithmData = x.AlgorithmData[:0]
+	x.SrpB = x.SrpB[:0]
+	x.RandomData = x.RandomData[:0]
+	x.SrpID = 0
+	x.Questions = x.Questions[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountPassword = poolAccountPassword{}
+
+const C_AccountAuthorizations int64 = 1092320500
+
+type poolAccountAuthorizations struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountAuthorizations) Get() *AccountAuthorizations {
+	x, ok := p.pool.Get().(*AccountAuthorizations)
+	if !ok {
+		return &AccountAuthorizations{}
+	}
+	return x
+}
+
+func (p *poolAccountAuthorizations) Put(x *AccountAuthorizations) {
+	x.Authorizations = x.Authorizations[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountAuthorizations = poolAccountAuthorizations{}
+
+const C_AccountAuthorization int64 = 275571966
+
+type poolAccountAuthorization struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountAuthorization) Get() *AccountAuthorization {
+	x, ok := p.pool.Get().(*AccountAuthorization)
+	if !ok {
+		return &AccountAuthorization{}
+	}
+	return x
+}
+
+func (p *poolAccountAuthorization) Put(x *AccountAuthorization) {
+	x.AuthID = 0
+	x.Model = ""
+	x.AppVersion = ""
+	x.SystemVersion = ""
+	x.LangCode = ""
+	x.CreatedAt = 0
+	x.ActiveAt = 0
+	x.ClientIP = ""
+	x.LastAccess = 0
+	p.pool.Put(x)
+}
+
+var PoolAccountAuthorization = poolAccountAuthorization{}
+
+const C_AccountPrivacyRules int64 = 3802018092
+
+type poolAccountPrivacyRules struct {
+	pool sync.Pool
+}
+
+func (p *poolAccountPrivacyRules) Get() *AccountPrivacyRules {
+	x, ok := p.pool.Get().(*AccountPrivacyRules)
+	if !ok {
+		return &AccountPrivacyRules{}
+	}
+	return x
+}
+
+func (p *poolAccountPrivacyRules) Put(x *AccountPrivacyRules) {
+	x.Rules = x.Rules[:0]
+	p.pool.Put(x)
+}
+
+var PoolAccountPrivacyRules = poolAccountPrivacyRules{}
+
+func init() {
+	registry.RegisterConstructor(2016882075, "AccountSetNotifySettings")
+	registry.RegisterConstructor(477008681, "AccountGetNotifySettings")
+	registry.RegisterConstructor(946059841, "AccountRegisterDevice")
+	registry.RegisterConstructor(3981251588, "AccountUnregisterDevice")
+	registry.RegisterConstructor(3725499887, "AccountUpdateProfile")
+	registry.RegisterConstructor(1501406413, "AccountCheckUsername")
+	registry.RegisterConstructor(1477164344, "AccountUpdateUsername")
+	registry.RegisterConstructor(1222469957, "AccountUploadPhoto")
+	registry.RegisterConstructor(406174115, "AccountUpdatePhoto")
+	registry.RegisterConstructor(3728692172, "AccountRemovePhoto")
+	registry.RegisterConstructor(1389121902, "AccountSendChangePhoneCode")
+	registry.RegisterConstructor(4200771569, "AccountResendChangePhoneCode")
+	registry.RegisterConstructor(4285969474, "AccountChangePhone")
+	registry.RegisterConstructor(1599585002, "AccountSetPrivacy")
+	registry.RegisterConstructor(1897044856, "AccountGetPrivacy")
+	registry.RegisterConstructor(2112646192, "AccountGetAuthorizations")
+	registry.RegisterConstructor(1045069116, "AccountResetAuthorization")
+	registry.RegisterConstructor(666864933, "AccountUpdateStatus")
+	registry.RegisterConstructor(2015777242, "AccountSetLang")
+	registry.RegisterConstructor(1702207851, "AccountGetPassword")
+	registry.RegisterConstructor(2052309739, "AccountGetPasswordSettings")
+	registry.RegisterConstructor(3193945896, "AccountUpdatePasswordSettings")
+	registry.RegisterConstructor(1086766738, "AccountRecoverPassword")
+	registry.RegisterConstructor(2881489378, "AccountGetTeams")
+	registry.RegisterConstructor(3362978866, "AccountPasswordSettings")
+	registry.RegisterConstructor(1797596734, "SecurityQuestions")
+	registry.RegisterConstructor(1697591959, "RecoveryQuestion")
+	registry.RegisterConstructor(1092467205, "SecurityQuestion")
+	registry.RegisterConstructor(1989228797, "SecurityAnswer")
+	registry.RegisterConstructor(4178767656, "AccountPassword")
+	registry.RegisterConstructor(1092320500, "AccountAuthorizations")
+	registry.RegisterConstructor(275571966, "AccountAuthorization")
+	registry.RegisterConstructor(3802018092, "AccountPrivacyRules")
+}
+
+func (x *AccountSetNotifySettings) DeepCopy(z *AccountSetNotifySettings) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	if x.Settings != nil {
+		z.Settings = PoolPeerNotifySettings.Get()
+		x.Settings.DeepCopy(z.Settings)
+	}
+}
+
+func (x *AccountGetNotifySettings) DeepCopy(z *AccountGetNotifySettings) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+}
+
+func (x *AccountRegisterDevice) DeepCopy(z *AccountRegisterDevice) {
+	z.Token = x.Token
+	z.DeviceModel = x.DeviceModel
+	z.SystemVersion = x.SystemVersion
+	z.AppVersion = x.AppVersion
+	z.LangCode = x.LangCode
+	z.TokenType = x.TokenType
+	z.ClientID = x.ClientID
+}
+
+func (x *AccountUnregisterDevice) DeepCopy(z *AccountUnregisterDevice) {
+	z.TokenType = x.TokenType
+	z.Token = x.Token
+}
+
+func (x *AccountUpdateProfile) DeepCopy(z *AccountUpdateProfile) {
+	z.FirstName = x.FirstName
+	z.LastName = x.LastName
+	z.Bio = x.Bio
+}
+
+func (x *AccountCheckUsername) DeepCopy(z *AccountCheckUsername) {
+	z.Username = x.Username
+}
+
+func (x *AccountUpdateUsername) DeepCopy(z *AccountUpdateUsername) {
+	z.Username = x.Username
+}
+
+func (x *AccountUploadPhoto) DeepCopy(z *AccountUploadPhoto) {
+	if x.File != nil {
+		z.File = PoolInputFile.Get()
+		x.File.DeepCopy(z.File)
+	}
+	z.ReturnObject = x.ReturnObject
+}
+
+func (x *AccountUpdatePhoto) DeepCopy(z *AccountUpdatePhoto) {
+	z.PhotoID = x.PhotoID
+}
+
+func (x *AccountRemovePhoto) DeepCopy(z *AccountRemovePhoto) {
+	z.PhotoID = x.PhotoID
+}
+
+func (x *AccountSendChangePhoneCode) DeepCopy(z *AccountSendChangePhoneCode) {
+	z.Phone = x.Phone
+	z.AppHash = x.AppHash
+}
+
+func (x *AccountResendChangePhoneCode) DeepCopy(z *AccountResendChangePhoneCode) {
+	z.Phone = x.Phone
+	z.PhoneCodeHash = x.PhoneCodeHash
+}
+
+func (x *AccountChangePhone) DeepCopy(z *AccountChangePhone) {
+	z.Phone = x.Phone
+	z.PhoneCodeHash = x.PhoneCodeHash
+	z.PhoneCode = x.PhoneCode
+	if x.Password != nil {
+		z.Password = PoolInputPassword.Get()
+		x.Password.DeepCopy(z.Password)
+	}
+}
+
+func (x *AccountSetPrivacy) DeepCopy(z *AccountSetPrivacy) {
+	for idx := range x.ChatInvite {
+		if x.ChatInvite[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.ChatInvite[idx].DeepCopy(xx)
+			z.ChatInvite = append(z.ChatInvite, xx)
+		}
+	}
+	for idx := range x.LastSeen {
+		if x.LastSeen[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.LastSeen[idx].DeepCopy(xx)
+			z.LastSeen = append(z.LastSeen, xx)
+		}
+	}
+	for idx := range x.PhoneNumber {
+		if x.PhoneNumber[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.PhoneNumber[idx].DeepCopy(xx)
+			z.PhoneNumber = append(z.PhoneNumber, xx)
+		}
+	}
+	for idx := range x.ProfilePhoto {
+		if x.ProfilePhoto[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.ProfilePhoto[idx].DeepCopy(xx)
+			z.ProfilePhoto = append(z.ProfilePhoto, xx)
+		}
+	}
+	for idx := range x.ForwardedMessage {
+		if x.ForwardedMessage[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.ForwardedMessage[idx].DeepCopy(xx)
+			z.ForwardedMessage = append(z.ForwardedMessage, xx)
+		}
+	}
+	for idx := range x.Call {
+		if x.Call[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.Call[idx].DeepCopy(xx)
+			z.Call = append(z.Call, xx)
+		}
+	}
+}
+
+func (x *AccountGetPrivacy) DeepCopy(z *AccountGetPrivacy) {
+	z.Key = x.Key
+}
+
+func (x *AccountGetAuthorizations) DeepCopy(z *AccountGetAuthorizations) {
+}
+
+func (x *AccountResetAuthorization) DeepCopy(z *AccountResetAuthorization) {
+	z.AuthID = x.AuthID
+}
+
+func (x *AccountUpdateStatus) DeepCopy(z *AccountUpdateStatus) {
+	z.Online = x.Online
+}
+
+func (x *AccountSetLang) DeepCopy(z *AccountSetLang) {
+	z.LangCode = x.LangCode
+}
+
+func (x *AccountGetPassword) DeepCopy(z *AccountGetPassword) {
+}
+
+func (x *AccountGetPasswordSettings) DeepCopy(z *AccountGetPasswordSettings) {
+	if x.Password != nil {
+		z.Password = PoolInputPassword.Get()
+		x.Password.DeepCopy(z.Password)
+	}
+}
+
+func (x *AccountUpdatePasswordSettings) DeepCopy(z *AccountUpdatePasswordSettings) {
+	if x.Password != nil {
+		z.Password = PoolInputPassword.Get()
+		x.Password.DeepCopy(z.Password)
+	}
+	z.PasswordHash = append(z.PasswordHash[:0], x.PasswordHash...)
+	z.Algorithm = x.Algorithm
+	z.AlgorithmData = append(z.AlgorithmData[:0], x.AlgorithmData...)
+	z.Hint = x.Hint
+	for idx := range x.Questions {
+		if x.Questions[idx] != nil {
+			xx := PoolSecurityQuestion.Get()
+			x.Questions[idx].DeepCopy(xx)
+			z.Questions = append(z.Questions, xx)
+		}
+	}
+}
+
+func (x *AccountRecoverPassword) DeepCopy(z *AccountRecoverPassword) {
+	for idx := range x.Answers {
+		if x.Answers[idx] != nil {
+			xx := PoolSecurityAnswer.Get()
+			x.Answers[idx].DeepCopy(xx)
+			z.Answers = append(z.Answers, xx)
+		}
+	}
+	z.Algorithm = x.Algorithm
+	z.AlgorithmData = append(z.AlgorithmData[:0], x.AlgorithmData...)
+	z.SrpID = x.SrpID
+}
+
+func (x *AccountGetTeams) DeepCopy(z *AccountGetTeams) {
+}
+
+func (x *AccountPasswordSettings) DeepCopy(z *AccountPasswordSettings) {
+	z.Hint = x.Hint
+	for idx := range x.Questions {
+		if x.Questions[idx] != nil {
+			xx := PoolRecoveryQuestion.Get()
+			x.Questions[idx].DeepCopy(xx)
+			z.Questions = append(z.Questions, xx)
+		}
+	}
+}
+
+func (x *SecurityQuestions) DeepCopy(z *SecurityQuestions) {
+	for idx := range x.Questions {
+		if x.Questions[idx] != nil {
+			xx := PoolSecurityQuestion.Get()
+			x.Questions[idx].DeepCopy(xx)
+			z.Questions = append(z.Questions, xx)
+		}
+	}
+}
+
+func (x *RecoveryQuestion) DeepCopy(z *RecoveryQuestion) {
+	z.ID = x.ID
+	z.Text = x.Text
+}
+
+func (x *SecurityQuestion) DeepCopy(z *SecurityQuestion) {
+	z.ID = x.ID
+	z.Text = x.Text
+	z.Answer = x.Answer
+}
+
+func (x *SecurityAnswer) DeepCopy(z *SecurityAnswer) {
+	z.QuestionID = x.QuestionID
+	z.Answer = x.Answer
+}
+
+func (x *AccountPassword) DeepCopy(z *AccountPassword) {
+	z.HasPassword = x.HasPassword
+	z.Hint = x.Hint
+	z.Algorithm = x.Algorithm
+	z.AlgorithmData = append(z.AlgorithmData[:0], x.AlgorithmData...)
+	z.SrpB = append(z.SrpB[:0], x.SrpB...)
+	z.RandomData = append(z.RandomData[:0], x.RandomData...)
+	z.SrpID = x.SrpID
+	for idx := range x.Questions {
+		if x.Questions[idx] != nil {
+			xx := PoolRecoveryQuestion.Get()
+			x.Questions[idx].DeepCopy(xx)
+			z.Questions = append(z.Questions, xx)
+		}
+	}
+}
+
+func (x *AccountAuthorizations) DeepCopy(z *AccountAuthorizations) {
+	for idx := range x.Authorizations {
+		if x.Authorizations[idx] != nil {
+			xx := PoolAccountAuthorization.Get()
+			x.Authorizations[idx].DeepCopy(xx)
+			z.Authorizations = append(z.Authorizations, xx)
+		}
+	}
+}
+
+func (x *AccountAuthorization) DeepCopy(z *AccountAuthorization) {
+	z.AuthID = x.AuthID
+	z.Model = x.Model
+	z.AppVersion = x.AppVersion
+	z.SystemVersion = x.SystemVersion
+	z.LangCode = x.LangCode
+	z.CreatedAt = x.CreatedAt
+	z.ActiveAt = x.ActiveAt
+	z.ClientIP = x.ClientIP
+	z.LastAccess = x.LastAccess
+}
+
+func (x *AccountPrivacyRules) DeepCopy(z *AccountPrivacyRules) {
+	for idx := range x.Rules {
+		if x.Rules[idx] != nil {
+			xx := PoolPrivacyRule.Get()
+			x.Rules[idx].DeepCopy(xx)
+			z.Rules = append(z.Rules, xx)
+		}
+	}
+}

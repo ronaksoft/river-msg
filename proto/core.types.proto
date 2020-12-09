@@ -17,11 +17,19 @@ message Pong {
 // MessageEnvelope
 // This type of message will be used to contain another ProtoBuffer Message inside
 message MessageEnvelope {
+    repeated KeyValue Header = 10;
     int64 Constructor = 1;
     fixed64 RequestID = 2;
     bytes Message = 4;
     InputTeam Team = 5;
 }
+
+// KeyValue
+message KeyValue {
+    string Key = 1;
+    string Value = 2;
+}
+
 
 // MessageContainer
 // This type of message will be used to send multi messages inside a single container message

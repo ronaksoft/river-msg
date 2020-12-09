@@ -98,6 +98,7 @@ func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 }
 
 func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
+	x.Header = x.Header[:0]
 	x.Constructor = 0
 	x.RequestID = 0
 	x.Message = x.Message[:0]
@@ -112,6 +113,40 @@ var PoolMessageEnvelope = poolMessageEnvelope{}
 
 func ResultMessageEnvelope(out *MessageEnvelope, res *MessageEnvelope) {
 	out.Constructor = C_MessageEnvelope
+	protoSize := res.Size()
+	if protoSize > cap(out.Message) {
+		pbytes.Put(out.Message)
+		out.Message = pbytes.GetLen(protoSize)
+	} else {
+		out.Message = out.Message[:protoSize]
+	}
+	res.MarshalToSizedBuffer(out.Message)
+}
+
+const C_KeyValue int64 = 4276272820
+
+type poolKeyValue struct {
+	pool sync.Pool
+}
+
+func (p *poolKeyValue) Get() *KeyValue {
+	x, ok := p.pool.Get().(*KeyValue)
+	if !ok {
+		return &KeyValue{}
+	}
+	return x
+}
+
+func (p *poolKeyValue) Put(x *KeyValue) {
+	x.Key = ""
+	x.Value = ""
+	p.pool.Put(x)
+}
+
+var PoolKeyValue = poolKeyValue{}
+
+func ResultKeyValue(out *MessageEnvelope, res *KeyValue) {
+	out.Constructor = C_KeyValue
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -1761,6 +1796,7 @@ func init() {
 	ConstructorNames[2246546115] = "Ping"
 	ConstructorNames[2171268721] = "Pong"
 	ConstructorNames[535232465] = "MessageEnvelope"
+	ConstructorNames[4276272820] = "KeyValue"
 	ConstructorNames[1972016308] = "MessageContainer"
 	ConstructorNames[2373884514] = "UpdateEnvelope"
 	ConstructorNames[661712615] = "UpdateContainer"

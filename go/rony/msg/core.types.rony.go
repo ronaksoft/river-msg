@@ -64,6 +64,7 @@ func (p *poolMessageEnvelope) Get() *MessageEnvelope {
 }
 
 func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
+	x.Header = x.Header[:0]
 	x.Constructor = 0
 	x.RequestID = 0
 	x.Message = x.Message[:0]
@@ -75,6 +76,28 @@ func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
 }
 
 var PoolMessageEnvelope = poolMessageEnvelope{}
+
+const C_KeyValue int64 = 4276272820
+
+type poolKeyValue struct {
+	pool sync.Pool
+}
+
+func (p *poolKeyValue) Get() *KeyValue {
+	x, ok := p.pool.Get().(*KeyValue)
+	if !ok {
+		return &KeyValue{}
+	}
+	return x
+}
+
+func (p *poolKeyValue) Put(x *KeyValue) {
+	x.Key = ""
+	x.Value = ""
+	p.pool.Put(x)
+}
+
+var PoolKeyValue = poolKeyValue{}
 
 const C_MessageContainer int64 = 1972016308
 
@@ -1199,6 +1222,7 @@ func init() {
 	registry.RegisterConstructor(2246546115, "Ping")
 	registry.RegisterConstructor(2171268721, "Pong")
 	registry.RegisterConstructor(535232465, "MessageEnvelope")
+	registry.RegisterConstructor(4276272820, "KeyValue")
 	registry.RegisterConstructor(1972016308, "MessageContainer")
 	registry.RegisterConstructor(2373884514, "UpdateEnvelope")
 	registry.RegisterConstructor(661712615, "UpdateContainer")
@@ -1253,6 +1277,13 @@ func (x *Pong) DeepCopy(z *Pong) {
 }
 
 func (x *MessageEnvelope) DeepCopy(z *MessageEnvelope) {
+	for idx := range x.Header {
+		if x.Header[idx] != nil {
+			xx := PoolKeyValue.Get()
+			x.Header[idx].DeepCopy(xx)
+			z.Header = append(z.Header, xx)
+		}
+	}
 	z.Constructor = x.Constructor
 	z.RequestID = x.RequestID
 	z.Message = append(z.Message[:0], x.Message...)
@@ -1260,6 +1291,11 @@ func (x *MessageEnvelope) DeepCopy(z *MessageEnvelope) {
 		z.Team = PoolInputTeam.Get()
 		x.Team.DeepCopy(z.Team)
 	}
+}
+
+func (x *KeyValue) DeepCopy(z *KeyValue) {
+	z.Key = x.Key
+	z.Value = x.Value
 }
 
 func (x *MessageContainer) DeepCopy(z *MessageContainer) {
@@ -1740,6 +1776,10 @@ func (x *MessageEnvelope) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessageEnvelope, x)
 }
 
+func (x *KeyValue) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_KeyValue, x)
+}
+
 func (x *MessageContainer) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessageContainer, x)
 }
@@ -1924,6 +1964,10 @@ func (x *MessageEnvelope) MarshalTo(b []byte) ([]byte, error) {
 	return proto.MarshalOptions{}.MarshalAppend(b, x)
 }
 
+func (x *KeyValue) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
 func (x *MessageContainer) MarshalTo(b []byte) ([]byte, error) {
 	return proto.MarshalOptions{}.MarshalAppend(b, x)
 }
@@ -2105,6 +2149,10 @@ func (x *Pong) Unmarshal(b []byte) error {
 }
 
 func (x *MessageEnvelope) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *KeyValue) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }
 

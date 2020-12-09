@@ -1,6 +1,7 @@
 package msg
 
 import (
+	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
 	sync "sync"
 )

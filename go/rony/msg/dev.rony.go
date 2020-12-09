@@ -3,6 +3,7 @@ package msg
 import (
 	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
+	proto "google.golang.org/protobuf/proto"
 	sync "sync"
 )
 
@@ -161,4 +162,44 @@ func (x *TestRequestWithString) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *TestResponseWithString) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_TestResponseWithString, x)
+}
+
+func (x *EchoWithDelay) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *TestRequest) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *TestResponse) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *TestRequestWithString) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *TestResponseWithString) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *EchoWithDelay) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *TestRequest) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *TestResponse) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *TestRequestWithString) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *TestResponseWithString) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }

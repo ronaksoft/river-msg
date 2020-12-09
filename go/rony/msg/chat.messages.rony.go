@@ -3,6 +3,7 @@ package msg
 import (
 	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
+	proto "google.golang.org/protobuf/proto"
 	sync "sync"
 )
 
@@ -1175,4 +1176,228 @@ func (x *MessagesReactionList) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *ReactionList) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ReactionList, x)
+}
+
+func (x *MessagesSend) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSendMedia) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesEdit) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesReadHistory) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGet) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGetHistory) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGetDialogs) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGetPinnedDialogs) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGetDialog) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSetTyping) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesClearHistory) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesDelete) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesForward) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesReadContents) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSaveDraft) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesClearDraft) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesToggleDialogPin) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesReorderPinnedDialogs) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSendScreenShotNotification) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSendReaction) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesDeleteReaction) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesGetReactionList) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesTogglePin) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesDialogs) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSent) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesMany) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesReactionList) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *ReactionList) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *MessagesSend) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSendMedia) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesEdit) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesReadHistory) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGet) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetHistory) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetDialogs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetPinnedDialogs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetDialog) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSetTyping) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesClearHistory) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesDelete) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesForward) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesReadContents) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSaveDraft) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesClearDraft) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesToggleDialogPin) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesReorderPinnedDialogs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSendScreenShotNotification) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSendReaction) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesDeleteReaction) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetReactionList) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesTogglePin) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesDialogs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesSent) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesMany) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *MessagesReactionList) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *ReactionList) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }

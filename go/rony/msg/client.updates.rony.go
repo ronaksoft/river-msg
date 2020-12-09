@@ -3,6 +3,7 @@ package msg
 import (
 	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
+	proto "google.golang.org/protobuf/proto"
 	sync "sync"
 )
 
@@ -121,4 +122,28 @@ func (x *ClientUpdateMessagesDeleted) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *ClientUpdateSynced) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ClientUpdateSynced, x)
+}
+
+func (x *ClientUpdatePendingMessageDelivery) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *ClientUpdateMessagesDeleted) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *ClientUpdateSynced) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *ClientUpdatePendingMessageDelivery) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *ClientUpdateMessagesDeleted) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+}
+
+func (x *ClientUpdateSynced) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }

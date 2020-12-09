@@ -3,6 +3,7 @@ package msg
 import (
 	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
+	proto "google.golang.org/protobuf/proto"
 	sync "sync"
 )
 
@@ -43,4 +44,12 @@ func (x *PasswordAlgorithmVer6A) DeepCopy(z *PasswordAlgorithmVer6A) {
 
 func (x *PasswordAlgorithmVer6A) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PasswordAlgorithmVer6A, x)
+}
+
+func (x *PasswordAlgorithmVer6A) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *PasswordAlgorithmVer6A) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }

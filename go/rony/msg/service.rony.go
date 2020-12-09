@@ -3,6 +3,7 @@ package msg
 import (
 	edge "github.com/ronaksoft/rony/edge"
 	registry "github.com/ronaksoft/rony/registry"
+	proto "google.golang.org/protobuf/proto"
 	sync "sync"
 )
 
@@ -61,4 +62,12 @@ func (x *ServiceSendMessage) DeepCopy(z *ServiceSendMessage) {
 
 func (x *ServiceSendMessage) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ServiceSendMessage, x)
+}
+
+func (x *ServiceSendMessage) MarshalTo(b []byte) ([]byte, error) {
+	return proto.MarshalOptions{}.MarshalAppend(b, x)
+}
+
+func (x *ServiceSendMessage) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }

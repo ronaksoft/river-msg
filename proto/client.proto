@@ -64,7 +64,7 @@ message ClientClearCachedMedia {
 // ClientGetLastBotKeyboard
 // @Return: UserMessage
 message ClientGetLastBotKeyboard {
-    InputPeer peer = 1;
+    InputPeer Peer = 1;
 }
 
 // ClientGetMediaHistory

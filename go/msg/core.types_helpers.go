@@ -83,46 +83,6 @@ func ResultPong(out *MessageEnvelope, res *Pong) {
 	res.MarshalToSizedBuffer(out.Message)
 }
 
-const C_MessageEnvelope int64 = 535232465
-
-type poolMessageEnvelope struct {
-	pool sync.Pool
-}
-
-func (p *poolMessageEnvelope) Get() *MessageEnvelope {
-	x, ok := p.pool.Get().(*MessageEnvelope)
-	if !ok {
-		return &MessageEnvelope{}
-	}
-	return x
-}
-
-func (p *poolMessageEnvelope) Put(x *MessageEnvelope) {
-	x.Header = x.Header[:0]
-	x.Constructor = 0
-	x.RequestID = 0
-	x.Message = x.Message[:0]
-	if x.Team != nil {
-		*x.Team = InputTeam{}
-	}
-
-	p.pool.Put(x)
-}
-
-var PoolMessageEnvelope = poolMessageEnvelope{}
-
-func ResultMessageEnvelope(out *MessageEnvelope, res *MessageEnvelope) {
-	out.Constructor = C_MessageEnvelope
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
 const C_KeyValue int64 = 4276272820
 
 type poolKeyValue struct {
@@ -147,40 +107,6 @@ var PoolKeyValue = poolKeyValue{}
 
 func ResultKeyValue(out *MessageEnvelope, res *KeyValue) {
 	out.Constructor = C_KeyValue
-	protoSize := res.Size()
-	if protoSize > cap(out.Message) {
-		pbytes.Put(out.Message)
-		out.Message = pbytes.GetLen(protoSize)
-	} else {
-		out.Message = out.Message[:protoSize]
-	}
-	res.MarshalToSizedBuffer(out.Message)
-}
-
-const C_MessageContainer int64 = 1972016308
-
-type poolMessageContainer struct {
-	pool sync.Pool
-}
-
-func (p *poolMessageContainer) Get() *MessageContainer {
-	x, ok := p.pool.Get().(*MessageContainer)
-	if !ok {
-		return &MessageContainer{}
-	}
-	return x
-}
-
-func (p *poolMessageContainer) Put(x *MessageContainer) {
-	x.Length = 0
-	x.Envelopes = x.Envelopes[:0]
-	p.pool.Put(x)
-}
-
-var PoolMessageContainer = poolMessageContainer{}
-
-func ResultMessageContainer(out *MessageEnvelope, res *MessageContainer) {
-	out.Constructor = C_MessageContainer
 	protoSize := res.Size()
 	if protoSize > cap(out.Message) {
 		pbytes.Put(out.Message)
@@ -320,7 +246,7 @@ func (p *poolProtoEncryptedPayload) Put(x *ProtoEncryptedPayload) {
 	x.MessageID = 0
 	x.SessionID = 0
 	if x.Envelope != nil {
-		*x.Envelope = MessageEnvelope{}
+		*x.Envelope = rony.MessageEnvelope{}
 	}
 
 	p.pool.Put(x)
@@ -1795,9 +1721,7 @@ func ResultTeam(out *MessageEnvelope, res *Team) {
 func init() {
 	ConstructorNames[2246546115] = "Ping"
 	ConstructorNames[2171268721] = "Pong"
-	ConstructorNames[535232465] = "MessageEnvelope"
 	ConstructorNames[4276272820] = "KeyValue"
-	ConstructorNames[1972016308] = "MessageContainer"
 	ConstructorNames[2373884514] = "UpdateEnvelope"
 	ConstructorNames[661712615] = "UpdateContainer"
 	ConstructorNames[2179260159] = "ProtoMessage"

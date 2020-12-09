@@ -4,11 +4,12 @@ import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "core.types.proto";
 import "chat.messages.medias.proto";
 import "chat.wallpaper.proto";
+import "github.com/ronaksoft/rony/msg.proto";
 option go_package = '.;msg';
 
 
 service BotProxy {
-    rpc ServeBotRequest (stream MessageEnvelope) returns (stream MessageEnvelope) {
+    rpc ServeBotRequest (stream rony.MessageEnvelope) returns (stream rony.MessageEnvelope) {
     }
 }
 

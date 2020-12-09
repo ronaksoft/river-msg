@@ -1,6 +1,8 @@
 syntax = "proto3";
 package msg;
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/ronaksoft/rony/msg.proto";
+
 option go_package = '.;msg';
 option (gogoproto.goproto_enum_prefix_all) = false;
 
@@ -14,15 +16,15 @@ message Pong {
     int64 ID = 2;
 }
 
-// MessageEnvelope
-// This type of message will be used to contain another ProtoBuffer Message inside
-message MessageEnvelope {
-    repeated KeyValue Header = 10;
-    int64 Constructor = 1;
-    fixed64 RequestID = 2;
-    bytes Message = 4;
-    InputTeam Team = 5;
-}
+//// MessageEnvelope
+//// This type of message will be used to contain another ProtoBuffer Message inside
+//message MessageEnvelope {
+//    repeated KeyValue Header = 10;
+//    int64 Constructor = 1;
+//    fixed64 RequestID = 2;
+//    bytes Message = 4;
+//    InputTeam Team = 5;
+//}
 
 // KeyValue
 message KeyValue {
@@ -31,12 +33,12 @@ message KeyValue {
 }
 
 
-// MessageContainer
-// This type of message will be used to send multi messages inside a single container message
-message MessageContainer {
-    int32 Length = 1;
-    repeated MessageEnvelope Envelopes = 2;
-}
+//// MessageContainer
+//// This type of message will be used to send multi messages inside a single container message
+//message MessageContainer {
+//    int32 Length = 1;
+//    repeated MessageEnvelope Envelopes = 2;
+//}
 
 // UpdateEnvelope
 message UpdateEnvelope {
@@ -71,7 +73,7 @@ message ProtoEncryptedPayload {
     int64 ServerSalt = 1;
     uint64 MessageID = 2;
     int64 SessionID = 3;
-    MessageEnvelope Envelope = 4;
+    rony.MessageEnvelope Envelope = 4;
 }
 
 // Error

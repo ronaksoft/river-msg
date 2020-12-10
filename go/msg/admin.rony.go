@@ -869,89 +869,89 @@ func (x *ReservedUsernames) MarshalTo(b []byte) ([]byte, error) {
 }
 
 func (x *AdminBroadcastMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminSetWelcomeMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminGetWelcomeMessages) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminDeleteWelcomeMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminSetPushProvider) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminGetPushProviders) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminDeletePushProvider) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminSetVersion) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminGetVersions) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminSetToken) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminDeleteToken) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminReserveUsername) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminGetReservedUsernames) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminTeamCreate) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AdminToken) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *WelcomeMessagesMany) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *VersionsMany) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *PushProvidersMany) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *WelcomeMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *PushProvider) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *Version) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *ReservedUsernames) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

@@ -549,57 +549,57 @@ func (x *TeamsMany) MarshalTo(b []byte) ([]byte, error) {
 }
 
 func (x *TeamGet) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamAddMember) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamRemoveMember) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamPromote) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamDemote) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamLeave) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamJoin) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamListMembers) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamEdit) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamUploadPhoto) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamRemovePhoto) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamMembers) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamMember) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *TeamsMany) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

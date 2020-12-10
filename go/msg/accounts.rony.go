@@ -1345,133 +1345,133 @@ func (x *AccountPrivacyRules) MarshalTo(b []byte) ([]byte, error) {
 }
 
 func (x *AccountSetNotifySettings) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetNotifySettings) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountRegisterDevice) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUnregisterDevice) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUpdateProfile) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountCheckUsername) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUpdateUsername) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUploadPhoto) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUpdatePhoto) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountRemovePhoto) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountSendChangePhoneCode) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountResendChangePhoneCode) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountChangePhone) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountSetPrivacy) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetPrivacy) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetAuthorizations) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountResetAuthorization) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUpdateStatus) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountSetLang) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetPassword) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetPasswordSettings) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountUpdatePasswordSettings) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountRecoverPassword) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountGetTeams) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountPasswordSettings) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *SecurityQuestions) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *RecoveryQuestion) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *SecurityQuestion) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *SecurityAnswer) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountPassword) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountAuthorizations) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountAuthorization) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *AccountPrivacyRules) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

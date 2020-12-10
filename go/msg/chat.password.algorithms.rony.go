@@ -51,5 +51,5 @@ func (x *PasswordAlgorithmVer6A) MarshalTo(b []byte) ([]byte, error) {
 }
 
 func (x *PasswordAlgorithmVer6A) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

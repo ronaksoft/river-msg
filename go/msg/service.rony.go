@@ -69,5 +69,5 @@ func (x *ServiceSendMessage) MarshalTo(b []byte) ([]byte, error) {
 }
 
 func (x *ServiceSendMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

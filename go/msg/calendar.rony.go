@@ -7,7 +7,7 @@ import (
 	sync "sync"
 )
 
-const C_CalendarGetEvents int64 = 1010730154
+const C_CalendarGetEvents int64 = 2057305050
 
 type poolCalendarGetEvents struct {
 	pool sync.Pool
@@ -30,7 +30,7 @@ func (p *poolCalendarGetEvents) Put(x *CalendarGetEvents) {
 
 var PoolCalendarGetEvents = poolCalendarGetEvents{}
 
-const C_CalendarSetEvent int64 = 3405460640
+const C_CalendarSetEvent int64 = 37371151
 
 type poolCalendarSetEvent struct {
 	pool sync.Pool
@@ -59,7 +59,7 @@ func (p *poolCalendarSetEvent) Put(x *CalendarSetEvent) {
 
 var PoolCalendarSetEvent = poolCalendarSetEvent{}
 
-const C_CalendarEditEvent int64 = 2440838922
+const C_CalendarEditEvent int64 = 3621601402
 
 type poolCalendarEditEvent struct {
 	pool sync.Pool
@@ -88,7 +88,7 @@ func (p *poolCalendarEditEvent) Put(x *CalendarEditEvent) {
 
 var PoolCalendarEditEvent = poolCalendarEditEvent{}
 
-const C_CalendarRemoveEvent int64 = 3761579510
+const C_CalendarRemoveEvent int64 = 263222796
 
 type poolCalendarRemoveEvent struct {
 	pool sync.Pool
@@ -109,7 +109,7 @@ func (p *poolCalendarRemoveEvent) Put(x *CalendarRemoveEvent) {
 
 var PoolCalendarRemoveEvent = poolCalendarRemoveEvent{}
 
-const C_CalendarEvent int64 = 1185062169
+const C_CalendarEvent int64 = 3356278384
 
 type poolCalendarEvent struct {
 	pool sync.Pool
@@ -134,7 +134,7 @@ func (p *poolCalendarEvent) Put(x *CalendarEvent) {
 
 var PoolCalendarEvent = poolCalendarEvent{}
 
-const C_CalendarEventInstance int64 = 3586847608
+const C_CalendarEventInstance int64 = 3388675460
 
 type poolCalendarEventInstance struct {
 	pool sync.Pool
@@ -160,12 +160,12 @@ func (p *poolCalendarEventInstance) Put(x *CalendarEventInstance) {
 var PoolCalendarEventInstance = poolCalendarEventInstance{}
 
 func init() {
-	registry.RegisterConstructor(1010730154, "CalendarGetEvents")
-	registry.RegisterConstructor(3405460640, "CalendarSetEvent")
-	registry.RegisterConstructor(2440838922, "CalendarEditEvent")
-	registry.RegisterConstructor(3761579510, "CalendarRemoveEvent")
-	registry.RegisterConstructor(1185062169, "CalendarEvent")
-	registry.RegisterConstructor(3586847608, "CalendarEventInstance")
+	registry.RegisterConstructor(2057305050, "msg.CalendarGetEvents")
+	registry.RegisterConstructor(37371151, "msg.CalendarSetEvent")
+	registry.RegisterConstructor(3621601402, "msg.CalendarEditEvent")
+	registry.RegisterConstructor(263222796, "msg.CalendarRemoveEvent")
+	registry.RegisterConstructor(3356278384, "msg.CalendarEvent")
+	registry.RegisterConstructor(3388675460, "msg.CalendarEventInstance")
 }
 
 func (x *CalendarGetEvents) DeepCopy(z *CalendarGetEvents) {

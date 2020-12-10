@@ -7,7 +7,7 @@ import (
 	sync "sync"
 )
 
-const C_AdminBroadcastMessage int64 = 3981417409
+const C_AdminBroadcastMessage int64 = 4051598653
 
 type poolAdminBroadcastMessage struct {
 	pool sync.Pool
@@ -32,7 +32,7 @@ func (p *poolAdminBroadcastMessage) Put(x *AdminBroadcastMessage) {
 
 var PoolAdminBroadcastMessage = poolAdminBroadcastMessage{}
 
-const C_AdminSetWelcomeMessage int64 = 1149591874
+const C_AdminSetWelcomeMessage int64 = 4036161171
 
 type poolAdminSetWelcomeMessage struct {
 	pool sync.Pool
@@ -55,7 +55,7 @@ func (p *poolAdminSetWelcomeMessage) Put(x *AdminSetWelcomeMessage) {
 
 var PoolAdminSetWelcomeMessage = poolAdminSetWelcomeMessage{}
 
-const C_AdminGetWelcomeMessages int64 = 2794709448
+const C_AdminGetWelcomeMessages int64 = 1475548165
 
 type poolAdminGetWelcomeMessages struct {
 	pool sync.Pool
@@ -76,7 +76,7 @@ func (p *poolAdminGetWelcomeMessages) Put(x *AdminGetWelcomeMessages) {
 
 var PoolAdminGetWelcomeMessages = poolAdminGetWelcomeMessages{}
 
-const C_AdminDeleteWelcomeMessage int64 = 3940015991
+const C_AdminDeleteWelcomeMessage int64 = 1498710407
 
 type poolAdminDeleteWelcomeMessage struct {
 	pool sync.Pool
@@ -98,7 +98,7 @@ func (p *poolAdminDeleteWelcomeMessage) Put(x *AdminDeleteWelcomeMessage) {
 
 var PoolAdminDeleteWelcomeMessage = poolAdminDeleteWelcomeMessage{}
 
-const C_AdminSetPushProvider int64 = 1758606947
+const C_AdminSetPushProvider int64 = 894806066
 
 type poolAdminSetPushProvider struct {
 	pool sync.Pool
@@ -123,7 +123,7 @@ func (p *poolAdminSetPushProvider) Put(x *AdminSetPushProvider) {
 
 var PoolAdminSetPushProvider = poolAdminSetPushProvider{}
 
-const C_AdminGetPushProviders int64 = 4257963974
+const C_AdminGetPushProviders int64 = 3791305018
 
 type poolAdminGetPushProviders struct {
 	pool sync.Pool
@@ -144,7 +144,7 @@ func (p *poolAdminGetPushProviders) Put(x *AdminGetPushProviders) {
 
 var PoolAdminGetPushProviders = poolAdminGetPushProviders{}
 
-const C_AdminDeletePushProvider int64 = 1864898932
+const C_AdminDeletePushProvider int64 = 2655579321
 
 type poolAdminDeletePushProvider struct {
 	pool sync.Pool
@@ -167,7 +167,7 @@ func (p *poolAdminDeletePushProvider) Put(x *AdminDeletePushProvider) {
 
 var PoolAdminDeletePushProvider = poolAdminDeletePushProvider{}
 
-const C_AdminSetVersion int64 = 1311023404
+const C_AdminSetVersion int64 = 1484557854
 
 type poolAdminSetVersion struct {
 	pool sync.Pool
@@ -192,7 +192,7 @@ func (p *poolAdminSetVersion) Put(x *AdminSetVersion) {
 
 var PoolAdminSetVersion = poolAdminSetVersion{}
 
-const C_AdminGetVersions int64 = 934752256
+const C_AdminGetVersions int64 = 4285938095
 
 type poolAdminGetVersions struct {
 	pool sync.Pool
@@ -213,7 +213,7 @@ func (p *poolAdminGetVersions) Put(x *AdminGetVersions) {
 
 var PoolAdminGetVersions = poolAdminGetVersions{}
 
-const C_AdminSetToken int64 = 2892519162
+const C_AdminSetToken int64 = 583431571
 
 type poolAdminSetToken struct {
 	pool sync.Pool
@@ -235,7 +235,7 @@ func (p *poolAdminSetToken) Put(x *AdminSetToken) {
 
 var PoolAdminSetToken = poolAdminSetToken{}
 
-const C_AdminDeleteToken int64 = 3154441897
+const C_AdminDeleteToken int64 = 1959132934
 
 type poolAdminDeleteToken struct {
 	pool sync.Pool
@@ -257,7 +257,7 @@ func (p *poolAdminDeleteToken) Put(x *AdminDeleteToken) {
 
 var PoolAdminDeleteToken = poolAdminDeleteToken{}
 
-const C_AdminReserveUsername int64 = 1947723452
+const C_AdminReserveUsername int64 = 697333997
 
 type poolAdminReserveUsername struct {
 	pool sync.Pool
@@ -280,7 +280,7 @@ func (p *poolAdminReserveUsername) Put(x *AdminReserveUsername) {
 
 var PoolAdminReserveUsername = poolAdminReserveUsername{}
 
-const C_AdminGetReservedUsernames int64 = 1588181579
+const C_AdminGetReservedUsernames int64 = 3979011259
 
 type poolAdminGetReservedUsernames struct {
 	pool sync.Pool
@@ -301,7 +301,7 @@ func (p *poolAdminGetReservedUsernames) Put(x *AdminGetReservedUsernames) {
 
 var PoolAdminGetReservedUsernames = poolAdminGetReservedUsernames{}
 
-const C_AdminTeamCreate int64 = 2797066608
+const C_AdminTeamCreate int64 = 2968516162
 
 type poolAdminTeamCreate struct {
 	pool sync.Pool
@@ -327,7 +327,7 @@ func (p *poolAdminTeamCreate) Put(x *AdminTeamCreate) {
 
 var PoolAdminTeamCreate = poolAdminTeamCreate{}
 
-const C_AdminToken int64 = 2895609620
+const C_AdminToken int64 = 715104459
 
 type poolAdminToken struct {
 	pool sync.Pool
@@ -349,7 +349,7 @@ func (p *poolAdminToken) Put(x *AdminToken) {
 
 var PoolAdminToken = poolAdminToken{}
 
-const C_WelcomeMessagesMany int64 = 414982091
+const C_WelcomeMessagesMany int64 = 4147727409
 
 type poolWelcomeMessagesMany struct {
 	pool sync.Pool
@@ -371,7 +371,7 @@ func (p *poolWelcomeMessagesMany) Put(x *WelcomeMessagesMany) {
 
 var PoolWelcomeMessagesMany = poolWelcomeMessagesMany{}
 
-const C_VersionsMany int64 = 2123920547
+const C_VersionsMany int64 = 1851057214
 
 type poolVersionsMany struct {
 	pool sync.Pool
@@ -393,7 +393,7 @@ func (p *poolVersionsMany) Put(x *VersionsMany) {
 
 var PoolVersionsMany = poolVersionsMany{}
 
-const C_PushProvidersMany int64 = 5873573
+const C_PushProvidersMany int64 = 1190715605
 
 type poolPushProvidersMany struct {
 	pool sync.Pool
@@ -415,7 +415,7 @@ func (p *poolPushProvidersMany) Put(x *PushProvidersMany) {
 
 var PoolPushProvidersMany = poolPushProvidersMany{}
 
-const C_WelcomeMessage int64 = 2506678571
+const C_WelcomeMessage int64 = 2710083316
 
 type poolWelcomeMessage struct {
 	pool sync.Pool
@@ -437,7 +437,7 @@ func (p *poolWelcomeMessage) Put(x *WelcomeMessage) {
 
 var PoolWelcomeMessage = poolWelcomeMessage{}
 
-const C_PushProvider int64 = 1015984470
+const C_PushProvider int64 = 742531531
 
 type poolPushProvider struct {
 	pool sync.Pool
@@ -464,7 +464,7 @@ func (p *poolPushProvider) Put(x *PushProvider) {
 
 var PoolPushProvider = poolPushProvider{}
 
-const C_Version int64 = 1889659487
+const C_Version int64 = 3565878624
 
 type poolVersion struct {
 	pool sync.Pool
@@ -490,7 +490,7 @@ func (p *poolVersion) Put(x *Version) {
 
 var PoolVersion = poolVersion{}
 
-const C_ReservedUsernames int64 = 1388055751
+const C_ReservedUsernames int64 = 337474487
 
 type poolReservedUsernames struct {
 	pool sync.Pool
@@ -513,28 +513,28 @@ func (p *poolReservedUsernames) Put(x *ReservedUsernames) {
 var PoolReservedUsernames = poolReservedUsernames{}
 
 func init() {
-	registry.RegisterConstructor(3981417409, "AdminBroadcastMessage")
-	registry.RegisterConstructor(1149591874, "AdminSetWelcomeMessage")
-	registry.RegisterConstructor(2794709448, "AdminGetWelcomeMessages")
-	registry.RegisterConstructor(3940015991, "AdminDeleteWelcomeMessage")
-	registry.RegisterConstructor(1758606947, "AdminSetPushProvider")
-	registry.RegisterConstructor(4257963974, "AdminGetPushProviders")
-	registry.RegisterConstructor(1864898932, "AdminDeletePushProvider")
-	registry.RegisterConstructor(1311023404, "AdminSetVersion")
-	registry.RegisterConstructor(934752256, "AdminGetVersions")
-	registry.RegisterConstructor(2892519162, "AdminSetToken")
-	registry.RegisterConstructor(3154441897, "AdminDeleteToken")
-	registry.RegisterConstructor(1947723452, "AdminReserveUsername")
-	registry.RegisterConstructor(1588181579, "AdminGetReservedUsernames")
-	registry.RegisterConstructor(2797066608, "AdminTeamCreate")
-	registry.RegisterConstructor(2895609620, "AdminToken")
-	registry.RegisterConstructor(414982091, "WelcomeMessagesMany")
-	registry.RegisterConstructor(2123920547, "VersionsMany")
-	registry.RegisterConstructor(5873573, "PushProvidersMany")
-	registry.RegisterConstructor(2506678571, "WelcomeMessage")
-	registry.RegisterConstructor(1015984470, "PushProvider")
-	registry.RegisterConstructor(1889659487, "Version")
-	registry.RegisterConstructor(1388055751, "ReservedUsernames")
+	registry.RegisterConstructor(4051598653, "msg.AdminBroadcastMessage")
+	registry.RegisterConstructor(4036161171, "msg.AdminSetWelcomeMessage")
+	registry.RegisterConstructor(1475548165, "msg.AdminGetWelcomeMessages")
+	registry.RegisterConstructor(1498710407, "msg.AdminDeleteWelcomeMessage")
+	registry.RegisterConstructor(894806066, "msg.AdminSetPushProvider")
+	registry.RegisterConstructor(3791305018, "msg.AdminGetPushProviders")
+	registry.RegisterConstructor(2655579321, "msg.AdminDeletePushProvider")
+	registry.RegisterConstructor(1484557854, "msg.AdminSetVersion")
+	registry.RegisterConstructor(4285938095, "msg.AdminGetVersions")
+	registry.RegisterConstructor(583431571, "msg.AdminSetToken")
+	registry.RegisterConstructor(1959132934, "msg.AdminDeleteToken")
+	registry.RegisterConstructor(697333997, "msg.AdminReserveUsername")
+	registry.RegisterConstructor(3979011259, "msg.AdminGetReservedUsernames")
+	registry.RegisterConstructor(2968516162, "msg.AdminTeamCreate")
+	registry.RegisterConstructor(715104459, "msg.AdminToken")
+	registry.RegisterConstructor(4147727409, "msg.WelcomeMessagesMany")
+	registry.RegisterConstructor(1851057214, "msg.VersionsMany")
+	registry.RegisterConstructor(1190715605, "msg.PushProvidersMany")
+	registry.RegisterConstructor(2710083316, "msg.WelcomeMessage")
+	registry.RegisterConstructor(742531531, "msg.PushProvider")
+	registry.RegisterConstructor(3565878624, "msg.Version")
+	registry.RegisterConstructor(337474487, "msg.ReservedUsernames")
 }
 
 func (x *AdminBroadcastMessage) DeepCopy(z *AdminBroadcastMessage) {

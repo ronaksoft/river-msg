@@ -3,18 +3,7 @@
 currentWorkingDir=$(pwd)
 rm ./go/msg/*.pb.go
 rm ./go/msg/*_helpers.go
-rm ./go/rony/msg/*.pb.go
-rm ./go/rony/msg/*.rony.go
-
-# Create 'msg' package
-cd ./proto/ || exit
-protoc  -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gogofaster_out=plugins=grpc:../go/msg ./*.proto
-protoc  -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gohelpers_out=../go/msg ./*.proto
-protoc  -I="${currentWorkingDir}"/vendor -I=.  -I="${GOPATH}"/src --gokk_out=../go/msg ./*.proto
-cd "$currentWorkingDir"/go/msg || exit
-go fmt
-cd "$currentWorkingDir"
-
+rm ./go/msg/*.rony.go
 
 ## Create 'msg' package compatible with 'Rony'
 ## For Rony we must ignore lines
@@ -27,10 +16,10 @@ for proto in ./*.proto; do
   grep -Ev "$regex" "$proto" >> ./tmp/"$proto"
 done
 cd ./tmp || exit
-protoc  -I=.  --go_out=../../go/rony/msg ./*.proto
-protoc  -I=.  --gorony_out=../../go/rony/msg ./*.proto
-protoc  -I=.  --gokk_out=../../go/rony/msg ./*.proto
-cd "$currentWorkingDir"/go/rony/msg || exit
+protoc  -I="${currentWorkingDir}"/vendor -I=.  --go_out=paths=source_relative:../../go/msg ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=.  --gorony_out=paths=source_relative:../../go/msg ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=.  --gokk_out=paths=source_relative:../../go/msg ./*.proto
+cd "$currentWorkingDir"/go/msg || exit
 go fmt
 cd "$currentWorkingDir" || exit
 rm -r "$currentWorkingDir"/proto/tmp

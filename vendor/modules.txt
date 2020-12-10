@@ -26,8 +26,11 @@ github.com/dgraph-io/ristretto/z
 github.com/dgryski/go-farm
 # github.com/dustin/go-humanize v1.0.0
 github.com/dustin/go-humanize
-# github.com/getsentry/sentry-go v0.6.1
+# github.com/getsentry/sentry-go v0.9.0
+## explicit
 github.com/getsentry/sentry-go
+github.com/getsentry/sentry-go/internal/crypto/randutil
+github.com/getsentry/sentry-go/internal/debug
 # github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee
 github.com/gobwas/httphead
 # github.com/gobwas/pool v0.2.1
@@ -66,7 +69,8 @@ github.com/gogo/protobuf/protoc-gen-gogo/grpc
 github.com/gogo/protobuf/protoc-gen-gogo/plugin
 github.com/gogo/protobuf/vanity
 github.com/gogo/protobuf/vanity/command
-# github.com/golang/protobuf v1.4.1
+# github.com/golang/protobuf v1.4.3
+## explicit
 github.com/golang/protobuf/proto
 github.com/golang/protobuf/ptypes
 github.com/golang/protobuf/ptypes/any
@@ -102,11 +106,12 @@ github.com/klauspost/compress/zlib
 github.com/mailru/easygo/netpoll
 # github.com/miekg/dns v1.1.26
 github.com/miekg/dns
-# github.com/nyaruka/phonenumbers v1.0.54
+# github.com/nyaruka/phonenumbers v1.0.60
+## explicit
 github.com/nyaruka/phonenumbers
 # github.com/pkg/errors v0.8.1
 github.com/pkg/errors
-# github.com/ronaksoft/rony v0.0.3
+# github.com/ronaksoft/rony v0.0.9
 ## explicit
 github.com/ronaksoft/rony
 github.com/ronaksoft/rony/edge
@@ -129,9 +134,10 @@ github.com/valyala/fasthttp/fasthttputil
 github.com/valyala/fasthttp/stackless
 # github.com/valyala/tcplisten v0.0.0-20161114210144-ceec8f93295a
 github.com/valyala/tcplisten
-# go.uber.org/atomic v1.6.0
+# go.uber.org/atomic v1.7.0
 go.uber.org/atomic
-# go.uber.org/multierr v1.5.0
+# go.uber.org/multierr v1.6.0
+## explicit
 go.uber.org/multierr
 # go.uber.org/zap v1.16.0
 go.uber.org/zap

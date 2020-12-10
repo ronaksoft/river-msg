@@ -83,7 +83,7 @@ func NewWebsocket(config Config) *Websocket {
 		config.RequestTimeout = requestTimeout
 	}
 	if config.ContextTimeout == 0 {
-		config.ContextTimeout = requestRetry * requestTimeout
+		config.ContextTimeout = config.RequestTimeout * time.Duration(config.RequestMaxRetry)
 	}
 	c := Websocket{
 		nextReqID:      tools.RandomUint64(0),
@@ -319,7 +319,7 @@ SendLoop:
 			x := &rony.Redirect{}
 			_ = proto.UnmarshalOptions{Merge: true}.Unmarshal(e.Message, x)
 			c.connectMtx.Lock()
-			if c.hostPort != x.LeaderHostPort[0] {
+			if len(x.LeaderHostPort) > 0 && c.hostPort != x.LeaderHostPort[0] {
 				c.hostPort = x.LeaderHostPort[0]
 				c.reconnect()
 			}

@@ -2580,9 +2580,12 @@ func maybeExtractCountryCode(
 			// if it was too long before, we consider the number with
 			// the country calling code stripped to be a better result and
 			// keep that instead.
-			if (!validNumberPattern.MatchString(fullNumber.String()) &&
+			finds := validNumberPattern.FindAllString(fullNumber.String(), -1)
+
+			cond := (len(finds) != 0 && fullNumber.String() == finds[0] &&
 				validNumberPattern.MatchString(potentialNationalNumber.String())) ||
-				testNumberLength(fullNumber.String(), defaultRegionMetadata, UNKNOWN) == TOO_LONG {
+				testNumberLength(fullNumber.String(), defaultRegionMetadata, UNKNOWN) == TOO_LONG
+			if cond {
 				nationalNumber.Write(potentialNationalNumber.Bytes())
 				if keepRawInput {
 					val := PhoneNumber_FROM_NUMBER_WITHOUT_PLUS_SIGN
@@ -3138,16 +3141,16 @@ func IsNumberMatch(firstNumber, secondNumber string) MatchType {
 		return NOT_A_NUMBER
 	}
 
-	var firstNumberProto, secondNumberProto *PhoneNumber
-	err = parseHelper(firstNumber, "", false, false, firstNumberProto)
+	var firstNumberProto, secondNumberProto PhoneNumber
+	err = parseHelper(firstNumber, "", false, false, &firstNumberProto)
 	if err != nil {
 		return NOT_A_NUMBER
 	}
-	err = parseHelper(secondNumber, "", false, false, secondNumberProto)
+	err = parseHelper(secondNumber, "", false, false, &secondNumberProto)
 	if err != nil {
 		return NOT_A_NUMBER
 	}
-	return isNumberMatchWithNumbers(firstNumberProto, secondNumberProto)
+	return isNumberMatchWithNumbers(&firstNumberProto, &secondNumberProto)
 }
 
 // Takes two phone numbers and compares them for equality. This is a

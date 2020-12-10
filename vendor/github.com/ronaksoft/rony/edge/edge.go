@@ -40,6 +40,7 @@ type Server struct {
 	// General
 	serverID        []byte
 	replicaSet      uint64
+	shardRange      [2]uint32
 	dataPath        string
 	gatewayProtocol gateway.Protocol
 	gateway         gateway.Gateway
@@ -96,6 +97,20 @@ func NewServer(serverID string, dispatcher Dispatcher, opts ...Option) *Server {
 // the behaviour is unknown.
 func (edge *Server) GetServerID() string {
 	return string(edge.serverID)
+}
+
+// SetPreHandlers set the handler which will be called before executing any request. These pre handlers are like middlewares
+// which will be automatically triggered for each request. If you want to set pre handler for specific request the your must
+// use SetHandlers, PrependHandlers or AppendHandlers
+func (edge *Server) SetPreHandlers(handlers ...Handler) {
+	edge.preHandlers = handlers
+}
+
+// SetPreHandlers set the handler which will be called after executing any request. These pre handlers are like middlewares
+// which will be automatically triggered for each request. If you want to set post handler for specific request the your must
+// use SetHandlers, PrependHandlers or AppendHandlers
+func (edge *Server) SetPostHandlers(handlers ...Handler) {
+	edge.postHandlers = handlers
 }
 
 // SetHandlers set the handlers for the constructor. 'leaderOnly' is applicable ONLY if the cluster is run
@@ -207,17 +222,7 @@ func (edge *Server) executeFunc(requestCtx *RequestCtx, in *rony.MessageEnvelope
 					zap.String("State", edge.raft.State().String()),
 				)
 			}
-			if leaderID := edge.cluster.leaderID; leaderID == "" {
-				requestCtx.PushError(rony.ErrCodeUnavailable, rony.ErrItemRaftLeader)
-			} else {
-				requestCtx.PushMessage(
-					rony.C_Redirect,
-					&rony.Redirect{
-						LeaderHostPort: edge.cluster.GetByID(leaderID).GatewayAddr,
-						ServerID:       leaderID,
-					},
-				)
-			}
+			requestCtx.PushRedirectLeader()
 			return
 		}
 	}
@@ -528,4 +533,9 @@ func (edge *Server) ShutdownWithSignal(signals ...os.Signal) {
 	// Wait for signal
 	<-ch
 	edge.Shutdown()
+}
+
+// GetGatewayConn return the gateway connection identified by connID or returns nil if not found.
+func (edge *Server) GetGatewayConn(connID uint64) gateway.Conn {
+	return edge.gateway.GetConn(connID)
 }

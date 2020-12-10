@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -15,7 +17,7 @@ const defaultBufferSize = 30
 const defaultRetryAfter = time.Second * 60
 const defaultTimeout = time.Second * 30
 
-// Transport is used by the `Client` to deliver events to remote server.
+// Transport is used by the Client to deliver events to remote server.
 type Transport interface {
 	Flush(timeout time.Duration) bool
 	Configure(options ClientOptions)
@@ -47,6 +49,8 @@ func getTLSConfig(options ClientOptions) *tls.Config {
 }
 
 func retryAfter(now time.Time, r *http.Response) time.Duration {
+	// TODO(tracing): handle x-sentry-rate-limits, separate rate limiting
+	// per data type (error event, transaction, etc).
 	retryAfterHeader := r.Header["Retry-After"]
 
 	if retryAfterHeader == nil {
@@ -70,26 +74,84 @@ func getRequestBodyFromEvent(event *Event) []byte {
 		return body
 	}
 
-	partialMarshallMessage := "Original event couldn't be marshalled. Succeeded by stripping the data " +
-		"that uses interface{} type. Please verify that the data you attach to the scope is serializable."
+	msg := fmt.Sprintf("Could not encode original event as JSON. "+
+		"Succeeded by removing Breadcrumbs, Contexts and Extra. "+
+		"Please verify the data you attach to the scope. "+
+		"Error: %s", err)
 	// Try to serialize the event, with all the contextual data that allows for interface{} stripped.
 	event.Breadcrumbs = nil
 	event.Contexts = nil
 	event.Extra = map[string]interface{}{
-		"info": partialMarshallMessage,
+		"info": msg,
 	}
 	body, err = json.Marshal(event)
 	if err == nil {
-		Logger.Println(partialMarshallMessage)
+		Logger.Println(msg)
 		return body
 	}
 
 	// This should _only_ happen when Event.Exception[0].Stacktrace.Frames[0].Vars is unserializable
 	// Which won't ever happen, as we don't use it now (although it's the part of public interface accepted by Sentry)
 	// Juuust in case something, somehow goes utterly wrong.
-	Logger.Println("Event couldn't be marshalled, even with stripped contextual data. Skipping delivery. " +
+	Logger.Println("Event couldn't be marshaled, even with stripped contextual data. Skipping delivery. " +
 		"Please notify the SDK owners with possibly broken payload.")
 	return nil
+}
+
+func transactionEnvelopeFromBody(eventID EventID, sentAt time.Time, body json.RawMessage) (*bytes.Buffer, error) {
+	var b bytes.Buffer
+	enc := json.NewEncoder(&b)
+	// envelope header
+	err := enc.Encode(struct {
+		EventID EventID   `json:"event_id"`
+		SentAt  time.Time `json:"sent_at"`
+	}{
+		EventID: eventID,
+		SentAt:  sentAt,
+	})
+	if err != nil {
+		return nil, err
+	}
+	// item header
+	err = enc.Encode(struct {
+		Type   string `json:"type"`
+		Length int    `json:"length"`
+	}{
+		Type:   transactionType,
+		Length: len(body),
+	})
+	if err != nil {
+		return nil, err
+	}
+	// payload
+	err = enc.Encode(body)
+	if err != nil {
+		return nil, err
+	}
+	return &b, nil
+}
+
+func getRequestFromEvent(event *Event, dsn *Dsn) (*http.Request, error) {
+	body := getRequestBodyFromEvent(event)
+	if body == nil {
+		return nil, errors.New("event could not be marshaled")
+	}
+	if event.Type == transactionType {
+		b, err := transactionEnvelopeFromBody(event.EventID, time.Now(), body)
+		if err != nil {
+			return nil, err
+		}
+		return http.NewRequest(
+			http.MethodPost,
+			dsn.EnvelopeAPIURL().String(),
+			b,
+		)
+	}
+	return http.NewRequest(
+		http.MethodPost,
+		dsn.StoreAPIURL().String(),
+		bytes.NewReader(body),
+	)
 }
 
 // ================================
@@ -103,7 +165,7 @@ type batch struct {
 	done    chan struct{} // closed to signal completion of all items
 }
 
-// HTTPTransport is a default implementation of `Transport` interface used by `Client`.
+// HTTPTransport is a default implementation of Transport interface used by Client.
 type HTTPTransport struct {
 	dsn       *Dsn
 	client    *http.Client
@@ -124,7 +186,7 @@ type HTTPTransport struct {
 	disabledUntil time.Time
 }
 
-// NewHTTPTransport returns a new pre-configured instance of HTTPTransport
+// NewHTTPTransport returns a new pre-configured instance of HTTPTransport.
 func NewHTTPTransport() *HTTPTransport {
 	transport := HTTPTransport{
 		BufferSize: defaultBufferSize,
@@ -133,7 +195,7 @@ func NewHTTPTransport() *HTTPTransport {
 	return &transport
 }
 
-// Configure is called by the `Client` itself, providing it it's own `ClientOptions`.
+// Configure is called by the Client itself, providing it it's own ClientOptions.
 func (t *HTTPTransport) Configure(options ClientOptions) {
 	dsn, err := NewDsn(options.Dsn)
 	if err != nil {
@@ -175,7 +237,7 @@ func (t *HTTPTransport) Configure(options ClientOptions) {
 	})
 }
 
-// SendEvent assembles a new packet out of `Event` and sends it to remote server.
+// SendEvent assembles a new packet out of Event and sends it to remote server.
 func (t *HTTPTransport) SendEvent(event *Event) {
 	if t.dsn == nil {
 		return
@@ -187,16 +249,10 @@ func (t *HTTPTransport) SendEvent(event *Event) {
 		return
 	}
 
-	body := getRequestBodyFromEvent(event)
-	if body == nil {
+	request, err := getRequestFromEvent(event, t.dsn)
+	if err != nil {
 		return
 	}
-
-	request, _ := http.NewRequest(
-		http.MethodPost,
-		t.dsn.StoreAPIURL().String(),
-		bytes.NewBuffer(body),
-	)
 
 	for headerKey, headerValue := range t.dsn.RequestHeaders() {
 		request.Header.Set(headerKey, headerValue)
@@ -217,9 +273,15 @@ func (t *HTTPTransport) SendEvent(event *Event) {
 
 	select {
 	case b.items <- request:
+		var eventType string
+		if event.Type == transactionType {
+			eventType = "transaction"
+		} else {
+			eventType = fmt.Sprintf("%s event", event.Level)
+		}
 		Logger.Printf(
-			"Sending %s event [%s] to %s project: %d\n",
-			event.Level,
+			"Sending %s [%s] to %s project: %d",
+			eventType,
 			event.EventID,
 			t.dsn.host,
 			t.dsn.projectID,
@@ -332,7 +394,7 @@ func (t *HTTPTransport) worker() {
 // HTTPSyncTransport
 // ================================
 
-// HTTPSyncTransport is an implementation of `Transport` interface which blocks after each captured event.
+// HTTPSyncTransport is an implementation of Transport interface which blocks after each captured event.
 type HTTPSyncTransport struct {
 	dsn           *Dsn
 	client        *http.Client
@@ -343,7 +405,7 @@ type HTTPSyncTransport struct {
 	Timeout time.Duration
 }
 
-// NewHTTPSyncTransport returns a new pre-configured instance of HTTPSyncTransport
+// NewHTTPSyncTransport returns a new pre-configured instance of HTTPSyncTransport.
 func NewHTTPSyncTransport() *HTTPSyncTransport {
 	transport := HTTPSyncTransport{
 		Timeout: defaultTimeout,
@@ -352,7 +414,7 @@ func NewHTTPSyncTransport() *HTTPSyncTransport {
 	return &transport
 }
 
-// Configure is called by the `Client` itself, providing it it's own `ClientOptions`.
+// Configure is called by the Client itself, providing it it's own ClientOptions.
 func (t *HTTPSyncTransport) Configure(options ClientOptions) {
 	dsn, err := NewDsn(options.Dsn)
 	if err != nil {
@@ -380,30 +442,30 @@ func (t *HTTPSyncTransport) Configure(options ClientOptions) {
 	}
 }
 
-// SendEvent assembles a new packet out of `Event` and sends it to remote server.
+// SendEvent assembles a new packet out of Event and sends it to remote server.
 func (t *HTTPSyncTransport) SendEvent(event *Event) {
 	if t.dsn == nil || time.Now().Before(t.disabledUntil) {
 		return
 	}
 
-	body := getRequestBodyFromEvent(event)
-	if body == nil {
+	request, err := getRequestFromEvent(event, t.dsn)
+	if err != nil {
 		return
 	}
-
-	request, _ := http.NewRequest(
-		http.MethodPost,
-		t.dsn.StoreAPIURL().String(),
-		bytes.NewBuffer(body),
-	)
 
 	for headerKey, headerValue := range t.dsn.RequestHeaders() {
 		request.Header.Set(headerKey, headerValue)
 	}
 
+	var eventType string
+	if event.Type == transactionType {
+		eventType = "transaction"
+	} else {
+		eventType = fmt.Sprintf("%s event", event.Level)
+	}
 	Logger.Printf(
-		"Sending %s event [%s] to %s project: %d\n",
-		event.Level,
+		"Sending %s [%s] to %s project: %d",
+		eventType,
 		event.EventID,
 		t.dsn.host,
 		t.dsn.projectID,
@@ -430,7 +492,7 @@ func (t *HTTPSyncTransport) Flush(_ time.Duration) bool {
 // noopTransport
 // ================================
 
-// noopTransport is an implementation of `Transport` interface which drops all the events.
+// noopTransport is an implementation of Transport interface which drops all the events.
 // Only used internally when an empty DSN is provided, which effectively disables the SDK.
 type noopTransport struct{}
 

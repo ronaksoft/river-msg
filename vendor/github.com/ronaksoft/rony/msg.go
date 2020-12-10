@@ -14,8 +14,8 @@ import (
    Copyright Ronak Software Group 2020
 */
 
-//go:generate protoc -I=. --go_out=. msg.proto
-//go:generate protoc -I=. --gorony_out=. msg.proto
+//go:generate protoc -I=. --go_out=paths=source_relative:. msg.proto imsg.proto
+//go:generate protoc -I=. --gorony_out=paths=source_relative:. msg.proto imsg.proto
 var (
 	ConstructorNames = map[int64]string{}
 )
@@ -40,7 +40,7 @@ func (x *MessageEnvelope) Clone() *MessageEnvelope {
 func (x *MessageEnvelope) Fill(reqID uint64, constructor int64, p proto.Message, kvs ...*KeyValue) {
 	x.RequestID = reqID
 	x.Constructor = constructor
-	x.Store = append(x.Store[:0], kvs...)
+	x.Header = append(x.Header[:0], kvs...)
 
 	mo := proto.MarshalOptions{
 		UseCachedSize: true,

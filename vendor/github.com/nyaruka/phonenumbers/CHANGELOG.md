@@ -1,3 +1,31 @@
+v1.0.60
+----------
+ * update metadata
+ * better error logging in buildmetadata
+ * update CI worflow (thanks @cristaloleg)
+ * fix maybeExtractCountryCode regexp func (thanks @cristaloleg)
+
+v1.0.59
+----------
+ * update to latest metadata
+
+v1.0.58
+----------
+ * Update metadata to version v8.12.11
+
+v1.0.57
+----------
+ * fix panic in IsNumberMatch() 
+
+v1.0.56
+----------
+ * Update to metadata v8.12.5
+ * Update test for Sydney tz (validated against source data)
+
+v1.0.55
+----------
+ * Update metadata to v8.12.1 for upstream project
+
 v1.0.54
 ----------
  * update metadata for v8.11.0

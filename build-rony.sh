@@ -2,7 +2,6 @@
 
 currentWorkingDir=$(pwd)
 rm ./go/msg/*.pb.go
-rm ./go/msg/*_helpers.go
 rm ./go/msg/*.rony.go
 
 ## Create 'msg' package compatible with 'Rony'

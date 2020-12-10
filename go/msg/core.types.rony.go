@@ -50,28 +50,6 @@ func (p *poolPong) Put(x *Pong) {
 
 var PoolPong = poolPong{}
 
-const C_KeyValue int64 = 4276272820
-
-type poolKeyValue struct {
-	pool sync.Pool
-}
-
-func (p *poolKeyValue) Get() *KeyValue {
-	x, ok := p.pool.Get().(*KeyValue)
-	if !ok {
-		return &KeyValue{}
-	}
-	return x
-}
-
-func (p *poolKeyValue) Put(x *KeyValue) {
-	x.Key = ""
-	x.Value = ""
-	p.pool.Put(x)
-}
-
-var PoolKeyValue = poolKeyValue{}
-
 const C_UpdateEnvelope int64 = 2373884514
 
 type poolUpdateEnvelope struct {
@@ -1172,7 +1150,6 @@ var PoolTeam = poolTeam{}
 func init() {
 	registry.RegisterConstructor(2246546115, "Ping")
 	registry.RegisterConstructor(2171268721, "Pong")
-	registry.RegisterConstructor(4276272820, "KeyValue")
 	registry.RegisterConstructor(2373884514, "UpdateEnvelope")
 	registry.RegisterConstructor(661712615, "UpdateContainer")
 	registry.RegisterConstructor(2179260159, "ProtoMessage")
@@ -1223,11 +1200,6 @@ func (x *Ping) DeepCopy(z *Ping) {
 
 func (x *Pong) DeepCopy(z *Pong) {
 	z.ID = x.ID
-}
-
-func (x *KeyValue) DeepCopy(z *KeyValue) {
-	z.Key = x.Key
-	z.Value = x.Value
 }
 
 func (x *UpdateEnvelope) DeepCopy(z *UpdateEnvelope) {
@@ -1693,10 +1665,6 @@ func (x *Pong) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_Pong, x)
 }
 
-func (x *KeyValue) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_KeyValue, x)
-}
-
 func (x *UpdateEnvelope) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_UpdateEnvelope, x)
 }
@@ -1873,10 +1841,6 @@ func (x *Pong) MarshalTo(b []byte) ([]byte, error) {
 	return proto.MarshalOptions{}.MarshalAppend(b, x)
 }
 
-func (x *KeyValue) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
-}
-
 func (x *UpdateEnvelope) MarshalTo(b []byte) ([]byte, error) {
 	return proto.MarshalOptions{}.MarshalAppend(b, x)
 }
@@ -2050,10 +2014,6 @@ func (x *Ping) Unmarshal(b []byte) error {
 }
 
 func (x *Pong) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
-}
-
-func (x *KeyValue) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
 }
 

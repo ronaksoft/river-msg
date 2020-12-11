@@ -22,3 +22,4 @@ cd "$currentWorkingDir"/go/msg || exit
 go fmt
 cd "$currentWorkingDir" || exit
 rm -r "$currentWorkingDir"/proto/tmp
+rm -r "$currentWorkingDir"/go/msg/github.com

@@ -1321,128 +1321,128 @@ func (x *BotCommandsMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_BotCommandsMany, x)
 }
 
-func (x *BotStart) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotStart) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotRecall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotRecall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSetInfo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSetInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSendMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSendMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotEditMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotEditMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSendMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSendMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSaveFilePart) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSaveFilePart) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotUpdateProfile) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotUpdateProfile) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotUpdatePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotUpdatePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotRevokeToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotRevokeToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotDeleteMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotDeleteMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSetCallbackAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSetCallbackAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotGetCallbackAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotGetCallbackAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotGetInlineResults) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotGetInlineResults) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSetInlineResults) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSetInlineResults) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotSendInlineResults) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotSendInlineResults) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotUploadWallPaper) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotUploadWallPaper) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotUploadGif) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotUploadGif) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotResults) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotResults) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotInlineSwitchPM) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotInlineSwitchPM) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotInlineResult) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotInlineResult) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputBotInlineResult) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputBotInlineResult) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotInlineMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotInlineMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputBotInlineMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputBotInlineMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotRecalled) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotRecalled) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotCallbackAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotCallbackAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotGetCommands) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotGetCommands) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BotCommandsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BotCommandsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *BotStart) Unmarshal(b []byte) error {

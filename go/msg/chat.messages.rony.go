@@ -1178,116 +1178,116 @@ func (x *ReactionList) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ReactionList, x)
 }
 
-func (x *MessagesSend) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSend) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSendMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSendMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesEdit) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesEdit) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesReadHistory) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesReadHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGetHistory) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGetHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGetDialogs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGetDialogs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGetPinnedDialogs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGetPinnedDialogs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGetDialog) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGetDialog) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSetTyping) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSetTyping) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesClearHistory) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesClearHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesDelete) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesDelete) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesForward) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesForward) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesReadContents) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesReadContents) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSaveDraft) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSaveDraft) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesClearDraft) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesClearDraft) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesToggleDialogPin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesToggleDialogPin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesReorderPinnedDialogs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesReorderPinnedDialogs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSendScreenShotNotification) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSendScreenShotNotification) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSendReaction) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSendReaction) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesDeleteReaction) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesDeleteReaction) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesGetReactionList) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesGetReactionList) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesTogglePin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesTogglePin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesDialogs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesDialogs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesSent) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesSent) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessagesReactionList) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessagesReactionList) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReactionList) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReactionList) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *MessagesSend) Unmarshal(b []byte) error {

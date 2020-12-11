@@ -966,96 +966,96 @@ func (x *PollAnswerVoters) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PollAnswerVoters, x)
 }
 
-func (x *DocumentAttributeAudio) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttributeAudio) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DocumentAttributeVideo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttributeVideo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DocumentAttributePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttributePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DocumentAttributeFile) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttributeFile) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DocumentAttributeAnimated) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttributeAnimated) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DocumentAttribute) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DocumentAttribute) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *Document) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *Document) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaWebDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaWebDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaWebDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaWebDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaWebPage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaWebPage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaContact) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaContact) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaContact) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaContact) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaUploadedDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaUploadedDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaMessageDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaMessageDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaDocument) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaDocument) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaGeoLocation) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaGeoLocation) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaGeoLocation) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaGeoLocation) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputMediaPoll) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputMediaPoll) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MediaPoll) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MediaPoll) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PollAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PollAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PollResults) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PollResults) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PollAnswerVoters) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PollAnswerVoters) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *DocumentAttributeAudio) Unmarshal(b []byte) error {

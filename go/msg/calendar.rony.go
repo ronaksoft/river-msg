@@ -242,28 +242,28 @@ func (x *CalendarEventInstance) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_CalendarEventInstance, x)
 }
 
-func (x *CalendarGetEvents) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarGetEvents) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CalendarSetEvent) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarSetEvent) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CalendarEditEvent) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarEditEvent) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CalendarRemoveEvent) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarRemoveEvent) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CalendarEvent) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarEvent) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CalendarEventInstance) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CalendarEventInstance) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *CalendarGetEvents) Unmarshal(b []byte) error {

@@ -314,36 +314,36 @@ func (x *LabelItems) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_LabelItems, x)
 }
 
-func (x *LabelsCreate) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsCreate) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsEdit) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsEdit) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsDelete) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsDelete) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsAddToMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsAddToMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsRemoveFromMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsRemoveFromMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelsListItems) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelsListItems) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *LabelItems) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *LabelItems) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *LabelsCreate) Unmarshal(b []byte) error {

@@ -164,24 +164,24 @@ func (x *TestResponseWithString) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_TestResponseWithString, x)
 }
 
-func (x *EchoWithDelay) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *EchoWithDelay) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TestRequest) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TestRequest) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TestResponse) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TestResponse) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TestRequestWithString) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TestRequestWithString) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TestResponseWithString) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TestResponseWithString) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *EchoWithDelay) Unmarshal(b []byte) error {

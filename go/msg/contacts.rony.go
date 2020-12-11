@@ -664,72 +664,72 @@ func (x *ContactsMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ContactsMany, x)
 }
 
-func (x *ContactsImport) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsImport) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsAdd) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsAdd) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsDelete) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsDelete) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsDeleteAll) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsDeleteAll) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsBlock) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsBlock) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsUnblock) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsUnblock) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsGetBlocked) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsGetBlocked) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsGetTopPeers) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsGetTopPeers) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsResetTopPeer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsResetTopPeer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsTopPeers) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsTopPeers) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TopPeer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TopPeer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BlockedContactsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BlockedContactsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *BlockedContact) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *BlockedContact) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsImported) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsImported) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ContactsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ContactsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ContactsImport) Unmarshal(b []byte) error {

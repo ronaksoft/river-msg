@@ -124,16 +124,16 @@ func (x *ClientUpdateSynced) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ClientUpdateSynced, x)
 }
 
-func (x *ClientUpdatePendingMessageDelivery) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientUpdatePendingMessageDelivery) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientUpdateMessagesDeleted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientUpdateMessagesDeleted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientUpdateSynced) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientUpdateSynced) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ClientUpdatePendingMessageDelivery) Unmarshal(b []byte) error {

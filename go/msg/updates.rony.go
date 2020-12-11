@@ -2320,220 +2320,220 @@ func (x *UpdatePhoneCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_UpdatePhoneCall, x)
 }
 
-func (x *UpdateGetState) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGetState) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGetDifference) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGetDifference) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateDifference) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateDifference) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTooLong) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTooLong) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateState) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateState) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateMessageID) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateMessageID) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateNewMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateNewMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateMessageEdited) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateMessageEdited) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateMessagesDeleted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateMessagesDeleted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateReadHistoryInbox) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateReadHistoryInbox) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateReadHistoryOutbox) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateReadHistoryOutbox) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateMessagePinned) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateMessagePinned) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateUserTyping) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateUserTyping) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateUserStatus) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateUserStatus) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateUsername) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateUsername) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateUserPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateUserPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateNotifySettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateNotifySettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGroupParticipantAdd) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGroupParticipantAdd) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGroupParticipantDeleted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGroupParticipantDeleted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGroupParticipantAdmin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGroupParticipantAdmin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGroupAdmins) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGroupAdmins) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateGroupPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateGroupPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateReadMessagesContents) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateReadMessagesContents) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateAuthorizationReset) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateAuthorizationReset) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateDraftMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateDraftMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateDraftMessageCleared) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateDraftMessageCleared) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateDialogPinned) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateDialogPinned) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateDialogPinnedReorder) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateDialogPinnedReorder) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateAccountPrivacy) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateAccountPrivacy) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateLabelItemsAdded) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateLabelItemsAdded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateLabelItemsRemoved) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateLabelItemsRemoved) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateLabelSet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateLabelSet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateLabelDeleted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateLabelDeleted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateUserBlocked) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateUserBlocked) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateMessagePoll) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateMessagePoll) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateBotCallbackQuery) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateBotCallbackQuery) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateBotInlineQuery) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateBotInlineQuery) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateBotInlineSend) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateBotInlineSend) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeamCreated) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeamCreated) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeamMemberAdded) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeamMemberAdded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeamMemberRemoved) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeamMemberRemoved) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeamMemberStatus) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeamMemberStatus) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeamPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeamPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateTeam) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateTeam) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCommunityMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCommunityMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCommunityReadOutbox) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCommunityReadOutbox) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCommunityTyping) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCommunityTyping) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateReaction) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateReaction) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCalendarEventAdded) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCalendarEventAdded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCalendarEventRemoved) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCalendarEventRemoved) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateCalendarEventEdited) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateCalendarEventEdited) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdateRedirect) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdateRedirect) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientRedirect) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientRedirect) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UpdatePhoneCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UpdatePhoneCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *UpdateGetState) Unmarshal(b []byte) error {

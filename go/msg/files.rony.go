@@ -154,20 +154,20 @@ func (x *File) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_File, x)
 }
 
-func (x *FileSavePart) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *FileSavePart) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *FileGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *FileGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *FileGetBySha256) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *FileGetBySha256) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *File) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *File) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *FileSavePart) Unmarshal(b []byte) error {

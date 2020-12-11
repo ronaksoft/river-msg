@@ -120,16 +120,16 @@ func (x *UsersMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_UsersMany, x)
 }
 
-func (x *UsersGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UsersGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UsersGetFull) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UsersGetFull) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *UsersMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *UsersMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *UsersGet) Unmarshal(b []byte) error {

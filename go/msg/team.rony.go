@@ -492,60 +492,60 @@ func (x *TeamsMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_TeamsMany, x)
 }
 
-func (x *TeamGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamAddMember) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamAddMember) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamRemoveMember) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamRemoveMember) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamPromote) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamPromote) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamDemote) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamDemote) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamLeave) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamLeave) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamJoin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamJoin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamListMembers) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamListMembers) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamEdit) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamEdit) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamUploadPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamUploadPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamRemovePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamRemovePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamMembers) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamMembers) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamMember) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamMember) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *TeamsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *TeamsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *TeamGet) Unmarshal(b []byte) error {

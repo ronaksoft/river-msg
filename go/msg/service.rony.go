@@ -64,8 +64,8 @@ func (x *ServiceSendMessage) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ServiceSendMessage, x)
 }
 
-func (x *ServiceSendMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ServiceSendMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ServiceSendMessage) Unmarshal(b []byte) error {

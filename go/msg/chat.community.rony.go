@@ -402,44 +402,44 @@ func (x *CommunityUpdateContainer) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_CommunityUpdateContainer, x)
 }
 
-func (x *CommunitySendMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunitySendMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunitySendMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunitySendMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunitySetTyping) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunitySetTyping) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityGetUpdates) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityGetUpdates) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityGetMembers) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityGetMembers) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityRecall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityRecall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityAuthorizeUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityAuthorizeUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityUpdateEnvelope) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityUpdateEnvelope) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *CommunityUpdateContainer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *CommunityUpdateContainer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *CommunitySendMessage) Unmarshal(b []byte) error {

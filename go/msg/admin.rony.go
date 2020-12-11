@@ -780,92 +780,92 @@ func (x *ReservedUsernames) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ReservedUsernames, x)
 }
 
-func (x *AdminBroadcastMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminBroadcastMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminSetWelcomeMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminSetWelcomeMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminGetWelcomeMessages) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminGetWelcomeMessages) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminDeleteWelcomeMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminDeleteWelcomeMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminSetPushProvider) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminSetPushProvider) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminGetPushProviders) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminGetPushProviders) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminDeletePushProvider) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminDeletePushProvider) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminSetVersion) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminSetVersion) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminGetVersions) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminGetVersions) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminSetToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminSetToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminDeleteToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminDeleteToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminReserveUsername) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminReserveUsername) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminGetReservedUsernames) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminGetReservedUsernames) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminTeamCreate) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminTeamCreate) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AdminToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AdminToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WelcomeMessagesMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WelcomeMessagesMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *VersionsMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *VersionsMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PushProvidersMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PushProvidersMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WelcomeMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WelcomeMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PushProvider) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PushProvider) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *Version) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *Version) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReservedUsernames) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReservedUsernames) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *AdminBroadcastMessage) Unmarshal(b []byte) error {

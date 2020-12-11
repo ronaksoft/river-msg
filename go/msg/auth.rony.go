@@ -932,112 +932,112 @@ func (x *AuthSentCode) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AuthSentCode, x)
 }
 
-func (x *InitConnect) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitConnect) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitCompleteAuth) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitCompleteAuth) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitConnectTest) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitConnectTest) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitBindUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitBindUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthRegister) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthRegister) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthBotRegister) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthBotRegister) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthLogin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthLogin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthCheckPassword) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthCheckPassword) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthRecoverPassword) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthRecoverPassword) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthLogout) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthLogout) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthLoginByToken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthLoginByToken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthCheckPhone) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthCheckPhone) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthSendCode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthSendCode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthResendCode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthResendCode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthRecall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthRecall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthDestroyKey) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthDestroyKey) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitTestAuth) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitTestAuth) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitResponse) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitResponse) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitCompleteAuthInternal) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitCompleteAuthInternal) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitAuthCompleted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitAuthCompleted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InitUserBound) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InitUserBound) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthPasswordRecovery) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthPasswordRecovery) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthRecalled) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthRecalled) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthAuthorization) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthAuthorization) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthBotAuthorization) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthBotAuthorization) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthCheckedPhone) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthCheckedPhone) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AuthSentCode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AuthSentCode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *InitConnect) Unmarshal(b []byte) error {

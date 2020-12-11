@@ -290,40 +290,40 @@ func (x *MessageActionThreadClosed) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessageActionThreadClosed, x)
 }
 
-func (x *MessageActionGroupAddUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionGroupAddUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionGroupDeleteUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionGroupDeleteUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionGroupCreated) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionGroupCreated) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionGroupTitleChanged) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionGroupTitleChanged) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionGroupPhotoChanged) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionGroupPhotoChanged) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionClearHistory) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionClearHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionContactRegistered) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionContactRegistered) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionScreenShotTaken) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionScreenShotTaken) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *MessageActionThreadClosed) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *MessageActionThreadClosed) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *MessageActionGroupAddUser) Unmarshal(b []byte) error {

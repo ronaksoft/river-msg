@@ -474,56 +474,56 @@ func (x *ReadHistoryStat) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ReadHistoryStat, x)
 }
 
-func (x *GroupsCreate) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsCreate) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsAddUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsAddUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsEditTitle) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsEditTitle) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsDeleteUser) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsDeleteUser) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsGetFull) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsGetFull) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsToggleAdmins) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsToggleAdmins) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsUpdateAdmin) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsUpdateAdmin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsUploadPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsUploadPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsRemovePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsRemovePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsUpdatePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsUpdatePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsGetReadHistoryStats) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsGetReadHistoryStats) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GroupsHistoryStats) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GroupsHistoryStats) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReadHistoryStat) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReadHistoryStat) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *GroupsCreate) Unmarshal(b []byte) error {

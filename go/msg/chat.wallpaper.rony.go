@@ -372,40 +372,40 @@ func (x *WallPapersMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_WallPapersMany, x)
 }
 
-func (x *WallPaperGet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperGet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaperSave) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperSave) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaperDelete) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperDelete) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaperUpload) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperUpload) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaperReset) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperReset) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *InputWallPaper) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *InputWallPaper) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaperSettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaperSettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPaper) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPaper) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *WallPapersMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *WallPapersMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *WallPaperGet) Unmarshal(b []byte) error {

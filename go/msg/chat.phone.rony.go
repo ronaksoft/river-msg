@@ -798,88 +798,88 @@ func (x *PhoneSDPAnswer) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneSDPAnswer, x)
 }
 
-func (x *PhoneInitCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneInitCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneRequestCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneRequestCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneAcceptCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneAcceptCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneDiscardCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneDiscardCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneUpdateCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneUpdateCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneRateCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneRateCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneCall) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneInit) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneInit) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *IceServer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *IceServer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneParticipant) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneParticipant) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneParticipantSDP) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneParticipantSDP) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionCallEmpty) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionCallEmpty) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionAccepted) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionAccepted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionRequested) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionRequested) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionCallWaiting) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionCallWaiting) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionDiscarded) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionDiscarded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneActionIceExchange) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneActionIceExchange) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneMediaSettingsUpdated) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneMediaSettingsUpdated) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneReactionSet) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneReactionSet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneSDPOffer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneSDPOffer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *PhoneSDPAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PhoneSDPAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *PhoneInitCall) Unmarshal(b []byte) error {

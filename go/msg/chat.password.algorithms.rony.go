@@ -46,8 +46,8 @@ func (x *PasswordAlgorithmVer6A) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PasswordAlgorithmVer6A, x)
 }
 
-func (x *PasswordAlgorithmVer6A) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *PasswordAlgorithmVer6A) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *PasswordAlgorithmVer6A) Unmarshal(b []byte) error {

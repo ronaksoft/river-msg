@@ -1212,136 +1212,136 @@ func (x *AccountPrivacyRules) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AccountPrivacyRules, x)
 }
 
-func (x *AccountSetNotifySettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountSetNotifySettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetNotifySettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetNotifySettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountRegisterDevice) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountRegisterDevice) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUnregisterDevice) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUnregisterDevice) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUpdateProfile) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUpdateProfile) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountCheckUsername) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountCheckUsername) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUpdateUsername) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUpdateUsername) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUploadPhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUploadPhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUpdatePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUpdatePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountRemovePhoto) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountRemovePhoto) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountSendChangePhoneCode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountSendChangePhoneCode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountResendChangePhoneCode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountResendChangePhoneCode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountChangePhone) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountChangePhone) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountSetPrivacy) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountSetPrivacy) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetPrivacy) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetPrivacy) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetAuthorizations) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetAuthorizations) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountResetAuthorization) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountResetAuthorization) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUpdateStatus) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUpdateStatus) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountSetLang) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountSetLang) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetPassword) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetPassword) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetPasswordSettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetPasswordSettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountUpdatePasswordSettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountUpdatePasswordSettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountRecoverPassword) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountRecoverPassword) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountGetTeams) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountGetTeams) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountPasswordSettings) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountPasswordSettings) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SecurityQuestions) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SecurityQuestions) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *RecoveryQuestion) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *RecoveryQuestion) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SecurityQuestion) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SecurityQuestion) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SecurityAnswer) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SecurityAnswer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountPassword) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountPassword) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountAuthorizations) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountAuthorizations) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountAuthorization) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountAuthorization) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AccountPrivacyRules) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AccountPrivacyRules) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *AccountSetNotifySettings) Unmarshal(b []byte) error {

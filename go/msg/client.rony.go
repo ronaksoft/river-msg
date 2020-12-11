@@ -1254,124 +1254,124 @@ func (x *ClientNotificationDismissTime) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ClientNotificationDismissTime, x)
 }
 
-func (x *ClientSendMessageMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientSendMessageMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGlobalSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGlobalSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientContactSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientContactSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetCachedMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetCachedMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientClearCachedMedia) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientClearCachedMedia) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetLastBotKeyboard) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetLastBotKeyboard) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetMediaHistory) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetMediaHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetRecentSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetRecentSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientPutRecentSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientPutRecentSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientRemoveRecentSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientRemoveRecentSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientRemoveAllRecentSearches) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientRemoveAllRecentSearches) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetSavedGifs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetSavedGifs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetTeamCounters) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetTeamCounters) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientPendingMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientPendingMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientSearchResult) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientSearchResult) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientFilesMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientFilesMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientFile) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientFile) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientFileRequest) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientFileRequest) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientFileStatus) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientFileStatus) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientCachedMediaInfo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientCachedMediaInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientPeerMediaInfo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientPeerMediaInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientMediaSize) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientMediaSize) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientRecentSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientRecentSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientRecentSearchMany) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientRecentSearchMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientTeamCounters) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientTeamCounters) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetFrequentlyReactions) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetFrequentlyReactions) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientFrequentlyReactions) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientFrequentlyReactions) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientDismissNotification) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientDismissNotification) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientGetNotificationDismissTime) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientGetNotificationDismissTime) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientNotificationDismissTime) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientNotificationDismissTime) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ClientSendMessageMedia) Unmarshal(b []byte) error {

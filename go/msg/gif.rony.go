@@ -276,32 +276,32 @@ func (x *SavedGifs) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_SavedGifs, x)
 }
 
-func (x *GifGetSaved) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GifGetSaved) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GifSave) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GifSave) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GifDelete) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GifDelete) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *GifSearch) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *GifSearch) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *FoundGifs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *FoundGifs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *FoundGif) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *FoundGif) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SavedGifs) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SavedGifs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *GifGetSaved) Unmarshal(b []byte) error {

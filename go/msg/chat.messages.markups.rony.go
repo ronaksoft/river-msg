@@ -436,56 +436,56 @@ func (x *ButtonBuy) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ButtonBuy, x)
 }
 
-func (x *ReplyKeyboardMarkup) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReplyKeyboardMarkup) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReplyInlineMarkup) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReplyInlineMarkup) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReplyKeyboardHide) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReplyKeyboardHide) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ReplyKeyboardForceReply) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ReplyKeyboardForceReply) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *KeyboardButtonRow) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *KeyboardButtonRow) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *KeyboardButtonEnvelope) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *KeyboardButtonEnvelope) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *Button) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *Button) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonUrl) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonUrl) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonCallback) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonCallback) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonRequestPhone) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonRequestPhone) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonRequestGeoLocation) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonRequestGeoLocation) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonSwitchInline) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonSwitchInline) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ButtonBuy) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ButtonBuy) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ReplyKeyboardMarkup) Unmarshal(b []byte) error {

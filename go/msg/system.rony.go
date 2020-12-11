@@ -630,72 +630,72 @@ func (x *SystemDHGroups) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_SystemDHGroups, x)
 }
 
-func (x *SystemGetPublicKeys) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetPublicKeys) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetDHGroups) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetDHGroups) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetServerTime) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetServerTime) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetInfo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetSalts) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetSalts) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetConfig) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetConfig) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemUploadUsage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemUploadUsage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemGetResponse) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemGetResponse) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *ClientUsage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClientUsage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemConfig) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemConfig) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *DataCenter) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *DataCenter) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemSalts) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemSalts) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *AppUpdate) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *AppUpdate) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemInfo) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemServerTime) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemServerTime) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemPublicKeys) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemPublicKeys) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *SystemDHGroups) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *SystemDHGroups) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *SystemGetPublicKeys) Unmarshal(b []byte) error {

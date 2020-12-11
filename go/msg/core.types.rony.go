@@ -151,28 +151,6 @@ func (p *poolProtoEncryptedPayload) Put(x *ProtoEncryptedPayload) {
 
 var PoolProtoEncryptedPayload = poolProtoEncryptedPayload{}
 
-const C_Error int64 = 1081316971
-
-type poolError struct {
-	pool sync.Pool
-}
-
-func (p *poolError) Get() *Error {
-	x, ok := p.pool.Get().(*Error)
-	if !ok {
-		return &Error{}
-	}
-	return x
-}
-
-func (p *poolError) Put(x *Error) {
-	x.Code = ""
-	x.Items = ""
-	p.pool.Put(x)
-}
-
-var PoolError = poolError{}
-
 const C_Ack int64 = 1957468455
 
 type poolAck struct {
@@ -1154,7 +1132,6 @@ func init() {
 	registry.RegisterConstructor(824754645, "msg.UpdateContainer")
 	registry.RegisterConstructor(2435337826, "msg.ProtoMessage")
 	registry.RegisterConstructor(2201830871, "msg.ProtoEncryptedPayload")
-	registry.RegisterConstructor(1081316971, "msg.Error")
 	registry.RegisterConstructor(1957468455, "msg.Ack")
 	registry.RegisterConstructor(1287342210, "msg.Bool")
 	registry.RegisterConstructor(3089010482, "msg.Dialog")
@@ -1251,11 +1228,6 @@ func (x *ProtoEncryptedPayload) DeepCopy(z *ProtoEncryptedPayload) {
 		z.Envelope = rony.PoolMessageEnvelope.Get()
 		x.Envelope.DeepCopy(z.Envelope)
 	}
-}
-
-func (x *Error) DeepCopy(z *Error) {
-	z.Code = x.Code
-	z.Items = x.Items
 }
 
 func (x *Ack) DeepCopy(z *Ack) {
@@ -1681,10 +1653,6 @@ func (x *ProtoEncryptedPayload) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ProtoEncryptedPayload, x)
 }
 
-func (x *Error) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_Error, x)
-}
-
 func (x *Ack) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_Ack, x)
 }
@@ -1857,10 +1825,6 @@ func (x *ProtoEncryptedPayload) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *Error) Marshal() ([]byte, error) {
-	return proto.Marshal(x)
-}
-
 func (x *Ack) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -2030,10 +1994,6 @@ func (x *ProtoMessage) Unmarshal(b []byte) error {
 }
 
 func (x *ProtoEncryptedPayload) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{}.Unmarshal(b, x)
-}
-
-func (x *Error) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

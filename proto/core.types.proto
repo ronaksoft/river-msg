@@ -52,12 +52,6 @@ message ProtoEncryptedPayload {
     rony.MessageEnvelope Envelope = 4;
 }
 
-// Error
-message Error {
-    string Code = 1;
-    string Items = 2;
-}
-
 // Ack
 message Ack {
     repeated uint64 MessageIDs = 1;

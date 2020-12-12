@@ -1,6 +1,6 @@
 syntax = "proto3";
 package msg;
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 import "core.types.proto";
 import "chat.messages.medias.proto";
 import "chat.wallpaper.proto";

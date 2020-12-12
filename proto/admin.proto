@@ -1,11 +1,11 @@
 syntax = "proto3";
 package msg;
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 import "core.types.proto";
 
 option go_package = '.;msg';
-option (gogoproto.goproto_enum_prefix_all) = false;
+
 
 // AdminBroadcastMessage
 message AdminBroadcastMessage {

@@ -6,8 +6,6 @@ rm ./go/msg/*.rony.go
 
 ## Create 'msg' package compatible with 'Rony'
 ## For Rony we must ignore lines
-# 1. option (gogoproto.goproto_enum_prefix_all) = false;
-# 2. import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 cd ./proto || exit
 regex='^(option \(gogoproto\.goproto_enum_prefix_all\) = false;|import "github\.com/gogo/protobuf/gogoproto/gogo\.proto";)$'
 mkdir tmp

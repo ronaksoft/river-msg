@@ -2,9 +2,9 @@ syntax = "proto3";
 package msg;
 import "core.types.proto";
 import "chat.messages.medias.proto";
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 option go_package = '.;msg';
-option (gogoproto.goproto_enum_prefix_all) = false;
+
 
 // ClientSendMessageMedia
 // @Function

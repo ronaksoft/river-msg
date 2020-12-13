@@ -4,14 +4,8 @@ package msg;
 import "core.types.proto";
 import "chat.messages.medias.proto";
 import "chat.wallpaper.proto";
-import "github.com/ronaksoft/rony/msg.proto";
 option go_package = '.;msg';
 
-
-service BotProxy {
-    rpc ServeBotRequest (stream rony.MessageEnvelope) returns (stream rony.MessageEnvelope) {
-    }
-}
 
 // BotStart
 // @Function (Client)
@@ -304,6 +298,7 @@ message BotCallbackAnswer {
 // BotsMany
 message BotsMany {
     repeated BotInfo Bots = 1;
+    bool Empty = 2;
 }
 
 // BotGetCommands

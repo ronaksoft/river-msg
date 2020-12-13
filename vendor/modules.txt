@@ -45,30 +45,11 @@ github.com/gobwas/ws/wsutil
 # github.com/gogo/protobuf v1.3.1
 ## explicit
 github.com/gogo/protobuf/gogoproto
-github.com/gogo/protobuf/plugin/compare
-github.com/gogo/protobuf/plugin/defaultcheck
-github.com/gogo/protobuf/plugin/description
-github.com/gogo/protobuf/plugin/embedcheck
-github.com/gogo/protobuf/plugin/enumstringer
-github.com/gogo/protobuf/plugin/equal
-github.com/gogo/protobuf/plugin/face
-github.com/gogo/protobuf/plugin/gostring
-github.com/gogo/protobuf/plugin/marshalto
-github.com/gogo/protobuf/plugin/oneofcheck
-github.com/gogo/protobuf/plugin/populate
-github.com/gogo/protobuf/plugin/size
-github.com/gogo/protobuf/plugin/stringer
-github.com/gogo/protobuf/plugin/testgen
-github.com/gogo/protobuf/plugin/union
-github.com/gogo/protobuf/plugin/unmarshal
 github.com/gogo/protobuf/proto
 github.com/gogo/protobuf/protoc-gen-gogo/descriptor
 github.com/gogo/protobuf/protoc-gen-gogo/generator
 github.com/gogo/protobuf/protoc-gen-gogo/generator/internal/remap
-github.com/gogo/protobuf/protoc-gen-gogo/grpc
 github.com/gogo/protobuf/protoc-gen-gogo/plugin
-github.com/gogo/protobuf/vanity
-github.com/gogo/protobuf/vanity/command
 # github.com/golang/protobuf v1.4.3
 ## explicit
 github.com/golang/protobuf/proto
@@ -159,6 +140,7 @@ golang.org/x/sys/unix
 golang.org/x/sys/windows
 # google.golang.org/protobuf v1.25.0
 ## explicit
+google.golang.org/protobuf/compiler/protogen
 google.golang.org/protobuf/encoding/prototext
 google.golang.org/protobuf/encoding/protowire
 google.golang.org/protobuf/internal/descfmt
@@ -181,7 +163,10 @@ google.golang.org/protobuf/internal/set
 google.golang.org/protobuf/internal/strs
 google.golang.org/protobuf/internal/version
 google.golang.org/protobuf/proto
+google.golang.org/protobuf/reflect/protodesc
 google.golang.org/protobuf/reflect/protoreflect
 google.golang.org/protobuf/reflect/protoregistry
 google.golang.org/protobuf/runtime/protoiface
 google.golang.org/protobuf/runtime/protoimpl
+google.golang.org/protobuf/types/descriptorpb
+google.golang.org/protobuf/types/pluginpb

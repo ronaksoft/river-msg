@@ -28,9 +28,9 @@ func main() {
 		for _, f := range plugin.Files {
 			// reset the global model and fill with the new data
 			for _, mt := range f.Messages {
-				constructor := int64(crc32.ChecksumIEEE([]byte(mt.Desc.FullName())))
+				constructor := int64(crc32.ChecksumIEEE([]byte(mt.Desc.Name())))
 				cn[string(mt.Desc.Name())] = constructor
-				cs[constructor] = string(mt.Desc.FullName())
+				cs[constructor] = string(mt.Desc.Name())
 			}
 		}
 

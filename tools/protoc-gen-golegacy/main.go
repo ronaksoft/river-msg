@@ -41,7 +41,7 @@ func main() {
 				for _, mt := range f.Messages {
 					switch string(mt.Desc.Name()) {
 					case "ProtoMessage", "ProtoEncryptedPayload", "PhoneSDPOffer", "PhoneSDPAnswer",
-						"SystemGetKeys", "SystemKeys":
+						"SystemGetServerKeys", "SystemKeys":
 						continue
 
 					}
@@ -101,6 +101,12 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 	})
 
 	for _, mt := range file.Messages {
+		switch string(mt.Desc.Name()) {
+		case "ProtoMessage", "ProtoEncryptedPayload", "PhoneSDPOffer", "PhoneSDPAnswer",
+			"SystemGetServerKeys", "SystemKeys":
+			continue
+
+		}
 		mtName := mt.Desc.Name()
 		g.P("func (x *", mtName, ") Convert () (z *legacy.", mtName, ") {")
 		g.P("if x == nil {")
@@ -116,6 +122,10 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 				case protoreflect.MessageKind:
 					g.P("for _, item := range x.", ftName, "{")
 					g.P("z.", ftName, "= append(z.", ftName, ", item.Convert())")
+					g.P("}")
+				case protoreflect.EnumKind:
+					g.P("for _, item := range x.", ftName, "{")
+					g.P("z.", ftName, "= append(z.", ftName, ", legacy.", ft.Desc.Enum().Name(), "(item))")
 					g.P("}")
 				default:
 					g.P("z.", ftName, "= x.", ftName)

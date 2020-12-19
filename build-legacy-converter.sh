@@ -14,9 +14,7 @@ for proto in ./*.proto; do
   grep -Ev "$regex" "$proto" >> ./tmp/"$proto"
 done
 cd ./tmp || exit
-protoc  -I="${currentWorkingDir}"/vendor -I=.  --go_out=paths=source_relative:../../go/msg ./*.proto
-protoc  -I="${currentWorkingDir}"/vendor -I=.  --gorony_out=paths=source_relative:../../go/msg ./*.proto
-protoc  -I="${currentWorkingDir}"/vendor -I=.  --gokk_out=paths=source_relative:../../go/msg ./*.proto
+protoc  -I="${currentWorkingDir}"/vendor -I=.  --golegacy_out=paths=source_relative:../../go/_legacy ./*.proto
 
 cd "$currentWorkingDir"/go/msg || exit
 go fmt

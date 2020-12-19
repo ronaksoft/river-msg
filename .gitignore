@@ -2,3 +2,4 @@
 *.out
 *.test
 _playground
+_legacy

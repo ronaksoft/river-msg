@@ -5,6 +5,7 @@ import (
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/types/descriptorpb"
+	"hash/crc32"
 	"os"
 	"strings"
 )
@@ -30,15 +31,57 @@ func main() {
 		legacyPackage = "git.ronaksoft.com/river/server/msg/legacy"
 	}
 
+	cn := map[string]int64{}
+	cs := map[int64]string{}
 	pgo.Run(func(plugin *protogen.Plugin) error {
 		for _, f := range plugin.Files {
 			g1 := plugin.NewGeneratedFile(fmt.Sprintf("%s.legacy.go", f.GeneratedFilenamePrefix), f.GoImportPath)
 			GenConvertors(f, g1)
+			for _, mt := range f.Messages {
+				constructor := int64(crc32.ChecksumIEEE([]byte(mt.Desc.Name())))
+				cn[string(mt.Desc.Name())] = constructor
+				cs[constructor] = string(mt.Desc.Name())
+			}
 		}
+
+		g2 := plugin.NewGeneratedFile("converter.go", "msg")
+		GenMainConvertor(g2, cs)
 		return nil
 	})
 
 	return
+}
+
+func GenMainConvertor(g *protogen.GeneratedFile, cs map[int64]string) {
+	g.P("package ", "msg")
+	g.QualifiedGoIdent(protogen.GoIdent{
+		GoName:       "msg2",
+		GoImportPath: protogen.GoImportPath(legacyPackage),
+	})
+
+	g.P("var cs = map[int64]func(d []byte) []byte{")
+	for c, n := range cs {
+		g.P(c, ": unmarshal", n, ",")
+	}
+	g.P("}")
+	g.P("func ConvertToLegacy(c int64, d []byte) []date {")
+	g.P("f := cs[c]")
+	g.P("if f == nil {")
+	g.P("panic(\"invalid constructor\")")
+	g.P("}")
+	g.P("return f(d)")
+	g.P("}")
+	g.P()
+	for _, n := range cs {
+		g.P("func unmarshal", n, "(d []byte) []byte {")
+		g.P("x := &", n, "{}")
+		g.P("_ = x.Unmarshal(d)")
+		g.P("z := x.Convert()")
+		g.P("b, _ := z.Marshal()")
+		g.P("return b")
+		g.P("}")
+	}
+
 }
 
 // GenConvertors generates codes related for pooling of the messages
@@ -64,7 +107,7 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 					g.P("z.", ftName, "= append(z.", ftName, ", item.Convert())")
 					g.P("}")
 				default:
-					g.P("z.", ftName, "= x.", ftName, ".Convert()")
+					g.P("z.", ftName, "= x.", ftName)
 				}
 
 			default:

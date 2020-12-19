@@ -37,10 +37,18 @@ func main() {
 		for _, f := range plugin.Files {
 			g1 := plugin.NewGeneratedFile(fmt.Sprintf("%s.legacy.go", f.GeneratedFilenamePrefix), f.GoImportPath)
 			GenConvertors(f, g1)
-			for _, mt := range f.Messages {
-				constructor := int64(crc32.ChecksumIEEE([]byte(mt.Desc.Name())))
-				cn[string(mt.Desc.Name())] = constructor
-				cs[constructor] = string(mt.Desc.Name())
+			if f.GoPackageName != "rony" {
+				for _, mt := range f.Messages {
+					switch string(mt.Desc.Name()) {
+					case "ProtoMessage", "ProtoEncryptedPayload", "PhoneSDPOffer", "PhoneSDPAnswer",
+						"SystemGetKeys", "SystemKeys":
+						continue
+
+					}
+					constructor := int64(crc32.ChecksumIEEE([]byte(mt.Desc.Name())))
+					cn[string(mt.Desc.Name())] = constructor
+					cs[constructor] = string(mt.Desc.Name())
+				}
 			}
 		}
 
@@ -64,10 +72,10 @@ func GenMainConvertor(g *protogen.GeneratedFile, cs map[int64]string) {
 		g.P(c, ": unmarshal", n, ",")
 	}
 	g.P("}")
-	g.P("func ConvertToLegacy(c int64, d []byte) []date {")
+	g.P("func ConvertToLegacy(c int64, d []byte) []byte {")
 	g.P("f := cs[c]")
 	g.P("if f == nil {")
-	g.P("panic(\"invalid constructor\")")
+	g.P("return d")
 	g.P("}")
 	g.P("return f(d)")
 	g.P("}")
@@ -95,6 +103,9 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 	for _, mt := range file.Messages {
 		mtName := mt.Desc.Name()
 		g.P("func (x *", mtName, ") Convert () (z *legacy.", mtName, ") {")
+		g.P("if x == nil {")
+		g.P("return nil")
+		g.P("}")
 		g.P("z = &legacy.", mtName, "{}")
 		for _, ft := range mt.Fields {
 			ftName := ft.Desc.Name()

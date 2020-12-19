@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 currentWorkingDir=$(pwd)
-rm ./go/msg/*.pb.go
-rm ./go/msg/*.rony.go
-rm ./go/msg/*.legacy.go
+rm ./go/_legacy*.legacy.go
 
 ## Create 'msg' package compatible with 'Rony'
 ## For Rony we must ignore lines

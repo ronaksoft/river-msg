@@ -51,8 +51,8 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 
 	for _, mt := range file.Messages {
 		mtName := mt.Desc.Name()
-		g.P("func (x *", mtName, ") Convert () (z *msg2.", mtName, ") {")
-		g.P("z = &msg2.", mtName, "{}")
+		g.P("func (x *", mtName, ") Convert () (z *legacy.", mtName, ") {")
+		g.P("z = &legacy.", mtName, "{}")
 		for _, ft := range mt.Fields {
 			ftName := ft.Desc.Name()
 			// ftPkg, _ := descName(file, g, ft.Desc.Message())
@@ -71,11 +71,14 @@ func GenConvertors(file *protogen.File, g *protogen.GeneratedFile) {
 				switch ft.Desc.Kind() {
 				case protoreflect.MessageKind:
 					g.P("z.", ftName, "= x.", ftName, ".Convert()")
+				case protoreflect.EnumKind:
+					g.P("z.", ftName, "= legacy.", ft.Desc.Enum().Name(), "(x.", ftName, ")")
 				default:
 					g.P("z.", ftName, "= x.", ftName)
 				}
 			}
 		}
+		g.P("return")
 		g.P("}")
 	}
 

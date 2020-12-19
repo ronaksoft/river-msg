@@ -3,7 +3,6 @@
 currentWorkingDir=$(pwd)
 rm ./go/msg/*.pb.go
 rm ./go/msg/*.rony.go
-rm ./go/msg/*.legacy.go
 
 ## Create 'msg' package compatible with 'Rony'
 ## For Rony we must ignore lines
@@ -22,4 +21,4 @@ cd "$currentWorkingDir"/go/msg || exit
 go fmt
 cd "$currentWorkingDir" || exit
 rm -r "$currentWorkingDir"/proto/tmp
-rm -r "$currentWorkingDir"/go/msg/github.com
+#rm -r "$currentWorkingDir"/go/_legacy/github.com

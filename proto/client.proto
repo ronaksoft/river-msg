@@ -5,7 +5,6 @@ import "chat.messages.medias.proto";
 
 option go_package = '.;msg';
 
-
 // ClientSendMessageMedia
 // @Function
 message ClientSendMessageMedia {
@@ -71,6 +70,17 @@ message ClientGetLastBotKeyboard {
 // @Function
 // @Return: MessagesMany
 message ClientGetMediaHistory {
+    ClientMediaType MediaType = 1;
+    int64 MaxID = 2;
+    int64 MinID = 3;
+    int64 Limit = 4;
+    InputPeer Peer = 5;
+}
+
+// ClientGetAllDownloadedMedia
+// @Function
+// @Return: MessagesMany
+message ClientGetAllDownloadedMedia {
     ClientMediaType MediaType = 1;
 }
 
@@ -271,21 +281,28 @@ message ClientTeamCounters {
     int64 MentionCount = 2;
 }
 
-// RecentSearchMany
-// return ClientFrequentlyReactions
-message ClientGetFrequentlyReactions {
+// ClientGetFrequentReactions
+// @Function
+// @Return: ClientFrequentReactions
+message ClientGetFrequentReactions {
 
 }
 
-message ClientFrequentlyReactions {
+message ClientFrequentReactions {
     repeated string Reactions = 1;
 }
 
+// ClientDismissNotification
+// @Function
+// @Return: Bool
 message ClientDismissNotification {
     InputPeer Peer = 1;
     int64 Ts = 2;
 }
 
+// ClientGetNotificationDismissTime
+// @Function
+// @Return: ClientNotificationDismissTime
 message ClientGetNotificationDismissTime {
     InputPeer Peer = 1;
 }

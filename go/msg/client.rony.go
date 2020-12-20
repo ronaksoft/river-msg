@@ -181,7 +181,7 @@ func (p *poolClientGetMediaHistory) Get() *ClientGetMediaHistory {
 }
 
 func (p *poolClientGetMediaHistory) Put(x *ClientGetMediaHistory) {
-	x.MediaType = 0
+	x.MediaType = x.MediaType[:0]
 	x.MaxID = 0
 	x.MinID = 0
 	x.Limit = 0
@@ -896,7 +896,7 @@ func (x *ClientGetLastBotKeyboard) DeepCopy(z *ClientGetLastBotKeyboard) {
 }
 
 func (x *ClientGetMediaHistory) DeepCopy(z *ClientGetMediaHistory) {
-	z.MediaType = x.MediaType
+	z.MediaType = append(z.MediaType[:0], x.MediaType...)
 	z.MaxID = x.MaxID
 	z.MinID = x.MinID
 	z.Limit = x.Limit

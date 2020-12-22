@@ -1,6 +1,5 @@
 syntax = "proto3";
 package msg;
-
 import "github.com/ronaksoft/rony/msg.proto";
 option go_package = '.;msg';
 
@@ -133,6 +132,16 @@ message FileLocation {
     fixed64 AccessHash = 3 [jstype = JS_STRING];
 }
 
+// WebLocation
+message WebLocation {
+    string Url = 1;
+}
+
+// InputWebLocation
+message InputWebLocation {
+    string Url = 1;
+}
+
 // UserStatus
 enum UserStatus {
     UserStatusOffline = 0;
@@ -147,7 +156,10 @@ message UserPhoto {
     FileLocation PhotoBig = 1;
     FileLocation PhotoSmall = 2;
     int64 PhotoID = 3 [jstype = JS_STRING];
+    WebLocation PhotoBigUrl = 4;
+    WebLocation PhotoSmallUrl = 5;
 }
+
 
 // InputUser
 message InputUser {

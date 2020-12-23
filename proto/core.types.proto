@@ -3,7 +3,6 @@ package msg;
 import "github.com/ronaksoft/rony/msg.proto";
 option go_package = '.;msg';
 
-
 // Ping
 message Ping {
     int64 ID = 1;
@@ -13,7 +12,6 @@ message Ping {
 message Pong {
     int64 ID = 2;
 }
-
 
 // UpdateEnvelope
 message UpdateEnvelope {
@@ -156,10 +154,9 @@ message UserPhoto {
     FileLocation PhotoBig = 1;
     FileLocation PhotoSmall = 2;
     int64 PhotoID = 3 [jstype = JS_STRING];
-    WebLocation PhotoBigUrl = 4;
-    WebLocation PhotoSmallUrl = 5;
+    WebLocation PhotoBigWeb = 4;
+    WebLocation PhotoSmallWeb = 5;
 }
-
 
 // InputUser
 message InputUser {

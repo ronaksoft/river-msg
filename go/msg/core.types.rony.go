@@ -414,13 +414,13 @@ func (p *poolUserPhoto) Put(x *UserPhoto) {
 		x.PhotoSmall = nil
 	}
 	x.PhotoID = 0
-	if x.PhotoBigUrl != nil {
-		PoolWebLocation.Put(x.PhotoBigUrl)
-		x.PhotoBigUrl = nil
+	if x.PhotoBigWeb != nil {
+		PoolWebLocation.Put(x.PhotoBigWeb)
+		x.PhotoBigWeb = nil
 	}
-	if x.PhotoSmallUrl != nil {
-		PoolWebLocation.Put(x.PhotoSmallUrl)
-		x.PhotoSmallUrl = nil
+	if x.PhotoSmallWeb != nil {
+		PoolWebLocation.Put(x.PhotoSmallWeb)
+		x.PhotoSmallWeb = nil
 	}
 	p.pool.Put(x)
 }
@@ -1361,13 +1361,13 @@ func (x *UserPhoto) DeepCopy(z *UserPhoto) {
 		x.PhotoSmall.DeepCopy(z.PhotoSmall)
 	}
 	z.PhotoID = x.PhotoID
-	if x.PhotoBigUrl != nil {
-		z.PhotoBigUrl = PoolWebLocation.Get()
-		x.PhotoBigUrl.DeepCopy(z.PhotoBigUrl)
+	if x.PhotoBigWeb != nil {
+		z.PhotoBigWeb = PoolWebLocation.Get()
+		x.PhotoBigWeb.DeepCopy(z.PhotoBigWeb)
 	}
-	if x.PhotoSmallUrl != nil {
-		z.PhotoSmallUrl = PoolWebLocation.Get()
-		x.PhotoSmallUrl.DeepCopy(z.PhotoSmallUrl)
+	if x.PhotoSmallWeb != nil {
+		z.PhotoSmallWeb = PoolWebLocation.Get()
+		x.PhotoSmallWeb.DeepCopy(z.PhotoSmallWeb)
 	}
 }
 

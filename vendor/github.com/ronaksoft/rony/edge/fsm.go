@@ -24,7 +24,7 @@ type raftFSM struct {
 
 func (fsm raftFSM) Apply(raftLog *raft.Log) interface{} {
 	raftCmd := acquireRaftCommand()
-	err := proto.UnmarshalOptions{Merge: true}.Unmarshal(raftLog.Data, raftCmd)
+	err := proto.UnmarshalOptions{}.Unmarshal(raftLog.Data, raftCmd)
 	if err != nil {
 		return err
 	}
@@ -36,7 +36,10 @@ func (fsm raftFSM) Apply(raftLog *raft.Log) interface{} {
 	}
 
 	dispatchCtx := acquireDispatchCtx(fsm.edge, nil, 0, raftCmd.Sender)
-	dispatchCtx.FillEnvelope(raftCmd.Envelope.GetRequestID(), raftCmd.Envelope.GetConstructor(), raftCmd.Envelope.Message)
+	dispatchCtx.FillEnvelope(
+		raftCmd.Envelope.GetRequestID(), raftCmd.Envelope.GetConstructor(), raftCmd.Envelope.Message,
+		raftCmd.Envelope.Auth, raftCmd.Envelope.Header...,
+	)
 
 	err = fsm.edge.execute(dispatchCtx, false)
 	fsm.edge.dispatcher.Done(dispatchCtx)

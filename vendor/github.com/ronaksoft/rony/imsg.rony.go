@@ -6,7 +6,7 @@ import (
 	sync "sync"
 )
 
-const C_ClusterMessage int64 = 56353988
+const C_ClusterMessage int64 = 1078766375
 
 type poolClusterMessage struct {
 	pool sync.Pool
@@ -32,7 +32,7 @@ func (p *poolClusterMessage) Put(x *ClusterMessage) {
 
 var PoolClusterMessage = poolClusterMessage{}
 
-const C_RaftCommand int64 = 3965951915
+const C_RaftCommand int64 = 2919813429
 
 type poolRaftCommand struct {
 	pool sync.Pool
@@ -58,7 +58,7 @@ func (p *poolRaftCommand) Put(x *RaftCommand) {
 
 var PoolRaftCommand = poolRaftCommand{}
 
-const C_EdgeNode int64 = 2474233262
+const C_EdgeNode int64 = 999040174
 
 type poolEdgeNode struct {
 	pool sync.Pool
@@ -86,9 +86,9 @@ func (p *poolEdgeNode) Put(x *EdgeNode) {
 var PoolEdgeNode = poolEdgeNode{}
 
 func init() {
-	registry.RegisterConstructor(56353988, "rony.ClusterMessage")
-	registry.RegisterConstructor(3965951915, "rony.RaftCommand")
-	registry.RegisterConstructor(2474233262, "rony.EdgeNode")
+	registry.RegisterConstructor(1078766375, "ClusterMessage")
+	registry.RegisterConstructor(2919813429, "RaftCommand")
+	registry.RegisterConstructor(999040174, "EdgeNode")
 }
 
 func (x *ClusterMessage) DeepCopy(z *ClusterMessage) {
@@ -131,26 +131,26 @@ func (x *EdgeNode) DeepCopy(z *EdgeNode) {
 	z.GatewayAddr = append(z.GatewayAddr[:0], x.GatewayAddr...)
 }
 
-func (x *ClusterMessage) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *ClusterMessage) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *RaftCommand) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *RaftCommand) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
-func (x *EdgeNode) MarshalTo(b []byte) ([]byte, error) {
-	return proto.MarshalOptions{}.MarshalAppend(b, x)
+func (x *EdgeNode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
 }
 
 func (x *ClusterMessage) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *RaftCommand) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
 func (x *EdgeNode) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{Merge: true}.Unmarshal(b, x)
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

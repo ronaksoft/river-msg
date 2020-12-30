@@ -41,11 +41,13 @@ github.com/gobwas/pool/pbufio
 github.com/gobwas/pool/pbytes
 # github.com/gobwas/ws v1.0.3
 github.com/gobwas/ws
-github.com/gobwas/ws/wsutil
+# github.com/gocql/gocql v0.0.0-20201215165327-e49edf966d90
+## explicit
 # github.com/golang/protobuf v1.4.3
 ## explicit
 github.com/golang/protobuf/proto
-# github.com/golang/snappy v0.0.1
+# github.com/golang/snappy v0.0.2
+## explicit
 github.com/golang/snappy
 # github.com/google/btree v1.0.0
 github.com/google/btree
@@ -67,6 +69,8 @@ github.com/hashicorp/golang-lru/simplelru
 github.com/hashicorp/memberlist
 # github.com/hashicorp/raft v1.2.0
 github.com/hashicorp/raft
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
 # github.com/klauspost/compress v1.10.7
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/gzip
@@ -78,13 +82,15 @@ github.com/miekg/dns
 # github.com/nyaruka/phonenumbers v1.0.60
 ## explicit
 github.com/nyaruka/phonenumbers
+# github.com/panjf2000/ants/v2 v2.4.3
+github.com/panjf2000/ants/v2
+github.com/panjf2000/ants/v2/internal
 # github.com/pkg/errors v0.8.1
 github.com/pkg/errors
-# github.com/ronaksoft/rony v0.0.10
+# github.com/ronaksoft/rony v0.1.2
 ## explicit
 github.com/ronaksoft/rony
 github.com/ronaksoft/rony/edge
-github.com/ronaksoft/rony/edgec
 github.com/ronaksoft/rony/gateway
 github.com/ronaksoft/rony/gateway/dummy
 github.com/ronaksoft/rony/gateway/tcp
@@ -93,11 +99,17 @@ github.com/ronaksoft/rony/internal/logger
 github.com/ronaksoft/rony/pools
 github.com/ronaksoft/rony/registry
 github.com/ronaksoft/rony/tools
+# github.com/scylladb/gocqlx/v2 v2.3.0
+## explicit
 # github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
 github.com/sean-/seed
+# github.com/spf13/cobra v1.1.1
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.5
+github.com/spf13/pflag
 # github.com/valyala/bytebufferpool v1.0.0
 github.com/valyala/bytebufferpool
-# github.com/valyala/fasthttp v1.16.0
+# github.com/valyala/fasthttp v1.18.0
 github.com/valyala/fasthttp
 github.com/valyala/fasthttp/fasthttputil
 github.com/valyala/fasthttp/stackless
@@ -118,7 +130,7 @@ go.uber.org/zap/zapcore
 # golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
 golang.org/x/crypto/ed25519
 golang.org/x/crypto/ed25519/internal/edwards25519
-# golang.org/x/net v0.0.0-20200625001655-4c5254603344
+# golang.org/x/net v0.0.0-20201016165138-7b1cca2348c0
 golang.org/x/net/bpf
 golang.org/x/net/internal/iana
 golang.org/x/net/internal/socket
@@ -126,7 +138,7 @@ golang.org/x/net/internal/timeseries
 golang.org/x/net/ipv4
 golang.org/x/net/ipv6
 golang.org/x/net/trace
-# golang.org/x/sys v0.0.0-20200918174421-af09f7315aff
+# golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows

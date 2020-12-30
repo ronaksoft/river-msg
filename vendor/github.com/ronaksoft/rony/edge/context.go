@@ -71,10 +71,22 @@ func (ctx *DispatchCtx) StreamID() int64 {
 	return ctx.streamID
 }
 
-func (ctx *DispatchCtx) FillEnvelope(requestID uint64, constructor int64, payload []byte) {
+func (ctx *DispatchCtx) FillEnvelope(requestID uint64, constructor int64, payload []byte, auth []byte, kv ...*rony.KeyValue) {
 	ctx.req.RequestID = requestID
 	ctx.req.Constructor = constructor
 	ctx.req.Message = append(ctx.req.Message[:0], payload...)
+	ctx.req.Auth = append(ctx.req.Auth[:0], auth...)
+	if cap(ctx.req.Header) >= len(kv) {
+		ctx.req.Header = ctx.req.Header[:len(kv)]
+	} else {
+		ctx.req.Header = make([]*rony.KeyValue, len(kv))
+	}
+	for idx, kv := range kv {
+		if ctx.req.Header[idx] == nil {
+			ctx.req.Header[idx] = &rony.KeyValue{}
+		}
+		kv.DeepCopy(ctx.req.Header[idx])
+	}
 }
 
 func (ctx *DispatchCtx) Set(key string, v interface{}) {
@@ -91,7 +103,7 @@ func (ctx *DispatchCtx) Get(key string) interface{} {
 }
 
 func (ctx *DispatchCtx) GetBytes(key string, defaultValue []byte) []byte {
-	v, ok := ctx.kv[key].([]byte)
+	v, ok := ctx.Get(key).([]byte)
 	if ok {
 		return v
 	}
@@ -99,7 +111,7 @@ func (ctx *DispatchCtx) GetBytes(key string, defaultValue []byte) []byte {
 }
 
 func (ctx *DispatchCtx) GetString(key string, defaultValue string) string {
-	v := ctx.kv[key]
+	v := ctx.Get(key)
 	switch x := v.(type) {
 	case []byte:
 		return tools.ByteToStr(x)
@@ -111,7 +123,7 @@ func (ctx *DispatchCtx) GetString(key string, defaultValue string) string {
 }
 
 func (ctx *DispatchCtx) GetInt64(key string, defaultValue int64) int64 {
-	v, ok := ctx.kv[key].(int64)
+	v, ok := ctx.Get(key).(int64)
 	if ok {
 		return v
 	}
@@ -119,7 +131,7 @@ func (ctx *DispatchCtx) GetInt64(key string, defaultValue int64) int64 {
 }
 
 func (ctx *DispatchCtx) GetBool(key string) bool {
-	v, ok := ctx.kv[key].(bool)
+	v, ok := ctx.Get(key).(bool)
 	if ok {
 		return v
 	}
@@ -127,17 +139,15 @@ func (ctx *DispatchCtx) GetBool(key string) bool {
 }
 
 func (ctx *DispatchCtx) UnmarshalEnvelope(data []byte) error {
-	uo := proto.UnmarshalOptions{
-		Merge: true,
-	}
-	return uo.Unmarshal(data, ctx.req)
+	return proto.Unmarshal(data, ctx.req)
 }
 
 // RequestCtx
 type RequestCtx struct {
 	dispatchCtx *DispatchCtx
-	quickReturn bool
+	reqID       uint64
 	nextChan    chan struct{}
+	quickReturn bool
 	stop        bool
 }
 
@@ -165,7 +175,7 @@ func (ctx *RequestCtx) Conn() gateway.Conn {
 }
 
 func (ctx *RequestCtx) ReqID() uint64 {
-	return ctx.dispatchCtx.req.GetRequestID()
+	return ctx.reqID
 }
 
 func (ctx *RequestCtx) StopExecution() {
@@ -218,7 +228,7 @@ func (ctx *RequestCtx) PushRedirectLeader() {
 }
 
 func (ctx *RequestCtx) PushRedirectShard(shard uint32, wait time.Duration) {
-
+	// TODO:: implement it
 }
 
 func (ctx *RequestCtx) PushMessage(constructor int64, proto proto.Message) {
@@ -228,7 +238,8 @@ func (ctx *RequestCtx) PushMessage(constructor int64, proto proto.Message) {
 func (ctx *RequestCtx) PushCustomMessage(requestID uint64, constructor int64, proto proto.Message, kvs ...*rony.KeyValue) {
 	envelope := acquireMessageEnvelope()
 	envelope.Fill(requestID, constructor, proto)
-	ctx.dispatchCtx.edge.dispatcher.OnMessage(ctx.dispatchCtx, envelope, kvs...)
+	envelope.Header = append(envelope.Header[:0], kvs...)
+	ctx.dispatchCtx.edge.dispatcher.OnMessage(ctx.dispatchCtx, envelope)
 	releaseMessageEnvelope(envelope)
 }
 

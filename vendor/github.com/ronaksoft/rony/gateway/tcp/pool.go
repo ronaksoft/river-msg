@@ -3,6 +3,7 @@ package tcp
 import (
 	"github.com/gobwas/ws"
 	"github.com/mailru/easygo/netpoll"
+	"github.com/panjf2000/ants/v2"
 	wsutil "github.com/ronaksoft/rony/gateway/tcp/util"
 	"github.com/ronaksoft/rony/tools"
 	"github.com/valyala/fasthttp"
@@ -19,6 +20,8 @@ import (
    Copyright Ronak Software Group 2020
 */
 
+var goPoolB, goPoolNB *ants.Pool
+
 var httpConnPool sync.Pool
 
 func acquireHttpConn(gw *Gateway, req *fasthttp.RequestCtx) *httpConn {
@@ -28,6 +31,7 @@ func acquireHttpConn(gw *Gateway, req *fasthttp.RequestCtx) *httpConn {
 			gateway: gw,
 			req:     req,
 			buf:     tools.NewLinkedList(),
+			kv:      make(map[string]interface{}, 4),
 		}
 	}
 	c.gateway = gw
@@ -78,14 +82,15 @@ func acquireWebsocketConn(gw *Gateway, connID uint64, conn net.Conn, desc *netpo
 			conn:         conn,
 			desc:         desc,
 			closed:       false,
-			lastActivity: tools.TimeUnix(),
+			kv:           make(map[string]interface{}, 4),
+			lastActivity: tools.CPUTicks(),
 		}
 	}
 	c.gateway = gw
 	c.connID = connID
 	c.desc = desc
 	c.conn = conn
-	c.lastActivity = tools.TimeUnix()
+	c.lastActivity = tools.CPUTicks()
 	return c
 }
 

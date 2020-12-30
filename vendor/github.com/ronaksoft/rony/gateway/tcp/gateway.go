@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gobwas/ws"
 	"github.com/mailru/easygo/netpoll"
+	"github.com/panjf2000/ants/v2"
 	"github.com/ronaksoft/rony/gateway"
 	wsutil "github.com/ronaksoft/rony/gateway/tcp/util"
 	log "github.com/ronaksoft/rony/internal/logger"
@@ -35,6 +36,24 @@ const (
 	Websocket
 	Auto = Http | Websocket
 )
+
+var (
+	ignoredHeaders = map[string]bool{
+		"Host":                     true,
+		"Upgrade":                  true,
+		"Connection":               true,
+		"Sec-Websocket-Version":    true,
+		"Sec-Websocket-Protocol":   true,
+		"Sec-Websocket-Extensions": true,
+		"Sec-Websocket-Key":        true,
+		"Sec-Websocket-Accept":     true,
+	}
+)
+
+type UnsafeConn interface {
+	net.Conn
+	UnsafeConn() net.Conn
+}
 
 // Config
 type Config struct {
@@ -87,7 +106,7 @@ func New(config Config) (*Gateway, error) {
 		listenOn:           config.ListenAddress,
 		concurrency:        config.Concurrency,
 		maxBodySize:        config.MaxBodySize,
-		maxIdleTime:        int64(defaultConnIdleTime.Seconds()),
+		maxIdleTime:        int64(defaultConnIdleTime),
 		waitGroupReaders:   &sync.WaitGroup{},
 		waitGroupWriters:   &sync.WaitGroup{},
 		waitGroupAcceptors: &sync.WaitGroup{},
@@ -122,9 +141,9 @@ func New(config Config) (*Gateway, error) {
 	g.connGC = newWebsocketConnGC(g)
 
 	// set handlers
-	g.MessageHandler = func(c gateway.Conn, streamID int64, date []byte, kvs ...gateway.KeyValue) {}
+	g.MessageHandler = func(c gateway.Conn, streamID int64, date []byte) {}
 	g.CloseHandler = func(c gateway.Conn) {}
-	g.ConnectHandler = func(c gateway.Conn) {}
+	g.ConnectHandler = func(c gateway.Conn, kvs ...gateway.KeyValue) {}
 	if poller, err := netpoll.New(&netpoll.Config{
 		OnWaitError: func(e error) {
 			log.Warn("Error On NetPoller Wait",
@@ -169,6 +188,21 @@ func New(config Config) (*Gateway, error) {
 		g.addrs = append(g.addrs, fmt.Sprintf("%s:%d", ta.IP, ta.Port))
 	}
 
+	goPoolB, err = ants.NewPool(g.concurrency,
+		ants.WithNonblocking(false),
+		ants.WithPreAlloc(true),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	goPoolNB, err = ants.NewPool(g.concurrency,
+		ants.WithNonblocking(true),
+		ants.WithPreAlloc(true),
+	)
+	if err != nil {
+		return nil, err
+	}
 	return g, nil
 }
 
@@ -189,28 +223,26 @@ func (g *Gateway) Start() {
 func (g *Gateway) Run() {
 	server := fasthttp.Server{
 		Name:               "Rony TCP Gateway",
-		Concurrency:        g.concurrency,
 		Handler:            g.requestHandler,
 		KeepHijackedConns:  true,
 		MaxRequestBodySize: g.maxBodySize,
 	}
+
 	for {
 		conn, err := g.listener.Accept()
 		if err != nil {
-			// log.Warn("Error On Accept", zap.Error(err))
 			continue
 		}
-
 		wc := newWrapConn(conn)
-		err = server.ServeConn(wc)
-		if err != nil {
-			if nErr, ok := err.(net.Error); ok {
-				if !nErr.Temporary() {
-					return
-				}
-			} else {
-				return
+
+		err = goPoolNB.Submit(func() {
+			err = server.ServeConn(wc)
+			if err != nil {
+				log.Warn("Error On ServeConn", zap.Error(err))
 			}
+		})
+		if err != nil {
+			log.Warn("Error On ServeConn (Pool)", zap.Error(err))
 		}
 	}
 }
@@ -241,6 +273,15 @@ func (g *Gateway) Shutdown() {
 		zap.Uint64("Reads", g.cntReads),
 		zap.Uint64("Writes", g.cntWrites),
 	)
+
+	g.connsMtx.Lock()
+	for id, c := range g.conns {
+		fmt.Println("Conn(", id, ") Stalled",
+			time.Duration(tools.CPUTicks()-atomic.LoadInt64(&c.startTime)),
+			time.Duration(tools.CPUTicks()-(atomic.LoadInt64(&c.lastActivity))),
+		)
+	}
+	g.connsMtx.Unlock()
 }
 
 // Addr return the address which gateway is listen on
@@ -253,7 +294,18 @@ func (g *Gateway) Addr() []string {
 
 // GetConn returns the connection identified by connID
 func (g *Gateway) GetConn(connID uint64) gateway.Conn {
-	return g.getConnection(connID)
+	c := g.getConnection(connID)
+	if c == nil {
+		return nil
+	}
+	return c
+}
+
+func (g *Gateway) TotalConnections() int {
+	g.connsMtx.RLock()
+	n := len(g.conns)
+	g.connsMtx.RUnlock()
+	return n
 }
 
 func (g *Gateway) requestHandler(req *fasthttp.RequestCtx) {
@@ -286,32 +338,38 @@ func (g *Gateway) requestHandler(req *fasthttp.RequestCtx) {
 		case "X-Client-Type":
 			clientType = string(value)
 		default:
-			kvs = append(kvs, gateway.KeyValue{
-				Key:   string(key),
-				Value: string(value),
-			})
+			if !ignoredHeaders[tools.ByteToStr(key)] {
+				kvs = append(kvs, gateway.KeyValue{
+					Key:   string(key),
+					Value: string(value),
+				})
+			}
 		}
 	})
 	if !clientDetected {
 		clientIP = string(req.RemoteIP().To4())
 	}
 
+	// If this is a Http Upgrade then we handle websocket
 	if req.Request.Header.ConnectionUpgrade() {
 		if g.transportMode&Websocket == 0 {
 			req.SetConnectionClose()
 			req.SetStatusCode(http.StatusNotAcceptable)
 			return
 		}
-		wc := req.Conn().(*wrapConn)
-		wc.ReadyForUpgrade()
+
 		req.HijackSetNoResponse(true)
 		req.Hijack(func(c net.Conn) {
+			hjc, _ := c.(UnsafeConn)
+			wc, _ := hjc.UnsafeConn().(*wrapConn)
+			wc.ReadyForUpgrade()
 			g.waitGroupAcceptors.Add(1)
-			g.connectionAcceptor(wc, clientIP, clientType)
+			g.websocketHandler(wc, clientIP, clientType, kvs...)
 		})
 		return
 	}
 
+	// This is going to be an HTTP request
 	req.SetConnectionClose()
 	if g.transportMode&Http == 0 {
 		req.SetStatusCode(http.StatusNotAcceptable)
@@ -320,13 +378,14 @@ func (g *Gateway) requestHandler(req *fasthttp.RequestCtx) {
 	conn := acquireHttpConn(g, req)
 	conn.SetClientIP(tools.StrToByte(clientIP))
 	conn.SetClientType(tools.StrToByte(clientType))
-	g.ConnectHandler(conn)
-	g.MessageHandler(conn, int64(req.ID()), req.PostBody(), kvs...)
+
+	g.ConnectHandler(conn, kvs...)
+	g.MessageHandler(conn, int64(req.ID()), req.PostBody())
 	g.CloseHandler(conn)
 	releaseHttpConn(conn)
 }
 
-func (g *Gateway) connectionAcceptor(c net.Conn, clientIP, clientType string) {
+func (g *Gateway) websocketHandler(c net.Conn, clientIP, clientType string, kvs ...gateway.KeyValue) {
 	defer g.waitGroupAcceptors.Done()
 	if atomic.LoadInt32(&g.stop) == 1 {
 		return
@@ -346,75 +405,19 @@ func (g *Gateway) connectionAcceptor(c net.Conn, clientIP, clientType string) {
 	var (
 		err error
 	)
-	wsConn := g.addConnection(c, clientIP, clientType)
-	wsConn.desc, err = netpoll.Handle(c,
-		netpoll.EventRead|netpoll.EventHup|netpoll.EventOneShot,
-	)
 
+	wsConn, err := newWebsocketConn(g, c, clientIP, clientType)
 	if err != nil {
-		log.Warn("Error On NetPoll Description", zap.Error(err))
-		g.removeConnection(wsConn.connID)
+		log.Warn("Error On NetPoll Description", zap.Error(err), zap.Int("Total", g.TotalConnections()))
 		return
 	}
-	err = g.poller.Start(wsConn.desc, wsConn.startEvent)
+
+
+	g.ConnectHandler(wsConn, kvs...)
+
+	err = wsConn.registerDesc()
 	if err != nil {
-		log.Warn("Error On NetPoll Start", zap.Error(err))
-		g.removeConnection(wsConn.connID)
-		return
-	}
-}
-
-func (g *Gateway) addConnection(conn net.Conn, clientIP, clientType string) *websocketConn {
-	// Increment total connection counter and connection ID
-	totalConns := atomic.AddInt32(&g.connsTotal, 1)
-	connID := atomic.AddUint64(&g.connsLastID, 1)
-	wsConn := acquireWebsocketConn(g, connID, conn, nil)
-	wsConn.SetClientIP(tools.StrToByte(clientIP))
-
-	g.connsMtx.Lock()
-	g.conns[connID] = wsConn
-	g.connsMtx.Unlock()
-	if ce := log.Check(log.DebugLevel, "Websocket Connection Created"); ce != nil {
-		ce.Write(
-			zap.Uint64("ConnID", connID),
-			zap.String("Client", clientType),
-			zap.String("IP", wsConn.ClientIP()),
-			zap.Int32("Total", totalConns),
-		)
-	}
-	g.ConnectHandler(wsConn)
-	g.connGC.monitorConnection(connID)
-	return wsConn
-}
-
-func (g *Gateway) removeConnection(wcID uint64) {
-	g.connsMtx.Lock()
-	wsConn, ok := g.conns[wcID]
-	if !ok {
-		g.connsMtx.Unlock()
-		return
-	}
-	delete(g.conns, wcID)
-	g.connsMtx.Unlock()
-	totalConns := atomic.AddInt32(&g.connsTotal, -1)
-	if wsConn.desc != nil {
-		_ = g.poller.Stop(wsConn.desc)
-		_ = wsConn.desc.Close()
-	}
-	_ = wsConn.conn.Close()
-	wsConn.Lock()
-	if !wsConn.closed {
-		g.CloseHandler(wsConn)
-		wsConn.closed = true
-	}
-	wsConn.Unlock()
-	releaseWebsocketConn(wsConn)
-
-	if ce := log.Check(log.DebugLevel, "Websocket Connection Removed"); ce != nil {
-		ce.Write(
-			zap.Uint64("ConnID", wcID),
-			zap.Int32("Total", totalConns),
-		)
+		log.Warn("Error On RegisterDesc", zap.Error(err))
 	}
 }
 
@@ -428,29 +431,21 @@ func (g *Gateway) getConnection(connID uint64) *websocketConn {
 	return nil
 }
 
-func (g *Gateway) readPump(wc *websocketConn, ms []wsutil.Message) {
-	defer g.waitGroupReaders.Done()
-	var (
-		err error
-	)
-
+func (g *Gateway) readPump(wc *websocketConn, ms []wsutil.Message) (err error) {
 	waitGroup := pools.AcquireWaitGroup()
 	_ = wc.conn.SetReadDeadline(time.Now().Add(defaultReadTimout))
 	ms = ms[:0]
 	ms, err = wsutil.ReadMessage(wc.conn, ws.StateServerSide, ms)
 	if err != nil {
-		if ce := log.Check(log.DebugLevel, "Error in readPump"); ce != nil {
+		if ce := log.Check(log.WarnLevel, "Error in readPump"); ce != nil {
 			ce.Write(
 				zap.Uint64("ConnID", wc.connID),
 				zap.Error(err),
 			)
 		}
-		// remove the connection from the list
-		wc.gateway.removeConnection(wc.connID)
-		return
+		return ErrUnexpectedSocketRead
 	}
 	atomic.AddUint64(&g.cntReads, 1)
-	_ = wc.gateway.poller.Resume(wc.desc)
 
 	// handle messages
 	for idx := range ms {
@@ -464,13 +459,14 @@ func (g *Gateway) readPump(wc *websocketConn, ms []wsutil.Message) {
 			}
 		case ws.OpBinary:
 			waitGroup.Add(1)
-			go func() {
+			_ = goPoolB.Submit(func() {
 				g.MessageHandler(wc, 0, ms[idx].Payload)
 				waitGroup.Done()
-			}()
+			})
+
 		case ws.OpClose:
 			// remove the connection from the list
-			wc.gateway.removeConnection(wc.connID)
+			err = ErrOpCloseReceived
 		default:
 			log.Warn("Unknown OpCode")
 		}
@@ -478,27 +474,33 @@ func (g *Gateway) readPump(wc *websocketConn, ms []wsutil.Message) {
 	}
 	waitGroup.Wait()
 	pools.ReleaseWaitGroup(waitGroup)
+	return err
 }
 
-func (g *Gateway) writePump(wr *writeRequest) {
+func (g *Gateway) writePump(wr *writeRequest) (err error) {
 	defer g.waitGroupWriters.Done()
+	wr.wc.Lock()
+	defer wr.wc.Unlock()
 
 	if wr.wc.closed {
+		return
+	}
+	if wr.wc.conn == nil {
 		return
 	}
 
 	switch wr.opCode {
 	case ws.OpBinary, ws.OpText:
 		_ = wr.wc.conn.SetWriteDeadline(time.Now().Add(defaultWriteTimeout))
-		err := wsutil.WriteMessage(wr.wc.conn, ws.StateServerSide, wr.opCode, wr.payload)
+		err = wsutil.WriteMessage(wr.wc.conn, ws.StateServerSide, wr.opCode, wr.payload)
 		if err != nil {
 			if ce := log.Check(log.WarnLevel, "Error in writePump"); ce != nil {
 				ce.Write(zap.Error(err), zap.Uint64("ConnID", wr.wc.connID))
 			}
-			g.removeConnection(wr.wc.connID)
+			return
 		} else {
 			atomic.AddUint64(&g.cntWrites, 1)
 		}
 	}
-
+	return
 }

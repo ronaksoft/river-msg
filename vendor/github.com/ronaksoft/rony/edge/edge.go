@@ -11,6 +11,7 @@ import (
 	"github.com/ronaksoft/rony/gateway"
 	log "github.com/ronaksoft/rony/internal/logger"
 	"github.com/ronaksoft/rony/pools"
+	"github.com/ronaksoft/rony/registry"
 	"github.com/ronaksoft/rony/tools"
 	"go.uber.org/zap"
 	"google.golang.org/protobuf/proto"
@@ -168,10 +169,7 @@ func (edge *Server) execute(dispatchCtx *DispatchCtx, isLeader bool) (err error)
 	switch dispatchCtx.req.GetConstructor() {
 	case rony.C_MessageContainer:
 		x := &rony.MessageContainer{}
-		mo := proto.UnmarshalOptions{
-			Merge: true,
-		}
-		err = mo.Unmarshal(dispatchCtx.req.Message, x)
+		err = x.Unmarshal(dispatchCtx.req.Message)
 		if err != nil {
 			return
 		}
@@ -204,15 +202,18 @@ func (edge *Server) execute(dispatchCtx *DispatchCtx, isLeader bool) (err error)
 func (edge *Server) executeFunc(requestCtx *RequestCtx, in *rony.MessageEnvelope, isLeader bool) {
 	defer edge.recoverPanic(requestCtx, in)
 
-	var startTime time.Time
-
+	var startTime int64
 	if ce := log.Check(log.DebugLevel, "Execute (Start)"); ce != nil {
-		startTime = time.Now()
+		startTime = tools.CPUTicks()
 		ce.Write(
 			zap.String("Constructor", edge.getConstructorName(in.GetConstructor())),
 			zap.Uint64("ReqID", in.GetRequestID()),
 		)
 	}
+
+	// Set the context request
+	requestCtx.reqID = in.RequestID
+
 	if !isLeader {
 		_, ok := edge.readonlyHandlers[in.GetConstructor()]
 		if !ok {
@@ -263,7 +264,7 @@ func (edge *Server) executeFunc(requestCtx *RequestCtx, in *rony.MessageEnvelope
 	if ce := log.Check(log.DebugLevel, "Execute (Finished)"); ce != nil {
 		ce.Write(
 			zap.Uint64("ReqID", in.GetRequestID()),
-			zap.Duration("T", time.Now().Sub(startTime)),
+			zap.Duration("T", time.Duration(tools.CPUTicks()-startTime)),
 		)
 	}
 
@@ -272,21 +273,22 @@ func (edge *Server) executeFunc(requestCtx *RequestCtx, in *rony.MessageEnvelope
 func (edge *Server) recoverPanic(ctx *RequestCtx, in *rony.MessageEnvelope) {
 	if r := recover(); r != nil {
 		log.Error("Panic Recovered",
-			zap.ByteString("ServerID", edge.serverID),
+			zap.String("C", registry.ConstructorName(in.Constructor)),
+			zap.Uint64("ReqID", in.RequestID),
 			zap.Uint64("ConnID", ctx.ConnID()),
 			zap.Any("Error", r),
-			zap.ByteString("Stack", debug.Stack()),
 		)
+		log.Error("Panic Stack Trace", zap.ByteString("Stack", debug.Stack()))
 		ctx.PushError(rony.ErrCodeInternal, rony.ErrItemServer)
 	}
 }
 
-func (edge *Server) onGatewayMessage(conn gateway.Conn, streamID int64, data []byte, kvs ...gateway.KeyValue) {
+func (edge *Server) onGatewayMessage(conn gateway.Conn, streamID int64, data []byte) {
 	// _, task := trace.NewTask(context.Background(), "Handle Gateway Message")
 	// defer task.End()
 
 	dispatchCtx := acquireDispatchCtx(edge, conn, streamID, edge.serverID)
-	err := edge.dispatcher.Interceptor(dispatchCtx, data, kvs...)
+	err := edge.dispatcher.Interceptor(dispatchCtx, data)
 	if err != nil {
 		releaseDispatchCtx(dispatchCtx)
 		return
@@ -308,8 +310,8 @@ func (edge *Server) onError(dispatchCtx *DispatchCtx, code, item string) {
 	edge.dispatcher.OnMessage(dispatchCtx, envelope)
 	releaseMessageEnvelope(envelope)
 }
-func (edge *Server) onConnect(conn gateway.Conn) {
-	edge.dispatcher.OnOpen(conn)
+func (edge *Server) onConnect(conn gateway.Conn, kvs ...gateway.KeyValue) {
+	edge.dispatcher.OnOpen(conn, kvs...)
 }
 func (edge *Server) onClose(conn gateway.Conn) {
 	edge.dispatcher.OnClose(conn)

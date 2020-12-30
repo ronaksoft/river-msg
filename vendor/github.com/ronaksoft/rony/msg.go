@@ -34,6 +34,18 @@ func (x *MessageEnvelope) Clone() *MessageEnvelope {
 	c.Constructor = x.Constructor
 	c.RequestID = x.RequestID
 	c.Message = append(c.Message[:0], x.Message...)
+	c.Auth = append(c.Auth[:0], x.Auth...)
+	if cap(c.Header) >= len(x.Header) {
+		c.Header = c.Header[:len(x.Header)]
+	} else {
+		c.Header = make([]*KeyValue, len(x.Header))
+	}
+	for idx, kv := range x.Header {
+		if c.Header[idx] == nil {
+			c.Header[idx] = &KeyValue{}
+		}
+		kv.DeepCopy(c.Header[idx])
+	}
 	return c
 }
 
@@ -49,6 +61,19 @@ func (x *MessageEnvelope) Fill(reqID uint64, constructor int64, p proto.Message,
 	b, _ = mo.MarshalAppend(b, p)
 	x.Message = append(x.Message[:0], b...)
 	pools.Bytes.Put(b)
+}
+
+func (x *MessageEnvelope) Get(key, defaultVal string) string {
+	for _, kv := range x.Header {
+		if kv.Key == key {
+			return kv.Value
+		}
+	}
+	return defaultVal
+}
+
+func (x *MessageEnvelope) Set(KVs ...*KeyValue) {
+	x.Header = append(x.Header[:0], KVs...)
 }
 
 func (x *RaftCommand) Fill(senderID []byte, e *MessageEnvelope, kvs ...*KeyValue) {

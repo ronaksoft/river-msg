@@ -227,6 +227,7 @@ func (p *poolDialog) Put(x *Dialog) {
 		x.Draft = nil
 	}
 	x.PinnedMessageID = 0
+	x.ActiveCallID = 0
 	p.pool.Put(x)
 }
 
@@ -1310,6 +1311,7 @@ func (x *Dialog) DeepCopy(z *Dialog) {
 		x.Draft.DeepCopy(z.Draft)
 	}
 	z.PinnedMessageID = x.PinnedMessageID
+	z.ActiveCallID = x.ActiveCallID
 }
 
 func (x *InputPeer) DeepCopy(z *InputPeer) {

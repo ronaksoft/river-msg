@@ -1438,6 +1438,61 @@ func (p *poolUpdatePhoneCall) Put(x *UpdatePhoneCall) {
 
 var PoolUpdatePhoneCall = poolUpdatePhoneCall{}
 
+const C_UpdatePhoneCallStarted int64 = 1094761594
+
+type poolUpdatePhoneCallStarted struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdatePhoneCallStarted) Get() *UpdatePhoneCallStarted {
+	x, ok := p.pool.Get().(*UpdatePhoneCallStarted)
+	if !ok {
+		return &UpdatePhoneCallStarted{}
+	}
+	return x
+}
+
+func (p *poolUpdatePhoneCallStarted) Put(x *UpdatePhoneCallStarted) {
+	x.UCount = 0
+	x.UpdateID = 0
+	x.TeamID = 0
+	if x.Peer != nil {
+		PoolPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallId = 0
+	p.pool.Put(x)
+}
+
+var PoolUpdatePhoneCallStarted = poolUpdatePhoneCallStarted{}
+
+const C_UpdatePhoneCallEnded int64 = 1764711846
+
+type poolUpdatePhoneCallEnded struct {
+	pool sync.Pool
+}
+
+func (p *poolUpdatePhoneCallEnded) Get() *UpdatePhoneCallEnded {
+	x, ok := p.pool.Get().(*UpdatePhoneCallEnded)
+	if !ok {
+		return &UpdatePhoneCallEnded{}
+	}
+	return x
+}
+
+func (p *poolUpdatePhoneCallEnded) Put(x *UpdatePhoneCallEnded) {
+	x.UCount = 0
+	x.UpdateID = 0
+	x.TeamID = 0
+	if x.Peer != nil {
+		PoolPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolUpdatePhoneCallEnded = poolUpdatePhoneCallEnded{}
+
 func init() {
 	registry.RegisterConstructor(1437250230, "UpdateGetState")
 	registry.RegisterConstructor(556775761, "UpdateGetDifference")
@@ -1493,6 +1548,8 @@ func init() {
 	registry.RegisterConstructor(3303504929, "UpdateRedirect")
 	registry.RegisterConstructor(3513459109, "ClientRedirect")
 	registry.RegisterConstructor(2791086990, "UpdatePhoneCall")
+	registry.RegisterConstructor(1094761594, "UpdatePhoneCallStarted")
+	registry.RegisterConstructor(1764711846, "UpdatePhoneCallEnded")
 }
 
 func (x *UpdateGetState) DeepCopy(z *UpdateGetState) {
@@ -2104,6 +2161,27 @@ func (x *UpdatePhoneCall) DeepCopy(z *UpdatePhoneCall) {
 	z.ActionData = append(z.ActionData[:0], x.ActionData...)
 }
 
+func (x *UpdatePhoneCallStarted) DeepCopy(z *UpdatePhoneCallStarted) {
+	z.UCount = x.UCount
+	z.UpdateID = x.UpdateID
+	z.TeamID = x.TeamID
+	if x.Peer != nil {
+		z.Peer = PoolPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallId = x.CallId
+}
+
+func (x *UpdatePhoneCallEnded) DeepCopy(z *UpdatePhoneCallEnded) {
+	z.UCount = x.UCount
+	z.UpdateID = x.UpdateID
+	z.TeamID = x.TeamID
+	if x.Peer != nil {
+		z.Peer = PoolPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+}
+
 func (x *UpdateGetState) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_UpdateGetState, x)
 }
@@ -2318,6 +2396,14 @@ func (x *ClientRedirect) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *UpdatePhoneCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_UpdatePhoneCall, x)
+}
+
+func (x *UpdatePhoneCallStarted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdatePhoneCallStarted, x)
+}
+
+func (x *UpdatePhoneCallEnded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_UpdatePhoneCallEnded, x)
 }
 
 func (x *UpdateGetState) Marshal() ([]byte, error) {
@@ -2536,6 +2622,14 @@ func (x *UpdatePhoneCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *UpdatePhoneCallStarted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *UpdatePhoneCallEnded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *UpdateGetState) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
@@ -2749,5 +2843,13 @@ func (x *ClientRedirect) Unmarshal(b []byte) error {
 }
 
 func (x *UpdatePhoneCall) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *UpdatePhoneCallStarted) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *UpdatePhoneCallEnded) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

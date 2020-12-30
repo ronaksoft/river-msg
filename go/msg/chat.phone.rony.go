@@ -162,7 +162,8 @@ func (p *poolPhoneRateCall) Put(x *PhoneRateCall) {
 	}
 	x.CallID = 0
 	x.Rate = 0
-	x.Comment = ""
+	x.ReasonType = 0
+	x.ReasonData = x.ReasonData[:0]
 	p.pool.Put(x)
 }
 
@@ -613,7 +614,8 @@ func (x *PhoneRateCall) DeepCopy(z *PhoneRateCall) {
 	}
 	z.CallID = x.CallID
 	z.Rate = x.Rate
-	z.Comment = x.Comment
+	z.ReasonType = x.ReasonType
+	z.ReasonData = append(z.ReasonData[:0], x.ReasonData...)
 }
 
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {

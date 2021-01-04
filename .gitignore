@@ -3,3 +3,4 @@
 *.test
 _playground
 _legacy
+vendor

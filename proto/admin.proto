@@ -6,7 +6,6 @@ import "core.types.proto";
 
 option go_package = '.;msg';
 
-
 // AdminBroadcastMessage
 message AdminBroadcastMessage {
     string Body = 1;
@@ -122,6 +121,7 @@ message AdminGetReservedUsernames {
 // @Function
 // @Return: Team
 message AdminTeamCreate {
+    int64 RandomID = 10;
     string AccessToken = 1;
     int32 Capacity = 2; // maximum number of team members
     int64 ExpireDate = 3; // license expire time

@@ -316,6 +316,7 @@ func (p *poolAdminTeamCreate) Get() *AdminTeamCreate {
 }
 
 func (p *poolAdminTeamCreate) Put(x *AdminTeamCreate) {
+	x.RandomID = 0
 	x.AccessToken = ""
 	x.Capacity = 0
 	x.ExpireDate = 0
@@ -617,6 +618,7 @@ func (x *AdminGetReservedUsernames) DeepCopy(z *AdminGetReservedUsernames) {
 }
 
 func (x *AdminTeamCreate) DeepCopy(z *AdminTeamCreate) {
+	z.RandomID = x.RandomID
 	z.AccessToken = x.AccessToken
 	z.Capacity = x.Capacity
 	z.ExpireDate = x.ExpireDate

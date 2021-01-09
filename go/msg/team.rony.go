@@ -198,6 +198,7 @@ func (p *poolTeamEdit) Get() *TeamEdit {
 func (p *poolTeamEdit) Put(x *TeamEdit) {
 	x.TeamID = 0
 	x.Name = ""
+	x.ReturnTeam = false
 	p.pool.Put(x)
 }
 
@@ -378,6 +379,7 @@ func (x *TeamListMembers) DeepCopy(z *TeamListMembers) {
 func (x *TeamEdit) DeepCopy(z *TeamEdit) {
 	z.TeamID = x.TeamID
 	z.Name = x.Name
+	z.ReturnTeam = x.ReturnTeam
 }
 
 func (x *TeamUploadPhoto) DeepCopy(z *TeamUploadPhoto) {

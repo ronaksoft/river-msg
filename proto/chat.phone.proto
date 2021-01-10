@@ -111,7 +111,7 @@ enum PhoneCallAction {
     PhoneCallReactionSet = 7;
     PhoneCallSDPOffer = 8;
     PhoneCallSDPAnswer = 9;
-    PhoneCallReserved6 = 10;
+    PhoneCallAck = 10;
     PhoneCallReserved7 = 11;
     PhoneCallReserved8 = 12;
     PhoneCallReserved9 = 13;

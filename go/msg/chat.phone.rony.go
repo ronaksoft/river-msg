@@ -168,35 +168,6 @@ func (p *poolPhoneRateCall) Put(x *PhoneRateCall) {
 
 var PoolPhoneRateCall = poolPhoneRateCall{}
 
-const C_PhoneAckCall int64 = 1324964467
-
-type poolPhoneAckCall struct {
-	pool sync.Pool
-}
-
-func (p *poolPhoneAckCall) Get() *PhoneAckCall {
-	x, ok := p.pool.Get().(*PhoneAckCall)
-	if !ok {
-		return &PhoneAckCall{}
-	}
-	return x
-}
-
-func (p *poolPhoneAckCall) Put(x *PhoneAckCall) {
-	if x.Peer != nil {
-		PoolInputPeer.Put(x.Peer)
-		x.Peer = nil
-	}
-	x.CallID = 0
-	if x.User != nil {
-		PoolInputUser.Put(x.User)
-		x.User = nil
-	}
-	p.pool.Put(x)
-}
-
-var PoolPhoneAckCall = poolPhoneAckCall{}
-
 const C_PhoneCall int64 = 3296664529
 
 type poolPhoneCall struct {
@@ -565,7 +536,6 @@ func init() {
 	registry.RegisterConstructor(2712700137, "PhoneDiscardCall")
 	registry.RegisterConstructor(1976202226, "PhoneUpdateCall")
 	registry.RegisterConstructor(2215486159, "PhoneRateCall")
-	registry.RegisterConstructor(1324964467, "PhoneAckCall")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
 	registry.RegisterConstructor(3464876187, "PhoneInit")
 	registry.RegisterConstructor(4291892363, "IceServer")
@@ -659,18 +629,6 @@ func (x *PhoneRateCall) DeepCopy(z *PhoneRateCall) {
 	z.Rate = x.Rate
 	z.ReasonType = x.ReasonType
 	z.ReasonData = append(z.ReasonData[:0], x.ReasonData...)
-}
-
-func (x *PhoneAckCall) DeepCopy(z *PhoneAckCall) {
-	if x.Peer != nil {
-		z.Peer = PoolInputPeer.Get()
-		x.Peer.DeepCopy(z.Peer)
-	}
-	z.CallID = x.CallID
-	if x.User != nil {
-		z.User = PoolInputUser.Get()
-		x.User.DeepCopy(z.User)
-	}
 }
 
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {
@@ -798,10 +756,6 @@ func (x *PhoneRateCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneRateCall, x)
 }
 
-func (x *PhoneAckCall) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneAckCall, x)
-}
-
 func (x *PhoneCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneCall, x)
 }
@@ -890,10 +844,6 @@ func (x *PhoneRateCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneAckCall) Marshal() ([]byte, error) {
-	return proto.Marshal(x)
-}
-
 func (x *PhoneCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -979,10 +929,6 @@ func (x *PhoneUpdateCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneRateCall) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{}.Unmarshal(b, x)
-}
-
-func (x *PhoneAckCall) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

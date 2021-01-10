@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	_ "github.com/ronaksoft/rony"
 	"google.golang.org/protobuf/compiler/protogen"
 	"hash/crc32"
 	"html/template"

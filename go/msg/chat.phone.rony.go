@@ -105,7 +105,6 @@ func (p *poolPhoneDiscardCall) Put(x *PhoneDiscardCall) {
 		x.Peer = nil
 	}
 	x.CallID = 0
-	x.Participants = x.Participants[:0]
 	x.Duration = 0
 	x.Reason = 0
 	p.pool.Put(x)
@@ -579,13 +578,6 @@ func (x *PhoneDiscardCall) DeepCopy(z *PhoneDiscardCall) {
 		x.Peer.DeepCopy(z.Peer)
 	}
 	z.CallID = x.CallID
-	for idx := range x.Participants {
-		if x.Participants[idx] != nil {
-			xx := PoolInputUser.Get()
-			x.Participants[idx].DeepCopy(xx)
-			z.Participants = append(z.Participants, xx)
-		}
-	}
 	z.Duration = x.Duration
 	z.Reason = x.Reason
 }

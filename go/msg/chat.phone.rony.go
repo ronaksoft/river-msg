@@ -168,6 +168,35 @@ func (p *poolPhoneRateCall) Put(x *PhoneRateCall) {
 
 var PoolPhoneRateCall = poolPhoneRateCall{}
 
+const C_PhoneAckCall int64 = 1324964467
+
+type poolPhoneAckCall struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneAckCall) Get() *PhoneAckCall {
+	x, ok := p.pool.Get().(*PhoneAckCall)
+	if !ok {
+		return &PhoneAckCall{}
+	}
+	return x
+}
+
+func (p *poolPhoneAckCall) Put(x *PhoneAckCall) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallID = 0
+	if x.User != nil {
+		PoolInputUser.Put(x.User)
+		x.User = nil
+	}
+	p.pool.Put(x)
+}
+
+var PoolPhoneAckCall = poolPhoneAckCall{}
+
 const C_PhoneCall int64 = 3296664529
 
 type poolPhoneCall struct {
@@ -422,6 +451,26 @@ func (p *poolPhoneActionIceExchange) Put(x *PhoneActionIceExchange) {
 
 var PoolPhoneActionIceExchange = poolPhoneActionIceExchange{}
 
+const C_PhoneActionAck int64 = 1221076803
+
+type poolPhoneActionAck struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionAck) Get() *PhoneActionAck {
+	x, ok := p.pool.Get().(*PhoneActionAck)
+	if !ok {
+		return &PhoneActionAck{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionAck) Put(x *PhoneActionAck) {
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionAck = poolPhoneActionAck{}
+
 const C_PhoneMediaSettingsUpdated int64 = 163140236
 
 type poolPhoneMediaSettingsUpdated struct {
@@ -516,6 +565,7 @@ func init() {
 	registry.RegisterConstructor(2712700137, "PhoneDiscardCall")
 	registry.RegisterConstructor(1976202226, "PhoneUpdateCall")
 	registry.RegisterConstructor(2215486159, "PhoneRateCall")
+	registry.RegisterConstructor(1324964467, "PhoneAckCall")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
 	registry.RegisterConstructor(3464876187, "PhoneInit")
 	registry.RegisterConstructor(4291892363, "IceServer")
@@ -527,6 +577,7 @@ func init() {
 	registry.RegisterConstructor(3634710697, "PhoneActionCallWaiting")
 	registry.RegisterConstructor(4285966731, "PhoneActionDiscarded")
 	registry.RegisterConstructor(1618781621, "PhoneActionIceExchange")
+	registry.RegisterConstructor(1221076803, "PhoneActionAck")
 	registry.RegisterConstructor(163140236, "PhoneMediaSettingsUpdated")
 	registry.RegisterConstructor(3821475130, "PhoneReactionSet")
 	registry.RegisterConstructor(2063600460, "PhoneSDPOffer")
@@ -610,6 +661,18 @@ func (x *PhoneRateCall) DeepCopy(z *PhoneRateCall) {
 	z.ReasonData = append(z.ReasonData[:0], x.ReasonData...)
 }
 
+func (x *PhoneAckCall) DeepCopy(z *PhoneAckCall) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallID = x.CallID
+	if x.User != nil {
+		z.User = PoolInputUser.Get()
+		x.User.DeepCopy(z.User)
+	}
+}
+
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {
 	z.ID = x.ID
 	z.Date = x.Date
@@ -689,6 +752,9 @@ func (x *PhoneActionIceExchange) DeepCopy(z *PhoneActionIceExchange) {
 	z.UsernameFragment = x.UsernameFragment
 }
 
+func (x *PhoneActionAck) DeepCopy(z *PhoneActionAck) {
+}
+
 func (x *PhoneMediaSettingsUpdated) DeepCopy(z *PhoneMediaSettingsUpdated) {
 	z.Video = x.Video
 	z.Audio = x.Audio
@@ -730,6 +796,10 @@ func (x *PhoneUpdateCall) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *PhoneRateCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneRateCall, x)
+}
+
+func (x *PhoneAckCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneAckCall, x)
 }
 
 func (x *PhoneCall) PushToContext(ctx *edge.RequestCtx) {
@@ -776,6 +846,10 @@ func (x *PhoneActionIceExchange) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionIceExchange, x)
 }
 
+func (x *PhoneActionAck) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionAck, x)
+}
+
 func (x *PhoneMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneMediaSettingsUpdated, x)
 }
@@ -813,6 +887,10 @@ func (x *PhoneUpdateCall) Marshal() ([]byte, error) {
 }
 
 func (x *PhoneRateCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneAckCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
@@ -860,6 +938,10 @@ func (x *PhoneActionIceExchange) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneActionAck) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *PhoneMediaSettingsUpdated) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -897,6 +979,10 @@ func (x *PhoneUpdateCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneRateCall) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneAckCall) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
@@ -941,6 +1027,10 @@ func (x *PhoneActionDiscarded) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneActionIceExchange) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneActionAck) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

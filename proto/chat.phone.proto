@@ -81,6 +81,15 @@ message PhoneRateCall {
     bytes ReasonData = 5;
 }
 
+// PhoneAckCall
+// @Function
+// @Return: Bool
+message PhoneAckCall {
+    InputPeer Peer = 1;
+    int64 CallID = 2 [jstype = JS_STRING];
+    InputUser User = 3;
+}
+
 enum PhoneCallRateReason {
     PhoneCallRateReasonEmpty = 0;
     PhoneCallRateReasonReserved1 = 1;
@@ -197,6 +206,10 @@ message PhoneActionIceExchange {
     int64 SdpMLineIndex = 2;
     string SdpMid = 3;
     string UsernameFragment = 4;
+}
+
+// PhoneActionAck
+message PhoneActionAck {
 }
 
 // PhoneMediaSettingsUpdated

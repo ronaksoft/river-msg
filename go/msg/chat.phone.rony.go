@@ -393,6 +393,7 @@ func (p *poolPhoneActionDiscarded) Put(x *PhoneActionDiscarded) {
 	x.Duration = 0
 	x.Video = false
 	x.Reason = 0
+	x.Terminate = false
 	p.pool.Put(x)
 }
 
@@ -701,6 +702,7 @@ func (x *PhoneActionDiscarded) DeepCopy(z *PhoneActionDiscarded) {
 	z.Duration = x.Duration
 	z.Video = x.Video
 	z.Reason = x.Reason
+	z.Terminate = x.Terminate
 }
 
 func (x *PhoneActionIceExchange) DeepCopy(z *PhoneActionIceExchange) {

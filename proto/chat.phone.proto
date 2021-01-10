@@ -189,6 +189,7 @@ message PhoneActionDiscarded {
     int32 Duration = 1;
     bool Video = 2;
     DiscardReason Reason = 3;
+    bool Terminate = 4;
 }
 
 // PhoneActionIceExchange

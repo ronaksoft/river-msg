@@ -1433,6 +1433,7 @@ func (p *poolUpdatePhoneCall) Put(x *UpdatePhoneCall) {
 	x.AccessHash = 0
 	x.Action = 0
 	x.ActionData = x.ActionData[:0]
+	x.Timestamp = 0
 	p.pool.Put(x)
 }
 
@@ -2159,6 +2160,7 @@ func (x *UpdatePhoneCall) DeepCopy(z *UpdatePhoneCall) {
 	z.AccessHash = x.AccessHash
 	z.Action = x.Action
 	z.ActionData = append(z.ActionData[:0], x.ActionData...)
+	z.Timestamp = x.Timestamp
 }
 
 func (x *UpdatePhoneCallStarted) DeepCopy(z *UpdatePhoneCallStarted) {

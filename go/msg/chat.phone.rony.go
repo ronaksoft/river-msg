@@ -459,6 +459,7 @@ func (p *poolPhoneActionKick) Get() *PhoneActionKick {
 
 func (p *poolPhoneActionKick) Put(x *PhoneActionKick) {
 	x.UserIDs = x.UserIDs[:0]
+	x.Timeout = false
 	p.pool.Put(x)
 }
 
@@ -739,6 +740,7 @@ func (x *PhoneActionAck) DeepCopy(z *PhoneActionAck) {
 
 func (x *PhoneActionKick) DeepCopy(z *PhoneActionKick) {
 	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+	z.Timeout = x.Timeout
 }
 
 func (x *PhoneMediaSettingsUpdated) DeepCopy(z *PhoneMediaSettingsUpdated) {

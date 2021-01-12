@@ -207,6 +207,7 @@ message PhoneActionAck {
 // PhoneActionKick
 message PhoneActionKick {
     repeated int64 UserIDs = 1 [jstype = JS_STRING];
+    bool Timeout = 2;
 }
 
 // PhoneMediaSettingsUpdated

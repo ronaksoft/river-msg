@@ -133,7 +133,6 @@ func (p *poolPhoneAddParticipant) Put(x *PhoneAddParticipant) {
 	}
 	x.CallID = 0
 	x.Participants = x.Participants[:0]
-	x.Timeout = false
 	p.pool.Put(x)
 }
 
@@ -160,6 +159,7 @@ func (p *poolPhoneRemoveParticipant) Put(x *PhoneRemoveParticipant) {
 	}
 	x.CallID = 0
 	x.Participants = x.Participants[:0]
+	x.Timeout = false
 	p.pool.Put(x)
 }
 
@@ -263,6 +263,27 @@ func (p *poolPhoneInit) Put(x *PhoneInit) {
 }
 
 var PoolPhoneInit = poolPhoneInit{}
+
+const C_PhoneParticipants int64 = 2567653219
+
+type poolPhoneParticipants struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneParticipants) Get() *PhoneParticipants {
+	x, ok := p.pool.Get().(*PhoneParticipants)
+	if !ok {
+		return &PhoneParticipants{}
+	}
+	return x
+}
+
+func (p *poolPhoneParticipants) Put(x *PhoneParticipants) {
+	x.Participants = x.Participants[:0]
+	p.pool.Put(x)
+}
+
+var PoolPhoneParticipants = poolPhoneParticipants{}
 
 const C_IceServer int64 = 4291892363
 
@@ -637,6 +658,7 @@ func init() {
 	registry.RegisterConstructor(2215486159, "PhoneRateCall")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
 	registry.RegisterConstructor(3464876187, "PhoneInit")
+	registry.RegisterConstructor(2567653219, "PhoneParticipants")
 	registry.RegisterConstructor(4291892363, "IceServer")
 	registry.RegisterConstructor(226273622, "PhoneParticipant")
 	registry.RegisterConstructor(545454774, "PhoneParticipantSDP")
@@ -717,7 +739,6 @@ func (x *PhoneAddParticipant) DeepCopy(z *PhoneAddParticipant) {
 			z.Participants = append(z.Participants, xx)
 		}
 	}
-	z.Timeout = x.Timeout
 }
 
 func (x *PhoneRemoveParticipant) DeepCopy(z *PhoneRemoveParticipant) {
@@ -733,6 +754,7 @@ func (x *PhoneRemoveParticipant) DeepCopy(z *PhoneRemoveParticipant) {
 			z.Participants = append(z.Participants, xx)
 		}
 	}
+	z.Timeout = x.Timeout
 }
 
 func (x *PhoneUpdateCall) DeepCopy(z *PhoneUpdateCall) {
@@ -774,6 +796,16 @@ func (x *PhoneInit) DeepCopy(z *PhoneInit) {
 			xx := PoolIceServer.Get()
 			x.IceServers[idx].DeepCopy(xx)
 			z.IceServers = append(z.IceServers, xx)
+		}
+	}
+}
+
+func (x *PhoneParticipants) DeepCopy(z *PhoneParticipants) {
+	for idx := range x.Participants {
+		if x.Participants[idx] != nil {
+			xx := PoolPhoneParticipant.Get()
+			x.Participants[idx].DeepCopy(xx)
+			z.Participants = append(z.Participants, xx)
 		}
 	}
 }
@@ -920,6 +952,10 @@ func (x *PhoneInit) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneInit, x)
 }
 
+func (x *PhoneParticipants) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneParticipants, x)
+}
+
 func (x *IceServer) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_IceServer, x)
 }
@@ -1024,6 +1060,10 @@ func (x *PhoneInit) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneParticipants) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *IceServer) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -1125,6 +1165,10 @@ func (x *PhoneCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneInit) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneParticipants) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

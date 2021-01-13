@@ -581,7 +581,7 @@ func (x *PhoneDiscardCall) GetReason() DiscardReason {
 
 // PhoneAddParticipant
 // @Function
-// @Return: Bool
+// @Return: PhoneParticipants
 type PhoneAddParticipant struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -590,7 +590,6 @@ type PhoneAddParticipant struct {
 	Peer         *InputPeer   `protobuf:"bytes,1,opt,name=Peer,proto3" json:"Peer,omitempty"`
 	CallID       int64        `protobuf:"varint,2,opt,name=CallID,proto3" json:"CallID,omitempty"`
 	Participants []*InputUser `protobuf:"bytes,3,rep,name=Participants,proto3" json:"Participants,omitempty"`
-	Timeout      bool         `protobuf:"varint,4,opt,name=Timeout,proto3" json:"Timeout,omitempty"`
 }
 
 func (x *PhoneAddParticipant) Reset() {
@@ -646,13 +645,6 @@ func (x *PhoneAddParticipant) GetParticipants() []*InputUser {
 	return nil
 }
 
-func (x *PhoneAddParticipant) GetTimeout() bool {
-	if x != nil {
-		return x.Timeout
-	}
-	return false
-}
-
 // PhoneRemoveParticipant
 // @Function
 // @Return: Bool
@@ -664,6 +656,7 @@ type PhoneRemoveParticipant struct {
 	Peer         *InputPeer   `protobuf:"bytes,1,opt,name=Peer,proto3" json:"Peer,omitempty"`
 	CallID       int64        `protobuf:"varint,2,opt,name=CallID,proto3" json:"CallID,omitempty"`
 	Participants []*InputUser `protobuf:"bytes,3,rep,name=Participants,proto3" json:"Participants,omitempty"`
+	Timeout      bool         `protobuf:"varint,4,opt,name=Timeout,proto3" json:"Timeout,omitempty"`
 }
 
 func (x *PhoneRemoveParticipant) Reset() {
@@ -717,6 +710,13 @@ func (x *PhoneRemoveParticipant) GetParticipants() []*InputUser {
 		return x.Participants
 	}
 	return nil
+}
+
+func (x *PhoneRemoveParticipant) GetTimeout() bool {
+	if x != nil {
+		return x.Timeout
+	}
+	return false
 }
 
 // PhoneUpdateCall
@@ -987,6 +987,54 @@ func (x *PhoneInit) GetIceServers() []*IceServer {
 	return nil
 }
 
+// PhoneParticipants
+type PhoneParticipants struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Participants []*PhoneParticipant `protobuf:"bytes,1,rep,name=Participants,proto3" json:"Participants,omitempty"`
+}
+
+func (x *PhoneParticipants) Reset() {
+	*x = PhoneParticipants{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chat_phone_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PhoneParticipants) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhoneParticipants) ProtoMessage() {}
+
+func (x *PhoneParticipants) ProtoReflect() protoreflect.Message {
+	mi := &file_chat_phone_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhoneParticipants.ProtoReflect.Descriptor instead.
+func (*PhoneParticipants) Descriptor() ([]byte, []int) {
+	return file_chat_phone_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *PhoneParticipants) GetParticipants() []*PhoneParticipant {
+	if x != nil {
+		return x.Participants
+	}
+	return nil
+}
+
 // IceServer
 type IceServer struct {
 	state         protoimpl.MessageState
@@ -1001,7 +1049,7 @@ type IceServer struct {
 func (x *IceServer) Reset() {
 	*x = IceServer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[10]
+		mi := &file_chat_phone_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1014,7 +1062,7 @@ func (x *IceServer) String() string {
 func (*IceServer) ProtoMessage() {}
 
 func (x *IceServer) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[10]
+	mi := &file_chat_phone_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1027,7 +1075,7 @@ func (x *IceServer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IceServer.ProtoReflect.Descriptor instead.
 func (*IceServer) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{10}
+	return file_chat_phone_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *IceServer) GetUrls() []string {
@@ -1066,7 +1114,7 @@ type PhoneParticipant struct {
 func (x *PhoneParticipant) Reset() {
 	*x = PhoneParticipant{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[11]
+		mi := &file_chat_phone_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1079,7 +1127,7 @@ func (x *PhoneParticipant) String() string {
 func (*PhoneParticipant) ProtoMessage() {}
 
 func (x *PhoneParticipant) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[11]
+	mi := &file_chat_phone_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1092,7 +1140,7 @@ func (x *PhoneParticipant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneParticipant.ProtoReflect.Descriptor instead.
 func (*PhoneParticipant) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{11}
+	return file_chat_phone_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PhoneParticipant) GetConnectionId() int32 {
@@ -1138,7 +1186,7 @@ type PhoneParticipantSDP struct {
 func (x *PhoneParticipantSDP) Reset() {
 	*x = PhoneParticipantSDP{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[12]
+		mi := &file_chat_phone_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1151,7 +1199,7 @@ func (x *PhoneParticipantSDP) String() string {
 func (*PhoneParticipantSDP) ProtoMessage() {}
 
 func (x *PhoneParticipantSDP) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[12]
+	mi := &file_chat_phone_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1164,7 +1212,7 @@ func (x *PhoneParticipantSDP) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneParticipantSDP.ProtoReflect.Descriptor instead.
 func (*PhoneParticipantSDP) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{12}
+	return file_chat_phone_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PhoneParticipantSDP) GetConnectionId() int32 {
@@ -1207,7 +1255,7 @@ type PhoneActionCallEmpty struct {
 func (x *PhoneActionCallEmpty) Reset() {
 	*x = PhoneActionCallEmpty{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[13]
+		mi := &file_chat_phone_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1220,7 +1268,7 @@ func (x *PhoneActionCallEmpty) String() string {
 func (*PhoneActionCallEmpty) ProtoMessage() {}
 
 func (x *PhoneActionCallEmpty) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[13]
+	mi := &file_chat_phone_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1233,7 +1281,7 @@ func (x *PhoneActionCallEmpty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionCallEmpty.ProtoReflect.Descriptor instead.
 func (*PhoneActionCallEmpty) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{13}
+	return file_chat_phone_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *PhoneActionCallEmpty) GetEmpty() bool {
@@ -1256,7 +1304,7 @@ type PhoneActionAccepted struct {
 func (x *PhoneActionAccepted) Reset() {
 	*x = PhoneActionAccepted{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[14]
+		mi := &file_chat_phone_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1269,7 +1317,7 @@ func (x *PhoneActionAccepted) String() string {
 func (*PhoneActionAccepted) ProtoMessage() {}
 
 func (x *PhoneActionAccepted) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[14]
+	mi := &file_chat_phone_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1282,7 +1330,7 @@ func (x *PhoneActionAccepted) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionAccepted.ProtoReflect.Descriptor instead.
 func (*PhoneActionAccepted) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{14}
+	return file_chat_phone_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *PhoneActionAccepted) GetSDP() string {
@@ -1313,7 +1361,7 @@ type PhoneActionRequested struct {
 func (x *PhoneActionRequested) Reset() {
 	*x = PhoneActionRequested{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[15]
+		mi := &file_chat_phone_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1326,7 +1374,7 @@ func (x *PhoneActionRequested) String() string {
 func (*PhoneActionRequested) ProtoMessage() {}
 
 func (x *PhoneActionRequested) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[15]
+	mi := &file_chat_phone_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1339,7 +1387,7 @@ func (x *PhoneActionRequested) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionRequested.ProtoReflect.Descriptor instead.
 func (*PhoneActionRequested) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{15}
+	return file_chat_phone_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *PhoneActionRequested) GetSDP() string {
@@ -1375,7 +1423,7 @@ type PhoneActionCallWaiting struct {
 func (x *PhoneActionCallWaiting) Reset() {
 	*x = PhoneActionCallWaiting{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[16]
+		mi := &file_chat_phone_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1388,7 +1436,7 @@ func (x *PhoneActionCallWaiting) String() string {
 func (*PhoneActionCallWaiting) ProtoMessage() {}
 
 func (x *PhoneActionCallWaiting) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[16]
+	mi := &file_chat_phone_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1401,7 +1449,7 @@ func (x *PhoneActionCallWaiting) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionCallWaiting.ProtoReflect.Descriptor instead.
 func (*PhoneActionCallWaiting) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{16}
+	return file_chat_phone_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *PhoneActionCallWaiting) GetEmpty() bool {
@@ -1426,7 +1474,7 @@ type PhoneActionDiscarded struct {
 func (x *PhoneActionDiscarded) Reset() {
 	*x = PhoneActionDiscarded{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[17]
+		mi := &file_chat_phone_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1439,7 +1487,7 @@ func (x *PhoneActionDiscarded) String() string {
 func (*PhoneActionDiscarded) ProtoMessage() {}
 
 func (x *PhoneActionDiscarded) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[17]
+	mi := &file_chat_phone_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1452,7 +1500,7 @@ func (x *PhoneActionDiscarded) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionDiscarded.ProtoReflect.Descriptor instead.
 func (*PhoneActionDiscarded) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{17}
+	return file_chat_phone_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *PhoneActionDiscarded) GetDuration() int32 {
@@ -1498,7 +1546,7 @@ type PhoneActionIceExchange struct {
 func (x *PhoneActionIceExchange) Reset() {
 	*x = PhoneActionIceExchange{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[18]
+		mi := &file_chat_phone_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1511,7 +1559,7 @@ func (x *PhoneActionIceExchange) String() string {
 func (*PhoneActionIceExchange) ProtoMessage() {}
 
 func (x *PhoneActionIceExchange) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[18]
+	mi := &file_chat_phone_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1524,7 +1572,7 @@ func (x *PhoneActionIceExchange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionIceExchange.ProtoReflect.Descriptor instead.
 func (*PhoneActionIceExchange) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{18}
+	return file_chat_phone_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *PhoneActionIceExchange) GetCandidate() string {
@@ -1565,7 +1613,7 @@ type PhoneActionAck struct {
 func (x *PhoneActionAck) Reset() {
 	*x = PhoneActionAck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[19]
+		mi := &file_chat_phone_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1578,7 +1626,7 @@ func (x *PhoneActionAck) String() string {
 func (*PhoneActionAck) ProtoMessage() {}
 
 func (x *PhoneActionAck) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[19]
+	mi := &file_chat_phone_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1591,7 +1639,7 @@ func (x *PhoneActionAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionAck.ProtoReflect.Descriptor instead.
 func (*PhoneActionAck) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{19}
+	return file_chat_phone_proto_rawDescGZIP(), []int{20}
 }
 
 // PhoneActionParticipantAdded
@@ -1606,7 +1654,7 @@ type PhoneActionParticipantAdded struct {
 func (x *PhoneActionParticipantAdded) Reset() {
 	*x = PhoneActionParticipantAdded{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[20]
+		mi := &file_chat_phone_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1619,7 +1667,7 @@ func (x *PhoneActionParticipantAdded) String() string {
 func (*PhoneActionParticipantAdded) ProtoMessage() {}
 
 func (x *PhoneActionParticipantAdded) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[20]
+	mi := &file_chat_phone_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1632,7 +1680,7 @@ func (x *PhoneActionParticipantAdded) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionParticipantAdded.ProtoReflect.Descriptor instead.
 func (*PhoneActionParticipantAdded) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{20}
+	return file_chat_phone_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *PhoneActionParticipantAdded) GetParticipants() []*PhoneParticipant {
@@ -1655,7 +1703,7 @@ type PhoneActionParticipantRemoved struct {
 func (x *PhoneActionParticipantRemoved) Reset() {
 	*x = PhoneActionParticipantRemoved{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[21]
+		mi := &file_chat_phone_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1668,7 +1716,7 @@ func (x *PhoneActionParticipantRemoved) String() string {
 func (*PhoneActionParticipantRemoved) ProtoMessage() {}
 
 func (x *PhoneActionParticipantRemoved) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[21]
+	mi := &file_chat_phone_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1681,7 +1729,7 @@ func (x *PhoneActionParticipantRemoved) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionParticipantRemoved.ProtoReflect.Descriptor instead.
 func (*PhoneActionParticipantRemoved) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{21}
+	return file_chat_phone_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *PhoneActionParticipantRemoved) GetUserIDs() []int64 {
@@ -1711,7 +1759,7 @@ type PhoneActionMediaSettingsUpdated struct {
 func (x *PhoneActionMediaSettingsUpdated) Reset() {
 	*x = PhoneActionMediaSettingsUpdated{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[22]
+		mi := &file_chat_phone_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1724,7 +1772,7 @@ func (x *PhoneActionMediaSettingsUpdated) String() string {
 func (*PhoneActionMediaSettingsUpdated) ProtoMessage() {}
 
 func (x *PhoneActionMediaSettingsUpdated) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[22]
+	mi := &file_chat_phone_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1737,7 +1785,7 @@ func (x *PhoneActionMediaSettingsUpdated) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionMediaSettingsUpdated.ProtoReflect.Descriptor instead.
 func (*PhoneActionMediaSettingsUpdated) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{22}
+	return file_chat_phone_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *PhoneActionMediaSettingsUpdated) GetVideo() bool {
@@ -1766,7 +1814,7 @@ type PhoneActionReactionSet struct {
 func (x *PhoneActionReactionSet) Reset() {
 	*x = PhoneActionReactionSet{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[23]
+		mi := &file_chat_phone_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1779,7 +1827,7 @@ func (x *PhoneActionReactionSet) String() string {
 func (*PhoneActionReactionSet) ProtoMessage() {}
 
 func (x *PhoneActionReactionSet) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[23]
+	mi := &file_chat_phone_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1792,7 +1840,7 @@ func (x *PhoneActionReactionSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionReactionSet.ProtoReflect.Descriptor instead.
 func (*PhoneActionReactionSet) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{23}
+	return file_chat_phone_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *PhoneActionReactionSet) GetReaction() string {
@@ -1815,7 +1863,7 @@ type PhoneActionSDPOffer struct {
 func (x *PhoneActionSDPOffer) Reset() {
 	*x = PhoneActionSDPOffer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[24]
+		mi := &file_chat_phone_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1828,7 +1876,7 @@ func (x *PhoneActionSDPOffer) String() string {
 func (*PhoneActionSDPOffer) ProtoMessage() {}
 
 func (x *PhoneActionSDPOffer) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[24]
+	mi := &file_chat_phone_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1841,7 +1889,7 @@ func (x *PhoneActionSDPOffer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionSDPOffer.ProtoReflect.Descriptor instead.
 func (*PhoneActionSDPOffer) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{24}
+	return file_chat_phone_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *PhoneActionSDPOffer) GetSDP() string {
@@ -1871,7 +1919,7 @@ type PhoneActionSDPAnswer struct {
 func (x *PhoneActionSDPAnswer) Reset() {
 	*x = PhoneActionSDPAnswer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chat_phone_proto_msgTypes[25]
+		mi := &file_chat_phone_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1884,7 +1932,7 @@ func (x *PhoneActionSDPAnswer) String() string {
 func (*PhoneActionSDPAnswer) ProtoMessage() {}
 
 func (x *PhoneActionSDPAnswer) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_phone_proto_msgTypes[25]
+	mi := &file_chat_phone_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1897,7 +1945,7 @@ func (x *PhoneActionSDPAnswer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhoneActionSDPAnswer.ProtoReflect.Descriptor instead.
 func (*PhoneActionSDPAnswer) Descriptor() ([]byte, []int) {
-	return file_chat_phone_proto_rawDescGZIP(), []int{25}
+	return file_chat_phone_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *PhoneActionSDPAnswer) GetSDP() string {
@@ -1954,7 +2002,7 @@ var file_chat_phone_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2a,
 	0x0a, 0x06, 0x52, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x12,
 	0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x44, 0x69, 0x73, 0x63, 0x61, 0x72, 0x64, 0x52, 0x65, 0x61, 0x73,
-	0x6f, 0x6e, 0x52, 0x06, 0x52, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x22, 0xa3, 0x01, 0x0a, 0x13, 0x50,
+	0x6f, 0x6e, 0x52, 0x06, 0x52, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x22, 0x89, 0x01, 0x0a, 0x13, 0x50,
 	0x68, 0x6f, 0x6e, 0x65, 0x41, 0x64, 0x64, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61,
 	0x6e, 0x74, 0x12, 0x22, 0x0a, 0x04, 0x50, 0x65, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65, 0x72,
@@ -1963,17 +2011,17 @@ var file_chat_phone_proto_rawDesc = []byte{
 	0x49, 0x44, 0x12, 0x32, 0x0a, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e,
 	0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49,
 	0x6e, 0x70, 0x75, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63,
-	0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x54, 0x69, 0x6d, 0x65, 0x6f, 0x75,
-	0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x54, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74,
-	0x22, 0x8c, 0x01, 0x0a, 0x16, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65,
-	0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74, 0x12, 0x22, 0x0a, 0x04, 0x50,
-	0x65, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e,
-	0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65, 0x72, 0x52, 0x04, 0x50, 0x65, 0x65, 0x72, 0x12,
-	0x1a, 0x0a, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49, 0x44, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x42,
-	0x02, 0x30, 0x01, 0x52, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49, 0x44, 0x12, 0x32, 0x0a, 0x0c, 0x50,
-	0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x55, 0x73, 0x65,
-	0x72, 0x52, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x22,
+	0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x22, 0xa6, 0x01, 0x0a, 0x16, 0x50, 0x68, 0x6f, 0x6e, 0x65,
+	0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e,
+	0x74, 0x12, 0x22, 0x0a, 0x04, 0x50, 0x65, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65, 0x72, 0x52,
+	0x04, 0x50, 0x65, 0x65, 0x72, 0x12, 0x1a, 0x0a, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49, 0x44, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x42, 0x02, 0x30, 0x01, 0x52, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49,
+	0x44, 0x12, 0x32, 0x0a, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74,
+	0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e,
+	0x70, 0x75, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69,
+	0x70, 0x61, 0x6e, 0x74, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x54, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x54, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74, 0x22,
 	0xd3, 0x01, 0x0a, 0x0f, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43,
 	0x61, 0x6c, 0x6c, 0x12, 0x22, 0x0a, 0x04, 0x50, 0x65, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65,
@@ -2007,6 +2055,11 @@ var file_chat_phone_proto_rawDesc = []byte{
 	0x74, 0x12, 0x2e, 0x0a, 0x0a, 0x49, 0x63, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x18,
 	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x63, 0x65, 0x53,
 	0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x0a, 0x49, 0x63, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72,
+	0x73, 0x22, 0x4e, 0x0a, 0x11, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63,
+	0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x12, 0x39, 0x0a, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63,
+	0x69, 0x70, 0x61, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x6d,
+	0x73, 0x67, 0x2e, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70,
+	0x61, 0x6e, 0x74, 0x52, 0x0c, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74,
 	0x73, 0x22, 0x5b, 0x0a, 0x09, 0x49, 0x63, 0x65, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x12,
 	0x0a, 0x04, 0x55, 0x72, 0x6c, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04, 0x55, 0x72,
 	0x6c, 0x73, 0x12, 0x1a, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02,
@@ -2212,7 +2265,7 @@ func file_chat_phone_proto_rawDescGZIP() []byte {
 }
 
 var file_chat_phone_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_chat_phone_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_chat_phone_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_chat_phone_proto_goTypes = []interface{}{
 	(DiscardReason)(0),                      // 0: msg.DiscardReason
 	(PhoneCallRateReason)(0),                // 1: msg.PhoneCallRateReason
@@ -2227,53 +2280,55 @@ var file_chat_phone_proto_goTypes = []interface{}{
 	(*PhoneRateCall)(nil),                   // 10: msg.PhoneRateCall
 	(*PhoneCall)(nil),                       // 11: msg.PhoneCall
 	(*PhoneInit)(nil),                       // 12: msg.PhoneInit
-	(*IceServer)(nil),                       // 13: msg.IceServer
-	(*PhoneParticipant)(nil),                // 14: msg.PhoneParticipant
-	(*PhoneParticipantSDP)(nil),             // 15: msg.PhoneParticipantSDP
-	(*PhoneActionCallEmpty)(nil),            // 16: msg.PhoneActionCallEmpty
-	(*PhoneActionAccepted)(nil),             // 17: msg.PhoneActionAccepted
-	(*PhoneActionRequested)(nil),            // 18: msg.PhoneActionRequested
-	(*PhoneActionCallWaiting)(nil),          // 19: msg.PhoneActionCallWaiting
-	(*PhoneActionDiscarded)(nil),            // 20: msg.PhoneActionDiscarded
-	(*PhoneActionIceExchange)(nil),          // 21: msg.PhoneActionIceExchange
-	(*PhoneActionAck)(nil),                  // 22: msg.PhoneActionAck
-	(*PhoneActionParticipantAdded)(nil),     // 23: msg.PhoneActionParticipantAdded
-	(*PhoneActionParticipantRemoved)(nil),   // 24: msg.PhoneActionParticipantRemoved
-	(*PhoneActionMediaSettingsUpdated)(nil), // 25: msg.PhoneActionMediaSettingsUpdated
-	(*PhoneActionReactionSet)(nil),          // 26: msg.PhoneActionReactionSet
-	(*PhoneActionSDPOffer)(nil),             // 27: msg.PhoneActionSDPOffer
-	(*PhoneActionSDPAnswer)(nil),            // 28: msg.PhoneActionSDPAnswer
-	(*InputPeer)(nil),                       // 29: msg.InputPeer
-	(*InputUser)(nil),                       // 30: msg.InputUser
+	(*PhoneParticipants)(nil),               // 13: msg.PhoneParticipants
+	(*IceServer)(nil),                       // 14: msg.IceServer
+	(*PhoneParticipant)(nil),                // 15: msg.PhoneParticipant
+	(*PhoneParticipantSDP)(nil),             // 16: msg.PhoneParticipantSDP
+	(*PhoneActionCallEmpty)(nil),            // 17: msg.PhoneActionCallEmpty
+	(*PhoneActionAccepted)(nil),             // 18: msg.PhoneActionAccepted
+	(*PhoneActionRequested)(nil),            // 19: msg.PhoneActionRequested
+	(*PhoneActionCallWaiting)(nil),          // 20: msg.PhoneActionCallWaiting
+	(*PhoneActionDiscarded)(nil),            // 21: msg.PhoneActionDiscarded
+	(*PhoneActionIceExchange)(nil),          // 22: msg.PhoneActionIceExchange
+	(*PhoneActionAck)(nil),                  // 23: msg.PhoneActionAck
+	(*PhoneActionParticipantAdded)(nil),     // 24: msg.PhoneActionParticipantAdded
+	(*PhoneActionParticipantRemoved)(nil),   // 25: msg.PhoneActionParticipantRemoved
+	(*PhoneActionMediaSettingsUpdated)(nil), // 26: msg.PhoneActionMediaSettingsUpdated
+	(*PhoneActionReactionSet)(nil),          // 27: msg.PhoneActionReactionSet
+	(*PhoneActionSDPOffer)(nil),             // 28: msg.PhoneActionSDPOffer
+	(*PhoneActionSDPAnswer)(nil),            // 29: msg.PhoneActionSDPAnswer
+	(*InputPeer)(nil),                       // 30: msg.InputPeer
+	(*InputUser)(nil),                       // 31: msg.InputUser
 }
 var file_chat_phone_proto_depIdxs = []int32{
-	29, // 0: msg.PhoneInitCall.Peer:type_name -> msg.InputPeer
-	29, // 1: msg.PhoneRequestCall.Peer:type_name -> msg.InputPeer
-	15, // 2: msg.PhoneRequestCall.Participants:type_name -> msg.PhoneParticipantSDP
-	29, // 3: msg.PhoneAcceptCall.Peer:type_name -> msg.InputPeer
-	15, // 4: msg.PhoneAcceptCall.Participants:type_name -> msg.PhoneParticipantSDP
-	29, // 5: msg.PhoneDiscardCall.Peer:type_name -> msg.InputPeer
+	30, // 0: msg.PhoneInitCall.Peer:type_name -> msg.InputPeer
+	30, // 1: msg.PhoneRequestCall.Peer:type_name -> msg.InputPeer
+	16, // 2: msg.PhoneRequestCall.Participants:type_name -> msg.PhoneParticipantSDP
+	30, // 3: msg.PhoneAcceptCall.Peer:type_name -> msg.InputPeer
+	16, // 4: msg.PhoneAcceptCall.Participants:type_name -> msg.PhoneParticipantSDP
+	30, // 5: msg.PhoneDiscardCall.Peer:type_name -> msg.InputPeer
 	0,  // 6: msg.PhoneDiscardCall.Reason:type_name -> msg.DiscardReason
-	29, // 7: msg.PhoneAddParticipant.Peer:type_name -> msg.InputPeer
-	30, // 8: msg.PhoneAddParticipant.Participants:type_name -> msg.InputUser
-	29, // 9: msg.PhoneRemoveParticipant.Peer:type_name -> msg.InputPeer
-	30, // 10: msg.PhoneRemoveParticipant.Participants:type_name -> msg.InputUser
-	29, // 11: msg.PhoneUpdateCall.Peer:type_name -> msg.InputPeer
-	30, // 12: msg.PhoneUpdateCall.Participants:type_name -> msg.InputUser
+	30, // 7: msg.PhoneAddParticipant.Peer:type_name -> msg.InputPeer
+	31, // 8: msg.PhoneAddParticipant.Participants:type_name -> msg.InputUser
+	30, // 9: msg.PhoneRemoveParticipant.Peer:type_name -> msg.InputPeer
+	31, // 10: msg.PhoneRemoveParticipant.Participants:type_name -> msg.InputUser
+	30, // 11: msg.PhoneUpdateCall.Peer:type_name -> msg.InputPeer
+	31, // 12: msg.PhoneUpdateCall.Participants:type_name -> msg.InputUser
 	2,  // 13: msg.PhoneUpdateCall.Action:type_name -> msg.PhoneCallAction
-	29, // 14: msg.PhoneRateCall.Peer:type_name -> msg.InputPeer
+	30, // 14: msg.PhoneRateCall.Peer:type_name -> msg.InputPeer
 	1,  // 15: msg.PhoneRateCall.ReasonType:type_name -> msg.PhoneCallRateReason
-	13, // 16: msg.PhoneInit.IceServers:type_name -> msg.IceServer
-	30, // 17: msg.PhoneParticipant.Peer:type_name -> msg.InputUser
-	30, // 18: msg.PhoneParticipantSDP.Peer:type_name -> msg.InputUser
-	14, // 19: msg.PhoneActionRequested.Participants:type_name -> msg.PhoneParticipant
-	0,  // 20: msg.PhoneActionDiscarded.Reason:type_name -> msg.DiscardReason
-	14, // 21: msg.PhoneActionParticipantAdded.Participants:type_name -> msg.PhoneParticipant
-	22, // [22:22] is the sub-list for method output_type
-	22, // [22:22] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	14, // 16: msg.PhoneInit.IceServers:type_name -> msg.IceServer
+	15, // 17: msg.PhoneParticipants.Participants:type_name -> msg.PhoneParticipant
+	31, // 18: msg.PhoneParticipant.Peer:type_name -> msg.InputUser
+	31, // 19: msg.PhoneParticipantSDP.Peer:type_name -> msg.InputUser
+	15, // 20: msg.PhoneActionRequested.Participants:type_name -> msg.PhoneParticipant
+	0,  // 21: msg.PhoneActionDiscarded.Reason:type_name -> msg.DiscardReason
+	15, // 22: msg.PhoneActionParticipantAdded.Participants:type_name -> msg.PhoneParticipant
+	23, // [23:23] is the sub-list for method output_type
+	23, // [23:23] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
 func init() { file_chat_phone_proto_init() }
@@ -2404,7 +2459,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IceServer); i {
+			switch v := v.(*PhoneParticipants); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2416,7 +2471,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneParticipant); i {
+			switch v := v.(*IceServer); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2428,7 +2483,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneParticipantSDP); i {
+			switch v := v.(*PhoneParticipant); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2440,7 +2495,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionCallEmpty); i {
+			switch v := v.(*PhoneParticipantSDP); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2452,7 +2507,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionAccepted); i {
+			switch v := v.(*PhoneActionCallEmpty); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2464,7 +2519,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionRequested); i {
+			switch v := v.(*PhoneActionAccepted); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2476,7 +2531,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionCallWaiting); i {
+			switch v := v.(*PhoneActionRequested); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2488,7 +2543,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionDiscarded); i {
+			switch v := v.(*PhoneActionCallWaiting); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2500,7 +2555,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionIceExchange); i {
+			switch v := v.(*PhoneActionDiscarded); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2512,7 +2567,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionAck); i {
+			switch v := v.(*PhoneActionIceExchange); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2524,7 +2579,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionParticipantAdded); i {
+			switch v := v.(*PhoneActionAck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2536,7 +2591,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionParticipantRemoved); i {
+			switch v := v.(*PhoneActionParticipantAdded); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2548,7 +2603,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionMediaSettingsUpdated); i {
+			switch v := v.(*PhoneActionParticipantRemoved); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2560,7 +2615,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionReactionSet); i {
+			switch v := v.(*PhoneActionMediaSettingsUpdated); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2572,7 +2627,7 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhoneActionSDPOffer); i {
+			switch v := v.(*PhoneActionReactionSet); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2584,6 +2639,18 @@ func file_chat_phone_proto_init() {
 			}
 		}
 		file_chat_phone_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PhoneActionSDPOffer); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chat_phone_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PhoneActionSDPAnswer); i {
 			case 0:
 				return &v.state
@@ -2602,7 +2669,7 @@ func file_chat_phone_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chat_phone_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   26,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -112,6 +112,59 @@ func (p *poolPhoneDiscardCall) Put(x *PhoneDiscardCall) {
 
 var PoolPhoneDiscardCall = poolPhoneDiscardCall{}
 
+const C_PhoneAddParticipant int64 = 2867411100
+
+type poolPhoneAddParticipant struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneAddParticipant) Get() *PhoneAddParticipant {
+	x, ok := p.pool.Get().(*PhoneAddParticipant)
+	if !ok {
+		return &PhoneAddParticipant{}
+	}
+	return x
+}
+
+func (p *poolPhoneAddParticipant) Put(x *PhoneAddParticipant) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallID = 0
+	x.Participants = x.Participants[:0]
+	x.Timeout = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneAddParticipant = poolPhoneAddParticipant{}
+
+const C_PhoneRemoveParticipant int64 = 188662172
+
+type poolPhoneRemoveParticipant struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneRemoveParticipant) Get() *PhoneRemoveParticipant {
+	x, ok := p.pool.Get().(*PhoneRemoveParticipant)
+	if !ok {
+		return &PhoneRemoveParticipant{}
+	}
+	return x
+}
+
+func (p *poolPhoneRemoveParticipant) Put(x *PhoneRemoveParticipant) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallID = 0
+	x.Participants = x.Participants[:0]
+	p.pool.Put(x)
+}
+
+var PoolPhoneRemoveParticipant = poolPhoneRemoveParticipant{}
+
 const C_PhoneUpdateCall int64 = 1976202226
 
 type poolPhoneUpdateCall struct {
@@ -184,7 +237,7 @@ func (p *poolPhoneCall) Get() *PhoneCall {
 
 func (p *poolPhoneCall) Put(x *PhoneCall) {
 	x.ID = 0
-	x.Date = 0
+	x.CreatedOn = 0
 	p.pool.Put(x)
 }
 
@@ -443,120 +496,143 @@ func (p *poolPhoneActionAck) Put(x *PhoneActionAck) {
 
 var PoolPhoneActionAck = poolPhoneActionAck{}
 
-const C_PhoneActionKick int64 = 1292656874
+const C_PhoneActionParticipantAdded int64 = 2638615078
 
-type poolPhoneActionKick struct {
+type poolPhoneActionParticipantAdded struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneActionKick) Get() *PhoneActionKick {
-	x, ok := p.pool.Get().(*PhoneActionKick)
+func (p *poolPhoneActionParticipantAdded) Get() *PhoneActionParticipantAdded {
+	x, ok := p.pool.Get().(*PhoneActionParticipantAdded)
 	if !ok {
-		return &PhoneActionKick{}
+		return &PhoneActionParticipantAdded{}
 	}
 	return x
 }
 
-func (p *poolPhoneActionKick) Put(x *PhoneActionKick) {
+func (p *poolPhoneActionParticipantAdded) Put(x *PhoneActionParticipantAdded) {
+	x.Participants = x.Participants[:0]
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionParticipantAdded = poolPhoneActionParticipantAdded{}
+
+const C_PhoneActionParticipantRemoved int64 = 3280922507
+
+type poolPhoneActionParticipantRemoved struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionParticipantRemoved) Get() *PhoneActionParticipantRemoved {
+	x, ok := p.pool.Get().(*PhoneActionParticipantRemoved)
+	if !ok {
+		return &PhoneActionParticipantRemoved{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionParticipantRemoved) Put(x *PhoneActionParticipantRemoved) {
 	x.UserIDs = x.UserIDs[:0]
 	x.Timeout = false
 	p.pool.Put(x)
 }
 
-var PoolPhoneActionKick = poolPhoneActionKick{}
+var PoolPhoneActionParticipantRemoved = poolPhoneActionParticipantRemoved{}
 
-const C_PhoneMediaSettingsUpdated int64 = 163140236
+const C_PhoneActionMediaSettingsUpdated int64 = 2310335221
 
-type poolPhoneMediaSettingsUpdated struct {
+type poolPhoneActionMediaSettingsUpdated struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneMediaSettingsUpdated) Get() *PhoneMediaSettingsUpdated {
-	x, ok := p.pool.Get().(*PhoneMediaSettingsUpdated)
+func (p *poolPhoneActionMediaSettingsUpdated) Get() *PhoneActionMediaSettingsUpdated {
+	x, ok := p.pool.Get().(*PhoneActionMediaSettingsUpdated)
 	if !ok {
-		return &PhoneMediaSettingsUpdated{}
+		return &PhoneActionMediaSettingsUpdated{}
 	}
 	return x
 }
 
-func (p *poolPhoneMediaSettingsUpdated) Put(x *PhoneMediaSettingsUpdated) {
+func (p *poolPhoneActionMediaSettingsUpdated) Put(x *PhoneActionMediaSettingsUpdated) {
 	x.Video = false
 	x.Audio = false
 	p.pool.Put(x)
 }
 
-var PoolPhoneMediaSettingsUpdated = poolPhoneMediaSettingsUpdated{}
+var PoolPhoneActionMediaSettingsUpdated = poolPhoneActionMediaSettingsUpdated{}
 
-const C_PhoneReactionSet int64 = 3821475130
+const C_PhoneActionReactionSet int64 = 2047679815
 
-type poolPhoneReactionSet struct {
+type poolPhoneActionReactionSet struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneReactionSet) Get() *PhoneReactionSet {
-	x, ok := p.pool.Get().(*PhoneReactionSet)
+func (p *poolPhoneActionReactionSet) Get() *PhoneActionReactionSet {
+	x, ok := p.pool.Get().(*PhoneActionReactionSet)
 	if !ok {
-		return &PhoneReactionSet{}
+		return &PhoneActionReactionSet{}
 	}
 	return x
 }
 
-func (p *poolPhoneReactionSet) Put(x *PhoneReactionSet) {
+func (p *poolPhoneActionReactionSet) Put(x *PhoneActionReactionSet) {
 	x.Reaction = ""
 	p.pool.Put(x)
 }
 
-var PoolPhoneReactionSet = poolPhoneReactionSet{}
+var PoolPhoneActionReactionSet = poolPhoneActionReactionSet{}
 
-const C_PhoneSDPOffer int64 = 2063600460
+const C_PhoneActionSDPOffer int64 = 931453435
 
-type poolPhoneSDPOffer struct {
+type poolPhoneActionSDPOffer struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneSDPOffer) Get() *PhoneSDPOffer {
-	x, ok := p.pool.Get().(*PhoneSDPOffer)
+func (p *poolPhoneActionSDPOffer) Get() *PhoneActionSDPOffer {
+	x, ok := p.pool.Get().(*PhoneActionSDPOffer)
 	if !ok {
-		return &PhoneSDPOffer{}
+		return &PhoneActionSDPOffer{}
 	}
 	return x
 }
 
-func (p *poolPhoneSDPOffer) Put(x *PhoneSDPOffer) {
+func (p *poolPhoneActionSDPOffer) Put(x *PhoneActionSDPOffer) {
 	x.SDP = ""
 	x.Type = ""
 	p.pool.Put(x)
 }
 
-var PoolPhoneSDPOffer = poolPhoneSDPOffer{}
+var PoolPhoneActionSDPOffer = poolPhoneActionSDPOffer{}
 
-const C_PhoneSDPAnswer int64 = 1686408377
+const C_PhoneActionSDPAnswer int64 = 835530308
 
-type poolPhoneSDPAnswer struct {
+type poolPhoneActionSDPAnswer struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneSDPAnswer) Get() *PhoneSDPAnswer {
-	x, ok := p.pool.Get().(*PhoneSDPAnswer)
+func (p *poolPhoneActionSDPAnswer) Get() *PhoneActionSDPAnswer {
+	x, ok := p.pool.Get().(*PhoneActionSDPAnswer)
 	if !ok {
-		return &PhoneSDPAnswer{}
+		return &PhoneActionSDPAnswer{}
 	}
 	return x
 }
 
-func (p *poolPhoneSDPAnswer) Put(x *PhoneSDPAnswer) {
+func (p *poolPhoneActionSDPAnswer) Put(x *PhoneActionSDPAnswer) {
 	x.SDP = ""
 	x.Type = ""
 	p.pool.Put(x)
 }
 
-var PoolPhoneSDPAnswer = poolPhoneSDPAnswer{}
+var PoolPhoneActionSDPAnswer = poolPhoneActionSDPAnswer{}
 
 func init() {
 	registry.RegisterConstructor(2975617068, "PhoneInitCall")
 	registry.RegisterConstructor(907942641, "PhoneRequestCall")
 	registry.RegisterConstructor(4133092858, "PhoneAcceptCall")
 	registry.RegisterConstructor(2712700137, "PhoneDiscardCall")
+	registry.RegisterConstructor(2867411100, "PhoneAddParticipant")
+	registry.RegisterConstructor(188662172, "PhoneRemoveParticipant")
 	registry.RegisterConstructor(1976202226, "PhoneUpdateCall")
 	registry.RegisterConstructor(2215486159, "PhoneRateCall")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
@@ -571,11 +647,12 @@ func init() {
 	registry.RegisterConstructor(4285966731, "PhoneActionDiscarded")
 	registry.RegisterConstructor(1618781621, "PhoneActionIceExchange")
 	registry.RegisterConstructor(1221076803, "PhoneActionAck")
-	registry.RegisterConstructor(1292656874, "PhoneActionKick")
-	registry.RegisterConstructor(163140236, "PhoneMediaSettingsUpdated")
-	registry.RegisterConstructor(3821475130, "PhoneReactionSet")
-	registry.RegisterConstructor(2063600460, "PhoneSDPOffer")
-	registry.RegisterConstructor(1686408377, "PhoneSDPAnswer")
+	registry.RegisterConstructor(2638615078, "PhoneActionParticipantAdded")
+	registry.RegisterConstructor(3280922507, "PhoneActionParticipantRemoved")
+	registry.RegisterConstructor(2310335221, "PhoneActionMediaSettingsUpdated")
+	registry.RegisterConstructor(2047679815, "PhoneActionReactionSet")
+	registry.RegisterConstructor(931453435, "PhoneActionSDPOffer")
+	registry.RegisterConstructor(835530308, "PhoneActionSDPAnswer")
 }
 
 func (x *PhoneInitCall) DeepCopy(z *PhoneInitCall) {
@@ -627,6 +704,37 @@ func (x *PhoneDiscardCall) DeepCopy(z *PhoneDiscardCall) {
 	z.Reason = x.Reason
 }
 
+func (x *PhoneAddParticipant) DeepCopy(z *PhoneAddParticipant) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallID = x.CallID
+	for idx := range x.Participants {
+		if x.Participants[idx] != nil {
+			xx := PoolInputUser.Get()
+			x.Participants[idx].DeepCopy(xx)
+			z.Participants = append(z.Participants, xx)
+		}
+	}
+	z.Timeout = x.Timeout
+}
+
+func (x *PhoneRemoveParticipant) DeepCopy(z *PhoneRemoveParticipant) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallID = x.CallID
+	for idx := range x.Participants {
+		if x.Participants[idx] != nil {
+			xx := PoolInputUser.Get()
+			x.Participants[idx].DeepCopy(xx)
+			z.Participants = append(z.Participants, xx)
+		}
+	}
+}
+
 func (x *PhoneUpdateCall) DeepCopy(z *PhoneUpdateCall) {
 	if x.Peer != nil {
 		z.Peer = PoolInputPeer.Get()
@@ -657,7 +765,7 @@ func (x *PhoneRateCall) DeepCopy(z *PhoneRateCall) {
 
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {
 	z.ID = x.ID
-	z.Date = x.Date
+	z.CreatedOn = x.CreatedOn
 }
 
 func (x *PhoneInit) DeepCopy(z *PhoneInit) {
@@ -738,26 +846,36 @@ func (x *PhoneActionIceExchange) DeepCopy(z *PhoneActionIceExchange) {
 func (x *PhoneActionAck) DeepCopy(z *PhoneActionAck) {
 }
 
-func (x *PhoneActionKick) DeepCopy(z *PhoneActionKick) {
+func (x *PhoneActionParticipantAdded) DeepCopy(z *PhoneActionParticipantAdded) {
+	for idx := range x.Participants {
+		if x.Participants[idx] != nil {
+			xx := PoolPhoneParticipant.Get()
+			x.Participants[idx].DeepCopy(xx)
+			z.Participants = append(z.Participants, xx)
+		}
+	}
+}
+
+func (x *PhoneActionParticipantRemoved) DeepCopy(z *PhoneActionParticipantRemoved) {
 	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
 	z.Timeout = x.Timeout
 }
 
-func (x *PhoneMediaSettingsUpdated) DeepCopy(z *PhoneMediaSettingsUpdated) {
+func (x *PhoneActionMediaSettingsUpdated) DeepCopy(z *PhoneActionMediaSettingsUpdated) {
 	z.Video = x.Video
 	z.Audio = x.Audio
 }
 
-func (x *PhoneReactionSet) DeepCopy(z *PhoneReactionSet) {
+func (x *PhoneActionReactionSet) DeepCopy(z *PhoneActionReactionSet) {
 	z.Reaction = x.Reaction
 }
 
-func (x *PhoneSDPOffer) DeepCopy(z *PhoneSDPOffer) {
+func (x *PhoneActionSDPOffer) DeepCopy(z *PhoneActionSDPOffer) {
 	z.SDP = x.SDP
 	z.Type = x.Type
 }
 
-func (x *PhoneSDPAnswer) DeepCopy(z *PhoneSDPAnswer) {
+func (x *PhoneActionSDPAnswer) DeepCopy(z *PhoneActionSDPAnswer) {
 	z.SDP = x.SDP
 	z.Type = x.Type
 }
@@ -776,6 +894,14 @@ func (x *PhoneAcceptCall) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *PhoneDiscardCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneDiscardCall, x)
+}
+
+func (x *PhoneAddParticipant) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneAddParticipant, x)
+}
+
+func (x *PhoneRemoveParticipant) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneRemoveParticipant, x)
 }
 
 func (x *PhoneUpdateCall) PushToContext(ctx *edge.RequestCtx) {
@@ -834,24 +960,28 @@ func (x *PhoneActionAck) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionAck, x)
 }
 
-func (x *PhoneActionKick) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneActionKick, x)
+func (x *PhoneActionParticipantAdded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionParticipantAdded, x)
 }
 
-func (x *PhoneMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneMediaSettingsUpdated, x)
+func (x *PhoneActionParticipantRemoved) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionParticipantRemoved, x)
 }
 
-func (x *PhoneReactionSet) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneReactionSet, x)
+func (x *PhoneActionMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionMediaSettingsUpdated, x)
 }
 
-func (x *PhoneSDPOffer) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneSDPOffer, x)
+func (x *PhoneActionReactionSet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionReactionSet, x)
 }
 
-func (x *PhoneSDPAnswer) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneSDPAnswer, x)
+func (x *PhoneActionSDPOffer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionSDPOffer, x)
+}
+
+func (x *PhoneActionSDPAnswer) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionSDPAnswer, x)
 }
 
 func (x *PhoneInitCall) Marshal() ([]byte, error) {
@@ -867,6 +997,14 @@ func (x *PhoneAcceptCall) Marshal() ([]byte, error) {
 }
 
 func (x *PhoneDiscardCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneAddParticipant) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneRemoveParticipant) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
@@ -926,23 +1064,27 @@ func (x *PhoneActionAck) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneActionKick) Marshal() ([]byte, error) {
+func (x *PhoneActionParticipantAdded) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneMediaSettingsUpdated) Marshal() ([]byte, error) {
+func (x *PhoneActionParticipantRemoved) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneReactionSet) Marshal() ([]byte, error) {
+func (x *PhoneActionMediaSettingsUpdated) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneSDPOffer) Marshal() ([]byte, error) {
+func (x *PhoneActionReactionSet) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneSDPAnswer) Marshal() ([]byte, error) {
+func (x *PhoneActionSDPOffer) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneActionSDPAnswer) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
@@ -959,6 +1101,14 @@ func (x *PhoneAcceptCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneDiscardCall) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneAddParticipant) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneRemoveParticipant) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
@@ -1018,22 +1168,26 @@ func (x *PhoneActionAck) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneActionKick) Unmarshal(b []byte) error {
+func (x *PhoneActionParticipantAdded) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneMediaSettingsUpdated) Unmarshal(b []byte) error {
+func (x *PhoneActionParticipantRemoved) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneReactionSet) Unmarshal(b []byte) error {
+func (x *PhoneActionMediaSettingsUpdated) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneSDPOffer) Unmarshal(b []byte) error {
+func (x *PhoneActionReactionSet) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneSDPAnswer) Unmarshal(b []byte) error {
+func (x *PhoneActionSDPOffer) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneActionSDPAnswer) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

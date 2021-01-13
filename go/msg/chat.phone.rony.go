@@ -112,6 +112,31 @@ func (p *poolPhoneDiscardCall) Put(x *PhoneDiscardCall) {
 
 var PoolPhoneDiscardCall = poolPhoneDiscardCall{}
 
+const C_PhoneJoinCall int64 = 3019166552
+
+type poolPhoneJoinCall struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneJoinCall) Get() *PhoneJoinCall {
+	x, ok := p.pool.Get().(*PhoneJoinCall)
+	if !ok {
+		return &PhoneJoinCall{}
+	}
+	return x
+}
+
+func (p *poolPhoneJoinCall) Put(x *PhoneJoinCall) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallID = 0
+	p.pool.Put(x)
+}
+
+var PoolPhoneJoinCall = poolPhoneJoinCall{}
+
 const C_PhoneAddParticipant int64 = 2867411100
 
 type poolPhoneAddParticipant struct {
@@ -652,6 +677,7 @@ func init() {
 	registry.RegisterConstructor(907942641, "PhoneRequestCall")
 	registry.RegisterConstructor(4133092858, "PhoneAcceptCall")
 	registry.RegisterConstructor(2712700137, "PhoneDiscardCall")
+	registry.RegisterConstructor(3019166552, "PhoneJoinCall")
 	registry.RegisterConstructor(2867411100, "PhoneAddParticipant")
 	registry.RegisterConstructor(188662172, "PhoneRemoveParticipant")
 	registry.RegisterConstructor(1976202226, "PhoneUpdateCall")
@@ -724,6 +750,14 @@ func (x *PhoneDiscardCall) DeepCopy(z *PhoneDiscardCall) {
 	z.CallID = x.CallID
 	z.Duration = x.Duration
 	z.Reason = x.Reason
+}
+
+func (x *PhoneJoinCall) DeepCopy(z *PhoneJoinCall) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallID = x.CallID
 }
 
 func (x *PhoneAddParticipant) DeepCopy(z *PhoneAddParticipant) {
@@ -928,6 +962,10 @@ func (x *PhoneDiscardCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneDiscardCall, x)
 }
 
+func (x *PhoneJoinCall) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneJoinCall, x)
+}
+
 func (x *PhoneAddParticipant) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneAddParticipant, x)
 }
@@ -1036,6 +1074,10 @@ func (x *PhoneDiscardCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneJoinCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *PhoneAddParticipant) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -1141,6 +1183,10 @@ func (x *PhoneAcceptCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneDiscardCall) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneJoinCall) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

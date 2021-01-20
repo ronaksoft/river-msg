@@ -201,6 +201,49 @@ func (p *poolMessageActionThreadClosed) Put(x *MessageActionThreadClosed) {
 
 var PoolMessageActionThreadClosed = poolMessageActionThreadClosed{}
 
+const C_MessageActionCallStarted int64 = 3970382785
+
+type poolMessageActionCallStarted struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionCallStarted) Get() *MessageActionCallStarted {
+	x, ok := p.pool.Get().(*MessageActionCallStarted)
+	if !ok {
+		return &MessageActionCallStarted{}
+	}
+	return x
+}
+
+func (p *poolMessageActionCallStarted) Put(x *MessageActionCallStarted) {
+	x.CallID = 0
+	p.pool.Put(x)
+}
+
+var PoolMessageActionCallStarted = poolMessageActionCallStarted{}
+
+const C_MessageActionCallEnded int64 = 62258227
+
+type poolMessageActionCallEnded struct {
+	pool sync.Pool
+}
+
+func (p *poolMessageActionCallEnded) Get() *MessageActionCallEnded {
+	x, ok := p.pool.Get().(*MessageActionCallEnded)
+	if !ok {
+		return &MessageActionCallEnded{}
+	}
+	return x
+}
+
+func (p *poolMessageActionCallEnded) Put(x *MessageActionCallEnded) {
+	x.CallID = 0
+	x.Reason = 0
+	p.pool.Put(x)
+}
+
+var PoolMessageActionCallEnded = poolMessageActionCallEnded{}
+
 func init() {
 	registry.RegisterConstructor(1949386261, "MessageActionGroupAddUser")
 	registry.RegisterConstructor(1213452128, "MessageActionGroupDeleteUser")
@@ -211,6 +254,8 @@ func init() {
 	registry.RegisterConstructor(2399156016, "MessageActionContactRegistered")
 	registry.RegisterConstructor(2637201461, "MessageActionScreenShotTaken")
 	registry.RegisterConstructor(1366382890, "MessageActionThreadClosed")
+	registry.RegisterConstructor(3970382785, "MessageActionCallStarted")
+	registry.RegisterConstructor(62258227, "MessageActionCallEnded")
 }
 
 func (x *MessageActionGroupAddUser) DeepCopy(z *MessageActionGroupAddUser) {
@@ -254,6 +299,15 @@ func (x *MessageActionThreadClosed) DeepCopy(z *MessageActionThreadClosed) {
 	z.ThreadID = x.ThreadID
 }
 
+func (x *MessageActionCallStarted) DeepCopy(z *MessageActionCallStarted) {
+	z.CallID = x.CallID
+}
+
+func (x *MessageActionCallEnded) DeepCopy(z *MessageActionCallEnded) {
+	z.CallID = x.CallID
+	z.Reason = x.Reason
+}
+
 func (x *MessageActionGroupAddUser) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessageActionGroupAddUser, x)
 }
@@ -288,6 +342,14 @@ func (x *MessageActionScreenShotTaken) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *MessageActionThreadClosed) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessageActionThreadClosed, x)
+}
+
+func (x *MessageActionCallStarted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionCallStarted, x)
+}
+
+func (x *MessageActionCallEnded) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessageActionCallEnded, x)
 }
 
 func (x *MessageActionGroupAddUser) Marshal() ([]byte, error) {
@@ -326,6 +388,14 @@ func (x *MessageActionThreadClosed) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *MessageActionCallStarted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *MessageActionCallEnded) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *MessageActionGroupAddUser) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
@@ -359,5 +429,13 @@ func (x *MessageActionScreenShotTaken) Unmarshal(b []byte) error {
 }
 
 func (x *MessageActionThreadClosed) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *MessageActionCallStarted) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *MessageActionCallEnded) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }

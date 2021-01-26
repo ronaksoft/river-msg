@@ -291,7 +291,7 @@ func (p *poolPhoneCallRecord) Put(x *PhoneCallRecord) {
 	x.Incoming = false
 	x.PeerID = 0
 	x.PeerType = 0
-	x.status = 0
+	x.Status = 0
 	p.pool.Put(x)
 }
 
@@ -934,7 +934,7 @@ func (x *PhoneCallRecord) DeepCopy(z *PhoneCallRecord) {
 	z.Incoming = x.Incoming
 	z.PeerID = x.PeerID
 	z.PeerType = x.PeerType
-	z.status = x.status
+	z.Status = x.Status
 }
 
 func (x *PhoneCallsMany) DeepCopy(z *PhoneCallsMany) {

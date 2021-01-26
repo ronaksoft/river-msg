@@ -69,7 +69,7 @@ message PhoneJoinCall {
 
 // PhoneAddParticipant
 // @Function
-// @Return: PhoneParticipants
+// @Return: Bool
 message PhoneAddParticipant {
     InputPeer Peer = 1;
     int64 CallID = 2 [jstype = JS_STRING];

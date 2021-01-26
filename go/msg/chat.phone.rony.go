@@ -246,6 +246,82 @@ func (p *poolPhoneRateCall) Put(x *PhoneRateCall) {
 
 var PoolPhoneRateCall = poolPhoneRateCall{}
 
+const C_PhoneGetHistory int64 = 407776572
+
+type poolPhoneGetHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneGetHistory) Get() *PhoneGetHistory {
+	x, ok := p.pool.Get().(*PhoneGetHistory)
+	if !ok {
+		return &PhoneGetHistory{}
+	}
+	return x
+}
+
+func (p *poolPhoneGetHistory) Put(x *PhoneGetHistory) {
+	x.Limit = 0
+	x.After = 0
+	p.pool.Put(x)
+}
+
+var PoolPhoneGetHistory = poolPhoneGetHistory{}
+
+const C_PhoneCallRecord int64 = 4147150312
+
+type poolPhoneCallRecord struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneCallRecord) Get() *PhoneCallRecord {
+	x, ok := p.pool.Get().(*PhoneCallRecord)
+	if !ok {
+		return &PhoneCallRecord{}
+	}
+	return x
+}
+
+func (p *poolPhoneCallRecord) Put(x *PhoneCallRecord) {
+	x.UserID = 0
+	x.TeamID = 0
+	x.CallID = 0
+	x.CreatedOn = 0
+	x.EndedOn = 0
+	x.Incoming = false
+	x.PeerID = 0
+	x.PeerType = 0
+	x.status = 0
+	p.pool.Put(x)
+}
+
+var PoolPhoneCallRecord = poolPhoneCallRecord{}
+
+const C_PhoneCallsMany int64 = 1227520020
+
+type poolPhoneCallsMany struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneCallsMany) Get() *PhoneCallsMany {
+	x, ok := p.pool.Get().(*PhoneCallsMany)
+	if !ok {
+		return &PhoneCallsMany{}
+	}
+	return x
+}
+
+func (p *poolPhoneCallsMany) Put(x *PhoneCallsMany) {
+	x.PhoneCalls = x.PhoneCalls[:0]
+	x.Users = x.Users[:0]
+	x.Groups = x.Groups[:0]
+	x.Continuous = false
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneCallsMany = poolPhoneCallsMany{}
+
 const C_PhoneCall int64 = 3296664529
 
 type poolPhoneCall struct {
@@ -585,6 +661,27 @@ func (p *poolPhoneActionParticipantRemoved) Put(x *PhoneActionParticipantRemoved
 
 var PoolPhoneActionParticipantRemoved = poolPhoneActionParticipantRemoved{}
 
+const C_PhoneActionJoinRequested int64 = 656125601
+
+type poolPhoneActionJoinRequested struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionJoinRequested) Get() *PhoneActionJoinRequested {
+	x, ok := p.pool.Get().(*PhoneActionJoinRequested)
+	if !ok {
+		return &PhoneActionJoinRequested{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionJoinRequested) Put(x *PhoneActionJoinRequested) {
+	x.UserIDs = x.UserIDs[:0]
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionJoinRequested = poolPhoneActionJoinRequested{}
+
 const C_PhoneActionMediaSettingsUpdated int64 = 2310335221
 
 type poolPhoneActionMediaSettingsUpdated struct {
@@ -682,6 +779,9 @@ func init() {
 	registry.RegisterConstructor(188662172, "PhoneRemoveParticipant")
 	registry.RegisterConstructor(1976202226, "PhoneUpdateCall")
 	registry.RegisterConstructor(2215486159, "PhoneRateCall")
+	registry.RegisterConstructor(407776572, "PhoneGetHistory")
+	registry.RegisterConstructor(4147150312, "PhoneCallRecord")
+	registry.RegisterConstructor(1227520020, "PhoneCallsMany")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
 	registry.RegisterConstructor(3464876187, "PhoneInit")
 	registry.RegisterConstructor(2567653219, "PhoneParticipants")
@@ -697,6 +797,7 @@ func init() {
 	registry.RegisterConstructor(1221076803, "PhoneActionAck")
 	registry.RegisterConstructor(2638615078, "PhoneActionParticipantAdded")
 	registry.RegisterConstructor(3280922507, "PhoneActionParticipantRemoved")
+	registry.RegisterConstructor(656125601, "PhoneActionJoinRequested")
 	registry.RegisterConstructor(2310335221, "PhoneActionMediaSettingsUpdated")
 	registry.RegisterConstructor(2047679815, "PhoneActionReactionSet")
 	registry.RegisterConstructor(931453435, "PhoneActionSDPOffer")
@@ -819,6 +920,49 @@ func (x *PhoneRateCall) DeepCopy(z *PhoneRateCall) {
 	z.ReasonData = append(z.ReasonData[:0], x.ReasonData...)
 }
 
+func (x *PhoneGetHistory) DeepCopy(z *PhoneGetHistory) {
+	z.Limit = x.Limit
+	z.After = x.After
+}
+
+func (x *PhoneCallRecord) DeepCopy(z *PhoneCallRecord) {
+	z.UserID = x.UserID
+	z.TeamID = x.TeamID
+	z.CallID = x.CallID
+	z.CreatedOn = x.CreatedOn
+	z.EndedOn = x.EndedOn
+	z.Incoming = x.Incoming
+	z.PeerID = x.PeerID
+	z.PeerType = x.PeerType
+	z.status = x.status
+}
+
+func (x *PhoneCallsMany) DeepCopy(z *PhoneCallsMany) {
+	for idx := range x.PhoneCalls {
+		if x.PhoneCalls[idx] != nil {
+			xx := PoolPhoneCallRecord.Get()
+			x.PhoneCalls[idx].DeepCopy(xx)
+			z.PhoneCalls = append(z.PhoneCalls, xx)
+		}
+	}
+	for idx := range x.Users {
+		if x.Users[idx] != nil {
+			xx := PoolUser.Get()
+			x.Users[idx].DeepCopy(xx)
+			z.Users = append(z.Users, xx)
+		}
+	}
+	for idx := range x.Groups {
+		if x.Groups[idx] != nil {
+			xx := PoolGroup.Get()
+			x.Groups[idx].DeepCopy(xx)
+			z.Groups = append(z.Groups, xx)
+		}
+	}
+	z.Continuous = x.Continuous
+	z.Empty = x.Empty
+}
+
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {
 	z.ID = x.ID
 	z.CreatedOn = x.CreatedOn
@@ -927,6 +1071,10 @@ func (x *PhoneActionParticipantRemoved) DeepCopy(z *PhoneActionParticipantRemove
 	z.Timeout = x.Timeout
 }
 
+func (x *PhoneActionJoinRequested) DeepCopy(z *PhoneActionJoinRequested) {
+	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
+}
+
 func (x *PhoneActionMediaSettingsUpdated) DeepCopy(z *PhoneActionMediaSettingsUpdated) {
 	z.Video = x.Video
 	z.Audio = x.Audio
@@ -980,6 +1128,18 @@ func (x *PhoneUpdateCall) PushToContext(ctx *edge.RequestCtx) {
 
 func (x *PhoneRateCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneRateCall, x)
+}
+
+func (x *PhoneGetHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneGetHistory, x)
+}
+
+func (x *PhoneCallRecord) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneCallRecord, x)
+}
+
+func (x *PhoneCallsMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneCallsMany, x)
 }
 
 func (x *PhoneCall) PushToContext(ctx *edge.RequestCtx) {
@@ -1042,6 +1202,10 @@ func (x *PhoneActionParticipantRemoved) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionParticipantRemoved, x)
 }
 
+func (x *PhoneActionJoinRequested) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionJoinRequested, x)
+}
+
 func (x *PhoneActionMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionMediaSettingsUpdated, x)
 }
@@ -1091,6 +1255,18 @@ func (x *PhoneUpdateCall) Marshal() ([]byte, error) {
 }
 
 func (x *PhoneRateCall) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneGetHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneCallRecord) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneCallsMany) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
@@ -1154,6 +1330,10 @@ func (x *PhoneActionParticipantRemoved) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneActionJoinRequested) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *PhoneActionMediaSettingsUpdated) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -1203,6 +1383,18 @@ func (x *PhoneUpdateCall) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneRateCall) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneGetHistory) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneCallRecord) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneCallsMany) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
@@ -1263,6 +1455,10 @@ func (x *PhoneActionParticipantAdded) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneActionParticipantRemoved) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneActionJoinRequested) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

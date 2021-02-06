@@ -709,6 +709,28 @@ func (p *poolPhoneActionJoinRequested) Put(x *PhoneActionJoinRequested) {
 
 var PoolPhoneActionJoinRequested = poolPhoneActionJoinRequested{}
 
+const C_PhoneActionAdminUpdated int64 = 1804765545
+
+type poolPhoneActionAdminUpdated struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionAdminUpdated) Get() *PhoneActionAdminUpdated {
+	x, ok := p.pool.Get().(*PhoneActionAdminUpdated)
+	if !ok {
+		return &PhoneActionAdminUpdated{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionAdminUpdated) Put(x *PhoneActionAdminUpdated) {
+	x.UserID = 0
+	x.Admin = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionAdminUpdated = poolPhoneActionAdminUpdated{}
+
 const C_PhoneActionMediaSettingsUpdated int64 = 2310335221
 
 type poolPhoneActionMediaSettingsUpdated struct {
@@ -826,6 +848,7 @@ func init() {
 	registry.RegisterConstructor(2638615078, "PhoneActionParticipantAdded")
 	registry.RegisterConstructor(3280922507, "PhoneActionParticipantRemoved")
 	registry.RegisterConstructor(656125601, "PhoneActionJoinRequested")
+	registry.RegisterConstructor(1804765545, "PhoneActionAdminUpdated")
 	registry.RegisterConstructor(2310335221, "PhoneActionMediaSettingsUpdated")
 	registry.RegisterConstructor(2047679815, "PhoneActionReactionSet")
 	registry.RegisterConstructor(931453435, "PhoneActionSDPOffer")
@@ -1113,6 +1136,11 @@ func (x *PhoneActionJoinRequested) DeepCopy(z *PhoneActionJoinRequested) {
 	z.UserIDs = append(z.UserIDs[:0], x.UserIDs...)
 }
 
+func (x *PhoneActionAdminUpdated) DeepCopy(z *PhoneActionAdminUpdated) {
+	z.UserID = x.UserID
+	z.Admin = x.Admin
+}
+
 func (x *PhoneActionMediaSettingsUpdated) DeepCopy(z *PhoneActionMediaSettingsUpdated) {
 	z.Video = x.Video
 	z.Audio = x.Audio
@@ -1248,6 +1276,10 @@ func (x *PhoneActionJoinRequested) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionJoinRequested, x)
 }
 
+func (x *PhoneActionAdminUpdated) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionAdminUpdated, x)
+}
+
 func (x *PhoneActionMediaSettingsUpdated) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionMediaSettingsUpdated, x)
 }
@@ -1380,6 +1412,10 @@ func (x *PhoneActionJoinRequested) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneActionAdminUpdated) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *PhoneActionMediaSettingsUpdated) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -1509,6 +1545,10 @@ func (x *PhoneActionParticipantRemoved) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneActionJoinRequested) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneActionAdminUpdated) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

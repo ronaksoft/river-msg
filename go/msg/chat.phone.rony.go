@@ -322,6 +322,36 @@ func (p *poolPhoneCallsMany) Put(x *PhoneCallsMany) {
 
 var PoolPhoneCallsMany = poolPhoneCallsMany{}
 
+const C_PhoneUpdateAdmin int64 = 442877873
+
+type poolPhoneUpdateAdmin struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneUpdateAdmin) Get() *PhoneUpdateAdmin {
+	x, ok := p.pool.Get().(*PhoneUpdateAdmin)
+	if !ok {
+		return &PhoneUpdateAdmin{}
+	}
+	return x
+}
+
+func (p *poolPhoneUpdateAdmin) Put(x *PhoneUpdateAdmin) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.CallID = 0
+	if x.User != nil {
+		PoolInputUser.Put(x.User)
+		x.User = nil
+	}
+	x.Admin = false
+	p.pool.Put(x)
+}
+
+var PoolPhoneUpdateAdmin = poolPhoneUpdateAdmin{}
+
 const C_PhoneCall int64 = 3296664529
 
 type poolPhoneCall struct {
@@ -782,6 +812,7 @@ func init() {
 	registry.RegisterConstructor(407776572, "PhoneGetHistory")
 	registry.RegisterConstructor(4147150312, "PhoneCallRecord")
 	registry.RegisterConstructor(1227520020, "PhoneCallsMany")
+	registry.RegisterConstructor(442877873, "PhoneUpdateAdmin")
 	registry.RegisterConstructor(3296664529, "PhoneCall")
 	registry.RegisterConstructor(3464876187, "PhoneInit")
 	registry.RegisterConstructor(2567653219, "PhoneParticipants")
@@ -963,6 +994,19 @@ func (x *PhoneCallsMany) DeepCopy(z *PhoneCallsMany) {
 	z.Empty = x.Empty
 }
 
+func (x *PhoneUpdateAdmin) DeepCopy(z *PhoneUpdateAdmin) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.CallID = x.CallID
+	if x.User != nil {
+		z.User = PoolInputUser.Get()
+		x.User.DeepCopy(z.User)
+	}
+	z.Admin = x.Admin
+}
+
 func (x *PhoneCall) DeepCopy(z *PhoneCall) {
 	z.ID = x.ID
 	z.CreatedOn = x.CreatedOn
@@ -1142,6 +1186,10 @@ func (x *PhoneCallsMany) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneCallsMany, x)
 }
 
+func (x *PhoneUpdateAdmin) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneUpdateAdmin, x)
+}
+
 func (x *PhoneCall) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneCall, x)
 }
@@ -1270,6 +1318,10 @@ func (x *PhoneCallsMany) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
+func (x *PhoneUpdateAdmin) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
 func (x *PhoneCall) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
@@ -1395,6 +1447,10 @@ func (x *PhoneCallRecord) Unmarshal(b []byte) error {
 }
 
 func (x *PhoneCallsMany) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneUpdateAdmin) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 

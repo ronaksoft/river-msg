@@ -342,10 +342,7 @@ func (p *poolPhoneUpdateAdmin) Put(x *PhoneUpdateAdmin) {
 		x.Peer = nil
 	}
 	x.CallID = 0
-	if x.User != nil {
-		PoolInputUser.Put(x.User)
-		x.User = nil
-	}
+	x.UserID = 0
 	x.Admin = false
 	p.pool.Put(x)
 }
@@ -1000,10 +997,7 @@ func (x *PhoneUpdateAdmin) DeepCopy(z *PhoneUpdateAdmin) {
 		x.Peer.DeepCopy(z.Peer)
 	}
 	z.CallID = x.CallID
-	if x.User != nil {
-		z.User = PoolInputUser.Get()
-		x.User.DeepCopy(z.User)
-	}
+	z.UserID = x.UserID
 	z.Admin = x.Admin
 }
 

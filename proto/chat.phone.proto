@@ -142,7 +142,7 @@ message PhoneCallsMany {
 message PhoneUpdateAdmin {
     InputPeer Peer = 1;
     int64 CallID = 2 [jstype = JS_STRING];
-    InputUser User = 3;
+    int64 UserID = 3 [jstype = JS_STRING];
     bool Admin = 4;
 }
 

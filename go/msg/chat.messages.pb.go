@@ -630,7 +630,7 @@ func (x *MessagesGetMediaHistory) GetCat() MediaCategory {
 	if x != nil {
 		return x.Cat
 	}
-	return MediaCategory_MessageMediaNone
+	return MediaCategory_MediaCategoryNone
 }
 
 // MessagesGetDialogs

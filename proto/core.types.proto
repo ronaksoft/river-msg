@@ -318,24 +318,23 @@ enum MediaType {
 
 // MediaCategory
 enum MediaCategory {
-    MessageMediaNone = 0;
-    MessageMediaAudio = 1;
-    MessageMediaVoice = 2;
-    MessageMediaVideo = 3;
-    MessageMediaPhoto = 4;
-    MessageMediaFile = 5;
-    MessageMediaGif = 6;
-    MessageMediaWeb = 7;
-    MessageMediaContact = 8;
-    MessageMediaLocation = 9;
-    MessageMediaPoll = 10;
-    MessageMediaReserved1 = 11;
-    MessageMediaReserved2 = 12;
-    MessageMediaReserved3 = 13;
-    MessageMediaReserved4 = 14;
-    MessageMediaReserved5 = 15;
+    MediaCategoryNone = 0;
+    MediaCategoryAudio = 1;
+    MediaCategoryVoice = 2;
+    MediaCategoryVideo = 3;
+    MediaCategoryPhoto = 4;
+    MediaCategoryFile = 5;
+    MediaCategoryGif = 6;
+    MediaCategoryWeb = 7;
+    MediaCategoryContact = 8;
+    MediaCategoryLocation = 9;
+    MediaCategoryPoll = 10;
+    MediaCategoryReserved1 = 11;
+    MediaCategoryReserved2 = 12;
+    MediaCategoryReserved3 = 13;
+    MediaCategoryReserved4 = 14;
+    MediaCategoryReserved5 = 15;
 }
-
 
 // UserMessage
 message UserMessage {

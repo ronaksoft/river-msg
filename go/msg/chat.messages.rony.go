@@ -374,6 +374,55 @@ func (x *MessagesGetHistory) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_MessagesGetHistory, x)
 }
 
+const C_MessagesGetMediaHistory int64 = 4027732752
+
+type poolMessagesGetMediaHistory struct {
+	pool sync.Pool
+}
+
+func (p *poolMessagesGetMediaHistory) Get() *MessagesGetMediaHistory {
+	x, ok := p.pool.Get().(*MessagesGetMediaHistory)
+	if !ok {
+		return &MessagesGetMediaHistory{}
+	}
+	return x
+}
+
+func (p *poolMessagesGetMediaHistory) Put(x *MessagesGetMediaHistory) {
+	if x.Peer != nil {
+		PoolInputPeer.Put(x.Peer)
+		x.Peer = nil
+	}
+	x.Limit = 0
+	x.MaxID = 0
+	x.MediaType = 0
+	p.pool.Put(x)
+}
+
+var PoolMessagesGetMediaHistory = poolMessagesGetMediaHistory{}
+
+func (x *MessagesGetMediaHistory) DeepCopy(z *MessagesGetMediaHistory) {
+	if x.Peer != nil {
+		z.Peer = PoolInputPeer.Get()
+		x.Peer.DeepCopy(z.Peer)
+	}
+	z.Limit = x.Limit
+	z.MaxID = x.MaxID
+	z.MediaType = x.MediaType
+}
+
+func (x *MessagesGetMediaHistory) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *MessagesGetMediaHistory) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *MessagesGetMediaHistory) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_MessagesGetMediaHistory, x)
+}
+
 const C_MessagesGetDialogs int64 = 1429532372
 
 type poolMessagesGetDialogs struct {
@@ -1438,6 +1487,7 @@ func init() {
 	registry.RegisterConstructor(1300826534, "MessagesReadHistory")
 	registry.RegisterConstructor(2151382317, "MessagesGet")
 	registry.RegisterConstructor(3396939832, "MessagesGetHistory")
+	registry.RegisterConstructor(4027732752, "MessagesGetMediaHistory")
 	registry.RegisterConstructor(1429532372, "MessagesGetDialogs")
 	registry.RegisterConstructor(1963188912, "MessagesGetPinnedDialogs")
 	registry.RegisterConstructor(1050840034, "MessagesGetDialog")

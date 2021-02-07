@@ -305,6 +305,7 @@ message PhoneActionScreenShare {
 message PhoneActionMediaSettingsUpdated {
     bool Video = 1;
     bool Audio = 2;
+    bool ScreenShare = 3;
 }
 
 // PhoneActionReactionSet

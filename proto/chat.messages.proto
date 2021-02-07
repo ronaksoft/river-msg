@@ -76,26 +76,6 @@ message MessagesGetHistory {
     int64 MinID = 5;
 }
 
-// MessageMediaType
-enum MessageMediaType {
-    MessageMediaNone = 0;
-    MessageMediaAudio = 1;
-    MessageMediaVoice = 2;
-    MessageMediaVideo = 3;
-    MessageMediaPhoto = 4;
-    MessageMediaFile = 5;
-    MessageMediaGif = 6;
-    MessageMediaWeb = 7;
-    MessageMediaContact = 8;
-    MessageMediaLocation = 9;
-    MessageMediaPoll = 10;
-    MessageMediaReserved1 = 11;
-    MessageMediaReserved2 = 12;
-    MessageMediaReserved3 = 13;
-    MessageMediaReserved4 = 14;
-    MessageMediaReserved5 = 15;
-}
-
 // MessagesGetMediaHistory
 // @Function
 // Returns:     MessagesMany
@@ -103,7 +83,7 @@ message MessagesGetMediaHistory {
     InputPeer Peer = 2;
     int32 Limit = 3;
     int64 MaxID = 4;
-    MessageMediaType MediaType = 5;
+    MediaCategory Cat = 5;
 }
 
 // MessagesGetDialogs

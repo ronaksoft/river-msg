@@ -395,7 +395,7 @@ func (p *poolMessagesGetMediaHistory) Put(x *MessagesGetMediaHistory) {
 	}
 	x.Limit = 0
 	x.MaxID = 0
-	x.MediaType = 0
+	x.Cat = 0
 	p.pool.Put(x)
 }
 
@@ -408,7 +408,7 @@ func (x *MessagesGetMediaHistory) DeepCopy(z *MessagesGetMediaHistory) {
 	}
 	z.Limit = x.Limit
 	z.MaxID = x.MaxID
-	z.MediaType = x.MediaType
+	z.Cat = x.Cat
 }
 
 func (x *MessagesGetMediaHistory) Marshal() ([]byte, error) {

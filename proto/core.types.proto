@@ -316,6 +316,27 @@ enum MediaType {
     MediaTypeReserved6 = 13;
 }
 
+// MediaCategory
+enum MediaCategory {
+    MessageMediaNone = 0;
+    MessageMediaAudio = 1;
+    MessageMediaVoice = 2;
+    MessageMediaVideo = 3;
+    MessageMediaPhoto = 4;
+    MessageMediaFile = 5;
+    MessageMediaGif = 6;
+    MessageMediaWeb = 7;
+    MessageMediaContact = 8;
+    MessageMediaLocation = 9;
+    MessageMediaPoll = 10;
+    MessageMediaReserved1 = 11;
+    MessageMediaReserved2 = 12;
+    MessageMediaReserved3 = 13;
+    MessageMediaReserved4 = 14;
+    MessageMediaReserved5 = 15;
+}
+
+
 // UserMessage
 message UserMessage {
     int64 TeamID = 100 [jstype = JS_STRING];

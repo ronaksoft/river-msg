@@ -75,6 +75,7 @@ func (p *poolPhoneRequestCall) Put(x *PhoneRequestCall) {
 	x.Initiator = false
 	x.Participants = x.Participants[:0]
 	x.CallID = 0
+	x.DeviceType = 0
 	p.pool.Put(x)
 }
 
@@ -95,6 +96,7 @@ func (x *PhoneRequestCall) DeepCopy(z *PhoneRequestCall) {
 		}
 	}
 	z.CallID = x.CallID
+	z.DeviceType = x.DeviceType
 }
 
 func (x *PhoneRequestCall) Marshal() ([]byte, error) {
@@ -130,6 +132,7 @@ func (p *poolPhoneAcceptCall) Put(x *PhoneAcceptCall) {
 	}
 	x.CallID = 0
 	x.Participants = x.Participants[:0]
+	x.DeviceType = 0
 	p.pool.Put(x)
 }
 
@@ -148,6 +151,7 @@ func (x *PhoneAcceptCall) DeepCopy(z *PhoneAcceptCall) {
 			z.Participants = append(z.Participants, xx)
 		}
 	}
+	z.DeviceType = x.DeviceType
 }
 
 func (x *PhoneAcceptCall) Marshal() ([]byte, error) {
@@ -1000,6 +1004,7 @@ func (p *poolPhoneActionAccepted) Get() *PhoneActionAccepted {
 func (p *poolPhoneActionAccepted) Put(x *PhoneActionAccepted) {
 	x.SDP = ""
 	x.Type = ""
+	x.DeviceType = 0
 	p.pool.Put(x)
 }
 
@@ -1008,6 +1013,7 @@ var PoolPhoneActionAccepted = poolPhoneActionAccepted{}
 func (x *PhoneActionAccepted) DeepCopy(z *PhoneActionAccepted) {
 	z.SDP = x.SDP
 	z.Type = x.Type
+	z.DeviceType = x.DeviceType
 }
 
 func (x *PhoneActionAccepted) Marshal() ([]byte, error) {
@@ -1040,6 +1046,7 @@ func (p *poolPhoneActionRequested) Put(x *PhoneActionRequested) {
 	x.SDP = ""
 	x.Type = ""
 	x.Participants = x.Participants[:0]
+	x.DeviceType = 0
 	p.pool.Put(x)
 }
 
@@ -1055,6 +1062,7 @@ func (x *PhoneActionRequested) DeepCopy(z *PhoneActionRequested) {
 			z.Participants = append(z.Participants, xx)
 		}
 	}
+	z.DeviceType = x.DeviceType
 }
 
 func (x *PhoneActionRequested) Marshal() ([]byte, error) {
@@ -1401,6 +1409,7 @@ func (p *poolPhoneActionScreenShare) Get() *PhoneActionScreenShare {
 
 func (p *poolPhoneActionScreenShare) Put(x *PhoneActionScreenShare) {
 	x.Enable = false
+	x.TrackIDs = x.TrackIDs[:0]
 	p.pool.Put(x)
 }
 
@@ -1408,6 +1417,7 @@ var PoolPhoneActionScreenShare = poolPhoneActionScreenShare{}
 
 func (x *PhoneActionScreenShare) DeepCopy(z *PhoneActionScreenShare) {
 	z.Enable = x.Enable
+	z.TrackIDs = append(z.TrackIDs[:0], x.TrackIDs...)
 }
 
 func (x *PhoneActionScreenShare) Marshal() ([]byte, error) {

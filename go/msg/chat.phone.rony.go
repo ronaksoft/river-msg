@@ -1432,6 +1432,43 @@ func (x *PhoneActionScreenShare) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionScreenShare, x)
 }
 
+const C_PhoneActionAcceptedInbox int64 = 3365743555
+
+type poolPhoneActionAcceptedInbox struct {
+	pool sync.Pool
+}
+
+func (p *poolPhoneActionAcceptedInbox) Get() *PhoneActionAcceptedInbox {
+	x, ok := p.pool.Get().(*PhoneActionAcceptedInbox)
+	if !ok {
+		return &PhoneActionAcceptedInbox{}
+	}
+	return x
+}
+
+func (p *poolPhoneActionAcceptedInbox) Put(x *PhoneActionAcceptedInbox) {
+	x.AuthID = 0
+	p.pool.Put(x)
+}
+
+var PoolPhoneActionAcceptedInbox = poolPhoneActionAcceptedInbox{}
+
+func (x *PhoneActionAcceptedInbox) DeepCopy(z *PhoneActionAcceptedInbox) {
+	z.AuthID = x.AuthID
+}
+
+func (x *PhoneActionAcceptedInbox) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *PhoneActionAcceptedInbox) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *PhoneActionAcceptedInbox) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionAcceptedInbox, x)
+}
+
 const C_PhoneActionMediaSettingsUpdated int64 = 2310335221
 
 type poolPhoneActionMediaSettingsUpdated struct {
@@ -1620,6 +1657,7 @@ func init() {
 	registry.RegisterConstructor(656125601, "PhoneActionJoinRequested")
 	registry.RegisterConstructor(1804765545, "PhoneActionAdminUpdated")
 	registry.RegisterConstructor(813039088, "PhoneActionScreenShare")
+	registry.RegisterConstructor(3365743555, "PhoneActionAcceptedInbox")
 	registry.RegisterConstructor(2310335221, "PhoneActionMediaSettingsUpdated")
 	registry.RegisterConstructor(2047679815, "PhoneActionReactionSet")
 	registry.RegisterConstructor(931453435, "PhoneActionSDPOffer")

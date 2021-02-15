@@ -198,7 +198,7 @@ enum PhoneCallAction {
     PhoneCallJoinRequested = 13;
     PhoneCallAdminUpdated = 14;
     PhoneCallScreenShare = 15;
-    PhoneCallAcceptedInbox = 16;
+    PhoneCallPicked = 16;
     PhoneCallReserved13 = 17;
     PhoneCallReserved14 = 18;
     PhoneCallReserved15 = 19;
@@ -320,8 +320,8 @@ message PhoneActionScreenShare {
     repeated string TrackIDs = 2;
 }
 
-// PhoneActionAcceptedInbox
-message PhoneActionAcceptedInbox {
+// PhoneActionPicked
+message PhoneActionPicked {
     int64 AuthID = 1;
 }
 

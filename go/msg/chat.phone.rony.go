@@ -1432,41 +1432,41 @@ func (x *PhoneActionScreenShare) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_PhoneActionScreenShare, x)
 }
 
-const C_PhoneActionAcceptedInbox int64 = 3365743555
+const C_PhoneActionPicked int64 = 2478763318
 
-type poolPhoneActionAcceptedInbox struct {
+type poolPhoneActionPicked struct {
 	pool sync.Pool
 }
 
-func (p *poolPhoneActionAcceptedInbox) Get() *PhoneActionAcceptedInbox {
-	x, ok := p.pool.Get().(*PhoneActionAcceptedInbox)
+func (p *poolPhoneActionPicked) Get() *PhoneActionPicked {
+	x, ok := p.pool.Get().(*PhoneActionPicked)
 	if !ok {
-		return &PhoneActionAcceptedInbox{}
+		return &PhoneActionPicked{}
 	}
 	return x
 }
 
-func (p *poolPhoneActionAcceptedInbox) Put(x *PhoneActionAcceptedInbox) {
+func (p *poolPhoneActionPicked) Put(x *PhoneActionPicked) {
 	x.AuthID = 0
 	p.pool.Put(x)
 }
 
-var PoolPhoneActionAcceptedInbox = poolPhoneActionAcceptedInbox{}
+var PoolPhoneActionPicked = poolPhoneActionPicked{}
 
-func (x *PhoneActionAcceptedInbox) DeepCopy(z *PhoneActionAcceptedInbox) {
+func (x *PhoneActionPicked) DeepCopy(z *PhoneActionPicked) {
 	z.AuthID = x.AuthID
 }
 
-func (x *PhoneActionAcceptedInbox) Marshal() ([]byte, error) {
+func (x *PhoneActionPicked) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PhoneActionAcceptedInbox) Unmarshal(b []byte) error {
+func (x *PhoneActionPicked) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PhoneActionAcceptedInbox) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PhoneActionAcceptedInbox, x)
+func (x *PhoneActionPicked) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PhoneActionPicked, x)
 }
 
 const C_PhoneActionMediaSettingsUpdated int64 = 2310335221
@@ -1657,7 +1657,7 @@ func init() {
 	registry.RegisterConstructor(656125601, "PhoneActionJoinRequested")
 	registry.RegisterConstructor(1804765545, "PhoneActionAdminUpdated")
 	registry.RegisterConstructor(813039088, "PhoneActionScreenShare")
-	registry.RegisterConstructor(3365743555, "PhoneActionAcceptedInbox")
+	registry.RegisterConstructor(2478763318, "PhoneActionPicked")
 	registry.RegisterConstructor(2310335221, "PhoneActionMediaSettingsUpdated")
 	registry.RegisterConstructor(2047679815, "PhoneActionReactionSet")
 	registry.RegisterConstructor(931453435, "PhoneActionSDPOffer")

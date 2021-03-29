@@ -1,7 +1,7 @@
 syntax = "proto3";
 package msg;
 import "core.types.proto";
-option go_package = '.;msg';
+option go_package = './;msg';
 
 // UsersGet
 // @Function

@@ -5,7 +5,7 @@ import "calendar.proto";
 import "chat.messages.medias.proto";
 import "chat.phone.proto";
 
-option go_package = '.;msg';
+option go_package = './;msg';
 
 
 

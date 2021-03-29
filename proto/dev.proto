@@ -1,6 +1,6 @@
 syntax = "proto3";
 package msg;
-option go_package = '.;msg';
+option go_package = './;msg';
 
 // EchoWithDelay
 message EchoWithDelay {

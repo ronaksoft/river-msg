@@ -3,7 +3,7 @@ package msg;
 import "core.types.proto";
 import "chat.messages.medias.proto";
 
-option go_package = '.;msg';
+option go_package = './;msg';
 
 // ClientSendMessageMedia
 // @Function

@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	_ "github.com/ronaksoft/rony"
 	"google.golang.org/protobuf/compiler/protogen"
 	"hash/crc32"
@@ -33,6 +34,14 @@ func main() {
 				cn[string(mt.Desc.Name())] = constructor
 				cs[constructor] = string(mt.Desc.Name())
 			}
+			for _, s := range f.Services {
+				for _, m := range s.Methods {
+					methodName := fmt.Sprintf("%s%s", s.Desc.Name(), m.Desc.Name())
+					constructor := int64(crc32.ChecksumIEEE([]byte(methodName)))
+					cn[methodName] = constructor
+					cs[constructor] = methodName
+				}
+			}
 		}
 
 		t := template.Must(template.New("t1").Parse(`
@@ -42,7 +51,7 @@ func main() {
 		{{end -}}
 		},
 		"ConstructorsByValue": {
-		{{range $k,$v := .}}    "{{$v}}": "{{$k}}",
+		{{range $k,$v := .}}    {{$v}}: "{{$k}}",
 		{{end -}}
 		}
 	}

@@ -1,0 +1,138 @@
+syntax = "proto3";
+package msg;
+
+import "chat.phone.proto";
+import "core.types.proto";
+
+option go_package = './;msg';
+
+message CallMediaSettings {
+    bool Audio = 1;
+    bool ScreenShare = 2;
+    bool Video = 3;
+}
+
+message CallConnection {
+    int32 ConnectionId = 1;
+    InputUser Peer = 2;
+    bool Initiator = 3;
+    bool Admin = 4;
+    CallDeviceType DeviceType = 5;
+    CallMediaSettings MediaSettings = 6;
+    bool Started = 7;
+}
+
+enum CallUpdate {
+    CallEmpty = 0;
+    CallRequested = 1;
+    CallAccepted = 2;
+    StreamUpdated = 3;
+    CallRejected = 4;
+    MediaSettingsUpdated = 5;
+    LocalStreamUpdated = 6;
+    CallTimeout = 7;
+    CallAck = 8;
+    ParticipantJoined = 9;
+    ParticipantLeft = 10;
+    ParticipantAdded = 11;
+    ParticipantRemoved = 12;
+    CallPreview = 13;
+    CallCancelled = 14;
+    CallJoinRequested = 15;
+    ParticipantAdminUpdated = 16;
+    ShareScreenStreamUpdated = 17;
+    AllConnected = 18;
+    ConnectionStatusChanged = 19;
+    RateReasonReserved1 = 20;
+    RateReasonReserved2 = 21;
+    RateReasonReserved3 = 22;
+    RateReasonReserved4 = 23;
+    RateReasonReserved5 = 24;
+    RateReasonReserved6 = 25;
+    RateReasonReserved7 = 26;
+    RateReasonReserved8 = 27;
+    RateReasonReserved9 = 28;
+}
+
+message CallUpdateCallRequested {
+    int64 ID = 1 [jstype = JS_STRING];
+    PeerType Type = 2;
+    int64 CallID = 3 [jstype = JS_STRING];
+}
+
+message CallUpdateCallAccepted {
+    int32 ConnectionId = 1;
+}
+
+message CallUpdateStreamUpdated {
+    int32 ConnectionId = 1;
+    string StreamID = 2;
+}
+
+message CallUpdateCallRejected {
+    int64 CallID = 1 [jstype = JS_STRING];
+    PhoneCallRateReason Reason = 2;
+}
+
+message CallUpdateMediaSettingsUpdated {
+    int32 ConnectionId = 1;
+    CallMediaSettings MediaSettings = 2;
+}
+
+message CallUpdateLocalStreamUpdated {
+    string StreamID = 1;
+}
+
+message CallUpdateCallTimeout {
+}
+
+message CallUpdateCallAck {
+    int32 ConnectionId = 1;
+}
+
+message CallUpdateParticipantJoined {
+    repeated int64 UserIDs = 1 [jstype = JS_STRING];
+}
+
+message CallUpdateParticipantLeft {
+    int64 UserID = 1 [jstype = JS_STRING];
+}
+
+message CallUpdateParticipantRemoved {
+    repeated int64 UserIDs = 1 [jstype = JS_STRING];
+    bool Timeout = 2;
+}
+
+message CallUpdateCallPreview {
+    int64 CallID = 1 [jstype = JS_STRING];
+    InputPeer Peer = 2;
+}
+
+message CallUpdateCallCancelled {
+    int64 CallID = 1 [jstype = JS_STRING];
+}
+
+message CallUpdateCallJoinRequested {
+    int64 CallID = 1 [jstype = JS_STRING];
+    int64 CalleeID = 2 [jstype = JS_STRING];
+    InputPeer Peer = 3;
+}
+
+message CallUpdateParticipantAdminUpdated {
+    int64 UserID = 1 [jstype = JS_STRING];
+    bool Admin = 2;
+}
+
+message CallUpdateShareScreenStreamUpdated {
+    int64 CallID = 1 [jstype = JS_STRING];
+    int32 ConnectionId = 2;
+    string StreamID = 3;
+}
+
+message CallUpdateAllConnected {
+}
+
+message CallUpdateConnectionStatusChanged {
+    int32 ConnectionId = 1;
+    string State = 2;
+}

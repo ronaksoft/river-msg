@@ -1,6 +1,6 @@
 module git.ronaksoft.com/river/msg
 
-go 1.14
+go 1.16
 
 require (
 	github.com/getsentry/sentry-go v0.9.0 // indirect

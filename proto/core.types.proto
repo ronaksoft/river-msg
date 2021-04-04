@@ -366,6 +366,7 @@ message UserMessage {
     int64 ViaBotID = 24 [jstype = JS_STRING];
     repeated ReactionCounter Reactions = 25;
     repeated string YourReactions = 26;
+    MediaCategory MediaCat = 27;
 }
 
 // ReactionCounter

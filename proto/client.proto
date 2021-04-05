@@ -66,17 +66,6 @@ message ClientGetLastBotKeyboard {
     InputPeer Peer = 1;
 }
 
-// ClientGetMediaHistory
-// @Function
-// @Return: MessagesMany
-message ClientGetMediaHistory {
-    repeated ClientMediaType MediaType = 1;
-    int64 MaxID = 2;
-    int64 MinID = 3;
-    int32 Limit = 4;
-    InputPeer Peer = 5;
-}
-
 // ClientGetAllDownloadedMedia
 // @Function
 // @Return: MessagesMany

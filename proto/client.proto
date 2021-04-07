@@ -5,6 +5,17 @@ import "chat.messages.medias.proto";
 
 option go_package = './;msg';
 
+// ClientGetMediaHistory
+// @Function
+// @Return: MessagesMany
+message ClientGetMediaHistory {
+    MediaCategory Cat = 1;
+    InputPeer Peer = 2;
+    int32 Limit = 3;
+    int64 MaxID = 4;
+    int64 MinID = 5;
+}
+
 // ClientSendMessageMedia
 // @Function
 message ClientSendMessageMedia {
@@ -39,6 +50,15 @@ message ClientGlobalSearch {
     int64 SenderID = 5;
 }
 
+// ClientSearchResult
+message ClientSearchResult {
+    repeated UserMessage Messages = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
+    repeated User MatchedUsers = 4;
+    repeated Group MatchedGroups = 5;
+}
+
 // ClientContactSearch
 // @Function
 // @Return: ClientSearchResult
@@ -50,6 +70,35 @@ message ClientContactSearch {
 // @Function
 // @Return: ClientCachedMedia
 message ClientGetCachedMedia {
+}
+
+// CachedMediaInfo
+message ClientCachedMediaInfo {
+    repeated ClientPeerMediaInfo MediaInfo = 1;
+}
+
+// PeerMediaInfo
+message ClientPeerMediaInfo {
+    int64 PeerID = 1;
+    PeerType PeerType = 2;
+    repeated ClientMediaSize Media = 3;
+}
+
+// ClientMediaSize
+message ClientMediaSize {
+    ClientMediaType MediaType = 1;
+    int64 TotalSize = 2;
+}
+
+// ClientMediaType
+enum ClientMediaType {
+    ClientMediaNone = 0;
+    ClientMediaFile = 1;
+    ClientMediaMedia = 2;
+    ClientMediaVoice = 3;
+    ClientMediaAudio = 4;
+    ClientMediaLink = 5;
+    ClientMediaGif = 6;
 }
 
 // ClientClearCachedMedia
@@ -78,6 +127,19 @@ message ClientGetAllDownloadedMedia {
 // @Return: RecentSearchMany
 message ClientGetRecentSearch {
     int32 Limit = 1;
+}
+
+// ClientRecentSearch
+message ClientRecentSearch {
+    Peer Peer = 1;
+    int32 Date = 2;
+}
+
+// RecentSearchMany
+message ClientRecentSearchMany {
+    repeated ClientRecentSearch RecentSearches = 1;
+    repeated User Users = 2;
+    repeated Group Groups = 3;
 }
 
 // ClientPutRecentSearch
@@ -115,6 +177,12 @@ message ClientGetTeamCounters {
     bool WithMutes = 2;
 }
 
+// ClientTeamCounters
+message ClientTeamCounters {
+    int64 UnreadCount = 1;
+    int64 MentionCount = 2;
+}
+
 // ClientPendingMessage
 message ClientPendingMessage {
     int64 ID = 1;
@@ -139,15 +207,6 @@ message ClientPendingMessage {
     int64 TeamID = 20;
     uint64 TeamAccessHash = 21;
     bytes TinyThumb = 22;
-}
-
-// ClientSearchResult
-message ClientSearchResult {
-    repeated UserMessage Messages = 1;
-    repeated User Users = 2;
-    repeated Group Groups = 3;
-    repeated User MatchedUsers = 4;
-    repeated Group MatchedGroups = 5;
 }
 
 // ClientFileType
@@ -220,54 +279,6 @@ message ClientFileStatus {
     int32 Status = 1;
     int64 Progress = 2;
     string FilePath = 3;
-}
-
-// CachedMediaInfo
-message ClientCachedMediaInfo {
-    repeated ClientPeerMediaInfo MediaInfo = 1;
-}
-
-// PeerMediaInfo
-message ClientPeerMediaInfo {
-    int64 PeerID = 1;
-    PeerType PeerType = 2;
-    repeated ClientMediaSize Media = 3;
-}
-
-// ClientMediaSize
-message ClientMediaSize {
-    ClientMediaType MediaType = 1;
-    int64 TotalSize = 2;
-}
-
-// ClientMediaType
-enum ClientMediaType {
-    ClientMediaNone = 0;
-    ClientMediaFile = 1;
-    ClientMediaMedia = 2;
-    ClientMediaVoice = 3;
-    ClientMediaAudio = 4;
-    ClientMediaLink = 5;
-    ClientMediaGif = 6;
-}
-
-// ClientRecentSearch
-message ClientRecentSearch {
-    Peer Peer = 1;
-    int32 Date = 2;
-}
-
-// RecentSearchMany
-message ClientRecentSearchMany {
-    repeated ClientRecentSearch RecentSearches = 1;
-    repeated User Users = 2;
-    repeated Group Groups = 3;
-}
-
-// ClientTeamCounters
-message ClientTeamCounters {
-    int64 UnreadCount = 1;
-    int64 MentionCount = 2;
 }
 
 // ClientGetFrequentReactions

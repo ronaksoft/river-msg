@@ -68,7 +68,7 @@ message TeamListMembers {
 
 // TeamEdit
 // @Function
-// @Returns: Team
+// @Returns: Bool/Team
 message TeamEdit {
     int64 TeamID = 1 [jstype = JS_STRING];
     string Name = 2;

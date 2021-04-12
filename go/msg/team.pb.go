@@ -475,7 +475,7 @@ func (x *TeamListMembers) GetTeamID() int64 {
 
 // TeamEdit
 // @Function
-// @Returns: Team
+// @Returns: Bool/Team
 type TeamEdit struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

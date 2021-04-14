@@ -115,6 +115,7 @@ message AccountSendVerifyPhoneCode {
 message AccountResendVerifyPhoneCode {
     string Phone = 1;
     string PhoneCodeHash = 2;
+    string AppHash = 3;
 }
 
 // AccountChangePhone

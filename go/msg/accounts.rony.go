@@ -625,6 +625,7 @@ func (p *poolAccountResendVerifyPhoneCode) Put(x *AccountResendVerifyPhoneCode) 
 	}
 	x.Phone = ""
 	x.PhoneCodeHash = ""
+	x.AppHash = ""
 	p.pool.Put(x)
 }
 
@@ -633,6 +634,7 @@ var PoolAccountResendVerifyPhoneCode = poolAccountResendVerifyPhoneCode{}
 func (x *AccountResendVerifyPhoneCode) DeepCopy(z *AccountResendVerifyPhoneCode) {
 	z.Phone = x.Phone
 	z.PhoneCodeHash = x.PhoneCodeHash
+	z.AppHash = x.AppHash
 }
 
 func (x *AccountResendVerifyPhoneCode) Marshal() ([]byte, error) {

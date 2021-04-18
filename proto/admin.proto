@@ -82,6 +82,7 @@ message AdminGetVersions {
 // @Function
 // @Return: Bool
 message AdminSetStorageNode {
+    string AccessToken = 10;
     int32 ClusterID = 1;
     string DSN = 2;
     string Type = 3;
@@ -93,13 +94,16 @@ message AdminSetStorageNode {
 // @Function
 // @Return: StorageNode
 message AdminGetStorageNode {
+    string AccessToken = 10;
     int32 ClusterID = 1;
 }
 
 // AdminGetStorageNodes
 // @Function
 // @Return: StorageNode
-message AdminGetStorageNodes {}
+message AdminGetStorageNodes {
+    string AccessToken = 10;
+}
 
 // StorageNode
 message StorageNode {

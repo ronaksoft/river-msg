@@ -434,6 +434,7 @@ func (p *poolAdminSetStorageNode) Put(x *AdminSetStorageNode) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	x.ClusterID = 0
 	x.DSN = ""
 	x.Type = ""
@@ -445,6 +446,7 @@ func (p *poolAdminSetStorageNode) Put(x *AdminSetStorageNode) {
 var PoolAdminSetStorageNode = poolAdminSetStorageNode{}
 
 func (x *AdminSetStorageNode) DeepCopy(z *AdminSetStorageNode) {
+	z.AccessToken = x.AccessToken
 	z.ClusterID = x.ClusterID
 	z.DSN = x.DSN
 	z.Type = x.Type
@@ -482,6 +484,7 @@ func (p *poolAdminGetStorageNode) Put(x *AdminGetStorageNode) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	x.ClusterID = 0
 	p.pool.Put(x)
 }
@@ -489,6 +492,7 @@ func (p *poolAdminGetStorageNode) Put(x *AdminGetStorageNode) {
 var PoolAdminGetStorageNode = poolAdminGetStorageNode{}
 
 func (x *AdminGetStorageNode) DeepCopy(z *AdminGetStorageNode) {
+	z.AccessToken = x.AccessToken
 	z.ClusterID = x.ClusterID
 }
 
@@ -522,12 +526,14 @@ func (p *poolAdminGetStorageNodes) Put(x *AdminGetStorageNodes) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	p.pool.Put(x)
 }
 
 var PoolAdminGetStorageNodes = poolAdminGetStorageNodes{}
 
 func (x *AdminGetStorageNodes) DeepCopy(z *AdminGetStorageNodes) {
+	z.AccessToken = x.AccessToken
 }
 
 func (x *AdminGetStorageNodes) Marshal() ([]byte, error) {

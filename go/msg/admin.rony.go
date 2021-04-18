@@ -416,6 +416,231 @@ func (x *AdminGetVersions) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AdminGetVersions, x)
 }
 
+const C_AdminSetStorageNode int64 = 4159566764
+
+type poolAdminSetStorageNode struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminSetStorageNode) Get() *AdminSetStorageNode {
+	x, ok := p.pool.Get().(*AdminSetStorageNode)
+	if !ok {
+		x = &AdminSetStorageNode{}
+	}
+	return x
+}
+
+func (p *poolAdminSetStorageNode) Put(x *AdminSetStorageNode) {
+	if x == nil {
+		return
+	}
+	x.ClusterID = 0
+	x.DSN = ""
+	x.Type = ""
+	x.Location = ""
+	x.Archive = false
+	p.pool.Put(x)
+}
+
+var PoolAdminSetStorageNode = poolAdminSetStorageNode{}
+
+func (x *AdminSetStorageNode) DeepCopy(z *AdminSetStorageNode) {
+	z.ClusterID = x.ClusterID
+	z.DSN = x.DSN
+	z.Type = x.Type
+	z.Location = x.Location
+	z.Archive = x.Archive
+}
+
+func (x *AdminSetStorageNode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminSetStorageNode) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminSetStorageNode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminSetStorageNode, x)
+}
+
+const C_AdminGetStorageNode int64 = 2297643227
+
+type poolAdminGetStorageNode struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminGetStorageNode) Get() *AdminGetStorageNode {
+	x, ok := p.pool.Get().(*AdminGetStorageNode)
+	if !ok {
+		x = &AdminGetStorageNode{}
+	}
+	return x
+}
+
+func (p *poolAdminGetStorageNode) Put(x *AdminGetStorageNode) {
+	if x == nil {
+		return
+	}
+	x.ClusterID = 0
+	p.pool.Put(x)
+}
+
+var PoolAdminGetStorageNode = poolAdminGetStorageNode{}
+
+func (x *AdminGetStorageNode) DeepCopy(z *AdminGetStorageNode) {
+	z.ClusterID = x.ClusterID
+}
+
+func (x *AdminGetStorageNode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminGetStorageNode) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminGetStorageNode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetStorageNode, x)
+}
+
+const C_AdminGetStorageNodes int64 = 176633623
+
+type poolAdminGetStorageNodes struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminGetStorageNodes) Get() *AdminGetStorageNodes {
+	x, ok := p.pool.Get().(*AdminGetStorageNodes)
+	if !ok {
+		x = &AdminGetStorageNodes{}
+	}
+	return x
+}
+
+func (p *poolAdminGetStorageNodes) Put(x *AdminGetStorageNodes) {
+	if x == nil {
+		return
+	}
+	p.pool.Put(x)
+}
+
+var PoolAdminGetStorageNodes = poolAdminGetStorageNodes{}
+
+func (x *AdminGetStorageNodes) DeepCopy(z *AdminGetStorageNodes) {
+}
+
+func (x *AdminGetStorageNodes) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminGetStorageNodes) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminGetStorageNodes) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetStorageNodes, x)
+}
+
+const C_StorageNode int64 = 1966993242
+
+type poolStorageNode struct {
+	pool sync.Pool
+}
+
+func (p *poolStorageNode) Get() *StorageNode {
+	x, ok := p.pool.Get().(*StorageNode)
+	if !ok {
+		x = &StorageNode{}
+	}
+	return x
+}
+
+func (p *poolStorageNode) Put(x *StorageNode) {
+	if x == nil {
+		return
+	}
+	x.Archive = false
+	x.ClusterID = 0
+	x.Location = ""
+	x.DSN = ""
+	x.Type = ""
+	p.pool.Put(x)
+}
+
+var PoolStorageNode = poolStorageNode{}
+
+func (x *StorageNode) DeepCopy(z *StorageNode) {
+	z.Archive = x.Archive
+	z.ClusterID = x.ClusterID
+	z.Location = x.Location
+	z.DSN = x.DSN
+	z.Type = x.Type
+}
+
+func (x *StorageNode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *StorageNode) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *StorageNode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_StorageNode, x)
+}
+
+const C_StorageNodeMany int64 = 2667693068
+
+type poolStorageNodeMany struct {
+	pool sync.Pool
+}
+
+func (p *poolStorageNodeMany) Get() *StorageNodeMany {
+	x, ok := p.pool.Get().(*StorageNodeMany)
+	if !ok {
+		x = &StorageNodeMany{}
+	}
+	return x
+}
+
+func (p *poolStorageNodeMany) Put(x *StorageNodeMany) {
+	if x == nil {
+		return
+	}
+	for _, z := range x.Nodes {
+		PoolStorageNode.Put(z)
+	}
+	x.Nodes = x.Nodes[:0]
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolStorageNodeMany = poolStorageNodeMany{}
+
+func (x *StorageNodeMany) DeepCopy(z *StorageNodeMany) {
+	for idx := range x.Nodes {
+		if x.Nodes[idx] != nil {
+			xx := PoolStorageNode.Get()
+			x.Nodes[idx].DeepCopy(xx)
+			z.Nodes = append(z.Nodes, xx)
+		}
+	}
+	z.Empty = x.Empty
+}
+
+func (x *StorageNodeMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *StorageNodeMany) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *StorageNodeMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_StorageNodeMany, x)
+}
+
 const C_AdminSetToken int64 = 2892519162
 
 type poolAdminSetToken struct {
@@ -1027,6 +1252,11 @@ func init() {
 	registry.RegisterConstructor(1864898932, "AdminDeletePushProvider")
 	registry.RegisterConstructor(1311023404, "AdminSetVersion")
 	registry.RegisterConstructor(934752256, "AdminGetVersions")
+	registry.RegisterConstructor(4159566764, "AdminSetStorageNode")
+	registry.RegisterConstructor(2297643227, "AdminGetStorageNode")
+	registry.RegisterConstructor(176633623, "AdminGetStorageNodes")
+	registry.RegisterConstructor(1966993242, "StorageNode")
+	registry.RegisterConstructor(2667693068, "StorageNodeMany")
 	registry.RegisterConstructor(2892519162, "AdminSetToken")
 	registry.RegisterConstructor(3154441897, "AdminDeleteToken")
 	registry.RegisterConstructor(1947723452, "AdminReserveUsername")

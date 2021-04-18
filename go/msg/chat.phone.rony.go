@@ -29,6 +29,7 @@ func (p *poolPhoneInitCall) Put(x *PhoneInitCall) {
 	}
 	PoolInputPeer.Put(x.Peer)
 	x.Peer = nil
+	x.CallID = 0
 	p.pool.Put(x)
 }
 
@@ -43,6 +44,7 @@ func (x *PhoneInitCall) DeepCopy(z *PhoneInitCall) {
 	} else {
 		z.Peer = nil
 	}
+	z.CallID = x.CallID
 }
 
 func (x *PhoneInitCall) Marshal() ([]byte, error) {

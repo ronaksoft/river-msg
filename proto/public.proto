@@ -3,10 +3,10 @@ package msg;
 
 option go_package = './;msg';
 
-// PublicUserInfo
+// PublicGetUserInfo
 // @Function
 // @Return: UserInfo
-message PublicUserInfo {
+message PublicGetUserInfo {
     string Username = 1;
     string UserAgent = 2;
 }

@@ -9,21 +9,21 @@ import (
 	sync "sync"
 )
 
-const C_PublicUserInfo int64 = 3594666585
+const C_PublicGetUserInfo int64 = 2292051365
 
-type poolPublicUserInfo struct {
+type poolPublicGetUserInfo struct {
 	pool sync.Pool
 }
 
-func (p *poolPublicUserInfo) Get() *PublicUserInfo {
-	x, ok := p.pool.Get().(*PublicUserInfo)
+func (p *poolPublicGetUserInfo) Get() *PublicGetUserInfo {
+	x, ok := p.pool.Get().(*PublicGetUserInfo)
 	if !ok {
-		x = &PublicUserInfo{}
+		x = &PublicGetUserInfo{}
 	}
 	return x
 }
 
-func (p *poolPublicUserInfo) Put(x *PublicUserInfo) {
+func (p *poolPublicGetUserInfo) Put(x *PublicGetUserInfo) {
 	if x == nil {
 		return
 	}
@@ -32,23 +32,23 @@ func (p *poolPublicUserInfo) Put(x *PublicUserInfo) {
 	p.pool.Put(x)
 }
 
-var PoolPublicUserInfo = poolPublicUserInfo{}
+var PoolPublicGetUserInfo = poolPublicGetUserInfo{}
 
-func (x *PublicUserInfo) DeepCopy(z *PublicUserInfo) {
+func (x *PublicGetUserInfo) DeepCopy(z *PublicGetUserInfo) {
 	z.Username = x.Username
 	z.UserAgent = x.UserAgent
 }
 
-func (x *PublicUserInfo) Marshal() ([]byte, error) {
+func (x *PublicGetUserInfo) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *PublicUserInfo) Unmarshal(b []byte) error {
+func (x *PublicGetUserInfo) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *PublicUserInfo) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_PublicUserInfo, x)
+func (x *PublicGetUserInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_PublicGetUserInfo, x)
 }
 
 const C_UserInfo int64 = 883983438
@@ -100,6 +100,6 @@ func (x *UserInfo) PushToContext(ctx *edge.RequestCtx) {
 }
 
 func init() {
-	registry.RegisterConstructor(3594666585, "PublicUserInfo")
+	registry.RegisterConstructor(2292051365, "PublicGetUserInfo")
 	registry.RegisterConstructor(883983438, "UserInfo")
 }

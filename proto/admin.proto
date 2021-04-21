@@ -105,21 +105,6 @@ message AdminGetStorageNodes {
     string AccessToken = 10;
 }
 
-// StorageNode
-message StorageNode {
-    bool Archive = 1;
-    int32 ClusterID = 2;
-    string Location = 3;
-    string DSN = 4;
-    string Type = 5;
-}
-
-// StorageNodeMany
-message StorageNodeMany {
-    repeated StorageNode Nodes = 1;
-    bool Empty = 2;
-}
-
 // AdminPrivilege
 enum AdminPrivilege {
     PrivilegeNone = 0;
@@ -170,6 +155,28 @@ message AdminTeamCreate {
     bool Community = 4; // if team supports community users, send messages to team members
     string Title = 5;
     int64 CreatorID = 6;
+}
+
+// AdminClusterInfo
+// @Function
+// @Returns: rony.Edges
+message AdminGetClusterInfo {
+    int64 ReplicaSet = 1;
+}
+
+// StorageNode
+message StorageNode {
+    bool Archive = 1;
+    int32 ClusterID = 2;
+    string Location = 3;
+    string DSN = 4;
+    string Type = 5;
+}
+
+// StorageNodeMany
+message StorageNodeMany {
+    repeated StorageNode Nodes = 1;
+    bool Empty = 2;
 }
 
 // AdminToken

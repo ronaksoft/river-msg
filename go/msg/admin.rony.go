@@ -548,105 +548,6 @@ func (x *AdminGetStorageNodes) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AdminGetStorageNodes, x)
 }
 
-const C_StorageNode int64 = 1966993242
-
-type poolStorageNode struct {
-	pool sync.Pool
-}
-
-func (p *poolStorageNode) Get() *StorageNode {
-	x, ok := p.pool.Get().(*StorageNode)
-	if !ok {
-		x = &StorageNode{}
-	}
-	return x
-}
-
-func (p *poolStorageNode) Put(x *StorageNode) {
-	if x == nil {
-		return
-	}
-	x.Archive = false
-	x.ClusterID = 0
-	x.Location = ""
-	x.DSN = ""
-	x.Type = ""
-	p.pool.Put(x)
-}
-
-var PoolStorageNode = poolStorageNode{}
-
-func (x *StorageNode) DeepCopy(z *StorageNode) {
-	z.Archive = x.Archive
-	z.ClusterID = x.ClusterID
-	z.Location = x.Location
-	z.DSN = x.DSN
-	z.Type = x.Type
-}
-
-func (x *StorageNode) Marshal() ([]byte, error) {
-	return proto.Marshal(x)
-}
-
-func (x *StorageNode) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{}.Unmarshal(b, x)
-}
-
-func (x *StorageNode) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_StorageNode, x)
-}
-
-const C_StorageNodeMany int64 = 2667693068
-
-type poolStorageNodeMany struct {
-	pool sync.Pool
-}
-
-func (p *poolStorageNodeMany) Get() *StorageNodeMany {
-	x, ok := p.pool.Get().(*StorageNodeMany)
-	if !ok {
-		x = &StorageNodeMany{}
-	}
-	return x
-}
-
-func (p *poolStorageNodeMany) Put(x *StorageNodeMany) {
-	if x == nil {
-		return
-	}
-	for _, z := range x.Nodes {
-		PoolStorageNode.Put(z)
-	}
-	x.Nodes = x.Nodes[:0]
-	x.Empty = false
-	p.pool.Put(x)
-}
-
-var PoolStorageNodeMany = poolStorageNodeMany{}
-
-func (x *StorageNodeMany) DeepCopy(z *StorageNodeMany) {
-	for idx := range x.Nodes {
-		if x.Nodes[idx] != nil {
-			xx := PoolStorageNode.Get()
-			x.Nodes[idx].DeepCopy(xx)
-			z.Nodes = append(z.Nodes, xx)
-		}
-	}
-	z.Empty = x.Empty
-}
-
-func (x *StorageNodeMany) Marshal() ([]byte, error) {
-	return proto.Marshal(x)
-}
-
-func (x *StorageNodeMany) Unmarshal(b []byte) error {
-	return proto.UnmarshalOptions{}.Unmarshal(b, x)
-}
-
-func (x *StorageNodeMany) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_StorageNodeMany, x)
-}
-
 const C_AdminSetToken int64 = 2892519162
 
 type poolAdminSetToken struct {
@@ -865,6 +766,145 @@ func (x *AdminTeamCreate) Unmarshal(b []byte) error {
 
 func (x *AdminTeamCreate) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AdminTeamCreate, x)
+}
+
+const C_AdminGetClusterInfo int64 = 52432287
+
+type poolAdminGetClusterInfo struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminGetClusterInfo) Get() *AdminGetClusterInfo {
+	x, ok := p.pool.Get().(*AdminGetClusterInfo)
+	if !ok {
+		x = &AdminGetClusterInfo{}
+	}
+	return x
+}
+
+func (p *poolAdminGetClusterInfo) Put(x *AdminGetClusterInfo) {
+	if x == nil {
+		return
+	}
+	x.ReplicaSet = 0
+	p.pool.Put(x)
+}
+
+var PoolAdminGetClusterInfo = poolAdminGetClusterInfo{}
+
+func (x *AdminGetClusterInfo) DeepCopy(z *AdminGetClusterInfo) {
+	z.ReplicaSet = x.ReplicaSet
+}
+
+func (x *AdminGetClusterInfo) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminGetClusterInfo) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminGetClusterInfo) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetClusterInfo, x)
+}
+
+const C_StorageNode int64 = 1966993242
+
+type poolStorageNode struct {
+	pool sync.Pool
+}
+
+func (p *poolStorageNode) Get() *StorageNode {
+	x, ok := p.pool.Get().(*StorageNode)
+	if !ok {
+		x = &StorageNode{}
+	}
+	return x
+}
+
+func (p *poolStorageNode) Put(x *StorageNode) {
+	if x == nil {
+		return
+	}
+	x.Archive = false
+	x.ClusterID = 0
+	x.Location = ""
+	x.DSN = ""
+	x.Type = ""
+	p.pool.Put(x)
+}
+
+var PoolStorageNode = poolStorageNode{}
+
+func (x *StorageNode) DeepCopy(z *StorageNode) {
+	z.Archive = x.Archive
+	z.ClusterID = x.ClusterID
+	z.Location = x.Location
+	z.DSN = x.DSN
+	z.Type = x.Type
+}
+
+func (x *StorageNode) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *StorageNode) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *StorageNode) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_StorageNode, x)
+}
+
+const C_StorageNodeMany int64 = 2667693068
+
+type poolStorageNodeMany struct {
+	pool sync.Pool
+}
+
+func (p *poolStorageNodeMany) Get() *StorageNodeMany {
+	x, ok := p.pool.Get().(*StorageNodeMany)
+	if !ok {
+		x = &StorageNodeMany{}
+	}
+	return x
+}
+
+func (p *poolStorageNodeMany) Put(x *StorageNodeMany) {
+	if x == nil {
+		return
+	}
+	for _, z := range x.Nodes {
+		PoolStorageNode.Put(z)
+	}
+	x.Nodes = x.Nodes[:0]
+	x.Empty = false
+	p.pool.Put(x)
+}
+
+var PoolStorageNodeMany = poolStorageNodeMany{}
+
+func (x *StorageNodeMany) DeepCopy(z *StorageNodeMany) {
+	for idx := range x.Nodes {
+		if x.Nodes[idx] != nil {
+			xx := PoolStorageNode.Get()
+			x.Nodes[idx].DeepCopy(xx)
+			z.Nodes = append(z.Nodes, xx)
+		}
+	}
+	z.Empty = x.Empty
+}
+
+func (x *StorageNodeMany) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *StorageNodeMany) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *StorageNodeMany) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_StorageNodeMany, x)
 }
 
 const C_AdminToken int64 = 2895609620
@@ -1261,13 +1301,14 @@ func init() {
 	registry.RegisterConstructor(4159566764, "AdminSetStorageNode")
 	registry.RegisterConstructor(2297643227, "AdminGetStorageNode")
 	registry.RegisterConstructor(176633623, "AdminGetStorageNodes")
-	registry.RegisterConstructor(1966993242, "StorageNode")
-	registry.RegisterConstructor(2667693068, "StorageNodeMany")
 	registry.RegisterConstructor(2892519162, "AdminSetToken")
 	registry.RegisterConstructor(3154441897, "AdminDeleteToken")
 	registry.RegisterConstructor(1947723452, "AdminReserveUsername")
 	registry.RegisterConstructor(1588181579, "AdminGetReservedUsernames")
 	registry.RegisterConstructor(2797066608, "AdminTeamCreate")
+	registry.RegisterConstructor(52432287, "AdminGetClusterInfo")
+	registry.RegisterConstructor(1966993242, "StorageNode")
+	registry.RegisterConstructor(2667693068, "StorageNodeMany")
 	registry.RegisterConstructor(2895609620, "AdminToken")
 	registry.RegisterConstructor(414982091, "WelcomeMessagesMany")
 	registry.RegisterConstructor(2123920547, "VersionsMany")

@@ -161,7 +161,7 @@ message AdminTeamCreate {
 // @Function
 // @Returns: rony.Edges
 message AdminGetClusterInfo {
-    int64 ReplicaSet = 1;
+    fixed64 ReplicaSet = 1;
 }
 
 // StorageNode

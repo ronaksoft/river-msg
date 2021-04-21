@@ -1,0 +1,22 @@
+syntax = "proto3";
+package msg;
+
+option go_package = './;msg';
+
+// PublicUserInfo
+// @Function
+// @Return: UserInfo
+message PublicUserInfo {
+    string Username = 1;
+    string UserAgent = 2;
+}
+
+// UserInfo
+message UserInfo {
+    string Firstname = 1;
+    string Lastname = 2;
+    string Username = 3;
+    int64 JoinedDate = 4;
+    bytes Photo = 5;
+}
+

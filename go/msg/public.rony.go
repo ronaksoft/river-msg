@@ -74,6 +74,8 @@ func (p *poolUserInfo) Put(x *UserInfo) {
 	x.Username = ""
 	x.JoinedDate = 0
 	x.Photo = x.Photo[:0]
+	x.Official = false
+	x.Bio = ""
 	p.pool.Put(x)
 }
 
@@ -85,6 +87,8 @@ func (x *UserInfo) DeepCopy(z *UserInfo) {
 	z.Username = x.Username
 	z.JoinedDate = x.JoinedDate
 	z.Photo = append(z.Photo[:0], x.Photo...)
+	z.Official = x.Official
+	z.Bio = x.Bio
 }
 
 func (x *UserInfo) Marshal() ([]byte, error) {

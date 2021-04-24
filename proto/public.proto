@@ -19,6 +19,7 @@ message UserInfo {
     int64 JoinedDate = 4;
     bytes Photo = 5;
     bool Official = 6;
-    string Bio = 7;
+    bool Bot = 7;
+    string Bio = 8;
 }
 

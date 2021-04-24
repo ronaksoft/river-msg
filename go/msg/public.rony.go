@@ -75,6 +75,7 @@ func (p *poolUserInfo) Put(x *UserInfo) {
 	x.JoinedDate = 0
 	x.Photo = x.Photo[:0]
 	x.Official = false
+	x.Bot = false
 	x.Bio = ""
 	p.pool.Put(x)
 }
@@ -88,6 +89,7 @@ func (x *UserInfo) DeepCopy(z *UserInfo) {
 	z.JoinedDate = x.JoinedDate
 	z.Photo = append(z.Photo[:0], x.Photo...)
 	z.Official = x.Official
+	z.Bot = x.Bot
 	z.Bio = x.Bio
 }
 

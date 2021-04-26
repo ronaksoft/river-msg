@@ -548,6 +548,124 @@ func (x *AdminGetStorageNodes) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AdminGetStorageNodes, x)
 }
 
+const C_AdminBanIP int64 = 1567874795
+
+type poolAdminBanIP struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminBanIP) Get() *AdminBanIP {
+	x, ok := p.pool.Get().(*AdminBanIP)
+	if !ok {
+		x = &AdminBanIP{}
+	}
+	return x
+}
+
+func (p *poolAdminBanIP) Put(x *AdminBanIP) {
+	if x == nil {
+		return
+	}
+	x.IPs = x.IPs[:0]
+	p.pool.Put(x)
+}
+
+var PoolAdminBanIP = poolAdminBanIP{}
+
+func (x *AdminBanIP) DeepCopy(z *AdminBanIP) {
+	z.IPs = append(z.IPs[:0], x.IPs...)
+}
+
+func (x *AdminBanIP) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminBanIP) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminBanIP) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminBanIP, x)
+}
+
+const C_AdminGetBannedIPs int64 = 3761491783
+
+type poolAdminGetBannedIPs struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminGetBannedIPs) Get() *AdminGetBannedIPs {
+	x, ok := p.pool.Get().(*AdminGetBannedIPs)
+	if !ok {
+		x = &AdminGetBannedIPs{}
+	}
+	return x
+}
+
+func (p *poolAdminGetBannedIPs) Put(x *AdminGetBannedIPs) {
+	if x == nil {
+		return
+	}
+	p.pool.Put(x)
+}
+
+var PoolAdminGetBannedIPs = poolAdminGetBannedIPs{}
+
+func (x *AdminGetBannedIPs) DeepCopy(z *AdminGetBannedIPs) {
+}
+
+func (x *AdminGetBannedIPs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminGetBannedIPs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminGetBannedIPs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminGetBannedIPs, x)
+}
+
+const C_BannedIPs int64 = 171021676
+
+type poolBannedIPs struct {
+	pool sync.Pool
+}
+
+func (p *poolBannedIPs) Get() *BannedIPs {
+	x, ok := p.pool.Get().(*BannedIPs)
+	if !ok {
+		x = &BannedIPs{}
+	}
+	return x
+}
+
+func (p *poolBannedIPs) Put(x *BannedIPs) {
+	if x == nil {
+		return
+	}
+	x.IPs = x.IPs[:0]
+	p.pool.Put(x)
+}
+
+var PoolBannedIPs = poolBannedIPs{}
+
+func (x *BannedIPs) DeepCopy(z *BannedIPs) {
+	z.IPs = append(z.IPs[:0], x.IPs...)
+}
+
+func (x *BannedIPs) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *BannedIPs) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *BannedIPs) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_BannedIPs, x)
+}
+
 const C_AdminSetToken int64 = 2892519162
 
 type poolAdminSetToken struct {
@@ -1301,6 +1419,9 @@ func init() {
 	registry.RegisterConstructor(4159566764, "AdminSetStorageNode")
 	registry.RegisterConstructor(2297643227, "AdminGetStorageNode")
 	registry.RegisterConstructor(176633623, "AdminGetStorageNodes")
+	registry.RegisterConstructor(1567874795, "AdminBanIP")
+	registry.RegisterConstructor(3761491783, "AdminGetBannedIPs")
+	registry.RegisterConstructor(171021676, "BannedIPs")
 	registry.RegisterConstructor(2892519162, "AdminSetToken")
 	registry.RegisterConstructor(3154441897, "AdminDeleteToken")
 	registry.RegisterConstructor(1947723452, "AdminReserveUsername")

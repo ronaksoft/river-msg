@@ -105,6 +105,23 @@ message AdminGetStorageNodes {
     string AccessToken = 10;
 }
 
+// AdminBanIP
+// @Function
+// @Return: Bool
+message AdminBanIP {
+    repeated string IPs = 1;
+}
+
+// AdminGetBannedIPs
+// @Function
+// @Return: BannedIPs
+message AdminGetBannedIPs {}
+
+// BannedIPs
+message BannedIPs {
+    repeated string IPs = 1;
+}
+
 // AdminPrivilege
 enum AdminPrivilege {
     PrivilegeNone = 0;

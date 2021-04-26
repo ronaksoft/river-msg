@@ -548,21 +548,21 @@ func (x *AdminGetStorageNodes) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_AdminGetStorageNodes, x)
 }
 
-const C_AdminBanSubnet int64 = 2165142671
+const C_AdminAddBannedSubnet int64 = 1018562272
 
-type poolAdminBanSubnet struct {
+type poolAdminAddBannedSubnet struct {
 	pool sync.Pool
 }
 
-func (p *poolAdminBanSubnet) Get() *AdminBanSubnet {
-	x, ok := p.pool.Get().(*AdminBanSubnet)
+func (p *poolAdminAddBannedSubnet) Get() *AdminAddBannedSubnet {
+	x, ok := p.pool.Get().(*AdminAddBannedSubnet)
 	if !ok {
-		x = &AdminBanSubnet{}
+		x = &AdminAddBannedSubnet{}
 	}
 	return x
 }
 
-func (p *poolAdminBanSubnet) Put(x *AdminBanSubnet) {
+func (p *poolAdminAddBannedSubnet) Put(x *AdminAddBannedSubnet) {
 	if x == nil {
 		return
 	}
@@ -570,22 +570,62 @@ func (p *poolAdminBanSubnet) Put(x *AdminBanSubnet) {
 	p.pool.Put(x)
 }
 
-var PoolAdminBanSubnet = poolAdminBanSubnet{}
+var PoolAdminAddBannedSubnet = poolAdminAddBannedSubnet{}
 
-func (x *AdminBanSubnet) DeepCopy(z *AdminBanSubnet) {
+func (x *AdminAddBannedSubnet) DeepCopy(z *AdminAddBannedSubnet) {
 	z.CIDR = append(z.CIDR[:0], x.CIDR...)
 }
 
-func (x *AdminBanSubnet) Marshal() ([]byte, error) {
+func (x *AdminAddBannedSubnet) Marshal() ([]byte, error) {
 	return proto.Marshal(x)
 }
 
-func (x *AdminBanSubnet) Unmarshal(b []byte) error {
+func (x *AdminAddBannedSubnet) Unmarshal(b []byte) error {
 	return proto.UnmarshalOptions{}.Unmarshal(b, x)
 }
 
-func (x *AdminBanSubnet) PushToContext(ctx *edge.RequestCtx) {
-	ctx.PushMessage(C_AdminBanSubnet, x)
+func (x *AdminAddBannedSubnet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminAddBannedSubnet, x)
+}
+
+const C_AdminDeleteBannedSubnet int64 = 4271915141
+
+type poolAdminDeleteBannedSubnet struct {
+	pool sync.Pool
+}
+
+func (p *poolAdminDeleteBannedSubnet) Get() *AdminDeleteBannedSubnet {
+	x, ok := p.pool.Get().(*AdminDeleteBannedSubnet)
+	if !ok {
+		x = &AdminDeleteBannedSubnet{}
+	}
+	return x
+}
+
+func (p *poolAdminDeleteBannedSubnet) Put(x *AdminDeleteBannedSubnet) {
+	if x == nil {
+		return
+	}
+	x.CIDR = x.CIDR[:0]
+	p.pool.Put(x)
+}
+
+var PoolAdminDeleteBannedSubnet = poolAdminDeleteBannedSubnet{}
+
+func (x *AdminDeleteBannedSubnet) DeepCopy(z *AdminDeleteBannedSubnet) {
+	z.CIDR = append(z.CIDR[:0], x.CIDR...)
+}
+
+func (x *AdminDeleteBannedSubnet) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *AdminDeleteBannedSubnet) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *AdminDeleteBannedSubnet) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_AdminDeleteBannedSubnet, x)
 }
 
 const C_AdminGetBannedSubnets int64 = 937432341
@@ -1419,7 +1459,8 @@ func init() {
 	registry.RegisterConstructor(4159566764, "AdminSetStorageNode")
 	registry.RegisterConstructor(2297643227, "AdminGetStorageNode")
 	registry.RegisterConstructor(176633623, "AdminGetStorageNodes")
-	registry.RegisterConstructor(2165142671, "AdminBanSubnet")
+	registry.RegisterConstructor(1018562272, "AdminAddBannedSubnet")
+	registry.RegisterConstructor(4271915141, "AdminDeleteBannedSubnet")
 	registry.RegisterConstructor(937432341, "AdminGetBannedSubnets")
 	registry.RegisterConstructor(1393688488, "BannedSubnets")
 	registry.RegisterConstructor(2892519162, "AdminSetToken")

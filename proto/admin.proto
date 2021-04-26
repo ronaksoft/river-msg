@@ -105,21 +105,22 @@ message AdminGetStorageNodes {
     string AccessToken = 10;
 }
 
-// AdminBanIP
+// AdminBanSubnet
 // @Function
 // @Return: Bool
-message AdminBanIP {
-    repeated string IPs = 1;
+message AdminBanSubnet {
+    repeated string CIDR = 1;
 }
 
-// AdminGetBannedIPs
+// AdminGetBannedSubnets
 // @Function
-// @Return: BannedIPs
-message AdminGetBannedIPs {}
+// @Return: BannedSubnets
+message AdminGetBannedSubnets {
+}
 
-// BannedIPs
-message BannedIPs {
-    repeated string IPs = 1;
+// BannedSubnets
+message BannedSubnets {
+    repeated string Subnets = 1;
 }
 
 // AdminPrivilege

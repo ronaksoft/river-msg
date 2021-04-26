@@ -109,6 +109,7 @@ message AdminGetStorageNodes {
 // @Function
 // @Return: Bool
 message AdminAddBannedSubnet {
+    string AccessToken = 10;
     repeated string CIDR = 1;
 }
 
@@ -116,6 +117,7 @@ message AdminAddBannedSubnet {
 // @Function
 // @Return: Bool
 message AdminDeleteBannedSubnet {
+    string AccessToken = 10;
     repeated string CIDR = 1;
 }
 
@@ -123,6 +125,7 @@ message AdminDeleteBannedSubnet {
 // @Function
 // @Return: BannedSubnets
 message AdminGetBannedSubnets {
+    string AccessToken = 10;
 }
 
 // BannedSubnets

@@ -566,6 +566,7 @@ func (p *poolAdminAddBannedSubnet) Put(x *AdminAddBannedSubnet) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	x.CIDR = x.CIDR[:0]
 	p.pool.Put(x)
 }
@@ -573,6 +574,7 @@ func (p *poolAdminAddBannedSubnet) Put(x *AdminAddBannedSubnet) {
 var PoolAdminAddBannedSubnet = poolAdminAddBannedSubnet{}
 
 func (x *AdminAddBannedSubnet) DeepCopy(z *AdminAddBannedSubnet) {
+	z.AccessToken = x.AccessToken
 	z.CIDR = append(z.CIDR[:0], x.CIDR...)
 }
 
@@ -606,6 +608,7 @@ func (p *poolAdminDeleteBannedSubnet) Put(x *AdminDeleteBannedSubnet) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	x.CIDR = x.CIDR[:0]
 	p.pool.Put(x)
 }
@@ -613,6 +616,7 @@ func (p *poolAdminDeleteBannedSubnet) Put(x *AdminDeleteBannedSubnet) {
 var PoolAdminDeleteBannedSubnet = poolAdminDeleteBannedSubnet{}
 
 func (x *AdminDeleteBannedSubnet) DeepCopy(z *AdminDeleteBannedSubnet) {
+	z.AccessToken = x.AccessToken
 	z.CIDR = append(z.CIDR[:0], x.CIDR...)
 }
 
@@ -646,12 +650,14 @@ func (p *poolAdminGetBannedSubnets) Put(x *AdminGetBannedSubnets) {
 	if x == nil {
 		return
 	}
+	x.AccessToken = ""
 	p.pool.Put(x)
 }
 
 var PoolAdminGetBannedSubnets = poolAdminGetBannedSubnets{}
 
 func (x *AdminGetBannedSubnets) DeepCopy(z *AdminGetBannedSubnets) {
+	z.AccessToken = x.AccessToken
 }
 
 func (x *AdminGetBannedSubnets) Marshal() ([]byte, error) {

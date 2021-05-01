@@ -21,4 +21,3 @@ cd "$currentWorkingDir"/go/msg || exit
 go fmt -mod vendor
 cd "$currentWorkingDir" || exit
 rm -r "$currentWorkingDir"/proto/tmp
-#rm -r "$currentWorkingDir"/go/_legacy/github.com

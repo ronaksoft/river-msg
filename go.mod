@@ -10,6 +10,6 @@ require (
 	github.com/mattn/go-runewidth v0.0.10 // indirect
 	github.com/nyaruka/phonenumbers v1.0.65 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
-	github.com/ronaksoft/rony v0.6.31
+	github.com/ronaksoft/rony v0.6.52
 	google.golang.org/protobuf v1.26.0
 )

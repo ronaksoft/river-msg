@@ -12,14 +12,41 @@ message CallMediaSettings {
     bool Video = 3;
 }
 
-message CallConnection {
-    int32 ConnectionId = 1;
+message CallParticipant {
+    int32 ConnectionID = 1;
     InputUser Peer = 2;
     bool Initiator = 3;
     bool Admin = 4;
     CallDeviceType DeviceType = 5;
     CallMediaSettings MediaSettings = 6;
     bool Started = 7;
+}
+
+message CallRTCIceCandidate {
+    string Candidate = 1;
+    int64 SdpMLineIndex = 2;
+    string SdpMid = 3;
+    string UsernameFragment = 4;
+}
+
+message CallRTCIceServer {
+    string Credential = 1;
+    string CredentialType = 2;
+    repeated string Urls = 3;
+    string Username = 4;
+}
+
+message CallConnection {
+    bool Accepted = 1;
+    int64 RTCPeerConnection = 2;
+    repeated CallRTCIceCandidate IceQueue = 3;
+    repeated CallRTCIceServer IceServers = 4;
+    bool Init = 5;
+    bool Reconnecting = 6;
+    int64 ScreenShareStreamID = 7;
+    int64 StreamID = 8;
+    int64 IntervalID = 9;
+    int32 Try = 10;
 }
 
 enum CallUpdate {
@@ -43,9 +70,9 @@ enum CallUpdate {
     ShareScreenStreamUpdated = 17;
     AllConnected = 18;
     ConnectionStatusChanged = 19;
-    RateReasonReserved1 = 20;
-    RateReasonReserved2 = 21;
-    RateReasonReserved3 = 22;
+    ParticipantMuted = 20;
+    CallDestroyed = 21;
+    LocalMediaSettingsUpdated = 22;
     RateReasonReserved4 = 23;
     RateReasonReserved5 = 24;
     RateReasonReserved6 = 25;
@@ -61,11 +88,11 @@ message CallUpdateCallRequested {
 }
 
 message CallUpdateCallAccepted {
-    int32 ConnectionId = 1;
+    int32 ConnectionID = 1;
 }
 
 message CallUpdateStreamUpdated {
-    int32 ConnectionId = 1;
+    int32 ConnectionID = 1;
     string StreamID = 2;
 }
 
@@ -75,7 +102,7 @@ message CallUpdateCallRejected {
 }
 
 message CallUpdateMediaSettingsUpdated {
-    int32 ConnectionId = 1;
+    int32 ConnectionID = 1;
     CallMediaSettings MediaSettings = 2;
 }
 
@@ -87,7 +114,7 @@ message CallUpdateCallTimeout {
 }
 
 message CallUpdateCallAck {
-    int32 ConnectionId = 1;
+    int32 ConnectionID = 1;
 }
 
 message CallUpdateParticipantJoined {
@@ -125,7 +152,7 @@ message CallUpdateParticipantAdminUpdated {
 
 message CallUpdateShareScreenStreamUpdated {
     int64 CallID = 1 [jstype = JS_STRING];
-    int32 ConnectionId = 2;
+    int32 ConnectionID = 2;
     string StreamID = 3;
 }
 
@@ -133,6 +160,19 @@ message CallUpdateAllConnected {
 }
 
 message CallUpdateConnectionStatusChanged {
-    int32 ConnectionId = 1;
+    int32 ConnectionID = 1;
     string State = 2;
+}
+
+message CallUpdateParticipantMuted {
+    int32 ConnectionID = 1;
+    bool Muted = 2;
+    int64 UserID = 3 [jstype = JS_STRING];
+}
+
+message CallUpdateCallDestroyed {
+    int64 CallID = 1 [jstype = JS_STRING];
+}
+
+message CallUpdateLocalMediaSettingsUpdated {
 }

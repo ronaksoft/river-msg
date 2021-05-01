@@ -18,7 +18,7 @@ protoc  -I="${currentWorkingDir}"/vendor -I=.  --gorony_out=paths=source_relativ
 protoc  -I="${currentWorkingDir}"/vendor -I=.  --gokk_out=paths=source_relative:../../go/msg ./*.proto
 
 cd "$currentWorkingDir"/go/msg || exit
-go fmt
+go fmt -mod vendor
 cd "$currentWorkingDir" || exit
 rm -r "$currentWorkingDir"/proto/tmp
 #rm -r "$currentWorkingDir"/go/_legacy/github.com

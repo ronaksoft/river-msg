@@ -18,6 +18,7 @@ message ClientGetMediaHistory {
 
 // ClientSendMessageMedia
 // @Function
+// @Returns: ClientPendingMessage
 message ClientSendMessageMedia {
     InputPeer Peer = 1;
     InputMediaType MediaType = 2;
@@ -288,6 +289,7 @@ message ClientGetFrequentReactions {
 
 }
 
+// ClientFrequentReactions
 message ClientFrequentReactions {
     repeated string Reactions = 1;
 }

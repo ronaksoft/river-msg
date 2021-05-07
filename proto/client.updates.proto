@@ -17,10 +17,3 @@ message ClientUpdateMessagesDeleted {
     int32 PeerType = 2;
     repeated int64 MessageIDs = 3;
 }
-
-// ClientUpdateDialogsSynced
-message ClientUpdateSynced {
-    bool Dialogs = 1;
-    bool Contacts = 2;
-    bool Gifs = 3;
-}

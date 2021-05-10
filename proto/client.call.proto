@@ -44,10 +44,11 @@ message CallConnection {
     repeated CallRTCIceServer IceServers = 5;
     bool Init = 6;
     bool Reconnecting = 7;
-    int64 ScreenShareStreamID = 8;
-    int64 StreamID = 9;
-    int64 IntervalID = 10;
-    int32 Try = 11;
+    bool ReconnectingTry = 8;
+    int64 ScreenShareStreamID = 9;
+    int64 StreamID = 10;
+    int64 IntervalID = 11;
+    int32 Try = 12;
 }
 
 enum CallUpdate {
@@ -74,12 +75,12 @@ enum CallUpdate {
     ParticipantMuted = 20;
     CallDestroyed = 21;
     LocalMediaSettingsUpdated = 22;
-    RateReasonReserved4 = 23;
-    RateReasonReserved5 = 24;
-    RateReasonReserved6 = 25;
-    RateReasonReserved7 = 26;
-    RateReasonReserved8 = 27;
-    RateReasonReserved9 = 28;
+    CallUpdateReserved4 = 23;
+    CallUpdateReserved5 = 24;
+    CallUpdateReserved6 = 25;
+    CallUpdateReserved7 = 26;
+    CallUpdateReserved8 = 27;
+    CallUpdateReserved9 = 28;
 }
 
 message CallUpdateCallRequested {

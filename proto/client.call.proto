@@ -44,7 +44,7 @@ message CallConnection {
     repeated CallRTCIceServer IceServers = 5;
     bool Init = 6;
     bool Reconnecting = 7;
-    bool ReconnectingTry = 8;
+    int32 ReconnectingTry = 8;
     int64 ScreenShareStreamID = 9;
     int64 StreamID = 10;
     int64 IntervalID = 11;

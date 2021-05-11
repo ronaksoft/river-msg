@@ -41,7 +41,7 @@ message CallConnection {
     int64 RTCPeerConnectionID = 2;
     string iceConnectionState = 3;
     repeated CallRTCIceCandidate IceQueue = 4;
-    repeated CallRTCIceServer IceServers = 5;
+    repeated IceServer IceServers = 5;
     bool Init = 6;
     bool Reconnecting = 7;
     int32 ReconnectingTry = 8;

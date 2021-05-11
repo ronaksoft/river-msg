@@ -39,7 +39,7 @@ message CallRTCIceServer {
 message CallConnection {
     bool Accepted = 1;
     int64 RTCPeerConnectionID = 2;
-    string iceConnectionState = 3;
+    string IceConnectionState = 3;
     repeated CallRTCIceCandidate IceQueue = 4;
     repeated IceServer IceServers = 5;
     bool Init = 6;

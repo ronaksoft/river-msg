@@ -233,7 +233,7 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 	}
 	x.Accepted = false
 	x.RTCPeerConnectionID = 0
-	x.iceConnectionState = ""
+	x.IceConnectionState = ""
 	for _, z := range x.IceQueue {
 		PoolCallRTCIceCandidate.Put(z)
 	}
@@ -257,7 +257,7 @@ var PoolCallConnection = poolCallConnection{}
 func (x *CallConnection) DeepCopy(z *CallConnection) {
 	z.Accepted = x.Accepted
 	z.RTCPeerConnectionID = x.RTCPeerConnectionID
-	z.iceConnectionState = x.iceConnectionState
+	z.IceConnectionState = x.IceConnectionState
 	for idx := range x.IceQueue {
 		if x.IceQueue[idx] != nil {
 			xx := PoolCallRTCIceCandidate.Get()

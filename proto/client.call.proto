@@ -6,6 +6,84 @@ import "core.types.proto";
 
 option go_package = './;msg';
 
+message ClientCallToggleVideo {
+    bool Video = 1;
+}
+
+message ClientCallToggleAudio {
+    bool Audio = 1;
+}
+
+message ClientCallTryReconnect {
+    int32 ConnId = 1;
+}
+
+message ClientCallDestroyConnections {
+    int64 CallID = 1;
+}
+
+message ClientCallAreALlAudio {
+}
+
+message ClientCallStart {
+    InputPeer Peer = 1;
+    repeated InputPeer InputUser = 2;
+    int64 CallID = 3;
+}
+
+message ClientCallJoin {
+    InputPeer Peer = 1;
+    int64 CallID = 2;
+}
+
+message ClientCallAccept {
+    int64 CallID = 1;
+    bool Video = 2;
+}
+
+message ClientCallReject {
+    int64 CallID = 1;
+    int32 Duration = 2;
+    DiscardReason Reason = 3;
+    InputPeer TargetPeer = 4;
+}
+
+message ClientCallGroupAddParticipant {
+    int64 CallID = 1;
+    repeated InputUser Participants = 2;
+}
+
+message ClientCallGroupRemoveParticipant {
+    int64 CallID = 1;
+    repeated int64 UserIDs = 2;
+    bool Timeout = 3;
+}
+
+message ClientCallGroupUpdateAdmin {
+    int64 CallID = 1;
+    int64 UserID = 2;
+    bool Admin = 3;
+}
+
+message ClientCallGroupGetParticipantByUserID {
+    int64 CallID = 1;
+    int64 UserID = 2;
+}
+
+message ClientCallGroupGetParticipantByConnId {
+    int32 ConnId = 1;
+}
+
+message ClientCallGroupGetParticipantList {
+    int64 CallID = 1;
+    bool ExcludeCurrent = 2;
+}
+
+message ClientCallGroupMuteParticipant {
+    int64 UserID = 1;
+    bool Muted = 2;
+}
+
 message CallMediaSettings {
     bool Audio = 1;
     bool ScreenShare = 2;

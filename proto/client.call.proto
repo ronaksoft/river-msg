@@ -44,12 +44,12 @@ message CallConnection {
     repeated CallRTCIceCandidate IceQueue = 5;
     repeated IceServer IceServers = 6;
     bool Init = 7;
-    bool Reconnecting = 8;
-    int32 ReconnectingTry = 9;
-    int64 ScreenShareStreamID = 10;
-    int64 StreamID = 11;
-    int64 IntervalID = 12;
-    int32 Try = 13;
+    int32 Try = 8;
+    bool Reconnecting = 9;
+    int32 ReconnectingTry = 10;
+    int64 ScreenShareStreamID = 11;
+    int64 StreamID = 12;
+    int64 IntervalID = 13;
 }
 
 enum CallUpdate {

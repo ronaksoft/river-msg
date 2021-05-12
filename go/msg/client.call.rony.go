@@ -244,12 +244,12 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 	}
 	x.IceServers = x.IceServers[:0]
 	x.Init = false
+	x.Try = 0
 	x.Reconnecting = false
 	x.ReconnectingTry = 0
 	x.ScreenShareStreamID = 0
 	x.StreamID = 0
 	x.IntervalID = 0
-	x.Try = 0
 	p.pool.Put(x)
 }
 
@@ -275,12 +275,12 @@ func (x *CallConnection) DeepCopy(z *CallConnection) {
 		}
 	}
 	z.Init = x.Init
+	z.Try = x.Try
 	z.Reconnecting = x.Reconnecting
 	z.ReconnectingTry = x.ReconnectingTry
 	z.ScreenShareStreamID = x.ScreenShareStreamID
 	z.StreamID = x.StreamID
 	z.IntervalID = x.IntervalID
-	z.Try = x.Try
 }
 
 func (x *CallConnection) Marshal() ([]byte, error) {

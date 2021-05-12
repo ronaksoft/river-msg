@@ -1169,12 +1169,22 @@ func (p *poolCallUpdateLocalMediaSettingsUpdated) Put(x *CallUpdateLocalMediaSet
 	if x == nil {
 		return
 	}
+	PoolCallMediaSettings.Put(x.MediaSettings)
+	x.MediaSettings = nil
 	p.pool.Put(x)
 }
 
 var PoolCallUpdateLocalMediaSettingsUpdated = poolCallUpdateLocalMediaSettingsUpdated{}
 
 func (x *CallUpdateLocalMediaSettingsUpdated) DeepCopy(z *CallUpdateLocalMediaSettingsUpdated) {
+	if x.MediaSettings != nil {
+		if z.MediaSettings == nil {
+			z.MediaSettings = PoolCallMediaSettings.Get()
+		}
+		x.MediaSettings.DeepCopy(z.MediaSettings)
+	} else {
+		z.MediaSettings = nil
+	}
 }
 
 func (x *CallUpdateLocalMediaSettingsUpdated) Marshal() ([]byte, error) {

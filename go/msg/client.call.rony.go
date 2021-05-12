@@ -313,8 +313,8 @@ func (p *poolCallUpdateCallRequested) Put(x *CallUpdateCallRequested) {
 	if x == nil {
 		return
 	}
-	x.ID = 0
-	x.Type = 0
+	PoolInputPeer.Put(x.Peer)
+	x.Peer = nil
 	x.CallID = 0
 	p.pool.Put(x)
 }
@@ -322,8 +322,14 @@ func (p *poolCallUpdateCallRequested) Put(x *CallUpdateCallRequested) {
 var PoolCallUpdateCallRequested = poolCallUpdateCallRequested{}
 
 func (x *CallUpdateCallRequested) DeepCopy(z *CallUpdateCallRequested) {
-	z.ID = x.ID
-	z.Type = x.Type
+	if x.Peer != nil {
+		if z.Peer == nil {
+			z.Peer = PoolInputPeer.Get()
+		}
+		x.Peer.DeepCopy(z.Peer)
+	} else {
+		z.Peer = nil
+	}
 	z.CallID = x.CallID
 }
 

@@ -231,6 +231,7 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 	if x == nil {
 		return
 	}
+	x.ConnId = 0
 	x.Accepted = false
 	x.RTCPeerConnectionID = 0
 	x.IceConnectionState = ""
@@ -255,6 +256,7 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 var PoolCallConnection = poolCallConnection{}
 
 func (x *CallConnection) DeepCopy(z *CallConnection) {
+	z.ConnId = x.ConnId
 	z.Accepted = x.Accepted
 	z.RTCPeerConnectionID = x.RTCPeerConnectionID
 	z.IceConnectionState = x.IceConnectionState

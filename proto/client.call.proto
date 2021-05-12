@@ -37,18 +37,19 @@ message CallRTCIceServer {
 }
 
 message CallConnection {
-    bool Accepted = 1;
-    int64 RTCPeerConnectionID = 2;
-    string IceConnectionState = 3;
-    repeated CallRTCIceCandidate IceQueue = 4;
-    repeated IceServer IceServers = 5;
-    bool Init = 6;
-    bool Reconnecting = 7;
-    int32 ReconnectingTry = 8;
-    int64 ScreenShareStreamID = 9;
-    int64 StreamID = 10;
-    int64 IntervalID = 11;
-    int32 Try = 12;
+    int32 ConnId = 1;
+    bool Accepted = 2;
+    int64 RTCPeerConnectionID = 3;
+    string IceConnectionState = 4;
+    repeated CallRTCIceCandidate IceQueue = 5;
+    repeated IceServer IceServers = 6;
+    bool Init = 7;
+    bool Reconnecting = 8;
+    int32 ReconnectingTry = 9;
+    int64 ScreenShareStreamID = 10;
+    int64 StreamID = 11;
+    int64 IntervalID = 12;
+    int32 Try = 13;
 }
 
 enum CallUpdate {

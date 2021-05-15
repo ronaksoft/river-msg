@@ -68,11 +68,16 @@ message ClientCallSendMediaSettings {
 
 // ClientCallStart
 // @Function
-// @Return: Bool
+// @Return: ClientCallStarted
 message ClientCallStart {
     InputPeer Peer = 1;
     repeated InputPeer InputUsers = 2;
     int64 CallID = 3;
+}
+
+// ClientCallStarted
+message ClientCallStarted {
+    int64 CallID = 1;
 }
 
 // ClientCallJoin

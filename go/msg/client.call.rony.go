@@ -414,6 +414,46 @@ func (x *ClientCallStart) PushToContext(ctx *edge.RequestCtx) {
 	ctx.PushMessage(C_ClientCallStart, x)
 }
 
+const C_ClientCallStarted int64 = 484502003
+
+type poolClientCallStarted struct {
+	pool sync.Pool
+}
+
+func (p *poolClientCallStarted) Get() *ClientCallStarted {
+	x, ok := p.pool.Get().(*ClientCallStarted)
+	if !ok {
+		x = &ClientCallStarted{}
+	}
+	return x
+}
+
+func (p *poolClientCallStarted) Put(x *ClientCallStarted) {
+	if x == nil {
+		return
+	}
+	x.CallID = 0
+	p.pool.Put(x)
+}
+
+var PoolClientCallStarted = poolClientCallStarted{}
+
+func (x *ClientCallStarted) DeepCopy(z *ClientCallStarted) {
+	z.CallID = x.CallID
+}
+
+func (x *ClientCallStarted) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *ClientCallStarted) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *ClientCallStarted) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientCallStarted, x)
+}
+
 const C_ClientCallJoin int64 = 2382593398
 
 type poolClientCallJoin struct {
@@ -2064,6 +2104,7 @@ func init() {
 	registry.RegisterConstructor(3421647876, "ClientCallSendIceConnectionStatus")
 	registry.RegisterConstructor(2959794351, "ClientCallSendMediaSettings")
 	registry.RegisterConstructor(1041146964, "ClientCallStart")
+	registry.RegisterConstructor(484502003, "ClientCallStarted")
 	registry.RegisterConstructor(2382593398, "ClientCallJoin")
 	registry.RegisterConstructor(2726334873, "ClientCallAccept")
 	registry.RegisterConstructor(3026524692, "ClientCallReject")

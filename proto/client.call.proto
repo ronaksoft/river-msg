@@ -181,7 +181,7 @@ message CallParticipant {
 
 // CallParticipants
 message CallParticipants {
-    repeated PhoneParticipant PhoneParticipants = 1;
+    repeated CallParticipant CallParticipants = 1;
 }
 
 // CallRTCIceCandidate

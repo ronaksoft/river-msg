@@ -1031,21 +1031,21 @@ func (p *poolCallParticipants) Put(x *CallParticipants) {
 	if x == nil {
 		return
 	}
-	for _, z := range x.PhoneParticipants {
-		PoolPhoneParticipant.Put(z)
+	for _, z := range x.CallParticipants {
+		PoolCallParticipant.Put(z)
 	}
-	x.PhoneParticipants = x.PhoneParticipants[:0]
+	x.CallParticipants = x.CallParticipants[:0]
 	p.pool.Put(x)
 }
 
 var PoolCallParticipants = poolCallParticipants{}
 
 func (x *CallParticipants) DeepCopy(z *CallParticipants) {
-	for idx := range x.PhoneParticipants {
-		if x.PhoneParticipants[idx] != nil {
-			xx := PoolPhoneParticipant.Get()
-			x.PhoneParticipants[idx].DeepCopy(xx)
-			z.PhoneParticipants = append(z.PhoneParticipants, xx)
+	for idx := range x.CallParticipants {
+		if x.CallParticipants[idx] != nil {
+			xx := PoolCallParticipant.Get()
+			x.CallParticipants[idx].DeepCopy(xx)
+			z.CallParticipants = append(z.CallParticipants, xx)
 		}
 	}
 }

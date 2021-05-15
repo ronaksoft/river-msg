@@ -45,7 +45,7 @@ message ClientCallAreAllAudio {
 // @Return: Bool
 message ClientCallSendIceCandidate {
     int32 ConnId = 1;
-    PhoneActionIceExchange Ice = 2;
+    CallRTCIceCandidate Candidate = 2;
 }
 
 // ClientCallSendIceConnectionStatus

@@ -373,10 +373,10 @@ func (p *poolClientCallStart) Put(x *ClientCallStart) {
 	}
 	PoolInputPeer.Put(x.Peer)
 	x.Peer = nil
-	for _, z := range x.InputUser {
+	for _, z := range x.InputUsers {
 		PoolInputPeer.Put(z)
 	}
-	x.InputUser = x.InputUser[:0]
+	x.InputUsers = x.InputUsers[:0]
 	x.CallID = 0
 	p.pool.Put(x)
 }
@@ -392,11 +392,11 @@ func (x *ClientCallStart) DeepCopy(z *ClientCallStart) {
 	} else {
 		z.Peer = nil
 	}
-	for idx := range x.InputUser {
-		if x.InputUser[idx] != nil {
+	for idx := range x.InputUsers {
+		if x.InputUsers[idx] != nil {
 			xx := PoolInputPeer.Get()
-			x.InputUser[idx].DeepCopy(xx)
-			z.InputUser = append(z.InputUser, xx)
+			x.InputUsers[idx].DeepCopy(xx)
+			z.InputUsers = append(z.InputUsers, xx)
 		}
 	}
 	z.CallID = x.CallID

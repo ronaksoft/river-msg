@@ -71,7 +71,7 @@ message ClientCallSendMediaSettings {
 // @Return: Bool
 message ClientCallStart {
     InputPeer Peer = 1;
-    repeated InputPeer InputUser = 2;
+    repeated InputPeer InputUsers = 2;
     int64 CallID = 3;
 }
 

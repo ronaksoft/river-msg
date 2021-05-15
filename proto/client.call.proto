@@ -71,7 +71,7 @@ message ClientCallSendMediaSettings {
 // @Return: ClientCallStarted
 message ClientCallStart {
     InputPeer Peer = 1;
-    repeated InputPeer InputUsers = 2;
+    repeated InputUser InputUsers = 2;
     int64 CallID = 3;
 }
 

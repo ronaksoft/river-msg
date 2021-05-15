@@ -588,7 +588,7 @@ type ClientCallStart struct {
 	unknownFields protoimpl.UnknownFields
 
 	Peer       *InputPeer   `protobuf:"bytes,1,opt,name=Peer,proto3" json:"Peer,omitempty"`
-	InputUsers []*InputPeer `protobuf:"bytes,2,rep,name=InputUsers,proto3" json:"InputUsers,omitempty"`
+	InputUsers []*InputUser `protobuf:"bytes,2,rep,name=InputUsers,proto3" json:"InputUsers,omitempty"`
 	CallID     int64        `protobuf:"varint,3,opt,name=CallID,proto3" json:"CallID,omitempty"`
 }
 
@@ -631,7 +631,7 @@ func (x *ClientCallStart) GetPeer() *InputPeer {
 	return nil
 }
 
-func (x *ClientCallStart) GetInputUsers() []*InputPeer {
+func (x *ClientCallStart) GetInputUsers() []*InputUser {
 	if x != nil {
 		return x.InputUsers
 	}
@@ -2855,7 +2855,7 @@ var file_client_call_proto_rawDesc = []byte{
 	0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65, 0x72, 0x52,
 	0x04, 0x50, 0x65, 0x65, 0x72, 0x12, 0x2e, 0x0a, 0x0a, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x55, 0x73,
 	0x65, 0x72, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x73, 0x67, 0x2e,
-	0x49, 0x6e, 0x70, 0x75, 0x74, 0x50, 0x65, 0x65, 0x72, 0x52, 0x0a, 0x49, 0x6e, 0x70, 0x75, 0x74,
+	0x49, 0x6e, 0x70, 0x75, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x0a, 0x49, 0x6e, 0x70, 0x75, 0x74,
 	0x55, 0x73, 0x65, 0x72, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49, 0x44, 0x18,
 	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x43, 0x61, 0x6c, 0x6c, 0x49, 0x44, 0x22, 0x2b, 0x0a,
 	0x11, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x43, 0x61, 0x6c, 0x6c, 0x53, 0x74, 0x61, 0x72, 0x74,
@@ -3205,8 +3205,8 @@ var file_client_call_proto_goTypes = []interface{}{
 	(*CallUpdateLocalMediaSettingsUpdated)(nil),   // 46: msg.CallUpdateLocalMediaSettingsUpdated
 	(*PhoneActionIceExchange)(nil),                // 47: msg.PhoneActionIceExchange
 	(*InputPeer)(nil),                             // 48: msg.InputPeer
-	(DiscardReason)(0),                            // 49: msg.DiscardReason
-	(*InputUser)(nil),                             // 50: msg.InputUser
+	(*InputUser)(nil),                             // 49: msg.InputUser
+	(DiscardReason)(0),                            // 50: msg.DiscardReason
 	(*PhoneParticipant)(nil),                      // 51: msg.PhoneParticipant
 	(CallDeviceType)(0),                           // 52: msg.CallDeviceType
 	(*IceServer)(nil),                             // 53: msg.IceServer
@@ -3215,11 +3215,11 @@ var file_client_call_proto_depIdxs = []int32{
 	47, // 0: msg.ClientCallSendIceCandidate.Ice:type_name -> msg.PhoneActionIceExchange
 	21, // 1: msg.ClientCallSendMediaSettings.MediaSettings:type_name -> msg.CallMediaSettings
 	48, // 2: msg.ClientCallStart.Peer:type_name -> msg.InputPeer
-	48, // 3: msg.ClientCallStart.InputUsers:type_name -> msg.InputPeer
+	49, // 3: msg.ClientCallStart.InputUsers:type_name -> msg.InputUser
 	48, // 4: msg.ClientCallJoin.Peer:type_name -> msg.InputPeer
-	49, // 5: msg.ClientCallReject.Reason:type_name -> msg.DiscardReason
+	50, // 5: msg.ClientCallReject.Reason:type_name -> msg.DiscardReason
 	48, // 6: msg.ClientCallReject.TargetPeer:type_name -> msg.InputPeer
-	50, // 7: msg.ClientCallGroupAddParticipant.Participants:type_name -> msg.InputUser
+	49, // 7: msg.ClientCallGroupAddParticipant.Participants:type_name -> msg.InputUser
 	51, // 8: msg.CallParticipant.PhoneParticipant:type_name -> msg.PhoneParticipant
 	52, // 9: msg.CallParticipant.DeviceType:type_name -> msg.CallDeviceType
 	21, // 10: msg.CallParticipant.MediaSettings:type_name -> msg.CallMediaSettings
@@ -3227,7 +3227,7 @@ var file_client_call_proto_depIdxs = []int32{
 	24, // 12: msg.CallConnection.IceQueue:type_name -> msg.CallRTCIceCandidate
 	53, // 13: msg.CallConnection.IceServers:type_name -> msg.IceServer
 	48, // 14: msg.CallUpdateCallRequested.Peer:type_name -> msg.InputPeer
-	49, // 15: msg.CallUpdateCallRejected.Reason:type_name -> msg.DiscardReason
+	50, // 15: msg.CallUpdateCallRejected.Reason:type_name -> msg.DiscardReason
 	21, // 16: msg.CallUpdateMediaSettingsUpdated.MediaSettings:type_name -> msg.CallMediaSettings
 	48, // 17: msg.CallUpdateCallPreview.Peer:type_name -> msg.InputPeer
 	48, // 18: msg.CallUpdateCallJoinRequested.Peer:type_name -> msg.InputPeer

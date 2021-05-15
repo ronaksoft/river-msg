@@ -106,6 +106,37 @@ message ClientCallReject {
     InputPeer TargetPeer = 4;
 }
 
+// ClientCallGetParticipantByUserID
+// @Function
+// @Return: CallParticipant
+message ClientCallGetParticipantByUserID {
+    int64 CallID = 1;
+    int64 UserID = 2;
+}
+
+// ClientCallGetParticipantByConnId
+// @Function
+// @Return: CallParticipant
+message ClientCallGetParticipantByConnId {
+    int32 ConnId = 1;
+}
+
+// ClientCallGetParticipantList
+// @Function
+// @Return: CallParticipants
+message ClientCallGetParticipantList {
+    int64 CallID = 1;
+    bool ExcludeCurrent = 2;
+}
+
+// ClientCallMuteParticipant
+// @Function
+// @Return: Bool
+message ClientCallMuteParticipant {
+    int64 UserID = 1;
+    bool Muted = 2;
+}
+
 // ClientCallGroupAddParticipant
 // @Function
 // @Return: Bool
@@ -130,37 +161,6 @@ message ClientCallGroupUpdateAdmin {
     int64 CallID = 1;
     int64 UserID = 2;
     bool Admin = 3;
-}
-
-// ClientCallGroupRemoveParticipant
-// @Function
-// @Return: CallParticipant
-message ClientCallGroupGetParticipantByUserID {
-    int64 CallID = 1;
-    int64 UserID = 2;
-}
-
-// ClientCallGroupGetParticipantByConnId
-// @Function
-// @Return: CallParticipant
-message ClientCallGroupGetParticipantByConnId {
-    int32 ConnId = 1;
-}
-
-// ClientCallGroupGetParticipantByConnId
-// @Function
-// @Return: CallParticipants
-message ClientCallGroupGetParticipantList {
-    int64 CallID = 1;
-    bool ExcludeCurrent = 2;
-}
-
-// ClientCallGroupMuteParticipant
-// @Function
-// @Return: Bool
-message ClientCallGroupMuteParticipant {
-    int64 UserID = 1;
-    bool Muted = 2;
 }
 
 // CallMediaSettings

@@ -312,3 +312,8 @@ message ClientGetNotificationDismissTime {
 message ClientNotificationDismissTime {
     int64 Ts = 1;
 }
+
+// ClientError
+message ClientError {
+    string Error = 1;
+}

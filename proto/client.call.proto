@@ -6,41 +6,94 @@ import "core.types.proto";
 
 option go_package = './;msg';
 
+// ClientCallToggleVideo
+// @Function
+// @Return: Bool
 message ClientCallToggleVideo {
     bool Video = 1;
 }
 
+// ClientCallToggleAudio
+// @Function
+// @Return: Bool
 message ClientCallToggleAudio {
     bool Audio = 1;
 }
 
+// ClientCallTryReconnect
+// @Function
+// @Return: Bool
 message ClientCallTryReconnect {
     int32 ConnId = 1;
 }
 
-message ClientCallDestroyConnections {
+// ClientCallDestroy
+// @Function
+// @Return: Bool
+message ClientCallDestroy {
     int64 CallID = 1;
 }
 
-message ClientCallAreALlAudio {
+// ClientCallAreAllAudio
+// @Function
+// @Return: Bool
+message ClientCallAreAllAudio {
 }
 
+// ClientCallSendIceCandidate
+// @Function
+// @Return: Bool
+message ClientCallSendIceCandidate {
+    int32 ConnId = 1;
+    PhoneActionIceExchange Ice = 2;
+}
+
+// ClientCallSendIceConnectionStatus
+// @Function
+// @Return: Bool
+message ClientCallSendIceConnectionStatus {
+    int32 ConnId = 1;
+    string State = 2;
+    bool HasIceError = 3;
+    string IceError = 4;
+}
+
+// ClientCallSendIceConnectionStatus
+// @Function
+// @Return: Bool
+message ClientCallSendMediaSettings {
+    int32 ConnId = 1;
+    CallMediaSettings MediaSettings = 2;
+}
+
+// ClientCallStart
+// @Function
+// @Return: Bool
 message ClientCallStart {
     InputPeer Peer = 1;
     repeated InputPeer InputUser = 2;
     int64 CallID = 3;
 }
 
+// ClientCallJoin
+// @Function
+// @Return: Bool
 message ClientCallJoin {
     InputPeer Peer = 1;
     int64 CallID = 2;
 }
 
+// ClientCallAccept
+// @Function
+// @Return: Bool
 message ClientCallAccept {
     int64 CallID = 1;
     bool Video = 2;
 }
 
+// ClientCallReject
+// @Function
+// @Return: Bool
 message ClientCallReject {
     int64 CallID = 1;
     int32 Duration = 2;
@@ -48,58 +101,85 @@ message ClientCallReject {
     InputPeer TargetPeer = 4;
 }
 
+// ClientCallGroupAddParticipant
+// @Function
+// @Return: Bool
 message ClientCallGroupAddParticipant {
     int64 CallID = 1;
     repeated InputUser Participants = 2;
 }
 
+// ClientCallGroupRemoveParticipant
+// @Function
+// @Return: Bool
 message ClientCallGroupRemoveParticipant {
     int64 CallID = 1;
     repeated int64 UserIDs = 2;
     bool Timeout = 3;
 }
 
+// ClientCallGroupUpdateAdmin
+// @Function
+// @Return: Bool
 message ClientCallGroupUpdateAdmin {
     int64 CallID = 1;
     int64 UserID = 2;
     bool Admin = 3;
 }
 
+// ClientCallGroupRemoveParticipant
+// @Function
+// @Return: CallParticipant
 message ClientCallGroupGetParticipantByUserID {
     int64 CallID = 1;
     int64 UserID = 2;
 }
 
+// ClientCallGroupGetParticipantByConnId
+// @Function
+// @Return: CallParticipant
 message ClientCallGroupGetParticipantByConnId {
     int32 ConnId = 1;
 }
 
+// ClientCallGroupGetParticipantByConnId
+// @Function
+// @Return: CallParticipants
 message ClientCallGroupGetParticipantList {
     int64 CallID = 1;
     bool ExcludeCurrent = 2;
 }
 
+// ClientCallGroupMuteParticipant
+// @Function
+// @Return: Bool
 message ClientCallGroupMuteParticipant {
     int64 UserID = 1;
     bool Muted = 2;
 }
 
+// CallMediaSettings
 message CallMediaSettings {
     bool Audio = 1;
     bool ScreenShare = 2;
     bool Video = 3;
 }
 
+// CallParticipant
 message CallParticipant {
-    int32 ConnectionID = 1;
-    InputUser Peer = 2;
-    bool Initiator = 3;
-    bool Admin = 4;
-    CallDeviceType DeviceType = 5;
-    CallMediaSettings MediaSettings = 6;
-    bool Started = 7;
+    PhoneParticipant PhoneParticipant = 1;
+    CallDeviceType DeviceType = 2;
+    CallMediaSettings MediaSettings = 3;
+    bool Muted = 4;
+    bool Started = 5;
 }
 
+// CallParticipants
+message CallParticipants {
+    repeated PhoneParticipant PhoneParticipants = 1;
+}
+
+// CallRTCIceCandidate
 message CallRTCIceCandidate {
     string Candidate = 1;
     int64 SdpMLineIndex = 2;
@@ -107,13 +187,7 @@ message CallRTCIceCandidate {
     string UsernameFragment = 4;
 }
 
-message CallRTCIceServer {
-    string Credential = 1;
-    string CredentialType = 2;
-    repeated string Urls = 3;
-    string Username = 4;
-}
-
+// CallConnection
 message CallConnection {
     int32 ConnId = 1;
     bool Accepted = 2;
@@ -130,6 +204,7 @@ message CallConnection {
     int64 IntervalID = 13;
 }
 
+// CallUpdate
 enum CallUpdate {
     CallEmpty = 0;
     CallRequested = 1;
@@ -162,98 +237,119 @@ enum CallUpdate {
     CallUpdateReserved9 = 28;
 }
 
+// CallUpdateCallRequested
 message CallUpdateCallRequested {
     InputPeer Peer = 1;
     int64 CallID = 2 [jstype = JS_STRING];
 }
 
+// CallUpdateCallAccepted
 message CallUpdateCallAccepted {
     int32 ConnectionID = 1;
 }
 
+// CallUpdateStreamUpdated
 message CallUpdateStreamUpdated {
     int32 ConnectionID = 1;
     string StreamID = 2;
 }
 
+// CallUpdateCallRejected
 message CallUpdateCallRejected {
     int64 CallID = 1 [jstype = JS_STRING];
     DiscardReason Reason = 2;
 }
 
+// CallUpdateMediaSettingsUpdated
 message CallUpdateMediaSettingsUpdated {
     int32 ConnectionID = 1;
     CallMediaSettings MediaSettings = 2;
 }
 
+// CallUpdateLocalStreamUpdated
 message CallUpdateLocalStreamUpdated {
     string StreamID = 1;
 }
 
+// CallUpdateCallTimeout
 message CallUpdateCallTimeout {
 }
 
+// CallUpdateCallAck
 message CallUpdateCallAck {
     int32 ConnectionID = 1;
 }
 
+// CallUpdateParticipantJoined
 message CallUpdateParticipantJoined {
     repeated int64 UserIDs = 1 [jstype = JS_STRING];
 }
 
+// CallUpdateParticipantLeft
 message CallUpdateParticipantLeft {
     int64 UserID = 1 [jstype = JS_STRING];
 }
 
+// CallUpdateParticipantRemoved
 message CallUpdateParticipantRemoved {
     repeated int64 UserIDs = 1 [jstype = JS_STRING];
     bool Timeout = 2;
 }
 
+// CallUpdateCallPreview
 message CallUpdateCallPreview {
     int64 CallID = 1 [jstype = JS_STRING];
     InputPeer Peer = 2;
 }
 
+// CallUpdateCallCancelled
 message CallUpdateCallCancelled {
     int64 CallID = 1 [jstype = JS_STRING];
 }
 
+// CallUpdateCallJoinRequested
 message CallUpdateCallJoinRequested {
     int64 CallID = 1 [jstype = JS_STRING];
     int64 CalleeID = 2 [jstype = JS_STRING];
     InputPeer Peer = 3;
 }
 
+// CallUpdateParticipantAdminUpdated
 message CallUpdateParticipantAdminUpdated {
     int64 UserID = 1 [jstype = JS_STRING];
     bool Admin = 2;
 }
 
+// CallUpdateShareScreenStreamUpdated
 message CallUpdateShareScreenStreamUpdated {
     int64 CallID = 1 [jstype = JS_STRING];
     int32 ConnectionID = 2;
     string StreamID = 3;
 }
 
+// CallUpdateAllConnected
 message CallUpdateAllConnected {
 }
 
+// CallUpdateConnectionStatusChanged
 message CallUpdateConnectionStatusChanged {
     int32 ConnectionID = 1;
     string State = 2;
 }
 
+// CallUpdateParticipantMuted
 message CallUpdateParticipantMuted {
     int32 ConnectionID = 1;
     bool Muted = 2;
     int64 UserID = 3 [jstype = JS_STRING];
 }
 
+// CallUpdateCallDestroyed
 message CallUpdateCallDestroyed {
     int64 CallID = 1 [jstype = JS_STRING];
 }
 
+// CallUpdateLocalMediaSettingsUpdated
 message CallUpdateLocalMediaSettingsUpdated {
     CallMediaSettings MediaSettings = 1;
 }

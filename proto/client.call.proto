@@ -58,7 +58,7 @@ message ClientCallSendIceConnectionStatus {
     string IceError = 4;
 }
 
-// ClientCallSendIceConnectionStatus
+// ClientCallSendTrack
 // @Function
 // @Return: Bool
 message ClientCallSendTrack {

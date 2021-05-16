@@ -63,7 +63,7 @@ message ClientCallSendIceConnectionStatus {
 // @Return: Bool
 message ClientCallSendTrack {
     int32 ConnId = 1;
-    string SteamID = 2;
+    string StreamID = 2;
 }
 
 // ClientCallSendIceConnectionStatus

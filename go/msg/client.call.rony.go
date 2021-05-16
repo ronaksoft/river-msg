@@ -322,7 +322,7 @@ func (p *poolClientCallSendTrack) Put(x *ClientCallSendTrack) {
 		return
 	}
 	x.ConnId = 0
-	x.SteamID = ""
+	x.StreamID = ""
 	p.pool.Put(x)
 }
 
@@ -330,7 +330,7 @@ var PoolClientCallSendTrack = poolClientCallSendTrack{}
 
 func (x *ClientCallSendTrack) DeepCopy(z *ClientCallSendTrack) {
 	z.ConnId = x.ConnId
-	z.SteamID = x.SteamID
+	z.StreamID = x.StreamID
 }
 
 func (x *ClientCallSendTrack) Marshal() ([]byte, error) {

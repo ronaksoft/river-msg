@@ -212,7 +212,7 @@ message CallConnection {
     bool Reconnecting = 9;
     int32 ReconnectingTry = 10;
     int64 ScreenShareStreamID = 11;
-    int64 StreamID = 12;
+    string StreamID = 12;
     int64 IntervalID = 13;
 }
 

@@ -1183,7 +1183,7 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 	x.Reconnecting = false
 	x.ReconnectingTry = 0
 	x.ScreenShareStreamID = 0
-	x.StreamID = 0
+	x.StreamID = ""
 	x.IntervalID = 0
 	p.pool.Put(x)
 }

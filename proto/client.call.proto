@@ -62,8 +62,7 @@ message ClientCallSendIceConnectionStatus {
 // @Function
 // @Return: Bool
 message ClientCallSendMediaSettings {
-    int32 ConnId = 1;
-    CallMediaSettings MediaSettings = 2;
+    CallMediaSettings MediaSettings = 1;
 }
 
 // ClientCallStart

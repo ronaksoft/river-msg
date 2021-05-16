@@ -61,6 +61,14 @@ message ClientCallSendIceConnectionStatus {
 // ClientCallSendIceConnectionStatus
 // @Function
 // @Return: Bool
+message ClientCallSendTrack {
+    int32 ConnId = 1;
+    string SteamID = 2;
+}
+
+// ClientCallSendIceConnectionStatus
+// @Function
+// @Return: Bool
 message ClientCallSendMediaSettings {
     CallMediaSettings MediaSettings = 1;
 }

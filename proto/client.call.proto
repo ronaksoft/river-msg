@@ -79,7 +79,8 @@ message ClientCallSendMediaSettings {
 message ClientCallStart {
     InputPeer Peer = 1;
     repeated InputUser InputUsers = 2;
-    int64 CallID = 3;
+    bool Video = 3;
+    int64 CallID = 4;
 }
 
 // ClientCallStarted

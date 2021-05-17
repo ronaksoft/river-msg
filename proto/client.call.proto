@@ -58,12 +58,19 @@ message ClientCallSendIceConnectionStatus {
     string IceError = 4;
 }
 
+// ClientCallSendTrack
+// @Function
+// @Return: Bool
+message ClientCallSendTrack {
+    int32 ConnId = 1;
+    string StreamID = 2;
+}
+
 // ClientCallSendIceConnectionStatus
 // @Function
 // @Return: Bool
 message ClientCallSendMediaSettings {
-    int32 ConnId = 1;
-    CallMediaSettings MediaSettings = 2;
+    CallMediaSettings MediaSettings = 1;
 }
 
 // ClientCallStart
@@ -72,7 +79,8 @@ message ClientCallSendMediaSettings {
 message ClientCallStart {
     InputPeer Peer = 1;
     repeated InputUser InputUsers = 2;
-    int64 CallID = 3;
+    bool Video = 3;
+    int64 CallID = 4;
 }
 
 // ClientCallStarted
@@ -205,7 +213,7 @@ message CallConnection {
     bool Reconnecting = 9;
     int32 ReconnectingTry = 10;
     int64 ScreenShareStreamID = 11;
-    int64 StreamID = 12;
+    string StreamID = 12;
     int64 IntervalID = 13;
 }
 

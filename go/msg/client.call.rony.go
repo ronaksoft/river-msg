@@ -303,6 +303,48 @@ func (x *ClientCallSendIceConnectionStatus) PushToContext(ctx *edge.RequestCtx) 
 	ctx.PushMessage(C_ClientCallSendIceConnectionStatus, x)
 }
 
+const C_ClientCallSendTrack int64 = 2856076314
+
+type poolClientCallSendTrack struct {
+	pool sync.Pool
+}
+
+func (p *poolClientCallSendTrack) Get() *ClientCallSendTrack {
+	x, ok := p.pool.Get().(*ClientCallSendTrack)
+	if !ok {
+		x = &ClientCallSendTrack{}
+	}
+	return x
+}
+
+func (p *poolClientCallSendTrack) Put(x *ClientCallSendTrack) {
+	if x == nil {
+		return
+	}
+	x.ConnId = 0
+	x.StreamID = ""
+	p.pool.Put(x)
+}
+
+var PoolClientCallSendTrack = poolClientCallSendTrack{}
+
+func (x *ClientCallSendTrack) DeepCopy(z *ClientCallSendTrack) {
+	z.ConnId = x.ConnId
+	z.StreamID = x.StreamID
+}
+
+func (x *ClientCallSendTrack) Marshal() ([]byte, error) {
+	return proto.Marshal(x)
+}
+
+func (x *ClientCallSendTrack) Unmarshal(b []byte) error {
+	return proto.UnmarshalOptions{}.Unmarshal(b, x)
+}
+
+func (x *ClientCallSendTrack) PushToContext(ctx *edge.RequestCtx) {
+	ctx.PushMessage(C_ClientCallSendTrack, x)
+}
+
 const C_ClientCallSendMediaSettings int64 = 2959794351
 
 type poolClientCallSendMediaSettings struct {
@@ -321,7 +363,6 @@ func (p *poolClientCallSendMediaSettings) Put(x *ClientCallSendMediaSettings) {
 	if x == nil {
 		return
 	}
-	x.ConnId = 0
 	PoolCallMediaSettings.Put(x.MediaSettings)
 	x.MediaSettings = nil
 	p.pool.Put(x)
@@ -330,7 +371,6 @@ func (p *poolClientCallSendMediaSettings) Put(x *ClientCallSendMediaSettings) {
 var PoolClientCallSendMediaSettings = poolClientCallSendMediaSettings{}
 
 func (x *ClientCallSendMediaSettings) DeepCopy(z *ClientCallSendMediaSettings) {
-	z.ConnId = x.ConnId
 	if x.MediaSettings != nil {
 		if z.MediaSettings == nil {
 			z.MediaSettings = PoolCallMediaSettings.Get()
@@ -377,6 +417,7 @@ func (p *poolClientCallStart) Put(x *ClientCallStart) {
 		PoolInputUser.Put(z)
 	}
 	x.InputUsers = x.InputUsers[:0]
+	x.Video = false
 	x.CallID = 0
 	p.pool.Put(x)
 }
@@ -399,6 +440,7 @@ func (x *ClientCallStart) DeepCopy(z *ClientCallStart) {
 			z.InputUsers = append(z.InputUsers, xx)
 		}
 	}
+	z.Video = x.Video
 	z.CallID = x.CallID
 }
 
@@ -1143,7 +1185,7 @@ func (p *poolCallConnection) Put(x *CallConnection) {
 	x.Reconnecting = false
 	x.ReconnectingTry = 0
 	x.ScreenShareStreamID = 0
-	x.StreamID = 0
+	x.StreamID = ""
 	x.IntervalID = 0
 	p.pool.Put(x)
 }
@@ -2102,6 +2144,7 @@ func init() {
 	registry.RegisterConstructor(4108555878, "ClientCallAreAllAudio")
 	registry.RegisterConstructor(1007531716, "ClientCallSendIceCandidate")
 	registry.RegisterConstructor(3421647876, "ClientCallSendIceConnectionStatus")
+	registry.RegisterConstructor(2856076314, "ClientCallSendTrack")
 	registry.RegisterConstructor(2959794351, "ClientCallSendMediaSettings")
 	registry.RegisterConstructor(1041146964, "ClientCallStart")
 	registry.RegisterConstructor(484502003, "ClientCallStarted")

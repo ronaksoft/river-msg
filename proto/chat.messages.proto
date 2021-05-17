@@ -233,6 +233,15 @@ message MessagesTogglePin {
     bool Silent = 3;
 }
 
+// MessagesReadReaction
+// @Function
+// @Return: Bool
+message MessagesReadReaction {
+    InputPeer Peer = 1;
+    int64 MessageID = 2;
+    repeated string Reactions = 3;
+}
+
 // MessagesDialogs
 message MessagesDialogs {
     repeated Dialog Dialogs = 1;

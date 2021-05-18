@@ -1366,8 +1366,7 @@ func (p *poolMessagesReadReaction) Put(x *MessagesReadReaction) {
 	}
 	PoolInputPeer.Put(x.Peer)
 	x.Peer = nil
-	x.MessageID = 0
-	x.Reactions = x.Reactions[:0]
+	x.MessageIDs = x.MessageIDs[:0]
 	p.pool.Put(x)
 }
 
@@ -1382,8 +1381,7 @@ func (x *MessagesReadReaction) DeepCopy(z *MessagesReadReaction) {
 	} else {
 		z.Peer = nil
 	}
-	z.MessageID = x.MessageID
-	z.Reactions = append(z.Reactions[:0], x.Reactions...)
+	z.MessageIDs = append(z.MessageIDs[:0], x.MessageIDs...)
 }
 
 func (x *MessagesReadReaction) Marshal() ([]byte, error) {

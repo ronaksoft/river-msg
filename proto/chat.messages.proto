@@ -238,8 +238,7 @@ message MessagesTogglePin {
 // @Return: Bool
 message MessagesReadReaction {
     InputPeer Peer = 1;
-    int64 MessageID = 2;
-    repeated string Reactions = 3;
+    repeated int64 MessageIDs = 2;
 }
 
 // MessagesDialogs

@@ -327,6 +327,7 @@ message UpdateBotCallbackQuery {
     Peer Peer = 3;
     int64 MessageID = 4;
     bytes Data = 5;
+    int64 TeamID = 6;
 }
 
 // UpdateBotInlineQuery
@@ -339,6 +340,7 @@ message UpdateBotInlineQuery {
     string Query = 4;
     string Offset = 5;
     GeoLocation Geo = 6;
+    int64 TeamID = 7;
 }
 
 // UpdateBotInlineSend

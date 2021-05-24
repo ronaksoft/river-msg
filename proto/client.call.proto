@@ -242,7 +242,7 @@ enum CallUpdate {
     ParticipantMuted = 20;
     CallDestroyed = 21;
     LocalMediaSettingsUpdated = 22;
-    CallUpdateReserved4 = 23;
+    Destroyed = 23;
     CallUpdateReserved5 = 24;
     CallUpdateReserved6 = 25;
     CallUpdateReserved7 = 26;
@@ -365,4 +365,8 @@ message CallUpdateCallDestroyed {
 // CallUpdateLocalMediaSettingsUpdated
 message CallUpdateLocalMediaSettingsUpdated {
     CallMediaSettings MediaSettings = 1;
+}
+
+// CallUpdateDestroyed
+message CallUpdateDestroyed {
 }

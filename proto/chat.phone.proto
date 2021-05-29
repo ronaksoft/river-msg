@@ -76,6 +76,14 @@ message PhoneDiscardCall {
     DiscardReason Reason = 5;
 }
 
+// PhoneGetCall
+// @Function
+// @Return: Bool
+message PhoneGetCall {
+    InputPeer Peer = 1;
+    int64 CallID = 2 [jstype = JS_STRING];
+}
+
 // PhoneAddParticipant
 // @Function
 // @Return: PhoneParticipants

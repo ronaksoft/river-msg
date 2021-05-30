@@ -20,6 +20,7 @@ message UpdateEnvelope {
     int32 UCount = 3;
     int64 UpdateID = 4;
     int64 Timestamp = 5;
+    int64 Deadline = 6;
 }
 
 // UpdateContainer

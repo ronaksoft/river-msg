@@ -73,6 +73,13 @@ message ClientCallSendMediaSettings {
     CallMediaSettings MediaSettings = 1;
 }
 
+// ClientCallGetDuration
+// @Function
+// @Return: ClientCallDuration
+message ClientCallGetDuration {
+    int64 CallID = 1;
+}
+
 // ClientCallStart
 // @Function
 // @Return: ClientCallStarted
@@ -86,6 +93,11 @@ message ClientCallStart {
 // ClientCallStarted
 message ClientCallStarted {
     int64 CallID = 1;
+}
+
+// ClientCallDuration
+message ClientCallDuration {
+    int64 Duration = 1;
 }
 
 // ClientCallJoin

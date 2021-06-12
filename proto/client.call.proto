@@ -66,6 +66,13 @@ message ClientCallSendTrack {
     string StreamID = 2;
 }
 
+// ClientCallSendAck
+// @Function
+// @Return: Bool
+message ClientCallSendAck {
+    int64 CallID = 1;
+}
+
 // ClientCallSendIceConnectionStatus
 // @Function
 // @Return: Bool

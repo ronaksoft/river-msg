@@ -262,11 +262,21 @@ enum CallUpdate {
     CallDestroyed = 21;
     LocalMediaSettingsUpdated = 22;
     Destroyed = 23;
-    CallUpdateReserved5 = 24;
+    CallStatusChanged = 24;
     CallUpdateReserved6 = 25;
     CallUpdateReserved7 = 26;
     CallUpdateReserved8 = 27;
     CallUpdateReserved9 = 28;
+}
+
+// CallStatus
+enum CallStatus {
+    Empty = 0;
+    Calling = 1;
+    Ringing = 2;
+    Connecting = 3;
+    Connected = 4;
+    Reconnecting = 5;
 }
 
 // CallUpdateCallRequested
@@ -388,4 +398,11 @@ message CallUpdateLocalMediaSettingsUpdated {
 
 // CallUpdateDestroyed
 message CallUpdateDestroyed {
+}
+
+// CallStatusChanged
+message CallUpdateStatusChanged {
+    int64 CallID = 1 [jstype = JS_STRING];
+    int32 ConnId = 2;
+    CallStatus Status = 3;
 }

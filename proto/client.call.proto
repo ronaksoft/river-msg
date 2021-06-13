@@ -277,6 +277,12 @@ enum CallStatus {
     Connecting = 3;
     Connected = 4;
     Reconnecting = 5;
+    Failed = 6;
+    CallStatusReserve1 = 7;
+    CallStatusReserve2 = 8;
+    CallStatusReserve3 = 9;
+    CallStatusReserve4 = 10;
+    CallStatusReserve5 = 11;
 }
 
 // CallUpdateCallRequested

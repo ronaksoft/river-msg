@@ -149,6 +149,15 @@ message PhoneGetHistory {
     int64 After = 2;
 }
 
+// PhoneDeleteHistory
+// @Function
+// Returns:     Bool
+message PhoneDeleteHistory {
+    int64 UserID = 1 [jstype = JS_STRING];
+    int64 TeamID = 2 [jstype = JS_STRING];
+    int64 CallID = 3 [jstype = JS_STRING];
+}
+
 message PhoneCallRecord {
     int64 UserID = 1 [jstype = JS_STRING];
     int64 TeamID = 2 [jstype = JS_STRING];

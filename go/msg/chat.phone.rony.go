@@ -698,8 +698,6 @@ func (p *poolPhoneDeleteHistory) Put(x *PhoneDeleteHistory) {
 	if x == nil {
 		return
 	}
-	x.UserID = 0
-	x.TeamID = 0
 	x.CallID = 0
 	p.pool.Put(x)
 }
@@ -707,8 +705,6 @@ func (p *poolPhoneDeleteHistory) Put(x *PhoneDeleteHistory) {
 var PoolPhoneDeleteHistory = poolPhoneDeleteHistory{}
 
 func (x *PhoneDeleteHistory) DeepCopy(z *PhoneDeleteHistory) {
-	z.UserID = x.UserID
-	z.TeamID = x.TeamID
 	z.CallID = x.CallID
 }
 

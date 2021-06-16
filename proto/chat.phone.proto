@@ -153,7 +153,7 @@ message PhoneGetHistory {
 // @Function
 // Returns:     Bool
 message PhoneDeleteHistory {
-    int64 CallID = 1 [jstype = JS_STRING];
+    repeated int64 CallIDs = 1 [jstype = JS_STRING];
 }
 
 message PhoneCallRecord {

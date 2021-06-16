@@ -698,14 +698,14 @@ func (p *poolPhoneDeleteHistory) Put(x *PhoneDeleteHistory) {
 	if x == nil {
 		return
 	}
-	x.CallID = 0
+	x.CallIDs = x.CallIDs[:0]
 	p.pool.Put(x)
 }
 
 var PoolPhoneDeleteHistory = poolPhoneDeleteHistory{}
 
 func (x *PhoneDeleteHistory) DeepCopy(z *PhoneDeleteHistory) {
-	z.CallID = x.CallID
+	z.CallIDs = append(z.CallIDs[:0], x.CallIDs...)
 }
 
 func (x *PhoneDeleteHistory) Marshal() ([]byte, error) {

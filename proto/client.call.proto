@@ -131,6 +131,7 @@ message ClientCallReject {
     int32 Duration = 2;
     DiscardReason Reason = 3;
     InputPeer TargetPeer = 4;
+    bool Force = 5;
 }
 
 // ClientCallGetParticipantByUserID

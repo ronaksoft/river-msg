@@ -290,6 +290,7 @@ enum CallStatus {
 message CallUpdateCallRequested {
     InputPeer Peer = 1;
     int64 CallID = 2 [jstype = JS_STRING];
+    bool Video = 3;
 }
 
 // CallUpdateCallAccepted

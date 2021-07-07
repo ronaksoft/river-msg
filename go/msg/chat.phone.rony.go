@@ -1314,6 +1314,7 @@ func (p *poolPhoneActionRequested) Put(x *PhoneActionRequested) {
 	}
 	x.Participants = x.Participants[:0]
 	x.DeviceType = 0
+	x.Video = false
 	p.pool.Put(x)
 }
 
@@ -1330,6 +1331,7 @@ func (x *PhoneActionRequested) DeepCopy(z *PhoneActionRequested) {
 		}
 	}
 	z.DeviceType = x.DeviceType
+	z.Video = x.Video
 }
 
 func (x *PhoneActionRequested) Marshal() ([]byte, error) {

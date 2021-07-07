@@ -23,6 +23,7 @@ message PhoneRequestCall {
     repeated PhoneParticipantSDP Participants = 4;
     int64 CallID = 5 [jstype = JS_STRING];
     CallDeviceType DeviceType = 6;
+    bool Video = 7;
 }
 
 // PhoneAcceptCall

@@ -3,5 +3,4 @@
 *.test
 _playground
 _legacy
-vendor
 go.sum
